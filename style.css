@@ -40,3 +40,7 @@
 .exam-history-entry p{margin:0;font-size:14px}
 .exam-history-entry button{font-size:13px;flex-shrink:0}
 @media(max-width:470px){.exam-jumps{grid-template-columns:1fr}.exam-history-entry{flex-wrap:wrap}.exam-history-entry button{width:100%}}
+
+/* Ver.7: 公的根拠リンクと旧回答の改訂表示 */
+#revisionNotice{background:#fff7e8;border:1px solid #f0dcaf;padding:12px;border-radius:10px}
+.result a,.review-details-body a{color:#126b85;text-decoration:underline;overflow-wrap:anywhere}

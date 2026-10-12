@@ -1,4 +1,4 @@
-// FP学科トレーニング Ver.4：オリジナル学習用問題120問。専門家監修は未実施。
+// FP学科トレーニング Ver.7。120問中12問を再設計。修正分のみ根拠資料・改訂情報を保持。
 const QUESTIONS = [
   {
     "id": "fp3-001",
@@ -778,15 +778,21 @@ const QUESTIONS = [
     "level": "2",
     "category": "不動産",
     "format": "four_choice",
-    "question": "不動産登記に関する次の記述のうち、最も適切なものはどれか。",
+    "question": "不動産の登記記録に関する記述のうち、最も適切なものはどれか。",
     "choices": [
-      "日本では土地と建物を常に一つの不動産として登記する",
-      "土地と建物は原則として別個の不動産であり、それぞれ登記の対象となる",
-      "建物には登記制度がない",
-      "不動産登記は法令上一切公開されない"
+      "登記記録の表題部には、原則として抵当権の設定状況のみが記載される",
+      "権利部の甲区には、原則として所有権に関する登記事項が記録される",
+      "権利部の乙区には、原則として土地の地目や地積が記録される",
+      "抵当権の設定登記は、原則として権利部の甲区に記録される"
     ],
     "answer": 1,
-    "explanation": "土地と建物は別個の不動産として扱われ、それぞれの登記記録があります。"
+    "explanation": "甲区は所有権に関する事項、乙区は抵当権など所有権以外の権利に関する事項を記録します。地目や地積などは表題部に記録されます。",
+    "sourceUrl": "https://www.moj.go.jp/MINJI/minji02.html",
+    "sourceLabel": "法務省：不動産登記のABC",
+    "lawReferenceDate": "2026-04-01",
+    "revision": 2,
+    "reviewStatus": "primary_source_checked",
+    "reviewedAt": "2026-10-12"
   },
   {
     "id": "fp2-026",
@@ -1113,15 +1119,21 @@ const QUESTIONS = [
     "level": "3",
     "category": "タックスプランニング",
     "format": "three_choice",
-    "question": "不動産の貸付けから生じた賃貸収入が原則として該当する所得区分はどれか。",
+    "question": "給与所得者に交付され、年間の給与等の支払金額や源泉徴収税額などを確認できる書類はどれか。",
     "choices": [
-      "不動産所得",
-      "給与所得",
-      "退職所得"
+      "給与所得の源泉徴収票",
+      "固定資産評価証明書",
+      "不動産登記事項証明書"
     ],
     "answer": 0,
-    "explanation": "土地・建物などの貸付けによる所得は、原則として不動産所得に区分されます。",
-    "topic": "所得区分"
+    "explanation": "給与の支払者は、給与等の支払金額や源泉徴収税額等を記載した源泉徴収票を受給者に交付します。",
+    "topic": "所得区分",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/hotei/7411.htm",
+    "sourceLabel": "国税庁：給与所得の源泉徴収票",
+    "lawReferenceDate": "2026-04-01",
+    "revision": 2,
+    "reviewStatus": "primary_source_checked",
+    "reviewedAt": "2026-10-12"
   },
   {
     "id": "fp3-049",
@@ -1172,14 +1184,20 @@ const QUESTIONS = [
     "level": "3",
     "category": "不動産",
     "format": "true_false",
-    "question": "不動産の売買では、土地と建物を法律上必ず一体の不動産として扱うため、それぞれ別の所有者になることはない。",
+    "question": "不動産取得税は、土地や家屋を取得した場合に課税されることがある地方税である。",
     "choices": [
       "〇 正しい",
       "× 誤り"
     ],
-    "answer": 1,
-    "explanation": "日本の民法上、土地と建物は別個の不動産です。所有者が異なることもあります。",
-    "topic": "土地と建物"
+    "answer": 0,
+    "explanation": "不動産取得税は地方税で、不動産を取得した際に課税されることがあります。非課税となる取得や軽減措置もあります。",
+    "topic": "土地と建物",
+    "sourceUrl": "https://www.tax.metro.tokyo.lg.jp/scene/real_estate",
+    "sourceLabel": "東京都主税局：不動産にかかる税金",
+    "lawReferenceDate": "2026-04-01",
+    "revision": 2,
+    "reviewStatus": "primary_source_checked",
+    "reviewedAt": "2026-10-12"
   },
   {
     "id": "fp3-053",
@@ -1245,14 +1263,20 @@ const QUESTIONS = [
     "level": "3",
     "category": "相続・事業承継",
     "format": "true_false",
-    "question": "被相続人の兄弟姉妹には、民法上の遺留分が認められる。",
+    "question": "自筆証書遺言では、本文だけでなく、添付する相続財産の目録も必ずすべて自書しなければならない。",
     "choices": [
       "〇 正しい",
       "× 誤り"
     ],
     "answer": 1,
-    "explanation": "兄弟姉妹には遺留分が認められません。",
-    "topic": "遺留分"
+    "explanation": "自筆証書遺言の本文などは原則自書が必要ですが、添付する財産目録はパソコン等で作成できます。ただし自書しない目録の各ページには署名・押印などの要件があります。",
+    "topic": "遺留分",
+    "sourceUrl": "https://www.moj.go.jp/MINJI/minji07_00240.html",
+    "sourceLabel": "法務省：自筆証書遺言の方式",
+    "lawReferenceDate": "2026-04-01",
+    "revision": 2,
+    "reviewStatus": "primary_source_checked",
+    "reviewedAt": "2026-10-12"
   },
   {
     "id": "fp3-058",
@@ -1351,16 +1375,22 @@ const QUESTIONS = [
     "level": "2",
     "category": "ライフプランニングと資金計画",
     "format": "four_choice",
-    "question": "現在の100万円を年利5％、年1回複利で2年間運用し、税金・手数料を考慮しない場合、2年後の元利合計額として最も適切なものはどれか。",
+    "question": "元金均等返済方式で1,000万円を借り、年利2％、5年間にわたり毎年末に元本200万円ずつ返済する。利息は各年の期首元本残高に対して計算するものとし、2回目の年末返済に含まれる利息額として最も適切なものはどれか。",
     "choices": [
-      "105万円",
-      "110万円",
-      "110万2,500円",
-      "115万円"
+      "12万円",
+      "16万円",
+      "18万円",
+      "20万円"
     ],
-    "answer": 2,
-    "explanation": "100万円×1.05²＝110万2,500円です。",
-    "topic": "複利計算"
+    "answer": 1,
+    "explanation": "1回目の年末に元本を200万円返済した後の残高は800万円です。2年目の利息は800万円×2％＝16万円です。",
+    "topic": "複利計算",
+    "sourceUrl": "",
+    "sourceLabel": "計算式による照合",
+    "lawReferenceDate": null,
+    "revision": 2,
+    "reviewStatus": "formula_checked",
+    "reviewedAt": "2026-10-12"
   },
   {
     "id": "fp2-035",
@@ -1463,48 +1493,66 @@ const QUESTIONS = [
     "level": "2",
     "category": "金融資産運用",
     "format": "four_choice",
-    "question": "ある株式の株価が2,500円、1株当たり利益（EPS）が125円のときのPERとして最も適切なものはどれか。",
+    "question": "1株当たり当期純利益（EPS）が200円、1株当たり年間配当金が70円の場合、配当性向として最も適切なものはどれか。",
     "choices": [
-      "5倍",
-      "10倍",
-      "20倍",
-      "25倍"
+      "25％",
+      "30％",
+      "35％",
+      "70％"
     ],
     "answer": 2,
-    "explanation": "PER＝株価÷EPS＝2,500÷125＝20倍です。",
-    "topic": "PER"
+    "explanation": "配当性向＝1株当たり配当金÷1株当たり当期純利益×100＝70÷200×100＝35％です。",
+    "topic": "PER",
+    "sourceUrl": "https://www.j-flec.go.jp/links/jikan/word/110.html",
+    "sourceLabel": "J-FLEC：配当性向",
+    "lawReferenceDate": null,
+    "revision": 2,
+    "reviewStatus": "primary_source_checked",
+    "reviewedAt": "2026-10-12"
   },
   {
     "id": "fp2-042",
     "level": "2",
     "category": "金融資産運用",
     "format": "four_choice",
-    "question": "株価が1,600円、1株当たり純資産（BPS）が2,000円の株式のPBRとして、最も適切なものはどれか。",
+    "question": "ある企業の当期純利益が400万円、期首と期末の平均自己資本が5,000万円である場合、自己資本利益率（ROE）として最も適切なものはどれか。",
     "choices": [
-      "0.8倍",
-      "1.25倍",
-      "1.6倍",
-      "8倍"
+      "5％",
+      "8％",
+      "12.5％",
+      "20％"
     ],
-    "answer": 0,
-    "explanation": "PBR＝株価÷BPS＝1,600÷2,000＝0.8倍です。",
-    "topic": "PBR"
+    "answer": 1,
+    "explanation": "ROE＝当期純利益÷自己資本×100＝400÷5,000×100＝8％です。設問では期首・期末の平均自己資本を用います。",
+    "topic": "PBR",
+    "sourceUrl": "",
+    "sourceLabel": "計算式による照合",
+    "lawReferenceDate": null,
+    "revision": 2,
+    "reviewStatus": "formula_checked",
+    "reviewedAt": "2026-10-12"
   },
   {
     "id": "fp2-043",
     "level": "2",
     "category": "金融資産運用",
     "format": "four_choice",
-    "question": "株価が4,000円、年間1株配当が160円の株式について、配当利回りとして最も適切なものはどれか。",
+    "question": "資金100万円のうち70万円を年利2％の商品A、30万円を年利6％の商品Bに投資する。手数料・税金を考慮せず、各利率が一定の場合、ポートフォリオ全体の年間利回りとして最も適切なものはどれか。",
     "choices": [
-      "2％",
-      "4％",
-      "6％",
-      "10％"
+      "2.0％",
+      "3.2％",
+      "4.0％",
+      "6.0％"
     ],
     "answer": 1,
-    "explanation": "配当利回り＝160÷4,000×100＝4％です。",
-    "topic": "配当利回り"
+    "explanation": "加重平均利回り＝70％×2％＋30％×6％＝1.4％＋1.8％＝3.2％です。",
+    "topic": "配当利回り",
+    "sourceUrl": "",
+    "sourceLabel": "計算式による照合",
+    "lawReferenceDate": null,
+    "revision": 2,
+    "reviewStatus": "formula_checked",
+    "reviewedAt": "2026-10-12"
   },
   {
     "id": "fp2-044",
@@ -1591,16 +1639,22 @@ const QUESTIONS = [
     "level": "2",
     "category": "タックスプランニング",
     "format": "four_choice",
-    "question": "個人の所得税の対象期間について、最も適切な記述はどれか。",
+    "question": "土地を4,500万円で売却し、取得費3,000万円、譲渡費用200万円だった。特別控除などの特例を考慮しない場合、譲渡所得金額として最も適切なものはどれか。",
     "choices": [
-      "原則として毎年4月1日から翌年3月31日まで",
-      "原則として毎年1月1日から12月31日まで",
-      "原則として任意の12か月を選べる",
-      "原則として3年分をまとめて課税する"
+      "1,100万円",
+      "1,300万円",
+      "1,500万円",
+      "1,700万円"
     ],
     "answer": 1,
-    "explanation": "個人の所得税は原則として暦年、すなわち1月1日から12月31日までの所得を対象に計算します。",
-    "topic": "所得税の暦年課税"
+    "explanation": "土地・建物の譲渡所得金額＝譲渡価額－（取得費＋譲渡費用）＝4,500－（3,000＋200）＝1,300万円です。",
+    "topic": "所得税の暦年課税",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/joto/3202.htm",
+    "sourceLabel": "国税庁：分離課税の譲渡所得の計算",
+    "lawReferenceDate": "2026-04-01",
+    "revision": 2,
+    "reviewStatus": "primary_source_checked",
+    "reviewedAt": "2026-10-12"
   },
   {
     "id": "fp2-050",
@@ -1639,16 +1693,22 @@ const QUESTIONS = [
     "level": "2",
     "category": "不動産",
     "format": "four_choice",
-    "question": "敷地面積300㎡、容積率算定上の延べ面積450㎡の建物の容積率として最も適切なものはどれか。",
+    "question": "年間の予定賃料収入が240万円、物件取得価格が4,000万円の賃貸不動産がある。空室損失や経費、税金などを考慮しない場合、表面利回りとして最も適切なものはどれか。",
     "choices": [
-      "66.7％",
-      "100％",
-      "150％",
-      "300％"
+      "4％",
+      "5％",
+      "6％",
+      "8％"
     ],
     "answer": 2,
-    "explanation": "容積率＝450÷300×100＝150％です。",
-    "topic": "容積率"
+    "explanation": "表面利回り＝年間賃料収入÷物件価格×100＝240÷4,000×100＝6％です。実質利回りとは異なり、運営費用等は考慮しません。",
+    "topic": "容積率",
+    "sourceUrl": "",
+    "sourceLabel": "計算式による照合",
+    "lawReferenceDate": null,
+    "revision": 2,
+    "reviewStatus": "formula_checked",
+    "reviewedAt": "2026-10-12"
   },
   {
     "id": "fp2-053",
@@ -1687,16 +1747,22 @@ const QUESTIONS = [
     "level": "2",
     "category": "不動産",
     "format": "four_choice",
-    "question": "不動産を取得した場合に課税され得る地方税について、最も適切なものはどれか。",
+    "question": "個人が土地・建物を売却した際の譲渡所得の課税について、原則として最も適切なものはどれか。",
     "choices": [
-      "所得税",
-      "不動産取得税",
-      "法人税",
-      "相続税"
+      "給与所得と合算し、必ず総合課税する",
+      "譲渡所得には税金がかからない",
+      "給与所得などと分離して課税する",
+      "所有期間に関係なく常に同じ税率で課税する"
     ],
-    "answer": 1,
-    "explanation": "不動産取得税は都道府県が課す地方税です。税率・特例の要件は状況により異なります。",
-    "topic": "不動産取得税"
+    "answer": 2,
+    "explanation": "土地・建物の譲渡所得は給与所得などと分けて計算する分離課税です。税率は譲渡年の1月1日現在の所有期間による長期・短期の区分や特例で異なります。",
+    "topic": "不動産取得税",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/joto/3202.htm",
+    "sourceLabel": "国税庁：土地・建物の譲渡所得と分離課税",
+    "lawReferenceDate": "2026-04-01",
+    "revision": 2,
+    "reviewStatus": "primary_source_checked",
+    "reviewedAt": "2026-10-12"
   },
   {
     "id": "fp2-056",
@@ -1751,16 +1817,22 @@ const QUESTIONS = [
     "level": "2",
     "category": "相続・事業承継",
     "format": "four_choice",
-    "question": "遺留分に関する次の記述のうち、最も適切なものはどれか。",
+    "question": "相続人が配偶者と実子2人の合計3人で、相続放棄や養子などの特殊事情がない場合、相続税の遺産に係る基礎控除額として最も適切なものはどれか。",
     "choices": [
-      "被相続人の兄弟姉妹には遺留分が認められない",
-      "相続人でない第三者にも必ず遺留分がある",
-      "遺留分は法律上存在しない",
-      "兄弟姉妹が常に最も大きな遺留分を持つ"
+      "3,000万円",
+      "3,600万円",
+      "4,200万円",
+      "4,800万円"
     ],
-    "answer": 0,
-    "explanation": "遺留分は兄弟姉妹以外の一定の法定相続人に認められます。",
-    "topic": "遺留分"
+    "answer": 3,
+    "explanation": "相続税の基礎控除額＝3,000万円＋600万円×法定相続人の数＝3,000＋600×3＝4,800万円です。",
+    "topic": "遺留分",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
+    "sourceLabel": "国税庁：相続税の基礎控除額",
+    "lawReferenceDate": "2026-04-01",
+    "revision": 2,
+    "reviewStatus": "primary_source_checked",
+    "reviewedAt": "2026-10-12"
   },
   {
     "id": "fp2-060",
@@ -1779,3 +1851,193 @@ const QUESTIONS = [
     "topic": "法定相続分"
   }
 ];
+
+// Ver.6で開始した模試を元の問題文のまま再開するためのスナップショット。
+const LEGACY_V6_QUESTIONS = {
+  "fp3-048": {
+    "id": "fp3-048",
+    "level": "3",
+    "category": "タックスプランニング",
+    "format": "three_choice",
+    "question": "不動産の貸付けから生じた賃貸収入が原則として該当する所得区分はどれか。",
+    "choices": [
+      "不動産所得",
+      "給与所得",
+      "退職所得"
+    ],
+    "answer": 0,
+    "explanation": "土地・建物などの貸付けによる所得は、原則として不動産所得に区分されます。",
+    "topic": "所得区分"
+  },
+  "fp3-052": {
+    "id": "fp3-052",
+    "level": "3",
+    "category": "不動産",
+    "format": "true_false",
+    "question": "不動産の売買では、土地と建物を法律上必ず一体の不動産として扱うため、それぞれ別の所有者になることはない。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "日本の民法上、土地と建物は別個の不動産です。所有者が異なることもあります。",
+    "topic": "土地と建物"
+  },
+  "fp3-057": {
+    "id": "fp3-057",
+    "level": "3",
+    "category": "相続・事業承継",
+    "format": "true_false",
+    "question": "被相続人の兄弟姉妹には、民法上の遺留分が認められる。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "兄弟姉妹には遺留分が認められません。",
+    "topic": "遺留分"
+  },
+  "fp2-025": {
+    "id": "fp2-025",
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "不動産登記に関する次の記述のうち、最も適切なものはどれか。",
+    "choices": [
+      "日本では土地と建物を常に一つの不動産として登記する",
+      "土地と建物は原則として別個の不動産であり、それぞれ登記の対象となる",
+      "建物には登記制度がない",
+      "不動産登記は法令上一切公開されない"
+    ],
+    "answer": 1,
+    "explanation": "土地と建物は別個の不動産として扱われ、それぞれの登記記録があります。"
+  },
+  "fp2-034": {
+    "id": "fp2-034",
+    "level": "2",
+    "category": "ライフプランニングと資金計画",
+    "format": "four_choice",
+    "question": "現在の100万円を年利5％、年1回複利で2年間運用し、税金・手数料を考慮しない場合、2年後の元利合計額として最も適切なものはどれか。",
+    "choices": [
+      "105万円",
+      "110万円",
+      "110万2,500円",
+      "115万円"
+    ],
+    "answer": 2,
+    "explanation": "100万円×1.05²＝110万2,500円です。",
+    "topic": "複利計算"
+  },
+  "fp2-041": {
+    "id": "fp2-041",
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "ある株式の株価が2,500円、1株当たり利益（EPS）が125円のときのPERとして最も適切なものはどれか。",
+    "choices": [
+      "5倍",
+      "10倍",
+      "20倍",
+      "25倍"
+    ],
+    "answer": 2,
+    "explanation": "PER＝株価÷EPS＝2,500÷125＝20倍です。",
+    "topic": "PER"
+  },
+  "fp2-042": {
+    "id": "fp2-042",
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "株価が1,600円、1株当たり純資産（BPS）が2,000円の株式のPBRとして、最も適切なものはどれか。",
+    "choices": [
+      "0.8倍",
+      "1.25倍",
+      "1.6倍",
+      "8倍"
+    ],
+    "answer": 0,
+    "explanation": "PBR＝株価÷BPS＝1,600÷2,000＝0.8倍です。",
+    "topic": "PBR"
+  },
+  "fp2-043": {
+    "id": "fp2-043",
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "株価が4,000円、年間1株配当が160円の株式について、配当利回りとして最も適切なものはどれか。",
+    "choices": [
+      "2％",
+      "4％",
+      "6％",
+      "10％"
+    ],
+    "answer": 1,
+    "explanation": "配当利回り＝160÷4,000×100＝4％です。",
+    "topic": "配当利回り"
+  },
+  "fp2-049": {
+    "id": "fp2-049",
+    "level": "2",
+    "category": "タックスプランニング",
+    "format": "four_choice",
+    "question": "個人の所得税の対象期間について、最も適切な記述はどれか。",
+    "choices": [
+      "原則として毎年4月1日から翌年3月31日まで",
+      "原則として毎年1月1日から12月31日まで",
+      "原則として任意の12か月を選べる",
+      "原則として3年分をまとめて課税する"
+    ],
+    "answer": 1,
+    "explanation": "個人の所得税は原則として暦年、すなわち1月1日から12月31日までの所得を対象に計算します。",
+    "topic": "所得税の暦年課税"
+  },
+  "fp2-052": {
+    "id": "fp2-052",
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "敷地面積300㎡、容積率算定上の延べ面積450㎡の建物の容積率として最も適切なものはどれか。",
+    "choices": [
+      "66.7％",
+      "100％",
+      "150％",
+      "300％"
+    ],
+    "answer": 2,
+    "explanation": "容積率＝450÷300×100＝150％です。",
+    "topic": "容積率"
+  },
+  "fp2-055": {
+    "id": "fp2-055",
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "不動産を取得した場合に課税され得る地方税について、最も適切なものはどれか。",
+    "choices": [
+      "所得税",
+      "不動産取得税",
+      "法人税",
+      "相続税"
+    ],
+    "answer": 1,
+    "explanation": "不動産取得税は都道府県が課す地方税です。税率・特例の要件は状況により異なります。",
+    "topic": "不動産取得税"
+  },
+  "fp2-059": {
+    "id": "fp2-059",
+    "level": "2",
+    "category": "相続・事業承継",
+    "format": "four_choice",
+    "question": "遺留分に関する次の記述のうち、最も適切なものはどれか。",
+    "choices": [
+      "被相続人の兄弟姉妹には遺留分が認められない",
+      "相続人でない第三者にも必ず遺留分がある",
+      "遺留分は法律上存在しない",
+      "兄弟姉妹が常に最も大きな遺留分を持つ"
+    ],
+    "answer": 0,
+    "explanation": "遺留分は兄弟姉妹以外の一定の法定相続人に認められます。",
+    "topic": "遺留分"
+  }
+};

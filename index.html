@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#147e78">
   <meta name="description" content="FP2級・3級の学科試験対策。無料・登録不要の分野別演習、6問ミニ模試、60問模試、復習に対応。各級60問を無料収録。">
   <title>FP学科トレーニング｜無料FP2級・3級学科60問模試と分野別演習</title>
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
   <header class="site-header">
@@ -19,7 +19,7 @@
   <main class="container">
     <section id="home" aria-label="ホーム">
       <div class="card">
-        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.6｜各級60問</span></div>
+        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.7｜各級60問</span></div>
         <div class="controls level-controls" role="group" aria-label="級を選択">
           <button type="button" id="level3" class="active" aria-pressed="true">FP3級</button>
           <button type="button" id="level2" aria-pressed="false">FP2級</button>
@@ -51,17 +51,17 @@
 
       <div class="card">
         <h2>学習記録</h2>
-        <p id="stats" class="stats" aria-live="polite"></p>
+        <p id="stats" class="stats" aria-live="polite"></p><p id="revisionNotice" class="muted small hidden"></p>
         <div id="categoryStats" class="category-stats"></div>
-        <div id="examHistory" class="muted small"></div><div id="examHistoryList" class="exam-history-list" aria-label="過去の模試の受験履歴"></div><p class="muted small">Ver.6以降の模試は、採点後にホームへ戻っても答え合わせを再表示できます。これ以前の履歴は点数のみ残ります。</p>
+        <div id="examHistory" class="muted small"></div><div id="examHistoryList" class="exam-history-list" aria-label="過去の模試の受験履歴"></div><p class="muted small">Ver.6以降の模試は採点後の答え合わせを再表示できます。Ver.7では内容を変更した問題の過去回答は現在の正答率から除外し、必要な場合は旧問題のまま模試を再開できます。</p>
         <button type="button" id="clearStats" class="subtle">この端末の学習記録を削除</button>
-        <p class="muted small">回答記録と模試の途中経過はこのブラウザ内だけに保存されます。別の端末には引き継がれません。</p>
+        <p class="muted small">回答記録と模試の途中経過はこのブラウザ内に保存されます。改訂前の回答の控えも残しますが、別の端末には引き継がれません。</p>
       </div>
 
       <div class="card">
         <h2>ご利用にあたって</h2>
         <p>本サイトはFP資格の学習を支援する非公式サイトです。日本FP協会等の公式サービスではありません。</p>
-        <p class="muted">現在は各級60問のオリジナル例題を収録しています。問題内容には出題テーマの重複や、学習用として単純化した説明が含まれるため、今後も継続的に見直します。学科試験の出題形式・試験時間・合格基準は日本FP協会の公表情報を参考にしています。問題の正答・解説は専門家監修済みではなく、法令の改正や試験制度の変更に対応しきれていない可能性があります。重要事項は公式資料も確認してください。<a href="https://www.jafp.or.jp/exam/outline/" target="_blank" rel="noopener noreferrer">日本FP協会の試験要綱を確認する</a>。</p>
+        <p class="muted">現在は各級60問のオリジナル例題を収録しています。Ver.7では重複していた12問を改訂し、一部の問題に公的根拠を表示しています。問題内容には出題テーマの重複や、学習用として単純化した説明が含まれるため、今後も継続的に見直します。学科試験の出題形式・試験時間・合格基準は日本FP協会の公表情報を参考にしています。問題の正答・解説は専門家監修済みではなく、法令の改正や試験制度の変更に対応しきれていない可能性があります。重要事項は公式資料も確認してください。<a href="https://www.jafp.or.jp/exam/outline/" target="_blank" rel="noopener noreferrer">日本FP協会の試験要綱を確認する</a>。</p>
       </div>
     </section>
 
@@ -120,7 +120,7 @@
   </main>
 
   <footer>© FP学科トレーニング｜会員登録・個人情報の入力は不要です</footer>
-  <script src="questions.js?v=6"></script>
-  <script src="app.js?v=6"></script>
+  <script src="questions.js?v=7"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
