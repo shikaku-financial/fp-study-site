@@ -1,7 +1,5 @@
-# FPラボ Ver.24
+# ファイナンシャル・ライセンス・ラボ / FPラボ Ver.25
 
-FP3級学科の計算・事例問題の誤答・解説を重点改善しました。学科360問・実技240問、合計600問。
+学科360問・実技240問。税制・年金・相続を中心に公的資料と照合した一部の問題を改訂しました。詳細は QA_REPORT.md をご覧ください。
 
-GitHub Pagesのmainブランチ直下に `index.html`、`style.css`、`questions.js`、`app.js`、`practical-questions.js`、`practical.js`、`financial-license-lab-logo.png` の7ファイルをアップロードしてください。
-
-改訂対象と限界はQA_REPORT.md参照。
+GitHub main の最上位に次の7ファイルをアップロードしてください：index.html、style.css、questions.js、app.js、practical-questions.js、practical.js、financial-license-lab-logo.png。

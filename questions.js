@@ -138,17 +138,21 @@ const QUESTIONS = [
     "level": "2",
     "category": "タックスプランニング",
     "format": "four_choice",
-    "question": "所得税の所得区分に関する記述として、最も適切なものはどれか。",
+    "question": "2025年分の所得税について、居住者の合計所得金額が600万円で他の適用要件を満たす場合、基礎控除額はいくらか。",
     "choices": [
-      "公的年金の老齢年金は、原則として給与所得に分類される",
-      "退職手当は、原則として一時所得として計算する",
-      "個人が所有する賃貸住宅の家賃収入は、原則として事業所得に分類される",
-      "給与所得は所得税の所得区分の一つである"
+      "58万円",
+      "63万円",
+      "68万円",
+      "95万円"
     ],
-    "answer": 3,
-    "explanation": "給与所得は所得税法上の所得区分の一つです。①公的年金等は原則として雑所得、②退職手当は原則として退職所得、③不動産賃貸による家賃収入は原則として不動産所得です。",
-    "revision": 3,
-    "contentReview": "arithmetic_or_concept_distractor_review_v19"
+    "answer": 1,
+    "explanation": "2025年分の合計所得金額600万円は489万円超655万円以下に当たり、基礎控除は63万円です。68万円は336万円超489万円以下、95万円は132万円以下、58万円は655万円超2,350万円以下等の区分です。",
+    "revision": 4,
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceUrl": "https://www.nta.go.jp/users/gensen/2025kiso/",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points",
+    "lawReferenceDate": "2025-01-01"
   },
   {
     "id": "fp2-005",
@@ -748,17 +752,21 @@ const QUESTIONS = [
     "level": "2",
     "category": "タックスプランニング",
     "format": "four_choice",
-    "question": "所得税の所得区分に関する次の記述のうち、最も適切なものはどれか。",
+    "question": "2025年分の所得税で、合計所得金額が700万円の居住者が他の適用要件を満たす場合、基礎控除額として正しいのはどれか。",
     "choices": [
-      "上場株式の譲渡による利益は、原則として配当所得に分類される",
-      "預貯金の利子は原則として利子所得である",
-      "貸家の家賃収入は、原則として給与所得に分類される",
-      "退職時に勤務先から受け取る退職一時金は、原則として雑所得に分類される"
+      "48万円",
+      "58万円",
+      "63万円",
+      "68万円"
     ],
     "answer": 1,
-    "explanation": "預貯金利子は原則として利子所得です。給与は給与所得、一般的な不動産賃貸収入は不動産所得、株式配当は配当所得に分類されます。",
-    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1300.htm",
-    "revision": 2
+    "explanation": "2025年分で合計所得金額655万円超2,350万円以下の場合は58万円です。63万円は489万円超655万円以下、68万円は336万円超489万円以下、48万円は2,350万円超2,400万円以下の区分です。",
+    "sourceUrl": "https://www.nta.go.jp/users/gensen/2025kiso/",
+    "revision": 3,
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points",
+    "lawReferenceDate": "2025-01-01"
   },
   {
     "id": "fp2-020",
@@ -799,17 +807,21 @@ const QUESTIONS = [
     "level": "2",
     "category": "タックスプランニング",
     "format": "four_choice",
-    "question": "所得控除と税額控除の違いに関する次の記述のうち、最も適切なものはどれか。",
+    "question": "2025年分の所得税について、合計所得金額が400万円で他の適用要件を満たす居住者の基礎控除額はどれか。",
     "choices": [
-      "所得控除と税額控除は、控除額が同じなら納税額を減らす金額も必ず等しくなる",
-      "税額控除は算出した所得税額から直接差し引く",
-      "社会保険料控除は、算出した所得税額から直接差し引く税額控除に分類される",
-      "住宅ローン控除は、原則として所得から控除する所得控除に分類される"
+      "58万円",
+      "63万円",
+      "68万円",
+      "88万円"
     ],
-    "answer": 1,
-    "explanation": "所得控除は課税所得を求める際に所得から差し引き、税額控除は計算した税額から直接差し引きます。",
-    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1200.htm",
-    "revision": 2
+    "answer": 2,
+    "explanation": "合計所得金額400万円は336万円超489万円以下の区分のため、基礎控除額は68万円です。88万円は132万円超336万円以下、63万円は489万円超655万円以下、58万円は655万円超2,350万円以下等の区分に対応します。",
+    "sourceUrl": "https://www.nta.go.jp/users/gensen/2025kiso/",
+    "revision": 3,
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points",
+    "lawReferenceDate": "2025-01-01"
   },
   {
     "id": "fp2-023",
@@ -1693,17 +1705,22 @@ const QUESTIONS = [
     "level": "2",
     "category": "タックスプランニング",
     "format": "four_choice",
-    "question": "所得税の計算手順について、最も適切な記述はどれか。",
+    "question": "2025年分の所得税の基礎控除について、合計所得金額が300万円で他の適用要件を満たす居住者の控除額として、最も適切なものはどれか。",
     "choices": [
-      "配偶者控除は、税額から直接差し引く税額控除として処理する",
-      "税額控除は通常、算出した税額から直接差し引く",
-      "医療費控除では、対象となる医療費の全額を計算後の所得税額から直接差し引く",
-      "生命保険料控除は、所得控除ではなく税額控除に分類される"
+      "58万円",
+      "68万円",
+      "88万円",
+      "95万円"
     ],
-    "answer": 1,
-    "explanation": "税額控除は算出した所得税額から直接差し引きます。所得控除は課税所得の計算で差し引きます。",
+    "answer": 2,
+    "explanation": "合計所得金額300万円は132万円超336万円以下の区分で、2025年分の基礎控除額は88万円です。95万円は132万円以下、68万円は336万円超489万円以下、58万円は655万円超2,350万円以下等の区分で用いられます。",
     "topic": "税額控除",
-    "revision": 2
+    "revision": 3,
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceUrl": "https://www.nta.go.jp/users/gensen/2025kiso/",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points",
+    "lawReferenceDate": "2025-01-01"
   },
   {
     "id": "fp2-047",
@@ -1728,17 +1745,22 @@ const QUESTIONS = [
     "level": "2",
     "category": "タックスプランニング",
     "format": "four_choice",
-    "question": "所得税の所得区分について、最も適切な記述はどれか。",
+    "question": "2025年分の所得税について、合計所得金額が2,380万円の居住者が他の適用要件を満たす場合、基礎控除額はいくらか。",
     "choices": [
-      "公的年金の老齢年金は、原則として給与所得に分類される",
-      "銀行の普通預金の利息は原則として利子所得である",
-      "不動産の賃貸に伴う地代は、原則として利子所得に分類される",
-      "退職一時金は、原則として雑所得に分類される"
+      "0円",
+      "16万円",
+      "32万円",
+      "48万円"
     ],
-    "answer": 1,
-    "explanation": "銀行預金の利息は原則として利子所得です。給与は給与所得、退職一時金は退職所得、建物の貸付けによる所得は原則として不動産所得です。",
+    "answer": 3,
+    "explanation": "2,350万円超2,400万円以下は48万円。32万円は2,400万円超2,450万円以下、16万円は2,450万円超2,500万円以下、0円は2,500万円超の区分です。所得の境界条件を正確に判定します。",
     "topic": "所得区分",
-    "revision": 2
+    "revision": 3,
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceUrl": "https://www.nta.go.jp/users/gensen/2025kiso/",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points",
+    "lawReferenceDate": "2025-01-01"
   },
   {
     "id": "fp2-049",
@@ -1937,23 +1959,25 @@ const QUESTIONS = [
     "level": "2",
     "category": "相続・事業承継",
     "format": "four_choice",
-    "question": "相続人が配偶者と実子2人の合計3人で、相続放棄や養子などの特殊事情がない場合、相続税の遺産に係る基礎控除額として最も適切なものはどれか。",
+    "question": "被相続人の法定相続人が配偶者と子2人の計3人で、遺産に係る相続税の基礎控除を求める。基礎控除額として最も適切なものはどれか（相続放棄・養子等の特殊事情なし）。",
     "choices": [
-      "4,200万円",
       "3,600万円",
-      "3,000万円",
-      "4,800万円"
+      "4,200万円",
+      "4,800万円",
+      "5,400万円"
     ],
-    "answer": 3,
-    "explanation": "法定相続人は配偶者と子2人で3人。相続税の基礎控除は3,000万円＋600万円×3＝4,800万円です。4,200万円は相続人を2人と数えた場合、3,600万円は1人と数えた場合です。配偶者も法定相続人に含めます。",
+    "answer": 2,
+    "explanation": "遺産に係る基礎控除額は3,000万円＋600万円×法定相続人3人＝4,800万円。3,600万円は1人、4,200万円は2人、5,400万円は4人として計算した数値です。",
     "topic": "遺留分",
-    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
+    "sourceUrl": "https://www.keisan.nta.go.jp/oshirase/sozoku/yohihantei/goriyomae/hoteisozokunin.html",
     "sourceLabel": "国税庁：相続税の基礎控除額",
     "lawReferenceDate": "2026-04-01",
-    "revision": 4,
+    "revision": 5,
     "reviewStatus": "primary_source_checked",
     "reviewedAt": "2026-10-12",
-    "contentReview": "v23_arithmetic_explanation_audit"
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points"
   },
   {
     "id": "fp2-060",
@@ -2802,58 +2826,67 @@ const QUESTIONS = [
     "level": "3",
     "category": "タックスプランニング",
     "format": "three_choice",
-    "question": "所得税について正しい組み合わせはどれか。",
+    "question": "2025年分の所得税の基礎控除について、合計所得金額が120万円の居住者（他の適用要件を満たす）の控除額はいくらか。",
     "choices": [
-      "所得税＝国税・住民税＝地方税",
-      "所得税＝地方税・住民税＝国税",
-      "どちらも地方税"
+      "58万円",
+      "88万円",
+      "95万円"
     ],
-    "answer": 0,
-    "explanation": "所得税は国税、住民税は地方税です。",
+    "answer": 2,
+    "explanation": "2025年分は合計所得金額132万円以下の基礎控除が95万円です。88万円は132万円超336万円以下、58万円は655万円超2,350万円以下等の区分です。",
     "topic": "",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.nta.go.jp/users/gensen/2025kiso/",
     "id": "fp3-106",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": "2025-01-01",
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points"
   },
   {
     "level": "3",
     "category": "タックスプランニング",
     "format": "three_choice",
-    "question": "税率をかける前の所得から一定額を差し引く制度の名称はどれか。",
+    "question": "2025年分の所得税の基礎控除について、合計所得金額300万円の居住者（他の適用要件を満たす）の控除額はいくらか。",
     "choices": [
-      "所得控除",
-      "税額控除",
-      "源泉徴収"
-    ],
-    "answer": 0,
-    "explanation": "所得控除は所得金額から差し引くもので、税額控除とは位置づけが異なります。",
-    "topic": "",
-    "sourceUrl": "",
-    "id": "fp3-107",
-    "revision": 1,
-    "createdVersion": 8,
-    "lawReferenceDate": null
-  },
-  {
-    "level": "3",
-    "category": "タックスプランニング",
-    "format": "three_choice",
-    "question": "給与や賞与の収入から計算する所得区分はどれか。",
-    "choices": [
-      "山林所得",
-      "給与所得",
-      "不動産所得"
+      "68万円",
+      "88万円",
+      "95万円"
     ],
     "answer": 1,
-    "explanation": "勤務先から支払われる給与・賞与は原則として給与所得です。",
+    "explanation": "合計所得金額300万円は132万円超336万円以下の区分で88万円です。95万円は132万円以下、68万円は336万円超489万円以下の区分です。",
     "topic": "",
-    "sourceUrl": "",
-    "id": "fp3-108",
-    "revision": 1,
+    "sourceUrl": "https://www.nta.go.jp/users/gensen/2025kiso/",
+    "id": "fp3-107",
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": "2025-01-01",
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points"
+  },
+  {
+    "level": "3",
+    "category": "タックスプランニング",
+    "format": "three_choice",
+    "question": "2025年分の所得税の基礎控除について、合計所得金額500万円の居住者（他の適用要件を満たす）の控除額はいくらか。",
+    "choices": [
+      "58万円",
+      "63万円",
+      "68万円"
+    ],
+    "answer": 1,
+    "explanation": "500万円は合計所得金額489万円超655万円以下に当たり、2025年分の基礎控除額は63万円。68万円は336万円超489万円以下、58万円は655万円超2,350万円以下等の区分です。",
+    "topic": "",
+    "sourceUrl": "https://www.nta.go.jp/users/gensen/2025kiso/",
+    "id": "fp3-108",
+    "revision": 2,
+    "createdVersion": 8,
+    "lawReferenceDate": "2025-01-01",
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points"
   },
   {
     "level": "3",
@@ -3070,22 +3103,25 @@ const QUESTIONS = [
     "level": "3",
     "category": "相続・事業承継",
     "format": "three_choice",
-    "question": "相続税の計算で、3,000万円＋600万円×法定相続人の数で求めるものはどれか。",
+    "question": "法定相続人が配偶者と子2人の場合、相続税の遺産に係る基礎控除額はいくらか（養子・相続放棄等なし）。",
     "choices": [
-      "不動産取得税額",
-      "配偶者の法定相続分",
-      "基礎控除額"
+      "4,200万円",
+      "4,800万円",
+      "5,400万円"
     ],
-    "answer": 2,
-    "explanation": "相続税の基礎控除額は3,000万円＋600万円×法定相続人の数です。",
+    "answer": 1,
+    "explanation": "法定相続人は3人。3,000万円＋600万円×3＝4,800万円です。4,200万円は2人、5,400万円は4人と誤って数えた場合の金額です。",
     "topic": "",
-    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
+    "sourceUrl": "https://www.keisan.nta.go.jp/oshirase/sozoku/yohihantei/goriyomae/hoteisozokunin.html",
     "id": "fp3-120",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "reviewedAt": "2026-10-12",
-    "sourceLabel": "国税庁：制度・税務の解説"
+    "sourceLabel": "国税庁：制度・税務の解説",
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points"
   },
   {
     "level": "2",
@@ -3276,22 +3312,22 @@ const QUESTIONS = [
     "level": "2",
     "category": "ライフプランニングと資金計画",
     "format": "four_choice",
-    "question": "老後資金の不足額を試算する。老後の年間支出額が360万円、年金等の年間収入額が300万円、対象期間が20年とし、運用益や物価変動を考慮しない場合の不足額はいくらか。",
+    "question": "公的年金等の年間収入が300万円、生活費が年間360万円、別途毎年15万円の保険料支出が見込まれる。20年間の老後資金不足額はいくらか（物価変動・運用益なし）。",
     "choices": [
+      "75万円",
       "1,200万円",
-      "60万円",
-      "600万円",
-      "7,200万円"
+      "1,500万円",
+      "1,800万円"
     ],
-    "answer": 0,
-    "explanation": "毎年の不足額＝支出360－収入300＝60万円。20年の不足額は60×20＝1,200万円。60万円は1年間のみを見た値。利回りや物価上昇は問題文で考慮しない条件です。",
+    "answer": 2,
+    "explanation": "年間不足額＝360＋15－300＝75万円。20年間では75×20＝1,500万円です。75万円は年間不足額をそのまま回答した場合、1,200万円は保険料支出を除いて(360－300)×20とした場合、1,800万円は保険料15万円を誤って二重計上し(360＋15＋15－300)×20とした場合です。",
     "topic": "老後資金",
     "sourceUrl": "",
     "id": "fp2-070",
-    "revision": 2,
+    "revision": 5,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "contentReview": "v23_arithmetic_explanation_audit"
+    "contentReview": "v25_primary_source_or_formula_review"
   },
   {
     "level": "2",
@@ -3812,21 +3848,24 @@ const QUESTIONS = [
     "level": "2",
     "category": "タックスプランニング",
     "format": "four_choice",
-    "question": "所得税の仕組みにおける「税額控除」の説明として最も適切なものはどれか。",
+    "question": "2025年分の所得税の基礎控除について、合計所得金額が100万円の居住者（他の適用要件を満たす）の基礎控除額はいくらか。",
     "choices": [
-      "売上高から売上原価を引く",
-      "資産から負債を引く",
-      "計算した所得税額から直接一定額を差し引く",
-      "給与収入の全額を非課税にする"
+      "48万円",
+      "58万円",
+      "88万円",
+      "95万円"
     ],
-    "answer": 2,
-    "explanation": "税額控除は算出税額から直接差し引くもので、所得控除と区別します。",
+    "answer": 3,
+    "explanation": "2025年分について合計所得金額132万円以下の基礎控除は95万円です。58万円は改正後の原則的な基礎控除額で、低所得者に対する加算を含みません。88万円は合計所得金額132万円超336万円以下の区分、48万円は改正前の原則額です。",
     "topic": "税額控除",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.nta.go.jp/users/gensen/2025kiso/",
     "id": "fp2-096",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": "2025-01-01",
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points"
   },
   {
     "level": "2",
@@ -3872,21 +3911,24 @@ const QUESTIONS = [
     "level": "2",
     "category": "タックスプランニング",
     "format": "four_choice",
-    "question": "公的年金から受け取る老齢年金の所得税上の基本的な所得区分はどれか。",
+    "question": "国民年金の学生納付特例制度の所得審査について、適切なものはどれか。",
     "choices": [
-      "雑所得",
-      "給与所得",
-      "不動産所得",
-      "配当所得"
+      "学生本人の前年所得が審査対象であり、家族の所得の多寡は原則問われない",
+      "学生本人と父母の前年所得を合算して基準を満たす必要がある",
+      "学生本人の収入の有無だけで判定され、所得額は問われない",
+      "世帯主だけの前年所得で判定する"
     ],
     "answer": 0,
-    "explanation": "公的年金等に係る所得は、所得税上、原則として雑所得に区分されます。",
+    "explanation": "学生納付特例の審査では原則として申請する学生本人の前年所得を確認します。家族の所得の多寡は問いません。所得と収入を混同しないことが重要です。",
     "topic": "雑所得",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.nenkin.go.jp/service/kokunen/menjo/20150514.html",
     "id": "fp2-099",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points"
   },
   {
     "level": "2",
@@ -4251,24 +4293,26 @@ const QUESTIONS = [
     "level": "2",
     "category": "相続・事業承継",
     "format": "four_choice",
-    "question": "課税価格の合計額が8,000万円、法定相続人が3人の場合、相続税の課税遺産総額はいくらか（債務控除等は既に反映、特例なし）。",
+    "question": "相続税の課税価格合計8,000万円、法定相続人3人の場合、課税遺産総額はどれか（基礎控除以外の調整等なし）。",
     "choices": [
-      "4,800万円",
       "2,600万円",
-      "8,000万円",
-      "3,200万円"
+      "3,200万円",
+      "3,800万円",
+      "4,400万円"
     ],
-    "answer": 3,
-    "explanation": "相続税の基礎控除は3,000＋600×3＝4,800万円。課税遺産総額は課税価格の合計8,000－基礎控除4,800＝3,200万円。4,800万円は控除額そのもの、8,000万円は控除前の課税価格の合計です。",
+    "answer": 1,
+    "explanation": "基礎控除は3,000＋600×3＝4,800万円。課税遺産総額は8,000－4,800＝3,200万円です。2,600万円は法定相続人4人、3,800万円は2人、4,400万円は1人として算出した場合に対応します。",
     "topic": "課税遺産総額",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.keisan.nta.go.jp/oshirase/sozoku/yohihantei/goriyomae/hoteisozokunin.html",
     "id": "fp2-117",
-    "revision": 3,
+    "revision": 4,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "reviewedAt": "2026-10-12",
     "sourceLabel": "国税庁：制度・税務の解説",
-    "contentReview": "v23_arithmetic_explanation_audit"
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceName": "制度確認用の公的資料",
+    "verificationStatus": "source_checked_selected_points"
   },
   {
     "level": "2",
@@ -4355,43 +4399,47 @@ const QUESTIONS = [
     "level": "3",
     "category": "ライフプランニングと資金計画",
     "format": "true_false",
-    "question": "国民年金の学生納付特例制度では、原則として学生本人の所得が審査対象となり、親の所得だけで判定する制度ではない。",
-    "choices": [
-      "〇 正しい",
-      "× 誤り"
-    ],
-    "answer": 0,
-    "explanation": "学生納付特例は原則として学生本人の前年所得等に基づいて審査されます。",
-    "topic": "学生納付特例",
-    "createdVersion": 9,
-    "revision": 1,
-    "lawReferenceDate": null,
-    "verificationStatus": "needs_review",
-    "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
-    "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
-    "id": "fp3-122",
-    "contentReview": "automatic_structural_check_only"
-  },
-  {
-    "level": "3",
-    "category": "ライフプランニングと資金計画",
-    "format": "true_false",
-    "question": "国民年金の学生納付特例を受けた期間は、追納しなくても老齢基礎年金の年金額に全期間が反映される。",
+    "question": "国民年金の学生納付特例の審査で、原則として学生本人だけでなく父母の所得も合算して判定される。",
     "choices": [
       "〇 正しい",
       "× 誤り"
     ],
     "answer": 1,
-    "explanation": "学生納付特例の承認期間は受給資格期間に算入されますが、追納しない限り年金額には反映されません。",
+    "explanation": "学生納付特例は原則として学生本人の前年所得で審査します。家族の所得の多寡は問いません。",
+    "topic": "学生納付特例",
+    "createdVersion": 9,
+    "revision": 2,
+    "lawReferenceDate": null,
+    "verificationStatus": "source_checked_selected_points",
+    "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
+    "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
+    "id": "fp3-122",
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceUrl": "https://www.nenkin.go.jp/service/kokunen/menjo/20150514.html",
+    "sourceName": "制度確認用の公的資料"
+  },
+  {
+    "level": "3",
+    "category": "ライフプランニングと資金計画",
+    "format": "true_false",
+    "question": "学生納付特例が承認された期間は、老齢基礎年金の受給資格期間には含まれるが、追納しないと年金額の計算には反映されない。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "学生納付特例期間は受給資格期間には算入されますが、追納しなければ老齢基礎年金額には算入されません。",
     "topic": "学生納付特例と年金額",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
-    "verificationStatus": "needs_review",
+    "verificationStatus": "source_checked_selected_points",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
     "id": "fp3-123",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceUrl": "https://www.nenkin.go.jp/service/kokunen/menjo/20150514.html",
+    "sourceName": "制度確認用の公的資料"
   },
   {
     "level": "3",
@@ -4461,23 +4509,25 @@ const QUESTIONS = [
     "level": "3",
     "category": "ライフプランニングと資金計画",
     "format": "three_choice",
-    "question": "国民年金の学生納付特例の対象期間について、追納の承認を受けた月の前にさかのぼって追納できる期間は、原則として最長何年以内か。",
+    "question": "国民年金の学生納付特例期間について、追納が承認された月の前からさかのぼって追納できるのは、原則として何年以内の期間か。",
     "choices": [
-      "10年",
       "2年",
-      "5年"
+      "5年",
+      "10年"
     ],
-    "answer": 0,
-    "explanation": "追納できるのは原則、追納の承認を受けた月の前10年以内の免除・猶予等の対象期間です。",
+    "answer": 2,
+    "explanation": "承認月の前10年以内の対象期間について追納が可能です。追納すれば将来の年金額を増やせます。",
     "topic": "学生納付特例と追納期限",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
-    "verificationStatus": "needs_review",
+    "verificationStatus": "source_checked_selected_points",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
     "id": "fp3-127",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceUrl": "https://www.nenkin.go.jp/service/kokunen/menjo/20150331.html",
+    "sourceName": "制度確認用の公的資料"
   },
   {
     "level": "3",
@@ -5586,25 +5636,26 @@ const QUESTIONS = [
     "level": "3",
     "category": "相続・事業承継",
     "format": "three_choice",
-    "question": "遺産の総額から債務等を控除し、ほかの特例や調整がない場合の相続税の基礎控除は「3,000万円＋（　）×法定相続人の数」である。",
+    "question": "法定相続人が配偶者と子1人の場合、相続税の遺産に係る基礎控除額はいくらか（特殊事情なし）。",
     "choices": [
-      "700万円",
-      "600万円",
-      "500万円"
+      "3,600万円",
+      "4,200万円",
+      "4,800万円"
     ],
     "answer": 1,
-    "explanation": "相続税の基礎控除は3,000万円＋600万円×法定相続人の数です。",
+    "explanation": "法定相続人は2人です。3,000万円＋600万円×2＝4,200万円。3,600万円は1人、4,800万円は3人と数えた場合です。",
     "topic": "相続税の基礎控除",
     "createdVersion": 9,
-    "revision": 2,
+    "revision": 3,
     "lawReferenceDate": null,
-    "verificationStatus": "needs_review",
+    "verificationStatus": "source_checked_selected_points",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
-    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
+    "sourceUrl": "https://www.keisan.nta.go.jp/oshirase/sozoku/yohihantei/goriyomae/hoteisozokunin.html",
     "sourceLabel": "公式資料（論点確認用）",
     "id": "fp3-179",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceName": "制度確認用の公的資料"
   },
   {
     "level": "3",
@@ -5678,24 +5729,26 @@ const QUESTIONS = [
     "level": "2",
     "category": "ライフプランニングと資金計画",
     "format": "four_choice",
-    "question": "国民年金の学生納付特例制度に関する記述として、最も適切なものはどれか。",
+    "question": "国民年金の学生納付特例が承認された期間に関する説明として、最も適切なものはどれか。",
     "choices": [
-      "承認期間は老齢基礎年金の受給資格期間に算入される",
-      "学生納付特例の承認期間は、追納しなくても老齢基礎年金の年金額へ全額納付済期間と同じように反映される",
-      "学生納付特例の所得審査は、学生本人の所得にかかわらず世帯主の前年所得だけで行う",
-      "学生納付特例の期間は、承認から2年を過ぎると保険料の追納が認められない"
+      "受給資格期間にも年金額計算にも算入されない",
+      "受給資格期間に算入され、追納しなくても老齢基礎年金額に反映される",
+      "受給資格期間には算入されるが、追納しなければ老齢基礎年金額には反映されない",
+      "受給資格期間には算入されないが、年金額計算には算入される"
     ],
-    "answer": 0,
-    "explanation": "学生納付特例の承認期間は受給資格期間には算入しますが、追納しなければ年金額には反映されません。",
+    "answer": 2,
+    "explanation": "学生納付特例期間は、老齢基礎年金の受給資格期間には含まれますが、追納しない限り年金額には反映されません。「資格期間に入る」ことと「年金額が増える」ことを混同しないでください。",
     "topic": "学生納付特例",
     "createdVersion": 9,
-    "revision": 2,
+    "revision": 3,
     "lawReferenceDate": null,
-    "verificationStatus": "needs_review",
+    "verificationStatus": "source_checked_selected_points",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-123",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceUrl": "https://www.nenkin.go.jp/service/kokunen/menjo/20150514.html",
+    "sourceName": "制度確認用の公的資料"
   },
   {
     "level": "2",
@@ -5793,24 +5846,26 @@ const QUESTIONS = [
     "level": "2",
     "category": "ライフプランニングと資金計画",
     "format": "four_choice",
-    "question": "個人型確定拠出年金（iDeCo）の運用に関する記述として最も不適切なものはどれか。",
+    "question": "学生納付特例期間の国民年金保険料の追納に関する次の記述のうち、最も適切なものはどれか。",
     "choices": [
-      "掛金を投資信託等で運用できる",
-      "金融商品の価格が下落しても掛金総額が必ず全額保証される",
-      "受取時は年金形式のほか一時金形式を選べる場合がある",
-      "運用成果によって将来の受取額が変動する"
+      "追納できるのは原則承認月の前2年以内",
+      "原則として承認された月の前10年以内の対象期間について追納できる",
+      "追納の対象は承認日の翌月以後の保険料に限られる",
+      "追納しても老齢基礎年金の額には一切影響しない"
     ],
     "answer": 1,
-    "explanation": "iDeCoは原則として運用の成果により受取額が変動し、掛金全額の保証はありません。",
+    "explanation": "追納は原則として追納承認月の前10年以内の対象期間が範囲です。学生納付特例期間を追納すると将来の老齢基礎年金額の増額につながります。一定期間経過後には加算額が生じる場合があります。",
     "topic": "iDeCo元本保証の誤解",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
-    "verificationStatus": "needs_review",
+    "verificationStatus": "source_checked_selected_points",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-128",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceUrl": "https://www.nenkin.go.jp/service/kokunen/menjo/20150331.html",
+    "sourceName": "制度確認用の公的資料"
   },
   {
     "level": "2",
@@ -6861,26 +6916,27 @@ const QUESTIONS = [
     "level": "2",
     "category": "相続・事業承継",
     "format": "four_choice",
-    "question": "相続人が配偶者および子2人の計3人で、課税価格の合計が9,000万円の場合、相続税の課税遺産総額として最も適切なのはどれか（基礎控除以外の特例等なし）。",
+    "question": "課税価格合計9,000万円、相続人は配偶者と子2人、他の調整や特例がない場合、相続税の課税遺産総額はいくらか。",
     "choices": [
-      "9,000万円",
+      "3,600万円",
+      "4,200万円",
       "4,800万円",
-      "3,000万円",
-      "4,200万円"
+      "5,400万円"
     ],
-    "answer": 3,
-    "explanation": "法定相続人3人なので基礎控除は3,000＋600×3＝4,800万円。課税価格の合計9,000万円－基礎控除4,800万円＝課税遺産総額4,200万円。9,000万円は控除前、4,800万円は基礎控除額そのものです。",
+    "answer": 1,
+    "explanation": "法定相続人は3人。基礎控除＝3,000＋600×3＝4,800万円、課税遺産総額＝9,000－4,800＝4,200万円。3,600万円は4人、4,800万円は2人、5,400万円は1人として基礎控除を求めた誤答です。",
     "topic": "相続税課税遺産総額",
     "createdVersion": 9,
-    "revision": 2,
+    "revision": 3,
     "lawReferenceDate": null,
-    "verificationStatus": "needs_review",
+    "verificationStatus": "source_checked_selected_points",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
-    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
+    "sourceUrl": "https://www.keisan.nta.go.jp/oshirase/sozoku/yohihantei/goriyomae/hoteisozokunin.html",
     "sourceLabel": "公式資料（論点確認用）",
     "id": "fp2-174",
-    "contentReview": "v23_arithmetic_explanation_audit"
+    "contentReview": "v25_primary_source_or_formula_review",
+    "sourceName": "制度確認用の公的資料"
   },
   {
     "level": "2",
