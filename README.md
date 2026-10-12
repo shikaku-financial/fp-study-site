@@ -1,9 +1,7 @@
-# FPラボ Ver.21
+# FPラボ Ver.22
 
-親サイト：ファイナンシャル・ライセンス・ラボ
+問題の誤答選択肢を、問題文の数字に根拠があるものへ重点修正。
 
-学科360問、実技240問。Ver.21ではFP2級17問に各選択肢の解説を追加しました。
+アップロードするファイル: `index.html`、`style.css`、`questions.js`、`app.js`、`practical-questions.js`、`practical.js`、`financial-license-lab-logo.png`。
 
-GitHub Pagesの `main` ブランチのルートに、index.html / style.css / questions.js / app.js / practical-questions.js / practical.js / financial-license-lab-logo.png の7ファイルをアップロードしてください。
-
-詳しい検証範囲は QA_REPORT.md を参照してください。
+GitHub Pagesの既存 `main` ブランチ直下へ7ファイルをアップロードし、Commitしてください。

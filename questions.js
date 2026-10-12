@@ -1,4 +1,4 @@
-// FP学科 Ver.21：選択肢別解説17問追加。その他の設問は引き続き要確認。
+// FP学科 Ver.22：誤答の根拠を問題文の与件に合わせて改訂。全問の法令監修は未完了。
 const QUESTIONS = [
   {
     "id": "fp3-001",
@@ -58,16 +58,16 @@ const QUESTIONS = [
     "level": "3",
     "category": "不動産",
     "format": "three_choice",
-    "question": "土地の面積が200㎡、建築面積が100㎡の場合、建ぺい率はいくらか。",
+    "question": "敷地面積200㎡、建築面積100㎡、容積率算定上の延べ面積300㎡の建物がある。建ぺい率はいくらか。",
     "choices": [
       "50％",
-      "45％",
-      "55％"
+      "150％",
+      "200％"
     ],
     "answer": 0,
-    "explanation": "建ぺい率は建築面積÷敷地面積×100＝100÷200×100＝50％。45％は建築面積を90㎡、55％は110㎡と読み違えた場合の数値です。",
-    "revision": 3,
-    "contentReview": "arithmetic_or_concept_distractor_review_v19"
+    "explanation": "建ぺい率＝建築面積100÷敷地面積200×100＝50％。150％は延べ面積300÷敷地面積200で容積率を計算した場合、200％は敷地面積200÷建築面積100と割る順序を逆にした場合です。",
+    "revision": 4,
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "id": "fp3-006",
@@ -231,16 +231,16 @@ const QUESTIONS = [
     "level": "3",
     "category": "ライフプランニングと資金計画",
     "format": "three_choice",
-    "question": "個人のバランスシートで、資産1,200万円、負債450万円の場合、純資産はいくらか。",
+    "question": "家計のバランスシートに記載した預貯金700万円、有価証券500万円、住宅ローン残高450万円がある。ほかの資産・負債がない場合、純資産額はいくらか。",
     "choices": [
-      "650万円",
+      "1,200万円",
       "750万円",
-      "850万円"
+      "1,650万円"
     ],
     "answer": 1,
-    "explanation": "純資産＝資産合計－負債合計＝1,200－450＝750万円。650万円・850万円は負債をそれぞれ550万円・350万円と読み違えた場合の数値です。",
-    "revision": 2,
-    "contentReview": "arithmetic_or_concept_distractor_review_v19"
+    "explanation": "資産合計＝預貯金700＋有価証券500＝1,200万円。純資産＝1,200－住宅ローン残高450＝750万円。1,200万円は負債を差し引かなかった場合、1,650万円は負債450万円を誤って加算した場合です。",
+    "revision": 3,
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "id": "fp3-011",
@@ -260,16 +260,16 @@ const QUESTIONS = [
     "level": "3",
     "category": "リスク管理",
     "format": "three_choice",
-    "question": "実損額80万円の損害に対して、免責金額10万円を差し引いて保険金を支払う契約で、他の減額条件がない場合の支払額はいくらか。",
+    "question": "火災による損害額が80万円、免責金額が10万円、保険金の支払限度額が60万円の契約である。損害額から免責金額を差し引いた額と支払限度額のうち小さい方を保険金とする場合、支払額はいくらか。",
     "choices": [
-      "75万円",
       "70万円",
-      "65万円"
+      "60万円",
+      "80万円"
     ],
     "answer": 1,
-    "explanation": "損害額80万円から契約上の免責金額10万円を差し引き、支払保険金は70万円です。75万円・65万円は免責を5万円・15万円と取り違えた値です。",
-    "revision": 2,
-    "contentReview": "arithmetic_or_concept_distractor_review_v19"
+    "explanation": "損害額80万円－免責金額10万円＝70万円ですが、支払限度額は60万円なので支払額は60万円です。70万円は限度額を無視した場合、80万円は免責金額と限度額の両方を無視した場合です。",
+    "revision": 3,
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "id": "fp3-013",
@@ -454,16 +454,16 @@ const QUESTIONS = [
     "level": "3",
     "category": "不動産",
     "format": "three_choice",
-    "question": "敷地面積200㎡、建築物の容積率算定上の延べ面積300㎡の場合、容積率はいくらか。",
+    "question": "敷地面積200㎡、建築面積100㎡、容積率算定上の延べ面積300㎡の場合、容積率はいくらか。",
     "choices": [
-      "125％",
-      "175％",
-      "150％"
+      "50％",
+      "150％",
+      "300％"
     ],
-    "answer": 2,
-    "explanation": "容積率＝容積率算定上の延べ面積÷敷地面積×100＝300÷200×100＝150％。125％は延べ面積を250㎡、175％は350㎡と取り違えた場合の計算です。",
-    "revision": 3,
-    "contentReview": "arithmetic_or_concept_distractor_review_v19"
+    "answer": 1,
+    "explanation": "容積率＝容積率算定上の延べ面積300÷敷地面積200×100＝150％。50％は建築面積100÷敷地面積200で建ぺい率を計算した場合、300％は延べ面積300÷建築面積100と誤った分母を使った場合です。",
+    "revision": 4,
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "id": "fp3-027",
@@ -3762,43 +3762,43 @@ const QUESTIONS = [
     "level": "2",
     "category": "タックスプランニング",
     "format": "four_choice",
-    "question": "収入金額500万円、必要経費180万円の場合の事業所得金額はいくらか（ほかの調整なし）。",
+    "question": "事業による売上収入500万円、商品の仕入費用120万円、事務所家賃60万円とする。これらがすべて必要経費で、ほかの収支や調整がない場合の事業所得はいくらか。",
     "choices": [
-      "280万円",
+      "380万円",
       "320万円",
-      "340万円",
-      "300万円"
+      "440万円",
+      "500万円"
     ],
     "answer": 1,
-    "explanation": "収入500万円から必要経費180万円を差し引き、事業所得は320万円です。280万円・300万円・340万円は、必要経費をそれぞれ220万円・200万円・160万円と取り違えた場合の計算です。",
+    "explanation": "必要経費は仕入費用120＋家賃60＝180万円。事業所得＝収入500－経費180＝320万円。380万円は家賃60万円を控除し忘れた場合、440万円は仕入費用120万円を控除し忘れた場合、500万円は両方の必要経費を控除し忘れた場合です。",
     "topic": "事業所得",
     "sourceUrl": "",
     "id": "fp2-091",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "contentReview": "calculation_and_distractor_check_v18"
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "level": "2",
     "category": "タックスプランニング",
     "format": "four_choice",
-    "question": "給与収入750万円、給与所得控除額190万円と仮定した場合、給与所得金額はいくらか。",
+    "question": "給与収入750万円、給与所得控除額190万円、給与から天引きされた社会保険料80万円、源泉所得税40万円とする。給与所得の金額はいくらか（ほかの調整なし）。",
     "choices": [
       "560万円",
-      "540万円",
-      "570万円",
+      "520万円",
+      "480万円",
       "750万円"
     ],
     "answer": 0,
-    "explanation": "給与所得は収入750万円から設問で指定された給与所得控除190万円を控除し、560万円です。540万円・570万円は控除額を210万円・180万円と誤認した計算で、750万円は控除前の給与収入です。",
+    "explanation": "給与所得＝給与収入750万円－給与所得控除190万円＝560万円。520万円は源泉所得税40万円も差し引いた場合、480万円は社会保険料80万円も差し引いた場合、750万円は給与所得控除を行わず給与収入をそのまま答えた場合です。社会保険料控除は所得控除であり、給与所得の計算段階で控除しません。",
     "topic": "給与所得",
     "sourceUrl": "",
     "id": "fp2-092",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "contentReview": "calculation_and_distractor_check_v18"
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "level": "2",
@@ -3812,37 +3812,37 @@ const QUESTIONS = [
       "10万円"
     ],
     "answer": 3,
-    "explanation": "医療費控除額は25万円－補填保険金5万円－差引基準額10万円＝10万円。15万円は補填保険金を10万円と誤認した計算、20万円は基準額を控除し忘れた計算、5万円は保険金等を二重に控除した計算です。",
+    "explanation": "医療費控除額＝25万円－補填保険金5万円－差引基準額10万円＝10万円。15万円は保険金による補填5万円を控除し忘れた場合（25－10）、20万円は差引基準額10万円を控除し忘れた場合（25－5）、5万円は補填保険金5万円を誤って二重に控除した場合（25－5－5－10）です。",
     "topic": "医療費控除",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm",
     "id": "fp2-093",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "reviewedAt": "2026-10-12",
     "sourceLabel": "国税庁：制度・税務の解説",
-    "contentReview": "calculation_and_distractor_check_v18"
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "level": "2",
     "category": "タックスプランニング",
     "format": "four_choice",
-    "question": "所得控除40万円によって課税所得が40万円減少し、その部分の限界税率が所得税20％と仮定した場合、所得税の軽減額はいくらか（他の影響を考慮しない）。",
+    "question": "所得控除40万円によって課税所得が40万円減少する。減少する部分の所得税率は20％、住民税の所得割税率は10％とする。所得税の減税額のみはいくらか（復興特別所得税等は考慮しない）。",
     "choices": [
       "12万円",
       "8万円",
-      "10万円",
-      "6万円"
+      "40万円",
+      "4万円"
     ],
     "answer": 1,
-    "explanation": "税額軽減は所得控除40万円×限界税率20％＝8万円。6万円・10万円・12万円は限界税率を15％・25％・30％と取り違えた計算です。所得控除額そのものが税額控除になるわけではありません。",
+    "explanation": "所得税の軽減額は40万円×20％＝8万円です。12万円は住民税の減少分40万円×10％＝4万円まで加えた場合、40万円は所得控除額そのものを税額控除と誤解した場合、4万円は住民税の10％だけを掛けた場合です。",
     "topic": "所得控除と税率",
     "sourceUrl": "",
     "id": "fp2-094",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "contentReview": "calculation_and_distractor_check_v18"
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "level": "2",
@@ -3970,62 +3970,62 @@ const QUESTIONS = [
     "format": "four_choice",
     "question": "敷地面積250㎡、建築面積125㎡、延べ面積375㎡の建物について建ぺい率と容積率の組み合わせはどれか（算入・不算入の調整なし）。",
     "choices": [
-      "50％・125％",
+      "150％・50％",
       "50％・150％",
-      "60％・150％",
-      "60％・125％"
+      "33.3％・150％",
+      "50％・200％"
     ],
     "answer": 1,
-    "explanation": "建ぺい率＝125÷250＝50％、容積率＝375÷250＝150％。125％は容積対象面積を312.5㎡と誤認した場合、60％は建築面積を150㎡と誤認した場合の数字です。",
+    "explanation": "建ぺい率＝建築面積125÷敷地面積250×100＝50％、容積率＝延べ面積375÷敷地面積250×100＝150％。150％・50％は2つの比率を取り違えた場合、33.3％は建築面積125を延べ面積375で割った場合、200％は敷地面積250を建築面積125で割った場合の数値です。",
     "topic": "建ぺい率と容積率",
     "sourceUrl": "",
     "id": "fp2-101",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "contentReview": "calculation_and_distractor_check_v18"
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "level": "2",
     "category": "不動産",
     "format": "four_choice",
-    "question": "賃貸物件の年間賃料収入が360万円、年間経費が60万円、購入価格が6,000万円の場合、単純な実質利回りは何％か（購入諸費用などは無視）。",
+    "question": "賃貸物件の年間満室賃料は360万円、年間空室損失は24万円、年間運営費用は66万円である。購入価格は5,400万円、取得時諸費用は300万円とする。取得時諸費用も投下資金に含めた実質利回りとして、最も近いものはどれか。",
     "choices": [
-      "5％",
-      "4％",
-      "6％",
-      "4.5％"
+      "約4.7％",
+      "約5.0％",
+      "約5.2％",
+      "約6.3％"
     ],
     "answer": 0,
-    "explanation": "年間純収入は360－60＝300万円。実質利回りは300÷6,000×100＝5％です。6％は経費を無視した表面利回り、4％は経費を120万円と誤認した計算、4.5％は経費を90万円と誤認した計算です。",
+    "explanation": "年間純収益＝360－24－66＝270万円。投下資金＝5,400＋300＝5,700万円。実質利回り＝270÷5,700×100＝約4.7％。約5.0％は取得時諸費用300万円を分母に含めない場合（270÷5,400）、約5.2％は空室損失24万円を控除しない場合（294÷5,700）、約6.3％は空室損失と運営費用を両方とも控除しない場合（360÷5,700）です。",
     "topic": "実質利回り",
     "sourceUrl": "",
     "id": "fp2-102",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "contentReview": "calculation_and_distractor_check_v18"
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "level": "2",
     "category": "不動産",
     "format": "four_choice",
-    "question": "年間賃料240万円、物件価格4,800万円の表面利回りはどれか（空室や費用を無視）。",
+    "question": "年間満室賃料が240万円、年間空室損失が40万円の賃貸物件がある。購入価格は4,800万円、取得時諸費用は200万円とする。空室損失を考慮せず、購入価格のみを分母とする表面利回りはどれか。",
     "choices": [
-      "5％",
-      "5.5％",
-      "4％",
-      "4.5％"
+      "5.0％",
+      "約4.2％",
+      "4.8％",
+      "4.0％"
     ],
     "answer": 0,
-    "explanation": "表面利回りは年間賃料240万円÷物件価格4,800万円×100＝5％です。4％・4.5％・5.5％は、年間賃料を192万円・216万円・264万円と取り違えた場合の数値です。",
+    "explanation": "表面利回り＝年間満室賃料240÷購入価格4,800×100＝5.0％。約4.2％は空室損失40万円を控除した賃料200万円を分子に用いた場合（200÷4,800）、4.8％は取得時諸費用を含む5,000万円を分母に用いた場合（240÷5,000）、4.0％は空室損失を控除し取得時諸費用も分母に含めた場合（200÷5,000）です。",
     "topic": "表面利回り",
     "sourceUrl": "",
     "id": "fp2-103",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "contentReview": "calculation_and_distractor_check_v18"
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "level": "2",
@@ -4185,14 +4185,14 @@ const QUESTIONS = [
       "3分の1"
     ],
     "answer": 2,
-    "explanation": "配偶者は1/2、子全員で1/2です。子2人で均等に分けるので各(1/2)÷2＝1/4。1/2は子全体の持分、1/6は子3人と勘違いした計算、1/3は配偶者と子2人で単純三等分した誤りです。",
+    "explanation": "配偶者と子が相続人の場合、配偶者1/2・子全体1/2。子2人で均等に分けるため各子は1/4です。1/2は子全体の法定相続分を各子の持分と混同した場合、1/3は配偶者と子2人の3人に均等配分した場合です。1/6は設問の条件から通常の法定相続分としては導けません。",
     "topic": "法定相続分",
     "sourceUrl": "",
     "id": "fp2-111",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "contentReview": "calculation_and_distractor_check_v18"
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "level": "2",
@@ -4244,19 +4244,19 @@ const QUESTIONS = [
     "question": "遺産として金融資産5,000万円と借入金1,200万円があるとき、単純な正味財産額はいくらか（ほかの財産・債務なし）。",
     "choices": [
       "6,200万円",
-      "4,200万円",
+      "1,200万円",
       "3,800万円",
       "5,000万円"
     ],
     "answer": 2,
-    "explanation": "正味財産額は5,000－1,200＝3,800万円です。5,000万円は債務控除を忘れた額、6,200万円は債務を加算した額、4,200万円は控除すべき債務を800万円と取り違えた額です。",
+    "explanation": "単純な正味財産額＝金融資産5,000－借入金1,200＝3,800万円。6,200万円は借入金を加算した場合、1,200万円は債務額だけを答えた場合、5,000万円は借入金を差し引かず金融資産額を答えた場合です。",
     "topic": "正味財産",
     "sourceUrl": "",
     "id": "fp2-114",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "contentReview": "calculation_and_distractor_check_v18"
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "level": "2",
@@ -4267,19 +4267,19 @@ const QUESTIONS = [
       "200万円",
       "110万円",
       "90万円",
-      "180万円"
+      "0万円"
     ],
     "answer": 2,
-    "explanation": "暦年課税の基礎控除110万円は受贈者ごとの年額です。父母からの合計200万円－110万円＝90万円。200万円は控除前、110万円は基礎控除額そのもの、180万円は贈与額を取り違えた数値です。",
+    "explanation": "暦年課税の基礎控除110万円は、受贈者ごとの年額です。父100＋母100＝200万円、200－110＝90万円。200万円は基礎控除を差し引かない場合、110万円は基礎控除額そのものを答えた場合、0万円は父母それぞれの贈与に110万円ずつ基礎控除を適用できると誤解した場合です。",
     "topic": "暦年課税の基礎控除",
     "sourceUrl": "https://www.courts.go.jp/saiban/syurui/syurui_kazi/kazi_06_13/index.html",
     "id": "fp2-115",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "reviewedAt": "2026-10-12",
     "sourceLabel": "国税庁：制度・税務の解説",
-    "contentReview": "calculation_and_distractor_check_v18"
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "level": "2",
@@ -5719,16 +5719,16 @@ const QUESTIONS = [
       "1,311万円"
     ],
     "answer": 3,
-    "explanation": "1,200×1.03³＝1,311.2724万円で、最も近いのは1,311万円です。1,308万円は単利（1,200×1.09）とした計算、1,236万円は1年分だけ増やした計算、1,274万円は複利期間を2年と誤認した場合の概算値です。",
+    "explanation": "3年後の元利合計＝1,200×1.03³＝約1,311.27万円。最も近いのは1,311万円です。1,308万円は年3％の単利を3年適用した場合（1,200×1.09）、1,236万円は1年だけ3％増加させた場合（1,200×1.03）、1,274万円は2年間複利で増やした場合（1,200×1.03²＝約1,273.08）です。",
     "topic": "複利将来価値",
     "createdVersion": 9,
-    "revision": 2,
+    "revision": 3,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-122",
-    "contentReview": "calculation_and_distractor_check_v18"
+    "contentReview": "grounded_distractor_review_v22"
   },
   {
     "level": "2",
