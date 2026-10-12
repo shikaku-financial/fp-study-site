@@ -17,6 +17,7 @@ let correct = 0;
 let exam = null;
 let examTimer = null;
 let lastExamLevel = '3';
+let lastExamKind = 'mini';
 
 function readJSON(key, fallback) {
   try {
@@ -58,18 +59,22 @@ function setLevel(nextLevel) {
 }
 function fullExamAvailability(targetLevel) {
   const pool = validQuestions(targetLevel);
-  const verified = pool.filter(q => q.verified === true);
+  // 「verified」は専門家監修済みの意味に誤認されやすいため使わず、形式・分野・問題数で実装上の開始条件を判定。
+  // コンテンツの法令・内容監修は別途必要です。あくまで学習用オリジナル模試です。
+  const subjectOK = CATEGORIES.slice(1).every(cat => pool.filter(q => q.category === cat).length >= 10);
   if (targetLevel === '3') {
-    const tf = verified.filter(q => q.format === 'true_false').length;
-    const tri = verified.filter(q => q.format === 'three_choice').length;
-    return { ready: tf >= 30 && tri >= 30, message: `本番形式は検証済みの正誤式 ${tf}/30問・三答択一式 ${tri}/30問が必要です。` };
+    const tf = pool.filter(q => q.format === 'true_false').length;
+    const tri = pool.filter(q => q.format === 'three_choice').length;
+    return { ready: tf >= 30 && tri >= 30 && subjectOK,
+      message: `○× ${tf}/30問・三択 ${tri}/30問｜90分・全60問・36問以上で学習用合格圏判定` };
   }
-  const four = verified.filter(q => q.format === 'four_choice').length;
-  return { ready: four >= 60, message: `本番形式は検証済みの四答択一式 ${four}/60問が必要です。` };
+  const four = pool.filter(q => q.format === 'four_choice').length;
+  return { ready: four >= 60 && subjectOK,
+    message: `四択 ${four}/60問｜120分・全60問・36問以上で学習用合格圏判定` };
 }
 function updateHome() {
   const pool = validQuestions(level);
-  $('count').textContent = `現在の収録問題：${pool.length}問（問題増量版）`;
+  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.4）`;
   const old = $('category').value;
   $('category').replaceChildren();
   for (const c of CATEGORIES) {
@@ -93,7 +98,7 @@ function updateHome() {
   const availability = fullExamAvailability(level);
   $('fullExamStatus').textContent = availability.message;
   $('startFull').disabled = !availability.ready;
-  $('startFull').textContent = availability.ready ? '60問模試を開始' : '準備中';
+  $('startFull').textContent = availability.ready ? '60問模試を開始する' : '準備中';
   const draft = readJSON(EXAM_DRAFT_KEY, null);
   const canResume = draft && ['3', '2'].includes(draft.level) && Array.isArray(draft.ids) && draft.ids.length > 0;
   $('resumeExam').classList.toggle('hidden', !canResume);
@@ -168,7 +173,7 @@ function nextQuestion() {
 
 // 模試：採点するまでは正解を表示せず、問題間の移動・訂正を認めます。
 function createExam(kind) {
-  const pool = kind === 'full' ? validQuestions(level).filter(q => q.verified === true) : validQuestions(level);
+  const pool = validQuestions(level);
   if (kind === 'full' && !fullExamAvailability(level).ready) { alert('本番形式の出題数がまだ不足しています。'); return; }
   const draft = readJSON(EXAM_DRAFT_KEY, null);
   if (draft && !confirm('中断中の模試があります。新しく始めると前回の途中経過は失われます。開始しますか？')) return;
@@ -256,6 +261,7 @@ function finishExam(timeOver = false) {
   const pct = Math.round(points / qs.length * 100);
   const currentExam = exam;
   lastExamLevel = currentExam.level;
+  lastExamKind = currentExam.kind;
   const history = load();
   qs.forEach((q, i) => {
     if (a[i] !== null) history[q.id] = { correct: a[i] === q.answer, selected: a[i], at: Date.now() };
@@ -269,7 +275,17 @@ function finishExam(timeOver = false) {
   exam = null;
   $('examResultTitle').textContent = currentExam.kind === 'mini' ? 'ミニ模試・採点結果' : '60問模試・採点結果';
   $('examSummary').textContent = `${qs.length}問中 ${points}問正解｜正答率 ${pct}％`;
-  $('examNote').textContent = `${timeOver ? '制限時間が終了したため自動採点しました。' : '模試を採点しました。'} 未回答：${unanswered}問。${currentExam.kind === 'mini' ? 'これは6問の体験用模試のため、合否判定はありません。' : `参考判定：${points >= 36 ? '36問以上正解' : '36問未満'}（実際の合否は公式判定に従います）。`}`;
+  $('examNote').textContent = `${timeOver ? '制限時間が終了したため自動採点しました。' : '模試を採点しました。'} 未回答：${unanswered}問。${currentExam.kind === 'mini' ? 'これは6問の体験用模試のため、合否判定はありません。' : `学習用判定：${points >= 36 ? '合格圏（36問以上）' : '要復習（36問未満）'}。本試験の結果を保証するものではありません。`}`;
+  const breakdown = $('examBreakdown'); breakdown.replaceChildren();
+  for (const category of CATEGORIES.slice(1)) {
+    const catQs = qs.map((q, i) => ({q, i})).filter(row => row.q.category === category);
+    if (!catQs.length) continue;
+    const count = catQs.filter(row => a[row.i] === row.q.answer).length;
+    const row = document.createElement('div'); row.className = 'stat-row';
+    const name = document.createElement('span'); name.textContent = category;
+    const value = document.createElement('strong'); value.textContent = `${count}/${catQs.length}問 正解`;
+    row.append(name, value); breakdown.append(row);
+  }
   const container = $('examReview'); container.replaceChildren();
   qs.forEach((q, i) => {
     const item = document.createElement('article'); item.className = 'review-item';
@@ -313,7 +329,7 @@ function init() {
   $('examLeave').addEventListener('click', goHome);
   $('examFinish').addEventListener('click', () => finishExam(false));
   $('examResultHome').addEventListener('click', goHome);
-  $('examRetry').addEventListener('click', () => { setLevel(lastExamLevel); show('home'); createExam('mini'); });
+  $('examRetry').addEventListener('click', () => { setLevel(lastExamLevel); show('home'); createExam(lastExamKind); });
   document.addEventListener('visibilitychange', () => { if (!document.hidden && exam) updateTimer(); });
   updateHome();
 }

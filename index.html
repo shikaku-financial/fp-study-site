@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#147e78">
-  <meta name="description" content="FP2級・3級の学科試験対策。無料・登録不要の分野別演習、6問ミニ模試、復習に対応。各級30問を収録。">
-  <title>FP学科トレーニング｜無料問題演習・分野別学習・ミニ模試</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="FP2級・3級の学科試験対策。無料・登録不要の分野別演習、6問ミニ模試、60問模試、復習に対応。各級60問を無料収録。">
+  <title>FP学科トレーニング｜無料FP2級・3級学科60問模試と分野別演習</title>
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
   <header class="site-header">
@@ -19,7 +19,7 @@
   <main class="container">
     <section id="home" aria-label="ホーム">
       <div class="card">
-        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">問題増量版</span></div>
+        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.4｜各級60問</span></div>
         <div class="controls level-controls" role="group" aria-label="級を選択">
           <button type="button" id="level3" class="active" aria-pressed="true">FP3級</button>
           <button type="button" id="level2" aria-pressed="false">FP2級</button>
@@ -35,18 +35,18 @@
       </div>
 
       <div class="card">
-        <div class="section-heading"><h2>模擬試験モード</h2><span class="pill">新機能</span></div>
+        <div class="section-heading"><h2>模擬試験モード</h2><span class="pill">全60問に対応</span></div>
         <p>試験形式に近い操作で、<strong>最後にまとめて採点</strong>します。途中で前の問題に戻って解答を変更できます。</p>
         <div class="exam-option">
           <div><h3>6問ミニ模試</h3><p class="muted small">制限時間10分／全分野から出題／終了後に解説</p></div>
           <button type="button" id="startMini" class="primary">開始する</button>
         </div>
         <div class="exam-option">
-          <div><h3>本番形式60問模試</h3><p class="muted small" id="fullExamStatus">問題データを確認しています。</p></div>
-          <button type="button" id="startFull" disabled>準備中</button>
+          <div><h3>本番型60問模試</h3><p class="muted small" id="fullExamStatus">問題データを確認しています。</p><p class="muted small">本試験の時間・設問形式・採点基準に合わせたオリジナル例題です。問題の難易度が本試験と同等であることを保証するものではありません。</p></div>
+          <button type="button" id="startFull" class="primary" disabled>準備中</button>
         </div>
         <button type="button" id="resumeExam" class="outline-full hidden">中断した模試を再開</button>
-        <p class="muted small">※ミニ模試は操作練習用です。正式な60問模試ではなく、合否判定も行いません。</p>
+        <p class="muted small">※ミニ模試は操作練習用で合否判定はありません。60問模試の判定は学習の目安です。</p>
       </div>
 
       <div class="card">
@@ -61,7 +61,7 @@
       <div class="card">
         <h2>ご利用にあたって</h2>
         <p>本サイトはFP資格の学習を支援する非公式サイトです。日本FP協会等の公式サービスではありません。</p>
-        <p class="muted">現段階では各級30問のオリジナル例題を公開しています。法令の改正や試験制度の変更があり得るため、学習に際しては公式資料も確認してください。</p>
+        <p class="muted">現在は各級60問のオリジナル例題を収録しています。学科試験の出題形式・試験時間・合格基準は日本FP協会の公表情報を参考にしています。問題の正答・解説は専門家監修済みではなく、法令の改正や試験制度の変更に対応しきれていない可能性があります。重要事項は公式資料も確認してください。<a href="https://www.jafp.or.jp/exam/outline/" target="_blank" rel="noopener noreferrer">日本FP協会の試験要綱を確認する</a>。</p>
       </div>
     </section>
 
@@ -100,6 +100,7 @@
 
     <section id="examResult" class="hidden" aria-label="模擬試験結果">
       <div class="card"><h2 id="examResultTitle">模擬試験・採点結果</h2><p class="score-summary" id="examSummary"></p><p class="muted" id="examNote"></p><div class="actions"><button type="button" class="primary" id="examResultHome">ホームへ戻る</button><button type="button" id="examRetry">もう一度挑戦</button></div></div>
+      <div class="card"><h2>分野別の採点結果</h2><div id="examBreakdown" class="category-stats"></div></div>
       <div class="card"><h2>問題別の答え合わせ</h2><div id="examReview"></div></div>
     </section>
 
@@ -107,7 +108,7 @@
   </main>
 
   <footer>© FP学科トレーニング｜会員登録・個人情報の入力は不要です</footer>
-  <script src="questions.js"></script>
-  <script src="app.js"></script>
+  <script src="questions.js?v=4"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>
