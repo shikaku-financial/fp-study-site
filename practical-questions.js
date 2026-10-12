@@ -91,14 +91,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "純資産額はいくらか。",
     "kind": "choice",
     "choices": [
-      "1,600万円",
+      "2,600万円",
       "2,000万円",
-      "3,600万円"
+      "3,000万円"
     ],
     "answer": 1,
-    "explanation": "資産合計3,600万円から負債1,600万円を差し引き、純資産は2,000万円。",
+    "explanation": "資産合計3,600万円から負債1,600万円を差し引き、純資産は2,000万円。 【誤答ポイント】すべての資産を合算してから負債を引く。負債だけを資産から除外しない。",
     "topic": "資産設計",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-jafp3-002",
@@ -109,9 +110,9 @@ const PRACTICAL_QUESTIONS = [
     "question": "当年末の金融資産残高はいくらか。",
     "kind": "choice",
     "choices": [
-      "560万円",
+      "572万円",
       "570万円",
-      "572万円"
+      "560万円"
     ],
     "answer": 1,
     "explanation": "500×1.02＋60＝570万円。運用するのは前年末残高であり、年間収支はその後に加算する。",
@@ -127,11 +128,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "2年後の生活費として最も近いものはどれか。",
     "kind": "choice",
     "choices": [
-      "約183.6万円",
       "約187.3万円",
+      "約183.6万円",
       "約194.4万円"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "180×1.02×1.02＝187.272万円なので約187.3万円。",
     "topic": "キャッシュフロー",
     "lawReferenceDate": "2025-04-01"
@@ -145,14 +146,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "地震そのものによる建物の倒壊について、適切な記述はどれか。",
     "kind": "choice",
     "choices": [
-      "通常の火災保険で必ず補償される",
-      "地震保険を付帯しなければ、一般に火災保険だけでは補償されない",
-      "経年劣化として火災保険が補償する"
+      "地震保険は火災保険とは無関係に単独で契約するのが原則である",
+      "地震による建物倒壊も、火災保険であれば火災に伴う場合は通常全額補償される",
+      "地震保険を付帯しなければ、一般に火災保険だけでは補償されない"
     ],
-    "answer": 1,
-    "explanation": "一般的な火災保険では地震を原因とする損害は補償対象外。地震保険で備える。",
+    "answer": 2,
+    "explanation": "一般的な火災保険では地震を原因とする損害は補償対象外。地震保険で備える。 【誤答ポイント】地震を原因とする損害は一般の火災保険で補償されず、地震保険は火災保険に付帯する。",
     "topic": "リスク管理",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-jafp3-005",
@@ -163,14 +165,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "建ぺい率はいくらか。",
     "kind": "choice",
     "choices": [
+      "50％",
       "40％",
-      "60％",
-      "250％"
+      "32％"
     ],
-    "answer": 0,
-    "explanation": "建ぺい率＝建築面積÷敷地面積＝80÷200＝40％。",
+    "answer": 1,
+    "explanation": "建ぺい率＝建築面積÷敷地面積＝80÷200＝40％。 【誤答ポイント】建築面積80㎡÷敷地面積200㎡＝40％。",
     "topic": "不動産",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-jafp3-006",
@@ -181,11 +184,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "最終利回り（年率）の概算値はどれか。",
     "kind": "choice",
     "choices": [
-      "約1.47％",
+      "約2.45％",
       "約1.96％",
-      "約2.45％"
+      "約1.47％"
     ],
-    "answer": 0,
+    "answer": 2,
     "explanation": "{2＋(100－102)÷4}÷102×100＝約1.47％。",
     "topic": "金融資産運用",
     "lawReferenceDate": "2025-04-01"
@@ -199,11 +202,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "配当利回りはいくらか。",
     "kind": "choice",
     "choices": [
-      "2％",
       "3％",
+      "2％",
       "4％"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "48÷1,600×100＝3％。",
     "topic": "金融資産運用",
     "lawReferenceDate": "2025-04-01"
@@ -217,11 +220,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "ポートフォリオの期待収益率はいくらか。",
     "kind": "choice",
     "choices": [
-      "3.2％",
       "3.8％",
-      "4.2％"
+      "4.2％",
+      "3.2％"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "2％×40％＋5％×60％＝0.8％＋3.0％＝3.8％。",
     "topic": "金融資産運用",
     "lawReferenceDate": "2025-04-01"
@@ -235,14 +238,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "この保険金から生じる課税対象の一時所得の総所得金額算入額はいくらか。",
     "kind": "choice",
     "choices": [
-      "35万円",
+      "60万円",
       "70万円",
-      "120万円"
+      "35万円"
     ],
-    "answer": 0,
+    "answer": 2,
     "explanation": "(600－480－50)×1/2＝35万円。税額そのものを問うものではない。",
     "topic": "タックスプランニング",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-jafp3-010",
@@ -272,10 +276,10 @@ const PRACTICAL_QUESTIONS = [
     "kind": "choice",
     "choices": [
       "3,600万円",
-      "4,800万円",
-      "5,400万円"
+      "5,400万円",
+      "4,800万円"
     ],
-    "answer": 1,
+    "answer": 2,
     "explanation": "法定相続人は3人。3,000万円＋600万円×3＝4,800万円。",
     "topic": "相続・贈与",
     "lawReferenceDate": "2025-04-01"
@@ -289,11 +293,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "子1人の法定相続分はいくらか。",
     "kind": "choice",
     "choices": [
-      "1/2",
+      "1/4",
       "1/3",
-      "1/4"
+      "1/2"
     ],
-    "answer": 2,
+    "answer": 0,
     "explanation": "配偶者1/2、子全体1/2。子が2人なので、それぞれ1/4。",
     "topic": "相続・贈与",
     "lawReferenceDate": "2025-04-01"
@@ -324,11 +328,11 @@ const PRACTICAL_QUESTIONS = [
     "kind": "choice",
     "choices": [
       "25％",
-      "33.3％",
       "40％",
-      "66.7％"
+      "66.7％",
+      "33.3％"
     ],
-    "answer": 2,
+    "answer": 1,
     "explanation": "60÷150×100＝40％。配当性向は配当金を当期純利益で除して求める。",
     "topic": "株式指標",
     "lawReferenceDate": "2025-04-01"
@@ -358,10 +362,10 @@ const PRACTICAL_QUESTIONS = [
     "question": "譲渡による差引利益はどれか。",
     "kind": "choice",
     "choices": [
-      "180万円",
-      "200万円",
       "220万円",
-      "240万円"
+      "200万円",
+      "240万円",
+      "180万円"
     ],
     "answer": 1,
     "explanation": "780－560－20＝200万円。この額をそのまま課税譲渡所得と断定するものではない。",
@@ -393,12 +397,12 @@ const PRACTICAL_QUESTIONS = [
     "question": "年間の表面利回りはいくらか。",
     "kind": "choice",
     "choices": [
-      "5％",
       "6％",
       "7％",
+      "5％",
       "8％"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "12万円×12か月÷2,400万円×100＝6％。",
     "topic": "不動産",
     "lawReferenceDate": "2025-04-01"
@@ -412,15 +416,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "建ぺい率はどれか。",
     "kind": "choice",
     "choices": [
-      "60％",
       "75％",
+      "70％",
       "80％",
-      "125％"
+      "85％"
     ],
     "answer": 2,
     "explanation": "200÷250×100＝80％。",
     "topic": "不動産",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-jafp2-008",
@@ -447,15 +452,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "この死亡保険金について一般に適用される税目はどれか。",
     "kind": "choice",
     "choices": [
-      "所得税",
       "贈与税",
-      "相続税",
-      "固定資産税"
+      "所得税・贈与税の両方",
+      "所得税",
+      "相続税"
     ],
-    "answer": 2,
+    "answer": 3,
     "explanation": "保険料を負担していた被相続人の死亡による保険金は、みなし相続財産として原則相続税の対象となる。",
     "topic": "保険税務",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-jafp2-010",
@@ -466,12 +472,12 @@ const PRACTICAL_QUESTIONS = [
     "question": "所得税の所得控除の区分はどれか。",
     "kind": "choice",
     "choices": [
-      "生命保険料控除",
       "小規模企業共済等掛金控除",
-      "寄附金控除",
-      "社会保険料控除"
+      "生命保険料控除",
+      "社会保険料控除",
+      "寄附金控除"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "iDeCo加入者が拠出した掛金は原則として小規模企業共済等掛金控除の対象。",
     "topic": "年金税務",
     "lawReferenceDate": "2025-04-01"
@@ -501,15 +507,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "被保険者が法律上の損害賠償責任を負うリスクに主として対応する保険はどれか。",
     "kind": "choice",
     "choices": [
+      "人身傷害保険",
+      "対物賠償責任保険",
       "個人賠償責任保険",
-      "終身生命保険",
-      "養老保険",
-      "個人年金保険"
+      "受託者賠償責任保険"
     ],
-    "answer": 0,
-    "explanation": "第三者への賠償責任に備える代表例は個人賠償責任保険。契約の補償範囲は要確認。",
+    "answer": 2,
+    "explanation": "第三者への賠償責任に備える代表例は個人賠償責任保険。契約の補償範囲は要確認。 【誤答ポイント】何に対する誰の賠償責任を対象とするかが保険ごとに違う。",
     "topic": "リスク管理",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai3_personal-001",
@@ -520,14 +527,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "Aさんが死亡した場合の公的年金の遺族給付について、一般に適切な説明はどれか。",
     "kind": "choice",
     "choices": [
-      "子のある配偶者は、要件を満たせば遺族基礎年金を受け得る",
-      "子のある配偶者に遺族基礎年金が支払われることはない",
-      "遺族厚生年金があると遺族基礎年金は一切支払われない"
+      "遺族厚生年金を受給する子のある配偶者には、遺族基礎年金は原則支給されない",
+      "子がいる配偶者は遺族基礎年金を受けられるが、被保険者の保険料納付要件等は問われない",
+      "子のある配偶者は、要件を満たせば遺族基礎年金を受け得る"
     ],
-    "answer": 0,
-    "explanation": "子の要件などを満たす配偶者は遺族基礎年金の対象となり得る。",
+    "answer": 2,
+    "explanation": "子の要件などを満たす配偶者は遺族基礎年金の対象となり得る。 【誤答ポイント】子のある配偶者等の要件に加え、死亡者の保険料納付要件なども確認する。",
     "topic": "遺族年金",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai3_personal-002",
@@ -538,9 +546,9 @@ const PRACTICAL_QUESTIONS = [
     "question": "原則的な遺族厚生年金の額は、死亡した人の老齢厚生年金の報酬比例部分の何割に相当するか。",
     "kind": "choice",
     "choices": [
-      "2分の1",
+      "全額",
       "4分の3",
-      "全額"
+      "2分の1"
     ],
     "answer": 1,
     "explanation": "原則、報酬比例部分の4分の3。実際の額は受給要件・調整等で変わる。",
@@ -556,14 +564,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "公的介護保険の第2号被保険者について適切な記述はどれか。",
     "kind": "choice",
     "choices": [
+      "40歳以上60歳未満の医療保険加入者",
       "40歳以上65歳未満の医療保険加入者",
-      "20歳以上60歳未満の全住民",
-      "65歳以上の住民のみ"
+      "40歳以上65歳未満の市町村に居住するすべての人（医療保険加入は不要）"
     ],
-    "answer": 0,
-    "explanation": "第2号被保険者は40歳以上65歳未満の医療保険加入者。",
+    "answer": 1,
+    "explanation": "第2号被保険者は40歳以上65歳未満の医療保険加入者。 【誤答ポイント】介護保険第2号被保険者は40歳以上65歳未満の医療保険加入者。",
     "topic": "公的介護保険",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai3_personal-004",
@@ -574,9 +583,9 @@ const PRACTICAL_QUESTIONS = [
     "question": "X社のPER（株価収益率）はいくらか。",
     "kind": "choice",
     "choices": [
-      "8倍",
+      "24倍",
       "12倍",
-      "24倍"
+      "8倍"
     ],
     "answer": 1,
     "explanation": "株価1,200円÷EPS100円＝12倍。",
@@ -592,14 +601,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "X社のPBR（株価純資産倍率）はいくらか。",
     "kind": "choice",
     "choices": [
-      "1.5倍",
-      "12倍",
-      "0.67倍"
+      "約0.75倍",
+      "2.0倍",
+      "1.5倍"
     ],
-    "answer": 0,
+    "answer": 2,
     "explanation": "1,200÷800＝1.5倍。",
     "topic": "株式指標",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai3_personal-006",
@@ -610,11 +620,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "Y社債の最終利回り（年率・単利）の概算はいくらか。",
     "kind": "choice",
     "choices": [
-      "約0.96％",
       "約1.50％",
-      "約2.00％"
+      "約2.00％",
+      "約0.96％"
     ],
-    "answer": 0,
+    "answer": 2,
     "explanation": "{2＋(100－104)÷4}÷104×100＝約0.9615％。",
     "topic": "債券利回り",
     "lawReferenceDate": "2025-04-01"
@@ -646,14 +656,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "上記の長女について、暦年課税の基礎控除後の贈与税の課税価格はいくらか。",
     "kind": "choice",
     "choices": [
-      "110万円",
       "140万円",
-      "250万円"
+      "150万円",
+      "110万円"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "250－110＝140万円。",
     "topic": "贈与税",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai3_personal-009",
@@ -664,11 +675,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "青色申告者の事業所得等から生じた純損失の繰越控除期間は、原則何年間か。",
     "kind": "choice",
     "choices": [
+      "10年間",
       "1年間",
-      "3年間",
-      "10年間"
+      "3年間"
     ],
-    "answer": 1,
+    "answer": 2,
     "explanation": "一定の要件を満たす青色申告者は、純損失を原則翌年以後3年間繰り越せる。",
     "topic": "所得税",
     "lawReferenceDate": "2025-04-01"
@@ -682,11 +693,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "建ぺい率はどれか。",
     "kind": "choice",
     "choices": [
-      "40％",
       "60％",
-      "80％"
+      "80％",
+      "40％"
     ],
-    "answer": 0,
+    "answer": 2,
     "explanation": "96÷240×100＝40％。",
     "topic": "建築規制",
     "lawReferenceDate": "2025-04-01"
@@ -700,11 +711,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "延べ面積に基づく容積率はどれか。",
     "kind": "choice",
     "choices": [
-      "80％",
       "125％",
+      "80％",
       "150％"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "300÷240×100＝125％。",
     "topic": "建築規制",
     "lawReferenceDate": "2025-04-01"
@@ -720,12 +731,13 @@ const PRACTICAL_QUESTIONS = [
     "choices": [
       "5.4％",
       "6.0％",
-      "9.0％"
+      "4.8％"
     ],
     "answer": 0,
     "explanation": "9万円×12÷2,000万円×100＝5.4％。",
     "topic": "不動産収益",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai3_personal-013",
@@ -754,11 +766,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "相続税の遺産に係る基礎控除額はいくらか。",
     "kind": "choice",
     "choices": [
+      "4,800万円",
       "3,600万円",
-      "4,200万円",
-      "4,800万円"
+      "4,200万円"
     ],
-    "answer": 2,
+    "answer": 0,
     "explanation": "3,000万円＋600万円×法定相続人3人＝4,800万円。",
     "topic": "相続税",
     "lawReferenceDate": "2025-04-01"
@@ -790,11 +802,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "両方の死亡保障の保険金が支払われる場合の合計額はいくらか。",
     "kind": "choice",
     "choices": [
-      "500万円",
+      "2,000万円",
       "1,500万円",
-      "2,000万円"
+      "500万円"
     ],
-    "answer": 2,
+    "answer": 0,
     "explanation": "500＋1,500＝2,000万円。",
     "topic": "死亡保障",
     "lawReferenceDate": "2025-04-01"
@@ -808,11 +820,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "支払対象となる入院日数が5日であった場合の入院給付金はいくらか。",
     "kind": "choice",
     "choices": [
+      "10万円",
       "1万円",
-      "5万円",
-      "10万円"
+      "5万円"
     ],
-    "answer": 1,
+    "answer": 2,
     "explanation": "日額1万円×5日＝5万円。",
     "topic": "医療保障",
     "lawReferenceDate": "2025-04-01"
@@ -826,14 +838,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "一般に、子の成長・独立に伴う死亡時の必要保障額について適切な説明はどれか。",
     "kind": "choice",
     "choices": [
-      "一般に子の独立が進むと必要保障額は減少する傾向",
-      "子の独立に伴い必ず増加する",
-      "加入者の年齢と家族構成に無関係である"
+      "死亡時の必要保障額は、公的遺族年金の受給見込額を差し引かずに算定するのが一般的である",
+      "子の独立後も死亡時の必要保障額は、教育費の増加により一般に増加する",
+      "一般に子の独立が進むと必要保障額は減少する傾向"
     ],
-    "answer": 0,
-    "explanation": "遺族生活費や教育費負担の見通しが変わるため、必要保障額もライフステージで変わる。",
+    "answer": 2,
+    "explanation": "遺族生活費や教育費負担の見通しが変わるため、必要保障額もライフステージで変わる。 【誤答ポイント】必要保障額は、将来の支出と遺族年金等の収入見込み、保有資産で変化する。",
     "topic": "保険見直し",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai3_insurance-004",
@@ -844,11 +857,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "協会けんぽの任意継続加入を申し出る原則的な期限は、資格喪失日から何日以内か。",
     "kind": "choice",
     "choices": [
+      "30日",
       "14日",
-      "20日",
-      "30日"
+      "20日"
     ],
-    "answer": 1,
+    "answer": 2,
     "explanation": "原則、資格喪失日（退職日の翌日）から20日以内に申出。",
     "topic": "健康保険",
     "lawReferenceDate": "2025-04-01"
@@ -862,9 +875,9 @@ const PRACTICAL_QUESTIONS = [
     "question": "協会けんぽの任意継続被保険者となれる期間の上限は原則どれか。",
     "kind": "choice",
     "choices": [
-      "1年間",
+      "3年間",
       "2年間",
-      "3年間"
+      "1年間"
     ],
     "answer": 1,
     "explanation": "任意継続被保険者となれるのは原則最長2年間。",
@@ -880,14 +893,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "一般的な国民健康保険に加入した個人事業主の私傷病による休業補償について、適切なのはどれか。",
     "kind": "choice",
     "choices": [
-      "会社員と同様の傷病手当金が全国一律で必ず支給される",
       "就業不能時の所得減少に備える検討が必要",
-      "雇用保険の基本手当が必ず毎月支給される"
+      "国民健康保険に加入する自営業者にも、会社員と同じ傷病手当金が全国共通で法定給付される",
+      "国民健康保険に加入する個人事業主は、一般に私傷病で休業しても所得減少への備えが不要である"
     ],
-    "answer": 1,
-    "explanation": "国民健康保険は保険者によって任意給付の扱いが異なり、会社員の健康保険と同じ傷病手当金が全国一律に保障されるわけではない。",
+    "answer": 0,
+    "explanation": "国民健康保険は保険者によって任意給付の扱いが異なり、会社員の健康保険と同じ傷病手当金が全国一律に保障されるわけではない。 【誤答ポイント】国保の傷病手当金は一般的な全国一律の法定給付ではない。個別の加入制度や民間保障も検討する。",
     "topic": "所得補償",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai3_insurance-007",
@@ -898,14 +912,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "落雷によって自宅家財が損害を受けた場合、一般的な火災保険の補償の考え方はどれか。",
     "kind": "choice",
     "choices": [
-      "一般に補償対象となる",
-      "必ず地震保険でしか補償されない",
-      "経年劣化として扱う"
+      "落雷は火災保険の対象となるが、家財は建物を保険対象にしていれば自動的に対象になる",
+      "落雷による家財損害は、家財を対象とする契約でも一般に補償対象外である",
+      "一般に補償対象となる"
     ],
-    "answer": 0,
-    "explanation": "落雷は一般的な火災保険の代表的な補償事故。ただし対象や契約条件を確認する。",
+    "answer": 2,
+    "explanation": "落雷は一般的な火災保険の代表的な補償事故。ただし対象や契約条件を確認する。 【誤答ポイント】家財を補償対象に含む契約が必要であり、建物だけの付保では家財まで対象とはならない。",
     "topic": "火災保険",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai3_insurance-008",
@@ -916,14 +931,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "地震が直接原因で建物が倒壊した場合の備えとして適切なのはどれか。",
     "kind": "choice",
     "choices": [
-      "火災保険だけで必ず補償",
+      "地震を原因とする倒壊は、火災保険の落雷補償があれば通常補償される",
       "地震保険の付帯を検討",
-      "生命保険の死亡保障で建物損害を補償"
+      "地震保険は単独契約でき、火災保険とは別の独立した契約だけで補償する"
     ],
     "answer": 1,
-    "explanation": "一般的な火災保険では地震による直接損害を対象外とするため地震保険が重要。",
+    "explanation": "一般的な火災保険では地震による直接損害を対象外とするため地震保険が重要。 【誤答ポイント】地震損害は一般の火災保険で補償されない。地震保険は火災保険にセットする。",
     "topic": "地震保険",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai3_insurance-009",
@@ -934,11 +950,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "自動車事故で他人にケガをさせ法律上の損害賠償責任を負う場合、任意自動車保険で主に対応するものはどれか。",
     "kind": "choice",
     "choices": [
-      "対人賠償責任保険",
       "車両保険",
+      "対人賠償責任保険",
       "搭乗者傷害保険"
     ],
-    "answer": 0,
+    "answer": 1,
     "explanation": "第三者に対する人身損害の賠償責任に備えるのは対人賠償責任保険。契約条件に従う。",
     "topic": "自動車保険",
     "lawReferenceDate": "2025-04-01"
@@ -952,14 +968,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "満期保険金による一時所得の特別控除前の差益はいくらか。",
     "kind": "choice",
     "choices": [
-      "50万円",
+      "差益をさらに50万円控除した0万円",
       "100万円",
-      "500万円"
+      "保険金全額の500万円"
     ],
     "answer": 1,
     "explanation": "500－400＝100万円。",
     "topic": "一時所得",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai3_insurance-011",
@@ -971,8 +988,8 @@ const PRACTICAL_QUESTIONS = [
     "kind": "choice",
     "choices": [
       "25万円",
-      "50万円",
-      "100万円"
+      "100万円",
+      "50万円"
     ],
     "answer": 0,
     "explanation": "(500－400－50)÷2＝25万円。",
@@ -989,13 +1006,14 @@ const PRACTICAL_QUESTIONS = [
     "kind": "choice",
     "choices": [
       "相続税",
-      "贈与税",
-      "固定資産税"
+      "所得税（一時所得）",
+      "贈与税"
     ],
     "answer": 0,
     "explanation": "保険料負担者＝被相続人・被保険者＝被相続人の死亡保険金は、原則として相続税の対象。",
     "topic": "保険と相続",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai3_insurance-013",
@@ -1006,8 +1024,8 @@ const PRACTICAL_QUESTIONS = [
     "question": "相続税の死亡保険金の非課税限度額（法定相続人3人）は原則いくらか。",
     "kind": "choice",
     "choices": [
-      "500万円",
       "1,000万円",
+      "500万円",
       "1,500万円"
     ],
     "answer": 2,
@@ -1042,11 +1060,11 @@ const PRACTICAL_QUESTIONS = [
     "question": "法定相続人が配偶者と子2人である場合、相続税の基礎控除はいくらか。",
     "kind": "choice",
     "choices": [
-      "3,600万円",
       "4,800万円",
-      "5,400万円"
+      "5,400万円",
+      "3,600万円"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "3,000万円＋600万円×3人＝4,800万円。死亡保険金の非課税枠とは別の制度。",
     "topic": "相続税",
     "lawReferenceDate": "2025-04-01"
@@ -1090,15 +1108,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "国民年金の学生納付特例の適用を受けた期間について、追納しない場合の説明として正しいものはどれか。",
     "kind": "choice",
     "choices": [
-      "保険料を納付した期間と同額の年金額に反映される",
       "受給資格期間には算入されるが年金額には原則反映されない",
-      "国民年金への加入資格そのものを失う",
-      "追納は一切認められない"
+      "追納を行えば年金額に反映されるが、追納は原則5年以内に限られる",
+      "受給資格期間には算入されるうえ、追納しなくても保険料納付済期間と同額の年金額に反映される",
+      "学生納付特例期間は追納しなくても老齢基礎年金の年金額の2分の1に相当する部分に反映される"
     ],
-    "answer": 1,
-    "explanation": "学生納付特例期間は受給資格期間に含まれるが、追納していない期間は老齢基礎年金額に反映されない。",
+    "answer": 0,
+    "explanation": "学生納付特例期間は受給資格期間に含まれるが、追納していない期間は老齢基礎年金額に反映されない。 【誤答ポイント】学生納付特例期間は受給資格期間に算入されるが、追納なしでは年金額に反映されない。追納は原則10年以内。",
     "topic": "国民年金",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_personal-004",
@@ -1170,12 +1189,12 @@ const PRACTICAL_QUESTIONS = [
     "question": "この一時所得を総所得金額に算入する際の金額はいくらか。",
     "kind": "choice",
     "choices": [
-      "50万円",
       "100万円",
+      "50万円",
       "150万円",
       "200万円"
     ],
-    "answer": 0,
+    "answer": 1,
     "explanation": "100万円×1/2＝50万円。ほかに一時所得がない前提。",
     "topic": "総所得金額",
     "lawReferenceDate": "2025-04-01"
@@ -1355,15 +1374,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "中小企業退職金共済の退職金の受取方法として適切なのはどれか。",
     "kind": "choice",
     "choices": [
+      "退職金は共済加入時の拠出月額にかかわらず、全員一律に決められている",
+      "共済機構から事業主に退職金が支給され、事業主が退職者に全額支払う",
       "原則として共済機構から退職者に直接支払われる",
-      "必ず事業主の預金口座に全額振り込まれる",
-      "共済加入時点で税引後の金額が固定する",
-      "退職金は一切一時金で受け取れない"
+      "退職金の請求は退職者本人でなく、原則として事業主だけが行う"
     ],
-    "answer": 0,
-    "explanation": "中退共の退職金は原則として勤労者退職金共済機構から退職した従業員へ直接支払われる。",
+    "answer": 2,
+    "explanation": "中退共の退職金は原則として勤労者退職金共済機構から退職した従業員へ直接支払われる。 【誤答ポイント】中退共は原則として退職者へ直接支払われる。事業主の口座で受け取る仕組みではない。",
     "topic": "退職金制度",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_business-006",
@@ -1374,12 +1394,12 @@ const PRACTICAL_QUESTIONS = [
     "question": "Aさんが個人として支払う小規模企業共済の掛金について、原則該当する所得控除はどれか。",
     "kind": "choice",
     "choices": [
-      "給与所得控除",
       "小規模企業共済等掛金控除",
-      "寄附金控除",
-      "地震保険料控除"
+      "地震保険料控除",
+      "給与所得控除",
+      "寄附金控除"
     ],
-    "answer": 1,
+    "answer": 0,
     "explanation": "個人が負担する小規模企業共済の掛金は、原則として小規模企業共済等掛金控除の対象となる。",
     "topic": "所得税",
     "lawReferenceDate": "2025-04-01"
@@ -1438,15 +1458,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "ABLの説明として正しいものはどれか。",
     "kind": "choice",
     "choices": [
+      "ABLは担保資産として不動産だけを認め、売掛債権や在庫は対象とならない",
       "売掛債権や棚卸資産などを担保に活用する融資",
-      "株式の公募増資のみを意味する",
-      "従業員の退職金を担保とする制度に限定される",
-      "土地のみを担保にする住宅ローン"
+      "ABLは株式を公募して新株を発行する直接金融の方法である",
+      "売掛債権を売却して即時に現金化する方法（ファクタリング）のみを指す"
     ],
-    "answer": 0,
-    "explanation": "ABLは売掛債権、在庫、機械設備等を担保として活用する資金調達方法。",
+    "answer": 1,
+    "explanation": "ABLは売掛債権、在庫、機械設備等を担保として活用する資金調達方法。 【誤答ポイント】ABLは売掛債権や在庫等の動産・債権を担保に融資を受ける仕組み。",
     "topic": "企業金融",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_business-011",
@@ -1517,15 +1538,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "一般に、事業承継の検討で重要な事項として最も適切なのはどれか。",
     "kind": "choice",
     "choices": [
-      "後継者の育成と株式・経営権の承継計画",
-      "保有株式の価値を常に額面額とみなすこと",
-      "遺留分などの相続問題を一切検討しないこと",
-      "自社株を取得すれば経営の引継ぎが自動で完了すること"
+      "自社株式の承継では議決権や他の株主との関係よりも額面金額だけを基準にすれば足りる",
+      "事業承継において、経営者の個人保証・資産と会社財産の区分は検討対象とならない",
+      "事業承継では後継者選定よりも相続税対策だけを先に完了させれば経営権の問題は通常発生しない",
+      "後継者の育成と株式・経営権の承継計画"
     ],
-    "answer": 0,
-    "explanation": "後継者育成、持株比率、経営権、資金対策、相続との調整を総合的に検討する。",
+    "answer": 3,
+    "explanation": "後継者育成、持株比率、経営権、資金対策、相続との調整を総合的に検討する。 【誤答ポイント】事業承継は経営・資産・株式・個人保証など複数の課題を組み合わせて検討する。",
     "topic": "事業承継",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_life-001",
@@ -1551,15 +1573,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "必要保障額の算定において、一般に考慮するものとして適切なのはどれか。",
     "kind": "choice",
     "choices": [
+      "遺族の生活費と教育費だけを集計し、遺族年金などの公的給付は考慮しない",
+      "必要保障額の計算では手元の預貯金を除外し、民間保険の保障額だけで不足額を判定する",
       "遺族の生活費、教育費、遺族年金、手元資金",
-      "契約者の好きな商品名のみ",
-      "保険会社のブランド名のみ",
-      "死亡時の資金需要を無視した満期日だけ"
+      "遺族の生活費に死亡保険金額を合算したものをそのまま必要保障額とする"
     ],
-    "answer": 0,
-    "explanation": "遺族支出と遺族の収入・貯蓄等を見積もり、その差額を死亡保障額の目安とする。",
+    "answer": 2,
+    "explanation": "遺族支出と遺族の収入・貯蓄等を見積もり、その差額を死亡保障額の目安とする。 【誤答ポイント】必要保障額は将来の支出総額から公的給付や保有資産等を控除して考える。",
     "topic": "保険設計",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_life-003",
@@ -1616,14 +1639,15 @@ const PRACTICAL_QUESTIONS = [
     "kind": "choice",
     "choices": [
       "定期保険は一定期間の保障、終身保険は原則生涯にわたる保障",
-      "定期保険はどんな事故でも無制限に保障する",
-      "終身保険は死亡保障を持たない",
-      "どちらも満期時に必ず死亡保険金が支払われる"
+      "定期保険の保険期間中に死亡した場合も、死亡保険金は原則受け取れない",
+      "終身保険は原則生涯にわたる死亡保障を備えるが、保険期間満了時に満期保険金が支払われる",
+      "定期保険は一定期間の死亡保障で、満期時にも原則死亡保険金と同額の給付がある"
     ],
     "answer": 0,
-    "explanation": "定期保険は保険期間が定められ、終身保険は終身の死亡保障を目的とする。",
+    "explanation": "定期保険は保険期間が定められ、終身保険は終身の死亡保障を目的とする。 【誤答ポイント】定期保険と終身保険では保障期間が異なり、一般に満期保険金はない。",
     "topic": "保険商品",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_life-007",
@@ -1634,12 +1658,12 @@ const PRACTICAL_QUESTIONS = [
     "question": "契約Pの死亡保険金は一般に何税の対象となるか。",
     "kind": "choice",
     "choices": [
-      "相続税",
       "所得税",
-      "贈与税",
-      "消費税"
+      "相続税",
+      "消費税",
+      "贈与税"
     ],
-    "answer": 0,
+    "answer": 1,
     "explanation": "負担者＝死亡した被保険者なので、受取保険金はみなし相続財産として原則相続税。",
     "topic": "保険税務",
     "lawReferenceDate": "2025-04-01"
@@ -1653,10 +1677,10 @@ const PRACTICAL_QUESTIONS = [
     "question": "契約Qの死亡保険金は一般に何税の対象となるか。",
     "kind": "choice",
     "choices": [
-      "相続税",
+      "固定資産税",
       "所得税",
       "贈与税",
-      "固定資産税"
+      "相続税"
     ],
     "answer": 1,
     "explanation": "保険料負担者Aさんが、被保険者Bさん死亡による保険金を自ら受け取るため、原則所得税の対象。",
@@ -1672,10 +1696,10 @@ const PRACTICAL_QUESTIONS = [
     "question": "契約Rの死亡保険金は一般に何税の対象となるか。",
     "kind": "choice",
     "choices": [
+      "消費税",
       "相続税",
-      "所得税",
       "贈与税",
-      "消費税"
+      "所得税"
     ],
     "answer": 2,
     "explanation": "保険料負担者A、被保険者B、受取人Cがすべて異なる場合、原則贈与税の対象。",
@@ -1722,14 +1746,15 @@ const PRACTICAL_QUESTIONS = [
     "kind": "choice",
     "choices": [
       "借入れには通常、所定の利息が発生する",
-      "返済義務が一切ない国の給付金である",
-      "契約を必ず解約する必要がある",
-      "すべての掛捨て定期保険で利用可能"
+      "契約者貸付の限度額は通常解約返戻金ではなく死亡保険金額の全額である",
+      "契約者貸付では、借入後の利息が生じることは通常ない",
+      "契約者貸付は借入れ時点で一般に保険契約を解約する必要がある"
     ],
     "answer": 0,
-    "explanation": "契約者貸付には通常利息がかかる。解約返戻金等の範囲内で扱うためすべての保険に付帯するものではない。",
+    "explanation": "契約者貸付には通常利息がかかる。解約返戻金等の範囲内で扱うためすべての保険に付帯するものではない。 【誤答ポイント】契約者貸付は解約返戻金の一定範囲内であり、一般に利息がかかる。",
     "topic": "生命保険実務",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_life-013",
@@ -1771,11 +1796,11 @@ const PRACTICAL_QUESTIONS = [
     "kind": "choice",
     "choices": [
       "2人",
-      "3人",
+      "5人",
       "4人",
-      "5人"
+      "3人"
     ],
-    "answer": 1,
+    "answer": 3,
     "explanation": "配偶者1人＋子2人＝3人。",
     "topic": "相続税",
     "lawReferenceDate": "2025-04-01"
@@ -1790,11 +1815,11 @@ const PRACTICAL_QUESTIONS = [
     "kind": "choice",
     "choices": [
       "最長1年間",
+      "最長5年間",
       "最長2年間",
-      "最長3年間",
-      "最長5年間"
+      "最長3年間"
     ],
-    "answer": 1,
+    "answer": 2,
     "explanation": "協会けんぽの任意継続被保険者になれるのは原則最長2年間。",
     "topic": "社会保険",
     "lawReferenceDate": "2025-04-01"
@@ -1823,15 +1848,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "個人事業主の休業に備える場合の説明として最も適切なのはどれか。",
     "kind": "choice",
     "choices": [
-      "国民健康保険の傷病手当金が全国一律で必ず支給される",
+      "個人事業主は国保加入であれば私傷病に対する傷病手当金が法定給付として全国一律に支給される",
       "就業不能による所得減少を民間の所得補償保険等で補うことを検討する",
-      "本人が事業主なら労災保険給付を無条件に受けられる",
-      "固定費の支払いが休業時に必ず免除される"
+      "個人事業主には労災保険の特別加入制度が存在しないので、いかなる条件でも労災補償は受けられない",
+      "個人事業主が病気で休業すると、国保の保険料は一般に全額が自動免除となる"
     ],
     "answer": 1,
-    "explanation": "個人事業主は会社員と公的保障が異なる場合があり、所得補償保険等による補完を検討する。",
+    "explanation": "個人事業主は会社員と公的保障が異なる場合があり、所得補償保険等による補完を検討する。 【誤答ポイント】国保の傷病手当金は全国一律ではなく、事業主の労災特別加入には一定の要件がある。",
     "topic": "リスク管理",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_nonlife-004",
@@ -1857,15 +1883,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "地震による直接の建物損壊に対して適切な備えはどれか。",
     "kind": "choice",
     "choices": [
-      "通常の火災保険だけで必ず全額補償",
       "火災保険に付帯する地震保険を検討する",
-      "家財の盗難保険だけで補償",
-      "対人賠償保険で建物を修理する"
+      "地震を原因とする倒壊は、火災保険の風災補償で原則補償される",
+      "地震保険は火災保険とは無関係に単独で加入するのが原則である",
+      "一般的な火災保険には地震による建物倒壊が自動付帯される"
     ],
-    "answer": 1,
-    "explanation": "地震を原因とする直接損害は通常の火災保険では免責であり、地震保険の検討が必要。",
+    "answer": 0,
+    "explanation": "地震を原因とする直接損害は通常の火災保険では免責であり、地震保険の検討が必要。 【誤答ポイント】一般の火災保険は地震による損害を補償しない。地震保険は火災保険に付帯する。",
     "topic": "地震保険",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_nonlife-006",
@@ -1876,15 +1903,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "家財への落雷による損害について、一般的な住宅火災保険での扱いとして適切なのはどれか。",
     "kind": "choice",
     "choices": [
-      "家財を保険対象としていれば一般に補償される",
-      "地震保険だけが対象となる",
-      "被保険者の老齢年金が補償する",
-      "火災保険では落雷が一律免責になる"
+      "家財の落雷損害は家財を対象とする火災保険でも一般に免責となる",
+      "落雷の損害は、通常の火災保険ではなく地震保険の対象となる",
+      "家財の損害は、建物だけを保険の対象にした契約でも原則補償される",
+      "家財を保険対象としていれば一般に補償される"
     ],
-    "answer": 0,
-    "explanation": "落雷は一般的な住宅火災保険の代表的な補償事故。家財が保険の対象であること等が前提。",
+    "answer": 3,
+    "explanation": "落雷は一般的な住宅火災保険の代表的な補償事故。家財が保険の対象であること等が前提。 【誤答ポイント】火災保険で落雷を補償する場合も、家財を付保していることが必要。",
     "topic": "火災保険",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_nonlife-007",
@@ -1925,15 +1953,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "自宅駐車場の塀に自分の車で衝突した場合、一般的な対物賠償責任保険について最も適切な説明はどれか。",
     "kind": "choice",
     "choices": [
+      "自宅の塀は自動車保険における「他人の財物」に当たるため、対物賠償保険で通常補償される",
+      "自賠責保険は物損事故にも適用されるため、塀の修理費が補償される",
       "自己所有・管理の財物損害は通常補償対象外となる",
-      "対物賠償保険から必ず自宅の塀の修理代が出る",
-      "対人賠償保険が塀の損害を補償する",
-      "自賠責保険が塀の損害を補償する"
+      "対人賠償責任保険は財物損害も対象なので、塀の修理費が補償される"
     ],
-    "answer": 0,
-    "explanation": "通常、自己所有・管理の財物は対物賠償責任保険の対象外。自賠責は物損を補償しない。",
+    "answer": 2,
+    "explanation": "通常、自己所有・管理の財物は対物賠償責任保険の対象外。自賠責は物損を補償しない。 【誤答ポイント】自己所有の塀は通常対物賠償の対象外。対人賠償や自賠責は物損を補償しない。",
     "topic": "自動車保険",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_nonlife-010",
@@ -1959,15 +1988,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "提供した食品による食中毒事故に備える保険として一般的に適切なのはどれか。",
     "kind": "choice",
     "choices": [
+      "請負業者賠償責任保険",
       "生産物賠償責任保険（PL保険）",
-      "地震保険",
-      "自動車車両保険",
-      "個人年金保険"
+      "受託者賠償責任保険",
+      "施設所有（管理）者賠償責任保険"
     ],
-    "answer": 0,
-    "explanation": "製造・販売・提供した食品による損害賠償責任への備えとしてPL保険が代表的。",
+    "answer": 1,
+    "explanation": "製造・販売・提供した食品による損害賠償責任への備えとしてPL保険が代表的。 【誤答ポイント】販売・提供した食品の欠陥による食中毒は生産物賠償責任。店舗設備の管理上の事故とは異なる。",
     "topic": "PL保険",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_nonlife-012",
@@ -1979,14 +2009,15 @@ const PRACTICAL_QUESTIONS = [
     "kind": "choice",
     "choices": [
       "施設所有（管理）者賠償責任保険",
-      "運送保険のみ",
-      "個人向け終身保険",
-      "預金保険"
+      "請負業者賠償責任保険",
+      "受託者賠償責任保険",
+      "生産物賠償責任保険（PL保険）"
     ],
     "answer": 0,
-    "explanation": "店舗施設の所有・管理に起因する第三者の身体障害等の賠償責任への備えとして施設賠償責任保険。",
+    "explanation": "店舗施設の所有・管理に起因する第三者の身体障害等の賠償責任への備えとして施設賠償責任保険。 【誤答ポイント】店舗施設の管理上の不備による事故は施設所有（管理）者賠償責任を検討。",
     "topic": "施設賠償責任",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_nonlife-013",
@@ -2013,14 +2044,15 @@ const PRACTICAL_QUESTIONS = [
     "kind": "choice",
     "choices": [
       "利益保険・休業損失補償など",
-      "生命保険の養老保険のみ",
-      "住宅ローン保証保険のみ",
-      "国民年金基金のみ"
+      "受託者賠償責任保険",
+      "施設所有（管理）者賠償責任保険",
+      "火災保険の建物損害補償のみ"
     ],
     "answer": 0,
-    "explanation": "財物の復旧費用と売上・利益の喪失は別リスク。休業損失に備える補償を検討する。",
+    "explanation": "財物の復旧費用と売上・利益の喪失は別リスク。休業損失に備える補償を検討する。 【誤答ポイント】休業による利益損失は物損そのものの補償とは区別する。",
     "topic": "事業中断",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   },
   {
     "id": "pr-kinzai2_nonlife-015",
@@ -2031,14 +2063,15 @@ const PRACTICAL_QUESTIONS = [
     "question": "業務再開までの費用について、損害保険の設計で適切なのはどれか。",
     "kind": "choice",
     "choices": [
-      "建物の修理費用と休業中の利益損失を分けて検討する",
-      "建物の保険金額に関係なくすべての損失が無制限で支払われる",
-      "売上減少は常に個人の火災保険で補償される",
-      "保険約款の確認は不要である"
+      "火災事故による利益損失を補償する契約では、支払限度額や免責期間は設定できない",
+      "建物の保険金額を増やせば、休業利益の損失も通常はすべて建物保険金で補償できる",
+      "休業に係る補償は、建物が復旧しても事故後の売上低迷期間について無条件で支払われる",
+      "建物の修理費用と休業中の利益損失を分けて検討する"
     ],
-    "answer": 0,
-    "explanation": "財物損害と休業損失は補償範囲や免責・支払限度が異なるため、それぞれ確認する。",
+    "answer": 3,
+    "explanation": "財物損害と休業損失は補償範囲や免責・支払限度が異なるため、それぞれ確認する。 【誤答ポイント】財物・休業損失は補償対象、限度額、免責期間を個別に確認する。",
     "topic": "事業リスク",
-    "lawReferenceDate": "2025-04-01"
+    "lawReferenceDate": "2025-04-01",
+    "distractorReview": "editorial_v12"
   }
 ];
