@@ -3622,19 +3622,20 @@ const QUESTIONS = [
     "format": "four_choice",
     "question": "収入金額500万円、必要経費180万円の場合の事業所得金額はいくらか（ほかの調整なし）。",
     "choices": [
-      "180万円",
+      "280万円",
       "320万円",
-      "500万円",
-      "680万円"
+      "340万円",
+      "300万円"
     ],
     "answer": 1,
-    "explanation": "500－180＝320万円です。",
+    "explanation": "収入500万円から必要経費180万円を差し引き、事業所得は320万円です。280万円・300万円・340万円は、必要経費をそれぞれ220万円・200万円・160万円と取り違えた場合の計算です。",
     "topic": "事業所得",
     "sourceUrl": "",
     "id": "fp2-091",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -3643,18 +3644,19 @@ const QUESTIONS = [
     "question": "給与収入750万円、給与所得控除額190万円と仮定した場合、給与所得金額はいくらか。",
     "choices": [
       "560万円",
-      "750万円",
-      "190万円",
-      "940万円"
+      "540万円",
+      "570万円",
+      "750万円"
     ],
     "answer": 0,
-    "explanation": "給与収入750万円－給与所得控除190万円＝560万円です。控除額は設問の仮定です。",
+    "explanation": "給与所得は収入750万円から設問で指定された給与所得控除190万円を控除し、560万円です。540万円・570万円は控除額を210万円・180万円と誤認した計算で、750万円は控除前の給与収入です。",
     "topic": "給与所得",
     "sourceUrl": "",
     "id": "fp2-092",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -3662,21 +3664,22 @@ const QUESTIONS = [
     "format": "four_choice",
     "question": "医療費控除を計算する際、対象医療費25万円、目的となった医療費を補てんした保険金5万円、差引基準額10万円の場合、控除額はいくらか。",
     "choices": [
-      "5万円",
-      "20万円",
       "15万円",
+      "20万円",
+      "5万円",
       "10万円"
     ],
     "answer": 3,
-    "explanation": "25－5－10＝10万円です。補てん額は目的となった医療費の範囲で差し引きます。",
+    "explanation": "医療費控除額は25万円－補填保険金5万円－差引基準額10万円＝10万円。15万円は補填保険金を10万円と誤認した計算、20万円は基準額を控除し忘れた計算、5万円は保険金等を二重に控除した計算です。",
     "topic": "医療費控除",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm",
     "id": "fp2-093",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "reviewedAt": "2026-10-12",
-    "sourceLabel": "国税庁：制度・税務の解説"
+    "sourceLabel": "国税庁：制度・税務の解説",
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -3684,19 +3687,20 @@ const QUESTIONS = [
     "format": "four_choice",
     "question": "所得控除40万円によって課税所得が40万円減少し、その部分の限界税率が所得税20％と仮定した場合、所得税の軽減額はいくらか（他の影響を考慮しない）。",
     "choices": [
-      "20万円",
+      "12万円",
       "8万円",
-      "4万円",
-      "40万円"
+      "10万円",
+      "6万円"
     ],
     "answer": 1,
-    "explanation": "40万円×20％＝8万円です。所得控除額がそのまま税額から差し引かれるわけではありません。",
+    "explanation": "税額軽減は所得控除40万円×限界税率20％＝8万円。6万円・10万円・12万円は限界税率を15％・25％・30％と取り違えた計算です。所得控除額そのものが税額控除になるわけではありません。",
     "topic": "所得控除と税率",
     "sourceUrl": "",
     "id": "fp2-094",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -3824,19 +3828,20 @@ const QUESTIONS = [
     "format": "four_choice",
     "question": "敷地面積250㎡、建築面積125㎡、延べ面積375㎡の建物について建ぺい率と容積率の組み合わせはどれか（算入・不算入の調整なし）。",
     "choices": [
-      "50％・200％",
+      "50％・125％",
       "50％・150％",
-      "150％・50％",
-      "200％・150％"
+      "60％・150％",
+      "60％・125％"
     ],
     "answer": 1,
-    "explanation": "建ぺい率125÷250＝50％、容積率375÷250＝150％です。",
+    "explanation": "建ぺい率＝125÷250＝50％、容積率＝375÷250＝150％。125％は容積対象面積を312.5㎡と誤認した場合、60％は建築面積を150㎡と誤認した場合の数字です。",
     "topic": "建ぺい率と容積率",
     "sourceUrl": "",
     "id": "fp2-101",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -3847,16 +3852,17 @@ const QUESTIONS = [
       "5％",
       "4％",
       "6％",
-      "10％"
+      "4.5％"
     ],
     "answer": 0,
-    "explanation": "（360－60）÷6,000×100＝5％です。",
+    "explanation": "年間純収入は360－60＝300万円。実質利回りは300÷6,000×100＝5％です。6％は経費を無視した表面利回り、4％は経費を120万円と誤認した計算、4.5％は経費を90万円と誤認した計算です。",
     "topic": "実質利回り",
     "sourceUrl": "",
     "id": "fp2-102",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -3865,18 +3871,19 @@ const QUESTIONS = [
     "question": "年間賃料240万円、物件価格4,800万円の表面利回りはどれか（空室や費用を無視）。",
     "choices": [
       "5％",
-      "10％",
+      "5.5％",
       "4％",
-      "2.5％"
+      "4.5％"
     ],
     "answer": 0,
-    "explanation": "240÷4,800×100＝5％です。",
+    "explanation": "表面利回りは年間賃料240万円÷物件価格4,800万円×100＝5％です。4％・4.5％・5.5％は、年間賃料を192万円・216万円・264万円と取り違えた場合の数値です。",
     "topic": "表面利回り",
     "sourceUrl": "",
     "id": "fp2-103",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -3907,20 +3914,21 @@ const QUESTIONS = [
     "question": "土地を4,800万円で譲渡し、取得費3,000万円、譲渡費用200万円の場合、単純計算による譲渡所得はいくらか（特別控除等なし）。",
     "choices": [
       "1,400万円",
-      "2,000万円",
+      "1,800万円",
       "1,600万円",
-      "1,800万円"
+      "2,000万円"
     ],
     "answer": 2,
-    "explanation": "4,800－3,000－200＝1,600万円です。",
+    "explanation": "譲渡所得は4,800－3,000－200＝1,600万円です。1,800万円は譲渡費用を控除し忘れた額、1,400万円は費用を二重控除した額、2,000万円は譲渡費用を加算した額です。",
     "topic": "譲渡所得",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/joto/3202.htm",
     "id": "fp2-105",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "reviewedAt": "2026-10-12",
-    "sourceLabel": "国税庁：制度・税務の解説"
+    "sourceLabel": "国税庁：制度・税務の解説",
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -3969,18 +3977,19 @@ const QUESTIONS = [
     "question": "土地面積180㎡、指定容積率300％、前面道路幅員等による規制を考慮しない場合の延べ面積の単純上限はどれか。",
     "choices": [
       "540㎡",
-      "360㎡",
-      "180㎡",
-      "900㎡"
+      "480㎡",
+      "600㎡",
+      "450㎡"
     ],
     "answer": 0,
-    "explanation": "180㎡×300％＝540㎡です。前面道路幅員などによる別の規制は設問の指定により考慮しません。",
+    "explanation": "延べ面積の単純上限は180㎡×指定容積率300％＝540㎡です。450㎡・480㎡・600㎡はいずれも指定容積率または敷地面積を取り違えた計算です。前面道路幅員による制限等は設問に従い考慮しません。",
     "topic": "容積率",
     "sourceUrl": "",
     "id": "fp2-108",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -4029,18 +4038,19 @@ const QUESTIONS = [
     "question": "配偶者と子2人が法定相続人である場合、遺言や特別受益等を考えない子1人の法定相続分はどれか。",
     "choices": [
       "2分の1",
-      "8分の1",
+      "6分の1",
       "4分の1",
-      "3分の4"
+      "3分の1"
     ],
     "answer": 2,
-    "explanation": "配偶者1/2、子全体1/2。子2人で均等に分ければ各1/4です。",
+    "explanation": "配偶者は1/2、子全員で1/2です。子2人で均等に分けるので各(1/2)÷2＝1/4。1/2は子全体の持分、1/6は子3人と勘違いした計算、1/3は配偶者と子2人で単純三等分した誤りです。",
     "topic": "法定相続分",
     "sourceUrl": "",
     "id": "fp2-111",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -4069,20 +4079,21 @@ const QUESTIONS = [
     "question": "被相続人が保険料を負担した死亡保険金を法定相続人3人が受け取る。相続税の死亡保険金の非課税限度額として原則正しいものはどれか（養子等の特殊事情なし）。",
     "choices": [
       "1,000万円",
-      "500万円",
+      "2,000万円",
       "1,500万円",
-      "3,000万円"
+      "2,500万円"
     ],
     "answer": 2,
-    "explanation": "500万円×法定相続人3人＝1,500万円です。非課税の適用には受取人が相続人であること等の要件があります。",
+    "explanation": "死亡保険金の非課税限度額は500万円×法定相続人3人＝1,500万円です。1,000万円は2人と数えた場合、2,000万円・2,500万円はそれぞれ4人・5人と数えた場合です。適用対象となる受取人等の条件にも注意してください。",
     "topic": "死亡保険金の非課税枠",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
     "id": "fp2-113",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "reviewedAt": "2026-10-12",
-    "sourceLabel": "国税庁：制度・税務の解説"
+    "sourceLabel": "国税庁：制度・税務の解説",
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -4096,13 +4107,14 @@ const QUESTIONS = [
       "5,000万円"
     ],
     "answer": 2,
-    "explanation": "5,000－1,200＝3,800万円です。課税価格の計算ではほかの要素を考える場合があります。",
+    "explanation": "正味財産額は5,000－1,200＝3,800万円です。5,000万円は債務控除を忘れた額、6,200万円は債務を加算した額、4,200万円は控除すべき債務を800万円と取り違えた額です。",
     "topic": "正味財産",
     "sourceUrl": "",
     "id": "fp2-114",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -4113,18 +4125,19 @@ const QUESTIONS = [
       "200万円",
       "110万円",
       "90万円",
-      "0万円"
+      "180万円"
     ],
     "answer": 2,
-    "explanation": "受贈者が同一年に受け取った財産の合計200万円から基礎控除110万円を引き、90万円です。贈与者の人数分だけ控除は増えません。",
+    "explanation": "暦年課税の基礎控除110万円は受贈者ごとの年額です。父母からの合計200万円－110万円＝90万円。200万円は控除前、110万円は基礎控除額そのもの、180万円は贈与額を取り違えた数値です。",
     "topic": "暦年課税の基礎控除",
     "sourceUrl": "https://www.courts.go.jp/saiban/syurui/syurui_kazi/kazi_06_13/index.html",
     "id": "fp2-115",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "reviewedAt": "2026-10-12",
-    "sourceLabel": "国税庁：制度・税務の解説"
+    "sourceLabel": "国税庁：制度・税務の解説",
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -4155,20 +4168,21 @@ const QUESTIONS = [
     "question": "課税価格の合計額が8,000万円、法定相続人が3人の場合、相続税の課税遺産総額はいくらか（債務控除等は既に反映、特例なし）。",
     "choices": [
       "4,800万円",
-      "2,000万円",
+      "2,600万円",
       "8,000万円",
       "3,200万円"
     ],
     "answer": 3,
-    "explanation": "基礎控除額は3,000＋600×3＝4,800万円。8,000－4,800＝3,200万円です。",
+    "explanation": "相続税の基礎控除は3,000＋600×3＝4,800万円、課税遺産総額は8,000－4,800＝3,200万円です。4,800万円は基礎控除額そのもの、8,000万円は基礎控除前、2,600万円は控除を600万円過大に計上した誤りです。",
     "topic": "課税遺産総額",
     "sourceUrl": "",
     "id": "fp2-117",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "reviewedAt": "2026-10-12",
-    "sourceLabel": "国税庁：制度・税務の解説"
+    "sourceLabel": "国税庁：制度・税務の解説",
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",
@@ -5557,22 +5571,22 @@ const QUESTIONS = [
     "format": "four_choice",
     "question": "現在の資金1,200万円を年3％の複利で運用する場合、3年後の元利合計額として最も近いものはどれか（税金・手数料なし）。",
     "choices": [
-      "1,560万円",
+      "1,308万円",
       "1,274万円",
       "1,236万円",
       "1,311万円"
     ],
     "answer": 3,
-    "explanation": "1,200×1.03³＝約1,311.27万円です。",
+    "explanation": "1,200×1.03³＝1,311.2724万円で、最も近いのは1,311万円です。1,308万円は単利（1,200×1.09）とした計算、1,236万円は1年分だけ増やした計算、1,274万円は複利期間を2年と誤認した場合の概算値です。",
     "topic": "複利将来価値",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-122",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "calculation_and_distractor_check_v18"
   },
   {
     "level": "2",

@@ -125,6 +125,38 @@ function fullExamAvailability(targetLevel) {
   return { ready: four >= 60 && subjectOK,
     message: `四択 ${four}/60問｜120分・全60問・36問以上で学習用合格圏判定` };
 }
+// 現在の級・分野に応じて、選択可能な演習問題数だけを表示します。
+function updatePracticeCountOptions(pool) {
+  const sel = $('practiceCount');
+  const current = sel.value;
+  const cat = $('category').value;
+  const available = pool.filter(q => cat === CATEGORIES[0] || q.category === cat).length;
+  const numeric = [10, 20, 30, 60].filter(n => n <= available);
+  const permitted = numeric.map(String).concat(available ? ['all'] : []);
+  sel.replaceChildren();
+  for (const n of numeric) {
+    const option = document.createElement('option'); option.value = String(n); option.textContent = `${n}問`;
+    sel.append(option);
+  }
+  if (available) {
+    const option = document.createElement('option'); option.value = 'all'; option.textContent = `すべて（全${available}問）`;
+    sel.append(option);
+  }
+  if (permitted.includes(current)) sel.value = current;
+  else if (current === 'all' && available) sel.value = 'all';
+  else {
+    const previous = Number(current);
+    const best = Number.isFinite(previous) ? numeric.filter(n => n <= previous).pop() : null;
+    sel.value = best ? String(best) : (numeric.length ? String(numeric[0]) : available ? 'all' : '');
+  }
+  const note = $('practiceCountNotice');
+  if (note) note.textContent = cat === CATEGORIES[0]
+    ? `全分野の収録問題は${available}問です。`
+    : `「${cat}」の収録問題は${available}問です。表示数を上限以内に調整しています。`;
+  sel.disabled = available === 0;
+  $('startPractice').disabled = available === 0;
+}
+
 function updateHome() {
   const pool = validQuestions(level);
   $('count').textContent = `現在の収録問題：${pool.length}問（Ver.12・学科）`;
@@ -134,6 +166,7 @@ function updateHome() {
     const opt = document.createElement('option'); opt.value = c; opt.textContent = c; $('category').append(opt);
   }
   $('category').value = CATEGORIES.includes(old) ? old : CATEGORIES[0];
+  updatePracticeCountOptions(pool);
   const data = load();
   const previous = pool.filter(q => resultCurrent(q, data[q.id]));
   const staleCount = pool.filter(q => data[q.id] && typeof data[q.id].correct === 'boolean' && !resultCurrent(q, data[q.id])).length;
@@ -515,6 +548,7 @@ function goHome() {
 function init() {
   $('level3').addEventListener('click', () => setLevel('3'));
   $('level2').addEventListener('click', () => setLevel('2'));
+  $('category').addEventListener('change', () => updatePracticeCountOptions(validQuestions(level)));
   $('startPractice').addEventListener('click', () => startQuiz(false));
   $('startReview').addEventListener('click', () => startQuiz(true));
   $('startMini').addEventListener('click', () => createExam('mini'));
