@@ -164,3 +164,8 @@
 
 /* Ver.16: 金財の実技演習を15問ずつ2回に分割 */
 .pr-second-set{margin-top:8px;width:100%;border:1px solid #137e77;background:#fff;color:#126d68;padding:11px;border-radius:9px;font-weight:700;}
+
+/* Ver.21: explicit reasons for every answer, when individually checked */
+.choice-reason-list { padding-left: 1.4rem; margin: .65rem 0 0; }
+.choice-reason-list li { margin: .55rem 0; overflow-wrap: anywhere; }
+.choice-reason-list li p { margin: .16rem 0 .35rem; color: #536775; font-size: .94rem; line-height: 1.6; }

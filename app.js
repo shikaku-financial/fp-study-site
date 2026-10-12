@@ -262,6 +262,23 @@ function renderQuiz() {
   $('next').classList.add('hidden');
   $('next').textContent = index + 1 === session.length ? '結果を見る' : '次の問題';
 }
+function appendChoiceExplanations(container, q) {
+  if (!Array.isArray(q.choiceExplanations) || q.choiceExplanations.length !== q.choices.length) return;
+  const details = document.createElement('details');
+  details.className = 'question-source-details';
+  const heading = document.createElement('summary');
+  heading.textContent = '各選択肢の解説を見る';
+  details.append(heading);
+  const list = document.createElement('ol');
+  list.className = 'choice-reason-list';
+  for (let i = 0; i < q.choices.length; i++) {
+    const li = document.createElement('li');
+    const strong = document.createElement('strong'); strong.textContent = q.choices[i];
+    const para = document.createElement('p'); para.textContent = q.choiceExplanations[i];
+    li.append(strong, para); list.append(li);
+  }
+  details.append(list); container.append(details);
+}
 function submitAnswer() {
   if (answered || selected === null) return;
   answered = true;
@@ -273,7 +290,7 @@ function submitAnswer() {
   const head = document.createElement('strong'); head.className = isCorrect ? 'correct' : 'wrong'; head.textContent = isCorrect ? '正解です！' : '不正解です';
   const answer = document.createElement('p'); answer.textContent = `正解：${q.choices[q.answer]}`;
   const explanation = document.createElement('p'); explanation.textContent = q.explanation;
-  fb.append(head, answer, explanation); appendQuestionSource(fb, q);
+  fb.append(head, answer, explanation); appendChoiceExplanations(fb, q); appendQuestionSource(fb, q);
   [...$('choices').children].forEach(b => { b.disabled = true; });
   $('submit').classList.add('hidden'); $('next').classList.remove('hidden');
   $('progressbar').style.width = `${(index + 1) / session.length * 100}%`;
@@ -530,7 +547,7 @@ function renderExamReview() {
     const yours = document.createElement('p'); yours.textContent = `あなたの回答：${answer === null ? '未回答' : q.choices[answer]}`;
     const right = document.createElement('p'); right.textContent = `正解：${q.choices[q.answer]}`;
     const why = document.createElement('p'); why.className = 'muted'; why.textContent = `解説：${q.explanation}`;
-    body.append(question, yours, right, why); appendQuestionSource(body, q);
+    body.append(question, yours, right, why); appendChoiceExplanations(body, q); appendQuestionSource(body, q);
     item.append(heading, body); container.append(item);
   });
 }

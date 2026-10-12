@@ -1,4 +1,4 @@
-// FP学科 Ver.20：FP2級の複数段階計算・事例問題15問を改訂。
+// FP学科 Ver.21：選択肢別解説17問追加。その他の設問は引き続き要確認。
 const QUESTIONS = [
   {
     "id": "fp3-001",
@@ -534,9 +534,15 @@ const QUESTIONS = [
       "150万円"
     ],
     "answer": 1,
-    "explanation": "可処分所得＝900－45－35－130＝690万円。生活費480万円と住宅ローン元本返済90万円を差し引くので年間貯蓄可能額は120万円。210万円は元本返済を引き忘れた場合、150万円は税・社会保険料を30万円少なく誤算した場合、100万円は支出を20万円多く計上した場合に相当します。",
-    "revision": 4,
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "explanation": "可処分所得＝900－45－35－130＝690万円。生活費480万円と住宅ローン元本返済90万円を差し引くので年間貯蓄可能額は120万円。210万円は元本返済を引き忘れた場合、150万円は税・社会保険料を30万円少なく誤算した場合、100万円は支出を20万円多く計上した場合に相当します。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "revision": 5,
+    "contentReview": "calculation_and_distractor_review_v21",
+    "choiceExplanations": [
+      "100万円：その他の支出20万円を余分に計上した場合に相当します。",
+      "120万円：税・社会保険料210万円、生活費480万円、元本返済90万円をすべて控除します。",
+      "210万円：住宅ローン元本返済90万円を支出に含めなかった場合です。",
+      "150万円：税・社会保険料の控除額を30万円少なく見積もった場合です。"
+    ]
   },
   {
     "id": "fp2-008",
@@ -566,9 +572,15 @@ const QUESTIONS = [
       "3,600万円"
     ],
     "answer": 1,
-    "explanation": "資産合計＝1,000＋800＋500＋4,200＝6,500万円。負債合計＝3,100＋200＝3,300万円。純資産額＝6,500－3,300＝3,200万円。3,400万円はカードローンを差し引き忘れた場合です。",
-    "revision": 4,
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "explanation": "資産合計＝1,000＋800＋500＋4,200＝6,500万円。負債合計＝3,100＋200＝3,300万円。純資産額＝6,500－3,300＝3,200万円。3,400万円はカードローンを差し引き忘れた場合です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "revision": 5,
+    "contentReview": "calculation_and_distractor_review_v21",
+    "choiceExplanations": [
+      "3,000万円：正しい純資産3,200万円より200万円小さく、負債を重複控除したような結果です。",
+      "3,200万円：資産6,500万円から住宅ローン3,100万円とカードローン200万円を控除します。",
+      "3,400万円：カードローン200万円の控除漏れです。",
+      "3,600万円：負債の一部を控除せず、純資産を400万円過大計上しています。"
+    ]
   },
   {
     "id": "fp2-010",
@@ -614,9 +626,15 @@ const QUESTIONS = [
       "180万円"
     ],
     "answer": 1,
-    "explanation": "免責控除後は180－20＝160万円ですが、支払限度額150万円が適用されるため150万円です。160万円は限度額を無視、180万円は免責と限度額の双方を無視した金額です。",
-    "revision": 4,
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "explanation": "免責控除後は180－20＝160万円ですが、支払限度額150万円が適用されるため150万円です。160万円は限度額を無視、180万円は免責と限度額の双方を無視した金額です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "revision": 5,
+    "contentReview": "calculation_and_distractor_review_v21",
+    "choiceExplanations": [
+      "140万円：免責や限度額を誤って二重に差し引いたような結果です。",
+      "150万円：180－20＝160万円ですが、支払限度額150万円が優先されます。",
+      "160万円：免責金額だけを差し引き、支払限度額を適用していません。",
+      "180万円：免責金額も支払限度額も無視した額です。"
+    ]
   },
   {
     "id": "fp2-013",
@@ -663,7 +681,15 @@ const QUESTIONS = [
       "10倍"
     ],
     "answer": 0,
-    "explanation": "PER＝株価÷EPS＝2,400÷200＝12倍です。"
+    "explanation": "PER＝株価÷EPS＝2,400÷200＝12倍です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "choiceExplanations": [
+      "12倍：2,400円÷200円で求めます。",
+      "8倍：株価とEPSの比率の取り違えに注意。正しい計算は2,400÷200です。",
+      "20倍：株価を利益以外の指標で割らないよう注意します。",
+      "10倍：正しいEPS200円を使えば12倍であり、10倍にはなりません。"
+    ],
+    "revision": 2,
+    "contentReview": "calculation_and_distractor_review_v21"
   },
   {
     "id": "fp2-016",
@@ -678,9 +704,15 @@ const QUESTIONS = [
       "1.8倍"
     ],
     "answer": 2,
-    "explanation": "1株当たり純資産（BPS）＝75億円÷500万株＝1,500円。PBR＝2,400÷1,500＝1.6倍です。株価÷BPSの順序と億円・万株の単位に注意します。",
-    "revision": 4,
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "explanation": "1株当たり純資産（BPS）＝75億円÷500万株＝1,500円。PBR＝2,400÷1,500＝1.6倍です。株価÷BPSの順序と億円・万株の単位に注意します。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "revision": 5,
+    "contentReview": "calculation_and_distractor_review_v21",
+    "choiceExplanations": [
+      "1.4倍：BPSを大きく見積もるとPBRは低く計算されます。",
+      "1.5倍：自己資本75億円と発行済500万株の単位換算を確認してください。",
+      "1.6倍：BPS＝1,500円、PBR＝2,400÷1,500＝1.6倍です。",
+      "1.8倍：発行済株式数と自己資本の換算を誤ると過大になります。"
+    ]
   },
   {
     "id": "fp2-017",
@@ -695,9 +727,15 @@ const QUESTIONS = [
       "配当利回り37.5％・配当性向3.0％"
     ],
     "answer": 0,
-    "explanation": "配当利回り＝75÷2,500×100＝3.0％。配当性向＝75÷200×100＝37.5％。配当利回りの分母は株価、配当性向の分母はEPSです。",
-    "revision": 4,
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "explanation": "配当利回り＝75÷2,500×100＝3.0％。配当性向＝75÷200×100＝37.5％。配当利回りの分母は株価、配当性向の分母はEPSです。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "revision": 5,
+    "contentReview": "calculation_and_distractor_review_v21",
+    "choiceExplanations": [
+      "正解。配当利回りの分母は株価、配当性向の分母はEPSです。",
+      "配当性向30.0％が誤りです。75÷200×100＝37.5％です。",
+      "配当利回り4.0％が誤りです。75÷2,500×100＝3.0％です。",
+      "配当利回りと配当性向の数値を逆にした組合せです。"
+    ]
   },
   {
     "id": "fp2-018",
@@ -1385,10 +1423,16 @@ const QUESTIONS = [
       "3,600万円"
     ],
     "answer": 2,
-    "explanation": "資産総額＝1,500＋700＋4,800＋200＝7,200万円。負債総額＝3,600＋300＝3,900万円。純資産＝3,300万円。3,600万円は教育ローンを控除し忘れた場合です。",
+    "explanation": "資産総額＝1,500＋700＋4,800＋200＝7,200万円。負債総額＝3,600＋300＝3,900万円。純資産＝3,300万円。3,600万円は教育ローンを控除し忘れた場合です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
     "topic": "家計のバランスシート",
-    "revision": 4,
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "revision": 5,
+    "contentReview": "calculation_and_distractor_review_v21",
+    "choiceExplanations": [
+      "3,000万円：資産・負債のいずれかを300万円多く控除した結果です。",
+      "3,100万円：自動車200万円を資産に含め忘れた場合です。",
+      "3,300万円：資産7,200万円－負債3,900万円です。",
+      "3,600万円：教育ローン300万円を負債から除外した場合です。"
+    ]
   },
   {
     "id": "fp2-032",
@@ -1494,10 +1538,16 @@ const QUESTIONS = [
       "120万円"
     ],
     "answer": 1,
-    "explanation": "免責控除後の損害額＝120－10＝110万円ですが、支払限度額100万円を超えるため100万円です。110万円は支払限度額を考慮しない誤りです。",
+    "explanation": "免責控除後の損害額＝120－10＝110万円ですが、支払限度額100万円を超えるため100万円です。110万円は支払限度額を考慮しない誤りです。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
     "topic": "損害保険の計算",
-    "revision": 4,
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "revision": 5,
+    "contentReview": "calculation_and_distractor_review_v21",
+    "choiceExplanations": [
+      "90万円：免責金額10万円を限度額100万円から再び差し引くと誤ります。",
+      "100万円：120－10＝110万円ですが、限度額100万円を適用します。",
+      "110万円：免責額は差し引いていますが支払限度額を適用していません。",
+      "120万円：免責金額と支払限度額を適用していません。"
+    ]
   },
   {
     "id": "fp2-038",
@@ -1563,14 +1613,21 @@ const QUESTIONS = [
       "40％"
     ],
     "answer": 2,
-    "explanation": "配当性向＝1株当たり配当金÷1株当たり当期純利益×100＝70÷200×100＝35％です。",
+    "explanation": "配当性向＝1株当たり配当金÷1株当たり当期純利益×100＝70÷200×100＝35％です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
     "topic": "PER",
     "sourceUrl": "https://www.j-flec.go.jp/links/jikan/word/110.html",
     "sourceLabel": "J-FLEC：配当性向",
     "lawReferenceDate": null,
-    "revision": 3,
+    "revision": 4,
     "reviewStatus": "primary_source_checked",
-    "reviewedAt": "2026-10-12"
+    "reviewedAt": "2026-10-12",
+    "choiceExplanations": [
+      "25％：70÷200では35％となり、25％にはなりません。",
+      "30％：配当金70円とEPS200円の組合せを再確認してください。",
+      "35％：配当性向＝70÷200×100です。",
+      "40％：配当性向は配当利回りと異なり、EPSを分母とします。"
+    ],
+    "contentReview": "calculation_and_distractor_review_v21"
   },
   {
     "id": "fp2-042",
@@ -1585,14 +1642,21 @@ const QUESTIONS = [
       "8％"
     ],
     "answer": 3,
-    "explanation": "ROE＝当期純利益÷自己資本×100＝400÷5,000×100＝8％です。設問では期首・期末の平均自己資本を用います。",
+    "explanation": "ROE＝当期純利益÷自己資本×100＝400÷5,000×100＝8％です。設問では期首・期末の平均自己資本を用います。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
     "topic": "PBR",
     "sourceUrl": "",
     "sourceLabel": "計算式による照合",
     "lawReferenceDate": null,
-    "revision": 3,
+    "revision": 4,
     "reviewStatus": "formula_checked",
-    "reviewedAt": "2026-10-12"
+    "reviewedAt": "2026-10-12",
+    "choiceExplanations": [
+      "6％：分母に用いる自己資本は5,000万円です。",
+      "12％：利益を過大、自己資本を過小に評価しないよう注意します。",
+      "10％：400÷5,000×100＝8％であり、10％ではありません。",
+      "8％：当期純利益400万円÷平均自己資本5,000万円×100です。"
+    ],
+    "contentReview": "calculation_and_distractor_review_v21"
   },
   {
     "id": "fp2-043",
@@ -1607,15 +1671,21 @@ const QUESTIONS = [
       "3.8％"
     ],
     "answer": 1,
-    "explanation": "加重平均利回り＝(120×2.0％＋80×5.0％)÷200＝(2.4万円＋4万円)÷200万円＝3.2％。単純平均の3.5％ではなく投資金額で加重平均します。",
+    "explanation": "加重平均利回り＝(120×2.0％＋80×5.0％)÷200＝(2.4万円＋4万円)÷200万円＝3.2％。単純平均の3.5％ではなく投資金額で加重平均します。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
     "topic": "配当利回り",
     "sourceUrl": "",
     "sourceLabel": "計算式による照合",
     "lawReferenceDate": null,
-    "revision": 4,
+    "revision": 5,
     "reviewStatus": "formula_checked",
     "reviewedAt": "2026-10-12",
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "contentReview": "calculation_and_distractor_review_v21",
+    "choiceExplanations": [
+      "3.0％：投資額による加重平均を行うと3.2％です。",
+      "3.2％：120×2％＋80×5％＝6.4万円、6.4÷200×100です。",
+      "3.5％：2％と5％を単純平均した値。投資額が異なるため不適切です。",
+      "3.8％：投資額の配分と各資産の収益額を再計算してください。"
+    ]
   },
   {
     "id": "fp2-044",
@@ -1773,15 +1843,21 @@ const QUESTIONS = [
       "6.0％"
     ],
     "answer": 0,
-    "explanation": "実収入＝360－24＝336万円。運営費控除後＝336－66＝270万円。投下資金＝5,400＋300＝5,700万円。270÷5,700×100＝約4.7368％≒4.7％（小数第2位を四捨五入）。5.0％は分母を購入価格だけとした場合です。",
+    "explanation": "実収入＝360－24＝336万円。運営費控除後＝336－66＝270万円。投下資金＝5,400＋300＝5,700万円。270÷5,700×100＝約4.7368％≒4.7％（小数第2位を四捨五入）。5.0％は分母を購入価格だけとした場合です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
     "topic": "容積率",
     "sourceUrl": "",
     "sourceLabel": "計算式による照合",
     "lawReferenceDate": null,
-    "revision": 4,
+    "revision": 5,
     "reviewStatus": "formula_checked",
     "reviewedAt": "2026-10-12",
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "contentReview": "calculation_and_distractor_review_v21",
+    "choiceExplanations": [
+      "4.7％：年間純収益270万円÷投下資金5,700万円×100≒4.7％です。",
+      "5.0％：270÷5,400×100。取得時諸費用300万円を分母に含め忘れています。",
+      "5.4％：空室損失・費用または投下資金の一部を見落とした場合に起こりうる過大評価です。",
+      "6.0％：360÷6,000×100のように満室賃料をそのまま使ってしまうと誤ります。"
+    ]
   },
   {
     "id": "fp2-053",
@@ -1902,14 +1978,21 @@ const QUESTIONS = [
       "4,800万円"
     ],
     "answer": 3,
-    "explanation": "相続税の基礎控除額＝3,000万円＋600万円×法定相続人の数＝3,000＋600×3＝4,800万円です。",
+    "explanation": "相続税の基礎控除額＝3,000万円＋600万円×法定相続人の数＝3,000＋600×3＝4,800万円です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
     "topic": "遺留分",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
     "sourceLabel": "国税庁：相続税の基礎控除額",
     "lawReferenceDate": "2026-04-01",
-    "revision": 2,
+    "revision": 3,
     "reviewStatus": "primary_source_checked",
-    "reviewedAt": "2026-10-12"
+    "reviewedAt": "2026-10-12",
+    "choiceExplanations": [
+      "4,200万円：法定相続人を2人として算出した場合です。",
+      "3,600万円：法定相続人を1人として算出した場合です。",
+      "3,000万円：人数に応じる600万円の加算を忘れています。",
+      "4,800万円：3,000＋600×3＝4,800万円です。"
+    ],
+    "contentReview": "calculation_and_distractor_review_v21"
   },
   {
     "id": "fp2-060",
@@ -3055,13 +3138,20 @@ const QUESTIONS = [
       "60万円の黒字"
     ],
     "answer": 3,
-    "explanation": "640－420－120－40＝60万円の黒字です。",
+    "explanation": "640－420－120－40＝60万円の黒字です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
     "topic": "キャッシュフロー",
     "sourceUrl": "",
     "id": "fp2-061",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "choiceExplanations": [
+      "20万円の赤字：収入640万円に対し支出580万円なので赤字にはなりません。",
+      "80万円の黒字：支出の一部を20万円少なく計上した場合の結果です。",
+      "100万円の黒字：その他支出40万円の控除を忘れた場合です。",
+      "60万円の黒字：640－420－120－40＝60万円です。"
+    ],
+    "contentReview": "calculation_and_distractor_review_v21"
   },
   {
     "level": "2",
@@ -3075,14 +3165,20 @@ const QUESTIONS = [
       "2,700万円"
     ],
     "answer": 2,
-    "explanation": "資産合計＝600＋900＋3,600＝5,100万円。負債合計＝2,400＋200＝2,600万円。純資産＝2,500万円。2,700万円は教育ローンを控除し忘れた場合です。",
+    "explanation": "資産合計＝600＋900＋3,600＝5,100万円。負債合計＝2,400＋200＝2,600万円。純資産＝2,500万円。2,700万円は教育ローンを控除し忘れた場合です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
     "topic": "家計バランスシート",
     "sourceUrl": "",
     "id": "fp2-062",
-    "revision": 4,
+    "revision": 5,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "contentReview": "calculation_and_distractor_review_v21",
+    "choiceExplanations": [
+      "2,300万円：資産または負債を200万円多く控除した場合です。",
+      "2,400万円：正しい純資産額との差100万円を再確認してください。",
+      "2,500万円：資産5,100万円－負債2,600万円です。",
+      "2,700万円：教育ローン200万円の控除を忘れた場合です。"
+    ]
   },
   {
     "level": "2",
@@ -3136,13 +3232,20 @@ const QUESTIONS = [
       "10％"
     ],
     "answer": 0,
-    "explanation": "90÷450×100＝20％です。",
+    "explanation": "90÷450×100＝20％です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
     "topic": "貯蓄率",
     "sourceUrl": "",
     "id": "fp2-065",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "choiceExplanations": [
+      "20％：年間貯蓄90万円÷可処分所得450万円×100です。",
+      "15％：比率の分母は総収入ではなく設問の可処分所得です。",
+      "25％：90÷450は0.2であり0.25ではありません。",
+      "10％：貯蓄額90万円の割合を過小評価しています。"
+    ],
+    "contentReview": "calculation_and_distractor_review_v21"
   },
   {
     "level": "2",
@@ -3196,13 +3299,20 @@ const QUESTIONS = [
       "約2％"
     ],
     "answer": 0,
-    "explanation": "実質利回りの近似値＝名目利回り－インフレ率＝2％－3％＝－1％です。",
+    "explanation": "実質利回りの近似値＝名目利回り－インフレ率＝2％－3％＝－1％です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
     "topic": "実質利回り",
     "sourceUrl": "",
     "id": "fp2-068",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "choiceExplanations": [
+      "約－1％：名目2％－インフレ3％＝約－1％です。",
+      "約1％：差の大きさは1ポイントですが、実質利回りはマイナスです。",
+      "約5％：名目利回りとインフレ率を足してはいけません。",
+      "約2％：インフレ率を考慮しない名目利回りのままです。"
+    ],
+    "contentReview": "calculation_and_distractor_review_v21"
   },
   {
     "level": "2",
