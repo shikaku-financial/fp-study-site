@@ -18,6 +18,8 @@ let exam = null;
 let examTimer = null;
 let lastExamLevel = '3';
 let lastExamKind = 'mini';
+let lastReviewRows = [];
+let reviewFilter = 'issues';
 
 function readJSON(key, fallback) {
   try {
@@ -74,7 +76,7 @@ function fullExamAvailability(targetLevel) {
 }
 function updateHome() {
   const pool = validQuestions(level);
-  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.4）`;
+  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.5）`;
   const old = $('category').value;
   $('category').replaceChildren();
   for (const c of CATEGORIES) {
@@ -189,6 +191,7 @@ function createExam(kind) {
   const duration = kind === 'mini' ? MINI_EXAM_MINUTES : level === '3' ? 90 : 120;
   exam = { version: 2, kind, level, ids: questions.map(q => q.id), answers: questions.map(() => null), pos: 0, deadline: Date.now() + duration * 60000 };
   writeJSON(EXAM_DRAFT_KEY, exam);
+  $('examNavDetails').open = false;
   show('exam'); renderExam(); startTimer();
 }
 function getExamQuestions() {
@@ -203,6 +206,7 @@ function resumeExam() {
     alert('再開できる模試データがありません。'); return;
   }
   exam = draft;
+  $('examNavDetails').open = false;
   if (!Number.isInteger(exam.pos) || exam.pos < 0 || exam.pos >= exam.ids.length) exam.pos = 0;
   show('exam');
   if (exam.deadline <= Date.now()) { finishExam(true); return; }
@@ -213,7 +217,10 @@ function renderExam() {
   const questions = getExamQuestions(); const q = questions[exam.pos];
   $('examLabel').textContent = `FP${exam.level}級｜${exam.kind === 'full' ? '60問模試' : '6問ミニ模試'}`;
   $('examProgress').textContent = `${exam.pos + 1} / ${questions.length}問｜${q.category}`;
-  $('examAnswered').textContent = `回答済 ${exam.answers.filter(a => a !== null).length}問`;
+  const answeredCount = exam.answers.filter(a => a !== null).length;
+  $('examAnswered').textContent = `回答済 ${answeredCount}問`;
+  $('examNavStatus').textContent = `${answeredCount}/${questions.length}問 回答済`;
+  $('examJumpUnanswered').disabled = answeredCount === questions.length;
   $('examBar').style.width = `${exam.answers.filter(a => a !== null).length / questions.length * 100}%`;
   $('examQuestion').textContent = q.question;
   makeOptionButtons($('examChoices'), q, exam.answers[exam.pos], (answer) => {
@@ -235,7 +242,17 @@ function renderExam() {
   }
   updateTimer();
 }
-function moveExam(newPos) { if (!exam) return; exam.pos = newPos; saveExamDraft(); renderExam(); window.scrollTo(0, 0); }
+function moveExam(newPos) {
+  if (!exam || !Number.isInteger(newPos) || newPos < 0 || newPos >= exam.ids.length) return;
+  exam.pos = newPos; saveExamDraft(); renderExam(); window.scrollTo(0, 0);
+}
+function jumpToUnanswered() {
+  if (!exam) return;
+  const afterCurrent = exam.answers.findIndex((answer, i) => i > exam.pos && answer === null);
+  const first = exam.answers.findIndex(answer => answer === null);
+  const target = afterCurrent >= 0 ? afterCurrent : first;
+  if (target >= 0) moveExam(target);
+}
 function updateTimer() {
   if (!exam) return;
   const seconds = Math.max(0, Math.ceil((exam.deadline - Date.now()) / 1000));
@@ -286,19 +303,46 @@ function finishExam(timeOver = false) {
     const value = document.createElement('strong'); value.textContent = `${count}/${catQs.length}問 正解`;
     row.append(name, value); breakdown.append(row);
   }
+  // 模試結果はメモリ内に保持。個別レビューの表示切替で既存の回答履歴を変更しない。
+  lastReviewRows = qs.map((q, i) => ({ question: q, number: i + 1, selected: a[i], isCorrect: a[i] === q.answer }));
+  reviewFilter = 'issues';
+  renderExamReview();
+  show('examResult');
+}
+function setReviewFilter(filter) {
+  if (!['issues', 'all'].includes(filter)) return;
+  reviewFilter = filter;
+  renderExamReview();
+}
+function renderExamReview() {
+  const issues = lastReviewRows.filter(row => !row.isCorrect);
+  const rows = reviewFilter === 'issues' ? issues : lastReviewRows;
+  $('reviewIssues').textContent = `要復習（${issues.length}問）`;
+  $('reviewAll').textContent = `全問表示（${lastReviewRows.length}問）`;
+  for (const [id, mode] of [['reviewIssues', 'issues'], ['reviewAll', 'all']]) {
+    $(id).classList.toggle('active', reviewFilter === mode);
+    $(id).setAttribute('aria-pressed', String(reviewFilter === mode));
+  }
+  const empty = $('reviewEmpty');
+  empty.classList.toggle('hidden', rows.length !== 0);
+  if (!rows.length) empty.textContent = '間違い・未回答の問題はありません。全問正解です！「全問表示」で解説を確認できます。';
   const container = $('examReview'); container.replaceChildren();
-  qs.forEach((q, i) => {
-    const item = document.createElement('article'); item.className = 'review-item';
-    const h = document.createElement('h3'); h.textContent = `第${i + 1}問｜${q.category}`;
-    const question = document.createElement('p'); question.textContent = q.question;
-    const judge = document.createElement('p'); judge.className = a[i] === q.answer ? 'correct' : 'wrong';
-    judge.textContent = a[i] === q.answer ? '○ 正解' : a[i] === null ? '— 未回答' : '× 不正解';
-    const yours = document.createElement('p'); yours.textContent = `あなたの回答：${a[i] === null ? '未回答' : q.choices[a[i]]}`;
+  rows.forEach(({ question: q, number, selected: answer, isCorrect }) => {
+    const item = document.createElement('details'); item.className = 'review-item review-details';
+    const heading = document.createElement('summary');
+    const summaryText = document.createElement('span'); summaryText.textContent = `第${number}問｜${q.category}`;
+    const summaryStatus = document.createElement('strong');
+    summaryStatus.className = isCorrect ? 'correct' : 'wrong';
+    summaryStatus.textContent = isCorrect ? '正解' : answer === null ? '未回答' : '不正解';
+    heading.append(summaryText, summaryStatus);
+    const body = document.createElement('div'); body.className = 'review-details-body';
+    const question = document.createElement('p'); question.className = 'review-question'; question.textContent = q.question;
+    const yours = document.createElement('p'); yours.textContent = `あなたの回答：${answer === null ? '未回答' : q.choices[answer]}`;
     const right = document.createElement('p'); right.textContent = `正解：${q.choices[q.answer]}`;
     const why = document.createElement('p'); why.className = 'muted'; why.textContent = `解説：${q.explanation}`;
-    item.append(h, question, judge, yours, right, why); container.append(item);
+    body.append(question, yours, right, why);
+    item.append(heading, body); container.append(item);
   });
-  show('examResult');
 }
 function clearStats() {
   if (!confirm('この端末のすべての解答履歴、模試履歴、模試の途中経過を削除しますか？')) return;
@@ -327,8 +371,11 @@ function init() {
   $('examPrev').addEventListener('click', () => moveExam(exam.pos - 1));
   $('examNext').addEventListener('click', () => moveExam(exam.pos + 1));
   $('examLeave').addEventListener('click', goHome);
+  $('examJumpUnanswered').addEventListener('click', jumpToUnanswered);
   $('examFinish').addEventListener('click', () => finishExam(false));
   $('examResultHome').addEventListener('click', goHome);
+  $('reviewIssues').addEventListener('click', () => setReviewFilter('issues'));
+  $('reviewAll').addEventListener('click', () => setReviewFilter('all'));
   $('examRetry').addEventListener('click', () => { setLevel(lastExamLevel); show('home'); createExam(lastExamKind); });
   document.addEventListener('visibilitychange', () => { if (!document.hidden && exam) updateTimer(); });
   updateHome();

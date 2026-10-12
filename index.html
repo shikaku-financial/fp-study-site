@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#147e78">
   <meta name="description" content="FP2級・3級の学科試験対策。無料・登録不要の分野別演習、6問ミニ模試、60問模試、復習に対応。各級60問を無料収録。">
   <title>FP学科トレーニング｜無料FP2級・3級学科60問模試と分野別演習</title>
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
   <header class="site-header">
@@ -19,7 +19,7 @@
   <main class="container">
     <section id="home" aria-label="ホーム">
       <div class="card">
-        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.4｜各級60問</span></div>
+        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.5｜各級60問</span></div>
         <div class="controls level-controls" role="group" aria-label="級を選択">
           <button type="button" id="level3" class="active" aria-pressed="true">FP3級</button>
           <button type="button" id="level2" aria-pressed="false">FP2級</button>
@@ -61,7 +61,7 @@
       <div class="card">
         <h2>ご利用にあたって</h2>
         <p>本サイトはFP資格の学習を支援する非公式サイトです。日本FP協会等の公式サービスではありません。</p>
-        <p class="muted">現在は各級60問のオリジナル例題を収録しています。学科試験の出題形式・試験時間・合格基準は日本FP協会の公表情報を参考にしています。問題の正答・解説は専門家監修済みではなく、法令の改正や試験制度の変更に対応しきれていない可能性があります。重要事項は公式資料も確認してください。<a href="https://www.jafp.or.jp/exam/outline/" target="_blank" rel="noopener noreferrer">日本FP協会の試験要綱を確認する</a>。</p>
+        <p class="muted">現在は各級60問のオリジナル例題を収録しています。問題内容には出題テーマの重複や、学習用として単純化した説明が含まれるため、今後も継続的に見直します。学科試験の出題形式・試験時間・合格基準は日本FP協会の公表情報を参考にしています。問題の正答・解説は専門家監修済みではなく、法令の改正や試験制度の変更に対応しきれていない可能性があります。重要事項は公式資料も確認してください。<a href="https://www.jafp.or.jp/exam/outline/" target="_blank" rel="noopener noreferrer">日本FP協会の試験要綱を確認する</a>。</p>
       </div>
     </section>
 
@@ -88,8 +88,12 @@
         <h2 id="examQuestion" class="question-text"></h2>
         <div id="examChoices" role="group" aria-label="模擬試験の選択肢"></div>
         <div class="actions"><button type="button" id="examPrev">前の問題</button><button type="button" id="examNext" class="primary">次の問題</button></div>
-        <h3 class="nav-heading">問題一覧</h3>
-        <div class="question-nav" id="examNav" aria-label="問題番号を選択"></div>
+        <details id="examNavDetails" class="exam-nav-details">
+          <summary><span>問題一覧を開く</span><span class="nav-status" id="examNavStatus">回答済 0問 / 全60問</span></summary>
+          <p class="muted small">番号をタップすると、その問題へ移動できます。緑色は回答済み、枠が太い番号が現在の問題です。</p>
+          <div class="question-nav" id="examNav" aria-label="問題番号を選択"></div>
+        </details>
+        <button type="button" id="examJumpUnanswered" class="jump-unanswered">次の未回答へ移動</button>
         <div class="exam-bottom"><button type="button" id="examLeave" class="subtle">保存してホームへ</button><button type="button" id="examFinish" class="danger-outline">採点する</button></div>
       </div>
     </section>
@@ -101,14 +105,22 @@
     <section id="examResult" class="hidden" aria-label="模擬試験結果">
       <div class="card"><h2 id="examResultTitle">模擬試験・採点結果</h2><p class="score-summary" id="examSummary"></p><p class="muted" id="examNote"></p><div class="actions"><button type="button" class="primary" id="examResultHome">ホームへ戻る</button><button type="button" id="examRetry">もう一度挑戦</button></div></div>
       <div class="card"><h2>分野別の採点結果</h2><div id="examBreakdown" class="category-stats"></div></div>
-      <div class="card"><h2>問題別の答え合わせ</h2><div id="examReview"></div></div>
+      <div class="card"><h2>問題別の答え合わせ</h2>
+        <p class="muted small">間違い・未回答の設問を優先表示します。「全問表示」に切り替えることもできます。</p>
+        <div class="review-filters" role="group" aria-label="答え合わせの表示切り替え">
+          <button type="button" id="reviewIssues" class="active" aria-pressed="true">要復習</button>
+          <button type="button" id="reviewAll" aria-pressed="false">全問表示</button>
+        </div>
+        <p id="reviewEmpty" class="muted hidden"></p>
+        <div id="examReview"></div>
+      </div>
     </section>
 
     <p class="page-notice">掲載問題は学習用の例題です。試験制度・法令等の最新情報は公式資料をご確認ください。</p>
   </main>
 
   <footer>© FP学科トレーニング｜会員登録・個人情報の入力は不要です</footer>
-  <script src="questions.js?v=4"></script>
-  <script src="app.js?v=4"></script>
+  <script src="questions.js?v=5"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
