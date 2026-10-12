@@ -135,7 +135,7 @@
     const draft=read(DRAFT,null);
     if(draft && !confirm('保存している実技演習を終了し、新しく始めますか？前回の未採点の回答は消えます。'))return;
     const list=qsFor(id).map(q=>({...q,choices:q.choices.slice()}));
-    attempt={version:13,track:id,questions:list,answers:list.map(()=>null),pos:0,startedAt:Date.now()};
+    attempt={version:15,track:id,questions:list,answers:list.map(()=>null),pos:0,startedAt:Date.now()};
     save(DRAFT,attempt);
     navigate('practicalExam');renderQuestion();
   }

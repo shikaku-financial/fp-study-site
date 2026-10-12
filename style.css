@@ -149,3 +149,15 @@
 @media(max-width:470px){.official-organization{padding:12px}.official-links{display:grid}.official-links a{min-height:42px}.official-card{padding:17px}}
 
 .official-law-alert{background:#fff8e8;border:1px solid #eadab2;border-radius:10px;color:#705b34;font-size:12px;padding:10px 12px;line-height:1.65;margin:15px 0 0}
+
+/* Ver.15 親ブランドとFPラボの区別 */
+.brand-header{background:#fff;color:#092b43;padding:12px 0 13px;border-top:4px solid #147e78;border-bottom:2px solid #147e78}
+.brand-header-inner{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand-home-link{display:flex;align-items:center;min-width:0;max-width:72%;border-radius:8px}
+.brand-home-link:focus-visible{outline:3px solid #eeae44;outline-offset:3px}
+.parent-brand-logo{display:block;max-width:100%;height:auto;max-height:73px;object-fit:contain;object-position:left center}
+.brand-current{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#147e78;color:#fff;border-radius:10px;min-width:104px;padding:6px 10px;white-space:nowrap}
+.brand-eyebrow{font-size:10px;font-weight:600}
+.brand-current strong{font-size:22px;line-height:1.35}
+.brand-subtitle{font-size:11px!important;color:#586b7f;margin:2px auto 0!important;text-align:center}
+@media(max-width:470px){.brand-header{padding:10px 0}.brand-header-inner{gap:5px}.brand-home-link{max-width:69%}.parent-brand-logo{max-height:65px}.brand-current{min-width:87px;padding:5px 7px;border-radius:8px}.brand-current strong{font-size:19px}.brand-eyebrow{font-size:9px}.brand-subtitle{font-size:10px!important;line-height:1.45}}
