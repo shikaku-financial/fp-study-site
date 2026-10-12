@@ -44,3 +44,33 @@
 /* Ver.7: 公的根拠リンクと旧回答の改訂表示 */
 #revisionNotice{background:#fff7e8;border:1px solid #f0dcaf;padding:12px;border-radius:10px}
 .result a,.review-details-body a{color:#126b85;text-decoration:underline;overflow-wrap:anywhere}
+
+/* Ver.10 実技科目、事例、計算入力のスマホ最適化 */
+.home-tabs{display:flex;gap:10px;align-items:center;margin:12px 0 6px}
+.home-tabs .tab-on{font-weight:750;padding:13px 20px;background:#fff;border:2px solid #147e78;border-radius:11px;color:#147e78}
+.home-tabs button{flex:1;text-align:center;background:#e5f6f3;color:#126e68;border-color:#a1d4cd}
+.full-width{width:100%}
+.linkish{border:0;padding:8px 0;min-height:40px;color:#126e68;text-decoration:underline;background:transparent}
+.pr-track-list{display:grid;gap:12px;margin-top:20px}
+.pr-track{border:1px solid #d6e3e8;padding:16px;border-radius:14px}
+.pr-track h3{font-size:17px;margin:4px 0 5px}
+.pr-track p{margin:4px 0}
+.pr-track .primary{margin-top:12px;width:100%}
+.pr-track.disabled{background:#f8fafb}
+.pr-track.disabled button{width:100%;margin-top:12px}
+.pr-track .pr-org{color:#126e68;font-size:12px;font-weight:750}
+.pr-case{background:#f4f9f8;border:1px solid #cce3e0;padding:16px;border-radius:14px;margin-top:22px}
+.pr-case h3{color:#126e68}
+.pr-case p{white-space:pre-line;line-height:1.8;margin-bottom:0}
+.pr-num-wrap{display:flex;align-items:center;gap:12px}
+.pr-num-wrap input{flex:1;min-width:0;padding:15px;border:1px solid #bdcfd9;border-radius:10px;font:inherit;font-size:20px}
+.pr-num-wrap span{font-weight:700}
+.pr-resume{background:#f2f8f6;border:1px solid #9dcac2;border-radius:14px;padding:16px;margin:18px 0}
+.pr-result-status{font-size:13px;font-weight:750}
+@media(max-width:470px){.home-tabs{gap:6px}.home-tabs button{padding:9px 7px;font-size:13px}.home-tabs .tab-on{padding:10px 14px;font-size:13px}}
+
+.pr-history{margin-top:22px}
+.pr-history-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid #e3ebee}
+.pr-history-row span{font-size:13px;font-weight:600}
+.pr-history-row button{font-size:13px;min-height:40px;flex-shrink:0}
+@media(max-width:470px){.pr-history-row{flex-wrap:wrap}.pr-history-row button{width:100%}}
