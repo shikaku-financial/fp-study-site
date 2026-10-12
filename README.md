@@ -1,7 +1,7 @@
-# FPラボ Ver.22
+# FPラボ Ver.23
 
-問題の誤答選択肢を、問題文の数字に根拠があるものへ重点修正。
+学科FP2級41問の計算・解説を重点改善。学科360問・実技240問は維持。
 
-アップロードするファイル: `index.html`、`style.css`、`questions.js`、`app.js`、`practical-questions.js`、`practical.js`、`financial-license-lab-logo.png`。
+GitHub Pagesのmainブランチ直下に `index.html`、`style.css`、`questions.js`、`app.js`、`practical-questions.js`、`practical.js`、`financial-license-lab-logo.png` の7ファイルをアップロードしてください。
 
-GitHub Pagesの既存 `main` ブランチ直下へ7ファイルをアップロードし、Commitしてください。
+変更範囲と制限はQA_REPORT.mdを参照。

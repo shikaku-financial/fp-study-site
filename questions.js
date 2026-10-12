@@ -1,4 +1,4 @@
-// FP学科 Ver.22：誤答の根拠を問題文の与件に合わせて改訂。全問の法令監修は未完了。
+// FP学科 Ver.23：学科FP2級41問の計算過程・誤答解説を重点点検。全問の法令監修は未完了。
 const QUESTIONS = [
   {
     "id": "fp3-001",
@@ -528,21 +528,15 @@ const QUESTIONS = [
     "format": "four_choice",
     "question": "会社員Aさんの給与収入は900万円、所得税45万円、住民税35万円、社会保険料130万円である。年間の生活費は480万円、住宅ローンの元本返済額は90万円で、ほかの収支はない。Aさんの年間貯蓄可能額として最も適切なものはどれか。",
     "choices": [
-      "100万円",
+      "690万円",
       "120万円",
       "210万円",
-      "150万円"
+      "600万円"
     ],
     "answer": 1,
-    "explanation": "可処分所得＝900－45－35－130＝690万円。生活費480万円と住宅ローン元本返済90万円を差し引くので年間貯蓄可能額は120万円。210万円は元本返済を引き忘れた場合、150万円は税・社会保険料を30万円少なく誤算した場合、100万円は支出を20万円多く計上した場合に相当します。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
-    "revision": 5,
-    "contentReview": "calculation_and_distractor_review_v21",
-    "choiceExplanations": [
-      "100万円：その他の支出20万円を余分に計上した場合に相当します。",
-      "120万円：税・社会保険料210万円、生活費480万円、元本返済90万円をすべて控除します。",
-      "210万円：住宅ローン元本返済90万円を支出に含めなかった場合です。",
-      "150万円：税・社会保険料の控除額を30万円少なく見積もった場合です。"
-    ]
+    "explanation": "給与収入900万円から所得税45・住民税35・社会保険料130を引くと可処分所得690万円。さらに生活費480万円と住宅ローン元本返済90万円を控除して年間貯蓄可能額120万円です。690万円は生活費・元本返済を引く前、210万円は元本返済90万円を引き忘れた場合、600万円は生活費を引かず元本返済のみを可処分所得から引いた場合です。",
+    "revision": 6,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-008",
@@ -557,7 +551,9 @@ const QUESTIONS = [
       "103万円"
     ],
     "answer": 2,
-    "explanation": "100万円×1.03²＝106万900円です。単利の106万円とは異なります。"
+    "explanation": "年1回複利なので元利合計は100万円×1.03×1.03＝106万900円です。106万円は単利計算（100万円＋3万円×2年）、103万円は1年分の利息のみ、109万円は複利の3年間分に近い額で、本問の2年とは条件が異なります。",
+    "revision": 2,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-009",
@@ -681,15 +677,9 @@ const QUESTIONS = [
       "10倍"
     ],
     "answer": 0,
-    "explanation": "PER＝株価÷EPS＝2,400÷200＝12倍です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
-    "choiceExplanations": [
-      "12倍：2,400円÷200円で求めます。",
-      "8倍：株価とEPSの比率の取り違えに注意。正しい計算は2,400÷200です。",
-      "20倍：株価を利益以外の指標で割らないよう注意します。",
-      "10倍：正しいEPS200円を使えば12倍であり、10倍にはなりません。"
-    ],
-    "revision": 2,
-    "contentReview": "calculation_and_distractor_review_v21"
+    "explanation": "PER＝株価2,400円÷EPS200円＝12倍。8倍・10倍・20倍は、この設問で与えた株価とEPSをそのまま式に当てはめた結果ではありません。PERは市場株価が1株利益の何倍かを示す指標で、配当利回りやPBRと計算式が異なります。",
+    "revision": 3,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-016",
@@ -783,10 +773,10 @@ const QUESTIONS = [
       "720万円"
     ],
     "answer": 1,
-    "explanation": "課税所得金額＝720－260＝460万円。税額控除15万円は所得税額の計算後に控除されるため、課税所得金額から差し引きません。445万円は税額控除を誤って差し引いたものです。",
+    "explanation": "課税所得金額は総所得金額720万円－所得控除260万円＝460万円。445万円は税額控除15万円を課税所得から差し引いた場合。720万円は所得控除を行わない場合です。税額控除は原則として所得税額から差し引くため、所得を計算する段階では使いません。",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1100.htm",
-    "revision": 4,
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "revision": 5,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-021",
@@ -1423,16 +1413,10 @@ const QUESTIONS = [
       "3,600万円"
     ],
     "answer": 2,
-    "explanation": "資産総額＝1,500＋700＋4,800＋200＝7,200万円。負債総額＝3,600＋300＝3,900万円。純資産＝3,300万円。3,600万円は教育ローンを控除し忘れた場合です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "explanation": "預貯金1,500＋投資信託700＋自宅4,800＋自動車200＝資産7,200万円。住宅ローン3,600＋教育ローン300＝負債3,900万円。純資産は3,300万円。3,600万円は教育ローン300万円を控除しない場合、3,000万円は教育ローンを二重に控除した場合です。",
     "topic": "家計のバランスシート",
-    "revision": 5,
-    "contentReview": "calculation_and_distractor_review_v21",
-    "choiceExplanations": [
-      "3,000万円：資産・負債のいずれかを300万円多く控除した結果です。",
-      "3,100万円：自動車200万円を資産に含め忘れた場合です。",
-      "3,300万円：資産7,200万円－負債3,900万円です。",
-      "3,600万円：教育ローン300万円を負債から除外した場合です。"
-    ]
+    "revision": 6,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-032",
@@ -1480,15 +1464,15 @@ const QUESTIONS = [
       "218万円"
     ],
     "answer": 1,
-    "explanation": "2回返済後の元本残高は1,200－200×2＝800万円。3年目利息＝800×1.5％＝12万円。3回目の返済総額＝元本200＋利息12＝212万円。利息だけ、または借入当初の残高に利率を掛けないよう注意します。",
+    "explanation": "元金均等返済では各年の元本返済額は200万円。2回返済後の元金残高は1,200－200×2＝800万円。3年目の利息は800×1.5％＝12万円、元利合計212万円。毎年の利息計算に使う残高を借入当初の1,200万円としないことが重要です。",
     "topic": "複利計算",
     "sourceUrl": "",
     "sourceLabel": "計算式による照合",
     "lawReferenceDate": null,
-    "revision": 4,
+    "revision": 5,
     "reviewStatus": "formula_checked",
     "reviewedAt": "2026-10-12",
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-035",
@@ -1503,10 +1487,10 @@ const QUESTIONS = [
       "140万円の黒字"
     ],
     "answer": 0,
-    "explanation": "生活費＝43×12＝516万円。総支出＝516＋24＋40＝580万円。年間収支＝760－580＝180万円の黒字です。生活費を12か月分に換算してから年払費用を加えます。",
+    "explanation": "年間生活費43×12＝516万円。年払保険料24万円、旅行費40万円を加えると年間支出580万円。手取り収入760－支出580＝180万円の黒字です。生活費を年額換算してから年払いの費用を足します。",
     "topic": "可処分所得",
-    "revision": 4,
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "revision": 5,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-036",
@@ -1613,21 +1597,15 @@ const QUESTIONS = [
       "40％"
     ],
     "answer": 2,
-    "explanation": "配当性向＝1株当たり配当金÷1株当たり当期純利益×100＝70÷200×100＝35％です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "explanation": "配当性向は1株配当金70円÷1株当たり利益200円×100＝35％。配当利回りと混同しないことが重要です。配当利回りなら分母は株価ですが、この問題に株価は与えられていません。",
     "topic": "PER",
     "sourceUrl": "https://www.j-flec.go.jp/links/jikan/word/110.html",
     "sourceLabel": "J-FLEC：配当性向",
     "lawReferenceDate": null,
-    "revision": 4,
+    "revision": 5,
     "reviewStatus": "primary_source_checked",
     "reviewedAt": "2026-10-12",
-    "choiceExplanations": [
-      "25％：70÷200では35％となり、25％にはなりません。",
-      "30％：配当金70円とEPS200円の組合せを再確認してください。",
-      "35％：配当性向＝70÷200×100です。",
-      "40％：配当性向は配当利回りと異なり、EPSを分母とします。"
-    ],
-    "contentReview": "calculation_and_distractor_review_v21"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-042",
@@ -1642,21 +1620,15 @@ const QUESTIONS = [
       "8％"
     ],
     "answer": 3,
-    "explanation": "ROE＝当期純利益÷自己資本×100＝400÷5,000×100＝8％です。設問では期首・期末の平均自己資本を用います。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "explanation": "ROEは当期純利益400万円÷平均自己資本5,000万円×100＝8％です。本問では期首・期末の平均自己資本を使用することが明示されています。売上高利益率やROAとは分母が異なります。",
     "topic": "PBR",
     "sourceUrl": "",
     "sourceLabel": "計算式による照合",
     "lawReferenceDate": null,
-    "revision": 4,
+    "revision": 5,
     "reviewStatus": "formula_checked",
     "reviewedAt": "2026-10-12",
-    "choiceExplanations": [
-      "6％：分母に用いる自己資本は5,000万円です。",
-      "12％：利益を過大、自己資本を過小に評価しないよう注意します。",
-      "10％：400÷5,000×100＝8％であり、10％ではありません。",
-      "8％：当期純利益400万円÷平均自己資本5,000万円×100です。"
-    ],
-    "contentReview": "calculation_and_distractor_review_v21"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-043",
@@ -1671,21 +1643,15 @@ const QUESTIONS = [
       "3.8％"
     ],
     "answer": 1,
-    "explanation": "加重平均利回り＝(120×2.0％＋80×5.0％)÷200＝(2.4万円＋4万円)÷200万円＝3.2％。単純平均の3.5％ではなく投資金額で加重平均します。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "explanation": "Xの年間運用益＝120万円×2.0％＝2.4万円、Y＝80万円×5.0％＝4万円。合計6.4万円÷元本合計200万円＝3.2％。3.5％は2.0％と5.0％の単純平均で、投資金額120：80の違いを無視した場合です。",
     "topic": "配当利回り",
     "sourceUrl": "",
     "sourceLabel": "計算式による照合",
     "lawReferenceDate": null,
-    "revision": 5,
+    "revision": 6,
     "reviewStatus": "formula_checked",
     "reviewedAt": "2026-10-12",
-    "contentReview": "calculation_and_distractor_review_v21",
-    "choiceExplanations": [
-      "3.0％：投資額による加重平均を行うと3.2％です。",
-      "3.2％：120×2％＋80×5％＝6.4万円、6.4÷200×100です。",
-      "3.5％：2％と5％を単純平均した値。投資額が異なるため不適切です。",
-      "3.8％：投資額の配分と各資産の収益額を再計算してください。"
-    ]
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-044",
@@ -1700,9 +1666,10 @@ const QUESTIONS = [
       "2,000円減少"
     ],
     "answer": 3,
-    "explanation": "円換算額は15,000円から13,000円となり、2,000円減少します。",
+    "explanation": "100米ドルの円換算額は、1ドル150円時が15,000円、130円時が13,000円。差は13,000－15,000＝－2,000円なので2,000円減少です。為替レートの差20円に保有する100米ドルを掛けて計算できます。",
     "topic": "為替変動",
-    "revision": 2
+    "revision": 3,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-045",
@@ -1751,10 +1718,10 @@ const QUESTIONS = [
       "810万円"
     ],
     "answer": 1,
-    "explanation": "課税所得金額＝所得合計810－所得控除310＝500万円。税額控除20万円は算出税額から引くため、課税所得金額を480万円にはしません。",
+    "explanation": "課税所得金額＝所得合計810万円－所得控除310万円＝500万円。480万円は税額控除20万円をさらに差し引いた誤り。810万円は所得控除を反映していない額です。税額控除を適用するのは算出税額の計算後です。",
     "topic": "課税所得計算",
-    "revision": 4,
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "revision": 5,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-048",
@@ -1786,15 +1753,15 @@ const QUESTIONS = [
       "2,300万円"
     ],
     "answer": 1,
-    "explanation": "譲渡所得金額＝譲渡価額－取得費－譲渡費用＝5,800－3,650－150＝2,000万円です。2,150万円は譲渡費用を控除し忘れた場合の金額です。",
+    "explanation": "土地の譲渡所得金額＝譲渡価額5,800－取得費3,650－譲渡費用150＝2,000万円。2,150万円は譲渡費用を控除しない場合、1,850万円は譲渡費用150万円を二度控除した場合です。取得費と譲渡費用は異なる項目であり両方控除します。",
     "topic": "所得税の暦年課税",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/joto/3202.htm",
     "sourceLabel": "国税庁：分離課税の譲渡所得の計算",
     "lawReferenceDate": "2026-04-01",
-    "revision": 4,
+    "revision": 5,
     "reviewStatus": "primary_source_checked",
     "reviewedAt": "2026-10-12",
-    "contentReview": "v20_multistep_calculation_manual_review"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-050",
@@ -1978,21 +1945,15 @@ const QUESTIONS = [
       "4,800万円"
     ],
     "answer": 3,
-    "explanation": "相続税の基礎控除額＝3,000万円＋600万円×法定相続人の数＝3,000＋600×3＝4,800万円です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "explanation": "法定相続人は配偶者と子2人で3人。相続税の基礎控除は3,000万円＋600万円×3＝4,800万円です。4,200万円は相続人を2人と数えた場合、3,600万円は1人と数えた場合です。配偶者も法定相続人に含めます。",
     "topic": "遺留分",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
     "sourceLabel": "国税庁：相続税の基礎控除額",
     "lawReferenceDate": "2026-04-01",
-    "revision": 3,
+    "revision": 4,
     "reviewStatus": "primary_source_checked",
     "reviewedAt": "2026-10-12",
-    "choiceExplanations": [
-      "4,200万円：法定相続人を2人として算出した場合です。",
-      "3,600万円：法定相続人を1人として算出した場合です。",
-      "3,000万円：人数に応じる600万円の加算を忘れています。",
-      "4,800万円：3,000＋600×3＝4,800万円です。"
-    ],
-    "contentReview": "calculation_and_distractor_review_v21"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "id": "fp2-060",
@@ -3138,20 +3099,14 @@ const QUESTIONS = [
       "60万円の黒字"
     ],
     "answer": 3,
-    "explanation": "640－420－120－40＝60万円の黒字です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "explanation": "年間支出は生活費420万円＋住宅ローン120万円＋その他40万円＝580万円。年間手取り収入640万円－580万円＝60万円の黒字です。ローン返済を支出から落とすと180万円になるため、収支表の対象期間に属する支出を漏らさず集計します。",
     "topic": "キャッシュフロー",
     "sourceUrl": "",
     "id": "fp2-061",
-    "revision": 3,
+    "revision": 4,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "choiceExplanations": [
-      "20万円の赤字：収入640万円に対し支出580万円なので赤字にはなりません。",
-      "80万円の黒字：支出の一部を20万円少なく計上した場合の結果です。",
-      "100万円の黒字：その他支出40万円の控除を忘れた場合です。",
-      "60万円の黒字：640－420－120－40＝60万円です。"
-    ],
-    "contentReview": "calculation_and_distractor_review_v21"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -3165,20 +3120,14 @@ const QUESTIONS = [
       "2,700万円"
     ],
     "answer": 2,
-    "explanation": "資産合計＝600＋900＋3,600＝5,100万円。負債合計＝2,400＋200＝2,600万円。純資産＝2,500万円。2,700万円は教育ローンを控除し忘れた場合です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "explanation": "資産合計600＋900＋3,600＝5,100万円。負債合計2,400＋200＝2,600万円。純資産＝5,100－2,600＝2,500万円。2,700万円は教育ローン200万円を差し引かない場合、2,300万円は教育ローンを二重に控除した場合です。",
     "topic": "家計バランスシート",
     "sourceUrl": "",
     "id": "fp2-062",
-    "revision": 5,
+    "revision": 6,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "contentReview": "calculation_and_distractor_review_v21",
-    "choiceExplanations": [
-      "2,300万円：資産または負債を200万円多く控除した場合です。",
-      "2,400万円：正しい純資産額との差100万円を再確認してください。",
-      "2,500万円：資産5,100万円－負債2,600万円です。",
-      "2,700万円：教育ローン200万円の控除を忘れた場合です。"
-    ]
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -3192,13 +3141,14 @@ const QUESTIONS = [
       "106万900円"
     ],
     "answer": 3,
-    "explanation": "100万円×1.03²＝106.09万円＝106万900円です。",
+    "explanation": "年3％の2年複利なので100万円×1.03²＝106万900円。106万円は単利を2年間適用した場合、103万円は1年で運用を終えた場合です。109万円は複利3年間の値に近く、設問の運用期間とは異なります。",
     "topic": "複利",
     "sourceUrl": "",
     "id": "fp2-063",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -3232,20 +3182,14 @@ const QUESTIONS = [
       "10％"
     ],
     "answer": 0,
-    "explanation": "90÷450×100＝20％です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "explanation": "貯蓄率＝年間貯蓄額90万円÷可処分所得450万円×100＝20％。貯蓄額を総収入ではなく、問題文で指定された可処分所得で割ります。",
     "topic": "貯蓄率",
     "sourceUrl": "",
     "id": "fp2-065",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "choiceExplanations": [
-      "20％：年間貯蓄90万円÷可処分所得450万円×100です。",
-      "15％：比率の分母は総収入ではなく設問の可処分所得です。",
-      "25％：90÷450は0.2であり0.25ではありません。",
-      "10％：貯蓄額90万円の割合を過小評価しています。"
-    ],
-    "contentReview": "calculation_and_distractor_review_v21"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -3299,20 +3243,14 @@ const QUESTIONS = [
       "約2％"
     ],
     "answer": 0,
-    "explanation": "実質利回りの近似値＝名目利回り－インフレ率＝2％－3％＝－1％です。 選択肢ごとの違いは下の「各選択肢の解説」で確認できます。",
+    "explanation": "名目運用利回り2％－インフレ率3％＝実質利回りの近似値は－1％です。正確な実質利回りは1.02÷1.03－1≒－0.97％。プラス1％になるわけではありません。",
     "topic": "実質利回り",
     "sourceUrl": "",
     "id": "fp2-068",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
-    "choiceExplanations": [
-      "約－1％：名目2％－インフレ3％＝約－1％です。",
-      "約1％：差の大きさは1ポイントですが、実質利回りはマイナスです。",
-      "約5％：名目利回りとインフレ率を足してはいけません。",
-      "約2％：インフレ率を考慮しない名目利回りのままです。"
-    ],
-    "contentReview": "calculation_and_distractor_review_v21"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -3346,13 +3284,14 @@ const QUESTIONS = [
       "7,200万円"
     ],
     "answer": 0,
-    "explanation": "年間不足60万円×20年＝1,200万円です。",
+    "explanation": "毎年の不足額＝支出360－収入300＝60万円。20年の不足額は60×20＝1,200万円。60万円は1年間のみを見た値。利回りや物価上昇は問題文で考慮しない条件です。",
     "topic": "老後資金",
     "sourceUrl": "",
     "id": "fp2-070",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -3566,13 +3505,14 @@ const QUESTIONS = [
       "24倍"
     ],
     "answer": 1,
-    "explanation": "PER＝株価÷EPS＝2,400÷160＝15倍です。",
+    "explanation": "PER＝株価2,400円÷EPS160円＝15倍。株価に対する1株利益の倍率を表します。株価を配当金や純資産で割る別の指標と取り違えないようにします。",
     "topic": "PER",
     "sourceUrl": "",
     "id": "fp2-081",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -3586,13 +3526,14 @@ const QUESTIONS = [
       "9倍"
     ],
     "answer": 0,
-    "explanation": "PBR＝株価÷BPS＝1,800÷900＝2倍です。",
+    "explanation": "PBR＝株価1,800円÷BPS900円＝2倍。PBRは株価を1株当たり純資産で割った値であり、1株当たり利益を使うPERとは異なります。",
     "topic": "PBR",
     "sourceUrl": "",
     "id": "fp2-082",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -3606,13 +3547,14 @@ const QUESTIONS = [
       "30,000円"
     ],
     "answer": 2,
-    "explanation": "100万円×1.5％＝15,000円です。",
+    "explanation": "年利子額＝額面100万円×表面利率1.5％＝15,000円。1,500円は率を0.15％として計算した場合、150,000円は率を15％として計算した場合。表面利率をパーセントから小数へ直して計算します。",
     "topic": "債券利子",
     "sourceUrl": "",
     "id": "fp2-083",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -3626,13 +3568,14 @@ const QUESTIONS = [
       "3.4％"
     ],
     "answer": 3,
-    "explanation": "0.4×1％＋0.6×5％＝0.4％＋3.0％＝3.4％です。",
+    "explanation": "投資比率で加重平均します。40％×1％＋60％×5％＝0.4％＋3.0％＝3.4％。2つの利率の単純平均3％ではありません。比率の和が100％であることも確認します。",
     "topic": "加重平均利回り",
     "sourceUrl": "",
     "id": "fp2-084",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -3710,13 +3653,14 @@ const QUESTIONS = [
       "125,000円"
     ],
     "answer": 1,
-    "explanation": "（1,400－1,250）円×100株＝15,000円です。",
+    "explanation": "売却益＝（1,400円－1,250円）×100株＝150円×100＝15,000円。140,000円は売却代金全体、125,000円は取得代金全体です。両者の差だけが売買益になります。",
     "topic": "株式譲渡損益",
     "sourceUrl": "",
     "id": "fp2-088",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -4315,16 +4259,16 @@ const QUESTIONS = [
       "3,200万円"
     ],
     "answer": 3,
-    "explanation": "相続税の基礎控除は3,000＋600×3＝4,800万円、課税遺産総額は8,000－4,800＝3,200万円です。4,800万円は基礎控除額そのもの、8,000万円は基礎控除前、2,600万円は控除を600万円過大に計上した誤りです。",
+    "explanation": "相続税の基礎控除は3,000＋600×3＝4,800万円。課税遺産総額は課税価格の合計8,000－基礎控除4,800＝3,200万円。4,800万円は控除額そのもの、8,000万円は控除前の課税価格の合計です。",
     "topic": "課税遺産総額",
     "sourceUrl": "",
     "id": "fp2-117",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "reviewedAt": "2026-10-12",
     "sourceLabel": "国税庁：制度・税務の解説",
-    "contentReview": "calculation_and_distractor_check_v18"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -5834,16 +5778,16 @@ const QUESTIONS = [
       "20％"
     ],
     "answer": 0,
-    "explanation": "年間返済負担率＝144万円÷480万円×100＝30％です。",
+    "explanation": "年間返済負担率＝年間返済額144万円÷年間可処分所得480万円×100＝30％。住宅ローン残高2,400万円は返済負担率の分母には使いません。6％は144÷2,400×100の値で、残高に対する年間返済比率です。",
     "topic": "住宅ローン返済負担率",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-127",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -5880,16 +5824,16 @@ const QUESTIONS = [
       "1,600万円"
     ],
     "answer": 0,
-    "explanation": "前年末1,500万円×（1＋2％）＋当年収支100万円＝1,630万円です。",
+    "explanation": "前年末残高1,500万円に2％の運用益30万円を加え、年間収支の黒字100万円を加算します。1,500×1.02＋100＝1,630万円。1,530万円は年間収支を加算しない場合です。当年の黒字分にも年初からの2％を加える条件は与えられていません。",
     "topic": "キャッシュフロー資産残高",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-129",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6156,16 +6100,16 @@ const QUESTIONS = [
       "約1.00％"
     ],
     "answer": 2,
-    "explanation": "{2＋（100−104）÷4}÷104×100＝1÷104×100≒0.9615％です。",
+    "explanation": "最終利回りの近似式は｛年利子2円＋（償還額100円－購入額104円）÷4年｝÷購入額104円×100。分子は2－1＝1円なので約0.96％です。約1.92％は利子2円だけを104円で割り償還差損を無視した場合。年1.00％は分母に額面100円を使った場合です。",
     "topic": "債券最終利回り",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-141",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6202,16 +6146,16 @@ const QUESTIONS = [
       "1万円"
     ],
     "answer": 1,
-    "explanation": "利息1万円＋償還差益1万円＝2万円です。",
+    "explanation": "表面利率1％の年利子は100万円×1％＝1万円。99万円で買って額面100万円で償還されたので償還差益も1万円。合計2万円です。1万円は利子か償還差益の一方を見落とした場合です。",
     "topic": "債券利子と償還差益",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-143",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6225,16 +6169,16 @@ const QUESTIONS = [
       "1.5％"
     ],
     "answer": 2,
-    "explanation": "45円÷150円×100＝30％。配当性向は配当額÷EPSです。",
+    "explanation": "配当性向＝1株配当45円÷EPS150円×100＝30％。株価3,000円は配当性向の計算には不要です。株価を分母にすると配当利回り1.5％となるため、設問がどちらの指標を求めているか確認します。",
     "topic": "配当性向・計算",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-144",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6248,16 +6192,16 @@ const QUESTIONS = [
       "5％"
     ],
     "answer": 3,
-    "explanation": "4％×0.75＋8％×0.25＝3％＋2％＝5％です。",
+    "explanation": "組入比率で加重平均します。A：4％×75％＝3％、B：8％×25％＝2％、合計5％です。6％は4％と8％の単純平均であり、組入比率75：25を無視した場合です。",
     "topic": "ポートフォリオ期待収益率",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-145",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6342,16 +6286,16 @@ const QUESTIONS = [
       "10％増加"
     ],
     "answer": 1,
-    "explanation": "円換算額は135÷150−1＝−10％です。",
+    "explanation": "外貨建て資産のドル価値は変わらないため、円換算額の変化率は135÷150－1＝－10％です。1ドル150円から135円への変化は円高・ドル安で、円換算額は減少します。",
     "topic": "為替変動・円換算",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-149",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6388,10 +6332,10 @@ const QUESTIONS = [
       "1,960万円"
     ],
     "answer": 0,
-    "explanation": "800万円＋70万円×（28−20）＝1,360万円です。",
+    "explanation": "退職所得控除は勤続20年以下の部分が40万円×20年＝800万円、20年超の8年間が70万円×8＝560万円。合計1,360万円です。単に28年×40万円＝1,120万円としないようにします。",
     "topic": "退職所得控除計算",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
@@ -6399,7 +6343,7 @@ const QUESTIONS = [
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1420.htm",
     "sourceLabel": "公式資料（論点確認用）",
     "id": "fp2-151",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6649,16 +6593,16 @@ const QUESTIONS = [
       "225万円"
     ],
     "answer": 1,
-    "explanation": "売主は受領した手付金の倍額300万円を現実に提供して解除できます。",
+    "explanation": "売主が受領した手付150万円について、双方が履行に着手する前に売主が手付解除する場合は、原則として手付の倍額300万円を現実に提供します。手付の150万円だけを返還すれば解除できるわけではありません。",
     "topic": "解約手付の倍返し",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-162",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6718,16 +6662,16 @@ const QUESTIONS = [
       "10％"
     ],
     "answer": 2,
-    "explanation": "年間純収益は200万円−50万円＝150万円。実質利回りは150÷2,500×100＝6％です。取得時費用を除く簡易計算です。",
+    "explanation": "年間家賃収入200万円－維持管理費・税金50万円＝純収益150万円。購入価格2,500万円を分母として150÷2,500×100＝6％。8％は維持管理費を差し引かず、200÷2,500で計算した場合の表面利回りです。",
     "topic": "賃貸不動産の実質利回り",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-165",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6787,16 +6731,16 @@ const QUESTIONS = [
       "210㎡"
     ],
     "answer": 3,
-    "explanation": "350㎡×0.6＝210㎡です。",
+    "explanation": "建築面積の上限は敷地面積350㎡×建ぺい率60％＝210㎡。延べ面積を使う容積率とは計算対象が異なります。角地緩和などは考慮しないという前提です。",
     "topic": "建ぺい率・建築面積",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-168",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6827,22 +6771,22 @@ const QUESTIONS = [
     "format": "four_choice",
     "question": "土地売却額7,000万円、取得費4,000万円、譲渡費用300万円の場合の譲渡所得はいくらか（特別控除等は考慮しない）。",
     "choices": [
-      "2,300万円",
+      "2,400万円",
       "3,000万円",
       "2,700万円",
       "3,300万円"
     ],
     "answer": 2,
-    "explanation": "7,000−4,000−300＝2,700万円です。",
+    "explanation": "譲渡所得＝売却代金7,000万円－取得費4,000万円－譲渡費用300万円＝2,700万円。3,000万円は譲渡費用を引き忘れた場合、2,400万円は譲渡費用300万円を二重に控除した場合、3,300万円は譲渡費用300万円を誤って加算した場合です。",
     "topic": "不動産譲渡所得の計算",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-170",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6856,16 +6800,16 @@ const QUESTIONS = [
       "1/16"
     ],
     "answer": 0,
-    "explanation": "配偶者3/4、兄弟姉妹全体1/4を2人で均等に分けるため、兄は1/8です。",
+    "explanation": "相続人が配偶者と兄・姉である場合、配偶者の法定相続分は3/4、兄弟姉妹全体が1/4。兄と姉の2人で均等に分けるので兄は1/8です。1/4は兄弟姉妹全体の割合を兄1人に割り当てた場合です。",
     "topic": "兄弟姉妹の法定相続分",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-171",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6879,16 +6823,16 @@ const QUESTIONS = [
       "6,000万円"
     ],
     "answer": 2,
-    "explanation": "貸宅地価額＝12,000万円×（1−60％）＝4,800万円です。",
+    "explanation": "貸宅地の相続税評価額＝自用地価額12,000万円×（1－借地権割合60％）＝4,800万円。7,200万円は借地権部分12,000×60％に当たる金額で、貸宅地の所有者側の評価額ではありません。",
     "topic": "貸宅地評価額",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-172",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
@@ -6925,10 +6869,10 @@ const QUESTIONS = [
       "4,200万円"
     ],
     "answer": 3,
-    "explanation": "基礎控除は3,000＋600×3＝4,800万円、課税遺産総額は9,000−4,800＝4,200万円です。",
+    "explanation": "法定相続人3人なので基礎控除は3,000＋600×3＝4,800万円。課税価格の合計9,000万円－基礎控除4,800万円＝課税遺産総額4,200万円。9,000万円は控除前、4,800万円は基礎控除額そのものです。",
     "topic": "相続税課税遺産総額",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
@@ -6936,7 +6880,7 @@ const QUESTIONS = [
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
     "sourceLabel": "公式資料（論点確認用）",
     "id": "fp2-174",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v23_arithmetic_explanation_audit"
   },
   {
     "level": "2",
