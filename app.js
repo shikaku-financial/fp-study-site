@@ -27,10 +27,16 @@ function archiveOldRevisionResults() {
 }
 
 function appendQuestionSource(parent, q) {
+  if (q.themeReferenceUrl) {
+    const p = document.createElement('p'); p.className = 'muted small';
+    const a = document.createElement('a'); a.href = q.themeReferenceUrl; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    a.textContent = `出題テーマ参考：${q.themeReferenceLabel || '金財公表問題'}（設問は独自作成）`;
+    p.append(a); parent.append(p);
+  }
   if (!q.sourceUrl) return;
   const p = document.createElement('p'); p.className = 'muted small';
   const a = document.createElement('a'); a.href = q.sourceUrl; a.target = '_blank'; a.rel = 'noopener noreferrer';
-  a.textContent = `根拠資料：${q.sourceLabel || '確認資料'}`; p.append(a); parent.append(p);
+  a.textContent = `制度確認用の公的資料：${q.sourceLabel || '確認資料'}`; p.append(a); parent.append(p);
 }
 const $ = (id) => document.getElementById(id);
 
@@ -104,7 +110,7 @@ function fullExamAvailability(targetLevel) {
 }
 function updateHome() {
   const pool = validQuestions(level);
-  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.8）`;
+  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.9）`;
   const old = $('category').value;
   $('category').replaceChildren();
   for (const c of CATEGORIES) {
