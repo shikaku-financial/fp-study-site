@@ -1,4 +1,4 @@
-// FP学科トレーニング Ver.7。120問中12問を再設計。修正分のみ根拠資料・改訂情報を保持。
+// FP学科トレーニング Ver.8 — 各級120問、既存120問・ID・問題改訂履歴を維持
 const QUESTIONS = [
   {
     "id": "fp3-001",
@@ -1849,10 +1849,2343 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "配偶者と直系尊属が相続人の場合、配偶者は3分の2、父母など直系尊属全体では3分の1です。",
     "topic": "法定相続分"
+  },
+  {
+    "level": "3",
+    "category": "ライフプランニングと資金計画",
+    "format": "true_false",
+    "question": "ライフイベント表は、結婚や進学、住宅購入などの予定と、その時期に必要となる資金を整理する表である。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "ライフイベント表は将来の主な出来事と必要資金を時系列で整理します。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-061",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "ライフプランニングと資金計画",
+    "format": "true_false",
+    "question": "家計のバランスシートでは、ある時点の資産と負債を整理して純資産を把握できる。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "純資産は資産から負債を差し引いて求めます。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-062",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "ライフプランニングと資金計画",
+    "format": "true_false",
+    "question": "住宅ローンの変動金利型は、借入期間中の適用金利が一切変わらない方式である。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "変動金利型は原則として市場金利などに応じて金利が見直されます。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-063",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "ライフプランニングと資金計画",
+    "format": "true_false",
+    "question": "複利運用では、前の期間に生じた利息も次の期間の運用元本に組み入れられる。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "複利は元本と既に付いた利息に対して次の利息を計算します。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-064",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "ライフプランニングと資金計画",
+    "format": "true_false",
+    "question": "教育資金を計画するときは、入学時だけを考えればよく、在学中の授業料や生活費は考慮しない。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "入学時の支出だけでなく在学中の継続費用も見込む必要があります。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-065",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "リスク管理",
+    "format": "true_false",
+    "question": "個人賠償責任保険は、日常生活で他人に損害を与え法律上の賠償責任を負う場合に備えるものである。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "個人賠償責任保険は日常生活の偶然な事故による法律上の賠償責任を主な対象とします。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-066",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "リスク管理",
+    "format": "true_false",
+    "question": "住宅用の火災保険に加入していれば、地震による火災の損害も常に火災保険だけで補償される。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "地震等を原因とする火災損害は一般の火災保険では原則対象外で、地震保険等の検討が必要です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-067",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "リスク管理",
+    "format": "true_false",
+    "question": "保険契約の免責金額とは、事故時の損害のうち保険契約者などが自己負担する金額をいう。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "免責金額を定めた契約では、補償対象の損害から一定額を差し引いて保険金を計算します。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-068",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "リスク管理",
+    "format": "true_false",
+    "question": "医療保険は、加入時期や商品が違っても入院給付金の支払条件が必ず同じである。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "支払限度日数や免責期間などの条件は契約ごとに異なります。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-069",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "リスク管理",
+    "format": "true_false",
+    "question": "損害保険では、保険金額が大きいほど、実際の損害額を超える保険金を必ず受け取れる。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "実損てん補型の保険は原則として損害を限度に補償し、超過利益を得るものではありません。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-070",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "金融資産運用",
+    "format": "true_false",
+    "question": "債券の市場価格と市場金利は、その他の条件が同じなら一般に逆方向に動く。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "市場金利が上がると既発債券価格は一般に下落します。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-071",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "金融資産運用",
+    "format": "true_false",
+    "question": "株式を保有する人は、企業の業績にかかわらず毎年同額の配当を必ず受け取る。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "配当の有無や金額は企業の業績・配当方針等で変わります。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-072",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "金融資産運用",
+    "format": "true_false",
+    "question": "外貨建て資産を円に換算する際、円高になると、外貨での価格が同じでも円換算価値は下がる。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "同じ1ドルでも円高なら交換できる円の額が小さくなるためです。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-073",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "金融資産運用",
+    "format": "true_false",
+    "question": "異なる資産への分散投資は、あらゆる投資損失を完全になくす方法である。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "分散は特定資産への集中リスクの軽減に役立ちますが、損失をゼロにはできません。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-074",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "金融資産運用",
+    "format": "true_false",
+    "question": "投資信託の基準価額は市場環境などにより変動し、元本は保証されない。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "投資信託は保有資産の価格変化等を反映して基準価額が変動する商品です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-075",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "タックスプランニング",
+    "format": "true_false",
+    "question": "所得税の医療費控除は、原則として実際に負担した対象医療費から保険金などの補てん額等を差し引いて計算する。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "医療費控除は対象となる医療費から補てん額、さらに所定の基準額を差し引いて算定します。",
+    "topic": "",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm",
+    "id": "fp3-076",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null,
+    "reviewedAt": "2026-10-12",
+    "sourceLabel": "国税庁：制度・税務の解説"
+  },
+  {
+    "level": "3",
+    "category": "タックスプランニング",
+    "format": "true_false",
+    "question": "所得控除は、課税所得を計算するときに所得金額から差し引く仕組みである。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "所得控除後の課税所得に税率を適用するのが基本構造です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-077",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "タックスプランニング",
+    "format": "true_false",
+    "question": "所得税は国税であり、個人住民税は地方税である。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "所得税は国が課す税、住民税は地方公共団体が課す税です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-078",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "タックスプランニング",
+    "format": "true_false",
+    "question": "生命保険料を支払った人は、支払額を必ず全額そのまま所得税の税額から控除できる。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "生命保険料控除は一定の計算による所得控除であり、全額が直接税額から差し引かれるわけではありません。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-079",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "タックスプランニング",
+    "format": "true_false",
+    "question": "源泉徴収とは、給与などの支払者が支払時に一定の税額を差し引いて納付する仕組みである。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "給与等にかかる所得税・復興特別所得税などの源泉徴収が代表例です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-080",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "不動産",
+    "format": "true_false",
+    "question": "敷地面積に対する建築面積の割合を建ぺい率という。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "建ぺい率＝建築面積÷敷地面積×100です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-081",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "不動産",
+    "format": "true_false",
+    "question": "容積率の計算では、原則として延べ面積と敷地面積の割合を用いる。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "容積率＝算定対象となる延べ面積÷敷地面積×100です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-082",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "不動産",
+    "format": "true_false",
+    "question": "不動産の登記簿には、所有権に関する事項などが記録される。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "不動産登記記録の権利部には所有権などの権利関係が記載されます。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-083",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "不動産",
+    "format": "true_false",
+    "question": "建ぺい率が60％の敷地なら、土地の用途地域などにかかわらず必ず敷地の100％まで建築できる。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "建ぺい率には用途地域等による制限があり、60％なら原則上限60％です。緩和条件も個別に確認します。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-084",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "不動産",
+    "format": "true_false",
+    "question": "賃貸不動産の表面利回りは、一般に年間賃料収入を物件価格で割って求める。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "表面利回り＝年間賃料収入÷物件価格×100。諸費用などは差し引かない簡易指標です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-085",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "相続・事業承継",
+    "format": "true_false",
+    "question": "遺言書の内容は、法律の定める遺留分に一切影響しないため、遺留分を考える必要はない。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "遺言による財産配分でも遺留分侵害額請求が問題となる場合があります。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-086",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "相続・事業承継",
+    "format": "true_false",
+    "question": "相続財産には、預貯金などのプラスの財産だけでなく借入金などの債務が含まれることがある。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "相続では積極財産に加え、原則として被相続人の債務も承継の対象になります。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-087",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "相続・事業承継",
+    "format": "true_false",
+    "question": "相続人が2人以上いる場合、遺産分割協議には原則として共同相続人全員の合意が必要である。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "遺産分割協議は原則として共同相続人全員で行う必要があります。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-088",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "相続・事業承継",
+    "format": "true_false",
+    "question": "贈与は財産を無償で与える意思を一方的に表示するだけで、受け取る人の承諾がなくても必ず成立する。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 1,
+    "explanation": "贈与は、与える意思表示と受け取る側の受諾によって効力が生じる契約です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-089",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "相続・事業承継",
+    "format": "true_false",
+    "question": "相続が開始する原因の一つは、人が死亡することである。",
+    "choices": [
+      "〇 正しい",
+      "× 誤り"
+    ],
+    "answer": 0,
+    "explanation": "相続は死亡によって開始します。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-090",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "ライフプランニングと資金計画",
+    "format": "three_choice",
+    "question": "現在の資産額と負債額から純資産を求める式として適切なものはどれか。",
+    "choices": [
+      "資産額－負債額",
+      "資産額＋負債額",
+      "負債額÷資産額"
+    ],
+    "answer": 0,
+    "explanation": "純資産＝資産－負債です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-091",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "ライフプランニングと資金計画",
+    "format": "three_choice",
+    "question": "毎年一定額を積み立て、将来の元利合計を求めたいときに使う係数はどれか。",
+    "choices": [
+      "年金現価係数",
+      "年金終価係数",
+      "資本回収係数"
+    ],
+    "answer": 1,
+    "explanation": "年金終価係数は毎年の一定積立額から将来の積立総額を求めます。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-092",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "ライフプランニングと資金計画",
+    "format": "three_choice",
+    "question": "手取り年収420万円、年間生活費300万円、その他支出60万円の場合、年間収支はいくらか。",
+    "choices": [
+      "60万円の黒字",
+      "60万円の赤字",
+      "120万円の黒字"
+    ],
+    "answer": 0,
+    "explanation": "420－300－60＝60万円の黒字です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-093",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "ライフプランニングと資金計画",
+    "format": "three_choice",
+    "question": "毎年同額の元利返済を行う住宅ローンの返済方式はどれか。",
+    "choices": [
+      "元金均等返済",
+      "元利均等返済",
+      "満期一括返済"
+    ],
+    "answer": 1,
+    "explanation": "元利均等返済は毎回の元利合計返済額が原則一定です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-094",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "ライフプランニングと資金計画",
+    "format": "three_choice",
+    "question": "FPのライフプランニングで、人生の出来事とその必要資金を時系列で整理する表はどれか。",
+    "choices": [
+      "ライフイベント表",
+      "貸借対照表",
+      "損益計算書"
+    ],
+    "answer": 0,
+    "explanation": "ライフイベント表に教育・住宅などの予定と資金見込額を記します。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-095",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "リスク管理",
+    "format": "three_choice",
+    "question": "日常生活で自転車事故を起こし、歩行者にけがをさせて賠償責任を負った場合に対応し得る保険はどれか。",
+    "choices": [
+      "個人賠償責任保険",
+      "養老保険",
+      "個人年金保険"
+    ],
+    "answer": 0,
+    "explanation": "個人賠償責任保険は、日常生活の法律上の賠償責任を対象とする場合があります。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-096",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "リスク管理",
+    "format": "three_choice",
+    "question": "被保険者が亡くなると、残された家族に一定期間年金形式で保険金を支払う設計がある保険はどれか。",
+    "choices": [
+      "収入保障保険",
+      "地震保険",
+      "自動車車両保険"
+    ],
+    "answer": 0,
+    "explanation": "収入保障保険には死亡後、所定期間に年金形式で給付する商品があります。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-097",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "リスク管理",
+    "format": "three_choice",
+    "question": "火災保険とセットで契約するのが原則で、地震等を原因とする住宅・家財の損害に備える制度はどれか。",
+    "choices": [
+      "自賠責保険",
+      "地震保険",
+      "旅行傷害保険"
+    ],
+    "answer": 1,
+    "explanation": "地震保険は原則、火災保険に付帯して契約します。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-098",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "リスク管理",
+    "format": "three_choice",
+    "question": "保険で、事故が起きても一定額までは自分で負担する仕組みの名称はどれか。",
+    "choices": [
+      "免責金額",
+      "解約返戻金",
+      "予定利率"
+    ],
+    "answer": 0,
+    "explanation": "免責金額は損害額のうち契約者が負担する金額です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-099",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "リスク管理",
+    "format": "three_choice",
+    "question": "自動車の対人事故で、法律により原則として契約が義務付けられる保険はどれか。",
+    "choices": [
+      "自動車損害賠償責任保険",
+      "個人年金保険",
+      "火災保険"
+    ],
+    "answer": 0,
+    "explanation": "自賠責保険は自動車（原付等を含む）の運行に関する強制保険です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-100",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "金融資産運用",
+    "format": "three_choice",
+    "question": "株価が1,200円、1株当たり純資産が600円のときPBRは何倍か。",
+    "choices": [
+      "0.5倍",
+      "2倍",
+      "6倍"
+    ],
+    "answer": 1,
+    "explanation": "PBR＝株価÷1株当たり純資産＝1,200÷600＝2倍です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-101",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "金融資産運用",
+    "format": "three_choice",
+    "question": "額面100万円の債券を95万円で購入し、満期に100万円が返済された場合、償還差益はいくらか（手数料・税金なし）。",
+    "choices": [
+      "5万円",
+      "95万円",
+      "195万円"
+    ],
+    "answer": 0,
+    "explanation": "額面100万円－購入価格95万円＝5万円です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-102",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "金融資産運用",
+    "format": "three_choice",
+    "question": "元本100万円を年2％で1年間運用した場合の期末額はどれか（税金・手数料なし）。",
+    "choices": [
+      "100万円",
+      "102万円",
+      "120万円"
+    ],
+    "answer": 1,
+    "explanation": "100万円×1.02＝102万円です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-103",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "金融資産運用",
+    "format": "three_choice",
+    "question": "一般に株価指数の値動きへの連動を目指して運用する投資信託はどれか。",
+    "choices": [
+      "インデックスファンド",
+      "満期保有目的債券",
+      "定期預金"
+    ],
+    "answer": 0,
+    "explanation": "インデックスファンドは特定の指数への連動を目標とする投資信託です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-104",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "金融資産運用",
+    "format": "three_choice",
+    "question": "外貨建て資産100米ドルを1ドル150円で円換算した金額はどれか（手数料なし）。",
+    "choices": [
+      "1,500円",
+      "15,000円",
+      "150,000円"
+    ],
+    "answer": 1,
+    "explanation": "100ドル×150円／ドル＝15,000円です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-105",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "タックスプランニング",
+    "format": "three_choice",
+    "question": "所得税について正しい組み合わせはどれか。",
+    "choices": [
+      "所得税＝国税・住民税＝地方税",
+      "所得税＝地方税・住民税＝国税",
+      "どちらも地方税"
+    ],
+    "answer": 0,
+    "explanation": "所得税は国税、住民税は地方税です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-106",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "タックスプランニング",
+    "format": "three_choice",
+    "question": "税率をかける前の所得から一定額を差し引く制度の名称はどれか。",
+    "choices": [
+      "所得控除",
+      "税額控除",
+      "源泉徴収"
+    ],
+    "answer": 0,
+    "explanation": "所得控除は所得金額から差し引くもので、税額控除とは位置づけが異なります。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-107",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "タックスプランニング",
+    "format": "three_choice",
+    "question": "給与や賞与の収入から計算する所得区分はどれか。",
+    "choices": [
+      "不動産所得",
+      "給与所得",
+      "山林所得"
+    ],
+    "answer": 1,
+    "explanation": "勤務先から支払われる給与・賞与は原則として給与所得です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-108",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "タックスプランニング",
+    "format": "three_choice",
+    "question": "医療費の支払総額が28万円、対象の補てん額が8万円、差引基準額が10万円の場合の医療費控除額はどれか。",
+    "choices": [
+      "10万円",
+      "20万円",
+      "28万円"
+    ],
+    "answer": 0,
+    "explanation": "28－8－10＝10万円です。設例では差引基準額を10万円と指定しています。",
+    "topic": "",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm",
+    "id": "fp3-109",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null,
+    "reviewedAt": "2026-10-12",
+    "sourceLabel": "国税庁：制度・税務の解説"
+  },
+  {
+    "level": "3",
+    "category": "タックスプランニング",
+    "format": "three_choice",
+    "question": "消費税の性格として、最も適切なものはどれか。",
+    "choices": [
+      "間接税",
+      "直接税のみ",
+      "地方税のみ"
+    ],
+    "answer": 0,
+    "explanation": "消費税は消費に着目した間接税です。国税の消費税と地方消費税があります。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-110",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "不動産",
+    "format": "three_choice",
+    "question": "土地面積300㎡、建築面積120㎡の建ぺい率はどれか。",
+    "choices": [
+      "30％",
+      "40％",
+      "60％"
+    ],
+    "answer": 1,
+    "explanation": "120÷300×100＝40％です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-111",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "不動産",
+    "format": "three_choice",
+    "question": "土地面積200㎡、容積率200％の場合、単純計算による延べ面積の上限はどれか（ほかの規制は考慮しない）。",
+    "choices": [
+      "100㎡",
+      "200㎡",
+      "400㎡"
+    ],
+    "answer": 2,
+    "explanation": "200㎡×200％＝400㎡です。前面道路幅員等の制限はこの設問では考慮しません。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-112",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "不動産",
+    "format": "three_choice",
+    "question": "4,000万円の賃貸物件から年間家賃収入200万円が得られる場合、表面利回りはいくらか。",
+    "choices": [
+      "2％",
+      "5％",
+      "20％"
+    ],
+    "answer": 1,
+    "explanation": "200÷4,000×100＝5％です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-113",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "不動産",
+    "format": "three_choice",
+    "question": "不動産の価格を求める鑑定評価手法のうち、将来収益に着目するものはどれか。",
+    "choices": [
+      "原価法",
+      "収益還元法",
+      "取引事例比較法"
+    ],
+    "answer": 1,
+    "explanation": "収益還元法は不動産が生み出す純収益などから価格を求めます。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-114",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "不動産",
+    "format": "three_choice",
+    "question": "固定資産税は一般にどのような税か。",
+    "choices": [
+      "国に納める所得税",
+      "市町村等が課す地方税",
+      "証券取引に必ず課される税"
+    ],
+    "answer": 1,
+    "explanation": "固定資産税は原則として市町村（東京都23区は都）が課す地方税です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-115",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "相続・事業承継",
+    "format": "three_choice",
+    "question": "相続開始の原因として適切なものはどれか。",
+    "choices": [
+      "被相続人の死亡",
+      "相続人の就職",
+      "相続人の引越し"
+    ],
+    "answer": 0,
+    "explanation": "相続は死亡によって開始します。",
+    "topic": "",
+    "sourceUrl": "https://www.courts.go.jp/saiban/syurui/syurui_kazi/kazi_06_13/index.html",
+    "id": "fp3-116",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "相続・事業承継",
+    "format": "three_choice",
+    "question": "遺産に預金800万円と借入金300万円があるとき、差引後の正味額はどれか（ほかの財産等はない）。",
+    "choices": [
+      "500万円",
+      "800万円",
+      "1,100万円"
+    ],
+    "answer": 0,
+    "explanation": "800－300＝500万円です。相続税の課税価格の計算とは異なる単純な正味財産の設例です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-117",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "相続・事業承継",
+    "format": "three_choice",
+    "question": "法定相続人が配偶者と子1人の場合、法定相続分の配偶者の割合はどれか。",
+    "choices": [
+      "4分の1",
+      "2分の1",
+      "3分の2"
+    ],
+    "answer": 1,
+    "explanation": "配偶者と子が共同相続する場合、配偶者の法定相続分は2分の1です。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-118",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "相続・事業承継",
+    "format": "three_choice",
+    "question": "自筆証書遺言について、一般に適切な説明はどれか。",
+    "choices": [
+      "全文を必ずパソコンで作る",
+      "遺言者が原則として本文を自書する",
+      "遺言者以外が必ず署名する"
+    ],
+    "answer": 1,
+    "explanation": "自筆証書遺言の本文は原則として遺言者本人が自書します。財産目録には例外があります。",
+    "topic": "",
+    "sourceUrl": "",
+    "id": "fp3-119",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "3",
+    "category": "相続・事業承継",
+    "format": "three_choice",
+    "question": "相続税の計算で、3,000万円＋600万円×法定相続人の数で求めるものはどれか。",
+    "choices": [
+      "基礎控除額",
+      "配偶者の法定相続分",
+      "不動産取得税額"
+    ],
+    "answer": 0,
+    "explanation": "相続税の基礎控除額は3,000万円＋600万円×法定相続人の数です。",
+    "topic": "",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
+    "id": "fp3-120",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null,
+    "reviewedAt": "2026-10-12",
+    "sourceLabel": "国税庁：制度・税務の解説"
+  },
+  {
+    "level": "2",
+    "category": "ライフプランニングと資金計画",
+    "format": "four_choice",
+    "question": "年間手取り収入が640万円、生活費が420万円、住宅ローン返済額が120万円、その他支出が40万円である。年間収支として最も適切なものはどれか。",
+    "choices": [
+      "60万円の黒字",
+      "60万円の赤字",
+      "100万円の黒字",
+      "180万円の黒字"
+    ],
+    "answer": 0,
+    "explanation": "640－420－120－40＝60万円の黒字です。",
+    "topic": "キャッシュフロー",
+    "sourceUrl": "",
+    "id": "fp2-061",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "ライフプランニングと資金計画",
+    "format": "four_choice",
+    "question": "現在の金融資産が1,200万円、住宅評価額が3,000万円、住宅ローン残高が2,500万円、その他負債が200万円の場合、純資産額はいくらか。",
+    "choices": [
+      "500万円",
+      "1,500万円",
+      "2,000万円",
+      "3,700万円"
+    ],
+    "answer": 1,
+    "explanation": "資産4,200万円－負債2,700万円＝1,500万円です。",
+    "topic": "家計バランスシート",
+    "sourceUrl": "",
+    "id": "fp2-062",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "ライフプランニングと資金計画",
+    "format": "four_choice",
+    "question": "100万円を年3％の複利で2年間運用した期末の元利合計はいくらか（税金・手数料なし）。",
+    "choices": [
+      "103万円",
+      "106万円",
+      "106万900円",
+      "109万円"
+    ],
+    "answer": 2,
+    "explanation": "100万円×1.03²＝106.09万円＝106万900円です。",
+    "topic": "複利",
+    "sourceUrl": "",
+    "id": "fp2-063",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "ライフプランニングと資金計画",
+    "format": "four_choice",
+    "question": "元金均等返済方式の住宅ローンに関する記述として最も適切なものはどれか。",
+    "choices": [
+      "毎回の元金返済額は原則一定で、利息分は残高に応じて減る",
+      "毎回の元利返済総額が必ず一定",
+      "初期の元金返済額はゼロ",
+      "借入残高にかかわらず利息が毎回同額"
+    ],
+    "answer": 0,
+    "explanation": "元金均等返済は元金の返済額が一定で、残高減少に伴い利息と総返済額は一般に減ります。",
+    "topic": "住宅ローン",
+    "sourceUrl": "",
+    "id": "fp2-064",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "ライフプランニングと資金計画",
+    "format": "four_choice",
+    "question": "年間の可処分所得が450万円、年間の貯蓄額が90万円の場合、貯蓄率として最も適切なものはどれか。",
+    "choices": [
+      "10％",
+      "15％",
+      "20％",
+      "25％"
+    ],
+    "answer": 2,
+    "explanation": "90÷450×100＝20％です。",
+    "topic": "貯蓄率",
+    "sourceUrl": "",
+    "id": "fp2-065",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "ライフプランニングと資金計画",
+    "format": "four_choice",
+    "question": "将来毎年一定額の年金を受け取る場合に、その年金の現在価値を求める係数として最も適切なものはどれか。",
+    "choices": [
+      "年金終価係数",
+      "年金現価係数",
+      "減債基金係数",
+      "資本回収係数"
+    ],
+    "answer": 1,
+    "explanation": "年金現価係数は将来の一定期間にわたる年金収入の現在価値を求める係数です。",
+    "topic": "6つの係数",
+    "sourceUrl": "",
+    "id": "fp2-066",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "ライフプランニングと資金計画",
+    "format": "four_choice",
+    "question": "保険の必要保障額を検討する際の基本的な考え方として最も適切なものはどれか。",
+    "choices": [
+      "遺族の必要資金から遺族の収入・資産等を差し引く",
+      "遺族の必要資金と預金残高を常に合算する",
+      "死亡保険金額を常に年収の100倍にする",
+      "家族構成は必要保障額と無関係である"
+    ],
+    "answer": 0,
+    "explanation": "一般に必要保障額は遺族の支出見込額などから公的給付・遺族の収入・資産等を差し引いて見積もります。",
+    "topic": "必要保障額",
+    "sourceUrl": "",
+    "id": "fp2-067",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "ライフプランニングと資金計画",
+    "format": "four_choice",
+    "question": "資産運用でインフレ率が3％、名目運用利回りが2％の場合、実質利回りの近似値として最も適切なものはどれか。",
+    "choices": [
+      "約－1％",
+      "約1％",
+      "約2％",
+      "約5％"
+    ],
+    "answer": 0,
+    "explanation": "実質利回りの近似値＝名目利回り－インフレ率＝2％－3％＝－1％です。",
+    "topic": "実質利回り",
+    "sourceUrl": "",
+    "id": "fp2-068",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "ライフプランニングと資金計画",
+    "format": "four_choice",
+    "question": "住宅購入後のライフプランを作る際、年間の資金計画として計上することが一般に適切なものはどれか。",
+    "choices": [
+      "住宅ローン返済だけでなく固定資産税や修繕費も見込む",
+      "購入時の諸費用だけを考える",
+      "購入後の維持費用は必ずゼロとする",
+      "住宅ローン完済後は住宅関連費用が必ずゼロ"
+    ],
+    "answer": 0,
+    "explanation": "住宅費用にはローン返済のほか税金や維持修繕費などがあります。",
+    "topic": "住宅資金計画",
+    "sourceUrl": "",
+    "id": "fp2-069",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "ライフプランニングと資金計画",
+    "format": "four_choice",
+    "question": "老後資金の不足額を試算する。老後の年間支出額が360万円、年金等の年間収入額が300万円、対象期間が20年とし、運用益や物価変動を考慮しない場合の不足額はいくらか。",
+    "choices": [
+      "60万円",
+      "600万円",
+      "1,200万円",
+      "7,200万円"
+    ],
+    "answer": 2,
+    "explanation": "年間不足60万円×20年＝1,200万円です。",
+    "topic": "老後資金",
+    "sourceUrl": "",
+    "id": "fp2-070",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "リスク管理",
+    "format": "four_choice",
+    "question": "火災保険の保険価額が2,000万円、保険金額が1,000万円の場合に生じる可能性のある一般的な契約状態はどれか。",
+    "choices": [
+      "超過保険",
+      "一部保険",
+      "重複保険の確定",
+      "再保険"
+    ],
+    "answer": 1,
+    "explanation": "保険金額が保険価額より少ない状態を一部保険といいます。支払額は契約条件によります。",
+    "topic": "一部保険",
+    "sourceUrl": "",
+    "id": "fp2-071",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "リスク管理",
+    "format": "four_choice",
+    "question": "自動車保険の等級別料率制度に関する記述として、一般に最も適切なものはどれか。",
+    "choices": [
+      "事故の有無等によって次契約の等級や保険料率が変わる",
+      "どの等級でも保険料は常に同じ",
+      "無事故でも等級が必ず下がる",
+      "事故を起こすとどの契約でも等級は必ず20等級になる"
+    ],
+    "answer": 0,
+    "explanation": "ノンフリート等級別料率制度では、事故有無や事故区分等に応じた等級・事故有係数適用期間が保険料に影響します。",
+    "topic": "自動車保険",
+    "sourceUrl": "",
+    "id": "fp2-072",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "リスク管理",
+    "format": "four_choice",
+    "question": "保険契約で免責金額5万円、対象損害額30万円の場合、他の制限がない単純な差引方式での支払保険金はいくらか。",
+    "choices": [
+      "5万円",
+      "25万円",
+      "30万円",
+      "35万円"
+    ],
+    "answer": 1,
+    "explanation": "30万円－5万円＝25万円です。",
+    "topic": "免責金額",
+    "sourceUrl": "",
+    "id": "fp2-073",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "リスク管理",
+    "format": "four_choice",
+    "question": "賠償責任保険について最も適切な記述はどれか。",
+    "choices": [
+      "法律上の損害賠償責任を負うことによる損失を対象とすることがある",
+      "自己所有の建物の修理費だけを補償する",
+      "死亡保険金の支払を唯一の目的とする",
+      "偶然な事故は一切補償しない"
+    ],
+    "answer": 0,
+    "explanation": "賠償責任保険は、被保険者が法律上の損害賠償責任を負うことによる損失等を対象とする保険です。",
+    "topic": "賠償責任保険",
+    "sourceUrl": "",
+    "id": "fp2-074",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "リスク管理",
+    "format": "four_choice",
+    "question": "地震保険の契約に関する記述として、最も適切なものはどれか。",
+    "choices": [
+      "単独契約が原則である",
+      "原則として火災保険に付帯して契約する",
+      "事業用工場設備だけを対象にする",
+      "地震による損害は火災保険で必ず全額補償される"
+    ],
+    "answer": 1,
+    "explanation": "一般向け地震保険は、原則として住居用建物・生活用家財に対し火災保険に付帯して契約します。",
+    "topic": "地震保険",
+    "sourceUrl": "",
+    "id": "fp2-075",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "リスク管理",
+    "format": "four_choice",
+    "question": "生命保険の契約者・被保険者・保険金受取人の違いについて最も適切な説明はどれか。",
+    "choices": [
+      "被保険者は保障の対象となる人",
+      "契約者は必ず保険金を受け取る人",
+      "受取人は必ず被保険者と同一",
+      "3者は常に同一人物"
+    ],
+    "answer": 0,
+    "explanation": "被保険者は保険事故の対象となる人です。契約者・被保険者・受取人は異なる場合があります。",
+    "topic": "生命保険契約",
+    "sourceUrl": "",
+    "id": "fp2-076",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "リスク管理",
+    "format": "four_choice",
+    "question": "解約返戻金について最も適切な記述はどれか。",
+    "choices": [
+      "どの保険でも払込保険料と必ず同額が戻る",
+      "解約時点や契約によって金額が変わり、返戻金がない商品もある",
+      "解約後も死亡保障は必ず継続する",
+      "毎年、保険金額と同額を受け取れる"
+    ],
+    "answer": 1,
+    "explanation": "解約返戻金の有無と水準は保険種類・契約条件・経過年数等によります。",
+    "topic": "解約返戻金",
+    "sourceUrl": "",
+    "id": "fp2-077",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "リスク管理",
+    "format": "four_choice",
+    "question": "損害保険のモラルリスクに関する説明として最も適切なものはどれか。",
+    "choices": [
+      "保険金を不正に得ようとする行為等によるリスク",
+      "地震の規模の予測誤差",
+      "市場金利の変動",
+      "保険料を分割払いする仕組み"
+    ],
+    "answer": 0,
+    "explanation": "モラルリスクは保険制度を悪用した故意事故や不正請求などの危険を指します。",
+    "topic": "保険募集とリスク",
+    "sourceUrl": "",
+    "id": "fp2-078",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "リスク管理",
+    "format": "four_choice",
+    "question": "自賠責保険の対象について最も適切な記述はどれか。",
+    "choices": [
+      "対人賠償を主な対象とする",
+      "他人の車両修理費を主な対象とする",
+      "自車の車両修理費だけを補償する",
+      "運転者の車両購入費を補償する"
+    ],
+    "answer": 0,
+    "explanation": "自賠責保険は自動車事故の被害者救済のための対人賠償を対象とします。",
+    "topic": "自賠責保険",
+    "sourceUrl": "",
+    "id": "fp2-079",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "リスク管理",
+    "format": "four_choice",
+    "question": "保険料の払込方法として、一般に「年払」と「月払」の違いについて正しいものはどれか。",
+    "choices": [
+      "支払回数が異なり、年間の総保険料が異なる場合がある",
+      "年払なら保障内容が必ず2倍になる",
+      "月払なら保険事故が補償されない",
+      "払込方法により被保険者の定義が変わる"
+    ],
+    "answer": 0,
+    "explanation": "払込頻度によって保険料率や年間負担が変わる商品があります。",
+    "topic": "保険料払込",
+    "sourceUrl": "",
+    "id": "fp2-080",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "株価2,400円、1株当たり利益（EPS）が160円の場合、PERは何倍か。",
+    "choices": [
+      "6倍",
+      "10倍",
+      "15倍",
+      "24倍"
+    ],
+    "answer": 2,
+    "explanation": "PER＝株価÷EPS＝2,400÷160＝15倍です。",
+    "topic": "PER",
+    "sourceUrl": "",
+    "id": "fp2-081",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "株価1,800円、1株当たり純資産（BPS）が900円の場合、PBRは何倍か。",
+    "choices": [
+      "0.5倍",
+      "1倍",
+      "2倍",
+      "9倍"
+    ],
+    "answer": 2,
+    "explanation": "PBR＝株価÷BPS＝1,800÷900＝2倍です。",
+    "topic": "PBR",
+    "sourceUrl": "",
+    "id": "fp2-082",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "額面100万円、表面利率年1.5％の債券の年間利子額はいくらか（税引前）。",
+    "choices": [
+      "1,500円",
+      "15,000円",
+      "30,000円",
+      "150,000円"
+    ],
+    "answer": 1,
+    "explanation": "100万円×1.5％＝15,000円です。",
+    "topic": "債券利子",
+    "sourceUrl": "",
+    "id": "fp2-083",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "ポートフォリオAに40％を年1％、Bに60％を年5％で投資した場合、加重平均利回りはいくらか。",
+    "choices": [
+      "2.2％",
+      "3.4％",
+      "4.0％",
+      "6.0％"
+    ],
+    "answer": 1,
+    "explanation": "0.4×1％＋0.6×5％＝0.4％＋3.0％＝3.4％です。",
+    "topic": "加重平均利回り",
+    "sourceUrl": "",
+    "id": "fp2-084",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "標準偏差を投資リスクの指標として用いる場合、他の条件が同じなら最も適切な説明はどれか。",
+    "choices": [
+      "標準偏差が大きいほどリターンの変動幅は一般に大きい",
+      "標準偏差が大きいほど元本が保証される",
+      "標準偏差は金利とは無関係である",
+      "標準偏差は必ずマイナスになる"
+    ],
+    "answer": 0,
+    "explanation": "標準偏差は収益率の散らばりの大きさを表す指標です。",
+    "topic": "リスクと標準偏差",
+    "sourceUrl": "",
+    "id": "fp2-085",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "2024年以降のNISAのつみたて投資枠の年間投資上限について最も適切なものはどれか（2026年10月時点の一般向け制度）。",
+    "choices": [
+      "60万円",
+      "120万円",
+      "240万円",
+      "360万円"
+    ],
+    "answer": 1,
+    "explanation": "つみたて投資枠の年間上限は120万円です。成長投資枠は240万円で、併用可能です。",
+    "topic": "NISA",
+    "sourceUrl": "https://www.fsa.go.jp/policy/nisa2/know/",
+    "id": "fp2-086",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null,
+    "reviewedAt": "2026-10-12",
+    "sourceLabel": "金融庁：NISA特設サイト"
+  },
+  {
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "2024年以降のNISAの非課税保有限度額（全体の総枠）は、2026年10月時点の一般向け制度ではいくらか。",
+    "choices": [
+      "600万円",
+      "1,200万円",
+      "1,800万円",
+      "3,600万円"
+    ],
+    "answer": 2,
+    "explanation": "総枠は簿価ベースで1,800万円、成長投資枠だけで利用できるのはその内数1,200万円です。",
+    "topic": "NISA",
+    "sourceUrl": "https://www.fsa.go.jp/policy/nisa2/know/",
+    "id": "fp2-087",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null,
+    "reviewedAt": "2026-10-12",
+    "sourceLabel": "金融庁：NISA特設サイト"
+  },
+  {
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "株式を100株、1株1,250円で購入し、1株1,400円で全株売却した。売買手数料・税金を考えない売却益はいくらか。",
+    "choices": [
+      "1,500円",
+      "15,000円",
+      "125,000円",
+      "140,000円"
+    ],
+    "answer": 1,
+    "explanation": "（1,400－1,250）円×100株＝15,000円です。",
+    "topic": "株式譲渡損益",
+    "sourceUrl": "",
+    "id": "fp2-088",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "為替が1ドル140円から1ドル150円になった場合、為替の変化として最も適切なものはどれか。",
+    "choices": [
+      "円高・ドル安",
+      "円安・ドル高",
+      "円とドルがともに上昇",
+      "為替変動なし"
+    ],
+    "answer": 1,
+    "explanation": "1ドルを買うために必要な円が増えているため、円安・ドル高です。",
+    "topic": "為替",
+    "sourceUrl": "",
+    "id": "fp2-089",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "金融資産運用",
+    "format": "four_choice",
+    "question": "信託報酬について最も適切な記述はどれか。",
+    "choices": [
+      "投資信託の運用・管理にかかる継続的な費用である",
+      "満期時に必ず全額返還される元本である",
+      "株式売却益に対する税金だけを指す",
+      "常にゼロである"
+    ],
+    "answer": 0,
+    "explanation": "信託報酬は信託財産から継続的に負担する運用管理費用です。",
+    "topic": "投資信託の費用",
+    "sourceUrl": "",
+    "id": "fp2-090",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "タックスプランニング",
+    "format": "four_choice",
+    "question": "収入金額500万円、必要経費180万円の場合の事業所得金額はいくらか（ほかの調整なし）。",
+    "choices": [
+      "180万円",
+      "320万円",
+      "500万円",
+      "680万円"
+    ],
+    "answer": 1,
+    "explanation": "500－180＝320万円です。",
+    "topic": "事業所得",
+    "sourceUrl": "",
+    "id": "fp2-091",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "タックスプランニング",
+    "format": "four_choice",
+    "question": "給与収入750万円、給与所得控除額190万円と仮定した場合、給与所得金額はいくらか。",
+    "choices": [
+      "190万円",
+      "560万円",
+      "750万円",
+      "940万円"
+    ],
+    "answer": 1,
+    "explanation": "給与収入750万円－給与所得控除190万円＝560万円です。控除額は設問の仮定です。",
+    "topic": "給与所得",
+    "sourceUrl": "",
+    "id": "fp2-092",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "タックスプランニング",
+    "format": "four_choice",
+    "question": "医療費控除を計算する際、対象医療費25万円、目的となった医療費を補てんした保険金5万円、差引基準額10万円の場合、控除額はいくらか。",
+    "choices": [
+      "5万円",
+      "10万円",
+      "15万円",
+      "20万円"
+    ],
+    "answer": 1,
+    "explanation": "25－5－10＝10万円です。補てん額は目的となった医療費の範囲で差し引きます。",
+    "topic": "医療費控除",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm",
+    "id": "fp2-093",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null,
+    "reviewedAt": "2026-10-12",
+    "sourceLabel": "国税庁：制度・税務の解説"
+  },
+  {
+    "level": "2",
+    "category": "タックスプランニング",
+    "format": "four_choice",
+    "question": "所得控除40万円によって課税所得が40万円減少し、その部分の限界税率が所得税20％と仮定した場合、所得税の軽減額はいくらか（他の影響を考慮しない）。",
+    "choices": [
+      "4万円",
+      "8万円",
+      "20万円",
+      "40万円"
+    ],
+    "answer": 1,
+    "explanation": "40万円×20％＝8万円です。所得控除額がそのまま税額から差し引かれるわけではありません。",
+    "topic": "所得控除と税率",
+    "sourceUrl": "",
+    "id": "fp2-094",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "タックスプランニング",
+    "format": "four_choice",
+    "question": "配当所得の説明として最も適切なものはどれか。",
+    "choices": [
+      "法人から受け取る剰余金の配当などが該当する",
+      "給与収入はすべて配当所得になる",
+      "土地の賃貸料だけを意味する",
+      "株式売却益は必ず配当所得に分類される"
+    ],
+    "answer": 0,
+    "explanation": "会社からの利益配当などは配当所得に該当します。株式売却益は通常、譲渡所得等の扱いです。",
+    "topic": "所得区分",
+    "sourceUrl": "",
+    "id": "fp2-095",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "タックスプランニング",
+    "format": "four_choice",
+    "question": "所得税の仕組みにおける「税額控除」の説明として最も適切なものはどれか。",
+    "choices": [
+      "計算した所得税額から直接一定額を差し引く",
+      "売上高から売上原価を引く",
+      "資産から負債を引く",
+      "給与収入の全額を非課税にする"
+    ],
+    "answer": 0,
+    "explanation": "税額控除は算出税額から直接差し引くもので、所得控除と区別します。",
+    "topic": "税額控除",
+    "sourceUrl": "",
+    "id": "fp2-096",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "タックスプランニング",
+    "format": "four_choice",
+    "question": "自宅を賃貸して受け取る家賃収入が原則として属する所得区分はどれか（事業的規模等による特例の細部は考えない）。",
+    "choices": [
+      "給与所得",
+      "不動産所得",
+      "利子所得",
+      "一時所得"
+    ],
+    "answer": 1,
+    "explanation": "土地・建物等の貸付けから生じる所得は原則として不動産所得です。",
+    "topic": "不動産所得",
+    "sourceUrl": "",
+    "id": "fp2-097",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "タックスプランニング",
+    "format": "four_choice",
+    "question": "国税である組み合わせはどれか。",
+    "choices": [
+      "所得税と相続税",
+      "固定資産税と都市計画税",
+      "住民税と事業税",
+      "不動産取得税と固定資産税"
+    ],
+    "answer": 0,
+    "explanation": "所得税・相続税は国税です。ほかの選択肢にある税は地方税です。",
+    "topic": "国税と地方税",
+    "sourceUrl": "",
+    "id": "fp2-098",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "タックスプランニング",
+    "format": "four_choice",
+    "question": "公的年金から受け取る老齢年金の所得税上の基本的な所得区分はどれか。",
+    "choices": [
+      "給与所得",
+      "雑所得",
+      "不動産所得",
+      "配当所得"
+    ],
+    "answer": 1,
+    "explanation": "公的年金等に係る所得は、所得税上、原則として雑所得に区分されます。",
+    "topic": "雑所得",
+    "sourceUrl": "",
+    "id": "fp2-099",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "タックスプランニング",
+    "format": "four_choice",
+    "question": "損益通算について最も適切な説明はどれか。",
+    "choices": [
+      "一定の所得の損失を、所定のルールで他の所得と通算できる制度",
+      "すべての所得の赤字は無条件で全額通算できる",
+      "給与所得の金額を2倍にする制度",
+      "住民税の税率を一律にする制度"
+    ],
+    "answer": 0,
+    "explanation": "損益通算は制度で認められた所得の損失を他の所得から差し引く仕組みで、対象・例外があります。",
+    "topic": "損益通算",
+    "sourceUrl": "",
+    "id": "fp2-100",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "敷地面積250㎡、建築面積125㎡、延べ面積375㎡の建物について建ぺい率と容積率の組み合わせはどれか（算入・不算入の調整なし）。",
+    "choices": [
+      "50％・150％",
+      "50％・200％",
+      "150％・50％",
+      "200％・150％"
+    ],
+    "answer": 0,
+    "explanation": "建ぺい率125÷250＝50％、容積率375÷250＝150％です。",
+    "topic": "建ぺい率と容積率",
+    "sourceUrl": "",
+    "id": "fp2-101",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "賃貸物件の年間賃料収入が360万円、年間経費が60万円、購入価格が6,000万円の場合、単純な実質利回りは何％か（購入諸費用などは無視）。",
+    "choices": [
+      "4％",
+      "5％",
+      "6％",
+      "10％"
+    ],
+    "answer": 1,
+    "explanation": "（360－60）÷6,000×100＝5％です。",
+    "topic": "実質利回り",
+    "sourceUrl": "",
+    "id": "fp2-102",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "年間賃料240万円、物件価格4,800万円の表面利回りはどれか（空室や費用を無視）。",
+    "choices": [
+      "2.5％",
+      "4％",
+      "5％",
+      "10％"
+    ],
+    "answer": 2,
+    "explanation": "240÷4,800×100＝5％です。",
+    "topic": "表面利回り",
+    "sourceUrl": "",
+    "id": "fp2-103",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "土地の登記記録の権利部（甲区）に主として記載される事項として適切なものはどれか。",
+    "choices": [
+      "所有権に関する事項",
+      "抵当権に関する事項のみ",
+      "建物の構造のみ",
+      "所有権に無関係な口座残高"
+    ],
+    "answer": 0,
+    "explanation": "甲区は所有権に関する事項、乙区は抵当権など所有権以外の権利に関する事項が記載されます。",
+    "topic": "不動産登記",
+    "sourceUrl": "https://www.moj.go.jp/MINJI/minji02.html",
+    "id": "fp2-104",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null,
+    "reviewedAt": "2026-10-12",
+    "sourceLabel": "法務省：登記制度の説明"
+  },
+  {
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "土地を4,800万円で譲渡し、取得費3,000万円、譲渡費用200万円の場合、単純計算による譲渡所得はいくらか（特別控除等なし）。",
+    "choices": [
+      "1,400万円",
+      "1,600万円",
+      "1,800万円",
+      "2,000万円"
+    ],
+    "answer": 1,
+    "explanation": "4,800－3,000－200＝1,600万円です。",
+    "topic": "譲渡所得",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/joto/3202.htm",
+    "id": "fp2-105",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null,
+    "reviewedAt": "2026-10-12",
+    "sourceLabel": "国税庁：制度・税務の解説"
+  },
+  {
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "不動産の鑑定評価手法のうち、「類似物件の取引事例を比較して価格を求める」方法はどれか。",
+    "choices": [
+      "原価法",
+      "収益還元法",
+      "取引事例比較法",
+      "費用配分法"
+    ],
+    "answer": 2,
+    "explanation": "取引事例比較法は類似物件の取引価格を修正・補正して対象不動産の価格を試算します。",
+    "topic": "鑑定評価",
+    "sourceUrl": "",
+    "id": "fp2-106",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "投資用不動産において、空室率が上昇しその他の条件が変わらないときの一般的な影響はどれか。",
+    "choices": [
+      "実際の賃料収入は減少しやすい",
+      "実際の賃料収入は必ず増加する",
+      "購入価格が必ず2倍になる",
+      "固定資産税が必ずゼロになる"
+    ],
+    "answer": 0,
+    "explanation": "空室が増えると賃料収入が減り、実質利回りやキャッシュフローが悪化する可能性があります。",
+    "topic": "不動産投資",
+    "sourceUrl": "",
+    "id": "fp2-107",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "土地面積180㎡、指定容積率300％、前面道路幅員等による規制を考慮しない場合の延べ面積の単純上限はどれか。",
+    "choices": [
+      "180㎡",
+      "360㎡",
+      "540㎡",
+      "900㎡"
+    ],
+    "answer": 2,
+    "explanation": "180㎡×300％＝540㎡です。前面道路幅員などによる別の規制は設問の指定により考慮しません。",
+    "topic": "容積率",
+    "sourceUrl": "",
+    "id": "fp2-108",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "不動産取得税の説明として最も適切なものはどれか。",
+    "choices": [
+      "不動産の取得に対し原則として都道府県が課す地方税",
+      "給与に対して国が毎月課す税",
+      "投資信託の分配金の税",
+      "毎年の所得税の一種"
+    ],
+    "answer": 0,
+    "explanation": "不動産取得税は不動産の取得に対して課され得る都道府県税です。",
+    "topic": "不動産取得税",
+    "sourceUrl": "",
+    "id": "fp2-109",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "不動産",
+    "format": "four_choice",
+    "question": "自己所有の賃貸用建物について、維持費用を含む収支計画を立てる際の対応として最も適切なものはどれか。",
+    "choices": [
+      "固定資産税や修繕費、空室損失を見込む",
+      "家賃が満額入ることだけを前提にする",
+      "修繕費は必ず発生しないとする",
+      "ローン返済は収支に関係しない"
+    ],
+    "answer": 0,
+    "explanation": "賃貸経営の収支は、空室・修繕・税金・借入返済等を考慮して試算します。",
+    "topic": "不動産事業計画",
+    "sourceUrl": "",
+    "id": "fp2-110",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "相続・事業承継",
+    "format": "four_choice",
+    "question": "配偶者と子2人が法定相続人である場合、遺言や特別受益等を考えない子1人の法定相続分はどれか。",
+    "choices": [
+      "8分の1",
+      "4分の1",
+      "2分の1",
+      "3分の4"
+    ],
+    "answer": 1,
+    "explanation": "配偶者1/2、子全体1/2。子2人で均等に分ければ各1/4です。",
+    "topic": "法定相続分",
+    "sourceUrl": "",
+    "id": "fp2-111",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "相続・事業承継",
+    "format": "four_choice",
+    "question": "相続人が配偶者と被相続人の父母2人である場合、配偶者の法定相続分として正しいものはどれか。",
+    "choices": [
+      "2分の1",
+      "3分の2",
+      "4分の3",
+      "すべて"
+    ],
+    "answer": 1,
+    "explanation": "配偶者と直系尊属が共同相続する場合、配偶者は2/3、直系尊属全体は1/3です。",
+    "topic": "法定相続分",
+    "sourceUrl": "",
+    "id": "fp2-112",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "相続・事業承継",
+    "format": "four_choice",
+    "question": "被相続人が保険料を負担した死亡保険金を法定相続人3人が受け取る。相続税の死亡保険金の非課税限度額として原則正しいものはどれか（養子等の特殊事情なし）。",
+    "choices": [
+      "500万円",
+      "1,000万円",
+      "1,500万円",
+      "3,000万円"
+    ],
+    "answer": 2,
+    "explanation": "500万円×法定相続人3人＝1,500万円です。非課税の適用には受取人が相続人であること等の要件があります。",
+    "topic": "死亡保険金の非課税枠",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
+    "id": "fp2-113",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null,
+    "reviewedAt": "2026-10-12",
+    "sourceLabel": "国税庁：制度・税務の解説"
+  },
+  {
+    "level": "2",
+    "category": "相続・事業承継",
+    "format": "four_choice",
+    "question": "遺産として金融資産5,000万円と借入金1,200万円があるとき、単純な正味財産額はいくらか（ほかの財産・債務なし）。",
+    "choices": [
+      "3,800万円",
+      "5,000万円",
+      "6,200万円",
+      "4,200万円"
+    ],
+    "answer": 0,
+    "explanation": "5,000－1,200＝3,800万円です。課税価格の計算ではほかの要素を考える場合があります。",
+    "topic": "正味財産",
+    "sourceUrl": "",
+    "id": "fp2-114",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "相続・事業承継",
+    "format": "four_choice",
+    "question": "贈与税の暦年課税で、同一年に父から100万円、母から100万円の贈与を受けた場合、基礎控除後の課税価格はいくらか（ほかに贈与なし・非課税特例なし）。",
+    "choices": [
+      "0万円",
+      "90万円",
+      "110万円",
+      "200万円"
+    ],
+    "answer": 1,
+    "explanation": "受贈者が同一年に受け取った財産の合計200万円から基礎控除110万円を引き、90万円です。贈与者の人数分だけ控除は増えません。",
+    "topic": "暦年課税の基礎控除",
+    "sourceUrl": "https://www.courts.go.jp/saiban/syurui/syurui_kazi/kazi_06_13/index.html",
+    "id": "fp2-115",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null,
+    "reviewedAt": "2026-10-12",
+    "sourceLabel": "国税庁：制度・税務の解説"
+  },
+  {
+    "level": "2",
+    "category": "相続・事業承継",
+    "format": "four_choice",
+    "question": "相続時精算課税制度について、一般に最も適切な記述はどれか（2026年10月時点）。",
+    "choices": [
+      "父母や祖父母などの一定の贈与者からの贈与について、要件を満たす受贈者が選択できる",
+      "すべての贈与が自動的に相続時精算課税になる",
+      "制度を選択すると贈与時の税務手続がすべて不要になる",
+      "制度を選択できる受贈者は必ず80歳以上である"
+    ],
+    "answer": 0,
+    "explanation": "所定の年齢・親族関係等の要件の下で選択できます。選択には必要な届出や税務上の取扱いの確認が必要です。",
+    "topic": "相続時精算課税",
+    "sourceUrl": "https://houmukyoku.moj.go.jp/saitama/content/001402627.pdf",
+    "id": "fp2-116",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null,
+    "reviewedAt": "2026-10-12",
+    "sourceLabel": "国税庁：制度・税務の解説"
+  },
+  {
+    "level": "2",
+    "category": "相続・事業承継",
+    "format": "four_choice",
+    "question": "課税価格の合計額が8,000万円、法定相続人が3人の場合、相続税の課税遺産総額はいくらか（債務控除等は既に反映、特例なし）。",
+    "choices": [
+      "2,000万円",
+      "3,200万円",
+      "4,800万円",
+      "8,000万円"
+    ],
+    "answer": 1,
+    "explanation": "基礎控除額は3,000＋600×3＝4,800万円。8,000－4,800＝3,200万円です。",
+    "topic": "課税遺産総額",
+    "sourceUrl": "",
+    "id": "fp2-117",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null,
+    "reviewedAt": "2026-10-12",
+    "sourceLabel": "国税庁：制度・税務の解説"
+  },
+  {
+    "level": "2",
+    "category": "相続・事業承継",
+    "format": "four_choice",
+    "question": "贈与契約の成立について最も適切なものはどれか。",
+    "choices": [
+      "贈与者が無償で与える意思を表示し、受贈者が受諾して成立する",
+      "契約成立に必ず公正証書が必要である",
+      "受贈者が拒絶していても常に成立する",
+      "贈与の意思表示は法律上すべて無効である"
+    ],
+    "answer": 0,
+    "explanation": "贈与は無償で与える意思表示と受け取る意思表示の合致により成立する契約です。",
+    "topic": "贈与契約",
+    "sourceUrl": "",
+    "id": "fp2-118",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "相続・事業承継",
+    "format": "four_choice",
+    "question": "被相続人の遺産分割協議に関する説明として最も適切なものはどれか。",
+    "choices": [
+      "原則として共同相続人全員の合意が必要",
+      "相続人1人の意思だけで常に確定",
+      "相続人全員の参加は常に不要",
+      "遺産分割協議は法律で禁止されている"
+    ],
+    "answer": 0,
+    "explanation": "共同相続人全員の合意により遺産分割の内容を決めるのが原則です。",
+    "topic": "遺産分割",
+    "sourceUrl": "",
+    "id": "fp2-119",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
+  },
+  {
+    "level": "2",
+    "category": "相続・事業承継",
+    "format": "four_choice",
+    "question": "相続税の課税価格計算における債務控除の基本的な考え方として適切なものはどれか。",
+    "choices": [
+      "被相続人の一定の債務などを財産から差し引くことがある",
+      "借入金はどの場合も相続財産に一切影響しない",
+      "すべての相続人が同じ控除額を自動で受ける",
+      "現金のみが債務控除の対象である"
+    ],
+    "answer": 0,
+    "explanation": "相続税の課税価格を計算する際、要件を満たす債務や葬式費用等を控除できる場合があります。",
+    "topic": "債務控除",
+    "sourceUrl": "",
+    "id": "fp2-120",
+    "revision": 1,
+    "createdVersion": 8,
+    "lawReferenceDate": null
   }
 ];
 
-// Ver.6で開始した模試を元の問題文のまま再開するためのスナップショット。
 const LEGACY_V6_QUESTIONS = {
   "fp3-048": {
     "id": "fp3-048",

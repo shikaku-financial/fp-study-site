@@ -91,10 +91,11 @@ function fullExamAvailability(targetLevel) {
   // 「verified」は専門家監修済みの意味に誤認されやすいため使わず、形式・分野・問題数で実装上の開始条件を判定。
   // コンテンツの法令・内容監修は別途必要です。あくまで学習用オリジナル模試です。
   const subjectOK = CATEGORIES.slice(1).every(cat => pool.filter(q => q.category === cat).length >= 10);
+  const balanced3 = CATEGORIES.slice(1).every(cat => pool.filter(q => q.category === cat && q.format === 'true_false').length >= 5 && pool.filter(q => q.category === cat && q.format === 'three_choice').length >= 5);
   if (targetLevel === '3') {
     const tf = pool.filter(q => q.format === 'true_false').length;
     const tri = pool.filter(q => q.format === 'three_choice').length;
-    return { ready: tf >= 30 && tri >= 30 && subjectOK,
+    return { ready: tf >= 30 && tri >= 30 && subjectOK && balanced3,
       message: `○× ${tf}/30問・三択 ${tri}/30問｜90分・全60問・36問以上で学習用合格圏判定` };
   }
   const four = pool.filter(q => q.format === 'four_choice').length;
@@ -103,7 +104,7 @@ function fullExamAvailability(targetLevel) {
 }
 function updateHome() {
   const pool = validQuestions(level);
-  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.7）`;
+  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.8）`;
   const old = $('category').value;
   $('category').replaceChildren();
   for (const c of CATEGORIES) {
@@ -183,6 +184,8 @@ function startQuiz(onlyWrong) {
     (!onlyWrong || (resultCurrent(q, data[q.id]) && data[q.id].correct === false)));
   if (!session.length) { alert(onlyWrong ? '復習する問題はありません。' : 'この条件の問題はまだありません。'); return; }
   if ($('shuffle').checked) session = shuffle(session);
+  const maxCount = $('practiceCount').value;
+  if (maxCount !== 'all') session = session.slice(0, Number(maxCount));
   index = 0; correct = 0;
   show('quiz'); renderQuiz();
 }
@@ -232,8 +235,14 @@ function createExam(kind) {
   const draft = readJSON(EXAM_DRAFT_KEY, null);
   if (draft && !confirm('中断中の模試があります。新しく始めると前回の途中経過は失われます。開始しますか？')) return;
   let questions;
-  if (kind === 'full' && level === '3') questions = [...shuffle(pool.filter(q => q.format === 'true_false')).slice(0, 30), ...shuffle(pool.filter(q => q.format === 'three_choice')).slice(0, 30)];
-  else if (kind === 'full') questions = shuffle(pool.filter(q => q.format === 'four_choice')).slice(0, 60);
+  // 1回分60問：FP3級は分野ごとに○×5問＋三択5問、FP2級は分野ごとに四択10問を無作為抽出。
+  if (kind === 'full' && level === '3') {
+    questions = [
+      ...CATEGORIES.slice(1).flatMap(cat => shuffle(pool.filter(q => q.category === cat && q.format === 'true_false')).slice(0, 5)),
+      ...CATEGORIES.slice(1).flatMap(cat => shuffle(pool.filter(q => q.category === cat && q.format === 'three_choice')).slice(0, 5))
+    ];
+  }
+  else if (kind === 'full') questions = shuffle(CATEGORIES.slice(1).flatMap(cat => shuffle(pool.filter(q => q.category === cat && q.format === 'four_choice')).slice(0, 10)));
   else {
     // 各分野から必ず1問選び、ミニ模試のバランスを保ちます。
     const perCategory = CATEGORIES.slice(1).map(cat => shuffle(pool.filter(q => q.category === cat))[0]).filter(Boolean);
