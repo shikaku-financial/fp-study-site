@@ -161,3 +161,6 @@
 .brand-current strong{font-size:22px;line-height:1.35}
 .brand-subtitle{font-size:11px!important;color:#586b7f;margin:2px auto 0!important;text-align:center}
 @media(max-width:470px){.brand-header{padding:10px 0}.brand-header-inner{gap:5px}.brand-home-link{max-width:69%}.parent-brand-logo{max-height:65px}.brand-current{min-width:87px;padding:5px 7px;border-radius:8px}.brand-current strong{font-size:19px}.brand-eyebrow{font-size:9px}.brand-subtitle{font-size:10px!important;line-height:1.45}}
+
+/* Ver.16: 金財の実技演習を15問ずつ2回に分割 */
+.pr-second-set{margin-top:8px;width:100%;border:1px solid #137e77;background:#fff;color:#126d68;padding:11px;border-radius:9px;font-weight:700;}

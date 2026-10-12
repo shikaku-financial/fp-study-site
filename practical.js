@@ -73,10 +73,21 @@
         const box=document.createElement('div');box.className='pr-track'+(available?'':' disabled');
         const org=document.createElement('div');org.className='pr-org';org.textContent=`FP${tr.level}級｜${orgInfo.heading}`;
         const title=document.createElement('h4');title.textContent=tr.name;
-        const p=document.createElement('p');p.className='muted small';p.textContent= available ? `${qsFor(tr.id).length}問の体験演習｜${tr.format}｜本試験は${tr.officialCount}問` : `追加予定｜本試験は${tr.officialCount}問`;
+        const p=document.createElement('p');p.className='muted small';p.textContent= available ? `${qsFor(tr.id).length}問収録｜${tr.format}｜本試験は${tr.officialCount}問` : `追加予定｜本試験は${tr.officialCount}問`;
         const a=document.createElement('a');a.href=tr.source;a.target='_blank';a.rel='noopener noreferrer';a.textContent='参考：試験実施団体の公表問題PDF（外部） ↗';a.className='small';
         const btn=document.createElement('button');btn.type='button';btn.textContent=available?'この科目を練習する':'準備中';btn.disabled=!available;
-        if(available){btn.className='primary';btn.addEventListener('click',()=>start(tr.id));}
+        if(available){
+          btn.className='primary';
+          if(tr.id.startsWith('kinzai') && qsFor(tr.id).length>=30){
+            btn.textContent='第1回（15問）を練習';
+            btn.addEventListener('click',()=>start(tr.id,1));
+            const second=document.createElement('button');second.type='button';
+            second.className='secondary pr-second-set';second.textContent='第2回（15問）を練習';
+            second.addEventListener('click',()=>start(tr.id,2));
+            box.append(org,title,p,a,btn,second);listing.append(box);continue;
+          }
+          btn.addEventListener('click',()=>start(tr.id));
+        }
         box.append(org,title,p,a,btn);listing.append(box);
       }
       group.append(groupHead,desc,listing);cards.append(group);
@@ -129,15 +140,35 @@
     $p('prHistoryNotice').textContent=`受験履歴${attempts.length}件を削除しました。`;
     renderPracticalHistory();
   }
-  function start(id){
+  // Start from immutable question snapshots so that reattempts use the exact same set.
+  function startFromQuestions(trackId, sourceQuestions, mode='full'){
+    const tr=trackFor(trackId);
+    if(!tr || !Array.isArray(sourceQuestions) || !sourceQuestions.length)return;
+    const draft=read(DRAFT,null);
+    if(draft && !confirm('保存している実技演習を終了し、新しく始めますか？前回の未採点の回答は消えます。'))return;
+    const list=sourceQuestions.map(q=>({...q,choices:Array.isArray(q.choices)?q.choices.slice():[]}));
+    attempt={version:17,track:trackId,mode,questions:list,answers:list.map(()=>null),pos:0,startedAt:Date.now()};
+    if(!save(DRAFT,attempt))return;
+    navigate('practicalExam');renderQuestion();
+  }
+  function retrySameSet(){
+    if(!lastResult)return;
+    startFromQuestions(lastResult.track,lastResult.questions,'retry');
+  }
+  function retryMistakes(){
+    if(!lastResult)return;
+    const wrong=lastResult.questions.filter((q,i)=>!grade(q,lastResult.answers[i]));
+    if(!wrong.length){alert('全問正解のため、復習が必要な問題はありません。');return;}
+    startFromQuestions(lastResult.track,wrong,'mistakes');
+  }
+  function start(id, setNumber=1){
     const tr=trackFor(id);
     if(!tr||tr.disabled)return;
     const draft=read(DRAFT,null);
     if(draft && !confirm('保存している実技演習を終了し、新しく始めますか？前回の未採点の回答は消えます。'))return;
-    const list=qsFor(id).map(q=>({...q,choices:q.choices.slice()}));
-    attempt={version:15,track:id,questions:list,answers:list.map(()=>null),pos:0,startedAt:Date.now()};
-    save(DRAFT,attempt);
-    navigate('practicalExam');renderQuestion();
+    const source=qsFor(id);
+    const selected=(id.startsWith('kinzai') && source.length>=30) ? source.slice((setNumber-1)*15,setNumber*15) : source;
+    startFromQuestions(id,selected,`set-${setNumber}`);
   }
   function renderQuestion(){
     if(!attempt)return;
@@ -206,6 +237,8 @@
     if(!lastResult)return;
     const r=lastResult, total=r.questions.length,ratio=Math.round(100*r.correct/total),tr=trackFor(r.track);
     $p('prSummary').textContent=`${label(tr)}｜${total}問中${r.correct}問正解（${ratio}％）`;
+    $p('prRetryMistakes').disabled=r.correct===total;
+    $p('prRetryMistakes').textContent=r.correct===total?'全問正解（復習不要）':`間違えた${total-r.correct}問だけ再演習`;
     $p('prResultNote').textContent=`これは${total}問のオリジナル体験演習です。本試験は${tr.officialCount}問で配点も異なります。したがって、この正答率から本試験の合否は判定できません。`;
     $p('prIssues').classList.toggle('active',reviewFilter==='issues');$p('prAll').classList.toggle('active',reviewFilter==='all');
     const errors=r.questions.map((q,i)=>({q,i})).filter(({q,i})=>!grade(q,r.answers[i]));
@@ -253,7 +286,8 @@
   $p('prSaveExit').addEventListener('click',()=>{if(attempt)save(DRAFT,attempt);attempt=null;navigate('practicalHome');});
   $p('prSubmit').addEventListener('click',finish);
   $p('prResultHome').addEventListener('click',()=>navigate('practicalHome'));
-  $p('prRetry').addEventListener('click',()=>lastResult&&start(lastResult.track));
+  $p('prRetry').addEventListener('click',retrySameSet);
+  $p('prRetryMistakes').addEventListener('click',retryMistakes);
   $p('prIssues').addEventListener('click',()=>{reviewFilter='issues';renderResult();});
   $p('prAll').addEventListener('click',()=>{reviewFilter='all';renderResult();});
 

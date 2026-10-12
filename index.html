@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="ファイナンシャルライセンスラボ内のFPラボ。FP2級・3級の学科・実技試験対策。無料・登録不要。学科360問、実技150問の独自演習。">
+  <meta name="description" content="ファイナンシャルライセンスラボ内のFPラボ。FP2級・3級の学科・実技試験対策。無料・登録不要。学科360問、実技240問の独自演習。間違えた問題だけ再演習できます。">
   <title>FPラボ｜FP2級・3級 学科・実技対策｜ファイナンシャルライセンスラボ</title>
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=17">
 </head>
 <body>
   <header class="site-header brand-header">
@@ -23,7 +23,7 @@
     <section id="home" aria-label="ホーム">
       <div class="home-tabs" aria-label="試験種別を選ぶ"><span class="tab-on">学科試験</span><button id="openPracticalTop" type="button">実技試験を学習する →</button></div>
       <div class="card">
-        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.15｜学科各180問</span></div>
+        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.17｜学科各180問</span></div>
         <div class="controls level-controls" role="group" aria-label="級を選択">
           <button type="button" id="level3" class="active" aria-pressed="true">FP3級</button>
           <button type="button" id="level2" aria-pressed="false">FP2級</button>
@@ -56,8 +56,8 @@
       </div>
 
       <div class="card practical-promo">
-        <div class="section-heading"><h2>FPラボ｜実技試験の演習</h2><span class="pill">Ver.15｜実技150問</span></div>
-        <p>日本FP協会の3級20問・2級40問を含む、計8科目150問のオリジナル実技例題に対応。事例・計算問題を練習できます。</p>
+        <div class="section-heading"><h2>FPラボ｜実技試験の演習</h2><span class="pill">Ver.17｜実技240問</span></div>
+        <p>日本FP協会3級20問・2級40問、金財3級2科目・2級4科目は各30問、計8科目240問のオリジナル実技例題に対応。事例・計算問題を練習できます。</p>
         <button type="button" id="openPractical" class="primary full-width">実技試験の科目を選ぶ</button>
         <p class="muted small">実技の各科目は独自演習です。正式配点による合否判定は行いません。</p>
       </div>
@@ -122,7 +122,7 @@
             <p>会員登録や氏名・メールアドレスなどの入力は不要です。解答履歴や中断した試験のデータは、この端末のブラウザのlocalStorageに保存します。サーバーに学習記録を送信するための機能は設置していません。ブラウザのデータを削除すると記録が消える場合があります。</p>
             <p>サイト配信基盤（GitHub Pages）や外部リンク先では、アクセスログ等が各事業者のポリシーに基づき扱われる場合があります。</p>
             <h3>広告・アクセス解析</h3>
-            <p>Ver.15では広告配信タグやアクセス解析タグを設置していません。今後これらを導入する場合は、プライバシーに関する案内や広告の表示を更新します。</p>
+            <p>Ver.17では広告配信タグやアクセス解析タグを設置していません。今後これらを導入する場合は、プライバシーに関する案内や広告の表示を更新します。</p>
             <h3>お問い合わせ</h3>
             <p>現在、サイト専用のお問い合わせ窓口は準備中です。正式公開前に、掲載内容の修正依頼を受け付ける方法を整備する予定です。</p>
             <p><a href="https://www.jafp.or.jp/exam/mohan/" target="_blank" rel="noopener noreferrer">日本FP協会の公表問題 ↗</a> ／ <a href="https://www.kinzai.or.jp/ginou/fp/test-fp" target="_blank" rel="noopener noreferrer">金財の公表問題 ↗</a></p>
@@ -222,7 +222,7 @@
     </section>
 
     <section id="practicalResult" class="hidden" aria-label="実技演習結果">
-      <div class="card"><h2>実技演習の採点結果</h2><p id="prSummary" class="score-summary"></p><p id="prResultNote" class="muted"></p><div class="actions"><button type="button" id="prResultHome" class="primary">実技科目選択へ</button><button id="prRetry" type="button">同じ科目に再挑戦</button></div></div>
+      <div class="card"><h2>実技演習の採点結果</h2><p id="prSummary" class="score-summary"></p><p id="prResultNote" class="muted"></p><div class="actions"><button type="button" id="prResultHome" class="primary">実技科目選択へ</button><button id="prRetry" type="button">同じ科目に再挑戦</button><button id="prRetryMistakes" type="button">間違えた問題だけ再演習</button></div></div>
       <div class="card"><h2>問題別の答え合わせ</h2><div class="review-filters"><button type="button" id="prIssues" class="active">要復習</button><button type="button" id="prAll">全問</button></div><p id="prReviewEmpty" class="muted"></p><div id="prReviews"></div></div>
     </section>
 
@@ -230,9 +230,9 @@
   </main>
 
   <footer>© ファイナンシャルライセンスラボ｜FPラボ｜独立した非公式学習サイト</footer>
-  <script src="questions.js?v=15"></script>
-  <script src="app.js?v=15"></script>
-  <script src="practical-questions.js?v=15"></script>
-  <script src="practical.js?v=15"></script>
+  <script src="questions.js?v=17"></script>
+  <script src="app.js?v=17"></script>
+  <script src="practical-questions.js?v=17"></script>
+  <script src="practical.js?v=17"></script>
 </body>
 </html>
