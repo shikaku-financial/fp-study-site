@@ -152,7 +152,7 @@ function updatePracticeCountOptions(pool) {
   const note = $('practiceCountNotice');
   if (note) note.textContent = cat === CATEGORIES[0]
     ? `全分野の収録問題は${available}問です。`
-    : `「${cat}」の収録問題は${available}問です。表示数を上限以内に調整しています。`;
+    : `「${cat}」は全${available}問収録。選べる演習数はこの範囲内です。`;
   sel.disabled = available === 0;
   $('startPractice').disabled = available === 0;
 }
