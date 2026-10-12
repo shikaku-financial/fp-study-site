@@ -55,22 +55,8 @@
       if(available){btn.className='primary';btn.addEventListener('click',()=>start(tr.id));}
       box.append(org,h,p,a,btn);cards.append(box);
     }
-    const archive=read(HISTORY,{attempts:[]});
-    const past=Array.isArray(archive.attempts)?archive.attempts:[];
-    const historyBox=$p('prHistory');historyBox.replaceChildren();
-    if(past.length){
-      const heading=document.createElement('h3');heading.textContent='過去の実技演習を復習';historyBox.append(heading);
-      past.forEach(result=>{
-        const tr=trackFor(result.track);if(!tr||!Array.isArray(result.questions)||!Array.isArray(result.answers))return;
-        const row=document.createElement('div');row.className='pr-history-row';
-        const title=document.createElement('span');title.textContent=`FP${tr.level}級 ${tr.name}｜${result.correct}/${result.questions.length}問正解`;
-        const btn=document.createElement('button');btn.type='button';btn.textContent='答え合わせ';
-        btn.addEventListener('click',()=>{lastResult=result;reviewFilter='issues';navigate('practicalResult');renderResult();});
-        row.append(title,btn);historyBox.append(row);
-      });
-    }
     const d=read(DRAFT,null);
-    const okay=d && trackFor(d.track)&&qsFor(d.track).length===d.answers?.length&&Array.isArray(d.questions)&&d.questions.length===d.answers.length;
+    const okay=d && trackFor(d.track)&&Array.isArray(d.questions)&&Array.isArray(d.answers)&&d.questions.length===d.answers.length;
     $p('prResumeBox').classList.toggle('hidden',!okay);
     if(okay){$p('prResume').textContent=`FP${trackFor(d.track).level}級｜${trackFor(d.track).name}の続きから再開`;}
     const prior=read(HISTORY,{attempts:[]});
@@ -91,7 +77,7 @@
     const draft=read(DRAFT,null);
     if(draft && !confirm('保存している実技演習を終了し、新しく始めますか？前回の未採点の回答は消えます。'))return;
     const list=qsFor(id).map(q=>({...q,choices:q.choices.slice()}));
-    attempt={version:10,track:id,questions:list,answers:list.map(()=>null),pos:0,startedAt:Date.now()};
+    attempt={version:11,track:id,questions:list,answers:list.map(()=>null),pos:0,startedAt:Date.now()};
     save(DRAFT,attempt);
     navigate('practicalExam');renderQuestion();
   }
@@ -103,7 +89,7 @@
     $p('prBar').style.width=`${attempt.answers.filter(v=>v!==null&&v!=='').length/attempt.questions.length*100}%`;
     $p('prCaseTitle').textContent=`${tr.id.startsWith('kinzai')?'設例':''} ${q.caseTitle}`.trim();
     $p('prCaseText').textContent=q.caseText;
-    $p('prTopic').textContent=`学習テーマ：${q.topic}｜2025年4月1日基準での参考演習（数値条件は設例指定）`;
+    $p('prTopic').textContent=`学習テーマ：${q.topic}｜参考問題の法令基準日：${q.lawReferenceDate || "2025-04-01"}（数値条件は設例指定）`;
     $p('prQuestion').textContent=q.question;
     $p('prChoices').replaceChildren();
     const number=q.kind==='numeric';
@@ -201,6 +187,14 @@
   $p('prRetry').addEventListener('click',()=>lastResult&&start(lastResult.track));
   $p('prIssues').addEventListener('click',()=>{reviewFilter='issues';renderResult();});
   $p('prAll').addEventListener('click',()=>{reviewFilter='all';renderResult();});
+
+  // Header title works from every screen. Save in-progress practical answers first.
+  $p('siteHomeLink').addEventListener('click', e => {
+    e.preventDefault();
+    if (attempt) { save(DRAFT, attempt); attempt = null; }
+    if (typeof goHome === 'function') goHome();
+    navigate('home');
+  });
   // 学科の従来のキーとは別に、実技の結果は科目ごとに保存。再受験時は上書きせず履歴を蓄積する。
   window.__fpPracticalTest = {parseNumber,grade,trackFor,qsFor,read,openPractical:()=>navigate('practicalHome')};
 })();

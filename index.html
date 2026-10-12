@@ -6,12 +6,12 @@
   <meta name="theme-color" content="#147e78">
   <meta name="description" content="FP2級・3級の学科・実技試験対策。無料・登録不要。学科各180問と実技のオリジナル例題に対応。">
   <title>FP学科・実技トレーニング｜無料FP2級・3級 学科・実技対策</title>
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <div><h1>FP学科・実技トレーニング</h1><p>FP2級・3級｜無料・登録不要の学習サイト</p></div>
+      <div><h1><a href="#home" id="siteHomeLink" class="site-title-link" aria-label="FP学科・実技トレーニングのトップページに戻る">FP学科・実技トレーニング</a></h1><p>FP2級・3級｜無料・登録不要の学習サイト</p></div>
       <span class="header-tag">学科・実技試験対策</span>
     </div>
   </header>
@@ -20,7 +20,7 @@
     <section id="home" aria-label="ホーム">
       <div class="home-tabs" aria-label="試験種別を選ぶ"><span class="tab-on">学科試験</span><button id="openPracticalTop" type="button">実技試験を学習する →</button></div>
       <div class="card">
-        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.10｜学科各180問</span></div>
+        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.11｜学科各180問</span></div>
         <div class="controls level-controls" role="group" aria-label="級を選択">
           <button type="button" id="level3" class="active" aria-pressed="true">FP3級</button>
           <button type="button" id="level2" aria-pressed="false">FP2級</button>
@@ -53,8 +53,8 @@
       </div>
 
       <div class="card practical-promo">
-        <div class="section-heading"><h2>実技試験の演習を追加しました</h2><span class="pill">Ver.10 新機能</span></div>
-        <p>日本FP協会の3級・2級「資産設計提案業務」と、金財3級の「個人資産相談業務」「保険顧客資産相談業務」のオリジナル例題を収録。事例・計算問題に対応しています。</p>
+        <div class="section-heading"><h2>実技試験の演習を追加しました</h2><span class="pill">Ver.11｜実技8科目</span></div>
+        <p>日本FP協会2・3級、金財2級4科目・3級2科目のオリジナル実技例題に対応。事例・計算問題を練習できます。</p>
         <button type="button" id="openPractical" class="primary full-width">実技試験の科目を選ぶ</button>
         <p class="muted small">初期版の体験演習です。正式な配点による合否判定は行いません。</p>
       </div>
@@ -68,10 +68,20 @@
         <p class="muted small">回答記録と模試の途中経過はこのブラウザ内に保存されます。改訂前の回答の控えも残しますが、別の端末には引き継がれません。</p>
       </div>
 
-      <div class="card">
+      <div class="card usage-card">
         <h2>ご利用にあたって</h2>
-        <p>本サイトはFP資格の学科・実技学習を支援する非公式サイトです。日本FP協会等の公式サービスではありません。</p>
-        <p class="muted">現在は各級180問のオリジナル例題を収録しています。Ver.9では各級60問を追加しました。2026年5月公表の金融財政事情研究会の学科問題を出題形式・テーマの参考にし、問題文と選択肢は独自作成しています。一部の設問には確認用の公的資料へのリンクを付けていますが、リンク先との照合・法令監査が完了したことを示すものではありません。問題内容には出題テーマの重複や、学習用として単純化した説明が含まれるため、今後も継続的に見直します。学科試験の出題形式・試験時間・合格基準は日本FP協会・金融財政事情研究会の公表情報を参考にしています。新規追加問題も含め、問題の正答・解説は専門家監修済みではありません。法令の改正や試験制度の変更に対応しきれていない可能性があります。金財の2026年5月公表問題の法令基準日は2025年4月1日であり、現行制度と異なる可能性があります。重要事項は公式資料も確認してください。<a href="https://www.jafp.or.jp/exam/outline/" target="_blank" rel="noopener noreferrer">日本FP協会の試験要綱を確認する</a>。<a href="https://www.kinzai.or.jp/fp/news-fp/50236.html" target="_blank" rel="noopener noreferrer">金財の公開過去問を確認する</a>。</p>
+        <p>本サイトは<strong>無料・登録不要の非公式FP学習サイト</strong>です。問題は独自作成の例題で、公式試験問題や合否を保証するものではありません。</p>
+        <details class="usage-details" id="usageDetails">
+          <summary>詳しい注意事項を表示</summary>
+          <div class="usage-details-body">
+            <p>本サイトは日本FP協会・金融財政事情研究会の公式サービスではありません。</p>
+            <p>学科は各級180問、実技は8科目の独自例題を収録しています。公表過去問を出題形式やテーマの参考にしていますが、原文を転載したものではありません。</p>
+            <p>法令・制度・税制・試験制度は改正されます。金財の2026年5月公表過去問は原則2025年4月1日施行の法令に基づきます。問題の正答・解説の全問専門家監修は未完了です。学習上の単純化や誤りが含まれる可能性があります。重要事項は必ず公式資料で確認してください。</p>
+            <p>実技演習は独自例題の体験演習です。正式な配点での本試験の合否判定は行いません。学科模試の合格圏表示も学習の目安です。</p>
+            <p>回答履歴や実技演習の中断記録は、このブラウザのlocalStorageに保存します。別の端末やブラウザには自動で引き継がれません。広告・アクセス解析を導入した場合は、その事業者による情報の取扱いについて別途ご案内する必要があります。</p>
+            <p><a href="https://www.jafp.or.jp/exam/outline/" target="_blank" rel="noopener noreferrer">日本FP協会の試験要綱</a> ／ <a href="https://www.kinzai.or.jp/fp/" target="_blank" rel="noopener noreferrer">金融財政事情研究会の公式サイト</a></p>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -128,10 +138,9 @@
 
     <section id="practicalHome" class="hidden" aria-label="実技科目選択">
       <div class="card"><button type="button" id="prBackHome" class="linkish">← 学科トップへ戻る</button>
-        <div class="section-heading"><h2>実技試験｜科目選択</h2><span class="pill">Ver.10</span></div>
+        <div class="section-heading"><h2>実技試験｜科目選択</h2><span class="pill">Ver.11</span></div>
         <p>実際の公表過去問の出題テーマを参考にした<strong>独自の実技演習</strong>です。出題数・配点は実技本試験と異なる場合があります。<strong>得点率のみ表示</strong>し、合格・不合格の判定はしません。</p>
         <div id="prTracks" class="pr-track-list"></div>
-        <div id="prHistory" class="pr-history" aria-label="実技の過去結果"></div>
         <div id="prResumeBox" class="hidden pr-resume"><p>保存した実技演習があります。</p><button type="button" id="prResume" class="primary full-width">途中から再開する</button></div>
         <div id="prHistoryBox" class="hidden"><h3>実技演習の受験履歴</h3><div id="prHistoryList" class="exam-history-list"></div></div>
         <p class="muted small">参考PDFはすべて2026年5月公表分。金財の問題は2025年4月1日現在の法令等に基づいています。試験日によって法令基準日が異なるため、重要事項は公式情報もご確認ください。</p>
@@ -162,9 +171,9 @@
   </main>
 
   <footer>© FP学科・実技トレーニング｜会員登録・個人情報の入力は不要です</footer>
-  <script src="questions.js?v=10"></script>
-  <script src="app.js?v=10"></script>
-  <script src="practical-questions.js?v=10"></script>
-  <script src="practical.js?v=10"></script>
+  <script src="questions.js?v=11"></script>
+  <script src="app.js?v=11"></script>
+  <script src="practical-questions.js?v=11"></script>
+  <script src="practical.js?v=11"></script>
 </body>
 </html>

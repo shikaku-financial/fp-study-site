@@ -74,3 +74,16 @@
 .pr-history-row span{font-size:13px;font-weight:600}
 .pr-history-row button{font-size:13px;min-height:40px;flex-shrink:0}
 @media(max-width:470px){.pr-history-row{flex-wrap:wrap}.pr-history-row button{width:100%}}
+
+/* Ver.11: clickable site title and short-by-default policy disclosure */
+.site-title-link{color:inherit;text-decoration:none;display:inline-block;border-radius:6px}
+.site-title-link:hover{text-decoration:underline;text-underline-offset:5px}
+.site-title-link:focus-visible{outline:3px solid #fff;outline-offset:5px}
+.usage-card p{margin:10px 0}
+.usage-details{border:1px solid #d5e4e7;border-radius:12px;background:#f8fbfb;margin-top:15px;overflow:hidden}
+.usage-details summary{list-style:none;cursor:pointer;min-height:52px;display:flex;align-items:center;gap:10px;padding:12px 15px;font-weight:700;color:#126e68}
+.usage-details summary::-webkit-details-marker{display:none}
+.usage-details summary::before{content:'＋';font-size:21px;line-height:1}
+.usage-details[open] summary::before{content:'−'}
+.usage-details-body{border-top:1px solid #d5e4e7;padding:8px 15px 14px;color:#526a7e;font-size:14px}
+.usage-details-body a{color:#126e68;text-decoration:underline}

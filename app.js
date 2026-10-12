@@ -110,7 +110,7 @@ function fullExamAvailability(targetLevel) {
 }
 function updateHome() {
   const pool = validQuestions(level);
-  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.10・学科）`;
+  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.11・学科）`;
   const old = $('category').value;
   $('category').replaceChildren();
   for (const c of CATEGORIES) {
