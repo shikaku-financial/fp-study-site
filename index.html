@@ -1,2 +1,113 @@
-<!doctype html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="FP2級・3級の無料学科問題演習。分野別演習・復習・学習記録に対応。"><title>FP学科トレーニング｜無料問題演習</title><style>
-:root{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN',Meiryo,sans-serif;color:#203044;background:#f3f7f9}*{box-sizing:border-box}body{margin:0}header{background:#137d79;color:white;padding:20px 16px}header h1{margin:0;font-size:23px}header p{margin:5px 0 0;font-size:13px}main{max-width:760px;margin:auto;padding:18px 14px 60px}.card{background:#fff;border-radius:15px;padding:20px;margin:14px 0;box-shadow:0 3px 16px #1232 0}h2{font-size:19px;margin:0 0 14px}h3{font-size:16px}.muted{color:#637284;font-size:13px}.controls{display:flex;gap:10px;flex-wrap:wrap}button,select{font:inherit}button{border:1px solid #d4dfe5;border-radius:10px;padding:12px 14px;background:#fff;color:#203044;cursor:pointer}button.primary{background:#137d79;color:white;border-color:#137d79}button:disabled{opacity:.5;cursor:not-allowed}button.active{border:2px solid #137d79;background:#e5f6f3}.wide{width:100%;margin-top:9px;text-align:left}.actions{display:flex;gap:10px;margin-top:16px}.actions button{flex:1}.hidden{display:none}.pill{background:#e5f6f3;color:#106a67;border-radius:20px;padding:5px 10px;font-size:12px;display:inline-block}.result{border-radius:10px;padding:13px;background:#f0f7f9;margin-top:12px}.correct{color:#0d7460}.wrong{color:#bb3b3b}.bar{height:7px;border-radius:5px;background:#e5ecef;overflow:hidden;margin:12px 0}.bar>div{height:100%;background:#137d79}.small{font-size:12px}footer{text-align:center;color:#637284;font-size:12px;padding:16px}select{width:100%;padding:12px;border:1px solid #d4dfe5;border-radius:10px;background:white}a{color:#137d79}#notice{font-size:13px} </style></head><body><header><div style="max-width:760px;margin:auto"><h1>FP学科トレーニング</h1><p>FP2級・3級｜無料・登録不要の学習サイト</p></div></header><main><section id="home"><div class="card"><h2>学習する級を選択</h2><div class="controls"><button id="level3" class="active" onclick="setLevel('3')">FP3級</button><button id="level2" onclick="setLevel('2')">FP2級</button></div><p class="muted" id="count"></p><label for="category"><strong>出題分野</strong></label><select id="category"></select><div class="actions"><button class="primary" onclick="startQuiz(false)">問題演習を開始</button><button onclick="startQuiz(true)">間違えた問題を復習</button></div></div><div class="card"><h2>学習記録</h2><p id="stats"></p><button onclick="clearStats()">この端末の学習記録を削除</button><p class="muted">記録はこのブラウザ内に保存されます。端末やブラウザを変更すると引き継がれません。</p></div><div class="card"><h2>模擬試験について</h2><p>現在は初期版のため、少数のオリジナル例題による分野別演習を提供しています。60問の本番形式模擬試験は、必要な問題数と内容検証が完了してから公開します。</p><p class="muted">本サイトは学習支援用の非公式サイトであり、日本FP協会等の公式サービスではありません。法令・制度は改正されることがあります。</p></div></section><section id="quiz" class="hidden"><div class="card"><div class="controls" style="justify-content:space-between"><span id="qmeta" class="pill"></span><span id="qprogress" class="muted"></span></div><div class="bar"><div id="progressbar"></div></div><h2 id="question"></h2><div id="choices"></div><div id="feedback" class="hidden result"></div><div class="actions"><button onclick="goHome()">ホームへ</button><button id="submit" class="primary" onclick="submitAnswer()" disabled>回答する</button><button id="next" class="primary hidden" onclick="nextQuestion()">次の問題</button></div></div></section><section id="finish" class="hidden"><div class="card"><h2>演習結果</h2><p id="summary"></p><button class="primary" onclick="goHome()">ホームに戻る</button></div></section><div id="notice" class="muted">掲載内容は学習用の例題です。試験制度や法令の最新情報は公式資料で確認してください。</div></main><footer>© FP学科トレーニング｜個人情報の入力は不要です</footer><script src="questions.js"></script><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#147e78">
+  <meta name="description" content="FP2級・3級の学科試験対策。無料・登録不要の分野別演習、6問ミニ模試、復習に対応。">
+  <title>FP学科トレーニング｜無料問題演習・ミニ模試</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div><h1>FP学科トレーニング</h1><p>FP2級・3級｜無料・登録不要の学習サイト</p></div>
+      <span class="header-tag">学科試験対策</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="home" aria-label="ホーム">
+      <div class="card">
+        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">初期版</span></div>
+        <div class="controls level-controls" role="group" aria-label="級を選択">
+          <button type="button" id="level3" class="active" aria-pressed="true">FP3級</button>
+          <button type="button" id="level2" aria-pressed="false">FP2級</button>
+        </div>
+        <p class="muted" id="count" aria-live="polite"></p>
+        <label for="category" class="field-label">出題分野</label>
+        <select id="category"></select>
+        <label class="check-label"><input type="checkbox" id="shuffle" checked> 問題の順番をランダムにする</label>
+        <div class="actions">
+          <button type="button" id="startPractice" class="primary">問題演習を開始</button>
+          <button type="button" id="startReview">間違えた問題を復習</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-heading"><h2>模擬試験モード</h2><span class="pill">新機能</span></div>
+        <p>試験形式に近い操作で、<strong>最後にまとめて採点</strong>します。途中で前の問題に戻って解答を変更できます。</p>
+        <div class="exam-option">
+          <div><h3>6問ミニ模試</h3><p class="muted small">制限時間10分／全分野から出題／終了後に解説</p></div>
+          <button type="button" id="startMini" class="primary">開始する</button>
+        </div>
+        <div class="exam-option">
+          <div><h3>本番形式60問模試</h3><p class="muted small" id="fullExamStatus">問題データを確認しています。</p></div>
+          <button type="button" id="startFull" disabled>準備中</button>
+        </div>
+        <button type="button" id="resumeExam" class="outline-full hidden">中断した模試を再開</button>
+        <p class="muted small">※ミニ模試は操作練習用です。正式な60問模試ではなく、合否判定も行いません。</p>
+      </div>
+
+      <div class="card">
+        <h2>学習記録</h2>
+        <p id="stats" class="stats" aria-live="polite"></p>
+        <div id="categoryStats" class="category-stats"></div>
+        <div id="examHistory" class="muted small"></div>
+        <button type="button" id="clearStats" class="subtle">この端末の学習記録を削除</button>
+        <p class="muted small">回答記録と模試の途中経過はこのブラウザ内だけに保存されます。別の端末には引き継がれません。</p>
+      </div>
+
+      <div class="card">
+        <h2>ご利用にあたって</h2>
+        <p>本サイトはFP資格の学習を支援する非公式サイトです。日本FP協会等の公式サービスではありません。</p>
+        <p class="muted">現段階では各級6問のオリジナル例題を公開しています。法令の改正や試験制度の変更があり得るため、学習に際しては公式資料も確認してください。</p>
+      </div>
+    </section>
+
+    <section id="quiz" class="hidden" aria-label="問題演習">
+      <div class="card">
+        <div class="quiz-top"><span id="qmeta" class="pill"></span><span id="qprogress" class="muted"></span></div>
+        <div class="bar"><div id="progressbar"></div></div>
+        <h2 id="question" class="question-text"></h2>
+        <div id="choices" role="group" aria-label="選択肢"></div>
+        <div id="feedback" class="hidden result" aria-live="polite"></div>
+        <div class="actions">
+          <button type="button" id="goHomePractice">ホームへ</button>
+          <button type="button" id="submit" class="primary" disabled>回答する</button>
+          <button type="button" id="next" class="primary hidden">次の問題</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="exam" class="hidden" aria-label="模擬試験">
+      <div class="card">
+        <div class="quiz-top"><span id="examLabel" class="pill"></span><span class="timer" id="timer" aria-label="残り時間">10:00</span></div>
+        <div class="quiz-top muted small"><span id="examProgress"></span><span id="examAnswered"></span></div>
+        <div class="bar"><div id="examBar"></div></div>
+        <h2 id="examQuestion" class="question-text"></h2>
+        <div id="examChoices" role="group" aria-label="模擬試験の選択肢"></div>
+        <div class="actions"><button type="button" id="examPrev">前の問題</button><button type="button" id="examNext" class="primary">次の問題</button></div>
+        <h3 class="nav-heading">問題一覧</h3>
+        <div class="question-nav" id="examNav" aria-label="問題番号を選択"></div>
+        <div class="exam-bottom"><button type="button" id="examLeave" class="subtle">保存してホームへ</button><button type="button" id="examFinish" class="danger-outline">採点する</button></div>
+      </div>
+    </section>
+
+    <section id="finish" class="hidden" aria-label="演習結果">
+      <div class="card"><h2>演習結果</h2><p id="summary" class="score-summary"></p><button type="button" class="primary" id="finishHome">ホームに戻る</button></div>
+    </section>
+
+    <section id="examResult" class="hidden" aria-label="模擬試験結果">
+      <div class="card"><h2 id="examResultTitle">模擬試験・採点結果</h2><p class="score-summary" id="examSummary"></p><p class="muted" id="examNote"></p><div class="actions"><button type="button" class="primary" id="examResultHome">ホームへ戻る</button><button type="button" id="examRetry">もう一度挑戦</button></div></div>
+      <div class="card"><h2>問題別の答え合わせ</h2><div id="examReview"></div></div>
+    </section>
+
+    <p class="page-notice">掲載問題は学習用の例題です。試験制度・法令等の最新情報は公式資料をご確認ください。</p>
+  </main>
+
+  <footer>© FP学科トレーニング｜会員登録・個人情報の入力は不要です</footer>
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
