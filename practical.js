@@ -1,13 +1,14 @@
 'use strict';
-/* 実技モード。既存の学科の保存キーとロジックを変更しない。 */
+/* 実技モード。正式リリース前の改訂に伴い保存キーを更新。 */
 (() => {
   const $p = id => document.getElementById(id);
-  const DRAFT = 'fp-training-practical-v10-draft';
-  const HISTORY = 'fp-training-practical-v10-results';
+  const DRAFT = 'fp-training-practical-v12-draft';
+  const HISTORY = 'fp-training-practical-v12-results';
   const VIEWS = ['home','quiz','finish','exam','examResult','practicalHome','practicalExam','practicalResult'];
   let attempt = null;
   let lastResult = null;
   let reviewFilter = 'issues';
+  let selectedPracticalLevel = '3';
   let timer = null;
   const trackFor = id => PRACTICAL_TRACKS.find(t => t.id === id);
   const qsFor = id => PRACTICAL_QUESTIONS.filter(q => q.track === id);
@@ -43,33 +44,90 @@
   const correctStr = q => q.kind==='choice' ? q.choices[q.answer] : `${readableNum(q.answer)} ${q.unit||''}`;
   const label = tr => `FP${tr.level}級｜${tr.org}｜${tr.name}`;
   function renderCourses(){
-    const cards=$p('prTracks'); cards.replaceChildren();
-    for(const tr of PRACTICAL_TRACKS){
-      const available=qsFor(tr.id).length>0&&!tr.disabled;
-      const box=document.createElement('div');box.className='pr-track'+(available?'':' disabled');
-      const org=document.createElement('div');org.className='pr-org';org.textContent=`FP${tr.level}級｜${tr.org}`;
-      const h=document.createElement('h3');h.textContent=tr.name;
-      const p=document.createElement('p');p.className='muted small';p.textContent= available ? `${qsFor(tr.id).length}問の体験演習｜${tr.format}｜本試験は${tr.officialCount}問` : `追加予定｜本試験は${tr.officialCount}問`;
-      const a=document.createElement('a');a.href=tr.source;a.target='_blank';a.rel='noopener noreferrer';a.textContent='参考：2026年公表の公式問題PDF';a.className='small';
-      const btn=document.createElement('button');btn.type='button';btn.textContent=available?'この科目を練習する':'準備中';btn.disabled=!available;
-      if(available){btn.className='primary';btn.addEventListener('click',()=>start(tr.id));}
-      box.append(org,h,p,a,btn);cards.append(box);
+    // Two clear steps on mobile: grade first, then organizer.
+    for (const level of ['3','2']) {
+      const tab=$p(`prSelectLevel${level}`);
+      const active=selectedPracticalLevel===level;
+      tab.classList.toggle('active',active);
+      tab.setAttribute('aria-pressed',String(active));
+    }
+    const cards=$p('prTracks');cards.replaceChildren();
+    const selected=PRACTICAL_TRACKS.filter(tr=>tr.level===selectedPracticalLevel);
+    const organizers=[
+      {name:'日本FP協会',heading:'日本FP協会',sub:'資産設計提案業務'},
+      {name:'金融財政事情研究会',heading:'金融財政事情研究会（金財）',sub:'相談業務別の実技科目'}
+    ];
+    for(const orgInfo of organizers){
+      const groupCourses=selected.filter(tr=>tr.org===orgInfo.name);
+      if(!groupCourses.length)continue;
+      const group=document.createElement('section');group.className='pr-org-group';
+      group.setAttribute('aria-label',`FP${selectedPracticalLevel}級 ${orgInfo.heading}`);
+      const groupHead=document.createElement('div');groupHead.className='pr-org-heading';
+      const h=document.createElement('h3');h.textContent=orgInfo.heading;
+      const count=document.createElement('span');count.className='pr-org-count';count.textContent=`${groupCourses.length}科目`;
+      groupHead.append(h,count);
+      const desc=document.createElement('p');desc.className='muted small';desc.textContent=orgInfo.sub;
+      const listing=document.createElement('div');listing.className='pr-track-list';
+      for(const tr of groupCourses){
+        const available=qsFor(tr.id).length>0&&!tr.disabled;
+        const box=document.createElement('div');box.className='pr-track'+(available?'':' disabled');
+        const org=document.createElement('div');org.className='pr-org';org.textContent=`FP${tr.level}級｜${orgInfo.heading}`;
+        const title=document.createElement('h4');title.textContent=tr.name;
+        const p=document.createElement('p');p.className='muted small';p.textContent= available ? `${qsFor(tr.id).length}問の体験演習｜${tr.format}｜本試験は${tr.officialCount}問` : `追加予定｜本試験は${tr.officialCount}問`;
+        const a=document.createElement('a');a.href=tr.source;a.target='_blank';a.rel='noopener noreferrer';a.textContent='参考：2026年公表の公式問題PDF';a.className='small';
+        const btn=document.createElement('button');btn.type='button';btn.textContent=available?'この科目を練習する':'準備中';btn.disabled=!available;
+        if(available){btn.className='primary';btn.addEventListener('click',()=>start(tr.id));}
+        box.append(org,title,p,a,btn);listing.append(box);
+      }
+      group.append(groupHead,desc,listing);cards.append(group);
     }
     const d=read(DRAFT,null);
     const okay=d && trackFor(d.track)&&Array.isArray(d.questions)&&Array.isArray(d.answers)&&d.questions.length===d.answers.length;
     $p('prResumeBox').classList.toggle('hidden',!okay);
     if(okay){$p('prResume').textContent=`FP${trackFor(d.track).level}級｜${trackFor(d.track).name}の続きから再開`;}
-    const prior=read(HISTORY,{attempts:[]});
-    const attempts=(Array.isArray(prior.attempts)?prior.attempts:[]).filter(a=>trackFor(a.track)&&Array.isArray(a.questions)&&Array.isArray(a.answers));
+    renderPracticalHistory();
+  }
+  function validHistory(){
+    const stored=read(HISTORY,{attempts:[]});
+    return (Array.isArray(stored.attempts)?stored.attempts:[]).filter(a=>a&&trackFor(a.track)&&Array.isArray(a.questions)&&Array.isArray(a.answers));
+  }
+  function renderPracticalHistory(){
+    const attempts=validHistory();
     $p('prHistoryBox').classList.toggle('hidden',attempts.length===0);
     const historyList=$p('prHistoryList');historyList.replaceChildren();
-    for(const a of attempts.slice(0,8)){
-      const row=document.createElement('div');row.className='exam-history-entry';
-      const p=document.createElement('p');p.textContent=`${new Date(a.finishedAt).toLocaleDateString('ja-JP')}｜FP${trackFor(a.track).level}級 ${trackFor(a.track).name}｜${a.correct}/${a.questions.length}問`;
-      const b=document.createElement('button');b.type='button';b.textContent='答え合わせを開く';
-      b.addEventListener('click',()=>{lastResult=a;reviewFilter='issues';navigate('practicalResult');renderResult();});
-      row.append(p,b);historyList.append(row);
+    for(const a of attempts){
+      const tr=trackFor(a.track);
+      const row=document.createElement('div');row.className='pr-history-entry';
+      const summary=document.createElement('div');summary.className='pr-history-summary';
+      const course=document.createElement('strong');course.textContent=`FP${tr.level}級｜${tr.org==='金融財政事情研究会'?'金財':'日本FP協会'}｜${tr.name}`;
+      const details=document.createElement('span');details.className='muted small';details.textContent=`${new Date(a.finishedAt).toLocaleDateString('ja-JP')}｜${a.correct}/${a.questions.length}問正解`;
+      summary.append(course,details);
+      const buttons=document.createElement('div');buttons.className='pr-history-actions';
+      const open=document.createElement('button');open.type='button';open.textContent='答え合わせ';
+      open.addEventListener('click',()=>{lastResult=a;reviewFilter='issues';navigate('practicalResult');renderResult();});
+      const del=document.createElement('button');del.type='button';del.className='danger-outline';del.textContent='削除';
+      del.setAttribute('aria-label',`${course.textContent} ${details.textContent} の履歴を削除`);
+      del.addEventListener('click',()=>{
+        if(!confirm(`「${course.textContent}」の受験履歴を1件削除しますか？\n削除後は復元できません。`))return;
+        const stored=validHistory();
+        const updated=stored.filter(item=>item.id!==a.id);
+        if(updated.length===stored.length){$p('prHistoryNotice').textContent='対象の履歴が見つかりませんでした。';return;}
+        if(!save(HISTORY,{attempts:updated}))return;
+        if(lastResult&&lastResult.id===a.id)lastResult=null;
+        $p('prHistoryNotice').textContent='受験履歴を1件削除しました。';
+        renderPracticalHistory();
+      });
+      buttons.append(open,del);row.append(summary,buttons);historyList.append(row);
     }
+  }
+  function clearPracticalHistory(){
+    const attempts=validHistory();
+    if(!attempts.length)return;
+    if(!confirm(`実技演習の受験履歴${attempts.length}件をすべて削除しますか？\n削除後は復元できません。\n学科の記録と途中保存の回答は残ります。`))return;
+    if(!save(HISTORY,{attempts:[]}))return;
+    lastResult=null;
+    $p('prHistoryNotice').textContent=`受験履歴${attempts.length}件を削除しました。`;
+    renderPracticalHistory();
   }
   function start(id){
     const tr=trackFor(id);
@@ -77,7 +135,7 @@
     const draft=read(DRAFT,null);
     if(draft && !confirm('保存している実技演習を終了し、新しく始めますか？前回の未採点の回答は消えます。'))return;
     const list=qsFor(id).map(q=>({...q,choices:q.choices.slice()}));
-    attempt={version:11,track:id,questions:list,answers:list.map(()=>null),pos:0,startedAt:Date.now()};
+    attempt={version:13,track:id,questions:list,answers:list.map(()=>null),pos:0,startedAt:Date.now()};
     save(DRAFT,attempt);
     navigate('practicalExam');renderQuestion();
   }
@@ -167,6 +225,8 @@
       d.append(heading,body);list.append(d);
     });
   }
+  for(const level of ['3','2'])$p(`prSelectLevel${level}`).addEventListener('click',()=>{selectedPracticalLevel=level;renderCourses();});
+  $p('prClearHistory').addEventListener('click',clearPracticalHistory);
   $p('openPractical').addEventListener('click',()=>navigate('practicalHome'));
   $p('openPracticalTop').addEventListener('click',()=>navigate('practicalHome'));
   $p('prBackHome').addEventListener('click',()=>navigate('home'));

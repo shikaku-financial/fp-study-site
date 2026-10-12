@@ -1,13 +1,13 @@
 'use strict';
 
-// 旧版の解答履歴の保存形式を維持します。履歴の自動削除・初期化はしません。
+// 公開前の選択肢全面見直しに伴い、Ver.12は新しい学習記録キーを使用します。
 const CATEGORIES = ['すべての分野', 'ライフプランニングと資金計画', 'リスク管理', '金融資産運用', 'タックスプランニング', '不動産', '相続・事業承継'];
-const STORAGE = 'fp-training-v1';
-const EXAM_HISTORY_KEY = 'fp-training-exam-history-v2';
-const EXAM_DRAFT_KEY = 'fp-training-exam-draft-v2';
-const EXAM_DETAILS_KEY = 'fp-training-exam-details-v6';
+const STORAGE = 'fp-training-v12';
+const EXAM_HISTORY_KEY = 'fp-training-exam-history-v12';
+const EXAM_DRAFT_KEY = 'fp-training-exam-draft-v12';
+const EXAM_DETAILS_KEY = 'fp-training-exam-details-v12';
 const MINI_EXAM_MINUTES = 10;
-const REVISION_ARCHIVE_KEY = 'fp-training-revisions-v7';
+const REVISION_ARCHIVE_KEY = 'fp-training-revisions-v12';
 const questionRevision = (q) => Number.isInteger(q.revision) ? q.revision : 1;
 const resultCurrent = (q, r) => r && typeof r.correct === 'boolean' && (Number.isInteger(r.revision) ? r.revision : 1) === questionRevision(q);
 
@@ -181,7 +181,7 @@ function makeOptionButtons(target, q, selectedValue, onSelect, lock = false) {
   }
 }
 
-// 分野別演習と誤答復習（解答ごとに旧版の保存先へ記録）。
+// 分野別演習と誤答復習（解答ごとにVer.12の保存先へ記録）。
 function startQuiz(onlyWrong) {
   if (exam) { alert('進行中の模試があります。先にホームで再開してください。'); return; }
   const cat = $('category').value;

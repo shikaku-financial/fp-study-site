@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#147e78">
   <meta name="description" content="FP2級・3級の学科・実技試験対策。無料・登録不要。学科各180問と実技のオリジナル例題に対応。">
   <title>FP学科・実技トレーニング｜無料FP2級・3級 学科・実技対策</title>
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
   <header class="site-header">
@@ -20,7 +20,7 @@
     <section id="home" aria-label="ホーム">
       <div class="home-tabs" aria-label="試験種別を選ぶ"><span class="tab-on">学科試験</span><button id="openPracticalTop" type="button">実技試験を学習する →</button></div>
       <div class="card">
-        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.12｜学科各180問</span></div>
+        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.13｜学科各180問</span></div>
         <div class="controls level-controls" role="group" aria-label="級を選択">
           <button type="button" id="level3" class="active" aria-pressed="true">FP3級</button>
           <button type="button" id="level2" aria-pressed="false">FP2級</button>
@@ -53,7 +53,7 @@
       </div>
 
       <div class="card practical-promo">
-        <div class="section-heading"><h2>実技試験の演習を追加しました</h2><span class="pill">Ver.12｜実技8科目</span></div>
+        <div class="section-heading"><h2>実技試験の演習を追加しました</h2><span class="pill">Ver.13｜実技8科目</span></div>
         <p>日本FP協会2・3級、金財2級4科目・3級2科目のオリジナル実技例題に対応。事例・計算問題を練習できます。</p>
         <button type="button" id="openPractical" class="primary full-width">実技試験の科目を選ぶ</button>
         <p class="muted small">初期版の体験演習です。正式な配点による合否判定は行いません。</p>
@@ -63,9 +63,9 @@
         <h2>学習記録</h2>
         <p id="stats" class="stats" aria-live="polite"></p><p id="revisionNotice" class="muted small hidden"></p>
         <div id="categoryStats" class="category-stats"></div>
-        <div id="examHistory" class="muted small"></div><div id="examHistoryList" class="exam-history-list" aria-label="過去の模試の受験履歴"></div><p class="muted small">Ver.6以降の模試は採点後の答え合わせを再表示できます。改訂された設問の旧回答は現在の正答率から除外されます。途中保存した模試は出題時点の問題文・解説のまま再開できます。</p>
+        <div id="examHistory" class="muted small"></div><div id="examHistoryList" class="exam-history-list" aria-label="過去の模試の受験履歴"></div><p class="muted small">模試は採点後に問題別の答え合わせを再表示できます。正式リリース前の選択肢改善に伴い、Ver.11以前の記録は引き継ぎません。Ver.12の学習履歴と途中経過は引き続き利用できます。</p>
         <button type="button" id="clearStats" class="subtle">この端末の学習記録を削除</button>
-        <p class="muted small">回答記録と模試の途中経過はこのブラウザ内に保存されます。改訂前の回答の控えも残しますが、別の端末には引き継がれません。</p>
+        <p class="muted small">Ver.12以降の回答記録と模試の途中経過はこのブラウザ内に保存されます。別の端末には引き継がれません。</p>
       </div>
 
       <div class="card usage-card">
@@ -138,11 +138,23 @@
 
     <section id="practicalHome" class="hidden" aria-label="実技科目選択">
       <div class="card"><button type="button" id="prBackHome" class="linkish">← 学科トップへ戻る</button>
-        <div class="section-heading"><h2>実技試験｜科目選択</h2><span class="pill">Ver.12</span></div>
+        <div class="section-heading"><h2>実技試験｜科目選択</h2><span class="pill">Ver.13</span></div>
         <p>実際の公表過去問の出題テーマを参考にした<strong>独自の実技演習</strong>です。出題数・配点は実技本試験と異なる場合があります。<strong>得点率のみ表示</strong>し、合格・不合格の判定はしません。</p>
-        <div id="prTracks" class="pr-track-list"></div>
+        <div class="pr-course-switch" aria-label="実技の級を選択">
+          <p class="pr-course-switch-label">まず受験する級を選択してください</p>
+          <div class="pr-level-tabs" role="group" aria-label="実技の級を選択">
+            <button type="button" id="prSelectLevel3" class="active" aria-pressed="true">FP3級 <small>3科目</small></button>
+            <button type="button" id="prSelectLevel2" aria-pressed="false">FP2級 <small>5科目</small></button>
+          </div>
+        </div>
+        <div id="prTracks" class="pr-track-groups"></div>
         <div id="prResumeBox" class="hidden pr-resume"><p>保存した実技演習があります。</p><button type="button" id="prResume" class="primary full-width">途中から再開する</button></div>
-        <div id="prHistoryBox" class="hidden"><h3>実技演習の受験履歴</h3><div id="prHistoryList" class="exam-history-list"></div></div>
+        <div id="prHistoryBox" class="hidden pr-history-panel">
+          <div class="pr-history-title"><h3>実技演習の受験履歴</h3><button id="prClearHistory" type="button" class="danger-outline pr-clear-history">履歴をすべて削除</button></div>
+          <p class="muted small">このブラウザに保存した採点済みの記録です。1件ずつ削除することもできます。学科の記録や実技の途中保存データは削除されません。</p>
+          <div id="prHistoryList" class="exam-history-list"></div>
+        </div>
+        <p id="prHistoryNotice" class="pr-history-notice muted small" role="status" aria-live="polite"></p>
         <p class="muted small">参考PDFはすべて2026年5月公表分。金財の問題は2025年4月1日現在の法令等に基づいています。試験日によって法令基準日が異なるため、重要事項は公式情報もご確認ください。</p>
       </div>
     </section>
@@ -171,9 +183,9 @@
   </main>
 
   <footer>© FP学科・実技トレーニング｜会員登録・個人情報の入力は不要です</footer>
-  <script src="questions.js?v=12"></script>
-  <script src="app.js?v=12"></script>
-  <script src="practical-questions.js?v=12"></script>
-  <script src="practical.js?v=12"></script>
+  <script src="questions.js?v=13"></script>
+  <script src="app.js?v=13"></script>
+  <script src="practical-questions.js?v=13"></script>
+  <script src="practical.js?v=13"></script>
 </body>
 </html>

@@ -87,3 +87,32 @@
 .usage-details[open] summary::before{content:'−'}
 .usage-details-body{border-top:1px solid #d5e4e7;padding:8px 15px 14px;color:#526a7e;font-size:14px}
 .usage-details-body a{color:#126e68;text-decoration:underline}
+
+/* Ver.13: clearly separate practical levels and examination organizations */
+.pr-course-switch{background:#f4faf9;border:1px solid #c5e1db;border-radius:14px;padding:15px;margin:20px 0}
+.pr-course-switch-label{font-weight:750;margin:0 0 10px}
+.pr-level-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pr-level-tabs button{border:2px solid #cadde2;background:#fff;min-height:66px;font-size:19px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.pr-level-tabs button small{color:#64778a;font-size:12px;font-weight:500}
+.pr-level-tabs button.active{background:#e2f4f0;border:2px solid #147e78;color:#126e68}
+.pr-level-tabs button.active small{color:#126e68}
+.pr-track-groups{display:grid;gap:25px;margin:18px 0 25px}
+.pr-org-group{border:1px solid #d6e5e9;background:#fafdfe;padding:16px;border-radius:15px}
+.pr-org-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.pr-org-heading h3{font-size:19px;color:#145d60;margin:0}
+.pr-org-count{font-size:12px;border-radius:20px;padding:5px 11px;background:#e5f6f3;color:#116b63;font-weight:750;white-space:nowrap}
+.pr-org-group>.muted{margin:4px 0 0}
+.pr-track-list{margin-top:12px}
+.pr-track{background:#fff}
+.pr-track h4{font-size:17px;margin:5px 0 6px}
+.pr-history-panel{margin-top:30px;border-top:1px solid #e2ebee;padding-top:22px}
+.pr-history-title{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.pr-history-title h3{font-size:18px}
+.pr-clear-history{font-size:13px;min-height:40px;padding:8px 10px}
+.pr-history-entry{border:1px solid #e1eaef;border-radius:12px;padding:13px;display:flex;justify-content:space-between;gap:12px;align-items:center;background:#fff}
+.pr-history-summary{display:grid;gap:5px;min-width:0;flex:1}
+.pr-history-summary strong{font-size:13px;line-height:1.5}
+.pr-history-actions{display:flex;gap:7px}
+.pr-history-actions button{min-height:41px;padding:8px 10px;font-size:12px;white-space:nowrap}
+.pr-history-notice{min-height:1.5em}
+@media(max-width:550px){.pr-org-group{padding:12px}.pr-history-entry{flex-direction:column;align-items:stretch}.pr-history-actions{display:grid;grid-template-columns:1fr 1fr}.pr-history-title{align-items:flex-start}.pr-history-title h3{font-size:16px}}
