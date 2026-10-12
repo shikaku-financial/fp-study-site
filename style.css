@@ -116,3 +116,36 @@
 .pr-history-actions button{min-height:41px;padding:8px 10px;font-size:12px;white-space:nowrap}
 .pr-history-notice{min-height:1.5em}
 @media(max-width:550px){.pr-org-group{padding:12px}.pr-history-entry{flex-direction:column;align-items:stretch}.pr-history-actions{display:grid;grid-template-columns:1fr 1fr}.pr-history-title{align-items:flex-start}.pr-history-title h3{font-size:16px}}
+
+/* Ver.14: official information without using institutional branding */
+.official-card{border:1px solid #d5e5e9}
+.official-card .section-heading{align-items:flex-start;flex-wrap:wrap}
+.official-card .section-heading h2{margin-bottom:8px}
+.source-note{font-size:12px;color:#536f7e;background:#f3f7f8;border:1px solid #dae5e9;padding:4px 10px;border-radius:20px}
+.official-organizations{display:grid;gap:11px;margin-top:18px}
+.official-organization{border:1px solid #dae6eb;border-radius:13px;padding:14px;background:#fcfefe}
+.official-organization h3{font-size:17px;margin-bottom:5px;color:#254658}
+.official-organization p{margin:4px 0 12px}
+.official-links{display:flex;gap:9px;flex-wrap:wrap}
+.official-links a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;text-decoration:none;border:1px solid #bed8dd;background:#fff;border-radius:9px;color:#126c67;padding:9px 12px;font-size:13px;font-weight:650;flex:1 1 165px}
+.official-links a:hover{background:#eff9f6;border-color:#5c9e99}
+.official-links a:focus-visible,.source-details summary:focus-visible{outline:3px solid #eeab4e;outline-offset:3px}
+.official-links a span{flex-shrink:0}
+.source-details{border:1px solid #d5e4e7;border-radius:12px;background:#f8fbfb;margin-top:15px;overflow:hidden}
+.source-details summary{list-style:none;cursor:pointer;min-height:48px;padding:11px 14px;font-weight:700;color:#126e68;display:flex;align-items:center;gap:9px}
+.source-details summary::-webkit-details-marker{display:none}
+.source-details summary::before{content:'＋';font-size:20px}
+.source-details[open] summary::before{content:'−'}
+.source-details-body{border-top:1px solid #d5e4e7;padding:9px 14px 14px;font-size:13px;color:#53677a}
+.source-details-body p{margin:8px 0}
+.usage-details-body h3{font-size:14px;color:#254658;margin:16px 0 4px}
+.usage-details-body h3:first-child{margin-top:8px}
+.usage-card a,.pr-source-disclosure a{color:#126e68;text-decoration:underline;overflow-wrap:anywhere}
+.question-source-details{margin-top:12px;border-top:1px solid #d4e3e8;padding-top:11px;font-size:13px}
+.question-source-details summary{cursor:pointer;color:#126e68;font-weight:650}
+.question-source-details-body{padding:6px 0 2px;font-size:13px}
+.question-source-details-body p{margin:8px 0}
+.question-source-details-body a{color:#126b85;text-decoration:underline;overflow-wrap:anywhere}
+@media(max-width:470px){.official-organization{padding:12px}.official-links{display:grid}.official-links a{min-height:42px}.official-card{padding:17px}}
+
+.official-law-alert{background:#fff8e8;border:1px solid #eadab2;border-radius:10px;color:#705b34;font-size:12px;padding:10px 12px;line-height:1.65;margin:15px 0 0}

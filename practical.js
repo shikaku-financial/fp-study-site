@@ -74,7 +74,7 @@
         const org=document.createElement('div');org.className='pr-org';org.textContent=`FP${tr.level}級｜${orgInfo.heading}`;
         const title=document.createElement('h4');title.textContent=tr.name;
         const p=document.createElement('p');p.className='muted small';p.textContent= available ? `${qsFor(tr.id).length}問の体験演習｜${tr.format}｜本試験は${tr.officialCount}問` : `追加予定｜本試験は${tr.officialCount}問`;
-        const a=document.createElement('a');a.href=tr.source;a.target='_blank';a.rel='noopener noreferrer';a.textContent='参考：2026年公表の公式問題PDF';a.className='small';
+        const a=document.createElement('a');a.href=tr.source;a.target='_blank';a.rel='noopener noreferrer';a.textContent='参考：試験実施団体の公表問題PDF（外部） ↗';a.className='small';
         const btn=document.createElement('button');btn.type='button';btn.textContent=available?'この科目を練習する':'準備中';btn.disabled=!available;
         if(available){btn.className='primary';btn.addEventListener('click',()=>start(tr.id));}
         box.append(org,title,p,a,btn);listing.append(box);
@@ -222,6 +222,15 @@
       const status=document.createElement('strong');status.className=good?'correct':'wrong';status.textContent=good?'正解':r.answers[i]===null||r.answers[i]===''?'未回答':'不正解';heading.append(name,status);
       const body=document.createElement('div');body.className='review-details-body';
       [['設例：',q.caseText],['問題：',q.question],['あなたの回答：',answerStr(q,r.answers[i])],['正解：',correctStr(q)],['解説：',q.explanation]].forEach(([k,v])=>{const p=document.createElement('p');p.textContent=k+v;body.append(p);});
+      const note=document.createElement('p');note.className='muted small';
+      note.textContent=`独自作成の演習問題です。資料の法令基準日：${q.lawReferenceDate||'未登録'}。全問の専門家監修は未完了です。`;
+      body.append(note);
+      const tr=trackFor(r.track);
+      if(tr&&tr.source){
+        const ref=document.createElement('p');const a=document.createElement('a');
+        a.href=tr.source;a.target='_blank';a.rel='noopener noreferrer';
+        a.textContent='参考にした試験実施団体の公表問題PDF（外部） ↗';ref.append(a);body.append(ref);
+      }
       d.append(heading,body);list.append(d);
     });
   }

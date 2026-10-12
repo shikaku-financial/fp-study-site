@@ -27,17 +27,34 @@ function archiveOldRevisionResults() {
 }
 
 function appendQuestionSource(parent, q) {
-  if (q.themeReferenceUrl) {
-    const p = document.createElement('p'); p.className = 'muted small';
-    const a = document.createElement('a'); a.href = q.themeReferenceUrl; a.target = '_blank'; a.rel = 'noopener noreferrer';
-    a.textContent = `出題テーマ参考：${q.themeReferenceLabel || '金財公表問題'}（設問は独自作成）`;
-    p.append(a); parent.append(p);
+  // A reference link is not a claim of official supervision or completed legal verification.
+  const details = document.createElement('details'); details.className = 'question-source-details';
+  const summary = document.createElement('summary'); summary.textContent = '参考情報・確認状況';
+  const content = document.createElement('div'); content.className = 'question-source-details-body';
+  const status = document.createElement('p');
+  status.textContent = '独自作成問題です。正答・解説の全問専門家監修は未完了です。';
+  content.append(status);
+  if (q.lawReferenceDate) {
+    const date = document.createElement('p'); date.textContent = `設問データに登録された法令基準日：${q.lawReferenceDate}（最新制度への照合完了を意味しません）`;
+    content.append(date);
+  } else {
+    const date = document.createElement('p'); date.textContent = '問題固有の法令基準日は登録されていません。制度改正の有無は公式情報をご確認ください。'; content.append(date);
   }
-  if (!q.sourceUrl) return;
-  const p = document.createElement('p'); p.className = 'muted small';
-  const a = document.createElement('a'); a.href = q.sourceUrl; a.target = '_blank'; a.rel = 'noopener noreferrer';
-  a.textContent = `制度確認用の公的資料：${q.sourceLabel || '確認資料'}`; p.append(a); parent.append(p);
+  for (const [url, caption] of [
+    [q.themeReferenceUrl, `出題テーマの参考：${q.themeReferenceLabel || '公表問題'}（公式サイト・外部）`],
+    [q.sourceUrl, `制度・内容の参考：${q.sourceLabel || '関連資料'}（外部）`]
+  ]) {
+    if (typeof url !== 'string' || !/^https:\/\//.test(url)) continue;
+    const p = document.createElement('p'); const a = document.createElement('a');
+    a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = caption;
+    p.append(a); content.append(p);
+  }
+  const check = document.createElement('p'); const a = document.createElement('a');
+  a.href = 'https://www.kinzai.or.jp/ginou/fp/law.html'; a.target = '_blank'; a.rel = 'noopener noreferrer';
+  a.textContent = '現在の試験の法令基準日を確認 ↗'; check.append(a); content.append(check);
+  details.append(summary, content); parent.append(details);
 }
+
 const $ = (id) => document.getElementById(id);
 
 let level = '3';
@@ -397,7 +414,7 @@ function finishExam(timeOver = false) {
   const prior = readJSON(EXAM_DETAILS_KEY, { attempts: [] });
   const detailRows = Array.isArray(prior.attempts) ? prior.attempts : [];
   const detail = { id: attemptId, level: currentExam.level, kind: currentExam.kind, finishedAt, timeOver,
-    questions: qs.map(q => ({ id:q.id,level:q.level,category:q.category,format:q.format,question:q.question,choices:q.choices.slice(),answer:q.answer,explanation:q.explanation,sourceUrl:q.sourceUrl||'',sourceLabel:q.sourceLabel||'',revision:questionRevision(q) })), answers: a };
+    questions: qs.map(q => ({ id:q.id,level:q.level,category:q.category,format:q.format,question:q.question,choices:q.choices.slice(),answer:q.answer,explanation:q.explanation,sourceUrl:q.sourceUrl||'',sourceLabel:q.sourceLabel||'',themeReferenceUrl:q.themeReferenceUrl||'',themeReferenceLabel:q.themeReferenceLabel||'',lawReferenceDate:q.lawReferenceDate||null,revision:questionRevision(q) })), answers: a };
   writeJSON(EXAM_DETAILS_KEY, { attempts: [detail, ...detailRows].slice(0, 12) });
   writeJSON(EXAM_HISTORY_KEY, { attempts: attempts.slice(0, 30) });
   try { localStorage.removeItem(EXAM_DRAFT_KEY); } catch { /* 保存できない環境でも結果を表示 */ }
