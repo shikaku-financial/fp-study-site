@@ -169,3 +169,10 @@
 .choice-reason-list { padding-left: 1.4rem; margin: .65rem 0 0; }
 .choice-reason-list li { margin: .55rem 0; overflow-wrap: anywhere; }
 .choice-reason-list li p { margin: .16rem 0 .35rem; color: #536775; font-size: .94rem; line-height: 1.6; }
+
+/* Ver.27: official-information section collapses like usage-details */
+.official-card .official-lead{margin:5px 0 9px;line-height:1.7}
+.official-toggle{margin-top:10px}
+.official-toggle-body{padding:12px 14px 16px}
+.official-toggle-body .official-organizations{margin-top:9px}
+.official-toggle-body .source-details{margin-top:13px}

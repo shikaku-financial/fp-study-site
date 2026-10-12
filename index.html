@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="ファイナンシャル・ライセンス・ラボ内のFPラボ。FP2級・3級の学科・実技試験対策。無料・登録不要。学科360問、実技240問の独自演習。間違えた問題だけ再演習できます。">
   <title>FPラボ｜FP2級・3級 学科・実技対策｜ファイナンシャル・ライセンス・ラボ</title>
-  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="style.css?v=27">
 </head>
 <body>
   <header class="site-header brand-header">
@@ -23,7 +23,7 @@
     <section id="home" aria-label="ホーム">
       <div class="home-tabs" aria-label="試験種別を選ぶ"><span class="tab-on">学科試験</span><button id="openPracticalTop" type="button">実技試験を学習する →</button></div>
       <div class="card">
-        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.26｜学科各180問</span></div>
+        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.27｜学科各180問</span></div>
         <div class="controls level-controls" role="group" aria-label="級を選択">
           <button type="button" id="level3" class="active" aria-pressed="true">FP3級</button>
           <button type="button" id="level2" aria-pressed="false">FP2級</button>
@@ -57,7 +57,7 @@
       </div>
 
       <div class="card practical-promo">
-        <div class="section-heading"><h2>FPラボ｜実技試験の演習</h2><span class="pill">Ver.26｜実技240問</span></div>
+        <div class="section-heading"><h2>FPラボ｜実技試験の演習</h2><span class="pill">Ver.27｜実技240問</span></div>
         <p>日本FP協会3級20問・2級40問、金財3級2科目・2級4科目は各30問、計8科目240問のオリジナル実技例題に対応。事例・計算問題を練習できます。</p>
         <button type="button" id="openPractical" class="primary full-width">実技試験の科目を選ぶ</button>
         <p class="muted small">実技の各科目は独自演習です。正式配点による合否判定は行いません。</p>
@@ -65,8 +65,12 @@
 
 
       <section class="card official-card" id="official-resources" aria-labelledby="official-heading">
-        <div class="section-heading"><h2 id="official-heading">試験実施団体の公式情報</h2><span class="source-note">外部サイトへのリンク</span></div>
-        <p class="muted small">試験要綱・公表問題・法令基準日を確認できます。以下は<strong>試験実施団体の公式サイトへの外部リンク</strong>であり、当サイトが公式に運営・公認されていることを意味しません。</p>
+        <h2 id="official-heading">試験実施団体の公式情報</h2>
+        <p class="muted small official-lead">日本FP協会・金財の試験情報、公表問題、法令基準日へのリンクです。<strong>当サイトは非公式です。</strong></p>
+        <details class="usage-details official-toggle" id="officialDetails">
+          <summary>公式情報・参考リンクを表示</summary>
+          <div class="usage-details-body official-toggle-body">
+            <p class="muted small">以下は試験実施団体の公式サイトへの外部リンクです。当サイトが公式に運営・公認・監修されていることを意味しません。</p>
         <div class="official-organizations">
           <div class="official-organization">
             <h3>日本FP協会</h3>
@@ -95,6 +99,8 @@
             <p>2026年5月公表の金財CBT問題の法令基準日は原則2025年4月1日ですが、金財が案内する2026年6月～2027年5月の2級・3級CBT試験の法令基準日は2026年4月1日です。最新の制度と一致しない設問が含まれる可能性があります。</p>
             <p>試験問題の利用条件：<a href="https://www.jafp.or.jp/exam/mohan/files/exam_riyou.pdf" target="_blank" rel="noopener noreferrer">日本FP協会（PDF） ↗</a> ／ <a href="https://www.kinzai.or.jp/ginou/license_terms.html" target="_blank" rel="noopener noreferrer">金財（ウェブサイト） ↗</a></p>
             <p class="muted small">公式ページのリンク先を確認：2026年10月12日／この日付は個別問題の内容検証完了日ではありません。</p>
+          </div>
+        </details>
           </div>
         </details>
       </section>
@@ -231,9 +237,9 @@
   </main>
 
   <footer>© ファイナンシャル・ライセンス・ラボ｜FPラボ｜独立した非公式学習サイト</footer>
-  <script src="questions.js?v=26"></script>
-  <script src="app.js?v=26"></script>
-  <script src="practical-questions.js?v=26"></script>
-  <script src="practical.js?v=26"></script>
+  <script src="questions.js?v=27"></script>
+  <script src="app.js?v=27"></script>
+  <script src="practical-questions.js?v=27"></script>
+  <script src="practical.js?v=27"></script>
 </body>
 </html>
