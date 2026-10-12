@@ -27,3 +27,16 @@
 .review-details summary strong {font-size:12px;white-space:nowrap}
 .review-details-body {padding:0 10px 13px 22px}
 .review-details-body p {margin:8px 0}
+
+/* Ver.6: 模試の見直し指定と受験履歴 */
+.review-flag{display:block;width:100%;margin-top:12px;border:1px solid #c7d8e3;background:#fff;text-align:center;color:#416074}
+.review-flag.active{background:#fff5db;border-color:#d49d28;color:#795000}
+.exam-jumps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.exam-jumps .jump-unanswered{margin-top:0;min-height:53px;font-size:14px}
+.question-nav button.flagged{background:#fff5db;border-color:#d49d28;color:#775000}
+.question-nav button.flagged.current{border:2px solid #147e78}
+.exam-history-list{display:grid;gap:10px;margin:12px 0 20px}
+.exam-history-entry{border:1px solid #e0e9ed;padding:12px 14px;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.exam-history-entry p{margin:0;font-size:14px}
+.exam-history-entry button{font-size:13px;flex-shrink:0}
+@media(max-width:470px){.exam-jumps{grid-template-columns:1fr}.exam-history-entry{flex-wrap:wrap}.exam-history-entry button{width:100%}}

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#147e78">
   <meta name="description" content="FP2級・3級の学科試験対策。無料・登録不要の分野別演習、6問ミニ模試、60問模試、復習に対応。各級60問を無料収録。">
   <title>FP学科トレーニング｜無料FP2級・3級学科60問模試と分野別演習</title>
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
   <header class="site-header">
@@ -19,7 +19,7 @@
   <main class="container">
     <section id="home" aria-label="ホーム">
       <div class="card">
-        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.5｜各級60問</span></div>
+        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.6｜各級60問</span></div>
         <div class="controls level-controls" role="group" aria-label="級を選択">
           <button type="button" id="level3" class="active" aria-pressed="true">FP3級</button>
           <button type="button" id="level2" aria-pressed="false">FP2級</button>
@@ -53,7 +53,7 @@
         <h2>学習記録</h2>
         <p id="stats" class="stats" aria-live="polite"></p>
         <div id="categoryStats" class="category-stats"></div>
-        <div id="examHistory" class="muted small"></div>
+        <div id="examHistory" class="muted small"></div><div id="examHistoryList" class="exam-history-list" aria-label="過去の模試の受験履歴"></div><p class="muted small">Ver.6以降の模試は、採点後にホームへ戻っても答え合わせを再表示できます。これ以前の履歴は点数のみ残ります。</p>
         <button type="button" id="clearStats" class="subtle">この端末の学習記録を削除</button>
         <p class="muted small">回答記録と模試の途中経過はこのブラウザ内だけに保存されます。別の端末には引き継がれません。</p>
       </div>
@@ -87,13 +87,13 @@
         <div class="bar"><div id="examBar"></div></div>
         <h2 id="examQuestion" class="question-text"></h2>
         <div id="examChoices" role="group" aria-label="模擬試験の選択肢"></div>
-        <div class="actions"><button type="button" id="examPrev">前の問題</button><button type="button" id="examNext" class="primary">次の問題</button></div>
+        <div class="actions"><button type="button" id="examPrev">前の問題</button><button type="button" id="examNext" class="primary">次の問題</button></div><button type="button" id="examFlag" class="review-flag" aria-pressed="false">☆ この問題を見直す</button>
         <details id="examNavDetails" class="exam-nav-details">
           <summary><span>問題一覧を開く</span><span class="nav-status" id="examNavStatus">回答済 0問 / 全60問</span></summary>
-          <p class="muted small">番号をタップすると、その問題へ移動できます。緑色は回答済み、枠が太い番号が現在の問題です。</p>
+          <p class="muted small">番号をタップすると、その問題へ移動できます。緑色は回答済み、★は見直し指定、枠が太い番号が現在の問題です。</p>
           <div class="question-nav" id="examNav" aria-label="問題番号を選択"></div>
         </details>
-        <button type="button" id="examJumpUnanswered" class="jump-unanswered">次の未回答へ移動</button>
+        <div class="exam-jumps"><button type="button" id="examJumpUnanswered" class="jump-unanswered">次の未回答へ移動</button><button type="button" id="examJumpFlagged" class="jump-unanswered">★ 見直し問題へ移動</button></div>
         <div class="exam-bottom"><button type="button" id="examLeave" class="subtle">保存してホームへ</button><button type="button" id="examFinish" class="danger-outline">採点する</button></div>
       </div>
     </section>
@@ -120,7 +120,7 @@
   </main>
 
   <footer>© FP学科トレーニング｜会員登録・個人情報の入力は不要です</footer>
-  <script src="questions.js?v=5"></script>
-  <script src="app.js?v=5"></script>
+  <script src="questions.js?v=6"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>

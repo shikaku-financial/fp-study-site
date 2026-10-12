@@ -5,6 +5,7 @@ const CATEGORIES = ['すべての分野', 'ライフプランニングと資金�
 const STORAGE = 'fp-training-v1';
 const EXAM_HISTORY_KEY = 'fp-training-exam-history-v2';
 const EXAM_DRAFT_KEY = 'fp-training-exam-draft-v2';
+const EXAM_DETAILS_KEY = 'fp-training-exam-details-v6';
 const MINI_EXAM_MINUTES = 10;
 const $ = (id) => document.getElementById(id);
 
@@ -20,6 +21,7 @@ let lastExamLevel = '3';
 let lastExamKind = 'mini';
 let lastReviewRows = [];
 let reviewFilter = 'issues';
+let lastExamTimeOver = false;
 
 function readJSON(key, fallback) {
   try {
@@ -76,7 +78,7 @@ function fullExamAvailability(targetLevel) {
 }
 function updateHome() {
   const pool = validQuestions(level);
-  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.5）`;
+  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.6）`;
   const old = $('category').value;
   $('category').replaceChildren();
   for (const c of CATEGORIES) {
@@ -107,7 +109,28 @@ function updateHome() {
   if (canResume) $('resumeExam').textContent = `中断したFP${draft.level}級 ${draft.kind === 'full' ? '60問' : '6問'}模試を再開`;
   const h = readJSON(EXAM_HISTORY_KEY, { attempts: [] });
   const attempts = (Array.isArray(h.attempts) ? h.attempts : []).filter(x => x.level === level);
-  $('examHistory').textContent = attempts.length ? `直近の模試：${attempts[0].total}問中 ${attempts[0].correct}問正解（${new Date(attempts[0].finishedAt).toLocaleDateString('ja-JP')}）` : '模試の受験履歴はまだありません。';
+  $('examHistory').textContent = attempts.length ? `過去の模試：${attempts.length}件（直近30件まで記録）` : '模試の受験履歴はまだありません。';
+  const detailStore = readJSON(EXAM_DETAILS_KEY, { attempts: [] });
+  const detailed = Array.isArray(detailStore.attempts) ? detailStore.attempts : [];
+  const historyList = $('examHistoryList'); historyList.replaceChildren();
+  attempts.slice(0, 8).forEach(a => {
+    const row = document.createElement('div'); row.className = 'exam-history-entry';
+    const summary = document.createElement('p');
+    const label = a.kind === 'full' ? '60問模試' : 'ミニ模試';
+    const date = Number.isFinite(a.finishedAt) ? new Date(a.finishedAt).toLocaleDateString('ja-JP') : '日付不明';
+    summary.textContent = `${date}｜${label}｜${a.correct}/${a.total}問 正解`;
+    row.append(summary);
+    const details = detailed.find(d => d.id === a.id && d.level === a.level);
+    if (details) {
+      const button = document.createElement('button'); button.type = 'button';
+      button.textContent = '答え合わせを開く';
+      button.addEventListener('click', () => openSavedExam(details.id));
+      row.append(button);
+    } else {
+      const note = document.createElement('span'); note.className = 'muted small'; note.textContent = '得点のみ保存'; row.append(note);
+    }
+    historyList.append(row);
+  });
 }
 function makeOptionButtons(target, q, selectedValue, onSelect, lock = false) {
   target.replaceChildren();
@@ -189,7 +212,7 @@ function createExam(kind) {
   }
   if (!questions.length) { alert('模試用の問題がありません。'); return; }
   const duration = kind === 'mini' ? MINI_EXAM_MINUTES : level === '3' ? 90 : 120;
-  exam = { version: 2, kind, level, ids: questions.map(q => q.id), answers: questions.map(() => null), pos: 0, deadline: Date.now() + duration * 60000 };
+  exam = { version: 2, kind, level, ids: questions.map(q => q.id), answers: questions.map(() => null), pos: 0, deadline: Date.now() + duration * 60000, flags: questions.map(() => false) };
   writeJSON(EXAM_DRAFT_KEY, exam);
   $('examNavDetails').open = false;
   show('exam'); renderExam(); startTimer();
@@ -206,6 +229,7 @@ function resumeExam() {
     alert('再開できる模試データがありません。'); return;
   }
   exam = draft;
+  if (!Array.isArray(exam.flags) || exam.flags.length !== exam.ids.length) exam.flags = exam.ids.map(() => false);
   $('examNavDetails').open = false;
   if (!Number.isInteger(exam.pos) || exam.pos < 0 || exam.pos >= exam.ids.length) exam.pos = 0;
   show('exam');
@@ -221,6 +245,12 @@ function renderExam() {
   $('examAnswered').textContent = `回答済 ${answeredCount}問`;
   $('examNavStatus').textContent = `${answeredCount}/${questions.length}問 回答済`;
   $('examJumpUnanswered').disabled = answeredCount === questions.length;
+  const markedCount = (exam.flags || []).filter(Boolean).length;
+  $('examJumpFlagged').disabled = markedCount === 0;
+  $('examJumpFlagged').textContent = `★ 見直し問題へ移動（${markedCount}）`;
+  $('examFlag').classList.toggle('active', Boolean(exam.flags && exam.flags[exam.pos]));
+  $('examFlag').setAttribute('aria-pressed', String(Boolean(exam.flags && exam.flags[exam.pos])));
+  $('examFlag').textContent = exam.flags && exam.flags[exam.pos] ? '★ 見直し指定を解除する' : '☆ この問題を見直す';
   $('examBar').style.width = `${exam.answers.filter(a => a !== null).length / questions.length * 100}%`;
   $('examQuestion').textContent = q.question;
   makeOptionButtons($('examChoices'), q, exam.answers[exam.pos], (answer) => {
@@ -234,7 +264,10 @@ function renderExam() {
   const nav = $('examNav'); nav.replaceChildren();
   for (let i = 0; i < exam.ids.length; i++) {
     const b = document.createElement('button'); b.type = 'button';
-    b.textContent = String(i + 1); b.setAttribute('aria-label', `第${i + 1}問${exam.answers[i] === null ? ' 未回答' : ' 回答済み'}`);
+    const marked = Boolean(exam.flags && exam.flags[i]);
+    b.textContent = `${marked ? '★' : ''}${i + 1}`;
+    b.setAttribute('aria-label', `第${i + 1}問${exam.answers[i] === null ? ' 未回答' : ' 回答済み'}${marked ? ' 見直し指定' : ''}`);
+    b.classList.toggle('flagged', marked);
     b.classList.toggle('done', exam.answers[i] !== null);
     b.classList.toggle('current', i === exam.pos);
     if (i === exam.pos) b.setAttribute('aria-current', 'step');
@@ -251,6 +284,20 @@ function jumpToUnanswered() {
   const afterCurrent = exam.answers.findIndex((answer, i) => i > exam.pos && answer === null);
   const first = exam.answers.findIndex(answer => answer === null);
   const target = afterCurrent >= 0 ? afterCurrent : first;
+  if (target >= 0) moveExam(target);
+}
+
+function toggleExamFlag() {
+  if (!exam) return;
+  if (!Array.isArray(exam.flags) || exam.flags.length !== exam.ids.length) exam.flags = exam.ids.map(() => false);
+  exam.flags[exam.pos] = !exam.flags[exam.pos];
+  saveExamDraft(); renderExam();
+}
+function jumpToFlagged() {
+  if (!exam || !Array.isArray(exam.flags)) return;
+  const next = exam.flags.findIndex((flag, i) => flag && i > exam.pos);
+  const first = exam.flags.findIndex(Boolean);
+  const target = next >= 0 ? next : first;
   if (target >= 0) moveExam(target);
 }
 function updateTimer() {
@@ -286,28 +333,64 @@ function finishExam(timeOver = false) {
   writeJSON(STORAGE, history);
   const log = readJSON(EXAM_HISTORY_KEY, { attempts: [] });
   const attempts = Array.isArray(log.attempts) ? log.attempts : [];
-  attempts.unshift({ level: currentExam.level, kind: currentExam.kind, total: qs.length, correct: points, finishedAt: Date.now(), timeOver });
+  const finishedAt = Date.now();
+  const attemptId = `${finishedAt}-${Math.floor(Math.random()*1000000)}`;
+  attempts.unshift({ id: attemptId, level: currentExam.level, kind: currentExam.kind, total: qs.length, correct: points, finishedAt, timeOver });
+  // 正解・解説を採点時点のスナップショットとして残す。将来の出題文変更による履歴の取り違えを防ぐ。
+  const prior = readJSON(EXAM_DETAILS_KEY, { attempts: [] });
+  const detailRows = Array.isArray(prior.attempts) ? prior.attempts : [];
+  const detail = { id: attemptId, level: currentExam.level, kind: currentExam.kind, finishedAt, timeOver,
+    questions: qs.map(q => ({ id:q.id,level:q.level,category:q.category,format:q.format,question:q.question,choices:q.choices.slice(),answer:q.answer,explanation:q.explanation })), answers: a };
+  writeJSON(EXAM_DETAILS_KEY, { attempts: [detail, ...detailRows].slice(0, 12) });
   writeJSON(EXAM_HISTORY_KEY, { attempts: attempts.slice(0, 30) });
   try { localStorage.removeItem(EXAM_DRAFT_KEY); } catch { /* 保存できない環境でも結果を表示 */ }
   exam = null;
   $('examResultTitle').textContent = currentExam.kind === 'mini' ? 'ミニ模試・採点結果' : '60問模試・採点結果';
   $('examSummary').textContent = `${qs.length}問中 ${points}問正解｜正答率 ${pct}％`;
   $('examNote').textContent = `${timeOver ? '制限時間が終了したため自動採点しました。' : '模試を採点しました。'} 未回答：${unanswered}問。${currentExam.kind === 'mini' ? 'これは6問の体験用模試のため、合否判定はありません。' : `学習用判定：${points >= 36 ? '合格圏（36問以上）' : '要復習（36問未満）'}。本試験の結果を保証するものではありません。`}`;
-  const breakdown = $('examBreakdown'); breakdown.replaceChildren();
-  for (const category of CATEGORIES.slice(1)) {
-    const catQs = qs.map((q, i) => ({q, i})).filter(row => row.q.category === category);
-    if (!catQs.length) continue;
-    const count = catQs.filter(row => a[row.i] === row.q.answer).length;
-    const row = document.createElement('div'); row.className = 'stat-row';
-    const name = document.createElement('span'); name.textContent = category;
-    const value = document.createElement('strong'); value.textContent = `${count}/${catQs.length}問 正解`;
-    row.append(name, value); breakdown.append(row);
-  }
+  renderBreakdown(qs, a);
   // 模試結果はメモリ内に保持。個別レビューの表示切替で既存の回答履歴を変更しない。
   lastReviewRows = qs.map((q, i) => ({ question: q, number: i + 1, selected: a[i], isCorrect: a[i] === q.answer }));
   reviewFilter = 'issues';
   renderExamReview();
   show('examResult');
+}
+
+// 保存済みの問題文・正答・解説スナップショットを使って再表示。履歴データは変更しない。
+function openSavedExam(attemptId) {
+  const data = readJSON(EXAM_DETAILS_KEY, { attempts: [] });
+  const detail = (Array.isArray(data.attempts) ? data.attempts : []).find(d => d.id === attemptId);
+  if (!detail || !['2','3'].includes(detail.level) || !['mini','full'].includes(detail.kind) ||
+      !Array.isArray(detail.questions) || !Array.isArray(detail.answers) ||
+      detail.questions.length !== detail.answers.length || detail.questions.length === 0 ||
+      !detail.questions.every(q => q && typeof q.question === 'string' && typeof q.explanation === 'string' &&
+         Array.isArray(q.choices) && Number.isInteger(q.answer) && q.answer >= 0 && q.answer < q.choices.length)) {
+    alert('この受験履歴の詳細を表示できません。'); return;
+  }
+  lastExamLevel = detail.level;
+  lastExamKind = detail.kind;
+  const qs = detail.questions, a = detail.answers;
+  const points = qs.reduce((sum, q, i) => sum + (a[i] === q.answer ? 1 : 0), 0);
+  const unanswered = a.filter(value => value === null).length;
+  $('examResultTitle').textContent = `過去の${detail.kind === 'mini' ? 'ミニ模試' : '60問模試'}・採点結果`;
+  $('examSummary').textContent = `${qs.length}問中 ${points}問正解｜正答率 ${Math.round(points / qs.length * 100)}％`;
+  const date = new Date(detail.finishedAt).toLocaleString('ja-JP');
+  $('examNote').textContent = `受験日：${date}｜未回答：${unanswered}問。${detail.kind === 'mini' ? 'ミニ模試のため合否判定はありません。' : `学習用判定：${points >= 36 ? '合格圏' : '要復習'}。`}採点時点の問題・解説を表示しています。`;
+  renderBreakdown(qs, a);
+  lastReviewRows = qs.map((q,i) => ({question:q,number:i+1,selected:a[i],isCorrect:a[i]===q.answer}));
+  reviewFilter = 'issues'; renderExamReview(); show('examResult');
+}
+function renderBreakdown(qs, answers) {
+  const breakdown = $('examBreakdown'); breakdown.replaceChildren();
+  for (const category of CATEGORIES.slice(1)) {
+    const catQs = qs.map((q, i) => ({q,i})).filter(row => row.q.category === category);
+    if (!catQs.length) continue;
+    const count = catQs.filter(row => answers[row.i] === row.q.answer).length;
+    const row = document.createElement('div'); row.className = 'stat-row';
+    const name = document.createElement('span'); name.textContent = category;
+    const value = document.createElement('strong'); value.textContent = `${count}/${catQs.length}問 正解`;
+    row.append(name, value); breakdown.append(row);
+  }
 }
 function setReviewFilter(filter) {
   if (!['issues', 'all'].includes(filter)) return;
@@ -346,7 +429,7 @@ function renderExamReview() {
 }
 function clearStats() {
   if (!confirm('この端末のすべての解答履歴、模試履歴、模試の途中経過を削除しますか？')) return;
-  try { [STORAGE, EXAM_HISTORY_KEY, EXAM_DRAFT_KEY].forEach(k => localStorage.removeItem(k)); } catch { alert('履歴の削除に失敗しました。'); }
+  try { [STORAGE, EXAM_HISTORY_KEY, EXAM_DRAFT_KEY, EXAM_DETAILS_KEY].forEach(k => localStorage.removeItem(k)); } catch { alert('履歴の削除に失敗しました。'); }
   stopTimer(); exam = null; updateHome();
 }
 function goHome() {
@@ -372,6 +455,8 @@ function init() {
   $('examNext').addEventListener('click', () => moveExam(exam.pos + 1));
   $('examLeave').addEventListener('click', goHome);
   $('examJumpUnanswered').addEventListener('click', jumpToUnanswered);
+  $('examFlag').addEventListener('click', toggleExamFlag);
+  $('examJumpFlagged').addEventListener('click', jumpToFlagged);
   $('examFinish').addEventListener('click', () => finishExam(false));
   $('examResultHome').addEventListener('click', goHome);
   $('reviewIssues').addEventListener('click', () => setReviewFilter('issues'));
