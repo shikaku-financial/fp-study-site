@@ -69,7 +69,7 @@ function fullExamAvailability(targetLevel) {
 }
 function updateHome() {
   const pool = validQuestions(level);
-  $('count').textContent = `現在の収録問題：${pool.length}問（初期版）`;
+  $('count').textContent = `現在の収録問題：${pool.length}問（問題増量版）`;
   const old = $('category').value;
   $('category').replaceChildren();
   for (const c of CATEGORIES) {
@@ -175,7 +175,11 @@ function createExam(kind) {
   let questions;
   if (kind === 'full' && level === '3') questions = [...shuffle(pool.filter(q => q.format === 'true_false')).slice(0, 30), ...shuffle(pool.filter(q => q.format === 'three_choice')).slice(0, 30)];
   else if (kind === 'full') questions = shuffle(pool.filter(q => q.format === 'four_choice')).slice(0, 60);
-  else questions = shuffle(pool).slice(0, 6);
+  else {
+    // 各分野から必ず1問選び、ミニ模試のバランスを保ちます。
+    const perCategory = CATEGORIES.slice(1).map(cat => shuffle(pool.filter(q => q.category === cat))[0]).filter(Boolean);
+    questions = shuffle(perCategory.length === 6 ? perCategory : shuffle(pool).slice(0, 6));
+  }
   if (!questions.length) { alert('模試用の問題がありません。'); return; }
   const duration = kind === 'mini' ? MINI_EXAM_MINUTES : level === '3' ? 90 : 120;
   exam = { version: 2, kind, level, ids: questions.map(q => q.id), answers: questions.map(() => null), pos: 0, deadline: Date.now() + duration * 60000 };
