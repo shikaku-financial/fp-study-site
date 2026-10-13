@@ -199,7 +199,8 @@
     $p('prProgress').textContent=`${attempt.pos+1}/${attempt.questions.length}問`;
     $p('prBar').style.width=`${attempt.answers.filter(v=>v!==null&&v!=='').length/attempt.questions.length*100}%`;
     $p('prCaseTitle').textContent=`${tr.id.startsWith('kinzai')?'設例':''} ${q.caseTitle}`.trim();
-    $p('prCaseText').textContent=q.caseText;
+    if(window.__fpMaterialView)window.__fpMaterialView.render($p('prCaseText'),q);
+    else $p('prCaseText').textContent=q.caseText;
     $p('prTopic').textContent=`学習テーマ：${q.topic}｜参考問題の法令基準日：${q.lawReferenceDate || "2025-04-01"}（数値条件は設例指定）`;
     $p('prQuestion').textContent=q.question;
     $p('prChoices').replaceChildren();
@@ -297,7 +298,10 @@
       const name=document.createElement('span');name.textContent=`第${i+1}問｜${q.caseTitle}`;
       const status=document.createElement('strong');status.className=good?'correct':'wrong';status.textContent=good?'正解':r.answers[i]===null||r.answers[i]===''?'未回答':'不正解';heading.append(name,status);
       const body=document.createElement('div');body.className='review-details-body';
-      [['設例：',q.caseText],['問題：',q.question],['あなたの回答：',answerStr(q,r.answers[i])],['正解：',correctStr(q)],['解説：',q.explanation]].forEach(([k,v])=>{const p=document.createElement('p');p.textContent=k+v;body.append(p);});
+      const material=document.createElement('div');
+      if(window.__fpMaterialView)window.__fpMaterialView.render(material,q);else material.textContent='設例：'+q.caseText;
+      body.append(material);
+      [['問題：',q.question],['あなたの回答：',answerStr(q,r.answers[i])],['正解：',correctStr(q)],['解説：',q.explanation]].forEach(([k,v])=>{const p=document.createElement('p');p.textContent=k+v;body.append(p);});
       const note=document.createElement('p');note.className='muted small';
       note.textContent=`独自作成の演習問題です。資料の法令基準日：${q.lawReferenceDate||'未登録'}。全問の専門家監修は未完了です。`;
       body.append(note);
