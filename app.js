@@ -159,7 +159,7 @@ function updatePracticeCountOptions(pool) {
 
 function updateHome() {
   const pool = validQuestions(level);
-  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.12・学科）`;
+  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.60・学科）`;
   const old = $('category').value;
   $('category').replaceChildren();
   for (const c of CATEGORIES) {
