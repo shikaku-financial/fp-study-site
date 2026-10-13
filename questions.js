@@ -543,7 +543,11 @@ const QUESTIONS = [
       "× 誤り"
     ],
     "answer": 0,
-    "explanation": "〇。遺留分が認められるのは兄弟姉妹を除く一定の法定相続人です。兄弟姉妹が法定相続人になっても、遺留分はありません。"
+    "explanation": "〇。遺留分が認められるのは兄弟姉妹を除く一定の法定相続人です。兄弟姉妹が法定相続人になっても、遺留分はありません。",
+    "sourceUrl": "https://www.courts.go.jp/saiban/syurui/syurui_kazi/lkazi_07_26/index.html",
+    "sourceLabel": "裁判所：遺留分侵害額の請求調停",
+    "reviewedAt": "2026-10-13",
+    "v68ReviewScope": "兄弟姉妹の除外・金銭請求・2019年7月1日以後開始の相続という適用条件の限定確認。初回公式照合時期不明。"
   },
   {
     "id": "fp3-028",
@@ -1061,16 +1065,20 @@ const QUESTIONS = [
       "7,200万円"
     ],
     "answer": 0,
-    "explanation": "法定相続分の割合を決めてから、遺産額に乗じます。子・父母・兄弟姉妹が複数人なら、その集団の相続分をさらに同順位の人数で分けます。",
+    "explanation": "配偶者と子が相続人の場合、配偶者の法定相続分は1/2です。したがって配偶者の取得額は9,600万円×1/2＝4,800万円となります。子全体の残り1/2を子2人で分けるため、子各人は1/4（2,400万円）です。本問は法定相続分どおりに取得するという条件であり、相続税額を求めるものではありません。",
     "choiceExplanations": [
       "正解。配偶者は1/2なので9,600×1/2＝4,800万円。",
       "1/3を使った額。配偶者と子が相続人なら配偶者は1/2であり、相続人3人で単純均等割りしません。",
       "子1人の法定相続額。子全体は1/2、子2人で均分するため1人1/4です。",
       "配偶者と兄弟姉妹の場合の配偶者3/4を当てはめた額。今回は子がいるので異なります。"
     ],
-    "contentReview": "v46_first_touch_case_and_choices",
-    "verificationStatus": "individually_compared_with_choices_statutory_audit_incomplete",
-    "revision": 1
+    "contentReview": "v67_inheritance_shares_and_choices",
+    "verificationStatus": "selected_points_checked_full_legal_audit_incomplete",
+    "revision": 2,
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4132.htm",
+    "sourceLabel": "国税庁 No.4132：相続人の範囲と法定相続分",
+    "reviewedAt": "2026-10-13",
+    "v67ReviewScope": "家族関係・法定相続分・数値計算と全選択肢の限定点検。初回公式照合時期不明。資料確認日と設問の法令基準日は区別。"
   },
   {
     "id": "fp2-028",
@@ -1101,7 +1109,7 @@ const QUESTIONS = [
     "level": "2",
     "category": "相続・事業承継",
     "format": "four_choice",
-    "question": "遺留分に関する次の記述のうち、最も適切なものはどれか。",
+    "question": "2019年7月1日以後に開始した相続について、遺留分に関する次の記述のうち、最も適切なものはどれか。",
     "choices": [
       "遺留分は、法定相続分の割合にかかわらず相続人全員へ均等に割り当てられる",
       "被相続人の兄弟姉妹には遺留分があるが、兄弟姉妹を代襲する甥・姪には遺留分がない",
@@ -1109,8 +1117,8 @@ const QUESTIONS = [
       "遺留分を侵害された者は、原則として遺留分侵害額に相当する不動産の持分移転だけを請求できる"
     ],
     "answer": 2,
-    "explanation": "兄弟姉妹は法定相続人になる場合もありますが、遺留分はありません。遺留分侵害額請求は原則として金銭請求です。",
-    "revision": 3,
+    "explanation": "兄弟姉妹は法定相続人になる場合もありますが、遺留分はありません。遺留分侵害額請求は原則として金銭請求です。 2019年7月1日以後に開始した相続では、遺留分侵害額に相当する金銭の支払を求めます。それより前に開始した相続には改正前の制度が適用されるため、相続開始日を区別します。",
+    "revision": 4,
     "choiceExplanations": [
       "遺留分は相続人全員へ均等配分するものではなく、法定相続分等に応じて計算します。",
       "兄弟姉妹にはそもそも遺留分が認められません。",
@@ -1118,7 +1126,11 @@ const QUESTIONS = [
       "遺留分侵害額請求は原則として金銭の支払を求める制度で、不動産持分移転だけを請求するものではありません。"
     ],
     "contentReview": "v46_first_touch_choice_rationale",
-    "verificationStatus": "individually_compared_with_choices_statutory_audit_incomplete"
+    "verificationStatus": "individually_compared_with_choices_statutory_audit_incomplete",
+    "sourceUrl": "https://www.courts.go.jp/saiban/syurui/syurui_kazi/lkazi_07_26/index.html",
+    "sourceLabel": "裁判所：遺留分侵害額の請求調停",
+    "reviewedAt": "2026-10-13",
+    "v68ReviewScope": "兄弟姉妹の除外・金銭請求・2019年7月1日以後開始の相続という適用条件の限定確認。初回公式照合時期不明。"
   },
   {
     "id": "fp2-030",
@@ -1579,34 +1591,41 @@ const QUESTIONS = [
     "level": "3",
     "category": "相続・事業承継",
     "format": "true_false",
-    "question": "Aさんが遺言で全財産を友人へ遺贈すると記載した場合でも、Aさんの配偶者が存命であれば、要件に応じて遺留分侵害額請求の対象となることがある。",
+    "question": "2019年7月1日以後に死亡したAさんが遺言で全財産を友人へ遺贈すると定めていても、相続人である配偶者の遺留分を侵害している場合、要件を満たせば配偶者は友人に遺留分侵害額の支払を請求できる。",
     "choices": [
       "〇 正しい",
       "× 誤り"
     ],
     "answer": 0,
-    "explanation": "〇。遺言で遺産の行き先を指定できても、配偶者など遺留分を持つ相続人がいる場合は、所定の要件で遺留分侵害額を請求されることがあります。",
-    "topic": "遺言と遺留分"
+    "explanation": "〇。遺言で遺産の行き先を指定できても、配偶者など遺留分を持つ相続人がいる場合は、所定の要件で遺留分侵害額を請求されることがあります。 2019年7月1日以後に開始した相続では、遺留分侵害額に相当する金銭の支払を求めます。それより前に開始した相続には改正前の制度が適用されるため、相続開始日を区別します。",
+    "topic": "遺言と遺留分",
+    "sourceUrl": "https://www.courts.go.jp/saiban/syurui/syurui_kazi/lkazi_07_26/index.html",
+    "sourceLabel": "裁判所：遺留分侵害額の請求調停",
+    "reviewedAt": "2026-10-13",
+    "v68ReviewScope": "兄弟姉妹の除外・金銭請求・2019年7月1日以後開始の相続という適用条件の限定確認。初回公式照合時期不明。",
+    "revision": 2
   },
   {
     "id": "fp3-057",
     "level": "3",
     "category": "相続・事業承継",
     "format": "true_false",
-    "question": "自筆証書遺言の本文は原則自書が必要だが、添付する財産目録をパソコンで作成し、所定の署名・押印等の要件を満たすことは認められる。",
+    "question": "紙の自筆証書遺言では本文を遺言者が自書する必要があるが、添付する財産目録はパソコンで作成できる。ただし、自書でない記載が両面にある場合は両面に署名・押印するなど、所定の要件を満たす必要がある。",
     "choices": [
       "〇 正しい",
       "× 誤り"
     ],
     "answer": 0,
-    "explanation": "〇。自筆証書遺言の本文は原則として自書が必要です。一方、財産目録は自書以外でも作成可能で、各ページへの署名・押印等の法定要件があります。",
-    "topic": "遺留分",
-    "sourceUrl": "https://www.moj.go.jp/MINJI/minji07_00240.html",
-    "sourceLabel": "法務省：自筆証書遺言の方式",
+    "explanation": "〇。紙の自筆証書遺言は、財産目録を除く本文、日付、氏名を遺言者本人が自書し、押印して作成します。添付する財産目録はパソコンによる作成や通帳等のコピーでもよいですが、各葉に署名・押印が必要です。自書でない記載が両面にある場合は、表面だけでなく裏面にも署名・押印します。",
+    "topic": "自筆証書遺言の方式",
+    "sourceUrl": "https://www.koshonin.gr.jp/notary/ow02/2-q18",
+    "sourceLabel": "日本公証人連合会：自筆証書遺言の作成",
     "lawReferenceDate": "2026-04-01",
-    "revision": 2,
+    "revision": 3,
     "reviewStatus": "primary_source_checked",
-    "reviewedAt": "2026-10-12"
+    "reviewedAt": "2026-10-13",
+    "v69ReviewScope": "紙の自筆証書遺言の本文・日付・氏名の自書、財産目録の例外、両面を含む署名押印の限定確認。",
+    "v69PreviousSourceUrl": "https://www.moj.go.jp/MINJI/minji07_00240.html"
   },
   {
     "id": "fp3-058",
@@ -2504,13 +2523,15 @@ const QUESTIONS = [
       "× 誤り"
     ],
     "answer": 1,
-    "explanation": "×。地震・噴火・これらによる津波を原因とする損害は通常の火災保険では原則対象外で、地震保険等の契約条件を確認します。",
+    "explanation": "×。地震による建物倒壊などの直接損害は、通常の火災保険では補償されず、地震保険の対象です。火災保険に地震火災費用保険金がある場合でも、地震等による火災で所定の損害が生じたときの限定的な費用補償であり、倒壊損害そのものを補償するものではありません。",
     "topic": "",
-    "sourceUrl": "",
+    "sourceUrl": "https://soudanguide.sonpo.or.jp/home/q050.html",
     "id": "fp3-067",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "sourceLabel": "日本損害保険協会 損害保険Q&A 問50（火災保険）・問51（補償範囲）・問62（地震保険）",
+    "reviewedAt": "2026-10-13"
   },
   {
     "level": "3",
@@ -2853,19 +2874,22 @@ const QUESTIONS = [
     "level": "3",
     "category": "相続・事業承継",
     "format": "true_false",
-    "question": "遺言書で特定の相続人に全遺産を相続させると定めれば、ほかの相続人に遺留分があっても、その侵害額を請求される可能性は一切ない。",
+    "question": "2019年7月1日以後に開始した相続について、遺言書で特定の相続人に全遺産を相続させると定めれば、ほかの相続人に遺留分があっても、その侵害額を請求される可能性は一切ない。",
     "choices": [
       "〇 正しい",
       "× 誤り"
     ],
     "answer": 1,
-    "explanation": "×。兄弟姉妹以外の一定の相続人には遺留分があり、要件を満たせば遺留分侵害額請求の対象になることがあります。",
+    "explanation": "×。兄弟姉妹以外の一定の相続人には遺留分があり、要件を満たせば遺留分侵害額請求の対象になることがあります。 2019年7月1日以後に開始した相続では、遺留分侵害額に相当する金銭の支払を求めます。それより前に開始した相続には改正前の制度が適用されるため、相続開始日を区別します。",
     "topic": "",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.courts.go.jp/saiban/syurui/syurui_kazi/lkazi_07_26/index.html",
     "id": "fp3-086",
-    "revision": 1,
+    "revision": 2,
     "createdVersion": 8,
-    "lawReferenceDate": null
+    "lawReferenceDate": null,
+    "sourceLabel": "裁判所：遺留分侵害額の請求調停",
+    "reviewedAt": "2026-10-13",
+    "v68ReviewScope": "兄弟姉妹の除外・金銭請求・2019年7月1日以後開始の相続という適用条件の限定確認。初回公式照合時期不明。"
   },
   {
     "level": "3",
@@ -3574,25 +3598,29 @@ const QUESTIONS = [
     "level": "3",
     "category": "相続・事業承継",
     "format": "three_choice",
-    "question": "自筆証書遺言について、一般に適切な説明はどれか。",
+    "question": "紙の自筆証書遺言について、一般に適切な説明はどれか。",
     "choices": [
       "遺言者が本文をパソコンで作成し、署名だけを自書する",
       "遺言者が原則として本文を自書する",
       "遺言者以外が本文を代筆し、遺言者が押印する"
     ],
     "answer": 1,
-    "explanation": "自筆証書遺言の本文は原則として遺言者本人が自書します。財産目録には例外があります。",
-    "topic": "",
-    "sourceUrl": "",
+    "explanation": "財産目録を除く本文は遺言者本人が自書します。日付・氏名も自書し、押印する必要があります。財産目録をパソコンで作ることはできますが、その例外を本文へ適用することはできません。自書でない財産目録には各葉への署名・押印が必要で、両面に自書でない記載がある場合は両面に行います。",
+    "topic": "自筆証書遺言の方式",
+    "sourceUrl": "https://www.koshonin.gr.jp/notary/ow02/2-q18",
     "id": "fp3-119",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "choiceExplanations": [
-      "財産目録には例外がありますが、自筆証書遺言の本文は原則自書が必要です。",
-      "正解。本文は原則遺言者本人が自書します。日付・氏名の自書、押印等の要件もあります。",
-      "本文を第三者が代筆するだけでは自筆証書遺言の自書要件を満たしません。"
-    ]
+      "財産目録の例外は本文に及びません。本文をパソコンで作成し、署名だけ自書しても本文の自書要件を満たしません。",
+      "正解。本文は遺言者本人が自書します。日付・氏名の自書と押印も必要です。",
+      "第三者の代筆と遺言者の押印だけでは、本人による本文の自書要件を満たしません。"
+    ],
+    "sourceLabel": "日本公証人連合会：自筆証書遺言の作成",
+    "reviewedAt": "2026-10-13",
+    "v69ReviewScope": "紙の自筆証書遺言の本文・日付・氏名の自書、財産目録の例外、両面を含む署名押印の限定確認。",
+    "v69PreviousSourceUrl": ""
   },
   {
     "level": "3",
@@ -3894,7 +3922,7 @@ const QUESTIONS = [
     "level": "2",
     "category": "リスク管理",
     "format": "four_choice",
-    "question": "自動車保険の等級別料率制度に関する記述として、一般に最も適切なものはどれか。",
+    "question": "自動車保険のノンフリート契約における等級別料率制度に関する記述として、一般に最も適切なものはどれか。",
     "choices": [
       "事故の有無等によって次契約の等級や保険料率が変わる",
       "事故で保険金を請求しても、事故有係数の適用期間や保険料率には影響しない",
@@ -3902,21 +3930,23 @@ const QUESTIONS = [
       "等級別料率制度では、無事故であっても契約継続時に原則として等級が1等級下がる"
     ],
     "answer": 0,
-    "explanation": "ノンフリート等級別料率制度では、事故有無や事故区分等に応じた等級・事故有係数適用期間が保険料に影響します。",
+    "explanation": "ノンフリート等級別料率制度では、事故有無や事故区分等に応じた等級・事故有係数適用期間が保険料に影響します。フリート契約には別の料率制度があります。",
     "topic": "自動車保険",
-    "sourceUrl": "",
+    "sourceUrl": "https://soudanguide.sonpo.or.jp/car/q023.html",
     "id": "fp2-072",
-    "revision": 3,
+    "revision": 4,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "choiceExplanations": [
-      "正解。事故の有無・事故区分等で等級や事故有係数適用期間が変わる場合があります。",
+      "正解。ノンフリート契約では、事故の有無・事故区分等で等級や事故有係数適用期間が変わる場合があります。",
       "事故での保険金請求は、契約条件等に応じて翌年度以降の等級・料率等に影響し得ます。",
       "一般に事故有係数の適用は無事故係数より保険料を割高にする方向です。",
       "通常、無事故で継続すれば等級は上がる方向であり、毎年1等級下がるわけではありません。"
     ],
-    "contentReview": "v46_first_touch_choice_rationale",
-    "verificationStatus": "individually_compared_with_choices_statutory_audit_incomplete"
+    "contentReview": "v71_limited_official_source_scope_correction",
+    "verificationStatus": "limited_official_source_check_scope_corrected_all_choices_not_comprehensively_audited",
+    "sourceLabel": "日本損害保険協会 損害保険Q&A 自動車保険（ノンフリート等級別料率制度）",
+    "sourceCheckedDate": "2026-10-13"
   },
   {
     "level": "2",
@@ -4897,7 +4927,7 @@ const QUESTIONS = [
     "level": "2",
     "category": "相続・事業承継",
     "format": "four_choice",
-    "question": "遺産1億2,000万円を、配偶者と被相続人の父母2人が法定相続分で取得する。父母は同順位であり、遺言・相続放棄等はない。父1人の法定相続額はいくらか。",
+    "question": "被相続人に子やその代襲相続人はおらず、相続人は配偶者と父母2人だけである。遺産1億2,000万円を法定相続分で取得するとき、父1人の取得額はいくらか（遺言・相続放棄等なし）。",
     "choices": [
       "4,000万円",
       "6,000万円",
@@ -4905,11 +4935,11 @@ const QUESTIONS = [
       "2,000万円"
     ],
     "answer": 3,
-    "explanation": "法定相続分の割合を決めてから、遺産額に乗じます。子・父母・兄弟姉妹が複数人なら、その集団の相続分をさらに同順位の人数で分けます。",
+    "explanation": "配偶者と直系尊属が相続人の場合、配偶者の法定相続分は2/3、父母全体は1/3です。父母2人は同順位なので、父1人の割合は1/3÷2＝1/6。したがって1億2,000万円×1/6＝2,000万円です。父母全体の4,000万円と父1人の取得額を区別します。",
     "topic": "法定相続分",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4132.htm",
     "id": "fp2-112",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": null,
     "choiceExplanations": [
@@ -4918,8 +4948,11 @@ const QUESTIONS = [
       "配偶者の法定相続分2/3に相当する額。",
       "正解。父母全体1/3を2人で均分し、1億2,000×1/3÷2＝2,000万円。"
     ],
-    "contentReview": "v46_first_touch_case_and_choices",
-    "verificationStatus": "individually_compared_with_choices_statutory_audit_incomplete"
+    "contentReview": "v67_inheritance_shares_and_choices",
+    "verificationStatus": "selected_points_checked_full_legal_audit_incomplete",
+    "sourceLabel": "国税庁 No.4132：相続人の範囲と法定相続分",
+    "reviewedAt": "2026-10-13",
+    "v67ReviewScope": "家族関係・法定相続分・数値計算と全選択肢の限定点検。初回公式照合時期不明。資料確認日と設問の法令基準日は区別。"
   },
   {
     "level": "2",
@@ -5464,16 +5497,19 @@ const QUESTIONS = [
       "× 誤り"
     ],
     "answer": 1,
-    "explanation": "×。地震・噴火またはこれらによる津波を原因とする火災・倒壊などは、一般的な火災保険では原則免責です。地震保険や契約上の特約などを区別します。",
+    "explanation": "×。地震等を原因とする火災の建物・家財の焼損は、通常の火災保険の損害保険金では補償されず、原則として地震保険の対象です。ただし、契約によって地震火災費用保険金などの限定的な費用補償が支払われる場合があり、火災損害全体の補償とは異なります。",
     "topic": "火災保険と地震",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
     "verificationStatus": "needs_review",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
     "id": "fp3-134",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "automatic_structural_check_only",
+    "sourceUrl": "https://soudanguide.sonpo.or.jp/home/q050.html",
+    "sourceLabel": "日本損害保険協会 損害保険Q&A 問50（火災保険）・問51（補償範囲）・問62（地震保険）",
+    "reviewedAt": "2026-10-13"
   },
   {
     "level": "3",
@@ -5942,11 +5978,15 @@ const QUESTIONS = [
     "createdVersion": 9,
     "revision": 1,
     "lawReferenceDate": null,
-    "verificationStatus": "needs_review",
+    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
     "id": "fp3-155",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v61_deduction_category_limited_review",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1180.htm",
+    "sourceLabel": "国税庁 No.1180 扶養控除",
+    "sourceCheckedDate": "2026-10-13",
+    "reviewNote": "Ver.61：扶養控除は所得控除、配当控除は税額控除という区分をNo.1180・1250で照合。扶養親族の所得要件や全法令の監修ではない。"
   },
   {
     "level": "3",
@@ -6351,16 +6391,20 @@ const QUESTIONS = [
       "× 誤り"
     ],
     "answer": 1,
-    "explanation": "×。遺産分割で取得しない合意と、民法上の相続放棄は異なります。相続放棄には原則として家庭裁判所への申述が必要で、債務の取扱いにも影響します。",
+    "explanation": "×。遺産分割で取得額をゼロにする合意だけでは、民法上の相続放棄にはなりません。相続放棄には家庭裁判所への申述が必要です。放棄する場合は被相続人の権利だけでなく義務も引き継がないため、単に財産を受け取らないという話合いと区別します。",
     "topic": "相続放棄の手続",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
-    "verificationStatus": "needs_review",
+    "verificationStatus": "selected_points_checked_full_legal_audit_incomplete",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
     "id": "fp3-172",
-    "contentReview": "automatic_structural_check_only"
+    "contentReview": "v66_selected_points_official_review",
+    "sourceUrl": "https://www.courts.go.jp/saiban/syurui/syurui_kazi/kazi_06_13/index.html",
+    "sourceLabel": "裁判所：相続の放棄の申述",
+    "reviewedAt": "2026-10-13",
+    "v66ReviewScope": "相続放棄の申述先・熟慮期間の起算点・期間伸長。初回公式照合時期不明。法令基準日を新たに確定するものではない。"
   },
   {
     "level": "3",
@@ -7439,30 +7483,35 @@ const QUESTIONS = [
     "level": "2",
     "category": "タックスプランニング",
     "format": "four_choice",
-    "question": "2025年中に受け取った傷病に基因する入院給付金（所定の非課税要件を満たすもの）の所得税上の取扱いはどれか。",
+    "question": "Aさんは、自分を被保険者・給付金受取人とする医療保険契約の保険料を負担している。2025年中、Aさん本人が疾病の治療で入院し、その契約に基づく入院給付金を保険会社から受け取った。この給付金の所得税上の取扱いとして、最も適切なのはどれか。",
     "choices": [
-      "譲渡所得",
-      "給与所得",
-      "利子所得",
+      "保険料負担者と受取人が同じため、一時所得として課税される",
+      "入院中の生活費に充てた場合、給与所得として課税される",
+      "一時金で受け取った場合も、雑所得として課税される",
       "原則として非課税"
     ],
     "answer": 3,
-    "explanation": "疾病・傷害に基因して支給される所定の入院給付金は所得税法上、非課税とされます。",
+    "explanation": "本人が疾病の治療で入院し、医療保険契約に基づいて本人が受け取る入院給付金は、原則として所得税が非課税です。所得税基本通達9-21では、疾病により支払を受ける入院費給付金等を、身体の傷害に基因して支払を受けるものとして扱います。満期保険金と同じように保険料負担者と受取人の一致だけで一時所得に分類することはできません。給付金を生活費に充てても、労働の対価となる給与所得には変わりません。また、受取方法だけで雑所得と決めるものでもありません。",
     "topic": "入院給付金の課税",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
-    "verificationStatus": "needs_review",
+    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-154",
-    "contentReview": "automatic_structural_check_only",
+    "contentReview": "v73_limited_official_source_and_distractor_review",
     "choiceExplanations": [
-      "資産譲渡の対価ではなく、身体の傷病に基因する給付金です。",
-      "雇用の対価ではないため、給与所得とは扱いません。",
-      "預貯金利息などではないため、利子所得には該当しません。",
-      "正解。所定の疾病・傷害に基因する入院給付金は一般に非課税です。"
-    ]
+      "保険料負担者と受取人の一致だけでは分類できません。本人の疾病による入院に対する給付金は原則非課税です。",
+      "生活費への使い道を理由に給与所得にはなりません。勤務先から受ける労働の対価ではありません。",
+      "本問の疾病に基因する入院給付金は、受取方法だけを理由に雑所得へ分類しません。",
+      "正解。本人の疾病による入院に基づき本人が受け取る入院給付金は、原則として所得税が非課税です。"
+    ],
+    "taxYear": 2025,
+    "sourceUrl": "https://www.nta.go.jp/law/tsutatsu/kihon/shotoku/02/04.htm",
+    "sourceLabel": "国税庁：所得税基本通達9-20・9-21（保険金・給付金の非課税範囲）",
+    "sourceCheckedDate": "2026-10-13",
+    "reviewNote": "Ver.73：問題文に答えを示す非課税条件が含まれていたため、疾病による本人の入院・本人受取の事例に修正。2025年分を維持し、所得税基本通達9-20・9-21で正答と誤答理由を限定照合。全法令・全例外の包括監修ではありません。"
   },
   {
     "level": "2",
@@ -8100,7 +8149,7 @@ const QUESTIONS = [
     "level": "2",
     "category": "相続・事業承継",
     "format": "four_choice",
-    "question": "相続開始を知った相続人が家庭裁判所で相続放棄の申述を検討する場合、原則の期間として最も適切なのはどれか（熟慮期間の伸長などなし）。",
+    "question": "相続人が、自己のために相続の開始があったことを知った時から、家庭裁判所へ相続放棄を申述する原則の期間はどれか（熟慮期間の伸長などはないものとする）。",
     "choices": [
       "3か月以内",
       "1か月以内",
@@ -8108,24 +8157,26 @@ const QUESTIONS = [
       "5年以内"
     ],
     "answer": 0,
-    "explanation": "原則として自己のために相続の開始があったことを知った時から3か月以内です。",
+    "explanation": "原則3か月以内です。起算点は、自己のために相続の開始があったことを知った時であり、一律に被相続人の死亡日から数えるものではありません。調査をしても承認・放棄を決められない場合、申立てにより家庭裁判所が期間を伸長することがあります。本問ではその伸長を考慮しません。",
     "topic": "相続放棄の熟慮期間",
     "createdVersion": 9,
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": null,
-    "verificationStatus": "needs_review",
+    "verificationStatus": "selected_points_checked_full_legal_audit_incomplete",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "sourceUrl": "https://www.courts.go.jp/saiban/syurui/syurui_kazi/kazi_06_13/index.html",
-    "sourceLabel": "公式資料（論点確認用）",
+    "sourceLabel": "裁判所：相続の放棄の申述",
     "id": "fp2-178",
-    "contentReview": "automatic_structural_check_only",
+    "contentReview": "v66_selected_points_official_review",
     "choiceExplanations": [
-      "正解。原則、自己のために相続開始を知った時から3カ月以内に放棄等を検討します。",
-      "1カ月ではありません。原則3カ月の熟慮期間です。",
-      "原則1年ではありません。所定の期間伸長が認められる場合は別途手続きが必要です。",
-      "原則5年ではありません。期間を過ぎると単純承認とみなされる場合があります。"
-    ]
+      "正解。設問に示した時点から原則3か月以内に申述します。",
+      "1か月は、この申述の原則の熟慮期間ではありません。",
+      "1年が通常の期間ではありません。期間伸長には別途申立て等が必要です。",
+      "5年が通常の期間ではありません。原則の3か月と区別します。"
+    ],
+    "reviewedAt": "2026-10-13",
+    "v66ReviewScope": "相続放棄の申述先・熟慮期間の起算点・期間伸長。初回公式照合時期不明。法令基準日を新たに確定するものではない。"
   },
   {
     "level": "2",

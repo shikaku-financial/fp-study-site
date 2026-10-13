@@ -1,5 +1,16 @@
-# ファイナンシャル・ライセンス・ラボ / FPラボ Ver.25
+# FPラボ Ver.75 開発版
 
-学科360問・実技240問。税制・年金・相続を中心に公的資料と照合した一部の問題を改訂しました。詳細は QA_REPORT.md をご覧ください。
+金財実技の生保・3級保険・中小事業主の計90問を、2025年5月公表資料の分野構成を参考に独自の事例へ再構成しました。各科目は2回分、各回5事例×3問です。損保30問のVer.74改修も維持しています。
 
-GitHub main の最上位に次の7ファイルをアップロードしてください：index.html、style.css、questions.js、app.js、practical-questions.js、practical.js、financial-license-lab-logo.png。
+学科360問・実技240問、全600 IDを保持。今回の改訂90問以外の510問は維持しています。
+
+改訂した4科目は2024年4月1日基準の演習です。2026年度制度対応を意味しません。各問題の法令基準日と資料指定を確認してください。
+
+- 改修範囲と比較：development-notes/EXAM_COMPOSITION_V75.md
+- 品質確認：development-notes/QA_REPORT_V75.md
+- 計算検算：development-notes/INDEPENDENT_CALCULATION_V75.csv
+- 保存・再開などの試験：development-notes/REGRESSION_V75.txt
+
+複数解答欄・記述別○×・正式配点・部分点、個人2級/3級の分野構成精査、実ブラウザ/iPhone確認は未完了。全面監修・公式試験再現済みの版ではありません。GitHub更新・外部公開は行っていません。
+
+公開時はルートの7ファイルを同じフォルダへ配置します。development-notesは開発記録です。

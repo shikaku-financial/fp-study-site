@@ -6,6 +6,7 @@
   const HISTORY = 'fp-training-practical-v12-results';
   const VIEWS = ['home','quiz','finish','exam','examResult','practicalHome','practicalExam','practicalResult'];
   let attempt = null;
+  let expectedDraftToken = null;
   let lastResult = null;
   let reviewFilter = 'issues';
   let selectedPracticalLevel = '3';
@@ -16,7 +17,14 @@
     try { let data = JSON.parse(localStorage.getItem(key)); return data && typeof data === 'object' ? data : fallback; }
     catch { return fallback; }
   };
-  const save = (key,data) => { try {localStorage.setItem(key,JSON.stringify(data));return true;}catch{alert('この端末には保存できません。ブラウザの保存設定または空き容量を確認してください。');return false;} };
+  const save = (key,data) => { try {
+    if(key===DRAFT && localStorage.getItem(key)!==expectedDraftToken){
+      alert('途中データが別の画面で更新・削除されています。上書きを止めました。続行するにはページを再読込みし、保存済みの続きから再開してください。この画面の未保存の回答は再読込みすると失われます。');return false;
+    }
+    const raw=JSON.stringify(data);localStorage.setItem(key,raw);
+    if(key===DRAFT)expectedDraftToken=raw;
+    return true;
+  }catch{alert('この端末には保存できません。ブラウザの保存設定または空き容量を確認してください。');return false;} };
   const remove = key => {try{localStorage.removeItem(key);}catch{ /* private mode */ }};
   const navigate = id => {
     if (timer){clearInterval(timer);timer=null;}
@@ -93,25 +101,35 @@
       group.append(groupHead,desc,listing);cards.append(group);
     }
     const d=read(DRAFT,null);
-    const okay=d && trackFor(d.track)&&Array.isArray(d.questions)&&Array.isArray(d.answers)&&d.questions.length===d.answers.length;
+    const okay=validDraft(d);
     $p('prResumeBox').classList.toggle('hidden',!okay);
     if(okay){$p('prResume').textContent=`FP${trackFor(d.track).level}級｜${trackFor(d.track).name}の続きから再開`;}
     renderPracticalHistory();
   }
-  function validHistory(){
+  function historyRows(){
     const stored=read(HISTORY,{attempts:[]});
-    return (Array.isArray(stored.attempts)?stored.attempts:[]).filter(a=>a&&trackFor(a.track)&&Array.isArray(a.questions)&&Array.isArray(a.answers));
+    return Array.isArray(stored.attempts)?stored.attempts:[];
+  }
+  function validHistory(){
+    // Keep the raw position and snapshot so one-row deletion preserves every other row.
+    return historyRows().map((a,index)=>({a,index})).filter(({a})=>
+      a && typeof a.id==='string' && a.id && validDraft(a)).map(({a,index})=>({
+        ...a,correct:a.questions.filter((q,i)=>grade(q,a.answers[i])).length,
+        storedIndex:index,storedSnapshot:JSON.stringify(a)
+      }));
   }
   function renderPracticalHistory(){
     const attempts=validHistory();
-    $p('prHistoryBox').classList.toggle('hidden',attempts.length===0);
+    const skipped=historyRows().length-attempts.length;
+    $p('prHistoryValidation').textContent=skipped?`${skipped}件の履歴はデータを確認できないため表示していません。保存データは保持しています。`:'';
+    $p('prHistoryBox').classList.toggle('hidden',historyRows().length===0);
     const historyList=$p('prHistoryList');historyList.replaceChildren();
     for(const a of attempts){
       const tr=trackFor(a.track);
       const row=document.createElement('div');row.className='pr-history-entry';
       const summary=document.createElement('div');summary.className='pr-history-summary';
       const course=document.createElement('strong');course.textContent=`FP${tr.level}級｜${tr.org==='金融財政事情研究会'?'金財':'日本FP協会'}｜${tr.name}`;
-      const details=document.createElement('span');details.className='muted small';details.textContent=`${new Date(a.finishedAt).toLocaleDateString('ja-JP')}｜${a.correct}/${a.questions.length}問正解`;
+      const details=document.createElement('span');details.className='muted small';details.textContent=`${Number.isFinite(a.finishedAt)&&Number.isFinite(new Date(a.finishedAt).getTime())?new Date(a.finishedAt).toLocaleDateString('ja-JP'):'日付不明'}｜${a.correct}/${a.questions.length}問正解`;
       summary.append(course,details);
       const buttons=document.createElement('div');buttons.className='pr-history-actions';
       const open=document.createElement('button');open.type='button';open.textContent='答え合わせ';
@@ -120,9 +138,9 @@
       del.setAttribute('aria-label',`${course.textContent} ${details.textContent} の履歴を削除`);
       del.addEventListener('click',()=>{
         if(!confirm(`「${course.textContent}」の受験履歴を1件削除しますか？\n削除後は復元できません。`))return;
-        const stored=validHistory();
-        const updated=stored.filter(item=>item.id!==a.id);
-        if(updated.length===stored.length){$p('prHistoryNotice').textContent='対象の履歴が見つかりませんでした。';return;}
+        const stored=historyRows();
+        if(JSON.stringify(stored[a.storedIndex])!==a.storedSnapshot){$p('prHistoryNotice').textContent='履歴が更新されています。科目一覧を開き直してから削除してください。';return;}
+        const updated=stored.slice();updated.splice(a.storedIndex,1);
         if(!save(HISTORY,{attempts:updated}))return;
         if(lastResult&&lastResult.id===a.id)lastResult=null;
         $p('prHistoryNotice').textContent='受験履歴を1件削除しました。';
@@ -132,9 +150,9 @@
     }
   }
   function clearPracticalHistory(){
-    const attempts=validHistory();
+    const attempts=historyRows();
     if(!attempts.length)return;
-    if(!confirm(`実技演習の受験履歴${attempts.length}件をすべて削除しますか？\n削除後は復元できません。\n学科の記録と途中保存の回答は残ります。`))return;
+    if(!confirm(`実技演習の受験履歴${attempts.length}件（表示できない記録を含む）をすべて削除しますか？\n削除後は復元できません。\n学科の記録と途中保存の回答は残ります。`))return;
     if(!save(HISTORY,{attempts:[]}))return;
     lastResult=null;
     $p('prHistoryNotice').textContent=`受験履歴${attempts.length}件を削除しました。`;
@@ -142,13 +160,17 @@
   }
   // Start from immutable question snapshots so that reattempts use the exact same set.
   function startFromQuestions(trackId, sourceQuestions, mode='full'){
+    const originalDraftToken=draftToken(DRAFT);
     const tr=trackFor(trackId);
     if(!tr || !Array.isArray(sourceQuestions) || !sourceQuestions.length)return;
     const draft=read(DRAFT,null);
     if(draft && !confirm('保存している実技演習を終了し、新しく始めますか？前回の未採点の回答は消えます。'))return;
     const list=sourceQuestions.map(q=>({...q,choices:Array.isArray(q.choices)?q.choices.slice():[]}));
-    attempt={version:17,track:trackId,mode,questions:list,answers:list.map(()=>null),pos:0,startedAt:Date.now()};
-    if(!save(DRAFT,attempt))return;
+    const previousToken=expectedDraftToken;
+    expectedDraftToken=originalDraftToken;
+    const nextAttempt={version:17,track:trackId,mode,questions:list,answers:list.map(()=>null),pos:0,startedAt:Date.now()};
+    if(!save(DRAFT,nextAttempt)){expectedDraftToken=previousToken;return;}
+    attempt=nextAttempt;
     navigate('practicalExam');renderQuestion();
   }
   function retrySameSet(){
@@ -214,10 +236,30 @@
     if(!attempt || i<0||i>=attempt.questions.length)return;
     attempt.pos=i;save(DRAFT,attempt);renderQuestion();window.scrollTo(0,0);
   }
+  function validDraft(d){
+    if(!d || !trackFor(d.track) || !Array.isArray(d.questions) || !d.questions.length ||
+       d.questions.length > qsFor(d.track).length || !Array.isArray(d.answers) || d.questions.length !== d.answers.length)return false;
+    const ids=new Set();
+    return d.questions.every((q,i)=>{
+      if(!q || typeof q.id!=='string' || ids.has(q.id) || q.track!==d.track ||
+         !qsFor(d.track).some(current=>current.id===q.id) || typeof q.question!=='string' || !q.question.trim() ||
+         typeof q.explanation!=='string')return false;
+      ids.add(q.id);
+      const a=d.answers[i];
+      if(q.kind==='numeric')return Number.isFinite(q.answer) &&
+        (q.tolerance===undefined || (Number.isFinite(q.tolerance)&&q.tolerance>=0)) &&
+        (a===null || typeof a==='string' || (typeof a==='number'&&Number.isFinite(a)));
+      return q.kind==='choice' && Array.isArray(q.choices) && q.choices.length>=2 &&
+        q.choices.every(c=>typeof c==='string') && Number.isInteger(q.answer) && q.answer>=0 && q.answer<q.choices.length &&
+        (a===null || (Number.isInteger(a)&&a>=0&&a<q.choices.length));
+    });
+  }
   function resume(){
+    const originalDraftToken=draftToken(DRAFT);
     const d=read(DRAFT,null);
-    if(!d||!trackFor(d.track)||!Array.isArray(d.questions)||!Array.isArray(d.answers)||d.questions.length!==d.answers.length){alert('保存した演習データがありません。');return;}
+    if(!validDraft(d)){alert('保存した演習データがありません。');return;}
     attempt=d;
+    expectedDraftToken=originalDraftToken;
     if(!Number.isInteger(attempt.pos)||attempt.pos<0||attempt.pos>=attempt.answers.length)attempt.pos=0;
     navigate('practicalExam');renderQuestion();
   }
@@ -229,7 +271,8 @@
     const result={id:`${Date.now()}-${Math.floor(Math.random()*100000)}`,track:attempt.track,questions:attempt.questions,answers:attempt.answers.slice(),correct,finishedAt:Date.now()};
     const prior=read(HISTORY,{attempts:[]});
     const rows=Array.isArray(prior.attempts)?prior.attempts:[];
-    save(HISTORY,{attempts:[{...result},...rows].slice(0,8)});
+    if(!save(DRAFT,attempt))return;
+    if(!save(HISTORY,{attempts:[{...result},...rows].slice(0,8)}))return;
     remove(DRAFT);attempt=null;lastResult=result;reviewFilter='issues';
     navigate('practicalResult');renderResult();
   }
@@ -283,7 +326,7 @@
     $p('prNav').children[attempt.pos]?.classList.toggle('done',e.target.value!=='');
     $p('prBar').style.width=`${attempt.answers.filter(a=>a!==null&&a!=='').length/attempt.answers.length*100}%`;
   });
-  $p('prSaveExit').addEventListener('click',()=>{if(attempt)save(DRAFT,attempt);attempt=null;navigate('practicalHome');});
+  $p('prSaveExit').addEventListener('click',()=>{if(attempt&&!save(DRAFT,attempt))return;attempt=null;navigate('practicalHome');});
   $p('prSubmit').addEventListener('click',finish);
   $p('prResultHome').addEventListener('click',()=>navigate('practicalHome'));
   $p('prRetry').addEventListener('click',retrySameSet);
@@ -294,8 +337,8 @@
   // Header title works from every screen. Save in-progress practical answers first.
   $p('siteHomeLink').addEventListener('click', e => {
     e.preventDefault();
-    if (attempt) { save(DRAFT, attempt); attempt = null; }
-    if (typeof goHome === 'function') goHome();
+    if (attempt) { if (!save(DRAFT, attempt)) return; attempt = null; }
+    if (typeof goHome === 'function' && goHome() === false) return;
     navigate('home');
   });
   // 学科の従来のキーとは別に、実技の結果は科目ごとに保存。再受験時は上書きせず履歴を蓄積する。
