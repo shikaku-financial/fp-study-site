@@ -225,3 +225,16 @@
  .material-table-wrap{overflow:visible}
  .material-table tr{break-inside:avoid}
 }
+
+/* Exact SVG diagrams rendered as image data, without external requests. */
+.material-diagram{margin:16px;padding:14px 12px;border:1px solid #bccbd5;border-radius:8px;background:#fff}
+.material-diagram figcaption{font-weight:750;font-size:var(--material-font);line-height:1.5;margin:0 0 12px}
+.material-diagram-image{display:block;width:100%;height:auto;max-width:480px;margin:0 auto}
+.material-diagram-note{font-size:14px!important;line-height:1.65!important;margin:12px 0!important;color:#465c6e;white-space:normal!important;overflow-wrap:anywhere}
+.material-diagram-expand{border-top:1px solid #dbe3e9;margin-top:12px}
+.material-diagram-expand summary{cursor:pointer;font-size:15px;font-weight:650;min-height:44px;padding:11px 0;color:#23435c}
+.material-diagram-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid #dae2e8;background:#fff}
+.material-diagram-large{display:block;width:640px;max-width:none;height:auto}
+.material-diagram-scroll:focus-visible{outline:3px solid #f0ad4e;outline-offset:2px}
+@media(max-width:470px){.material-diagram{margin:12px 10px;padding:12px 9px}}
+@media print{.material-diagram-expand{display:none}.material-diagram{break-inside:avoid}.material-diagram-image{max-width:420px}}

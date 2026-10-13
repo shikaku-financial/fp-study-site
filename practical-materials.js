@@ -206,7 +206,23 @@ const PRACTICAL_MATERIALS = {
       "【2026年4月1日基準の独自演習】土地は長方形20m×18m。",
       "指定建蔽率60％で、特定行政庁の指定する角地に該当し10ポイントの加算が適用される。",
       "防火等の他の緩和、道路後退はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "長方形の土地20m×18m。指定建蔽率60％、角地加算10ポイント。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>長方形の土地で横20m、縦18m。指定建蔽率60％、指定角地の加算10ポイント。道路位置・方位は未指定。</desc><rect x=\"65\" y=\"48\" width=\"265\" height=\"180\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"65\" y1=\"25\" x2=\"330\" y2=\"25\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"40\" y1=\"48\" x2=\"40\" y2=\"228\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"18\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">20 m</text><text x=\"20\" y=\"146\" font-size=\"16\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\" transform=\"rotate(-90 20 146)\">18 m</text><text x=\"197\" y=\"122\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％</text><text x=\"197\" y=\"157\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定角地の加算 10ポイント</text></svg>",
+      "notes": [
+        "寸法の関係を示す模式図です。道路位置や方位は設例にないため描いていません。面積や建築面積の計算結果は記載していません。"
+      ],
+      "facts": {
+        "width": 20,
+        "height": 18,
+        "coverage": 60,
+        "cornerAdd": 10
+      },
+      "evidence": "【2026年4月1日基準の独自演習】土地は長方形20m×18m。指定建蔽率60％で、特定行政庁の指定する角地に該当し10ポイントの加算が適用される。防火等の他の緩和、道路後退はない。"
+    }
   },
   "pr-jafp3-010": {
     "sourceText": "【2026年4月1日基準の独自演習】FPの山崎さんは、不動産の価格を試算する手法の違いを説明している。",
@@ -612,7 +628,24 @@ const PRACTICAL_MATERIALS = {
       "旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。",
       "本問の相続取得者は1人であり、他の適用要件は別途確認する。",
       "土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "第一種住居地域の土地360㎡、指定建蔽率60％、指定容積率300％。前面道路は1本、幅員6m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>第一種住居地域の土地360㎡。前面道路は1本、幅員6m。形状・道路位置は未指定。</desc><rect x=\"30\" y=\"24\" width=\"340\" height=\"178\" rx=\"12\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" stroke-dasharray=\"6 4\" /><text x=\"200\" y=\"61\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">第一種住居地域</text><text x=\"200\" y=\"103\" font-size=\"27\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">360 ㎡</text><text x=\"200\" y=\"140\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％</text><text x=\"200\" y=\"173\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定容積率 300％</text><text x=\"200\" y=\"244\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 6 m</text></svg>",
+      "notes": [
+        "土地の形状・寸法・道路位置・方位は設例にないため、枠は条件をまとめた模式表示です。実際の土地形状を表す図ではありません。"
+      ],
+      "facts": {
+        "zone": "第一種住居地域",
+        "area": 360,
+        "coverage": 60,
+        "floor": 300,
+        "roadWidth": 6
+      },
+      "evidence": "【2024年4月1日基準の独自演習】石田さんの父は、自宅とは別の場所にある祖父の旧宅を相続した。土地360㎡は第一種住居地域、指定建蔽率60％、指定容積率300％、前面道路1本幅員6m、道路による容積率係数4/10。道路後退・角地・防火等の緩和・他の容積率特例はない。旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。本問の相続取得者は1人であり、他の適用要件は別途確認する。土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。"
+    }
   },
   "pr-kinzai3_personal-011": {
     "sourceText": "【2024年4月1日基準の独自演習】石田さんの父は、自宅とは別の場所にある祖父の旧宅を相続した。土地360㎡は第一種住居地域、指定建蔽率60％、指定容積率300％、前面道路1本幅員6m、道路による容積率係数4/10。道路後退・角地・防火等の緩和・他の容積率特例はない。旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。本問の相続取得者は1人であり、他の適用要件は別途確認する。土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。",
@@ -625,7 +658,24 @@ const PRACTICAL_MATERIALS = {
       "旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。",
       "本問の相続取得者は1人であり、他の適用要件は別途確認する。",
       "土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "第一種住居地域の土地360㎡、指定建蔽率60％、指定容積率300％。前面道路は1本、幅員6m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>第一種住居地域の土地360㎡。前面道路は1本、幅員6m。形状・道路位置は未指定。</desc><rect x=\"30\" y=\"24\" width=\"340\" height=\"178\" rx=\"12\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" stroke-dasharray=\"6 4\" /><text x=\"200\" y=\"61\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">第一種住居地域</text><text x=\"200\" y=\"103\" font-size=\"27\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">360 ㎡</text><text x=\"200\" y=\"140\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％</text><text x=\"200\" y=\"173\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定容積率 300％</text><text x=\"200\" y=\"244\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 6 m</text></svg>",
+      "notes": [
+        "土地の形状・寸法・道路位置・方位は設例にないため、枠は条件をまとめた模式表示です。実際の土地形状を表す図ではありません。"
+      ],
+      "facts": {
+        "zone": "第一種住居地域",
+        "area": 360,
+        "coverage": 60,
+        "floor": 300,
+        "roadWidth": 6
+      },
+      "evidence": "【2024年4月1日基準の独自演習】石田さんの父は、自宅とは別の場所にある祖父の旧宅を相続した。土地360㎡は第一種住居地域、指定建蔽率60％、指定容積率300％、前面道路1本幅員6m、道路による容積率係数4/10。道路後退・角地・防火等の緩和・他の容積率特例はない。旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。本問の相続取得者は1人であり、他の適用要件は別途確認する。土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。"
+    }
   },
   "pr-kinzai3_personal-012": {
     "sourceText": "【2024年4月1日基準の独自演習】石田さんの父は、自宅とは別の場所にある祖父の旧宅を相続した。土地360㎡は第一種住居地域、指定建蔽率60％、指定容積率300％、前面道路1本幅員6m、道路による容積率係数4/10。道路後退・角地・防火等の緩和・他の容積率特例はない。旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。本問の相続取得者は1人であり、他の適用要件は別途確認する。土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。",
@@ -638,7 +688,24 @@ const PRACTICAL_MATERIALS = {
       "旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。",
       "本問の相続取得者は1人であり、他の適用要件は別途確認する。",
       "土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "第一種住居地域の土地360㎡、指定建蔽率60％、指定容積率300％。前面道路は1本、幅員6m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>第一種住居地域の土地360㎡。前面道路は1本、幅員6m。形状・道路位置は未指定。</desc><rect x=\"30\" y=\"24\" width=\"340\" height=\"178\" rx=\"12\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" stroke-dasharray=\"6 4\" /><text x=\"200\" y=\"61\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">第一種住居地域</text><text x=\"200\" y=\"103\" font-size=\"27\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">360 ㎡</text><text x=\"200\" y=\"140\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％</text><text x=\"200\" y=\"173\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定容積率 300％</text><text x=\"200\" y=\"244\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 6 m</text></svg>",
+      "notes": [
+        "土地の形状・寸法・道路位置・方位は設例にないため、枠は条件をまとめた模式表示です。実際の土地形状を表す図ではありません。"
+      ],
+      "facts": {
+        "zone": "第一種住居地域",
+        "area": 360,
+        "coverage": 60,
+        "floor": 300,
+        "roadWidth": 6
+      },
+      "evidence": "【2024年4月1日基準の独自演習】石田さんの父は、自宅とは別の場所にある祖父の旧宅を相続した。土地360㎡は第一種住居地域、指定建蔽率60％、指定容積率300％、前面道路1本幅員6m、道路による容積率係数4/10。道路後退・角地・防火等の緩和・他の容積率特例はない。旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。本問の相続取得者は1人であり、他の適用要件は別途確認する。土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。"
+    }
   },
   "pr-kinzai3_personal-013": {
     "sourceText": "【2024年4月1日基準の独自演習】岡本さんの相続人は妻、生存する子2人、先に亡くなった別の子の唯一の子である孫1人。孫は代襲相続人で、相続放棄・養子はない。本人負担の生命保険の死亡保険金2600万円を妻だけが受領。妻が取得する自宅敷地は300㎡、評価額7500万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。別問の相続税総額では課税遺産総額を12000万円と与える。速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
@@ -651,7 +718,36 @@ const PRACTICAL_MATERIALS = {
       "妻が取得する自宅敷地は300㎡、評価額7500万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。",
       "別問の相続税総額では課税遺産総額を12000万円と与える。",
       "速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "岡本さんの配偶者は妻。子の欄は生存する子 1、生存する子 2、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は1人。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>岡本さんの配偶者は妻。子の欄は生存する子 1、生存する子 2、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は1人。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">岡本さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#ad3949\" stroke-width=\"2\" stroke-dasharray=\"5 3\" /><text x=\"330.0\" y=\"171\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡した子</text><text x=\"330.0\" y=\"194\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡</text><line x1=\"330\" y1=\"210\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"250\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"250\" x2=\"330\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"288\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 1</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "岡本さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "生存する子 1"
+          },
+          {
+            "label": "生存する子 2"
+          },
+          {
+            "label": "先に死亡した子",
+            "dead": true
+          }
+        ],
+        "grandIndex": 2,
+        "grandCount": 1
+      },
+      "evidence": "【2024年4月1日基準の独自演習】岡本さんの相続人は妻、生存する子2人、先に亡くなった別の子の唯一の子である孫1人。孫は代襲相続人で、相続放棄・養子はない。本人負担の生命保険の死亡保険金2600万円を妻だけが受領。妻が取得する自宅敷地は300㎡、評価額7500万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。別問の相続税総額では課税遺産総額を12000万円と与える。速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。"
+    }
   },
   "pr-kinzai3_personal-014": {
     "sourceText": "【2024年4月1日基準の独自演習】岡本さんの相続人は妻、生存する子2人、先に亡くなった別の子の唯一の子である孫1人。孫は代襲相続人で、相続放棄・養子はない。本人負担の生命保険の死亡保険金2600万円を妻だけが受領。妻が取得する自宅敷地は300㎡、評価額7500万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。別問の相続税総額では課税遺産総額を12000万円と与える。速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
@@ -664,7 +760,36 @@ const PRACTICAL_MATERIALS = {
       "妻が取得する自宅敷地は300㎡、評価額7500万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。",
       "別問の相続税総額では課税遺産総額を12000万円と与える。",
       "速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "岡本さんの配偶者は妻。子の欄は生存する子 1、生存する子 2、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は1人。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>岡本さんの配偶者は妻。子の欄は生存する子 1、生存する子 2、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は1人。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">岡本さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#ad3949\" stroke-width=\"2\" stroke-dasharray=\"5 3\" /><text x=\"330.0\" y=\"171\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡した子</text><text x=\"330.0\" y=\"194\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡</text><line x1=\"330\" y1=\"210\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"250\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"250\" x2=\"330\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"288\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 1</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "岡本さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "生存する子 1"
+          },
+          {
+            "label": "生存する子 2"
+          },
+          {
+            "label": "先に死亡した子",
+            "dead": true
+          }
+        ],
+        "grandIndex": 2,
+        "grandCount": 1
+      },
+      "evidence": "【2024年4月1日基準の独自演習】岡本さんの相続人は妻、生存する子2人、先に亡くなった別の子の唯一の子である孫1人。孫は代襲相続人で、相続放棄・養子はない。本人負担の生命保険の死亡保険金2600万円を妻だけが受領。妻が取得する自宅敷地は300㎡、評価額7500万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。別問の相続税総額では課税遺産総額を12000万円と与える。速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。"
+    }
   },
   "pr-kinzai3_personal-015": {
     "sourceText": "【2024年4月1日基準の独自演習】岡本さんの相続人は妻、生存する子2人、先に亡くなった別の子の唯一の子である孫1人。孫は代襲相続人で、相続放棄・養子はない。本人負担の生命保険の死亡保険金2600万円を妻だけが受領。妻が取得する自宅敷地は300㎡、評価額7500万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。別問の相続税総額では課税遺産総額を12000万円と与える。速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
@@ -677,7 +802,36 @@ const PRACTICAL_MATERIALS = {
       "妻が取得する自宅敷地は300㎡、評価額7500万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。",
       "別問の相続税総額では課税遺産総額を12000万円と与える。",
       "速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "岡本さんの配偶者は妻。子の欄は生存する子 1、生存する子 2、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は1人。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>岡本さんの配偶者は妻。子の欄は生存する子 1、生存する子 2、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は1人。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">岡本さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#ad3949\" stroke-width=\"2\" stroke-dasharray=\"5 3\" /><text x=\"330.0\" y=\"171\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡した子</text><text x=\"330.0\" y=\"194\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡</text><line x1=\"330\" y1=\"210\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"250\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"250\" x2=\"330\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"288\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 1</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "岡本さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "生存する子 1"
+          },
+          {
+            "label": "生存する子 2"
+          },
+          {
+            "label": "先に死亡した子",
+            "dead": true
+          }
+        ],
+        "grandIndex": 2,
+        "grandCount": 1
+      },
+      "evidence": "【2024年4月1日基準の独自演習】岡本さんの相続人は妻、生存する子2人、先に亡くなった別の子の唯一の子である孫1人。孫は代襲相続人で、相続放棄・養子はない。本人負担の生命保険の死亡保険金2600万円を妻だけが受領。妻が取得する自宅敷地は300㎡、評価額7500万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。別問の相続税総額では課税遺産総額を12000万円と与える。速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。"
+    }
   },
   "pr-kinzai3_insurance-001": {
     "sourceText": "【2024年4月1日基準の独自演習】雑貨店を営む加藤さん（42歳）は国民年金第1号被保険者。20歳以上60歳未満の期間480月のうち学生納付特例期間24月は未追納で、残り456月は納付済相当期間。老齢基礎年金は2024年度満額816,000円を用いる。付加保険料の納付予定期間は120月。国民年金基金には未加入。",
@@ -845,7 +999,32 @@ const PRACTICAL_MATERIALS = {
       "子は暦年課税を選択し、その年の他の贈与はない。",
       "直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。",
       "その他の非課税特例はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "吉田さんの配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>吉田さんの配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">吉田さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "吉田さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】吉田さんの相続人は妻と子2人の3人で、相続放棄・養子・代襲相続はない。別途、35歳の子が父から2024年に現金310万円を贈与された。子は暦年課税を選択し、その年の他の贈与はない。直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。その他の非課税特例はない。"
+    }
   },
   "pr-kinzai3_insurance-014": {
     "sourceText": "【2024年4月1日基準の独自演習】吉田さんの相続人は妻と子2人の3人で、相続放棄・養子・代襲相続はない。別途、35歳の子が父から2024年に現金310万円を贈与された。子は暦年課税を選択し、その年の他の贈与はない。直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。その他の非課税特例はない。",
@@ -857,7 +1036,32 @@ const PRACTICAL_MATERIALS = {
       "子は暦年課税を選択し、その年の他の贈与はない。",
       "直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。",
       "その他の非課税特例はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "吉田さんの配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>吉田さんの配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">吉田さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "吉田さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】吉田さんの相続人は妻と子2人の3人で、相続放棄・養子・代襲相続はない。別途、35歳の子が父から2024年に現金310万円を贈与された。子は暦年課税を選択し、その年の他の贈与はない。直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。その他の非課税特例はない。"
+    }
   },
   "pr-kinzai3_insurance-015": {
     "sourceText": "【2024年4月1日基準の独自演習】吉田さんの相続人は妻と子2人の3人で、相続放棄・養子・代襲相続はない。別途、35歳の子が父から2024年に現金310万円を贈与された。子は暦年課税を選択し、その年の他の贈与はない。直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。その他の非課税特例はない。",
@@ -869,7 +1073,32 @@ const PRACTICAL_MATERIALS = {
       "子は暦年課税を選択し、その年の他の贈与はない。",
       "直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。",
       "その他の非課税特例はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "吉田さんの配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>吉田さんの配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">吉田さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "吉田さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】吉田さんの相続人は妻と子2人の3人で、相続放棄・養子・代襲相続はない。別途、35歳の子が父から2024年に現金310万円を贈与された。子は暦年課税を選択し、その年の他の贈与はない。直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。その他の非課税特例はない。"
+    }
   },
   "pr-kinzai2_personal-001": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の安藤さん（44歳）は妻（42歳）と子2人を生計維持している。子は全員18歳到達年度末前、未婚、障害なし。安藤さんは厚生年金被保険者として死亡したものとし、保険料納付・遺族の収入等の受給要件はすべて満たす。厚生年金期間は2003年3月以前36月・平均標準報酬月額240,000円、同年4月以後240月・平均標準報酬額380,000円。2024年度価額の遺族基礎年金本体816,000円、子の加算は第1・2子各234,800円、第3子以後各78,300円。報酬比例乗率は順に7.125/1000、5.481/1000。遺族厚生年金は300月未満を300月とみなす短期要件で計算し、最終額のみ円未満四捨五入。再評価・従前額保障・中高齢寡婦加算等は今回の対象外。",
@@ -884,7 +1113,23 @@ const PRACTICAL_MATERIALS = {
       "報酬比例乗率は順に7.125/1000、5.481/1000。",
       "遺族厚生年金は300月未満を300月とみなす短期要件で計算し、最終額のみ円未満四捨五入。",
       "再評価・従前額保障・中高齢寡婦加算等は今回の対象外。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は36月、平均標準報酬月額240,000円。2003年4月以後は240月、平均標準報酬額380,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は36月、平均標準報酬月額240,000円。2003年4月以後は240月、平均標準報酬額380,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">36 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">240,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">240 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">380,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 36,
+        "preSalary": 240000,
+        "postMonths": 240,
+        "postSalary": 380000
+      },
+      "evidence": "2003年3月以前36月・平均標準報酬月額240,000円、同年4月以後240月・平均標準報酬額380,000円"
+    }
   },
   "pr-kinzai2_personal-002": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の安藤さん（44歳）は妻（42歳）と子2人を生計維持している。子は全員18歳到達年度末前、未婚、障害なし。安藤さんは厚生年金被保険者として死亡したものとし、保険料納付・遺族の収入等の受給要件はすべて満たす。厚生年金期間は2003年3月以前36月・平均標準報酬月額240,000円、同年4月以後240月・平均標準報酬額380,000円。2024年度価額の遺族基礎年金本体816,000円、子の加算は第1・2子各234,800円、第3子以後各78,300円。報酬比例乗率は順に7.125/1000、5.481/1000。遺族厚生年金は300月未満を300月とみなす短期要件で計算し、最終額のみ円未満四捨五入。再評価・従前額保障・中高齢寡婦加算等は今回の対象外。",
@@ -899,7 +1144,23 @@ const PRACTICAL_MATERIALS = {
       "報酬比例乗率は順に7.125/1000、5.481/1000。",
       "遺族厚生年金は300月未満を300月とみなす短期要件で計算し、最終額のみ円未満四捨五入。",
       "再評価・従前額保障・中高齢寡婦加算等は今回の対象外。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は36月、平均標準報酬月額240,000円。2003年4月以後は240月、平均標準報酬額380,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は36月、平均標準報酬月額240,000円。2003年4月以後は240月、平均標準報酬額380,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">36 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">240,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">240 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">380,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 36,
+        "preSalary": 240000,
+        "postMonths": 240,
+        "postSalary": 380000
+      },
+      "evidence": "2003年3月以前36月・平均標準報酬月額240,000円、同年4月以後240月・平均標準報酬額380,000円"
+    }
   },
   "pr-kinzai2_personal-003": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の安藤さん（44歳）は妻（42歳）と子2人を生計維持している。子は全員18歳到達年度末前、未婚、障害なし。安藤さんは厚生年金被保険者として死亡したものとし、保険料納付・遺族の収入等の受給要件はすべて満たす。厚生年金期間は2003年3月以前36月・平均標準報酬月額240,000円、同年4月以後240月・平均標準報酬額380,000円。2024年度価額の遺族基礎年金本体816,000円、子の加算は第1・2子各234,800円、第3子以後各78,300円。報酬比例乗率は順に7.125/1000、5.481/1000。遺族厚生年金は300月未満を300月とみなす短期要件で計算し、最終額のみ円未満四捨五入。再評価・従前額保障・中高齢寡婦加算等は今回の対象外。",
@@ -914,7 +1175,23 @@ const PRACTICAL_MATERIALS = {
       "報酬比例乗率は順に7.125/1000、5.481/1000。",
       "遺族厚生年金は300月未満を300月とみなす短期要件で計算し、最終額のみ円未満四捨五入。",
       "再評価・従前額保障・中高齢寡婦加算等は今回の対象外。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は36月、平均標準報酬月額240,000円。2003年4月以後は240月、平均標準報酬額380,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は36月、平均標準報酬月額240,000円。2003年4月以後は240月、平均標準報酬額380,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">36 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">240,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">240 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">380,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 36,
+        "preSalary": 240000,
+        "postMonths": 240,
+        "postSalary": 380000
+      },
+      "evidence": "2003年3月以前36月・平均標準報酬月額240,000円、同年4月以後240月・平均標準報酬額380,000円"
+    }
   },
   "pr-kinzai2_personal-004": {
     "sourceText": "【2024年4月1日基準の独自演習】安藤さんの家族は株式投資を検討している。上場会社の株価2400円、発行済株式数100万株、当期純利益200,000,000円、自己資本1,600,000,000円。自己株式・潜在株式・株式分割はない。注文方法と価格・時間優先の基本原則も確認したい。指値の買い注文について、通常のザラバ取引を想定し、寄り付き・引け・特別な配分等は考慮しない。",
@@ -1005,7 +1282,24 @@ const PRACTICAL_MATERIALS = {
       "建物は地主本人が所有し貸し付ける。",
       "相続税評価では土地の自用地価額8000万円、借地権割合60％、借家権割合30％、賃貸割合100％。",
       "小規模宅地等の特例は考慮しない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "近隣商業地域の土地400㎡、指定建蔽率80％、指定容積率400％。前面道路は1本、幅員6m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>近隣商業地域の土地400㎡。前面道路は1本、幅員6m。形状・道路位置は未指定。</desc><rect x=\"30\" y=\"24\" width=\"340\" height=\"178\" rx=\"12\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" stroke-dasharray=\"6 4\" /><text x=\"200\" y=\"61\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">近隣商業地域</text><text x=\"200\" y=\"103\" font-size=\"27\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">400 ㎡</text><text x=\"200\" y=\"140\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 80％</text><text x=\"200\" y=\"173\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定容積率 400％</text><text x=\"200\" y=\"244\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 6 m</text></svg>",
+      "notes": [
+        "土地の形状・寸法・道路位置・方位は設例にないため、枠は条件をまとめた模式表示です。実際の土地形状を表す図ではありません。"
+      ],
+      "facts": {
+        "zone": "近隣商業地域",
+        "area": 400,
+        "coverage": 80,
+        "floor": 400,
+        "roadWidth": 6
+      },
+      "evidence": "【2024年4月1日基準の独自演習】遠藤さんは近隣商業地域にある土地400㎡へ賃貸マンションを建てる。指定建蔽率80％・指定容積率400％、前面道路1本の幅員6m、容積率の道路係数6/10。道路後退・角地加算・防火等による建蔽率緩和・その他の特例はない。建物は地主本人が所有し貸し付ける。相続税評価では土地の自用地価額8000万円、借地権割合60％、借家権割合30％、賃貸割合100％。小規模宅地等の特例は考慮しない。"
+    }
   },
   "pr-kinzai2_personal-011": {
     "sourceText": "【2024年4月1日基準の独自演習】遠藤さんは近隣商業地域にある土地400㎡へ賃貸マンションを建てる。指定建蔽率80％・指定容積率400％、前面道路1本の幅員6m、容積率の道路係数6/10。道路後退・角地加算・防火等による建蔽率緩和・その他の特例はない。建物は地主本人が所有し貸し付ける。相続税評価では土地の自用地価額8000万円、借地権割合60％、借家権割合30％、賃貸割合100％。小規模宅地等の特例は考慮しない。",
@@ -1018,7 +1312,24 @@ const PRACTICAL_MATERIALS = {
       "建物は地主本人が所有し貸し付ける。",
       "相続税評価では土地の自用地価額8000万円、借地権割合60％、借家権割合30％、賃貸割合100％。",
       "小規模宅地等の特例は考慮しない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "近隣商業地域の土地400㎡、指定建蔽率80％、指定容積率400％。前面道路は1本、幅員6m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>近隣商業地域の土地400㎡。前面道路は1本、幅員6m。形状・道路位置は未指定。</desc><rect x=\"30\" y=\"24\" width=\"340\" height=\"178\" rx=\"12\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" stroke-dasharray=\"6 4\" /><text x=\"200\" y=\"61\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">近隣商業地域</text><text x=\"200\" y=\"103\" font-size=\"27\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">400 ㎡</text><text x=\"200\" y=\"140\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 80％</text><text x=\"200\" y=\"173\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定容積率 400％</text><text x=\"200\" y=\"244\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 6 m</text></svg>",
+      "notes": [
+        "土地の形状・寸法・道路位置・方位は設例にないため、枠は条件をまとめた模式表示です。実際の土地形状を表す図ではありません。"
+      ],
+      "facts": {
+        "zone": "近隣商業地域",
+        "area": 400,
+        "coverage": 80,
+        "floor": 400,
+        "roadWidth": 6
+      },
+      "evidence": "【2024年4月1日基準の独自演習】遠藤さんは近隣商業地域にある土地400㎡へ賃貸マンションを建てる。指定建蔽率80％・指定容積率400％、前面道路1本の幅員6m、容積率の道路係数6/10。道路後退・角地加算・防火等による建蔽率緩和・その他の特例はない。建物は地主本人が所有し貸し付ける。相続税評価では土地の自用地価額8000万円、借地権割合60％、借家権割合30％、賃貸割合100％。小規模宅地等の特例は考慮しない。"
+    }
   },
   "pr-kinzai2_personal-012": {
     "sourceText": "【2024年4月1日基準の独自演習】遠藤さんは近隣商業地域にある土地400㎡へ賃貸マンションを建てる。指定建蔽率80％・指定容積率400％、前面道路1本の幅員6m、容積率の道路係数6/10。道路後退・角地加算・防火等による建蔽率緩和・その他の特例はない。建物は地主本人が所有し貸し付ける。相続税評価では土地の自用地価額8000万円、借地権割合60％、借家権割合30％、賃貸割合100％。小規模宅地等の特例は考慮しない。",
@@ -1031,7 +1342,24 @@ const PRACTICAL_MATERIALS = {
       "建物は地主本人が所有し貸し付ける。",
       "相続税評価では土地の自用地価額8000万円、借地権割合60％、借家権割合30％、賃貸割合100％。",
       "小規模宅地等の特例は考慮しない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "近隣商業地域の土地400㎡、指定建蔽率80％、指定容積率400％。前面道路は1本、幅員6m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>近隣商業地域の土地400㎡。前面道路は1本、幅員6m。形状・道路位置は未指定。</desc><rect x=\"30\" y=\"24\" width=\"340\" height=\"178\" rx=\"12\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" stroke-dasharray=\"6 4\" /><text x=\"200\" y=\"61\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">近隣商業地域</text><text x=\"200\" y=\"103\" font-size=\"27\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">400 ㎡</text><text x=\"200\" y=\"140\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 80％</text><text x=\"200\" y=\"173\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定容積率 400％</text><text x=\"200\" y=\"244\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 6 m</text></svg>",
+      "notes": [
+        "土地の形状・寸法・道路位置・方位は設例にないため、枠は条件をまとめた模式表示です。実際の土地形状を表す図ではありません。"
+      ],
+      "facts": {
+        "zone": "近隣商業地域",
+        "area": 400,
+        "coverage": 80,
+        "floor": 400,
+        "roadWidth": 6
+      },
+      "evidence": "【2024年4月1日基準の独自演習】遠藤さんは近隣商業地域にある土地400㎡へ賃貸マンションを建てる。指定建蔽率80％・指定容積率400％、前面道路1本の幅員6m、容積率の道路係数6/10。道路後退・角地加算・防火等による建蔽率緩和・その他の特例はない。建物は地主本人が所有し貸し付ける。相続税評価では土地の自用地価額8000万円、借地権割合60％、借家権割合30％、賃貸割合100％。小規模宅地等の特例は考慮しない。"
+    }
   },
   "pr-kinzai2_personal-013": {
     "sourceText": "【2024年4月1日基準の独自演習】遠藤さんの父は非上場の製造会社を経営し、株式の承継を検討している。本問では財産評価基本通達上の「中会社の小」、特定の評価会社には該当せず、原則的評価方式を用いる。資本金等の額を1株50円換算した比準要素は、自社／類似業種の順に配当6円／5円、利益30円／20円、簿価純資産240円／200円。類似業種株価500円。実際の1株当たり資本金等の額100円、純資産価額方式の1株評価額2400円。類似業種比準価額＝類似業種株価×3要素の比率の平均×0.6×（実際の1株資本金等の額／50円）。併用割合L＝0.6を採用する。中間計算の端数処理はせず最終値を求める。別途、父の相続人は妻と子2人、課税遺産総額は12000万円。速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。個別税額控除前を計算する。",
@@ -1049,7 +1377,32 @@ const PRACTICAL_MATERIALS = {
       "別途、父の相続人は妻と子2人、課税遺産総額は12000万円。",
       "速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
       "個別税額控除前を計算する。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "父の配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>父の配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">父</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "父",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】遠藤さんの父は非上場の製造会社を経営し、株式の承継を検討している。本問では財産評価基本通達上の「中会社の小」、特定の評価会社には該当せず、原則的評価方式を用いる。資本金等の額を1株50円換算した比準要素は、自社／類似業種の順に配当6円／5円、利益30円／20円、簿価純資産240円／200円。類似業種株価500円。実際の1株当たり資本金等の額100円、純資産価額方式の1株評価額2400円。類似業種比準価額＝類似業種株価×3要素の比率の平均×0.6×（実際の1株資本金等の額／50円）。併用割合L＝0.6を採用する。中間計算の端数処理はせず最終値を求める。別途、父の相続人は妻と子2人、課税遺産総額は12000万円。速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。個別税額控除前を計算する。"
+    }
   },
   "pr-kinzai2_personal-014": {
     "sourceText": "【2024年4月1日基準の独自演習】遠藤さんの父は非上場の製造会社を経営し、株式の承継を検討している。本問では財産評価基本通達上の「中会社の小」、特定の評価会社には該当せず、原則的評価方式を用いる。資本金等の額を1株50円換算した比準要素は、自社／類似業種の順に配当6円／5円、利益30円／20円、簿価純資産240円／200円。類似業種株価500円。実際の1株当たり資本金等の額100円、純資産価額方式の1株評価額2400円。類似業種比準価額＝類似業種株価×3要素の比率の平均×0.6×（実際の1株資本金等の額／50円）。併用割合L＝0.6を採用する。中間計算の端数処理はせず最終値を求める。別途、父の相続人は妻と子2人、課税遺産総額は12000万円。速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。個別税額控除前を計算する。",
@@ -1067,7 +1420,32 @@ const PRACTICAL_MATERIALS = {
       "別途、父の相続人は妻と子2人、課税遺産総額は12000万円。",
       "速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
       "個別税額控除前を計算する。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "父の配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>父の配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">父</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "父",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】遠藤さんの父は非上場の製造会社を経営し、株式の承継を検討している。本問では財産評価基本通達上の「中会社の小」、特定の評価会社には該当せず、原則的評価方式を用いる。資本金等の額を1株50円換算した比準要素は、自社／類似業種の順に配当6円／5円、利益30円／20円、簿価純資産240円／200円。類似業種株価500円。実際の1株当たり資本金等の額100円、純資産価額方式の1株評価額2400円。類似業種比準価額＝類似業種株価×3要素の比率の平均×0.6×（実際の1株資本金等の額／50円）。併用割合L＝0.6を採用する。中間計算の端数処理はせず最終値を求める。別途、父の相続人は妻と子2人、課税遺産総額は12000万円。速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。個別税額控除前を計算する。"
+    }
   },
   "pr-kinzai2_personal-015": {
     "sourceText": "【2024年4月1日基準の独自演習】遠藤さんの父は非上場の製造会社を経営し、株式の承継を検討している。本問では財産評価基本通達上の「中会社の小」、特定の評価会社には該当せず、原則的評価方式を用いる。資本金等の額を1株50円換算した比準要素は、自社／類似業種の順に配当6円／5円、利益30円／20円、簿価純資産240円／200円。類似業種株価500円。実際の1株当たり資本金等の額100円、純資産価額方式の1株評価額2400円。類似業種比準価額＝類似業種株価×3要素の比率の平均×0.6×（実際の1株資本金等の額／50円）。併用割合L＝0.6を採用する。中間計算の端数処理はせず最終値を求める。別途、父の相続人は妻と子2人、課税遺産総額は12000万円。速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。個別税額控除前を計算する。",
@@ -1085,7 +1463,32 @@ const PRACTICAL_MATERIALS = {
       "別途、父の相続人は妻と子2人、課税遺産総額は12000万円。",
       "速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
       "個別税額控除前を計算する。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "父の配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>父の配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">父</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "父",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】遠藤さんの父は非上場の製造会社を経営し、株式の承継を検討している。本問では財産評価基本通達上の「中会社の小」、特定の評価会社には該当せず、原則的評価方式を用いる。資本金等の額を1株50円換算した比準要素は、自社／類似業種の順に配当6円／5円、利益30円／20円、簿価純資産240円／200円。類似業種株価500円。実際の1株当たり資本金等の額100円、純資産価額方式の1株評価額2400円。類似業種比準価額＝類似業種株価×3要素の比率の平均×0.6×（実際の1株資本金等の額／50円）。併用割合L＝0.6を採用する。中間計算の端数処理はせず最終値を求める。別途、父の相続人は妻と子2人、課税遺産総額は12000万円。速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。個別税額控除前を計算する。"
+    }
   },
   "pr-kinzai2_business-001": {
     "sourceText": "【2024年4月1日基準の独自演習】飲食店を営む渡辺さん（46歳）は国民年金第1号被保険者。20歳以上60歳未満の納付済相当期間408月、残りは未納で免除期間はない。厚生年金加入歴は2003年3月以前60月・平均標準報酬月額220,000円、同年4月以後120月・平均標準報酬額300,000円で、全期間20歳以上60歳未満。2024年度価額の満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。再評価等・経過的加算・加給年金を計算対象外とする。小規模企業共済の加入要件も満たしている。",
@@ -1098,7 +1501,23 @@ const PRACTICAL_MATERIALS = {
       "2024年度価額の満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。",
       "再評価等・経過的加算・加給年金を計算対象外とする。",
       "小規模企業共済の加入要件も満たしている。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は60月、平均標準報酬月額220,000円。2003年4月以後は120月、平均標準報酬額300,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は60月、平均標準報酬月額220,000円。2003年4月以後は120月、平均標準報酬額300,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">60 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">220,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">120 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">300,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 60,
+        "preSalary": 220000,
+        "postMonths": 120,
+        "postSalary": 300000
+      },
+      "evidence": "2003年3月以前60月・平均標準報酬月額220,000円、同年4月以後120月・平均標準報酬額300,000円"
+    }
   },
   "pr-kinzai2_business-002": {
     "sourceText": "【2024年4月1日基準の独自演習】飲食店を営む渡辺さん（46歳）は国民年金第1号被保険者。20歳以上60歳未満の納付済相当期間408月、残りは未納で免除期間はない。厚生年金加入歴は2003年3月以前60月・平均標準報酬月額220,000円、同年4月以後120月・平均標準報酬額300,000円で、全期間20歳以上60歳未満。2024年度価額の満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。再評価等・経過的加算・加給年金を計算対象外とする。小規模企業共済の加入要件も満たしている。",
@@ -1111,7 +1530,23 @@ const PRACTICAL_MATERIALS = {
       "2024年度価額の満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。",
       "再評価等・経過的加算・加給年金を計算対象外とする。",
       "小規模企業共済の加入要件も満たしている。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は60月、平均標準報酬月額220,000円。2003年4月以後は120月、平均標準報酬額300,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は60月、平均標準報酬月額220,000円。2003年4月以後は120月、平均標準報酬額300,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">60 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">220,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">120 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">300,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 60,
+        "preSalary": 220000,
+        "postMonths": 120,
+        "postSalary": 300000
+      },
+      "evidence": "2003年3月以前60月・平均標準報酬月額220,000円、同年4月以後120月・平均標準報酬額300,000円"
+    }
   },
   "pr-kinzai2_business-003": {
     "sourceText": "【2024年4月1日基準の独自演習】飲食店を営む渡辺さん（46歳）は国民年金第1号被保険者。20歳以上60歳未満の納付済相当期間408月、残りは未納で免除期間はない。厚生年金加入歴は2003年3月以前60月・平均標準報酬月額220,000円、同年4月以後120月・平均標準報酬額300,000円で、全期間20歳以上60歳未満。2024年度価額の満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。再評価等・経過的加算・加給年金を計算対象外とする。小規模企業共済の加入要件も満たしている。",
@@ -1124,7 +1559,23 @@ const PRACTICAL_MATERIALS = {
       "2024年度価額の満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。",
       "再評価等・経過的加算・加給年金を計算対象外とする。",
       "小規模企業共済の加入要件も満たしている。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は60月、平均標準報酬月額220,000円。2003年4月以後は120月、平均標準報酬額300,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は60月、平均標準報酬月額220,000円。2003年4月以後は120月、平均標準報酬額300,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">60 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">220,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">120 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">300,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 60,
+        "preSalary": 220000,
+        "postMonths": 120,
+        "postSalary": 300000
+      },
+      "evidence": "2003年3月以前60月・平均標準報酬月額220,000円、同年4月以後120月・平均標準報酬額300,000円"
+    }
   },
   "pr-kinzai2_business-004": {
     "sourceText": "【2024年4月1日基準の独自演習】渡辺さんは余裕資金で投資を検討中。上場会社の株価2400円、発行済株式数100万株、当期純利益200,000,000円、年間配当総額60,000,000円。すべて同じ期の資料で株式分割等はない。個別元本10,000円（1万口当たり）の追加型公募株式投資信託も保有し、分配落ち後の基準価額9,700円、分配金500円（1万口当たり）である。手数料は考慮しない。",
@@ -1215,7 +1666,34 @@ const PRACTICAL_MATERIALS = {
       "道路幅員による容積率制限の係数は順に6/10、4/10。",
       "角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。",
       "地上の建築面積・延べ面積の上限を計算する。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "近隣商業地域300㎡、指定建蔽率80％・指定容積率400％。第一種中高層住居専用地域200㎡、指定建蔽率60％・指定容積率200％。前面道路は1本、幅員6m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>近隣商業地域300㎡、第一種中高層住居専用地域200㎡。前面道路幅員6m。区域の地理的位置は不明。</desc><rect x=\"20\" y=\"20\" width=\"360\" height=\"115\" rx=\"6\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"47\" font-size=\"17\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">近隣商業地域</text><text x=\"200\" y=\"79\" font-size=\"23\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">300 ㎡</text><text x=\"200\" y=\"112\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 80％ ／ 指定容積率 400％</text><rect x=\"20\" y=\"155\" width=\"360\" height=\"115\" rx=\"6\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"182\" font-size=\"17\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">第一種中高層住居専用地域</text><text x=\"200\" y=\"214\" font-size=\"23\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">200 ㎡</text><text x=\"200\" y=\"247\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％ ／ 指定容積率 200％</text><text x=\"200\" y=\"311\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 6 m</text></svg>",
+      "notes": [
+        "区域の配分を示す模式図です。区域の地理的位置・形状・方位・道路位置は描いていません。面積に比例した図ではありません。"
+      ],
+      "facts": {
+        "zones": [
+          {
+            "name": "近隣商業地域",
+            "area": 300,
+            "coverage": 80,
+            "floor": 400
+          },
+          {
+            "name": "第一種中高層住居専用地域",
+            "area": 200,
+            "coverage": 60,
+            "floor": 200
+          }
+        ],
+        "roadWidth": 6
+      },
+      "evidence": "【2024年4月1日基準の独自演習】東雲社は新社屋の用地を検討中。敷地は一体で、近隣商業地域部分300㎡（指定建蔽率80％、指定容積率400％）、第一種中高層住居専用地域部分200㎡（指定建蔽率60％、指定容積率200％）。前面道路は1本、幅員6m。道路幅員による容積率制限の係数は順に6/10、4/10。角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。地上の建築面積・延べ面積の上限を計算する。"
+    }
   },
   "pr-kinzai2_business-011": {
     "sourceText": "【2024年4月1日基準の独自演習】東雲社は新社屋の用地を検討中。敷地は一体で、近隣商業地域部分300㎡（指定建蔽率80％、指定容積率400％）、第一種中高層住居専用地域部分200㎡（指定建蔽率60％、指定容積率200％）。前面道路は1本、幅員6m。道路幅員による容積率制限の係数は順に6/10、4/10。角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。地上の建築面積・延べ面積の上限を計算する。",
@@ -1228,7 +1706,34 @@ const PRACTICAL_MATERIALS = {
       "道路幅員による容積率制限の係数は順に6/10、4/10。",
       "角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。",
       "地上の建築面積・延べ面積の上限を計算する。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "近隣商業地域300㎡、指定建蔽率80％・指定容積率400％。第一種中高層住居専用地域200㎡、指定建蔽率60％・指定容積率200％。前面道路は1本、幅員6m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>近隣商業地域300㎡、第一種中高層住居専用地域200㎡。前面道路幅員6m。区域の地理的位置は不明。</desc><rect x=\"20\" y=\"20\" width=\"360\" height=\"115\" rx=\"6\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"47\" font-size=\"17\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">近隣商業地域</text><text x=\"200\" y=\"79\" font-size=\"23\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">300 ㎡</text><text x=\"200\" y=\"112\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 80％ ／ 指定容積率 400％</text><rect x=\"20\" y=\"155\" width=\"360\" height=\"115\" rx=\"6\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"182\" font-size=\"17\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">第一種中高層住居専用地域</text><text x=\"200\" y=\"214\" font-size=\"23\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">200 ㎡</text><text x=\"200\" y=\"247\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％ ／ 指定容積率 200％</text><text x=\"200\" y=\"311\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 6 m</text></svg>",
+      "notes": [
+        "区域の配分を示す模式図です。区域の地理的位置・形状・方位・道路位置は描いていません。面積に比例した図ではありません。"
+      ],
+      "facts": {
+        "zones": [
+          {
+            "name": "近隣商業地域",
+            "area": 300,
+            "coverage": 80,
+            "floor": 400
+          },
+          {
+            "name": "第一種中高層住居専用地域",
+            "area": 200,
+            "coverage": 60,
+            "floor": 200
+          }
+        ],
+        "roadWidth": 6
+      },
+      "evidence": "【2024年4月1日基準の独自演習】東雲社は新社屋の用地を検討中。敷地は一体で、近隣商業地域部分300㎡（指定建蔽率80％、指定容積率400％）、第一種中高層住居専用地域部分200㎡（指定建蔽率60％、指定容積率200％）。前面道路は1本、幅員6m。道路幅員による容積率制限の係数は順に6/10、4/10。角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。地上の建築面積・延べ面積の上限を計算する。"
+    }
   },
   "pr-kinzai2_business-012": {
     "sourceText": "【2024年4月1日基準の独自演習】東雲社は新社屋の用地を検討中。敷地は一体で、近隣商業地域部分300㎡（指定建蔽率80％、指定容積率400％）、第一種中高層住居専用地域部分200㎡（指定建蔽率60％、指定容積率200％）。前面道路は1本、幅員6m。道路幅員による容積率制限の係数は順に6/10、4/10。角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。地上の建築面積・延べ面積の上限を計算する。",
@@ -1241,7 +1746,34 @@ const PRACTICAL_MATERIALS = {
       "道路幅員による容積率制限の係数は順に6/10、4/10。",
       "角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。",
       "地上の建築面積・延べ面積の上限を計算する。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "近隣商業地域300㎡、指定建蔽率80％・指定容積率400％。第一種中高層住居専用地域200㎡、指定建蔽率60％・指定容積率200％。前面道路は1本、幅員6m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>近隣商業地域300㎡、第一種中高層住居専用地域200㎡。前面道路幅員6m。区域の地理的位置は不明。</desc><rect x=\"20\" y=\"20\" width=\"360\" height=\"115\" rx=\"6\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"47\" font-size=\"17\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">近隣商業地域</text><text x=\"200\" y=\"79\" font-size=\"23\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">300 ㎡</text><text x=\"200\" y=\"112\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 80％ ／ 指定容積率 400％</text><rect x=\"20\" y=\"155\" width=\"360\" height=\"115\" rx=\"6\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"182\" font-size=\"17\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">第一種中高層住居専用地域</text><text x=\"200\" y=\"214\" font-size=\"23\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">200 ㎡</text><text x=\"200\" y=\"247\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％ ／ 指定容積率 200％</text><text x=\"200\" y=\"311\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 6 m</text></svg>",
+      "notes": [
+        "区域の配分を示す模式図です。区域の地理的位置・形状・方位・道路位置は描いていません。面積に比例した図ではありません。"
+      ],
+      "facts": {
+        "zones": [
+          {
+            "name": "近隣商業地域",
+            "area": 300,
+            "coverage": 80,
+            "floor": 400
+          },
+          {
+            "name": "第一種中高層住居専用地域",
+            "area": 200,
+            "coverage": 60,
+            "floor": 200
+          }
+        ],
+        "roadWidth": 6
+      },
+      "evidence": "【2024年4月1日基準の独自演習】東雲社は新社屋の用地を検討中。敷地は一体で、近隣商業地域部分300㎡（指定建蔽率80％、指定容積率400％）、第一種中高層住居専用地域部分200㎡（指定建蔽率60％、指定容積率200％）。前面道路は1本、幅員6m。道路幅員による容積率制限の係数は順に6/10、4/10。角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。地上の建築面積・延べ面積の上限を計算する。"
+    }
   },
   "pr-kinzai2_business-013": {
     "sourceText": "【2024年4月1日基準の独自演習】東雲社は非上場の同族会社。税務評価上の資産・負債および評価差額に対する法人税等相当額をすべて反映済みの純資産価額総額は18000万円。発行済株式数100,000株で自己株式はない。本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。社長の推定相続人は妻と子2人の計3人、放棄・養子・代襲はない。会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。",
@@ -1254,7 +1786,32 @@ const PRACTICAL_MATERIALS = {
       "本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。",
       "社長の推定相続人は妻と子2人の計3人、放棄・養子・代襲はない。",
       "会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "社長の配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>社長の配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">社長</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "社長",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】東雲社は非上場の同族会社。税務評価上の資産・負債および評価差額に対する法人税等相当額をすべて反映済みの純資産価額総額は18000万円。発行済株式数100,000株で自己株式はない。本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。社長の推定相続人は妻と子2人の計3人、放棄・養子・代襲はない。会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。"
+    }
   },
   "pr-kinzai2_business-014": {
     "sourceText": "【2024年4月1日基準の独自演習】東雲社は非上場の同族会社。税務評価上の資産・負債および評価差額に対する法人税等相当額をすべて反映済みの純資産価額総額は18000万円。発行済株式数100,000株で自己株式はない。本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。社長の推定相続人は妻と子2人の計3人、放棄・養子・代襲はない。会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。",
@@ -1267,7 +1824,32 @@ const PRACTICAL_MATERIALS = {
       "本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。",
       "社長の推定相続人は妻と子2人の計3人、放棄・養子・代襲はない。",
       "会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "社長の配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>社長の配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">社長</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "社長",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】東雲社は非上場の同族会社。税務評価上の資産・負債および評価差額に対する法人税等相当額をすべて反映済みの純資産価額総額は18000万円。発行済株式数100,000株で自己株式はない。本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。社長の推定相続人は妻と子2人の計3人、放棄・養子・代襲はない。会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。"
+    }
   },
   "pr-kinzai2_business-015": {
     "sourceText": "【2024年4月1日基準の独自演習】東雲社は非上場の同族会社。税務評価上の資産・負債および評価差額に対する法人税等相当額をすべて反映済みの純資産価額総額は18000万円。発行済株式数100,000株で自己株式はない。本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。社長の推定相続人は妻と子2人の計3人、放棄・養子・代襲はない。会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。",
@@ -1280,7 +1862,32 @@ const PRACTICAL_MATERIALS = {
       "本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。",
       "社長の推定相続人は妻と子2人の計3人、放棄・養子・代襲はない。",
       "会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "社長の配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>社長の配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">社長</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "社長",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】東雲社は非上場の同族会社。税務評価上の資産・負債および評価差額に対する法人税等相当額をすべて反映済みの純資産価額総額は18000万円。発行済株式数100,000株で自己株式はない。本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。社長の推定相続人は妻と子2人の計3人、放棄・養子・代襲はない。会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。"
+    }
   },
   "pr-kinzai2_life-001": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の佐藤さん（51歳）は、妻と母の生活も含め老後資金を相談している。20歳以上60歳未満の納付済相当期間は432月、残りは未納である。厚生年金は2003年3月以前72月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額360,000円。年金は2024年度価額、基礎年金満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。再評価・従前額保障・経過的加算・加給年金は計算対象外。母の介護休業も検討中。",
@@ -1293,7 +1900,23 @@ const PRACTICAL_MATERIALS = {
       "年金は2024年度価額、基礎年金満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。",
       "再評価・従前額保障・経過的加算・加給年金は計算対象外。",
       "母の介護休業も検討中。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は72月、平均標準報酬月額250,000円。2003年4月以後は360月、平均標準報酬額360,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は72月、平均標準報酬月額250,000円。2003年4月以後は360月、平均標準報酬額360,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">72 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">250,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">360 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">360,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 72,
+        "preSalary": 250000,
+        "postMonths": 360,
+        "postSalary": 360000
+      },
+      "evidence": "2003年3月以前72月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額360,000円"
+    }
   },
   "pr-kinzai2_life-002": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の佐藤さん（51歳）は、妻と母の生活も含め老後資金を相談している。20歳以上60歳未満の納付済相当期間は432月、残りは未納である。厚生年金は2003年3月以前72月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額360,000円。年金は2024年度価額、基礎年金満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。再評価・従前額保障・経過的加算・加給年金は計算対象外。母の介護休業も検討中。",
@@ -1306,7 +1929,23 @@ const PRACTICAL_MATERIALS = {
       "年金は2024年度価額、基礎年金満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。",
       "再評価・従前額保障・経過的加算・加給年金は計算対象外。",
       "母の介護休業も検討中。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は72月、平均標準報酬月額250,000円。2003年4月以後は360月、平均標準報酬額360,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は72月、平均標準報酬月額250,000円。2003年4月以後は360月、平均標準報酬額360,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">72 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">250,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">360 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">360,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 72,
+        "preSalary": 250000,
+        "postMonths": 360,
+        "postSalary": 360000
+      },
+      "evidence": "2003年3月以前72月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額360,000円"
+    }
   },
   "pr-kinzai2_life-003": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の佐藤さん（51歳）は、妻と母の生活も含め老後資金を相談している。20歳以上60歳未満の納付済相当期間は432月、残りは未納である。厚生年金は2003年3月以前72月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額360,000円。年金は2024年度価額、基礎年金満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。再評価・従前額保障・経過的加算・加給年金は計算対象外。母の介護休業も検討中。",
@@ -1319,7 +1958,23 @@ const PRACTICAL_MATERIALS = {
       "年金は2024年度価額、基礎年金満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。",
       "再評価・従前額保障・経過的加算・加給年金は計算対象外。",
       "母の介護休業も検討中。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は72月、平均標準報酬月額250,000円。2003年4月以後は360月、平均標準報酬額360,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は72月、平均標準報酬月額250,000円。2003年4月以後は360月、平均標準報酬額360,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">72 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">250,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">360 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">360,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 72,
+        "preSalary": 250000,
+        "postMonths": 360,
+        "postSalary": 360000
+      },
+      "evidence": "2003年3月以前72月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額360,000円"
+    }
   },
   "pr-kinzai2_life-004": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の森さん（54歳）は生命保険を見直す。死亡後の生活・教育・葬儀等の必要資金総額5200万円、遺族年金の見込総額・死亡退職金・預貯金など充当可能資金の合計2300万円。加入契約は終身保険400万円、定期保険特約1200万円。疾病死亡ではこの2保障が支払対象となり、事故死亡限定の災害割増特約500万円は支払対象外。すべて設例上の仮定で、その他給付はない。",
@@ -1446,7 +2101,32 @@ const PRACTICAL_MATERIALS = {
       "債務・葬式費用・贈与加算・小規模宅地特例はない。",
       "相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
       "配偶者の税額軽減など個別税額控除前の相続税の総額を求める。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "中村さんの配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>中村さんの配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">中村さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "中村さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】中村さんの相続人は妻と子2人の3人。本人負担の保険料に係る死亡保険金2400万円を相続人だけが受領した。これ以外の相続財産の課税価格は10000万円。債務・葬式費用・贈与加算・小規模宅地特例はない。相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。配偶者の税額軽減など個別税額控除前の相続税の総額を求める。"
+    }
   },
   "pr-kinzai2_life-014": {
     "sourceText": "【2024年4月1日基準の独自演習】中村さんの相続人は妻と子2人の3人。本人負担の保険料に係る死亡保険金2400万円を相続人だけが受領した。これ以外の相続財産の課税価格は10000万円。債務・葬式費用・贈与加算・小規模宅地特例はない。相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。配偶者の税額軽減など個別税額控除前の相続税の総額を求める。",
@@ -1459,7 +2139,32 @@ const PRACTICAL_MATERIALS = {
       "債務・葬式費用・贈与加算・小規模宅地特例はない。",
       "相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
       "配偶者の税額軽減など個別税額控除前の相続税の総額を求める。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "中村さんの配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>中村さんの配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">中村さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "中村さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】中村さんの相続人は妻と子2人の3人。本人負担の保険料に係る死亡保険金2400万円を相続人だけが受領した。これ以外の相続財産の課税価格は10000万円。債務・葬式費用・贈与加算・小規模宅地特例はない。相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。配偶者の税額軽減など個別税額控除前の相続税の総額を求める。"
+    }
   },
   "pr-kinzai2_life-015": {
     "sourceText": "【2024年4月1日基準の独自演習】中村さんの相続人は妻と子2人の3人。本人負担の保険料に係る死亡保険金2400万円を相続人だけが受領した。これ以外の相続財産の課税価格は10000万円。債務・葬式費用・贈与加算・小規模宅地特例はない。相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。配偶者の税額軽減など個別税額控除前の相続税の総額を求める。",
@@ -1472,7 +2177,32 @@ const PRACTICAL_MATERIALS = {
       "債務・葬式費用・贈与加算・小規模宅地特例はない。",
       "相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
       "配偶者の税額軽減など個別税額控除前の相続税の総額を求める。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "中村さんの配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>中村さんの配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">中村さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "中村さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】中村さんの相続人は妻と子2人の3人。本人負担の保険料に係る死亡保険金2400万円を相続人だけが受領した。これ以外の相続財産の課税価格は10000万円。債務・葬式費用・贈与加算・小規模宅地特例はない。相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。配偶者の税額軽減など個別税額控除前の相続税の総額を求める。"
+    }
   },
   "pr-kinzai2_nonlife-001": {
     "sourceText": "会社員の山田さんは老後の資金計画と公的医療保険について相談している。計算資料は2024年度価額で、老齢基礎年金の満額は816,000円。20歳以上60歳未満の納付済相当月数は420月、免除・未納の扱いを別途加算する必要はない。厚生年金の資料：2003年3月以前24月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額440,000円。報酬比例の乗率は順に7.125/1000、5.481/1000。再評価・従前額保障・加給年金・経過的加算は今回の計算対象外。",
@@ -1485,7 +2215,23 @@ const PRACTICAL_MATERIALS = {
       "厚生年金の資料：2003年3月以前24月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額440,000円。",
       "報酬比例の乗率は順に7.125/1000、5.481/1000。",
       "再評価・従前額保障・加給年金・経過的加算は今回の計算対象外。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は24月、平均標準報酬月額250,000円。2003年4月以後は360月、平均標準報酬額440,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は24月、平均標準報酬月額250,000円。2003年4月以後は360月、平均標準報酬額440,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">24 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">250,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">360 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">440,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 24,
+        "preSalary": 250000,
+        "postMonths": 360,
+        "postSalary": 440000
+      },
+      "evidence": "2003年3月以前24月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額440,000円"
+    }
   },
   "pr-kinzai2_nonlife-002": {
     "sourceText": "会社員の山田さんは老後の資金計画と公的医療保険について相談している。計算資料は2024年度価額で、老齢基礎年金の満額は816,000円。20歳以上60歳未満の納付済相当月数は420月、免除・未納の扱いを別途加算する必要はない。厚生年金の資料：2003年3月以前24月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額440,000円。報酬比例の乗率は順に7.125/1000、5.481/1000。再評価・従前額保障・加給年金・経過的加算は今回の計算対象外。",
@@ -1498,7 +2244,23 @@ const PRACTICAL_MATERIALS = {
       "厚生年金の資料：2003年3月以前24月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額440,000円。",
       "報酬比例の乗率は順に7.125/1000、5.481/1000。",
       "再評価・従前額保障・加給年金・経過的加算は今回の計算対象外。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は24月、平均標準報酬月額250,000円。2003年4月以後は360月、平均標準報酬額440,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は24月、平均標準報酬月額250,000円。2003年4月以後は360月、平均標準報酬額440,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">24 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">250,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">360 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">440,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 24,
+        "preSalary": 250000,
+        "postMonths": 360,
+        "postSalary": 440000
+      },
+      "evidence": "2003年3月以前24月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額440,000円"
+    }
   },
   "pr-kinzai2_nonlife-003": {
     "sourceText": "会社員の山田さんは老後の資金計画と公的医療保険について相談している。計算資料は2024年度価額で、老齢基礎年金の満額は816,000円。20歳以上60歳未満の納付済相当月数は420月、免除・未納の扱いを別途加算する必要はない。厚生年金の資料：2003年3月以前24月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額440,000円。報酬比例の乗率は順に7.125/1000、5.481/1000。再評価・従前額保障・加給年金・経過的加算は今回の計算対象外。",
@@ -1511,7 +2273,23 @@ const PRACTICAL_MATERIALS = {
       "厚生年金の資料：2003年3月以前24月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額440,000円。",
       "報酬比例の乗率は順に7.125/1000、5.481/1000。",
       "再評価・従前額保障・加給年金・経過的加算は今回の計算対象外。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は24月、平均標準報酬月額250,000円。2003年4月以後は360月、平均標準報酬額440,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は24月、平均標準報酬月額250,000円。2003年4月以後は360月、平均標準報酬額440,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">24 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">250,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">360 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">440,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 24,
+        "preSalary": 250000,
+        "postMonths": 360,
+        "postSalary": 440000
+      },
+      "evidence": "2003年3月以前24月・平均標準報酬月額250,000円、同年4月以後360月・平均標準報酬額440,000円"
+    }
   },
   "pr-kinzai2_nonlife-004": {
     "sourceText": "佐藤さんは住宅を購入する。建物の火災保険金額は3,200万円、家財は800万円。地震保険の建物保険金額を火災保険金額の50％とする。2024年中に支払った地震保険料は42,000円で、旧長期損害保険料はない。今回の契約では建物と家財をそれぞれ保険の対象としている。個別の免責・支払限度は各設問の条件に従う。",
@@ -1646,7 +2424,32 @@ const PRACTICAL_MATERIALS = {
       "本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。",
       "自宅敷地は240㎡・評価額4,800万円。",
       "配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "伊藤さんの配偶者は配偶者。子の欄は実子 1、実子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>伊藤さんの配偶者は配偶者。子の欄は実子 1、実子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">伊藤さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">配偶者</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "伊藤さん",
+        "spouse": "配偶者",
+        "children": [
+          {
+            "label": "実子 1"
+          },
+          {
+            "label": "実子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "伊藤さんは資産承継を検討している。2024年中、40歳の実子へ現金550万円を贈与した。子は他の贈与を受けておらず、暦年課税・特例贈与財産の税率を適用し、非課税特例はない。課税価格400万円超600万円以下の特例税率は20％・控除30万円、600万円超1,000万円以下は30％・控除90万円。2024年中に相続が開始したと仮定した場合の法定相続人は配偶者と実子2人で、放棄・養子・代襲はない。本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。自宅敷地は240㎡・評価額4,800万円。配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。"
+    }
   },
   "pr-kinzai2_nonlife-014": {
     "sourceText": "伊藤さんは資産承継を検討している。2024年中、40歳の実子へ現金550万円を贈与した。子は他の贈与を受けておらず、暦年課税・特例贈与財産の税率を適用し、非課税特例はない。課税価格400万円超600万円以下の特例税率は20％・控除30万円、600万円超1,000万円以下は30％・控除90万円。2024年中に相続が開始したと仮定した場合の法定相続人は配偶者と実子2人で、放棄・養子・代襲はない。本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。自宅敷地は240㎡・評価額4,800万円。配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。",
@@ -1661,7 +2464,32 @@ const PRACTICAL_MATERIALS = {
       "本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。",
       "自宅敷地は240㎡・評価額4,800万円。",
       "配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "伊藤さんの配偶者は配偶者。子の欄は実子 1、実子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>伊藤さんの配偶者は配偶者。子の欄は実子 1、実子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">伊藤さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">配偶者</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "伊藤さん",
+        "spouse": "配偶者",
+        "children": [
+          {
+            "label": "実子 1"
+          },
+          {
+            "label": "実子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "伊藤さんは資産承継を検討している。2024年中、40歳の実子へ現金550万円を贈与した。子は他の贈与を受けておらず、暦年課税・特例贈与財産の税率を適用し、非課税特例はない。課税価格400万円超600万円以下の特例税率は20％・控除30万円、600万円超1,000万円以下は30％・控除90万円。2024年中に相続が開始したと仮定した場合の法定相続人は配偶者と実子2人で、放棄・養子・代襲はない。本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。自宅敷地は240㎡・評価額4,800万円。配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。"
+    }
   },
   "pr-kinzai2_nonlife-015": {
     "sourceText": "伊藤さんは資産承継を検討している。2024年中、40歳の実子へ現金550万円を贈与した。子は他の贈与を受けておらず、暦年課税・特例贈与財産の税率を適用し、非課税特例はない。課税価格400万円超600万円以下の特例税率は20％・控除30万円、600万円超1,000万円以下は30％・控除90万円。2024年中に相続が開始したと仮定した場合の法定相続人は配偶者と実子2人で、放棄・養子・代襲はない。本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。自宅敷地は240㎡・評価額4,800万円。配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。",
@@ -1676,7 +2504,32 @@ const PRACTICAL_MATERIALS = {
       "本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。",
       "自宅敷地は240㎡・評価額4,800万円。",
       "配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "伊藤さんの配偶者は配偶者。子の欄は実子 1、実子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>伊藤さんの配偶者は配偶者。子の欄は実子 1、実子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">伊藤さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">配偶者</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "伊藤さん",
+        "spouse": "配偶者",
+        "children": [
+          {
+            "label": "実子 1"
+          },
+          {
+            "label": "実子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "伊藤さんは資産承継を検討している。2024年中、40歳の実子へ現金550万円を贈与した。子は他の贈与を受けておらず、暦年課税・特例贈与財産の税率を適用し、非課税特例はない。課税価格400万円超600万円以下の特例税率は20％・控除30万円、600万円超1,000万円以下は30％・控除90万円。2024年中に相続が開始したと仮定した場合の法定相続人は配偶者と実子2人で、放棄・養子・代襲はない。本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。自宅敷地は240㎡・評価額4,800万円。配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。"
+    }
   },
   "pr-jafp3-013": {
     "sourceText": "【2026年4月1日基準の独自演習】遺族の将来の生活・教育費4,300万円、葬儀等300万円。遺族年金・預貯金・死亡退職金等の充当可能資金合計2,100万円。保険金はこの資金に含めない。すべて仮定。",
@@ -1790,7 +2643,33 @@ const PRACTICAL_MATERIALS = {
     "sentences": [
       "【2026年4月1日基準の独自演習】被相続人の相続人は妻、生存する長男、先に亡くなった長女の子2人（孫）。",
       "放棄・養子はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "被相続人の配偶者は妻。子の欄は長男、長女（先に死亡）。先に死亡した子の子（孫）は2人。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>被相続人の配偶者は妻。子の欄は長男、長女（先に死亡）。先に死亡した子の子（孫）は2人。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">被相続人</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">長男</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#ad3949\" stroke-width=\"2\" stroke-dasharray=\"5 3\" /><text x=\"300.0\" y=\"171\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">長女</text><text x=\"300.0\" y=\"194\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡</text><line x1=\"300\" y1=\"210\" x2=\"300\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"255\" y1=\"250\" x2=\"345\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"255\" y1=\"250\" x2=\"255\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"213\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"255.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 1</text><line x1=\"345\" y1=\"250\" x2=\"345\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"303\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"345.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "被相続人",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "長男"
+          },
+          {
+            "label": "長女",
+            "dead": true
+          }
+        ],
+        "grandIndex": 1,
+        "grandCount": 2
+      },
+      "evidence": "【2026年4月1日基準の独自演習】被相続人の相続人は妻、生存する長男、先に亡くなった長女の子2人（孫）。放棄・養子はない。"
+    }
   },
   "pr-jafp3-019": {
     "sourceText": "【2026年4月1日基準の独自演習】相続人は妻、生存する子1人、先に亡くなった子の子2人（代襲孫）。養子・放棄はない。",
@@ -1804,7 +2683,33 @@ const PRACTICAL_MATERIALS = {
     "sentences": [
       "【2026年4月1日基準の独自演習】相続人は妻、生存する子1人、先に亡くなった子の子2人（代襲孫）。",
       "養子・放棄はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "被相続人の配偶者は妻。子の欄は生存する子、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は2人。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>被相続人の配偶者は妻。子の欄は生存する子、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は2人。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">被相続人</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#ad3949\" stroke-width=\"2\" stroke-dasharray=\"5 3\" /><text x=\"300.0\" y=\"171\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡した子</text><text x=\"300.0\" y=\"194\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡</text><line x1=\"300\" y1=\"210\" x2=\"300\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"255\" y1=\"250\" x2=\"345\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"255\" y1=\"250\" x2=\"255\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"213\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"255.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 1</text><line x1=\"345\" y1=\"250\" x2=\"345\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"303\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"345.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "被相続人",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "生存する子"
+          },
+          {
+            "label": "先に死亡した子",
+            "dead": true
+          }
+        ],
+        "grandIndex": 1,
+        "grandCount": 2
+      },
+      "evidence": "【2026年4月1日基準の独自演習】相続人は妻、生存する子1人、先に亡くなった子の子2人（代襲孫）。養子・放棄はない。"
+    }
   },
   "pr-jafp3-020": {
     "sourceText": "【2026年4月1日基準の独自演習】配偶者が相続した自宅敷地は300㎡、相続税評価額6,000万円。特定居住用宅地等として必要な要件をすべて満たし、併用する他の宅地はない。",
@@ -2077,7 +2982,32 @@ const PRACTICAL_MATERIALS = {
       "【2026年4月1日基準の独自演習】相続人は配偶者と子2人。",
       "養子・放棄・代襲なし。",
       "遺留分算定基礎財産8,000万円。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "被相続人の配偶者は配偶者。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>被相続人の配偶者は配偶者。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">被相続人</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">配偶者</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "被相続人",
+        "spouse": "配偶者",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2026年4月1日基準の独自演習】相続人は配偶者と子2人。養子・放棄・代襲なし。遺留分算定基礎財産8,000万円。"
+    }
   },
   "pr-jafp2-024": {
     "sourceText": "【2026年4月1日基準の独自演習】相続財産は土地8,000万円、建物2,000万円、預金4,000万円。本人負担死亡保険金2,200万円を相続人のみが受領。法定相続人3人、債務600万円、控除対象の葬式費用200万円。贈与加算・宅地特例なし。",
@@ -2546,7 +3476,24 @@ const PRACTICAL_MATERIALS = {
       "旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。",
       "本問の相続取得者は1人であり、他の適用要件は別途確認する。",
       "土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "第一種住居地域の土地400㎡、指定建蔽率60％、指定容積率300％。前面道路は1本、幅員7m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>第一種住居地域の土地400㎡。前面道路は1本、幅員7m。形状・道路位置は未指定。</desc><rect x=\"30\" y=\"24\" width=\"340\" height=\"178\" rx=\"12\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" stroke-dasharray=\"6 4\" /><text x=\"200\" y=\"61\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">第一種住居地域</text><text x=\"200\" y=\"103\" font-size=\"27\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">400 ㎡</text><text x=\"200\" y=\"140\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％</text><text x=\"200\" y=\"173\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定容積率 300％</text><text x=\"200\" y=\"244\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 7 m</text></svg>",
+      "notes": [
+        "土地の形状・寸法・道路位置・方位は設例にないため、枠は条件をまとめた模式表示です。実際の土地形状を表す図ではありません。"
+      ],
+      "facts": {
+        "zone": "第一種住居地域",
+        "area": 400,
+        "coverage": 60,
+        "floor": 300,
+        "roadWidth": 7
+      },
+      "evidence": "【2024年4月1日基準の独自演習】石田さんの父は、自宅とは別の場所にある祖父の旧宅を相続した。土地400㎡は第一種住居地域、指定建蔽率60％、指定容積率300％、前面道路1本幅員7m、道路による容積率係数4/10。道路後退・角地・防火等の緩和・他の容積率特例はない。旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。本問の相続取得者は1人であり、他の適用要件は別途確認する。土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。"
+    }
   },
   "pr-kinzai3_personal-v16-011": {
     "sourceText": "【2024年4月1日基準の独自演習】石田さんの父は、自宅とは別の場所にある祖父の旧宅を相続した。土地400㎡は第一種住居地域、指定建蔽率60％、指定容積率300％、前面道路1本幅員7m、道路による容積率係数4/10。道路後退・角地・防火等の緩和・他の容積率特例はない。旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。本問の相続取得者は1人であり、他の適用要件は別途確認する。土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。",
@@ -2559,7 +3506,24 @@ const PRACTICAL_MATERIALS = {
       "旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。",
       "本問の相続取得者は1人であり、他の適用要件は別途確認する。",
       "土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "第一種住居地域の土地400㎡、指定建蔽率60％、指定容積率300％。前面道路は1本、幅員7m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>第一種住居地域の土地400㎡。前面道路は1本、幅員7m。形状・道路位置は未指定。</desc><rect x=\"30\" y=\"24\" width=\"340\" height=\"178\" rx=\"12\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" stroke-dasharray=\"6 4\" /><text x=\"200\" y=\"61\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">第一種住居地域</text><text x=\"200\" y=\"103\" font-size=\"27\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">400 ㎡</text><text x=\"200\" y=\"140\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％</text><text x=\"200\" y=\"173\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定容積率 300％</text><text x=\"200\" y=\"244\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 7 m</text></svg>",
+      "notes": [
+        "土地の形状・寸法・道路位置・方位は設例にないため、枠は条件をまとめた模式表示です。実際の土地形状を表す図ではありません。"
+      ],
+      "facts": {
+        "zone": "第一種住居地域",
+        "area": 400,
+        "coverage": 60,
+        "floor": 300,
+        "roadWidth": 7
+      },
+      "evidence": "【2024年4月1日基準の独自演習】石田さんの父は、自宅とは別の場所にある祖父の旧宅を相続した。土地400㎡は第一種住居地域、指定建蔽率60％、指定容積率300％、前面道路1本幅員7m、道路による容積率係数4/10。道路後退・角地・防火等の緩和・他の容積率特例はない。旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。本問の相続取得者は1人であり、他の適用要件は別途確認する。土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。"
+    }
   },
   "pr-kinzai3_personal-v16-012": {
     "sourceText": "【2024年4月1日基準の独自演習】石田さんの父は、自宅とは別の場所にある祖父の旧宅を相続した。土地400㎡は第一種住居地域、指定建蔽率60％、指定容積率300％、前面道路1本幅員7m、道路による容積率係数4/10。道路後退・角地・防火等の緩和・他の容積率特例はない。旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。本問の相続取得者は1人であり、他の適用要件は別途確認する。土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。",
@@ -2572,7 +3536,24 @@ const PRACTICAL_MATERIALS = {
       "旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。",
       "本問の相続取得者は1人であり、他の適用要件は別途確認する。",
       "土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "第一種住居地域の土地400㎡、指定建蔽率60％、指定容積率300％。前面道路は1本、幅員7m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>第一種住居地域の土地400㎡。前面道路は1本、幅員7m。形状・道路位置は未指定。</desc><rect x=\"30\" y=\"24\" width=\"340\" height=\"178\" rx=\"12\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" stroke-dasharray=\"6 4\" /><text x=\"200\" y=\"61\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">第一種住居地域</text><text x=\"200\" y=\"103\" font-size=\"27\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">400 ㎡</text><text x=\"200\" y=\"140\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％</text><text x=\"200\" y=\"173\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定容積率 300％</text><text x=\"200\" y=\"244\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 7 m</text></svg>",
+      "notes": [
+        "土地の形状・寸法・道路位置・方位は設例にないため、枠は条件をまとめた模式表示です。実際の土地形状を表す図ではありません。"
+      ],
+      "facts": {
+        "zone": "第一種住居地域",
+        "area": 400,
+        "coverage": 60,
+        "floor": 300,
+        "roadWidth": 7
+      },
+      "evidence": "【2024年4月1日基準の独自演習】石田さんの父は、自宅とは別の場所にある祖父の旧宅を相続した。土地400㎡は第一種住居地域、指定建蔽率60％、指定容積率300％、前面道路1本幅員7m、道路による容積率係数4/10。道路後退・角地・防火等の緩和・他の容積率特例はない。旧家屋は1976年建築の戸建てで、被相続人の居住用家屋等の譲渡所得の特別控除を検討している。本問の相続取得者は1人であり、他の適用要件は別途確認する。土地を小売企業へ店舗用に事業用定期借地権として貸す案もある。"
+    }
   },
   "pr-kinzai3_personal-v16-013": {
     "sourceText": "【2024年4月1日基準の独自演習】岡本さんの相続人は妻、生存する子2人、先に亡くなった別の子の唯一の子である孫1人。孫は代襲相続人で、相続放棄・養子はない。本人負担の生命保険の死亡保険金3000万円を妻だけが受領。妻が取得する自宅敷地は300㎡、評価額9000万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。別問の相続税総額では課税遺産総額を14400万円と与える。速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
@@ -2585,7 +3566,36 @@ const PRACTICAL_MATERIALS = {
       "妻が取得する自宅敷地は300㎡、評価額9000万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。",
       "別問の相続税総額では課税遺産総額を14400万円と与える。",
       "速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "岡本さんの配偶者は妻。子の欄は生存する子 1、生存する子 2、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は1人。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>岡本さんの配偶者は妻。子の欄は生存する子 1、生存する子 2、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は1人。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">岡本さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#ad3949\" stroke-width=\"2\" stroke-dasharray=\"5 3\" /><text x=\"330.0\" y=\"171\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡した子</text><text x=\"330.0\" y=\"194\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡</text><line x1=\"330\" y1=\"210\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"250\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"250\" x2=\"330\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"288\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 1</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "岡本さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "生存する子 1"
+          },
+          {
+            "label": "生存する子 2"
+          },
+          {
+            "label": "先に死亡した子",
+            "dead": true
+          }
+        ],
+        "grandIndex": 2,
+        "grandCount": 1
+      },
+      "evidence": "【2024年4月1日基準の独自演習】岡本さんの相続人は妻、生存する子2人、先に亡くなった別の子の唯一の子である孫1人。孫は代襲相続人で、相続放棄・養子はない。本人負担の生命保険の死亡保険金3000万円を妻だけが受領。妻が取得する自宅敷地は300㎡、評価額9000万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。別問の相続税総額では課税遺産総額を14400万円と与える。速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。"
+    }
   },
   "pr-kinzai3_personal-v16-014": {
     "sourceText": "【2024年4月1日基準の独自演習】岡本さんの相続人は妻、生存する子2人、先に亡くなった別の子の唯一の子である孫1人。孫は代襲相続人で、相続放棄・養子はない。本人負担の生命保険の死亡保険金3000万円を妻だけが受領。妻が取得する自宅敷地は300㎡、評価額9000万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。別問の相続税総額では課税遺産総額を14400万円と与える。速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
@@ -2598,7 +3608,36 @@ const PRACTICAL_MATERIALS = {
       "妻が取得する自宅敷地は300㎡、評価額9000万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。",
       "別問の相続税総額では課税遺産総額を14400万円と与える。",
       "速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "岡本さんの配偶者は妻。子の欄は生存する子 1、生存する子 2、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は1人。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>岡本さんの配偶者は妻。子の欄は生存する子 1、生存する子 2、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は1人。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">岡本さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#ad3949\" stroke-width=\"2\" stroke-dasharray=\"5 3\" /><text x=\"330.0\" y=\"171\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡した子</text><text x=\"330.0\" y=\"194\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡</text><line x1=\"330\" y1=\"210\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"250\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"250\" x2=\"330\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"288\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 1</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "岡本さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "生存する子 1"
+          },
+          {
+            "label": "生存する子 2"
+          },
+          {
+            "label": "先に死亡した子",
+            "dead": true
+          }
+        ],
+        "grandIndex": 2,
+        "grandCount": 1
+      },
+      "evidence": "【2024年4月1日基準の独自演習】岡本さんの相続人は妻、生存する子2人、先に亡くなった別の子の唯一の子である孫1人。孫は代襲相続人で、相続放棄・養子はない。本人負担の生命保険の死亡保険金3000万円を妻だけが受領。妻が取得する自宅敷地は300㎡、評価額9000万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。別問の相続税総額では課税遺産総額を14400万円と与える。速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。"
+    }
   },
   "pr-kinzai3_personal-v16-015": {
     "sourceText": "【2024年4月1日基準の独自演習】岡本さんの相続人は妻、生存する子2人、先に亡くなった別の子の唯一の子である孫1人。孫は代襲相続人で、相続放棄・養子はない。本人負担の生命保険の死亡保険金3000万円を妻だけが受領。妻が取得する自宅敷地は300㎡、評価額9000万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。別問の相続税総額では課税遺産総額を14400万円と与える。速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
@@ -2611,7 +3650,36 @@ const PRACTICAL_MATERIALS = {
       "妻が取得する自宅敷地は300㎡、評価額9000万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。",
       "別問の相続税総額では課税遺産総額を14400万円と与える。",
       "速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "岡本さんの配偶者は妻。子の欄は生存する子 1、生存する子 2、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は1人。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>岡本さんの配偶者は妻。子の欄は生存する子 1、生存する子 2、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は1人。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">岡本さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#ad3949\" stroke-width=\"2\" stroke-dasharray=\"5 3\" /><text x=\"330.0\" y=\"171\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡した子</text><text x=\"330.0\" y=\"194\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡</text><line x1=\"330\" y1=\"210\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"250\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"250\" x2=\"330\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"288\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 1</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "岡本さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "生存する子 1"
+          },
+          {
+            "label": "生存する子 2"
+          },
+          {
+            "label": "先に死亡した子",
+            "dead": true
+          }
+        ],
+        "grandIndex": 2,
+        "grandCount": 1
+      },
+      "evidence": "【2024年4月1日基準の独自演習】岡本さんの相続人は妻、生存する子2人、先に亡くなった別の子の唯一の子である孫1人。孫は代襲相続人で、相続放棄・養子はない。本人負担の生命保険の死亡保険金3000万円を妻だけが受領。妻が取得する自宅敷地は300㎡、評価額9000万円で、特定居住用宅地等の小規模宅地特例の要件をすべて満たす。別問の相続税総額では課税遺産総額を14400万円と与える。速算表は1,000万円以下10％／控除0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。"
+    }
   },
   "pr-kinzai3_insurance-v16-001": {
     "sourceText": "【2024年4月1日基準の独自演習】雑貨店を営む加藤さん（43歳）は国民年金第1号被保険者。20歳以上60歳未満の期間480月のうち学生納付特例期間36月は未追納で、残り444月は納付済相当期間。老齢基礎年金は2024年度満額816,000円を用いる。付加保険料の納付予定期間は180月。国民年金基金には未加入。",
@@ -2779,7 +3847,35 @@ const PRACTICAL_MATERIALS = {
       "子は暦年課税を選択し、その年の他の贈与はない。",
       "直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。",
       "その他の非課税特例はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "吉田さんの配偶者は妻。子の欄は子 1、子 2、子 3。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>吉田さんの配偶者は妻。子の欄は子 1、子 2、子 3。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">吉田さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 3</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "吉田さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          },
+          {
+            "label": "子 3"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】吉田さんの相続人は妻と子3人の4人で、相続放棄・養子・代襲相続はない。別途、35歳の子が父から2024年に現金410万円を贈与された。子は暦年課税を選択し、その年の他の贈与はない。直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。その他の非課税特例はない。"
+    }
   },
   "pr-kinzai3_insurance-v16-014": {
     "sourceText": "【2024年4月1日基準の独自演習】吉田さんの相続人は妻と子3人の4人で、相続放棄・養子・代襲相続はない。別途、35歳の子が父から2024年に現金410万円を贈与された。子は暦年課税を選択し、その年の他の贈与はない。直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。その他の非課税特例はない。",
@@ -2791,7 +3887,35 @@ const PRACTICAL_MATERIALS = {
       "子は暦年課税を選択し、その年の他の贈与はない。",
       "直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。",
       "その他の非課税特例はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "吉田さんの配偶者は妻。子の欄は子 1、子 2、子 3。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>吉田さんの配偶者は妻。子の欄は子 1、子 2、子 3。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">吉田さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 3</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "吉田さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          },
+          {
+            "label": "子 3"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】吉田さんの相続人は妻と子3人の4人で、相続放棄・養子・代襲相続はない。別途、35歳の子が父から2024年に現金410万円を贈与された。子は暦年課税を選択し、その年の他の贈与はない。直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。その他の非課税特例はない。"
+    }
   },
   "pr-kinzai3_insurance-v16-015": {
     "sourceText": "【2024年4月1日基準の独自演習】吉田さんの相続人は妻と子3人の4人で、相続放棄・養子・代襲相続はない。別途、35歳の子が父から2024年に現金410万円を贈与された。子は暦年課税を選択し、その年の他の贈与はない。直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。その他の非課税特例はない。",
@@ -2803,7 +3927,35 @@ const PRACTICAL_MATERIALS = {
       "子は暦年課税を選択し、その年の他の贈与はない。",
       "直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。",
       "その他の非課税特例はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "吉田さんの配偶者は妻。子の欄は子 1、子 2、子 3。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>吉田さんの配偶者は妻。子の欄は子 1、子 2、子 3。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">吉田さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 3</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "吉田さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          },
+          {
+            "label": "子 3"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】吉田さんの相続人は妻と子3人の4人で、相続放棄・養子・代襲相続はない。別途、35歳の子が父から2024年に現金410万円を贈与された。子は暦年課税を選択し、その年の他の贈与はない。直系尊属から18歳以上への贈与の速算表は、基礎控除後200万円以下：10％、400万円以下：15％・控除10万円。その他の非課税特例はない。"
+    }
   },
   "pr-kinzai2_personal-v16-001": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の安藤さん（45歳）は妻（42歳）と子3人を生計維持している。子は全員18歳到達年度末前、未婚、障害なし。安藤さんは厚生年金被保険者として死亡したものとし、保険料納付・遺族の収入等の受給要件はすべて満たす。厚生年金期間は2003年3月以前48月・平均標準報酬月額240,000円、同年4月以後252月・平均標準報酬額420,000円。2024年度価額の遺族基礎年金本体816,000円、子の加算は第1・2子各234,800円、第3子以後各78,300円。報酬比例乗率は順に7.125/1000、5.481/1000。遺族厚生年金は300月未満を300月とみなす短期要件で計算し、最終額のみ円未満四捨五入。再評価・従前額保障・中高齢寡婦加算等は今回の対象外。",
@@ -2818,7 +3970,23 @@ const PRACTICAL_MATERIALS = {
       "報酬比例乗率は順に7.125/1000、5.481/1000。",
       "遺族厚生年金は300月未満を300月とみなす短期要件で計算し、最終額のみ円未満四捨五入。",
       "再評価・従前額保障・中高齢寡婦加算等は今回の対象外。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は48月、平均標準報酬月額240,000円。2003年4月以後は252月、平均標準報酬額420,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は48月、平均標準報酬月額240,000円。2003年4月以後は252月、平均標準報酬額420,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">48 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">240,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">252 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">420,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 48,
+        "preSalary": 240000,
+        "postMonths": 252,
+        "postSalary": 420000
+      },
+      "evidence": "2003年3月以前48月・平均標準報酬月額240,000円、同年4月以後252月・平均標準報酬額420,000円"
+    }
   },
   "pr-kinzai2_personal-v16-002": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の安藤さん（45歳）は妻（42歳）と子3人を生計維持している。子は全員18歳到達年度末前、未婚、障害なし。安藤さんは厚生年金被保険者として死亡したものとし、保険料納付・遺族の収入等の受給要件はすべて満たす。厚生年金期間は2003年3月以前48月・平均標準報酬月額240,000円、同年4月以後252月・平均標準報酬額420,000円。2024年度価額の遺族基礎年金本体816,000円、子の加算は第1・2子各234,800円、第3子以後各78,300円。報酬比例乗率は順に7.125/1000、5.481/1000。遺族厚生年金は300月未満を300月とみなす短期要件で計算し、最終額のみ円未満四捨五入。再評価・従前額保障・中高齢寡婦加算等は今回の対象外。",
@@ -2833,7 +4001,23 @@ const PRACTICAL_MATERIALS = {
       "報酬比例乗率は順に7.125/1000、5.481/1000。",
       "遺族厚生年金は300月未満を300月とみなす短期要件で計算し、最終額のみ円未満四捨五入。",
       "再評価・従前額保障・中高齢寡婦加算等は今回の対象外。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は48月、平均標準報酬月額240,000円。2003年4月以後は252月、平均標準報酬額420,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は48月、平均標準報酬月額240,000円。2003年4月以後は252月、平均標準報酬額420,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">48 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">240,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">252 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">420,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 48,
+        "preSalary": 240000,
+        "postMonths": 252,
+        "postSalary": 420000
+      },
+      "evidence": "2003年3月以前48月・平均標準報酬月額240,000円、同年4月以後252月・平均標準報酬額420,000円"
+    }
   },
   "pr-kinzai2_personal-v16-003": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の安藤さん（45歳）は妻（42歳）と子3人を生計維持している。子は全員18歳到達年度末前、未婚、障害なし。安藤さんは厚生年金被保険者として死亡したものとし、保険料納付・遺族の収入等の受給要件はすべて満たす。厚生年金期間は2003年3月以前48月・平均標準報酬月額240,000円、同年4月以後252月・平均標準報酬額420,000円。2024年度価額の遺族基礎年金本体816,000円、子の加算は第1・2子各234,800円、第3子以後各78,300円。報酬比例乗率は順に7.125/1000、5.481/1000。遺族厚生年金は300月未満を300月とみなす短期要件で計算し、最終額のみ円未満四捨五入。再評価・従前額保障・中高齢寡婦加算等は今回の対象外。",
@@ -2848,7 +4032,23 @@ const PRACTICAL_MATERIALS = {
       "報酬比例乗率は順に7.125/1000、5.481/1000。",
       "遺族厚生年金は300月未満を300月とみなす短期要件で計算し、最終額のみ円未満四捨五入。",
       "再評価・従前額保障・中高齢寡婦加算等は今回の対象外。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は48月、平均標準報酬月額240,000円。2003年4月以後は252月、平均標準報酬額420,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は48月、平均標準報酬月額240,000円。2003年4月以後は252月、平均標準報酬額420,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">48 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">240,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">252 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">420,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 48,
+        "preSalary": 240000,
+        "postMonths": 252,
+        "postSalary": 420000
+      },
+      "evidence": "2003年3月以前48月・平均標準報酬月額240,000円、同年4月以後252月・平均標準報酬額420,000円"
+    }
   },
   "pr-kinzai2_personal-v16-004": {
     "sourceText": "【2024年4月1日基準の独自演習】安藤さんの家族は株式投資を検討している。上場会社の株価3000円、発行済株式数100万株、当期純利益250,000,000円、自己資本2,000,000,000円。自己株式・潜在株式・株式分割はない。注文方法と価格・時間優先の基本原則も確認したい。指値の買い注文について、通常のザラバ取引を想定し、寄り付き・引け・特別な配分等は考慮しない。",
@@ -2939,7 +4139,24 @@ const PRACTICAL_MATERIALS = {
       "建物は地主本人が所有し貸し付ける。",
       "相続税評価では土地の自用地価額10000万円、借地権割合70％、借家権割合30％、賃貸割合80％。",
       "小規模宅地等の特例は考慮しない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "近隣商業地域の土地500㎡、指定建蔽率80％、指定容積率400％。前面道路は1本、幅員7m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>近隣商業地域の土地500㎡。前面道路は1本、幅員7m。形状・道路位置は未指定。</desc><rect x=\"30\" y=\"24\" width=\"340\" height=\"178\" rx=\"12\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" stroke-dasharray=\"6 4\" /><text x=\"200\" y=\"61\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">近隣商業地域</text><text x=\"200\" y=\"103\" font-size=\"27\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">500 ㎡</text><text x=\"200\" y=\"140\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 80％</text><text x=\"200\" y=\"173\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定容積率 400％</text><text x=\"200\" y=\"244\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 7 m</text></svg>",
+      "notes": [
+        "土地の形状・寸法・道路位置・方位は設例にないため、枠は条件をまとめた模式表示です。実際の土地形状を表す図ではありません。"
+      ],
+      "facts": {
+        "zone": "近隣商業地域",
+        "area": 500,
+        "coverage": 80,
+        "floor": 400,
+        "roadWidth": 7
+      },
+      "evidence": "【2024年4月1日基準の独自演習】遠藤さんは近隣商業地域にある土地500㎡へ賃貸マンションを建てる。指定建蔽率80％・指定容積率400％、前面道路1本の幅員7m、容積率の道路係数6/10。道路後退・角地加算・防火等による建蔽率緩和・その他の特例はない。建物は地主本人が所有し貸し付ける。相続税評価では土地の自用地価額10000万円、借地権割合70％、借家権割合30％、賃貸割合80％。小規模宅地等の特例は考慮しない。"
+    }
   },
   "pr-kinzai2_personal-v16-011": {
     "sourceText": "【2024年4月1日基準の独自演習】遠藤さんは近隣商業地域にある土地500㎡へ賃貸マンションを建てる。指定建蔽率80％・指定容積率400％、前面道路1本の幅員7m、容積率の道路係数6/10。道路後退・角地加算・防火等による建蔽率緩和・その他の特例はない。建物は地主本人が所有し貸し付ける。相続税評価では土地の自用地価額10000万円、借地権割合70％、借家権割合30％、賃貸割合80％。小規模宅地等の特例は考慮しない。",
@@ -2952,7 +4169,24 @@ const PRACTICAL_MATERIALS = {
       "建物は地主本人が所有し貸し付ける。",
       "相続税評価では土地の自用地価額10000万円、借地権割合70％、借家権割合30％、賃貸割合80％。",
       "小規模宅地等の特例は考慮しない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "近隣商業地域の土地500㎡、指定建蔽率80％、指定容積率400％。前面道路は1本、幅員7m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>近隣商業地域の土地500㎡。前面道路は1本、幅員7m。形状・道路位置は未指定。</desc><rect x=\"30\" y=\"24\" width=\"340\" height=\"178\" rx=\"12\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" stroke-dasharray=\"6 4\" /><text x=\"200\" y=\"61\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">近隣商業地域</text><text x=\"200\" y=\"103\" font-size=\"27\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">500 ㎡</text><text x=\"200\" y=\"140\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 80％</text><text x=\"200\" y=\"173\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定容積率 400％</text><text x=\"200\" y=\"244\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 7 m</text></svg>",
+      "notes": [
+        "土地の形状・寸法・道路位置・方位は設例にないため、枠は条件をまとめた模式表示です。実際の土地形状を表す図ではありません。"
+      ],
+      "facts": {
+        "zone": "近隣商業地域",
+        "area": 500,
+        "coverage": 80,
+        "floor": 400,
+        "roadWidth": 7
+      },
+      "evidence": "【2024年4月1日基準の独自演習】遠藤さんは近隣商業地域にある土地500㎡へ賃貸マンションを建てる。指定建蔽率80％・指定容積率400％、前面道路1本の幅員7m、容積率の道路係数6/10。道路後退・角地加算・防火等による建蔽率緩和・その他の特例はない。建物は地主本人が所有し貸し付ける。相続税評価では土地の自用地価額10000万円、借地権割合70％、借家権割合30％、賃貸割合80％。小規模宅地等の特例は考慮しない。"
+    }
   },
   "pr-kinzai2_personal-v16-012": {
     "sourceText": "【2024年4月1日基準の独自演習】遠藤さんは近隣商業地域にある土地500㎡へ賃貸マンションを建てる。指定建蔽率80％・指定容積率400％、前面道路1本の幅員7m、容積率の道路係数6/10。道路後退・角地加算・防火等による建蔽率緩和・その他の特例はない。建物は地主本人が所有し貸し付ける。相続税評価では土地の自用地価額10000万円、借地権割合70％、借家権割合30％、賃貸割合80％。小規模宅地等の特例は考慮しない。",
@@ -2965,7 +4199,24 @@ const PRACTICAL_MATERIALS = {
       "建物は地主本人が所有し貸し付ける。",
       "相続税評価では土地の自用地価額10000万円、借地権割合70％、借家権割合30％、賃貸割合80％。",
       "小規模宅地等の特例は考慮しない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "近隣商業地域の土地500㎡、指定建蔽率80％、指定容積率400％。前面道路は1本、幅員7m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"400\" height=\"290\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>近隣商業地域の土地500㎡。前面道路は1本、幅員7m。形状・道路位置は未指定。</desc><rect x=\"30\" y=\"24\" width=\"340\" height=\"178\" rx=\"12\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" stroke-dasharray=\"6 4\" /><text x=\"200\" y=\"61\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">近隣商業地域</text><text x=\"200\" y=\"103\" font-size=\"27\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">500 ㎡</text><text x=\"200\" y=\"140\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 80％</text><text x=\"200\" y=\"173\" font-size=\"18\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定容積率 400％</text><text x=\"200\" y=\"244\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 7 m</text></svg>",
+      "notes": [
+        "土地の形状・寸法・道路位置・方位は設例にないため、枠は条件をまとめた模式表示です。実際の土地形状を表す図ではありません。"
+      ],
+      "facts": {
+        "zone": "近隣商業地域",
+        "area": 500,
+        "coverage": 80,
+        "floor": 400,
+        "roadWidth": 7
+      },
+      "evidence": "【2024年4月1日基準の独自演習】遠藤さんは近隣商業地域にある土地500㎡へ賃貸マンションを建てる。指定建蔽率80％・指定容積率400％、前面道路1本の幅員7m、容積率の道路係数6/10。道路後退・角地加算・防火等による建蔽率緩和・その他の特例はない。建物は地主本人が所有し貸し付ける。相続税評価では土地の自用地価額10000万円、借地権割合70％、借家権割合30％、賃貸割合80％。小規模宅地等の特例は考慮しない。"
+    }
   },
   "pr-kinzai2_personal-v16-013": {
     "sourceText": "【2024年4月1日基準の独自演習】遠藤さんの父は非上場の製造会社を経営し、株式の承継を検討している。本問では財産評価基本通達上の「中会社の小」、特定の評価会社には該当せず、原則的評価方式を用いる。資本金等の額を1株50円換算した比準要素は、自社／類似業種の順に配当6.5円／5円、利益32円／20円、簿価純資産260円／200円。類似業種株価600円。実際の1株当たり資本金等の額100円、純資産価額方式の1株評価額3000円。類似業種比準価額＝類似業種株価×3要素の比率の平均×0.6×（実際の1株資本金等の額／50円）。併用割合L＝0.6を採用する。中間計算の端数処理はせず最終値を求める。別途、父の相続人は妻と子2人、課税遺産総額は16000万円。速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。個別税額控除前を計算する。",
@@ -2983,7 +4234,32 @@ const PRACTICAL_MATERIALS = {
       "別途、父の相続人は妻と子2人、課税遺産総額は16000万円。",
       "速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
       "個別税額控除前を計算する。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "父の配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>父の配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">父</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "父",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】遠藤さんの父は非上場の製造会社を経営し、株式の承継を検討している。本問では財産評価基本通達上の「中会社の小」、特定の評価会社には該当せず、原則的評価方式を用いる。資本金等の額を1株50円換算した比準要素は、自社／類似業種の順に配当6.5円／5円、利益32円／20円、簿価純資産260円／200円。類似業種株価600円。実際の1株当たり資本金等の額100円、純資産価額方式の1株評価額3000円。類似業種比準価額＝類似業種株価×3要素の比率の平均×0.6×（実際の1株資本金等の額／50円）。併用割合L＝0.6を採用する。中間計算の端数処理はせず最終値を求める。別途、父の相続人は妻と子2人、課税遺産総額は16000万円。速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。個別税額控除前を計算する。"
+    }
   },
   "pr-kinzai2_personal-v16-014": {
     "sourceText": "【2024年4月1日基準の独自演習】遠藤さんの父は非上場の製造会社を経営し、株式の承継を検討している。本問では財産評価基本通達上の「中会社の小」、特定の評価会社には該当せず、原則的評価方式を用いる。資本金等の額を1株50円換算した比準要素は、自社／類似業種の順に配当6.5円／5円、利益32円／20円、簿価純資産260円／200円。類似業種株価600円。実際の1株当たり資本金等の額100円、純資産価額方式の1株評価額3000円。類似業種比準価額＝類似業種株価×3要素の比率の平均×0.6×（実際の1株資本金等の額／50円）。併用割合L＝0.6を採用する。中間計算の端数処理はせず最終値を求める。別途、父の相続人は妻と子2人、課税遺産総額は16000万円。速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。個別税額控除前を計算する。",
@@ -3001,7 +4277,32 @@ const PRACTICAL_MATERIALS = {
       "別途、父の相続人は妻と子2人、課税遺産総額は16000万円。",
       "速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
       "個別税額控除前を計算する。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "父の配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>父の配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">父</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "父",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】遠藤さんの父は非上場の製造会社を経営し、株式の承継を検討している。本問では財産評価基本通達上の「中会社の小」、特定の評価会社には該当せず、原則的評価方式を用いる。資本金等の額を1株50円換算した比準要素は、自社／類似業種の順に配当6.5円／5円、利益32円／20円、簿価純資産260円／200円。類似業種株価600円。実際の1株当たり資本金等の額100円、純資産価額方式の1株評価額3000円。類似業種比準価額＝類似業種株価×3要素の比率の平均×0.6×（実際の1株資本金等の額／50円）。併用割合L＝0.6を採用する。中間計算の端数処理はせず最終値を求める。別途、父の相続人は妻と子2人、課税遺産総額は16000万円。速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。個別税額控除前を計算する。"
+    }
   },
   "pr-kinzai2_personal-v16-015": {
     "sourceText": "【2024年4月1日基準の独自演習】遠藤さんの父は非上場の製造会社を経営し、株式の承継を検討している。本問では財産評価基本通達上の「中会社の小」、特定の評価会社には該当せず、原則的評価方式を用いる。資本金等の額を1株50円換算した比準要素は、自社／類似業種の順に配当6.5円／5円、利益32円／20円、簿価純資産260円／200円。類似業種株価600円。実際の1株当たり資本金等の額100円、純資産価額方式の1株評価額3000円。類似業種比準価額＝類似業種株価×3要素の比率の平均×0.6×（実際の1株資本金等の額／50円）。併用割合L＝0.6を採用する。中間計算の端数処理はせず最終値を求める。別途、父の相続人は妻と子2人、課税遺産総額は16000万円。速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。個別税額控除前を計算する。",
@@ -3019,7 +4320,32 @@ const PRACTICAL_MATERIALS = {
       "別途、父の相続人は妻と子2人、課税遺産総額は16000万円。",
       "速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
       "個別税額控除前を計算する。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "父の配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>父の配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">父</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "父",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】遠藤さんの父は非上場の製造会社を経営し、株式の承継を検討している。本問では財産評価基本通達上の「中会社の小」、特定の評価会社には該当せず、原則的評価方式を用いる。資本金等の額を1株50円換算した比準要素は、自社／類似業種の順に配当6.5円／5円、利益32円／20円、簿価純資産260円／200円。類似業種株価600円。実際の1株当たり資本金等の額100円、純資産価額方式の1株評価額3000円。類似業種比準価額＝類似業種株価×3要素の比率の平均×0.6×（実際の1株資本金等の額／50円）。併用割合L＝0.6を採用する。中間計算の端数処理はせず最終値を求める。別途、父の相続人は妻と子2人、課税遺産総額は16000万円。速算表（取得額：税率／控除）は1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。個別税額控除前を計算する。"
+    }
   },
   "pr-kinzai2_business-v16-001": {
     "sourceText": "【2024年4月1日基準の独自演習】飲食店を営む渡辺さん（47歳）は国民年金第1号被保険者。20歳以上60歳未満の納付済相当期間432月、残りは未納で免除期間はない。厚生年金加入歴は2003年3月以前72月・平均標準報酬月額220,000円、同年4月以後144月・平均標準報酬額350,000円で、全期間20歳以上60歳未満。2024年度価額の満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。再評価等・経過的加算・加給年金を計算対象外とする。小規模企業共済の加入要件も満たしている。",
@@ -3032,7 +4358,23 @@ const PRACTICAL_MATERIALS = {
       "2024年度価額の満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。",
       "再評価等・経過的加算・加給年金を計算対象外とする。",
       "小規模企業共済の加入要件も満たしている。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は72月、平均標準報酬月額220,000円。2003年4月以後は144月、平均標準報酬額350,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は72月、平均標準報酬月額220,000円。2003年4月以後は144月、平均標準報酬額350,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">72 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">220,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">144 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">350,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 72,
+        "preSalary": 220000,
+        "postMonths": 144,
+        "postSalary": 350000
+      },
+      "evidence": "2003年3月以前72月・平均標準報酬月額220,000円、同年4月以後144月・平均標準報酬額350,000円"
+    }
   },
   "pr-kinzai2_business-v16-002": {
     "sourceText": "【2024年4月1日基準の独自演習】飲食店を営む渡辺さん（47歳）は国民年金第1号被保険者。20歳以上60歳未満の納付済相当期間432月、残りは未納で免除期間はない。厚生年金加入歴は2003年3月以前72月・平均標準報酬月額220,000円、同年4月以後144月・平均標準報酬額350,000円で、全期間20歳以上60歳未満。2024年度価額の満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。再評価等・経過的加算・加給年金を計算対象外とする。小規模企業共済の加入要件も満たしている。",
@@ -3045,7 +4387,23 @@ const PRACTICAL_MATERIALS = {
       "2024年度価額の満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。",
       "再評価等・経過的加算・加給年金を計算対象外とする。",
       "小規模企業共済の加入要件も満たしている。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は72月、平均標準報酬月額220,000円。2003年4月以後は144月、平均標準報酬額350,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は72月、平均標準報酬月額220,000円。2003年4月以後は144月、平均標準報酬額350,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">72 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">220,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">144 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">350,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 72,
+        "preSalary": 220000,
+        "postMonths": 144,
+        "postSalary": 350000
+      },
+      "evidence": "2003年3月以前72月・平均標準報酬月額220,000円、同年4月以後144月・平均標準報酬額350,000円"
+    }
   },
   "pr-kinzai2_business-v16-003": {
     "sourceText": "【2024年4月1日基準の独自演習】飲食店を営む渡辺さん（47歳）は国民年金第1号被保険者。20歳以上60歳未満の納付済相当期間432月、残りは未納で免除期間はない。厚生年金加入歴は2003年3月以前72月・平均標準報酬月額220,000円、同年4月以後144月・平均標準報酬額350,000円で、全期間20歳以上60歳未満。2024年度価額の満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。再評価等・経過的加算・加給年金を計算対象外とする。小規模企業共済の加入要件も満たしている。",
@@ -3058,7 +4416,23 @@ const PRACTICAL_MATERIALS = {
       "2024年度価額の満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。",
       "再評価等・経過的加算・加給年金を計算対象外とする。",
       "小規模企業共済の加入要件も満たしている。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は72月、平均標準報酬月額220,000円。2003年4月以後は144月、平均標準報酬額350,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は72月、平均標準報酬月額220,000円。2003年4月以後は144月、平均標準報酬額350,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">72 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">220,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">144 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">350,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 72,
+        "preSalary": 220000,
+        "postMonths": 144,
+        "postSalary": 350000
+      },
+      "evidence": "2003年3月以前72月・平均標準報酬月額220,000円、同年4月以後144月・平均標準報酬額350,000円"
+    }
   },
   "pr-kinzai2_business-v16-004": {
     "sourceText": "【2024年4月1日基準の独自演習】渡辺さんは余裕資金で投資を検討中。上場会社の株価3000円、発行済株式数100万株、当期純利益250,000,000円、年間配当総額100,000,000円。すべて同じ期の資料で株式分割等はない。個別元本10,000円（1万口当たり）の追加型公募株式投資信託も保有し、分配落ち後の基準価額9,700円、分配金500円（1万口当たり）である。手数料は考慮しない。",
@@ -3149,7 +4523,34 @@ const PRACTICAL_MATERIALS = {
       "道路幅員による容積率制限の係数は順に6/10、4/10。",
       "角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。",
       "地上の建築面積・延べ面積の上限を計算する。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "近隣商業地域400㎡、指定建蔽率80％・指定容積率400％。第一種中高層住居専用地域300㎡、指定建蔽率60％・指定容積率200％。前面道路は1本、幅員7m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>近隣商業地域400㎡、第一種中高層住居専用地域300㎡。前面道路幅員7m。区域の地理的位置は不明。</desc><rect x=\"20\" y=\"20\" width=\"360\" height=\"115\" rx=\"6\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"47\" font-size=\"17\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">近隣商業地域</text><text x=\"200\" y=\"79\" font-size=\"23\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">400 ㎡</text><text x=\"200\" y=\"112\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 80％ ／ 指定容積率 400％</text><rect x=\"20\" y=\"155\" width=\"360\" height=\"115\" rx=\"6\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"182\" font-size=\"17\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">第一種中高層住居専用地域</text><text x=\"200\" y=\"214\" font-size=\"23\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">300 ㎡</text><text x=\"200\" y=\"247\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％ ／ 指定容積率 200％</text><text x=\"200\" y=\"311\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 7 m</text></svg>",
+      "notes": [
+        "区域の配分を示す模式図です。区域の地理的位置・形状・方位・道路位置は描いていません。面積に比例した図ではありません。"
+      ],
+      "facts": {
+        "zones": [
+          {
+            "name": "近隣商業地域",
+            "area": 400,
+            "coverage": 80,
+            "floor": 400
+          },
+          {
+            "name": "第一種中高層住居専用地域",
+            "area": 300,
+            "coverage": 60,
+            "floor": 200
+          }
+        ],
+        "roadWidth": 7
+      },
+      "evidence": "【2024年4月1日基準の独自演習】東雲社は新社屋の用地を検討中。敷地は一体で、近隣商業地域部分400㎡（指定建蔽率80％、指定容積率400％）、第一種中高層住居専用地域部分300㎡（指定建蔽率60％、指定容積率200％）。前面道路は1本、幅員7m。道路幅員による容積率制限の係数は順に6/10、4/10。角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。地上の建築面積・延べ面積の上限を計算する。"
+    }
   },
   "pr-kinzai2_business-v16-011": {
     "sourceText": "【2024年4月1日基準の独自演習】東雲社は新社屋の用地を検討中。敷地は一体で、近隣商業地域部分400㎡（指定建蔽率80％、指定容積率400％）、第一種中高層住居専用地域部分300㎡（指定建蔽率60％、指定容積率200％）。前面道路は1本、幅員7m。道路幅員による容積率制限の係数は順に6/10、4/10。角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。地上の建築面積・延べ面積の上限を計算する。",
@@ -3162,7 +4563,34 @@ const PRACTICAL_MATERIALS = {
       "道路幅員による容積率制限の係数は順に6/10、4/10。",
       "角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。",
       "地上の建築面積・延べ面積の上限を計算する。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "近隣商業地域400㎡、指定建蔽率80％・指定容積率400％。第一種中高層住居専用地域300㎡、指定建蔽率60％・指定容積率200％。前面道路は1本、幅員7m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>近隣商業地域400㎡、第一種中高層住居専用地域300㎡。前面道路幅員7m。区域の地理的位置は不明。</desc><rect x=\"20\" y=\"20\" width=\"360\" height=\"115\" rx=\"6\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"47\" font-size=\"17\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">近隣商業地域</text><text x=\"200\" y=\"79\" font-size=\"23\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">400 ㎡</text><text x=\"200\" y=\"112\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 80％ ／ 指定容積率 400％</text><rect x=\"20\" y=\"155\" width=\"360\" height=\"115\" rx=\"6\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"182\" font-size=\"17\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">第一種中高層住居専用地域</text><text x=\"200\" y=\"214\" font-size=\"23\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">300 ㎡</text><text x=\"200\" y=\"247\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％ ／ 指定容積率 200％</text><text x=\"200\" y=\"311\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 7 m</text></svg>",
+      "notes": [
+        "区域の配分を示す模式図です。区域の地理的位置・形状・方位・道路位置は描いていません。面積に比例した図ではありません。"
+      ],
+      "facts": {
+        "zones": [
+          {
+            "name": "近隣商業地域",
+            "area": 400,
+            "coverage": 80,
+            "floor": 400
+          },
+          {
+            "name": "第一種中高層住居専用地域",
+            "area": 300,
+            "coverage": 60,
+            "floor": 200
+          }
+        ],
+        "roadWidth": 7
+      },
+      "evidence": "【2024年4月1日基準の独自演習】東雲社は新社屋の用地を検討中。敷地は一体で、近隣商業地域部分400㎡（指定建蔽率80％、指定容積率400％）、第一種中高層住居専用地域部分300㎡（指定建蔽率60％、指定容積率200％）。前面道路は1本、幅員7m。道路幅員による容積率制限の係数は順に6/10、4/10。角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。地上の建築面積・延べ面積の上限を計算する。"
+    }
   },
   "pr-kinzai2_business-v16-012": {
     "sourceText": "【2024年4月1日基準の独自演習】東雲社は新社屋の用地を検討中。敷地は一体で、近隣商業地域部分400㎡（指定建蔽率80％、指定容積率400％）、第一種中高層住居専用地域部分300㎡（指定建蔽率60％、指定容積率200％）。前面道路は1本、幅員7m。道路幅員による容積率制限の係数は順に6/10、4/10。角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。地上の建築面積・延べ面積の上限を計算する。",
@@ -3175,7 +4603,34 @@ const PRACTICAL_MATERIALS = {
       "道路幅員による容積率制限の係数は順に6/10、4/10。",
       "角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。",
       "地上の建築面積・延べ面積の上限を計算する。"
-    ]
+    ],
+    "diagram": {
+      "kind": "land",
+      "title": "土地・建築条件の模式図",
+      "alt": "近隣商業地域400㎡、指定建蔽率80％・指定容積率400％。第一種中高層住居専用地域300㎡、指定建蔽率60％・指定容積率200％。前面道路は1本、幅員7m。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>土地・建築条件の模式図</title><desc>近隣商業地域400㎡、第一種中高層住居専用地域300㎡。前面道路幅員7m。区域の地理的位置は不明。</desc><rect x=\"20\" y=\"20\" width=\"360\" height=\"115\" rx=\"6\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"47\" font-size=\"17\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">近隣商業地域</text><text x=\"200\" y=\"79\" font-size=\"23\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">400 ㎡</text><text x=\"200\" y=\"112\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 80％ ／ 指定容積率 400％</text><rect x=\"20\" y=\"155\" width=\"360\" height=\"115\" rx=\"6\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"182\" font-size=\"17\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">第一種中高層住居専用地域</text><text x=\"200\" y=\"214\" font-size=\"23\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">300 ㎡</text><text x=\"200\" y=\"247\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">指定建蔽率 60％ ／ 指定容積率 200％</text><text x=\"200\" y=\"311\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">前面道路 1本 ／ 幅員 7 m</text></svg>",
+      "notes": [
+        "区域の配分を示す模式図です。区域の地理的位置・形状・方位・道路位置は描いていません。面積に比例した図ではありません。"
+      ],
+      "facts": {
+        "zones": [
+          {
+            "name": "近隣商業地域",
+            "area": 400,
+            "coverage": 80,
+            "floor": 400
+          },
+          {
+            "name": "第一種中高層住居専用地域",
+            "area": 300,
+            "coverage": 60,
+            "floor": 200
+          }
+        ],
+        "roadWidth": 7
+      },
+      "evidence": "【2024年4月1日基準の独自演習】東雲社は新社屋の用地を検討中。敷地は一体で、近隣商業地域部分400㎡（指定建蔽率80％、指定容積率400％）、第一種中高層住居専用地域部分300㎡（指定建蔽率60％、指定容積率200％）。前面道路は1本、幅員7m。道路幅員による容積率制限の係数は順に6/10、4/10。角地・防火・耐火等による建蔽率緩和、容積率の特例、道路後退はない。地上の建築面積・延べ面積の上限を計算する。"
+    }
   },
   "pr-kinzai2_business-v16-013": {
     "sourceText": "【2024年4月1日基準の独自演習】東雲社は非上場の同族会社。税務評価上の資産・負債および評価差額に対する法人税等相当額をすべて反映済みの純資産価額総額は22000万円。発行済株式数100,000株で自己株式はない。本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。社長の推定相続人は妻と子3人の計4人、放棄・養子・代襲はない。会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。",
@@ -3188,7 +4643,35 @@ const PRACTICAL_MATERIALS = {
       "本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。",
       "社長の推定相続人は妻と子3人の計4人、放棄・養子・代襲はない。",
       "会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "社長の配偶者は妻。子の欄は子 1、子 2、子 3。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>社長の配偶者は妻。子の欄は子 1、子 2、子 3。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">社長</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 3</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "社長",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          },
+          {
+            "label": "子 3"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】東雲社は非上場の同族会社。税務評価上の資産・負債および評価差額に対する法人税等相当額をすべて反映済みの純資産価額総額は22000万円。発行済株式数100,000株で自己株式はない。本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。社長の推定相続人は妻と子3人の計4人、放棄・養子・代襲はない。会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。"
+    }
   },
   "pr-kinzai2_business-v16-014": {
     "sourceText": "【2024年4月1日基準の独自演習】東雲社は非上場の同族会社。税務評価上の資産・負債および評価差額に対する法人税等相当額をすべて反映済みの純資産価額総額は22000万円。発行済株式数100,000株で自己株式はない。本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。社長の推定相続人は妻と子3人の計4人、放棄・養子・代襲はない。会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。",
@@ -3201,7 +4684,35 @@ const PRACTICAL_MATERIALS = {
       "本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。",
       "社長の推定相続人は妻と子3人の計4人、放棄・養子・代襲はない。",
       "会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "社長の配偶者は妻。子の欄は子 1、子 2、子 3。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>社長の配偶者は妻。子の欄は子 1、子 2、子 3。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">社長</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 3</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "社長",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          },
+          {
+            "label": "子 3"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】東雲社は非上場の同族会社。税務評価上の資産・負債および評価差額に対する法人税等相当額をすべて反映済みの純資産価額総額は22000万円。発行済株式数100,000株で自己株式はない。本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。社長の推定相続人は妻と子3人の計4人、放棄・養子・代襲はない。会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。"
+    }
   },
   "pr-kinzai2_business-v16-015": {
     "sourceText": "【2024年4月1日基準の独自演習】東雲社は非上場の同族会社。税務評価上の資産・負債および評価差額に対する法人税等相当額をすべて反映済みの純資産価額総額は22000万円。発行済株式数100,000株で自己株式はない。本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。社長の推定相続人は妻と子3人の計4人、放棄・養子・代襲はない。会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。",
@@ -3214,7 +4725,35 @@ const PRACTICAL_MATERIALS = {
       "本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。",
       "社長の推定相続人は妻と子3人の計4人、放棄・養子・代襲はない。",
       "会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "社長の配偶者は妻。子の欄は子 1、子 2、子 3。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>社長の配偶者は妻。子の欄は子 1、子 2、子 3。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">社長</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 3</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "社長",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          },
+          {
+            "label": "子 3"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】東雲社は非上場の同族会社。税務評価上の資産・負債および評価差額に対する法人税等相当額をすべて反映済みの純資産価額総額は22000万円。発行済株式数100,000株で自己株式はない。本問では純資産価額方式だけで1株を評価し、80％評価や他方式との併用は行わない。社長の推定相続人は妻と子3人の計4人、放棄・養子・代襲はない。会社の株式には譲渡制限があり、取締役会設置会社で、譲渡承認機関について定款の別段の定めはない。"
+    }
   },
   "pr-kinzai2_life-v16-001": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の佐藤さん（52歳）は、妻と母の生活も含め老後資金を相談している。20歳以上60歳未満の納付済相当期間は420月、残りは未納である。厚生年金は2003年3月以前84月・平均標準報酬月額250,000円、同年4月以後336月・平均標準報酬額400,000円。年金は2024年度価額、基礎年金満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。再評価・従前額保障・経過的加算・加給年金は計算対象外。母の介護休業も検討中。",
@@ -3227,7 +4766,23 @@ const PRACTICAL_MATERIALS = {
       "年金は2024年度価額、基礎年金満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。",
       "再評価・従前額保障・経過的加算・加給年金は計算対象外。",
       "母の介護休業も検討中。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は84月、平均標準報酬月額250,000円。2003年4月以後は336月、平均標準報酬額400,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は84月、平均標準報酬月額250,000円。2003年4月以後は336月、平均標準報酬額400,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">84 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">250,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">336 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">400,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 84,
+        "preSalary": 250000,
+        "postMonths": 336,
+        "postSalary": 400000
+      },
+      "evidence": "2003年3月以前84月・平均標準報酬月額250,000円、同年4月以後336月・平均標準報酬額400,000円"
+    }
   },
   "pr-kinzai2_life-v16-002": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の佐藤さん（52歳）は、妻と母の生活も含め老後資金を相談している。20歳以上60歳未満の納付済相当期間は420月、残りは未納である。厚生年金は2003年3月以前84月・平均標準報酬月額250,000円、同年4月以後336月・平均標準報酬額400,000円。年金は2024年度価額、基礎年金満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。再評価・従前額保障・経過的加算・加給年金は計算対象外。母の介護休業も検討中。",
@@ -3240,7 +4795,23 @@ const PRACTICAL_MATERIALS = {
       "年金は2024年度価額、基礎年金満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。",
       "再評価・従前額保障・経過的加算・加給年金は計算対象外。",
       "母の介護休業も検討中。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は84月、平均標準報酬月額250,000円。2003年4月以後は336月、平均標準報酬額400,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は84月、平均標準報酬月額250,000円。2003年4月以後は336月、平均標準報酬額400,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">84 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">250,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">336 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">400,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 84,
+        "preSalary": 250000,
+        "postMonths": 336,
+        "postSalary": 400000
+      },
+      "evidence": "2003年3月以前84月・平均標準報酬月額250,000円、同年4月以後336月・平均標準報酬額400,000円"
+    }
   },
   "pr-kinzai2_life-v16-003": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の佐藤さん（52歳）は、妻と母の生活も含め老後資金を相談している。20歳以上60歳未満の納付済相当期間は420月、残りは未納である。厚生年金は2003年3月以前84月・平均標準報酬月額250,000円、同年4月以後336月・平均標準報酬額400,000円。年金は2024年度価額、基礎年金満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。再評価・従前額保障・経過的加算・加給年金は計算対象外。母の介護休業も検討中。",
@@ -3253,7 +4824,23 @@ const PRACTICAL_MATERIALS = {
       "年金は2024年度価額、基礎年金満額816,000円、報酬比例乗率は順に7.125/1000、5.481/1000。",
       "再評価・従前額保障・経過的加算・加給年金は計算対象外。",
       "母の介護休業も検討中。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は84月、平均標準報酬月額250,000円。2003年4月以後は336月、平均標準報酬額400,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は84月、平均標準報酬月額250,000円。2003年4月以後は336月、平均標準報酬額400,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">84 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">250,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">336 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">400,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 84,
+        "preSalary": 250000,
+        "postMonths": 336,
+        "postSalary": 400000
+      },
+      "evidence": "2003年3月以前84月・平均標準報酬月額250,000円、同年4月以後336月・平均標準報酬額400,000円"
+    }
   },
   "pr-kinzai2_life-v16-004": {
     "sourceText": "【2024年4月1日基準の独自演習】会社員の森さん（54歳）は生命保険を見直す。死亡後の生活・教育・葬儀等の必要資金総額5600万円、遺族年金の見込総額・死亡退職金・預貯金など充当可能資金の合計2500万円。加入契約は終身保険500万円、定期保険特約1300万円。疾病死亡ではこの2保障が支払対象となり、事故死亡限定の災害割増特約500万円は支払対象外。すべて設例上の仮定で、その他給付はない。",
@@ -3380,7 +4967,32 @@ const PRACTICAL_MATERIALS = {
       "債務・葬式費用・贈与加算・小規模宅地特例はない。",
       "相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
       "配偶者の税額軽減など個別税額控除前の相続税の総額を求める。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "中村さんの配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>中村さんの配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">中村さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "中村さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】中村さんの相続人は妻と子2人の3人。本人負担の保険料に係る死亡保険金2700万円を相続人だけが受領した。これ以外の相続財産の課税価格は12000万円。債務・葬式費用・贈与加算・小規模宅地特例はない。相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。配偶者の税額軽減など個別税額控除前の相続税の総額を求める。"
+    }
   },
   "pr-kinzai2_life-v16-014": {
     "sourceText": "【2024年4月1日基準の独自演習】中村さんの相続人は妻と子2人の3人。本人負担の保険料に係る死亡保険金2700万円を相続人だけが受領した。これ以外の相続財産の課税価格は12000万円。債務・葬式費用・贈与加算・小規模宅地特例はない。相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。配偶者の税額軽減など個別税額控除前の相続税の総額を求める。",
@@ -3393,7 +5005,32 @@ const PRACTICAL_MATERIALS = {
       "債務・葬式費用・贈与加算・小規模宅地特例はない。",
       "相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
       "配偶者の税額軽減など個別税額控除前の相続税の総額を求める。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "中村さんの配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>中村さんの配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">中村さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "中村さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】中村さんの相続人は妻と子2人の3人。本人負担の保険料に係る死亡保険金2700万円を相続人だけが受領した。これ以外の相続財産の課税価格は12000万円。債務・葬式費用・贈与加算・小規模宅地特例はない。相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。配偶者の税額軽減など個別税額控除前の相続税の総額を求める。"
+    }
   },
   "pr-kinzai2_life-v16-015": {
     "sourceText": "【2024年4月1日基準の独自演習】中村さんの相続人は妻と子2人の3人。本人負担の保険料に係る死亡保険金2700万円を相続人だけが受領した。これ以外の相続財産の課税価格は12000万円。債務・葬式費用・贈与加算・小規模宅地特例はない。相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。配偶者の税額軽減など個別税額控除前の相続税の総額を求める。",
@@ -3406,7 +5043,32 @@ const PRACTICAL_MATERIALS = {
       "債務・葬式費用・贈与加算・小規模宅地特例はない。",
       "相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。",
       "配偶者の税額軽減など個別税額控除前の相続税の総額を求める。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "中村さんの配偶者は妻。子の欄は子 1、子 2。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>中村さんの配偶者は妻。子の欄は子 1、子 2。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">中村さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 1</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">子 2</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "中村さん",
+        "spouse": "妻",
+        "children": [
+          {
+            "label": "子 1"
+          },
+          {
+            "label": "子 2"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "【2024年4月1日基準の独自演習】中村さんの相続人は妻と子2人の3人。本人負担の保険料に係る死亡保険金2700万円を相続人だけが受領した。これ以外の相続財産の課税価格は12000万円。債務・葬式費用・贈与加算・小規模宅地特例はない。相続税速算表（取得金額：税率／控除）は、1,000万円以下10％／0、3,000万円以下15％／50万円、5,000万円以下20％／200万円、1億円以下30％／700万円。配偶者の税額軽減など個別税額控除前の相続税の総額を求める。"
+    }
   },
   "pr-kinzai2_nonlife-v16-001": {
     "sourceText": "会社員の山田さんは老後の資金計画と公的医療保険について相談している。計算資料は2024年度価額で、老齢基礎年金の満額は816,000円。20歳以上60歳未満の納付済相当月数は450月、免除・未納の扱いを別途加算する必要はない。厚生年金の資料：2003年3月以前36月・平均標準報酬月額280,000円、同年4月以後384月・平均標準報酬額420,000円。報酬比例の乗率は順に7.125/1000、5.481/1000。再評価・従前額保障・加給年金・経過的加算は今回の計算対象外。",
@@ -3419,7 +5081,23 @@ const PRACTICAL_MATERIALS = {
       "厚生年金の資料：2003年3月以前36月・平均標準報酬月額280,000円、同年4月以後384月・平均標準報酬額420,000円。",
       "報酬比例の乗率は順に7.125/1000、5.481/1000。",
       "再評価・従前額保障・加給年金・経過的加算は今回の計算対象外。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は36月、平均標準報酬月額280,000円。2003年4月以後は384月、平均標準報酬額420,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は36月、平均標準報酬月額280,000円。2003年4月以後は384月、平均標準報酬額420,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">36 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">280,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">384 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">420,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 36,
+        "preSalary": 280000,
+        "postMonths": 384,
+        "postSalary": 420000
+      },
+      "evidence": "2003年3月以前36月・平均標準報酬月額280,000円、同年4月以後384月・平均標準報酬額420,000円"
+    }
   },
   "pr-kinzai2_nonlife-v16-002": {
     "sourceText": "会社員の山田さんは老後の資金計画と公的医療保険について相談している。計算資料は2024年度価額で、老齢基礎年金の満額は816,000円。20歳以上60歳未満の納付済相当月数は450月、免除・未納の扱いを別途加算する必要はない。厚生年金の資料：2003年3月以前36月・平均標準報酬月額280,000円、同年4月以後384月・平均標準報酬額420,000円。報酬比例の乗率は順に7.125/1000、5.481/1000。再評価・従前額保障・加給年金・経過的加算は今回の計算対象外。",
@@ -3432,7 +5110,23 @@ const PRACTICAL_MATERIALS = {
       "厚生年金の資料：2003年3月以前36月・平均標準報酬月額280,000円、同年4月以後384月・平均標準報酬額420,000円。",
       "報酬比例の乗率は順に7.125/1000、5.481/1000。",
       "再評価・従前額保障・加給年金・経過的加算は今回の計算対象外。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は36月、平均標準報酬月額280,000円。2003年4月以後は384月、平均標準報酬額420,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は36月、平均標準報酬月額280,000円。2003年4月以後は384月、平均標準報酬額420,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">36 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">280,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">384 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">420,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 36,
+        "preSalary": 280000,
+        "postMonths": 384,
+        "postSalary": 420000
+      },
+      "evidence": "2003年3月以前36月・平均標準報酬月額280,000円、同年4月以後384月・平均標準報酬額420,000円"
+    }
   },
   "pr-kinzai2_nonlife-v16-003": {
     "sourceText": "会社員の山田さんは老後の資金計画と公的医療保険について相談している。計算資料は2024年度価額で、老齢基礎年金の満額は816,000円。20歳以上60歳未満の納付済相当月数は450月、免除・未納の扱いを別途加算する必要はない。厚生年金の資料：2003年3月以前36月・平均標準報酬月額280,000円、同年4月以後384月・平均標準報酬額420,000円。報酬比例の乗率は順に7.125/1000、5.481/1000。再評価・従前額保障・加給年金・経過的加算は今回の計算対象外。",
@@ -3445,7 +5139,23 @@ const PRACTICAL_MATERIALS = {
       "厚生年金の資料：2003年3月以前36月・平均標準報酬月額280,000円、同年4月以後384月・平均標準報酬額420,000円。",
       "報酬比例の乗率は順に7.125/1000、5.481/1000。",
       "再評価・従前額保障・加給年金・経過的加算は今回の計算対象外。"
-    ]
+    ],
+    "diagram": {
+      "kind": "pension",
+      "title": "厚生年金の期間区分",
+      "alt": "2003年3月以前は36月、平均標準報酬月額280,000円。2003年4月以後は384月、平均標準報酬額420,000円。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 340\" width=\"400\" height=\"340\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>厚生年金の期間区分</title><desc>2003年3月以前は36月、平均標準報酬月額280,000円。2003年4月以後は384月、平均標準報酬額420,000円。</desc><rect x=\"24\" y=\"20\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"49\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年3月以前</text><text x=\"200\" y=\"84\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">36 月</text><text x=\"200\" y=\"111\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬月額</text><text x=\"200\" y=\"136\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">280,000 円</text><rect x=\"24\" y=\"190\" width=\"352\" height=\"130\" rx=\"8\" fill=\"#f3f7f9\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200\" y=\"219\" font-size=\"19\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">2003年4月以後</text><text x=\"200\" y=\"254\" font-size=\"25\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#172a3a\">384 月</text><text x=\"200\" y=\"281\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">平均標準報酬額</text><text x=\"200\" y=\"306\" font-size=\"20\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">420,000 円</text><line x1=\"200\" y1=\"150\" x2=\"200\" y2=\"179\" stroke=\"#253f50\" stroke-width=\"2\" /><path d=\"M 193 170 L 200 180 L 207 170\" fill=\"none\" stroke=\"#253f50\" stroke-width=\"2\" /></svg>",
+      "notes": [
+        "図の大きさは加入月数に比例していません。実際の生涯の加入歴や未納期間の位置は示していません。"
+      ],
+      "facts": {
+        "preMonths": 36,
+        "preSalary": 280000,
+        "postMonths": 384,
+        "postSalary": 420000
+      },
+      "evidence": "2003年3月以前36月・平均標準報酬月額280,000円、同年4月以後384月・平均標準報酬額420,000円"
+    }
   },
   "pr-kinzai2_nonlife-v16-004": {
     "sourceText": "佐藤さんは住宅を購入する。建物の火災保険金額は4,600万円、家財は800万円。地震保険の建物保険金額を火災保険金額の40％とする。2024年中に支払った地震保険料は68,000円で、旧長期損害保険料はない。今回の契約では建物と家財をそれぞれ保険の対象としている。個別の免責・支払限度は各設問の条件に従う。",
@@ -3580,7 +5290,35 @@ const PRACTICAL_MATERIALS = {
       "本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。",
       "自宅敷地は300㎡・評価額9,000万円。",
       "配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "伊藤さんの配偶者は配偶者。子の欄は実子 1、実子 2、実子 3。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>伊藤さんの配偶者は配偶者。子の欄は実子 1、実子 2、実子 3。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">伊藤さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">配偶者</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 3</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "伊藤さん",
+        "spouse": "配偶者",
+        "children": [
+          {
+            "label": "実子 1"
+          },
+          {
+            "label": "実子 2"
+          },
+          {
+            "label": "実子 3"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "伊藤さんは資産承継を検討している。2024年中、40歳の実子へ現金750万円を贈与した。子は他の贈与を受けておらず、暦年課税・特例贈与財産の税率を適用し、非課税特例はない。課税価格400万円超600万円以下の特例税率は20％・控除30万円、600万円超1,000万円以下は30％・控除90万円。2024年中に相続が開始したと仮定した場合の法定相続人は配偶者と実子3人で、放棄・養子・代襲はない。本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。自宅敷地は300㎡・評価額9,000万円。配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。"
+    }
   },
   "pr-kinzai2_nonlife-v16-014": {
     "sourceText": "伊藤さんは資産承継を検討している。2024年中、40歳の実子へ現金750万円を贈与した。子は他の贈与を受けておらず、暦年課税・特例贈与財産の税率を適用し、非課税特例はない。課税価格400万円超600万円以下の特例税率は20％・控除30万円、600万円超1,000万円以下は30％・控除90万円。2024年中に相続が開始したと仮定した場合の法定相続人は配偶者と実子3人で、放棄・養子・代襲はない。本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。自宅敷地は300㎡・評価額9,000万円。配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。",
@@ -3595,7 +5333,35 @@ const PRACTICAL_MATERIALS = {
       "本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。",
       "自宅敷地は300㎡・評価額9,000万円。",
       "配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "伊藤さんの配偶者は配偶者。子の欄は実子 1、実子 2、実子 3。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>伊藤さんの配偶者は配偶者。子の欄は実子 1、実子 2、実子 3。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">伊藤さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">配偶者</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 3</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "伊藤さん",
+        "spouse": "配偶者",
+        "children": [
+          {
+            "label": "実子 1"
+          },
+          {
+            "label": "実子 2"
+          },
+          {
+            "label": "実子 3"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "伊藤さんは資産承継を検討している。2024年中、40歳の実子へ現金750万円を贈与した。子は他の贈与を受けておらず、暦年課税・特例贈与財産の税率を適用し、非課税特例はない。課税価格400万円超600万円以下の特例税率は20％・控除30万円、600万円超1,000万円以下は30％・控除90万円。2024年中に相続が開始したと仮定した場合の法定相続人は配偶者と実子3人で、放棄・養子・代襲はない。本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。自宅敷地は300㎡・評価額9,000万円。配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。"
+    }
   },
   "pr-kinzai2_nonlife-v16-015": {
     "sourceText": "伊藤さんは資産承継を検討している。2024年中、40歳の実子へ現金750万円を贈与した。子は他の贈与を受けておらず、暦年課税・特例贈与財産の税率を適用し、非課税特例はない。課税価格400万円超600万円以下の特例税率は20％・控除30万円、600万円超1,000万円以下は30％・控除90万円。2024年中に相続が開始したと仮定した場合の法定相続人は配偶者と実子3人で、放棄・養子・代襲はない。本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。自宅敷地は300㎡・評価額9,000万円。配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。",
@@ -3610,7 +5376,35 @@ const PRACTICAL_MATERIALS = {
       "本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。",
       "自宅敷地は300㎡・評価額9,000万円。",
       "配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。"
-    ]
+    ],
+    "diagram": {
+      "kind": "family",
+      "title": "親族関係図",
+      "alt": "伊藤さんの配偶者は配偶者。子の欄は実子 1、実子 2、実子 3。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 245\" width=\"400\" height=\"245\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>伊藤さんの配偶者は配偶者。子の欄は実子 1、実子 2、実子 3。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">伊藤さん</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">配偶者</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"330\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"70\" y1=\"117\" x2=\"70\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"13\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"70.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 1</text><line x1=\"200\" y1=\"117\" x2=\"200\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"143\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"200.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 2</text><line x1=\"330\" y1=\"117\" x2=\"330\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"273\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"330.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">実子 3</text></svg>",
+      "notes": [
+        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
+        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+      ],
+      "facts": {
+        "root": "伊藤さん",
+        "spouse": "配偶者",
+        "children": [
+          {
+            "label": "実子 1"
+          },
+          {
+            "label": "実子 2"
+          },
+          {
+            "label": "実子 3"
+          }
+        ],
+        "grandIndex": null,
+        "grandCount": 0
+      },
+      "evidence": "伊藤さんは資産承継を検討している。2024年中、40歳の実子へ現金750万円を贈与した。子は他の贈与を受けておらず、暦年課税・特例贈与財産の税率を適用し、非課税特例はない。課税価格400万円超600万円以下の特例税率は20％・控除30万円、600万円超1,000万円以下は30％・控除90万円。2024年中に相続が開始したと仮定した場合の法定相続人は配偶者と実子3人で、放棄・養子・代襲はない。本人が全額保険料を負担した本人死亡の保険金を相続人が受け取る。自宅敷地は300㎡・評価額9,000万円。配偶者が取得し、特定居住用宅地等の特例要件を満たし、他に適用する宅地はない。"
+    }
   }
 };
 
@@ -3647,6 +5441,26 @@ const PRACTICAL_MATERIALS = {
     }
     t.append(body);wrap.append(t);return wrap;
   };
+  function diagramView(m) {
+    const d=m.diagram;
+    if(!d || !['family','land','pension'].includes(d.kind) ||
+       typeof d.svg!=='string' || typeof d.alt!=='string' || !Array.isArray(d.notes) ||
+       !d.notes.every(n=>typeof n==='string') || !d.svg.startsWith('<svg ') ||
+       /<script|<foreignObject|\son[a-z]+\s*=|(?:href|src)\s*=/i.test(d.svg))return null;
+    const figure=element('figure','material-diagram');
+    figure.append(element('figcaption','',d.title));
+    const image=element('img','material-diagram-image');
+    image.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(d.svg);
+    image.alt=d.alt;image.setAttribute('alt',d.alt);image.setAttribute('decoding','async');
+    figure.append(image);
+    for(const note of d.notes)figure.append(element('p','material-diagram-note',note));
+    const expand=element('details','material-diagram-expand');
+    expand.append(element('summary','','図を拡大して見る'));
+    const scroll=element('div','material-diagram-scroll');scroll.setAttribute('tabindex','0');scroll.setAttribute('aria-label','拡大図。横にスクロールできます。');
+    const large=element('img','material-diagram-large');large.src=image.src;large.alt=d.alt;large.setAttribute('alt',d.alt);scroll.append(large);expand.append(scroll);
+    expand.append(element('p','material-diagram-note','拡大図は横にスクロールできます。'));
+    figure.append(expand);return figure;
+  }
   function lookup(q) {
     const m=PRACTICAL_MATERIALS[q.id];
     return m && m.sourceText === q.caseText && Array.isArray(m.sentences) &&
@@ -3674,6 +5488,7 @@ const PRACTICAL_MATERIALS = {
       // Historical snapshots and unknown/mismatched display records use their own text.
       const p=element('p','material-lead');emphasize(p,q.caseText);doc.append(p);
     }else{
+      const drawing=diagramView(m);if(drawing)doc.append(drawing);
       if(m.inputRows.length)doc.append(table('資料に記載された数値・契約条件',['項目','内容'],m.inputRows));
       const source=element('div','material-statements');
       source.append(element('h4','material-subheading',kinzai?'相談内容・設例の条件':'資料の説明・計算条件'));
