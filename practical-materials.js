@@ -24307,8 +24307,10 @@ const ACADEMIC_MATERIALS = {
     if (value !== undefined) el.textContent = String(value);
     return el;
   };
+  // Editorial metadata belongs in a note, never in the case narrative.
+  const displayText = value => String(value).replaceAll('【2026年4月1日基準の独自演習】','');
   const emphasize = (node, value) => {
-    const text = String(value);
+    const text = displayText(value);
     const pattern = /[+-]?\d[\d,]*(?:\.\d+)?(?:万円|円|％|%|㎡|カ月|か月|月|年|歳|人|日|万口|口|m|ポイント|倍)/g;
     let cursor = 0;
     for (const match of text.matchAll(pattern)) {
@@ -24383,20 +24385,20 @@ const ACADEMIC_MATERIALS = {
       if(m.inputRows.length)doc.append(table('資料に記載された数値・契約条件',['項目','内容'],m.inputRows));
       const source=element('div','material-statements');
       source.append(element('h4','material-subheading',kinzai?'相談内容・設例の条件':'資料の説明・計算条件'));
-      if(kinzai && m.sentences.length>1){
-        const intro=element('p','material-lead');emphasize(intro,m.sentences[0]);source.append(intro);
-        source.append(table('設例の資料・前提',['項目','設例に記載された内容'],m.sentences.slice(1).map((s,i)=>[`（${i+1}）`,s])));
-      }else{
-        const list=element('ol','material-condition-list');
-        for(const s of m.sentences){const item=element('li');emphasize(item,s);list.append(item);}
-        source.append(list);
+      const paragraphs=element('div','material-condition-text');
+      for(const sentence of m.sentences){
+        if(!displayText(sentence).trim())continue;
+        const p=element('p','material-condition-paragraph');emphasize(p,sentence);paragraphs.append(p);
       }
+      source.append(paragraphs);
       doc.append(source);
       const original=element('details','material-original');
       original.append(element('summary','','設例・資料の原文を表示'));
-      original.append(element('p','',q.caseText));doc.append(original);
+      original.append(element('p','',displayText(q.caseText)));doc.append(original);
     }
-    container.append(doc);
+    const date=typeof q.lawReferenceDate==='string' && /^\d{4}-\d{2}-\d{2}$/.test(q.lawReferenceDate)?q.lawReferenceDate.split('-').map(Number):null;
+    const note=element('p','material-basis-note',`（注）独自作成の演習問題です。法令基準日：${date?`${date[0]}年${date[1]}月${date[2]}日`:'未登録'}。`);
+    doc.append(note);container.append(doc);
   }
 
   function academicLookup(q) {

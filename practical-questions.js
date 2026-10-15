@@ -15,7 +15,7 @@ const PRACTICAL_TRACKS = [
     "level": "2",
     "org": "日本FP協会",
     "name": "資産設計提案業務",
-    "format": "40問（選択式・数値入力。計9問は欄別解答対応（数値2問・○×7問））",
+    "format": "40問（選択式・数値入力。計11問は欄別解答対応（数値2問・○×8問・語群番号1問））",
     "officialCount": 40,
     "minutes": 90,
     "source": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf"
@@ -412,27 +412,64 @@ const PRACTICAL_QUESTIONS = [
     "case": 1,
     "caseTitle": "FPと関連業法",
     "caseText": "【2026年4月1日基準の独自演習】他の資格登録がないFPの行為を考える。①報酬を得て紛争のある財産分与を代理交渉する。②NISAの一般的な制度を説明する。③仮定事例の一般的な税制セミナーで講師料を得る。",
-    "question": "①②③の正誤の組合せはどれか。",
-    "kind": "choice",
-    "choices": [
-      "○・○・×",
-      "×・○・○",
-      "×・×・○",
-      "○・×・×"
-    ],
-    "answer": 1,
-    "explanation": "有償の法律事件の代理交渉は不可。一般的なNISA制度説明と仮定事例による税制の一般解説は、具体的な他資格独占業務の代行と区別します。",
+    "question": "資料の①〜③の行為と、④「報酬を受け取らなければ、顧客の所得税申告に関する具体的な税額計算の相談を反復継続して受けてもよい。」について、適切なら○、不適切なら×を各欄で選びなさい。①は同種の代理交渉を反復継続して受任する意思がある。②は制度の一般説明のみで、投資顧問契約の締結・媒介、個別銘柄の投資判断への助言や売買勧誘は行わない。③は仮定事例の一般解説だけで、参加者個人の申告相談・税額計算は行わない。いずれも他資格・法令に基づく許可や特例はない。",
+    "kind": "multi_choice",
+    "explanation": "①×、②○、③○、④×。①は、他の資格・特例がなく、報酬目的で紛争の代理交渉を業として取り扱う条件なので不適切です。②の一般的なNISA制度説明は、投資判断への助言や契約の媒介等と区別します。③も個人の申告や税額計算に関する具体的な相談を扱わず、仮定事例による一般的な講演にとどまるため適切です。④の税務相談は、他人の具体的な申告・税額計算について反復継続して回答するものであり、無報酬であることだけでは税理士業務の制限を免れません。本問は他資格や法令上の許可等の例外がないことを前提にしています。",
     "topic": "関連業法",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceUrl": "https://www.nta.go.jp/taxes/zeirishi/zeirishiseido/qa/06.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 1,
+    "revision": 2,
     "blueprintQuestion": 1,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-15",
+    "contentReview": "v154_four_fields_with_exclusive_practice_conditions",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.154：4欄○×化。①の業として行う意思、②③の一般情報に限る範囲、例外なしを明示。国税庁基本通達2-1/2-6とQ&A6-1、金融庁2025年7月ガイド19頁、東京弁護士会の非弁取締一次説明で限定確認。法務省案内は403・e-Gov本文0行。基準日統合全文/全改正照合は保留。新法改正照合とは別。",
+    "subAnswers": [
+      {
+        "label": "① 有償の紛争代理交渉を業として受任",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 1
+      },
+      {
+        "label": "② NISA制度の一般的な説明のみ",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 0
+      },
+      {
+        "label": "③ 仮定事例の一般的な税制講演のみ",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 0
+      },
+      {
+        "label": "④ 無報酬なら個別税務相談を反復継続できるとの説明",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 1
+      }
+    ],
+    "additionalSourceUrls": [
+      "https://www.nta.go.jp/law/tsutatsu/kihon/zeirishi/02.htm",
+      "https://www.fsa.go.jp/policy/marketentry/guidebook/01.pdf",
+      "https://www.toben.or.jp/know/iinkai/hiben/dishonesty/",
+      "https://www.moj.go.jp/ONLINE/FOREIGNER/3-1.html"
+    ]
   },
   {
     "id": "pr-jafp2-002",
@@ -4235,27 +4272,71 @@ const PRACTICAL_QUESTIONS = [
     "case": 23,
     "caseTitle": "法定相続分と遺留分",
     "caseText": "【2026年4月1日基準の独自演習】相続人は配偶者と子2人。養子・放棄・代襲なし。遺留分算定基礎財産8,000万円。",
-    "question": "子1人の法定相続分／遺留分額はどれか。",
-    "kind": "choice",
-    "choices": [
-      "1/2／2,000万円",
-      "1/4／1,000万円",
-      "1/4／2,000万円",
-      "1/3／1,000万円"
-    ],
-    "answer": 1,
-    "explanation": "子は全体1/2を2人で分け各1/4。総体的遺留分1/2×各法定相続分1/4＝1/8、8,000×1/8＝1,000万円。",
+    "question": "資料の条件で、（ア）子1人の法定相続分、（イ）子1人の遺留分割合、（ウ）配偶者の遺留分割合について、語群から選び、その番号のみを各欄に入力しなさい。割合はいずれも遺留分算定基礎財産全体に対する割合とする。同じ番号を何度選んでもよい。",
+    "kind": "wordbank_number",
+    "explanation": "（ア）3番＝1/4、（イ）6番＝1/8、（ウ）3番＝1/4です。子全員の法定相続分1/2を2人で均等に分け、子1人は1/4。子1人の遺留分割合は1/2×1/4＝1/8、配偶者は1/2×1/2＝1/4です。基礎財産8,000万円では子1人の遺留分額は1,000万円となり、旧問題の金額とも一致します。入力するのは割合や金額そのものではなく語群の番号です。",
     "topic": "遺留分",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4132.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 34,
+    "revision": 35,
     "blueprintQuestion": 23,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-15",
+    "contentReview": "v153_wordbank_response_with_partial_official_reconfirmation",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.153：3欄語群番号入力。既存独自設例保持。国税庁4132本文で法定相続分を再確認。遺留分は政府広報検索索引の明示説明および裁判所掲載改正法の個別割合乗算規定を限定照合。政府広報本文403・e-Gov本文0行のため基準日統合全文/全改正は追加保留。新規法改正や包括監修完了へ加算しない。",
+    "subAnswers": [
+      {
+        "label": "（ア）子1人の法定相続分",
+        "kind": "numeric",
+        "answer": 3,
+        "unit": "番",
+        "numericInputFormat": "wordbank-index-v1",
+        "wordBank": [
+          "1/3",
+          "1/2",
+          "1/4",
+          "2/3",
+          "0",
+          "1/8"
+        ]
+      },
+      {
+        "label": "（イ）子1人の遺留分割合",
+        "kind": "numeric",
+        "answer": 6,
+        "unit": "番",
+        "numericInputFormat": "wordbank-index-v1",
+        "wordBank": [
+          "1/3",
+          "1/2",
+          "1/4",
+          "2/3",
+          "0",
+          "1/8"
+        ]
+      },
+      {
+        "label": "（ウ）配偶者の遺留分割合",
+        "kind": "numeric",
+        "answer": 3,
+        "unit": "番",
+        "numericInputFormat": "wordbank-index-v1",
+        "wordBank": [
+          "1/3",
+          "1/2",
+          "1/4",
+          "2/3",
+          "0",
+          "1/8"
+        ]
+      }
+    ],
+    "additionalSourceUrls": [
+      "https://www.gov-online.go.jp/media/cd/202407/202407_02.html",
+      "https://www.courts.go.jp/vc-files/courts/file4/H310121-04minnpouoyobikajijikenntetudukihounoitibuwokaiseisuruhouritu.pdf"
+    ]
   },
   {
     "id": "pr-jafp2-024",
