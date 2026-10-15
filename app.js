@@ -273,13 +273,17 @@ function startQuiz(onlyWrong) {
   index = 0; correct = 0;
   show('quiz'); renderQuiz();
 }
+function renderAcademicQuestion(container,q) {
+  if(window.__fpAcademicMaterialView)window.__fpAcademicMaterialView.render(container,q);
+  else container.textContent=q.question;
+}
 function renderQuiz() {
   selected = null; answered = false;
   const q = session[index];
   $('qmeta').textContent = `FP${q.level}級｜${q.category}`;
   $('qprogress').textContent = `${index + 1} / ${session.length}問`;
   $('progressbar').style.width = `${index / session.length * 100}%`;
-  $('question').textContent = q.question;
+  renderAcademicQuestion($('question'),q);
   makeOptionButtons($('choices'), q, null, (i) => {
     selected = i;
     [...$('choices').children].forEach((b, j) => { b.classList.toggle('active', i === j); b.setAttribute('aria-pressed', String(i === j)); });
@@ -344,7 +348,7 @@ function createExam(kind) {
       ...CATEGORIES.slice(1).flatMap(cat => shuffle(pool.filter(q => q.category === cat && q.format === 'three_choice')).slice(0, 5))
     ];
   }
-  else if (kind === 'full') questions = shuffle(CATEGORIES.slice(1).flatMap(cat => shuffle(pool.filter(q => q.category === cat && q.format === 'four_choice')).slice(0, 10)));
+  else if (kind === 'full') questions = CATEGORIES.slice(1).flatMap(cat => shuffle(pool.filter(q => q.category === cat && q.format === 'four_choice')).slice(0, 10));
   else {
     // 各分野から必ず1問選び、ミニ模試のバランスを保ちます。
     const perCategory = CATEGORIES.slice(1).map(cat => shuffle(pool.filter(q => q.category === cat))[0]).filter(Boolean);
@@ -425,7 +429,7 @@ function renderExam() {
   $('examFlag').setAttribute('aria-pressed', String(Boolean(exam.flags && exam.flags[exam.pos])));
   $('examFlag').textContent = exam.flags && exam.flags[exam.pos] ? '★ 見直し指定を解除する' : '☆ この問題を見直す';
   $('examBar').style.width = `${exam.answers.filter(a => a !== null).length / questions.length * 100}%`;
-  $('examQuestion').textContent = q.question;
+  renderAcademicQuestion($('examQuestion'),q);
   makeOptionButtons($('examChoices'), q, exam.answers[exam.pos], (answer) => {
     if (!exam) return;
     exam.answers[exam.pos] = answer;
@@ -596,7 +600,7 @@ function renderExamReview() {
     summaryStatus.textContent = isCorrect ? '正解' : answer === null ? '未回答' : '不正解';
     heading.append(summaryText, summaryStatus);
     const body = document.createElement('div'); body.className = 'review-details-body';
-    const question = document.createElement('p'); question.className = 'review-question'; question.textContent = q.question;
+    const question = document.createElement('div'); question.className = 'review-question'; renderAcademicQuestion(question,q);
     const yours = document.createElement('p'); yours.textContent = `あなたの回答：${answer === null ? '未回答' : q.choices[answer]}`;
     const right = document.createElement('p'); right.textContent = `正解：${q.choices[q.answer]}`;
     const why = document.createElement('p'); why.className = 'muted'; why.textContent = `解説：${q.explanation}`;

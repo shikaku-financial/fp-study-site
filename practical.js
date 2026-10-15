@@ -39,17 +39,37 @@
     const str = value.trim().replace(/[０-９．－＋，]/g, c => '０１２３４５６７８９．－＋，'.indexOf(c)>=0 ? '0123456789.-+,'.charAt('０１２３４５６７８９．－＋，'.indexOf(c)) : c).replace(/,/g,'');
     return str!=='' && /^[+-]?(?:\d+\.?\d*|\.\d+)$/.test(str) ? Number(str) : NaN;
   };
+  // Strict format is frozen into new snapshots; legacy attempts keep their original parser.
+  const parseStrictNumber = value => {
+    if (typeof value !== 'string') return NaN;
+    const normalized=value.trim().replace(/[０-９．－＋，]/g,c=>'0123456789.-+,'.charAt('０１２３４５６７８９．－＋，'.indexOf(c)));
+    if(!/^[+-]?(?:(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d*)?|\.\d+)$/.test(normalized))return NaN;
+    const number=Number(normalized.replace(/,/g,''));
+    return Number.isFinite(number)?number:NaN;
+  };
+  const numericParser = q => q.numericInputFormat==='grouped-decimal-v1'?parseStrictNumber:parseNumber;
+  function updateNumericFeedback(q,value){
+    const strict=q.numericInputFormat==='grouped-decimal-v1';
+    const invalid=strict && String(value).trim()!=='' && !Number.isFinite(parseStrictNumber(String(value)));
+    $p('prNumberInput').setAttribute('aria-invalid',String(invalid));
+    $p('prNumberFeedback').textContent=invalid?'数字で入力してください。カンマは3桁区切り（例：1,234.5）で使えます。単位は入力欄の右側を確認してください。':'';
+  }
+  const isMulti = q => q.kind==='multi_numeric' || q.kind==='multi_choice';
+  const blank = a => a===null || a===undefined || a==='';
+  const completeAnswer = (q,a) => isMulti(q) ? Array.isArray(a) && a.length===q.subAnswers.length && a.every(v=>!blank(v)) : !blank(a);
   const grade = (q,a) => {
+    if(isMulti(q))return Array.isArray(a) && a.length===q.subAnswers.length && q.subAnswers.every((part,i)=>grade(part,a[i]));
     if (a===null||a===undefined||a==='') return false;
     if (q.kind==='choice') return a===q.answer;
-    const num=parseNumber(String(a));
+    const num=numericParser(q)(String(a));
     return Number.isFinite(num) && Math.abs(num-q.answer) <= (q.tolerance||0)+1e-9;
   };
   const answerStr = (q,a) => {
+    if(isMulti(q))return q.subAnswers.map((part,i)=>`${part.label}：${answerStr(part,Array.isArray(a)?a[i]:null)}`).join(' ／ ');
     if (a===null||a===undefined||a==='')return '未回答';
     return q.kind==='choice' ? (q.choices[a]||'無効な選択') : `${a} ${q.unit||''}`;
   };
-  const correctStr = q => q.kind==='choice' ? q.choices[q.answer] : `${readableNum(q.answer)} ${q.unit||''}`;
+  const correctStr = q => isMulti(q)?q.subAnswers.map(part=>`${part.label}：${correctStr(part)}`).join(' ／ '):q.kind==='choice' ? q.choices[q.answer] : `${readableNum(q.answer)} ${q.unit||''}`;
   const label = tr => `FP${tr.level}級｜${tr.org}｜${tr.name}`;
   function renderCourses(){
     // Two clear steps on mobile: grade first, then organizer.
@@ -165,10 +185,10 @@
     if(!tr || !Array.isArray(sourceQuestions) || !sourceQuestions.length)return;
     const draft=read(DRAFT,null);
     if(draft && !confirm('保存している実技演習を終了し、新しく始めますか？前回の未採点の回答は消えます。'))return;
-    const list=sourceQuestions.map(q=>({...q,choices:Array.isArray(q.choices)?q.choices.slice():[]}));
+    const list=sourceQuestions.map(q=>({...q,choices:Array.isArray(q.choices)?q.choices.slice():[],...(isMulti(q)?{subAnswers:q.subAnswers.map(part=>({...part,...(Array.isArray(part.choices)?{choices:part.choices.slice()}:{} )}))}:{}),...(q.kind==='numeric' && mode.startsWith('set-')?{numericInputFormat:'grouped-decimal-v1'}:{})}));
     const previousToken=expectedDraftToken;
     expectedDraftToken=originalDraftToken;
-    const nextAttempt={version:17,track:trackId,mode,questions:list,answers:list.map(()=>null),pos:0,startedAt:Date.now()};
+    const nextAttempt={version:20,track:trackId,mode,questions:list,answers:list.map(q=>isMulti(q)?q.subAnswers.map(()=>null):null),pos:0,startedAt:Date.now()};
     if(!save(DRAFT,nextAttempt)){expectedDraftToken=previousToken;return;}
     attempt=nextAttempt;
     navigate('practicalExam');renderQuestion();
@@ -197,19 +217,56 @@
     const tr=trackFor(attempt.track),q=attempt.questions[attempt.pos];
     $p('prLabel').textContent=`FP${tr.level}級｜${tr.name}`;
     $p('prProgress').textContent=`${attempt.pos+1}/${attempt.questions.length}問`;
-    $p('prBar').style.width=`${attempt.answers.filter(v=>v!==null&&v!=='').length/attempt.questions.length*100}%`;
+    $p('prBar').style.width=`${attempt.answers.filter((v,i)=>completeAnswer(attempt.questions[i],v)).length/attempt.questions.length*100}%`;
     $p('prCaseTitle').textContent=`${tr.id.startsWith('kinzai')?'設例':''} ${q.caseTitle}`.trim();
     if(window.__fpMaterialView)window.__fpMaterialView.render($p('prCaseText'),q);
     else $p('prCaseText').textContent=q.caseText;
     $p('prTopic').textContent=`学習テーマ：${q.topic}｜参考問題の法令基準日：${q.lawReferenceDate || "2025-04-01"}（数値条件は設例指定）`;
     $p('prQuestion').textContent=q.question;
     $p('prChoices').replaceChildren();
-    const number=q.kind==='numeric';
-    $p('prChoices').classList.toggle('hidden',number);
+    const number=q.kind==='numeric',multi=isMulti(q);
+    $p('prMultiNumeric').classList.toggle('hidden',!multi);
+    $p('prMultiNumeric').replaceChildren();
+    $p('prChoices').classList.toggle('hidden',number||multi);
     $p('prNumeric').classList.toggle('hidden',!number);
     if(number){
       $p('prNumberUnit').textContent=q.unit||'';
       $p('prNumberInput').value=attempt.answers[attempt.pos]??'';
+      updateNumericFeedback(q,$p('prNumberInput').value);
+    }else if(multi){
+      q.subAnswers.forEach((part,i)=>{
+        const group=document.createElement('div');group.className='pr-sub-answer';
+        if(part.kind==='choice'){
+          const fieldset=document.createElement('fieldset');const legend=document.createElement('legend');legend.textContent=part.label;fieldset.append(legend);
+          part.choices.forEach((value,j)=>{
+            const button=document.createElement('button');button.type='button';button.className='wide';button.textContent=value;
+            const active=Array.isArray(attempt.answers[attempt.pos])&&attempt.answers[attempt.pos][i]===j;
+            button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));
+            button.setAttribute('aria-label',`${part.label}：${value}`);
+            button.addEventListener('click',()=>{
+              if(!Array.isArray(attempt.answers[attempt.pos]))attempt.answers[attempt.pos]=q.subAnswers.map(()=>null);
+              attempt.answers[attempt.pos][i]=j;save(DRAFT,attempt);renderQuestion();
+            });fieldset.append(button);
+          });group.append(fieldset);$p('prMultiNumeric').append(group);return;
+        }
+        const label=document.createElement('label');label.className='field-label';label.textContent=part.label;label.setAttribute('for',`prSubInput${i}`);
+        const wrap=document.createElement('div');wrap.className='pr-num-wrap';
+        const input=document.createElement('input');input.id=`prSubInput${i}`;input.type='text';input.inputMode='decimal';input.autocomplete='off';input.value=Array.isArray(attempt.answers[attempt.pos])?attempt.answers[attempt.pos][i]??'':'';
+        input.setAttribute('aria-describedby',`prSubFeedback${i}`);
+        const unit=document.createElement('span');unit.textContent=part.unit||'';
+        const feedback=document.createElement('p');feedback.id=`prSubFeedback${i}`;feedback.className='small';feedback.setAttribute('role','status');feedback.setAttribute('aria-live','polite');
+        const check=()=>{const invalid=String(input.value).trim()!==''&&!Number.isFinite(numericParser(part)(String(input.value)));input.setAttribute('aria-invalid',String(invalid));feedback.textContent=invalid?'数字で入力してください。カンマは3桁区切りで使えます。':'';};check();
+        input.addEventListener('input',()=>{
+          if(!Array.isArray(attempt.answers[attempt.pos]))attempt.answers[attempt.pos]=q.subAnswers.map(()=>null);
+          attempt.answers[attempt.pos][i]=input.value;check();save(DRAFT,attempt);
+          const count=attempt.answers.filter((a,j)=>completeAnswer(attempt.questions[j],a)).length;
+          $p('prAnswered').textContent=`${count}/${attempt.answers.length}問 回答済`;
+          $p('prBar').style.width=`${count/attempt.answers.length*100}%`;
+          $p('prNav').children[attempt.pos]?.classList.toggle('done',completeAnswer(q,attempt.answers[attempt.pos]));
+        });
+        wrap.append(input,unit);group.append(label,wrap,feedback);$p('prMultiNumeric').append(group);
+      });
+      const policy=document.createElement('p');policy.className='muted small';policy.textContent='この演習は全欄正解で1問正解です。公式の配点・部分点には対応していません。';$p('prMultiNumeric').append(policy);
     }else{
       q.choices.forEach((choice,i)=>{
         const b=document.createElement('button');b.type='button';b.className='wide';b.textContent=`${i+1}. ${choice}`;
@@ -225,13 +282,13 @@
     const nav=$p('prNav');nav.replaceChildren();
     for(let i=0;i<attempt.questions.length;i++){
       const b=document.createElement('button');b.type='button';b.textContent=String(i+1);
-      const a=attempt.answers[i];const done=a!==null&&a!=='';
+      const a=attempt.answers[i];const done=completeAnswer(attempt.questions[i],a);
       b.classList.toggle('done',done);b.classList.toggle('current',i===attempt.pos);
       b.setAttribute('aria-label',`第${i+1}問${done?'回答済み':'未回答'}`);
       if(i===attempt.pos)b.setAttribute('aria-current','step');
       b.addEventListener('click',()=>jump(i));nav.append(b);
     }
-    $p('prAnswered').textContent=`${attempt.answers.filter(a=>a!==null&&a!=='').length}/${attempt.answers.length}問 回答済`;
+    $p('prAnswered').textContent=`${attempt.answers.filter((a,i)=>completeAnswer(attempt.questions[i],a)).length}/${attempt.answers.length}問 回答済`;
   }
   function jump(i){
     if(!attempt || i<0||i>=attempt.questions.length)return;
@@ -247,7 +304,12 @@
          typeof q.explanation!=='string')return false;
       ids.add(q.id);
       const a=d.answers[i];
-      if(q.kind==='numeric')return Number.isFinite(q.answer) &&
+      if(isMulti(q))return Array.isArray(q.subAnswers) && q.subAnswers.length>=2 && q.subAnswers.length<=8 &&
+        q.subAnswers.every(part=>part && typeof part.label==='string' && part.label.trim() &&
+          (q.kind==='multi_choice' ? part.kind==='choice' && Array.isArray(part.choices) && part.choices.length>=2 && part.choices.every(c=>typeof c==='string') && Number.isInteger(part.answer) && part.answer>=0 && part.answer<part.choices.length :
+           part.kind==='numeric' && Number.isFinite(part.answer) && typeof part.unit==='string' && part.numericInputFormat==='grouped-decimal-v1' && (part.tolerance===undefined || Number.isFinite(part.tolerance)&&part.tolerance>=0))) &&
+        (a===null || Array.isArray(a) && a.length===q.subAnswers.length && a.every((v,j)=>v===null || (q.kind==='multi_choice'?Number.isInteger(v)&&v>=0&&v<q.subAnswers[j].choices.length:typeof v==='string' || typeof v==='number'&&Number.isFinite(v))));
+      if(q.kind==='numeric')return (q.numericInputFormat===undefined || q.numericInputFormat==='grouped-decimal-v1') && Number.isFinite(q.answer) &&
         (q.tolerance===undefined || (Number.isFinite(q.tolerance)&&q.tolerance>=0)) &&
         (a===null || typeof a==='string' || (typeof a==='number'&&Number.isFinite(a)));
       return q.kind==='choice' && Array.isArray(q.choices) && q.choices.length>=2 &&
@@ -266,7 +328,7 @@
   }
   function finish(){
     if(!attempt)return;
-    const unfilled=attempt.answers.filter(a=>a===null||a==='').length;
+    const unfilled=attempt.answers.filter((a,i)=>!completeAnswer(attempt.questions[i],a)).length;
     if(!confirm(unfilled?`未回答が${unfilled}問あります。採点しますか？`:'演習を終了して採点しますか？'))return;
     const correct=attempt.questions.filter((q,i)=>grade(q,attempt.answers[i])).length;
     const result={id:`${Date.now()}-${Math.floor(Math.random()*100000)}`,track:attempt.track,questions:attempt.questions,answers:attempt.answers.slice(),correct,finishedAt:Date.now()};
@@ -296,12 +358,16 @@
       const d=document.createElement('details');d.className='review-details';
       const heading=document.createElement('summary');
       const name=document.createElement('span');name.textContent=`第${i+1}問｜${q.caseTitle}`;
-      const status=document.createElement('strong');status.className=good?'correct':'wrong';status.textContent=good?'正解':r.answers[i]===null||r.answers[i]===''?'未回答':'不正解';heading.append(name,status);
+      const status=document.createElement('strong');status.className=good?'correct':'wrong';status.textContent=good?'正解':!completeAnswer(q,r.answers[i])?'未回答':'不正解';heading.append(name,status);
       const body=document.createElement('div');body.className='review-details-body';
       const material=document.createElement('div');
       if(window.__fpMaterialView)window.__fpMaterialView.render(material,q);else material.textContent='設例：'+q.caseText;
       body.append(material);
       [['問題：',q.question],['あなたの回答：',answerStr(q,r.answers[i])],['正解：',correctStr(q)],['解説：',q.explanation]].forEach(([k,v])=>{const p=document.createElement('p');p.textContent=k+v;body.append(p);});
+      if(isMulti(q)){
+        q.subAnswers.forEach((part,j)=>{const detail=document.createElement('p');const value=Array.isArray(r.answers[i])?r.answers[i][j]:null;detail.textContent=`${part.label}：${blank(value)?'未回答':grade(part,value)?'正解':'不正解'}（あなたの回答：${answerStr(part,value)}／正解：${correctStr(part)}）`;body.append(detail);});
+        const policy=document.createElement('p');policy.textContent='全欄正解で1問正解として集計しています。公式の配点・部分点には対応していません。';body.append(policy);
+      }
       const note=document.createElement('p');note.className='muted small';
       note.textContent=`独自作成の演習問題です。資料の法令基準日：${q.lawReferenceDate||'未登録'}。全問の専門家監修は未完了です。`;
       body.append(note);
@@ -325,10 +391,11 @@
   $p('prNumberInput').addEventListener('input',e=>{
     if(!attempt)return;
     attempt.answers[attempt.pos]=e.target.value;
+    updateNumericFeedback(attempt.questions[attempt.pos],e.target.value);
     save(DRAFT,attempt);
-    $p('prAnswered').textContent=`${attempt.answers.filter(a=>a!==null&&a!=='').length}/${attempt.answers.length}問 回答済`;
+    $p('prAnswered').textContent=`${attempt.answers.filter((a,i)=>completeAnswer(attempt.questions[i],a)).length}/${attempt.answers.length}問 回答済`;
     $p('prNav').children[attempt.pos]?.classList.toggle('done',e.target.value!=='');
-    $p('prBar').style.width=`${attempt.answers.filter(a=>a!==null&&a!=='').length/attempt.answers.length*100}%`;
+    $p('prBar').style.width=`${attempt.answers.filter((a,i)=>completeAnswer(attempt.questions[i],a)).length/attempt.answers.length*100}%`;
   });
   $p('prSaveExit').addEventListener('click',()=>{if(attempt&&!save(DRAFT,attempt))return;attempt=null;navigate('practicalHome');});
   $p('prSubmit').addEventListener('click',finish);
@@ -346,5 +413,5 @@
     navigate('home');
   });
   // 学科の従来のキーとは別に、実技の結果は科目ごとに保存。再受験時は上書きせず履歴を蓄積する。
-  window.__fpPracticalTest = {parseNumber,grade,trackFor,qsFor,read,openPractical:()=>navigate('practicalHome')};
+  window.__fpPracticalTest = {parseNumber,parseStrictNumber,grade,trackFor,qsFor,read,openPractical:()=>navigate('practicalHome')};
 })();

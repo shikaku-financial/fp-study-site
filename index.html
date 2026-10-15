@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="ファイナンシャル・ライセンス・ラボ内のFPラボ。FP2級・3級の学科・実技試験対策。無料・登録不要。学科360問、実技240問の独自演習。間違えた問題だけ再演習できます。">
   <title>FPラボ｜FP2級・3級 学科・実技対策｜ファイナンシャル・ライセンス・ラボ</title>
-  <link rel="stylesheet" href="style.css?v=79">
+  <link rel="stylesheet" href="style.css?v=94">
 </head>
 <body>
   <header class="site-header brand-header">
@@ -23,7 +23,7 @@
     <section id="home" aria-label="ホーム">
       <div class="home-tabs" aria-label="試験種別を選ぶ"><span class="tab-on">学科試験</span><button id="openPracticalTop" type="button">実技試験を学習する →</button></div>
       <div class="card">
-        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.79｜学科各180問</span></div>
+        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">Ver.152｜学科各180問</span></div>
         <div class="controls level-controls" role="group" aria-label="級を選択">
           <button type="button" id="level3" class="active" aria-pressed="true">FP3級</button>
           <button type="button" id="level2" aria-pressed="false">FP2級</button>
@@ -57,7 +57,7 @@
       </div>
 
       <div class="card practical-promo">
-        <div class="section-heading"><h2>FPラボ｜実技試験の演習</h2><span class="pill">Ver.79｜実技240問</span></div>
+        <div class="section-heading"><h2>FPラボ｜実技試験の演習</h2><span class="pill">Ver.152｜実技240問</span></div>
         <p>日本FP協会3級20問・2級40問、金財3級2科目・2級4科目は各30問、計8科目240問のオリジナル実技例題に対応。事例・計算問題を練習できます。</p>
         <button type="button" id="openPractical" class="primary full-width">実技試験の科目を選ぶ</button>
         <p class="muted small">実技の各科目は独自演習です。正式配点による合否判定は行いません。</p>
@@ -142,7 +142,7 @@
       <div class="card">
         <div class="quiz-top"><span id="qmeta" class="pill"></span><span id="qprogress" class="muted"></span></div>
         <div class="bar"><div id="progressbar"></div></div>
-        <h2 id="question" class="question-text"></h2>
+        <div id="question" class="question-text" role="group" aria-label="問題文と資料"></div>
         <div id="choices" role="group" aria-label="選択肢"></div>
         <div id="feedback" class="hidden result" aria-live="polite"></div>
         <div class="actions">
@@ -158,7 +158,7 @@
         <div class="quiz-top"><span id="examLabel" class="pill"></span><span class="timer" id="timer" aria-label="残り時間">10:00</span></div>
         <div class="quiz-top muted small"><span id="examProgress"></span><span id="examAnswered"></span></div>
         <div class="bar"><div id="examBar"></div></div>
-        <h2 id="examQuestion" class="question-text"></h2>
+        <div id="examQuestion" class="question-text" role="group" aria-label="問題文と資料"></div>
         <div id="examChoices" role="group" aria-label="模擬試験の選択肢"></div>
         <div class="actions"><button type="button" id="examPrev">前の問題</button><button type="button" id="examNext" class="primary">次の問題</button></div><button type="button" id="examFlag" class="review-flag" aria-pressed="false">☆ この問題を見直す</button>
         <details id="examNavDetails" class="exam-nav-details">
@@ -191,7 +191,7 @@
 
     <section id="practicalHome" class="hidden" aria-label="実技科目選択">
       <div class="card"><button type="button" id="prBackHome" class="linkish">← 学科トップへ戻る</button>
-        <div class="section-heading"><h2>実技試験｜科目選択</h2><span class="pill">Ver.79</span></div>
+        <div class="section-heading"><h2>実技試験｜科目選択</h2><span class="pill">Ver.152</span></div>
         <p>実際の公表過去問の出題テーマを参考にした<strong>独自の実技演習</strong>です。出題数・配点は実技本試験と異なる場合があります。<strong>得点率のみ表示</strong>し、合格・不合格の判定はしません。</p>
         <div class="pr-course-switch" aria-label="実技の級を選択">
           <p class="pr-course-switch-label">まず受験する級を選択してください</p>
@@ -209,7 +209,7 @@
         </div>
         <p id="prHistoryValidation" class="muted small" role="status"></p>
         <p id="prHistoryNotice" class="pr-history-notice muted small" role="status" aria-live="polite"></p>
-        <p class="muted small">正式リリースの目標法令基準日は2026年4月1日です。今回改修した日本FP協会の実技60問はこの基準で作成しています。金財実技180問や学科には旧基準の問題が残り、正式リリース前に更新します。各設問の基準日をご確認ください。全問の更新・包括監修は未完了です。</p>
+        <p class="muted small">法令基準日は2026年4月1日です。学科360問・実技240問の全600問に、同基準への限定論点の確認・改修記録が付きました。確認範囲は設問ごとに異なり、基準日時点の全条文・全約款を照合したものではありません。正式配点・小問別解答、実機確認などは正式リリース前の課題です。全600問の包括監修は未完了です。</p>
       </div>
     </section>
 
@@ -222,7 +222,8 @@
         <p class="muted small pr-source-disclosure"><a href="https://www.kinzai.or.jp/ginou/fp/law.html" target="_blank" rel="noopener noreferrer">法令基準日は試験実施団体の案内をご確認ください ↗</a></p>
         <h2 id="prQuestion" class="question-text"></h2>
         <div id="prChoices" role="group" aria-label="実技問題の解答"></div>
-        <div id="prNumeric" class="hidden"><label for="prNumberInput" class="field-label">数値を入力</label><div class="pr-num-wrap"><input id="prNumberInput" inputmode="decimal" autocomplete="off" type="text" placeholder="例：123.45"><span id="prNumberUnit"></span></div><p class="muted small">数字で入力してください。カンマや全角数字にも対応します。</p></div>
+        <div id="prMultiNumeric" class="hidden"></div>
+        <div id="prNumeric" class="hidden"><label for="prNumberInput" class="field-label">数値を入力</label><div class="pr-num-wrap"><input id="prNumberInput" aria-describedby="prNumberHelp prNumberFeedback" inputmode="decimal" autocomplete="off" type="text" placeholder="例：123.45"><span id="prNumberUnit"></span></div><p id="prNumberHelp" class="muted small">数字で入力してください。全角数字、3桁区切りのカンマ（例：1,234.5）にも対応します。</p><p id="prNumberFeedback" class="small" role="status" aria-live="polite"></p></div>
         <div class="actions"><button id="prPrev" type="button">前の問題</button><button id="prNext" type="button" class="primary">次の問題</button></div>
         <details class="exam-nav-details"><summary><span>問題一覧を開く</span><span id="prAnswered" class="nav-status"></span></summary><div id="prNav" class="question-nav"></div></details>
         <div class="exam-bottom"><button id="prSaveExit" type="button">保存して戻る</button><button id="prSubmit" type="button" class="danger-outline">採点する</button></div>
@@ -238,10 +239,10 @@
   </main>
 
   <footer>© ファイナンシャル・ライセンス・ラボ｜FPラボ｜独立した非公式学習サイト</footer>
-  <script src="questions.js?v=79"></script>
-  <script src="app.js?v=79"></script>
-  <script src="practical-questions.js?v=79"></script>
-  <script src="practical-materials.js?v=79"></script>
-  <script src="practical.js?v=79"></script>
+  <script src="questions.js?v=94"></script>
+  <script src="app.js?v=94"></script>
+  <script src="practical-questions.js?v=94"></script>
+  <script src="practical-materials.js?v=94"></script>
+  <script src="practical.js?v=94"></script>
 </body>
 </html>

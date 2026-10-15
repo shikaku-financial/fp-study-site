@@ -238,3 +238,11 @@
 .material-diagram-scroll:focus-visible{outline:3px solid #f0ad4e;outline-offset:2px}
 @media(max-width:470px){.material-diagram{margin:12px 10px;padding:12px 9px}}
 @media print{.material-diagram-expand{display:none}.material-diagram{break-inside:avoid}.material-diagram-image{max-width:420px}}
+
+/* Academic reference materials: exact text and mobile-readable tables. */
+.academic-stem { margin: 0 0 14px; white-space: pre-line; }
+.academic-document { font-weight: 400; }
+.academic-document .material-table { font-size: 16px; }
+.academic-document.material-enlarged .material-table { font-size: 20px; }
+.academic-document .material-original p { white-space: pre-line; }
+.review-question .academic-stem { font-weight: 600; }
