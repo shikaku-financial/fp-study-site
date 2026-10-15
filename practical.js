@@ -109,7 +109,6 @@
         const org=document.createElement('div');org.className='pr-org';org.textContent=`FP${tr.level}級｜${orgInfo.heading}`;
         const title=document.createElement('h4');title.textContent=tr.name;
         const p=document.createElement('p');p.className='muted small';p.textContent= available ? `${qsFor(tr.id).length}問収録｜${tr.format}｜本試験は${tr.officialCount}問` : `追加予定｜本試験は${tr.officialCount}問`;
-        const a=document.createElement('a');a.href=tr.source;a.target='_blank';a.rel='noopener noreferrer';a.textContent='参考：試験実施団体の公表問題PDF（外部） ↗';a.className='small';
         const btn=document.createElement('button');btn.type='button';btn.textContent=available?'この科目を練習する':'準備中';btn.disabled=!available;
         if(available){
           btn.className='primary';
@@ -119,11 +118,11 @@
             const second=document.createElement('button');second.type='button';
             second.className='secondary pr-second-set';second.textContent='第2回（15問）を練習';
             second.addEventListener('click',()=>start(tr.id,2));
-            box.append(org,title,p,a,btn,second);listing.append(box);continue;
+            box.append(org,title,p,btn,second);listing.append(box);continue;
           }
           btn.addEventListener('click',()=>start(tr.id));
         }
-        box.append(org,title,p,a,btn);listing.append(box);
+        box.append(org,title,p,btn);listing.append(box);
       }
       group.append(groupHead,desc,listing);cards.append(group);
     }
@@ -382,12 +381,6 @@
       const note=document.createElement('p');note.className='muted small';
       note.textContent=`独自作成の演習問題です。資料の法令基準日：${q.lawReferenceDate||'未登録'}。全問の専門家監修は未完了です。`;
       body.append(note);
-      const tr=trackFor(r.track);
-      if(tr&&tr.source){
-        const ref=document.createElement('p');const a=document.createElement('a');
-        a.href=tr.source;a.target='_blank';a.rel='noopener noreferrer';
-        a.textContent='参考にした試験実施団体の公表問題PDF（外部） ↗';ref.append(a);body.append(ref);
-      }
       d.append(heading,body);list.append(d);
     });
   }
