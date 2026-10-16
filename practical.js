@@ -262,8 +262,8 @@
         const label=document.createElement('label');label.className='field-label';label.textContent=part.label;label.setAttribute('for',`prSubInput${i}`);
         const wrap=document.createElement('div');wrap.className='pr-num-wrap';
         const input=document.createElement('input');input.id=`prSubInput${i}`;input.type='text';input.inputMode=part.numericInputFormat==='wordbank-index-v1'?'numeric':'decimal';input.autocomplete='off';input.value=Array.isArray(attempt.answers[attempt.pos])?attempt.answers[attempt.pos][i]??'':'';
-        input.setAttribute('aria-describedby',`prSubFeedback${i}`);
-        const unit=document.createElement('span');unit.textContent=part.unit||'';
+        input.setAttribute('aria-describedby',`prSubUnit${i} prSubFeedback${i}`);
+        const unit=document.createElement('span');unit.id=`prSubUnit${i}`;unit.textContent=part.unit||'';
         const feedback=document.createElement('p');feedback.id=`prSubFeedback${i}`;feedback.className='small';feedback.setAttribute('role','status');feedback.setAttribute('aria-live','polite');
         const check=()=>{const invalid=String(input.value).trim()!==''&&!Number.isFinite(numericParser(part)(String(input.value)));input.setAttribute('aria-invalid',String(invalid));feedback.textContent=invalid?(part.numericInputFormat==='wordbank-index-v1'?`語群の番号1〜${part.wordBank.length}を整数で入力してください。`:'数字で入力してください。カンマは3桁区切りで使えます。'):'';};check();
         input.addEventListener('input',()=>{

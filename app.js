@@ -41,10 +41,11 @@ function appendQuestionSource(parent, q) {
     const date = document.createElement('p'); date.textContent = '問題固有の法令基準日は登録されていません。制度改正の有無は公式情報をご確認ください。'; content.append(date);
   }
   for (const [url, caption] of [
-    [q.themeReferenceUrl, `出題テーマの参考：${q.themeReferenceLabel || '公表問題'}（公式サイト・外部）`],
     [q.sourceUrl, `制度・内容の参考：${q.sourceLabel || '関連資料'}（外部）`]
   ]) {
     if (typeof url !== 'string' || !/^https:\/\//.test(url)) continue;
+    // Public exam references remain in snapshots/audit data, not in the learner-facing UI.
+    if (/^https:\/\/(?:www\.)?(?:jafp\.or\.jp\/exam\/mohan(?:\/|$)|kinzai\.or\.jp\/(?:uploads\/lib\/question\/|ginou\/fp\/test-fp(?:[/?#]|$)))/i.test(url)) continue;
     const p = document.createElement('p'); const a = document.createElement('a');
     a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = caption;
     p.append(a); content.append(p);

@@ -96,18 +96,22 @@ const PRACTICAL_QUESTIONS = [
       "相続税の具体的な申告業務を提携税理士へ委ねる"
     ],
     "answer": 1,
-    "explanation": "争いがある法律事件で、資格のないFPが報酬を得て代理交渉を行うことはできません。一般的な制度説明や適切な専門家への紹介とは区別します。",
+    "explanation": "争いがある法律事件で、資格のないFPが報酬を得て代理交渉を行うことはできません。一般的な制度説明や適切な専門家への紹介とは区別します。 報酬目的で法律事務の取扱いを業とすることが規制されます。争いがある遺産分割の代理交渉と、一般的な制度説明・専門家への取次ぎを区別します。個別事案の違法性や法定の例外を網羅的に判定するものではありません。",
     "topic": "関連業法",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceUrl": "https://www.toben.or.jp/know/iinkai/hiben/dishonesty/",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 27,
+    "revision": 28,
     "blueprintQuestion": 1,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v168_direct_sources_and_scope",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.168：公表試験PDFから直接根拠へ是正し、制度の要件・限定範囲を補足。全設例・全肢・正答保持。全文/全改正の包括監修ではない。",
+    "sourceLabel": "東京弁護士会：非弁行為の要件と法律事務",
+    "additionalSourceUrls": [
+      "https://www.toben.or.jp/know/iinkai/hiben/dishonesty/"
+    ]
   },
   {
     "id": "pr-jafp3-002",
@@ -145,23 +149,23 @@ const PRACTICAL_QUESTIONS = [
     "question": "純資産額はどれか。",
     "kind": "choice",
     "choices": [
-      "1,380万円",
-      "1,220万円",
+      "3,600万円",
+      "900万円",
       "1,700万円"
     ],
     "answer": 2,
-    "explanation": "資産320＋480＋2,800＝3,600万円、純資産3,600－1,900＝1,700万円。預金や投資信託を除外しません。",
+    "explanation": "預金320万円＋投資信託480万円＋住宅2,800万円＝資産合計3,600万円。ここから住宅ローン1,900万円を引いた純資産は1,700万円なので、選択肢3が正解です。選択肢1の3,600万円は負債を引かない資産総額、選択肢2の900万円は住宅2,800万円からローン1,900万円だけを引き、預金・投資信託を除外した金額です。資産は金融資産と住宅を合わせ、負債は1回だけ差し引きます。",
     "topic": "バランスシート",
     "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 1,
+    "revision": 2,
     "blueprintQuestion": 3,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
     "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "contentReview": "v161_internal_arithmetic_and_distractor_rationale_recheck",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.161：純資産の正答・設例・ID・正答位置を保持し、誤答を負債の控除漏れと金融資産の計上漏れに対応する値へ変更。各選択肢の算術根拠を明記。新規法令照合ではない。旧スナップショットは保持。"
   },
   {
     "id": "pr-jafp3-004",
@@ -339,18 +343,22 @@ const PRACTICAL_QUESTIONS = [
       "取引事例比較法"
     ],
     "answer": 1,
-    "explanation": "純収益の現在価値を基礎にするのは収益還元法。原価法は再調達原価に減価修正、取引事例比較法は比較可能な取引価格を参考にします。",
+    "explanation": "純収益の現在価値を基礎にするのは収益還元法。原価法は再調達原価に減価修正、取引事例比較法は比較可能な取引価格を参考にします。 手法の定義を問う問題であり、純収益額・還元利回り・割引率を仮定して具体的な鑑定価格を確定するものではありません。",
     "topic": "不動産評価",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceUrl": "https://www.mlit.go.jp/notice/noticedata/sgml/018/74000514/74000514.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 37,
+    "revision": 38,
     "blueprintQuestion": 10,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v168_direct_sources_and_scope",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.168：公表試験PDFから直接根拠へ是正し、制度の要件・限定範囲を補足。全設例・全肢・正答保持。全文/全改正の包括監修ではない。",
+    "sourceLabel": "国土交通省：不動産鑑定評価基準・評価手法",
+    "additionalSourceUrls": [
+      "https://www.mlit.go.jp/totikensangyo/totikensangyo_tk4_000024.html"
+    ]
   },
   {
     "id": "pr-jafp3-011",
@@ -366,18 +374,22 @@ const PRACTICAL_QUESTIONS = [
       "契約期間が短ければ普通借家も自動的に更新がない契約になる"
     ],
     "answer": 0,
-    "explanation": "定期借家は所定の書面等による契約に加え、更新がなく期間満了で終了する旨の説明等が必要です。単に期間を短くするだけでは普通借家の更新を排除できません。",
+    "explanation": "定期借家は所定の書面等による契約に加え、更新がなく期間満了で終了する旨の説明等が必要です。単に期間を短くするだけでは普通借家の更新を排除できません。 契約の締結と、更新がなく期間満了で終了することの事前説明は区別します。契約書だけに記載すれば別の事前説明が当然に不要となるわけではありません。2022年5月18日施行の改正による契約・事前説明事項の提供の電子化にも対応しており、紙のみが認められるという意味ではありません。所定の承諾・方式等の要件を確認します。",
     "topic": "借家契約",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceUrl": "https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000030.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 27,
+    "revision": 28,
     "blueprintQuestion": 11,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v168_direct_sources_and_scope",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.168：公表試験PDFから直接根拠へ是正し、制度の要件・限定範囲を補足。全設例・全肢・正答保持。全文/全改正の包括監修ではない。",
+    "sourceLabel": "国土交通省：定期賃貸住宅標準契約書と電子化",
+    "additionalSourceUrls": [
+      "https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000060.html"
+    ]
   },
   {
     "id": "pr-jafp3-012",
@@ -411,24 +423,24 @@ const PRACTICAL_QUESTIONS = [
     "track": "jafp2",
     "case": 1,
     "caseTitle": "FPと関連業法",
-    "caseText": "【2026年4月1日基準の独自演習】他の資格登録がないFPの行為を考える。①報酬を得て紛争のある財産分与を代理交渉する。②NISAの一般的な制度を説明する。③仮定事例の一般的な税制セミナーで講師料を得る。",
-    "question": "資料の①〜③の行為と、④「報酬を受け取らなければ、顧客の所得税申告に関する具体的な税額計算の相談を反復継続して受けてもよい。」について、適切なら○、不適切なら×を各欄で選びなさい。①は同種の代理交渉を反復継続して受任する意思がある。②は制度の一般説明のみで、投資顧問契約の締結・媒介、個別銘柄の投資判断への助言や売買勧誘は行わない。③は仮定事例の一般解説だけで、参加者個人の申告相談・税額計算は行わない。いずれも他資格・法令に基づく許可や特例はない。",
+    "caseText": "他の資格登録がないFPの行為を考える。①報酬を得て紛争のある財産分与を代理交渉する。②NISAの一般的な制度を説明する。③仮定事例の一般的な税制セミナーで講師料を得る。",
+    "question": "次の①〜④について、適切なら○、不適切なら×を各欄で選びなさい。①は同種の代理交渉を反復継続して受任する意思がある。②は制度の一般説明のみで、投資顧問契約の締結・媒介、個別銘柄の投資判断への助言や売買勧誘は行わない。③は仮定事例の一般解説だけで、参加者個人の申告相談・税額計算は行わない。いずれも他資格・法令に基づく許可や特例はない。",
     "kind": "multi_choice",
     "explanation": "①×、②○、③○、④×。①は、他の資格・特例がなく、報酬目的で紛争の代理交渉を業として取り扱う条件なので不適切です。②の一般的なNISA制度説明は、投資判断への助言や契約の媒介等と区別します。③も個人の申告や税額計算に関する具体的な相談を扱わず、仮定事例による一般的な講演にとどまるため適切です。④の税務相談は、他人の具体的な申告・税額計算について反復継続して回答するものであり、無報酬であることだけでは税理士業務の制限を免れません。本問は他資格や法令上の許可等の例外がないことを前提にしています。",
     "topic": "関連業法",
     "sourceUrl": "https://www.nta.go.jp/taxes/zeirishi/zeirishiseido/qa/06.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 2,
+    "revision": 3,
     "blueprintQuestion": 1,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-15",
-    "contentReview": "v154_four_fields_with_exclusive_practice_conditions",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v169_self_contained_multi_choice_fields",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.154：4欄○×化。①の業として行う意思、②③の一般情報に限る範囲、例外なしを明示。国税庁基本通達2-1/2-6とQ&A6-1、金融庁2025年7月ガイド19頁、東京弁護士会の非弁取締一次説明で限定確認。法務省案内は403・e-Gov本文0行。基準日統合全文/全改正照合は保留。新法改正照合とは別。",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.154：4欄○×化。①の業として行う意思、②③の一般情報に限る範囲、例外なしを明示。国税庁基本通達2-1/2-6とQ&A6-1、金融庁2025年7月ガイド19頁、東京弁護士会の非弁取締一次説明で限定確認。法務省案内は403・e-Gov本文0行。基準日統合全文/全改正照合は保留。新法改正照合とは別。 Ver.169：全8問31欄を横断点検。回答欄の記述を単独で読める文章へ整理し、問題文の記述重複と独自演習見出しを除去。正誤・指定条件は維持。公式説明の既存論点再確認のみで、新法改正・ID初回・追加移行へ加算しない。基準日全文・正式配点は保留。",
     "subAnswers": [
       {
-        "label": "① 有償の紛争代理交渉を業として受任",
+        "label": "① 報酬を得て、紛争のある財産分与の代理交渉を業として受任する。",
         "kind": "choice",
         "choices": [
           "○",
@@ -437,7 +449,7 @@ const PRACTICAL_QUESTIONS = [
         "answer": 1
       },
       {
-        "label": "② NISA制度の一般的な説明のみ",
+        "label": "② NISAの一般的な制度だけを説明する。",
         "kind": "choice",
         "choices": [
           "○",
@@ -446,7 +458,7 @@ const PRACTICAL_QUESTIONS = [
         "answer": 0
       },
       {
-        "label": "③ 仮定事例の一般的な税制講演のみ",
+        "label": "③ 仮定事例の一般的な税制セミナーで講師料を得る。",
         "kind": "choice",
         "choices": [
           "○",
@@ -455,7 +467,7 @@ const PRACTICAL_QUESTIONS = [
         "answer": 0
       },
       {
-        "label": "④ 無報酬なら個別税務相談を反復継続できるとの説明",
+        "label": "④ 報酬を受け取らなければ、顧客の所得税申告に関する具体的な税額計算の相談を反復継続して受けてもよい。",
         "kind": "choice",
         "choices": [
           "○",
@@ -619,24 +631,24 @@ const PRACTICAL_QUESTIONS = [
     "track": "jafp2",
     "case": 7,
     "caseTitle": "NISA制度",
-    "caseText": "【2026年4月1日基準の独自演習】基準日2026年4月1日のNISA。①年間枠はつみたて120万円・成長240万円。②非課税保有期間は無期限。③売却した取得価額分の総枠は翌年以降に再利用できる。",
-    "question": "資料の①〜③と、追加記述④「売却で再利用できる非課税保有限度額は、その年の年間投資枠に上乗せできる。」について、適切なら○、不適切なら×を各欄で選びなさい。2024年からのNISAにおける成人の通常の利用を対象とする。",
+    "caseText": "基準日2026年4月1日のNISA。①年間枠はつみたて120万円・成長240万円。②非課税保有期間は無期限。③売却した取得価額分の総枠は翌年以降に再利用できる。",
+    "question": "2024年からのNISAにおける成人の通常の利用を前提として、次の①〜④について、適切なら○、不適切なら×を各欄で選びなさい。",
     "kind": "multi_choice",
     "explanation": "年間投資枠は合計360万円、非課税保有期間は無期限。売却分の総枠は取得価額で翌年以降復活します。復活しても年間枠を超えて投資できません。 ④は誤りです。再利用する総枠と年間投資枠は別の上限であり、売却によって年間投資枠が増えるわけではありません。",
     "topic": "NISA",
     "sourceUrl": "https://www.fsa.go.jp/policy/nisa2/know/index.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 30,
+    "revision": 31,
     "blueprintQuestion": 7,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-15",
-    "contentReview": "v150_four_true_false_fields_with_scoped_reconfirmation",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v169_self_contained_multi_choice_fields",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.146：3欄○×へ変更。金融庁2025年9月改訂資料p3/p5と現行案内で既存3論点を再確認。2027年以後の年齢要件等は基準日へ遡及させない。包括監修/公式配点は未完了。 Ver.150：公表例問7の4欄へ。金融庁2025年9月改訂資料p3/p5で既存論点を再確認。新しい法改正の照合件数へ加算しない。",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.146：3欄○×へ変更。金融庁2025年9月改訂資料p3/p5と現行案内で既存3論点を再確認。2027年以後の年齢要件等は基準日へ遡及させない。包括監修/公式配点は未完了。 Ver.150：公表例問7の4欄へ。金融庁2025年9月改訂資料p3/p5で既存論点を再確認。新しい法改正の照合件数へ加算しない。 Ver.169：全8問31欄を横断点検。回答欄の記述を単独で読める文章へ整理し、問題文の記述重複と独自演習見出しを除去。正誤・指定条件は維持。公式説明の既存論点再確認のみで、新法改正・ID初回・追加移行へ加算しない。基準日全文・正式配点は保留。",
     "subAnswers": [
       {
-        "label": "① 年間投資枠",
+        "label": "① 年間投資枠は、つみたて投資枠120万円、成長投資枠240万円である。",
         "kind": "choice",
         "choices": [
           "○",
@@ -645,7 +657,7 @@ const PRACTICAL_QUESTIONS = [
         "answer": 0
       },
       {
-        "label": "② 非課税保有期間",
+        "label": "② 非課税保有期間は無期限である。",
         "kind": "choice",
         "choices": [
           "○",
@@ -654,7 +666,7 @@ const PRACTICAL_QUESTIONS = [
         "answer": 0
       },
       {
-        "label": "③ 売却後の総枠再利用",
+        "label": "③ 売却した商品の取得価額分の非課税保有限度額は、翌年以降に再利用できる。",
         "kind": "choice",
         "choices": [
           "○",
@@ -663,7 +675,7 @@ const PRACTICAL_QUESTIONS = [
         "answer": 0
       },
       {
-        "label": "④ 年間投資枠への上乗せ",
+        "label": "④ 売却で再利用できる非課税保有限度額は、その年の年間投資枠に上乗せできる。",
         "kind": "choice",
         "choices": [
           "○",
@@ -715,42 +727,46 @@ const PRACTICAL_QUESTIONS = [
       "1月1日／必ず国税庁"
     ],
     "answer": 1,
-    "explanation": "固定資産税は原則1月1日の所有者に対し市町村が課税し、東京23区は東京都です。所得税の課税年分や国税とは区別します。",
+    "explanation": "固定資産税は原則1月1日の所有者に対し市町村が課税し、東京23区は東京都です。所得税の課税年分や国税とは区別します。 賦課期日と納期限は別です。売買時に当事者間で税相当額を精算しても、それだけで当該年度の課税上の納税義務者が切り替わるわけではありません。本問は税率・課税標準や個別の減免額を計算しません。",
     "topic": "固定資産税",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceUrl": "https://www.tax.metro.tokyo.lg.jp/kazei/real_estate/kotei_tosi",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 37,
+    "revision": 38,
     "blueprintQuestion": 9,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v168_direct_sources_and_scope",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.168：公表試験PDFから直接根拠へ是正し、制度の要件・限定範囲を補足。全設例・全肢・正答保持。全文/全改正の包括監修ではない。",
+    "sourceLabel": "東京都主税局：固定資産税・都市計画税",
+    "additionalSourceUrls": [
+      "https://www.city.chiba.jp/faq/zaiseikyoku/zeimu/kazeikanri/116.html"
+    ]
   },
   {
     "id": "pr-jafp2-010",
     "track": "jafp2",
     "case": 10,
     "caseTitle": "定期借地権",
-    "caseText": "【2026年4月1日基準の独自演習】①一般定期借地権は存続期間50年以上。②事業用定期借地権は居住用を除く専ら事業用建物を目的とする。③事業用定期借地権の設定契約は口頭だけで足りる。",
-    "question": "資料の①〜③と、追加記述④「事業用定期借地権は、賃貸住宅を建てるための借地にも利用できる。」について、適切なら○、不適切なら×を各欄で選びなさい。",
+    "caseText": "①一般定期借地権は存続期間50年以上。②事業用定期借地権は居住用を除く専ら事業用建物を目的とする。③事業用定期借地権の設定契約は口頭だけで足りる。",
+    "question": "資料の条件を前提として、次の①〜④について、適切なら○、不適切なら×を各欄で選びなさい。",
     "kind": "multi_choice",
     "explanation": "①○、②○、③×、④×。一般定期借地権の存続期間は50年以上です。事業用定期借地権は専ら事業用建物の所有を目的とし、居住用の建物は対象外です。貸主の事業として建てる場合でも、賃貸住宅は居住用であるため、この事業用定期借地権は利用できません。事業用定期借地権の設定契約は公正証書によるため、口頭だけでは足りません。一般定期借地権の契約方法と混同しないようにします。",
     "topic": "借地契約",
     "sourceUrl": "https://www.mlit.go.jp/totikensangyo/totikensangyo_tk5_000106.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 32,
+    "revision": 33,
     "blueprintQuestion": 10,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-15",
-    "contentReview": "v151_official_form_and_scoped_source_reconfirmation",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v169_self_contained_multi_choice_fields",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.151：公表例問10と同じ4欄○×へ。国交省の期間・目的・契約方法表で既存論点を限定再確認。④は既存の居住用除外を賃貸住宅に具体化。本文公表日・2026年4月1日全文/全改正照合は未確認。",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.151：公表例問10と同じ4欄○×へ。国交省の期間・目的・契約方法表で既存論点を限定再確認。④は既存の居住用除外を賃貸住宅に具体化。本文公表日・2026年4月1日全文/全改正照合は未確認。 Ver.169：全8問31欄を横断点検。回答欄の記述を単独で読める文章へ整理し、問題文の記述重複と独自演習見出しを除去。正誤・指定条件は維持。公式説明の既存論点再確認のみで、新法改正・ID初回・追加移行へ加算しない。基準日全文・正式配点は保留。",
     "subAnswers": [
       {
-        "label": "① 一般定期借地権の期間",
+        "label": "① 一般定期借地権の存続期間は50年以上である。",
         "kind": "choice",
         "choices": [
           "○",
@@ -759,7 +775,7 @@ const PRACTICAL_QUESTIONS = [
         "answer": 0
       },
       {
-        "label": "② 事業用定期借地権の利用目的",
+        "label": "② 事業用定期借地権は、居住用を除く専ら事業用の建物の所有を目的とする。",
         "kind": "choice",
         "choices": [
           "○",
@@ -768,7 +784,7 @@ const PRACTICAL_QUESTIONS = [
         "answer": 0
       },
       {
-        "label": "③ 口頭のみでの事業用設定契約",
+        "label": "③ 事業用定期借地権の設定契約は、口頭だけで足りる。",
         "kind": "choice",
         "choices": [
           "○",
@@ -777,7 +793,7 @@ const PRACTICAL_QUESTIONS = [
         "answer": 1
       },
       {
-        "label": "④ 賃貸住宅目的での事業用定期借地権",
+        "label": "④ 事業用定期借地権は、賃貸住宅を建てるための借地にも利用できる。",
         "kind": "choice",
         "choices": [
           "○",
@@ -1331,22 +1347,22 @@ const PRACTICAL_QUESTIONS = [
     "kind": "choice",
     "choices": [
       "2,900.0万円",
-      "2,150.0万円",
+      "2,700.0万円",
       "1,850.0万円"
     ],
     "answer": 2,
-    "explanation": "妻は1/2の6000万円、子と代襲孫は各1/6の2000万円。税額は妻1100万円、各250万円。合計1100＋250×3＝1850万円。遺産全体に1つの税率を掛けず、基礎控除も再度差し引きません。 個別税額控除前の総額であり、妻が実際に納付する税額ではありません。代襲孫を含む3つの子の枝で子側の2分の1を等分します。",
+    "explanation": "妻は1/2の6000万円、子と代襲孫は各1/6の2000万円。税額は妻1100万円、各250万円。合計1100＋250×3＝1850万円。遺産全体に1つの税率を掛けず、基礎控除も再度差し引きません。 個別税額控除前の総額であり、妻が実際に納付する税額ではありません。代襲孫を含む3つの子の枝で子側の2分の1を等分します。 選択肢1の2,900.0万円は、課税遺産総額全体に30％と700万円の速算控除を一括適用した誤りです。選択肢2の2,700.0万円は、法定相続分ごとの税率だけを掛け、妻の700万円と子・代襲孫各50万円の速算控除を引き忘れた金額です。速算控除は各人の法定相続分に応じた税額の計算で適用します。",
     "topic": "相続税の総額",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
     "lawReferenceDate": "2026-04-01",
-    "revision": 35,
+    "revision": 36,
     "blueprintCase": 5,
     "blueprintSet": 1,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_kojin.pdf",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v105_personal_case1_2_5_scoped_migration",
+    "contentReview": "v162_internal_choice_arithmetic_and_distractor_rationale",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.105：年金試算条件、共済、投資指標/注文/REIT、相続期限/控除/法定相続分を個別照合。包括監修未完了。",
+    "reviewNote": "Ver.105：年金試算条件、共済、投資指標/注文/REIT、相続期限/控除/法定相続分を個別照合。包括監修未完了。 Ver.162：正答・設例・正答位置を保持。第2選択肢を各法定取得分の速算控除を忘れた金額へ変更し、誤答の算術根拠を明記。新規公式法令照合ではない。旧保存演習は保持。",
     "additionalSourceUrls": [
       "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4155.htm",
       "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4132.htm"
@@ -1409,27 +1425,27 @@ const PRACTICAL_QUESTIONS = [
       "第1号被保険者は老齢基礎年金を受給できない"
     ],
     "answer": 0,
-    "explanation": "第3号は原則として厚生年金に加入する第2号被保険者に扶養される配偶者です。自営業の夫の扶養だけでは第3号になりません。第1号も要件を満たせば老齢基礎年金を受給できます。",
+    "explanation": "第3号は原則として厚生年金に加入する第2号被保険者に扶養される配偶者です。自営業の夫の扶養だけでは第3号になりません。第1号も要件を満たせば老齢基礎年金を受給できます。 第1号の妻の保険料納付と、夫の収入で家計を支えるという生活上の扶養は別に判断します。第3号は第2号被保険者の被扶養配偶者であることなどの要件が必要で、原則として国内に住所を有する20歳以上60歳未満の方が対象です。夫が第1号という本問ではその要件を満たしません。",
     "topic": "国民年金の区分",
     "sourceUrl": "https://www.nenkin.go.jp/section/faq/kokunen/seido/kanyu/seidosetsumei/20140116.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 103,
+    "revision": 104,
     "blueprintCase": 1,
     "blueprintSet": 1,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v103_2026_kinzai3_insurance_pension_medical",
-    "reviewNote": "Ver.103：2026年4月1日基準へ設例条件を再構成し、正答・全選択肢・解説・資料表を限定確認。包括監修、個別商品約款、2026年8月以後の高額療養費改定は対象外。",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v167_public_benefit_sources_and_option_reasons",
+    "reviewNote": "Ver.103：2026年4月1日基準へ設例条件を再構成し、正答・全選択肢・解説・資料表を限定確認。包括監修、個別商品約款、2026年8月以後の高額療養費改定は対象外。 Ver.167：直接の制度根拠・被保険者区分の誤答理由・対象範囲を補足。正答/全肢/設例保持。法令全文や全改正の包括監修ではない。",
     "sourceLabel": "日本年金機構：国民年金の被保険者",
     "additionalSourceUrls": [
-      "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf"
+      "https://www.nenkin.go.jp/service/seidozenpan/20140710.html"
     ],
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
-      "正解。第3号は原則として厚生年金に加入する第2号被保険者に扶養される配偶者です。自営業の夫の扶養だけでは第3号になりません。第1号も要件を満たせば老齢基礎年金を受給できます。",
-      "不適切。設例の条件と計算式を用いると正答は「妻が20歳以上60歳未満で自営業に従事し厚生年金に加入していなければ原則第1号被保険者となる」です。",
-      "不適切。設例の条件と計算式を用いると正答は「妻が20歳以上60歳未満で自営業に従事し厚生年金に加入していなければ原則第1号被保険者となる」です。"
+      "正解。20歳以上60歳未満の自営業者等で第2号・第3号でなければ原則第1号です。",
+      "不適切。夫が第1号被保険者であるため、夫の扶養というだけで妻が第3号になることはありません。",
+      "不適切。第1号も受給資格期間等の要件を満たせば老齢基礎年金を受給できます。"
     ]
   },
   {
@@ -1555,27 +1571,27 @@ const PRACTICAL_QUESTIONS = [
       "原則非課税である"
     ],
     "answer": 2,
-    "explanation": "疾病・傷害に基因して受け取る本人の入院給付金は原則非課税です。医療費控除を計算する場合には、その給付の目的となる医療費から控除します。給与・退職により受け取った所得ではありません。",
+    "explanation": "疾病・傷害に基因して受け取る本人の入院給付金は原則非課税です。医療費控除を計算する場合には、その給付の目的となる医療費から控除します。給与・退職により受け取った所得ではありません。 非課税となる理由は疾病入院に基因する保険給付だからであり、会社員が受け取るというだけで給与所得にはならず、退職による給付でもありません。医療費控除では、補てん金をその給付目的の医療費まで差し引き、余った給付金を別の医療費から差し引くことはしません。",
     "topic": "給付金と税務",
-    "sourceUrl": "https://www.nta.go.jp/law/tsutatsu/kihon/shotoku/02/04.htm",
+    "sourceUrl": "https://www.nta.go.jp/about/organization/tokyo/bunshokaito/shotoku/130313/01.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 103,
+    "revision": 104,
     "blueprintCase": 2,
     "blueprintSet": 1,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v103_2026_kinzai3_insurance_pension_medical",
-    "reviewNote": "Ver.103：2026年4月1日基準へ設例条件を再構成し、正答・全選択肢・解説・資料表を限定確認。包括監修、個別商品約款、2026年8月以後の高額療養費改定は対象外。",
-    "sourceLabel": "国税庁：所得税基本通達9-20・9-21",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v166_tax_source_and_option_rationale",
+    "reviewNote": "Ver.103：2026年4月1日基準へ設例条件を再構成し、正答・全選択肢・解説・資料表を限定確認。包括監修、個別商品約款、2026年8月以後の高額療養費改定は対象外。 Ver.166：非課税根拠URL/誤答理由、配偶者特別控除の所得帯、青色申告の所得範囲を該当問で是正・補足。設例・正答・全肢保持。全文/全改正の包括照合ではない。",
+    "sourceLabel": "国税庁：疾病に基因する入院給付金の非課税の説明",
     "additionalSourceUrls": [
-      "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf"
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm"
     ],
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
-      "不適切。設例の条件と計算式を用いると正答は「原則非課税である」です。",
-      "不適切。設例の条件と計算式を用いると正答は「原則非課税である」です。",
-      "正解。疾病・傷害に基因して受け取る本人の入院給付金は原則非課税です。医療費控除を計算する場合には、その給付の目的となる医療費から控除します。給与・退職により受け取った所得ではありません。"
+      "不適切。疾病入院に基因する保険契約上の給付で、勤務先からの労務の対価である給与ではありません。",
+      "不適切。退職を原因とする給付ではなく、本人の疾病入院に基因する保険給付です。",
+      "正解。疾病・傷害に基因して本人が受け取る入院給付金は原則非課税です。"
     ]
   },
   {
@@ -1664,19 +1680,19 @@ const PRACTICAL_QUESTIONS = [
       "以後の保険料払込みを止め、原資に応じた終身保障に変更する"
     ],
     "answer": 2,
-    "explanation": "設例では解約返戻金を原資に、以後の払込みがない終身保険へ変更します。元の保障額を必ず維持・増額できるわけではありません。変更可否と特約の扱いは商品によります。",
+    "explanation": "設例では解約返戻金を原資に、以後の払込みがない終身保険へ変更します。元の保障額を必ず維持・増額できるわけではありません。変更可否と特約の扱いは商品によります。 払済保険一般では保険期間をそのままにして保障額を減らす仕組みです。本問は商品条件として払済終身保険へ変更可能と指定しています。元の商品が何であっても必ず終身保障へ変更できるという説明ではありません。特約の継続・消滅や変更可否は個別契約で確認します。",
     "topic": "払済保険",
-    "sourceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf",
+    "sourceUrl": "https://www.jili.or.jp/knows_learns/q_a/life_insurance/153.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 104,
+    "revision": 105,
     "blueprintCase": 3,
     "blueprintSet": 1,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v104_2026_kinzai3_insurance_retirement_tax_inheritance",
-    "reviewNote": "Ver.104：2026年4月1日基準で条件・正答・全選択肢・解説・資料表を限定確認。2026年12月1日施行で2026年分に適用される所得税改正は施行日を明示。包括監修・個別商品約款は未完了。",
-    "sourceLabel": "設例与件：払済終身保険への変更条件",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v168_direct_sources_and_scope",
+    "reviewNote": "Ver.104：2026年4月1日基準で条件・正答・全選択肢・解説・資料表を限定確認。2026年12月1日施行で2026年分に適用される所得税改正は施行日を明示。包括監修・個別商品約款は未完了。 Ver.168：公表試験PDFから直接根拠へ是正し、制度の要件・限定範囲を補足。全設例・全肢・正答保持。全文/全改正の包括監修ではない。",
+    "sourceLabel": "生命保険文化センター：払済保険への変更",
     "additionalSourceUrls": [],
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
@@ -2078,24 +2094,24 @@ const PRACTICAL_QUESTIONS = [
     "track": "kinzai2_personal",
     "case": 3,
     "caseTitle": "損益通算と所得控除",
-    "caseText": "【2026年4月1日基準の独自演習】個人事業主の遠藤さんの2026年分の事業所得（青色申告特別控除後）は840万円。国内の通常の賃貸物件に係る不動産所得は赤字60万円、そのうち土地取得借入金の利子15万円が必要経費に含まれる。組合・国外中古建物等の特例はない。本人負担の10年超保有の生命保険を解約し、一時金610万円、正味払込保険料510万円。他の一時所得はない。対象医療費52万円を本人が支払い、その同じ医療費を補填する給付金14万円、補填超過なし。生計を一にする長女は年末21歳、無収入、障害なし、事業専従者ではない。2027年に行う2026年分の確定申告の場面とし、長女は国内居住で、他に長女を扶養控除の対象とする者はない。2026年12月1日施行で2026年分から適用される扶養所得要件62万円以下を用い、施行前準確定申告等は対象外とする。生命保険の実際の全額保険料負担者と解約一時金受取人はいずれも本人で、金融類似商品の源泉分離課税には該当しない。事業所得は青色申告特別控除後の与件で再度控除しない。医療費は自己/生計同一家族のため本人がその年中に実際に支払った対象費用とする。",
+    "caseText": "【2026年4月1日基準の独自演習】個人事業主の遠藤さんの2026年分の事業所得（青色申告特別控除後）は840万円。国内の通常の賃貸物件に係る不動産所得は赤字60万円、そのうち土地取得借入金の利子15万円が必要経費に含まれる。組合・国外中古建物等の特例はない。本人負担の10年超保有の生命保険を解約し、一時金610万円、正味払込保険料510万円。他の一時所得はない。記載の事業所得・不動産所得・解約一時金以外の所得はない。対象医療費52万円を本人が支払い、その同じ医療費を補填する給付金14万円、補填超過なし。生計を一にする長女は年末21歳、無収入、障害なし、事業専従者ではない。2027年に行う2026年分の確定申告の場面とし、長女は国内居住で、他に長女を扶養控除の対象とする者はない。2026年12月1日施行で2026年分から適用される扶養所得要件62万円以下を用い、施行前準確定申告等は対象外とする。生命保険の実際の全額保険料負担者と解約一時金受取人はいずれも本人で、金融類似商品の源泉分離課税には該当しない。事業所得は青色申告特別控除後の与件で再度控除しない。医療費は自己/生計同一家族のため本人がその年中に実際に支払った対象費用とする。",
     "question": "損益通算と一時所得の2分の1算入後の総所得金額を求めなさい。",
     "kind": "numeric",
     "choices": [],
     "answer": 820.0,
     "unit": "万円",
-    "explanation": "通算可能な不動産損失＝60－土地利子15＝45万円。一時所得＝610－510－50＝50万円、算入額25万円。840－45＋25＝820万円。土地利子相当額は他所得との通算対象外です。 青色申告特別控除は事業所得の与件へ適用済みで再度控除せず、医療費/扶養等の所得控除前の総所得金額を求めます。",
+    "explanation": "通算可能な不動産損失＝60－土地利子15＝45万円。一時所得＝610－510－50＝50万円、算入額25万円。840－45＋25＝820万円。土地利子相当額は他所得との通算対象外です。 青色申告特別控除は事業所得の与件へ適用済みで再度控除せず、医療費/扶養等の所得控除前の総所得金額を求めます。 記載以外の所得がないため、この合計額を本問の総所得金額とします。",
     "topic": "損益通算",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1391.htm",
     "lawReferenceDate": "2026-04-01",
-    "revision": 61,
+    "revision": 62,
     "blueprintCase": 3,
     "blueprintSet": 1,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_kojin.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v107_personal2_all30_scoped_migration",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v170_exclusive_income_conditions",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。",
+    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。 Ver.170：総所得金額を一意にするため、記載以外の所得なしを明示し、共通設例の全3小問へ同期。正答と選択肢の意味は維持。新法改正・追加移行・ID初回へ加算しない。",
     "additionalSourceUrls": [
       "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1490.htm",
       "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1755.htm"
@@ -2107,7 +2123,7 @@ const PRACTICAL_QUESTIONS = [
     "track": "kinzai2_personal",
     "case": 3,
     "caseTitle": "損益通算と所得控除",
-    "caseText": "【2026年4月1日基準の独自演習】個人事業主の遠藤さんの2026年分の事業所得（青色申告特別控除後）は840万円。国内の通常の賃貸物件に係る不動産所得は赤字60万円、そのうち土地取得借入金の利子15万円が必要経費に含まれる。組合・国外中古建物等の特例はない。本人負担の10年超保有の生命保険を解約し、一時金610万円、正味払込保険料510万円。他の一時所得はない。対象医療費52万円を本人が支払い、その同じ医療費を補填する給付金14万円、補填超過なし。生計を一にする長女は年末21歳、無収入、障害なし、事業専従者ではない。2027年に行う2026年分の確定申告の場面とし、長女は国内居住で、他に長女を扶養控除の対象とする者はない。2026年12月1日施行で2026年分から適用される扶養所得要件62万円以下を用い、施行前準確定申告等は対象外とする。生命保険の実際の全額保険料負担者と解約一時金受取人はいずれも本人で、金融類似商品の源泉分離課税には該当しない。事業所得は青色申告特別控除後の与件で再度控除しない。医療費は自己/生計同一家族のため本人がその年中に実際に支払った対象費用とする。",
+    "caseText": "【2026年4月1日基準の独自演習】個人事業主の遠藤さんの2026年分の事業所得（青色申告特別控除後）は840万円。国内の通常の賃貸物件に係る不動産所得は赤字60万円、そのうち土地取得借入金の利子15万円が必要経費に含まれる。組合・国外中古建物等の特例はない。本人負担の10年超保有の生命保険を解約し、一時金610万円、正味払込保険料510万円。他の一時所得はない。記載の事業所得・不動産所得・解約一時金以外の所得はない。対象医療費52万円を本人が支払い、その同じ医療費を補填する給付金14万円、補填超過なし。生計を一にする長女は年末21歳、無収入、障害なし、事業専従者ではない。2027年に行う2026年分の確定申告の場面とし、長女は国内居住で、他に長女を扶養控除の対象とする者はない。2026年12月1日施行で2026年分から適用される扶養所得要件62万円以下を用い、施行前準確定申告等は対象外とする。生命保険の実際の全額保険料負担者と解約一時金受取人はいずれも本人で、金融類似商品の源泉分離課税には該当しない。事業所得は青色申告特別控除後の与件で再度控除しない。医療費は自己/生計同一家族のため本人がその年中に実際に支払った対象費用とする。",
     "question": "通常の医療費控除額を求めなさい。",
     "kind": "numeric",
     "choices": [],
@@ -2117,14 +2133,14 @@ const PRACTICAL_QUESTIONS = [
     "topic": "医療費控除",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm",
     "lawReferenceDate": "2026-04-01",
-    "revision": 61,
+    "revision": 62,
     "blueprintCase": 3,
     "blueprintSet": 1,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_kojin.pdf",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v107_personal2_all30_scoped_migration",
+    "contentReview": "v170_exclusive_income_conditions",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。",
+    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。 Ver.170：総所得金額を一意にするため、記載以外の所得なしを明示し、共通設例の全3小問へ同期。正答と選択肢の意味は維持。新法改正・追加移行・ID初回へ加算しない。",
     "taxYear": 2026
   },
   {
@@ -2132,7 +2148,7 @@ const PRACTICAL_QUESTIONS = [
     "track": "kinzai2_personal",
     "case": 3,
     "caseTitle": "損益通算と所得控除",
-    "caseText": "【2026年4月1日基準の独自演習】個人事業主の遠藤さんの2026年分の事業所得（青色申告特別控除後）は840万円。国内の通常の賃貸物件に係る不動産所得は赤字60万円、そのうち土地取得借入金の利子15万円が必要経費に含まれる。組合・国外中古建物等の特例はない。本人負担の10年超保有の生命保険を解約し、一時金610万円、正味払込保険料510万円。他の一時所得はない。対象医療費52万円を本人が支払い、その同じ医療費を補填する給付金14万円、補填超過なし。生計を一にする長女は年末21歳、無収入、障害なし、事業専従者ではない。2027年に行う2026年分の確定申告の場面とし、長女は国内居住で、他に長女を扶養控除の対象とする者はない。2026年12月1日施行で2026年分から適用される扶養所得要件62万円以下を用い、施行前準確定申告等は対象外とする。生命保険の実際の全額保険料負担者と解約一時金受取人はいずれも本人で、金融類似商品の源泉分離課税には該当しない。事業所得は青色申告特別控除後の与件で再度控除しない。医療費は自己/生計同一家族のため本人がその年中に実際に支払った対象費用とする。",
+    "caseText": "【2026年4月1日基準の独自演習】個人事業主の遠藤さんの2026年分の事業所得（青色申告特別控除後）は840万円。国内の通常の賃貸物件に係る不動産所得は赤字60万円、そのうち土地取得借入金の利子15万円が必要経費に含まれる。組合・国外中古建物等の特例はない。本人負担の10年超保有の生命保険を解約し、一時金610万円、正味払込保険料510万円。他の一時所得はない。記載の事業所得・不動産所得・解約一時金以外の所得はない。対象医療費52万円を本人が支払い、その同じ医療費を補填する給付金14万円、補填超過なし。生計を一にする長女は年末21歳、無収入、障害なし、事業専従者ではない。2027年に行う2026年分の確定申告の場面とし、長女は国内居住で、他に長女を扶養控除の対象とする者はない。2026年12月1日施行で2026年分から適用される扶養所得要件62万円以下を用い、施行前準確定申告等は対象外とする。生命保険の実際の全額保険料負担者と解約一時金受取人はいずれも本人で、金融類似商品の源泉分離課税には該当しない。事業所得は青色申告特別控除後の与件で再度控除しない。医療費は自己/生計同一家族のため本人がその年中に実際に支払った対象費用とする。",
     "question": "長女について適用する所得税の扶養控除の区分・額はどれか。",
     "kind": "choice",
     "choices": [
@@ -2145,14 +2161,14 @@ const PRACTICAL_QUESTIONS = [
     "topic": "扶養控除",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1180.htm",
     "lawReferenceDate": "2026-04-01",
-    "revision": 38,
+    "revision": 39,
     "blueprintCase": 3,
     "blueprintSet": 1,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_kojin.pdf",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v107_personal2_all30_scoped_migration",
+    "contentReview": "v170_exclusive_income_conditions",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。",
+    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。 Ver.170：総所得金額を一意にするため、記載以外の所得なしを明示し、共通設例の全3小問へ同期。正答と選択肢の意味は維持。新法改正・追加移行・ID初回へ加算しない。",
     "lawEffectiveDate": "2026-12-01",
     "taxYear": 2026,
     "choiceExplanations": [
@@ -2320,7 +2336,7 @@ const PRACTICAL_QUESTIONS = [
     "track": "kinzai2_business",
     "case": 1,
     "caseTitle": "個人事業主の年金と共済",
-    "caseText": "【2026年4月1日基準の独自演習】飲食店を営む渡辺さんは2026年4月1日現在51歳で、国民年金第1号被保険者である。2026年3月までの20歳以上の記録は、厚生年金180月、国民年金第1号の納付済132月、未納60月で、免除期間はない。厚生年金は2003年3月以前60月・平均標準報酬月額220,000円、同年4月以後120月・平均標準報酬額300,000円である。2026年4月から60歳到達までの108月は国民年金保険料をすべて納めるものとし、60歳時の納付済相当期間は420月となる。老齢基礎年金は2026年度の満額847,300円を固定して見積もり、将来の年金額改定、任意加入、繰上げ・繰下げは考慮しない。報酬比例部分の乗率は順に7.125/1000、5.481/1000とし、再評価済みの報酬を用いる。経過的加算・加給年金は計算対象外とする。小規模企業共済の加入要件を満たし、2026年中に本人が掛金を支払った。",
+    "caseText": "【2026年4月1日基準の独自演習】飲食店を営む渡辺さん（1975年4月2日生まれ）は2026年4月1日現在51歳で、国民年金第1号被保険者である。2026年3月までの20歳以上の記録は、厚生年金180月、国民年金第1号の納付済132月、未納60月で、免除期間はない。厚生年金は2003年3月以前60月・平均標準報酬月額220,000円、同年4月以後120月・平均標準報酬額300,000円である。2026年4月から60歳到達までの108月は国民年金保険料をすべて納めるものとし、60歳時の納付済相当期間は420月となる。老齢基礎年金は2026年度の満額847,300円を固定して見積もり、将来の年金額改定、任意加入、繰上げ・繰下げは考慮しない。報酬比例部分の乗率は順に7.125/1000、5.481/1000とし、再評価済みの報酬を用いる。経過的加算・加給年金は計算対象外とする。小規模企業共済の加入要件を満たし、2026年中に本人が掛金を支払った。 年齢は誕生日の前日に到達するものとして扱い、20歳到達日は1995年4月1日、60歳到達日は2035年4月1日とする。加入記録の具体的な期間は、1995年4月から1998年3月まで国民年金第1号の未納、1998年4月から2003年3月まで厚生年金（2003年3月以前）、2003年4月から2013年3月まで厚生年金（2003年4月以後）、2013年4月から2024年3月まで国民年金第1号の納付済、2024年4月から2026年3月まで国民年金第1号の未納、2026年4月から2035年3月まで国民年金第1号の将来納付見込み。各期間は両端の月を含み、重複やこれ以外の加入・未納期間はない。",
     "question": "60歳時の見込み記録を用い、2026年度価額で老齢基礎年金の年額を求めなさい。円未満四捨五入。",
     "kind": "numeric",
     "choices": [],
@@ -2336,17 +2352,19 @@ const PRACTICAL_QUESTIONS = [
     },
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 34,
+    "revision": 35,
     "blueprintCase": 1,
     "blueprintSet": 1,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_chusho.pdf",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v108_2026_business_practical_migration",
-    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。",
+    "contentReview": "v171_explicit_pension_month_chronology",
+    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。 Ver.171：生年月日と重複のない20歳到達月〜60歳到達前月の全480月を具体化。従来の月数・金額・正答を維持。公式案内による年齢到達月の限定再確認と内部暦検算であり、新法改正/初回ID/追加移行には加算しない。",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "sourceLabel": "日本年金機構：老齢基礎年金・2026年度年金額",
     "additionalSourceUrls": [
-      "https://www.mhlw.go.jp/stf/houdou/0000191631_00020.html"
+      "https://www.mhlw.go.jp/stf/houdou/0000191631_00020.html",
+      "https://www.nenkin.go.jp/service/scenebetsu/hatachi.html",
+      "https://www.nenkin.go.jp/service/kokunen/hokenryo/nofusho.html"
     ]
   },
   {
@@ -2354,7 +2372,7 @@ const PRACTICAL_QUESTIONS = [
     "track": "kinzai2_business",
     "case": 1,
     "caseTitle": "個人事業主の年金と共済",
-    "caseText": "【2026年4月1日基準の独自演習】飲食店を営む渡辺さんは2026年4月1日現在51歳で、国民年金第1号被保険者である。2026年3月までの20歳以上の記録は、厚生年金180月、国民年金第1号の納付済132月、未納60月で、免除期間はない。厚生年金は2003年3月以前60月・平均標準報酬月額220,000円、同年4月以後120月・平均標準報酬額300,000円である。2026年4月から60歳到達までの108月は国民年金保険料をすべて納めるものとし、60歳時の納付済相当期間は420月となる。老齢基礎年金は2026年度の満額847,300円を固定して見積もり、将来の年金額改定、任意加入、繰上げ・繰下げは考慮しない。報酬比例部分の乗率は順に7.125/1000、5.481/1000とし、再評価済みの報酬を用いる。経過的加算・加給年金は計算対象外とする。小規模企業共済の加入要件を満たし、2026年中に本人が掛金を支払った。",
+    "caseText": "【2026年4月1日基準の独自演習】飲食店を営む渡辺さん（1975年4月2日生まれ）は2026年4月1日現在51歳で、国民年金第1号被保険者である。2026年3月までの20歳以上の記録は、厚生年金180月、国民年金第1号の納付済132月、未納60月で、免除期間はない。厚生年金は2003年3月以前60月・平均標準報酬月額220,000円、同年4月以後120月・平均標準報酬額300,000円である。2026年4月から60歳到達までの108月は国民年金保険料をすべて納めるものとし、60歳時の納付済相当期間は420月となる。老齢基礎年金は2026年度の満額847,300円を固定して見積もり、将来の年金額改定、任意加入、繰上げ・繰下げは考慮しない。報酬比例部分の乗率は順に7.125/1000、5.481/1000とし、再評価済みの報酬を用いる。経過的加算・加給年金は計算対象外とする。小規模企業共済の加入要件を満たし、2026年中に本人が掛金を支払った。 年齢は誕生日の前日に到達するものとして扱い、20歳到達日は1995年4月1日、60歳到達日は2035年4月1日とする。加入記録の具体的な期間は、1995年4月から1998年3月まで国民年金第1号の未納、1998年4月から2003年3月まで厚生年金（2003年3月以前）、2003年4月から2013年3月まで厚生年金（2003年4月以後）、2013年4月から2024年3月まで国民年金第1号の納付済、2024年4月から2026年3月まで国民年金第1号の未納、2026年4月から2035年3月まで国民年金第1号の将来納付見込み。各期間は両端の月を含み、重複やこれ以外の加入・未納期間はない。",
     "question": "報酬比例部分の年額を求めなさい。円未満四捨五入。",
     "kind": "numeric",
     "choices": [],
@@ -2372,23 +2390,26 @@ const PRACTICAL_QUESTIONS = [
     },
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 34,
+    "revision": 35,
     "blueprintCase": 1,
     "blueprintSet": 1,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_chusho.pdf",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v108_2026_business_practical_migration",
-    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。",
+    "contentReview": "v171_explicit_pension_month_chronology",
+    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。 Ver.171：生年月日と重複のない20歳到達月〜60歳到達前月の全480月を具体化。従来の月数・金額・正答を維持。公式案内による年齢到達月の限定再確認と内部暦検算であり、新法改正/初回ID/追加移行には加算しない。",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "sourceLabel": "日本年金機構：報酬比例部分",
-    "additionalSourceUrls": []
+    "additionalSourceUrls": [
+      "https://www.nenkin.go.jp/service/scenebetsu/hatachi.html",
+      "https://www.nenkin.go.jp/service/kokunen/hokenryo/nofusho.html"
+    ]
   },
   {
     "id": "pr-kinzai2_business-003",
     "track": "kinzai2_business",
     "case": 1,
     "caseTitle": "個人事業主の年金と共済",
-    "caseText": "【2026年4月1日基準の独自演習】飲食店を営む渡辺さんは2026年4月1日現在51歳で、国民年金第1号被保険者である。2026年3月までの20歳以上の記録は、厚生年金180月、国民年金第1号の納付済132月、未納60月で、免除期間はない。厚生年金は2003年3月以前60月・平均標準報酬月額220,000円、同年4月以後120月・平均標準報酬額300,000円である。2026年4月から60歳到達までの108月は国民年金保険料をすべて納めるものとし、60歳時の納付済相当期間は420月となる。老齢基礎年金は2026年度の満額847,300円を固定して見積もり、将来の年金額改定、任意加入、繰上げ・繰下げは考慮しない。報酬比例部分の乗率は順に7.125/1000、5.481/1000とし、再評価済みの報酬を用いる。経過的加算・加給年金は計算対象外とする。小規模企業共済の加入要件を満たし、2026年中に本人が掛金を支払った。",
+    "caseText": "【2026年4月1日基準の独自演習】飲食店を営む渡辺さん（1975年4月2日生まれ）は2026年4月1日現在51歳で、国民年金第1号被保険者である。2026年3月までの20歳以上の記録は、厚生年金180月、国民年金第1号の納付済132月、未納60月で、免除期間はない。厚生年金は2003年3月以前60月・平均標準報酬月額220,000円、同年4月以後120月・平均標準報酬額300,000円である。2026年4月から60歳到達までの108月は国民年金保険料をすべて納めるものとし、60歳時の納付済相当期間は420月となる。老齢基礎年金は2026年度の満額847,300円を固定して見積もり、将来の年金額改定、任意加入、繰上げ・繰下げは考慮しない。報酬比例部分の乗率は順に7.125/1000、5.481/1000とし、再評価済みの報酬を用いる。経過的加算・加給年金は計算対象外とする。小規模企業共済の加入要件を満たし、2026年中に本人が掛金を支払った。 年齢は誕生日の前日に到達するものとして扱い、20歳到達日は1995年4月1日、60歳到達日は2035年4月1日とする。加入記録の具体的な期間は、1995年4月から1998年3月まで国民年金第1号の未納、1998年4月から2003年3月まで厚生年金（2003年3月以前）、2003年4月から2013年3月まで厚生年金（2003年4月以後）、2013年4月から2024年3月まで国民年金第1号の納付済、2024年4月から2026年3月まで国民年金第1号の未納、2026年4月から2035年3月まで国民年金第1号の将来納付見込み。各期間は両端の月を含み、重複やこれ以外の加入・未納期間はない。",
     "question": "小規模企業共済の掛金について適切なものはどれか。",
     "kind": "choice",
     "choices": [
@@ -2402,13 +2423,13 @@ const PRACTICAL_QUESTIONS = [
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 34,
+    "revision": 35,
     "blueprintCase": 1,
     "blueprintSet": 1,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_chusho.pdf",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v108_2026_business_practical_migration",
-    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。",
+    "contentReview": "v171_explicit_pension_month_chronology",
+    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。 Ver.171：生年月日と重複のない20歳到達月〜60歳到達前月の全480月を具体化。従来の月数・金額・正答を維持。公式案内による年齢到達月の限定再確認と内部暦検算であり、新法改正/初回ID/追加移行には加算しない。",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
       "正解。支払った掛金の全額が所得控除です。",
@@ -2416,7 +2437,10 @@ const PRACTICAL_QUESTIONS = [
       "不適切。生命保険料控除とは別の制度です。"
     ],
     "sourceLabel": "国税庁：小規模企業共済等掛金控除",
-    "additionalSourceUrls": []
+    "additionalSourceUrls": [
+      "https://www.nenkin.go.jp/service/scenebetsu/hatachi.html",
+      "https://www.nenkin.go.jp/service/kokunen/hokenryo/nofusho.html"
+    ]
   },
   {
     "id": "pr-kinzai2_business-004",
@@ -2486,26 +2510,28 @@ const PRACTICAL_QUESTIONS = [
       "普通分配金0円、元本払戻金500円"
     ],
     "answer": 0,
-    "explanation": "分配後価額が個別元本を300円下回るため、300円は元本払戻金（特別分配金）、残り200円は普通分配金です。元本払戻金受領後の個別元本は9,700円になります。",
+    "explanation": "1万口当たり、元本払戻金は10,000－9,700＝300円、普通分配金は500－300＝200円です。分配後の個別元本は10,000－300＝9,700円です。全額500円を普通分配金とする肢は個別元本を下回った300円を無視し、全額を元本払戻金とする肢は普通分配金200円まで元本の払戻しとしてしまう誤りです。どの肢も合計は500円ですが、内訳が一致するのは200円・300円の組合せだけです。株式の株価や配当総額はこの分配金の区分には用いません。",
     "topic": "分配金区分",
     "sourceUrl": "https://www.toushin.or.jp/investmenttrust/about/what/dividend/",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 62,
+    "revision": 63,
     "blueprintCase": 2,
     "blueprintSet": 1,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_chusho.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v108_2026_business_practical_migration",
-    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v163_choice_rationale_and_scoped_primary_recheck",
+    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。 Ver.163：設例・選択肢・正答位置を保持し、全肢の取り違えを解説へ補足。指定条件の算術と出典再読を分離して記録。包括監修・全文照合ではない。",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
-      "正解。9,700円は個別元本10,000円を300円下回るため、その300円が元本払戻金、残額200円が普通分配金です。",
-      "不適切。元本超過部分200円は普通分配金です。",
-      "不適切。全額が同一区分ではありません。"
+      "正解。500円のうち、個別元本10,000円を分配落ち後価額9,700円が下回る300円が元本払戻金、残り200円が普通分配金です。",
+      "不適切。全額を普通分配金にすると、個別元本を下回る300円の払戻しを無視します。",
+      "不適切。普通分配金200円も元本払戻金に含めてしまっています。"
     ],
     "sourceLabel": "投資信託協会：普通分配金と元本払戻金",
-    "additionalSourceUrls": []
+    "additionalSourceUrls": [
+      "https://www.mizuho-sc.com/product/toushin/price_way/individual_principal.html"
+    ]
   },
   {
     "id": "pr-kinzai2_business-007",
@@ -2575,18 +2601,18 @@ const PRACTICAL_QUESTIONS = [
       "400万円を資産計上し、残り400万円を損金算入"
     ],
     "answer": 2,
-    "explanation": "死亡保険金受取人が被保険者の遺族、満期保険金受取人が会社で、特定者だけを対象としない養老保険は、保険料の2分の1（400万円）を資産計上し、残り2分の1を損金算入します。",
+    "explanation": "死亡保険金受取人が被保険者の遺族、満期保険金受取人が会社で、特定者だけを対象としない養老保険は、保険料の2分の1（400万円）を資産計上し、残り2分の1を損金算入します。特約なし・当期対応保険料という与件では、2019年7月8日前の契約と同日以後の契約のどちらも、この半額ずつの取扱いで一致します。全額資産の肢は死亡・満期とも会社受取の場合との取り違えで、全員を公平に対象とするこの設例の保険料全額を社長への給与とすることもできません。既に当期利益等に反映済みなので、法人所得を求める別問で再度400万円を控除しません。",
     "topic": "法人保険",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/hojin/5363.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 34,
+    "revision": 35,
     "blueprintCase": 3,
     "blueprintSet": 1,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_chusho.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v108_2026_business_practical_migration",
-    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v164_distractor_correction_and_contract_date_source_check",
+    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。 Ver.164：契約日が指定されていない点を点検し、2019年7月8日前契約のNo.5360も補助根拠へ追加。特約なし・遺族死亡受取/法人満期受取・特定者限定なしという与件では、同日以後のNo.5363とともに半額資産/半額期間損金で一致。契約日を推定・追記していない。包括監修・法令全文照合ではない。",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
       "不適切。受取人の組合せでは全額資産計上ではありません。",
@@ -2594,7 +2620,9 @@ const PRACTICAL_QUESTIONS = [
       "正解。死亡受取人が遺族、満期受取人が会社の養老保険は、2分の1を資産、2分の1を損金とします。"
     ],
     "sourceLabel": "国税庁：養老保険の保険料処理",
-    "additionalSourceUrls": []
+    "additionalSourceUrls": [
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/hojin/5360.htm"
+    ]
   },
   {
     "id": "pr-kinzai2_business-010",
@@ -3213,19 +3241,19 @@ const PRACTICAL_QUESTIONS = [
     "track": "kinzai2_nonlife",
     "case": 1,
     "caseTitle": "年金と公的医療保険",
-    "caseText": "会社員の山田さん（1961年7月2日生まれ）は、2026年4月1日現在の制度で老後の資金計画と公的医療保険について相談している。健康保険は協会けんぽの被保険者である。65歳時の年金年額を2026年度価額で試算し、老齢基礎年金の満額は847,300円を用いる。20歳以上60歳未満の保険料納付済相当月数は420月で、免除・未納の扱いを別途加算する必要はない。厚生年金の計算資料：2003年3月以前24月・平均標準報酬月額250,000円、2003年4月以後276月・平均標準報酬額440,000円。上記の平均報酬は再評価済みの計算用の額とし、報酬比例の乗率は順に7.125/1000、5.481/1000を用いる。従前額保障・加給年金・経過的加算・在職による支給停止・以後の加入による増額は今回の計算対象外。実際の将来支給額や受給開始初年度の月割支給額は予測せず、与件の年額だけを計算する。",
+    "caseText": "会社員の山田さん（1961年7月2日生まれ）は、2026年4月1日現在の制度で老後の資金計画と公的医療保険について相談している。健康保険は協会けんぽの被保険者である。65歳時の年金年額を2026年度価額で試算し、老齢基礎年金の満額は847,300円を用いる。20歳以上60歳未満の保険料納付済相当月数は420月で、免除・未納の扱いを別途加算する必要はない。厚生年金の計算資料：2003年3月以前24月・平均標準報酬月額250,000円、2003年4月以後276月・平均標準報酬額440,000円。上記の平均報酬は再評価済みの計算用の額とし、報酬比例の乗率は順に7.125/1000、5.481/1000を用いる。従前額保障・加給年金・経過的加算・在職による支給停止・以後の加入による増額は今回の計算対象外。実際の将来支給額や受給開始初年度の月割支給額は予測せず、与件の年額だけを計算する。 加入記録の具体的な期間は、1981年7月から1996年3月まで国民年金第1号の納付済、1996年4月から2001年3月まで国民年金第1号の未納、2001年4月から2003年3月まで厚生年金（2003年3月以前）、2003年4月から2026年3月まで厚生年金（2003年4月以後）。各期間は両端の月を含み、重複や記載以外の期間はない。60歳到達日は2021年7月1日であり、その前月までの480月から未納期間を除いた420月を老齢基礎年金の計算に用いる。60歳以後の厚生年金57月は老齢基礎年金のこの月数に加えず、報酬比例部分は指定した全厚生年金期間で計算する。",
     "question": "資料に基づく老齢基礎年金の年額はいくらか。円未満は四捨五入。",
     "kind": "numeric",
     "answer": 741388,
-    "explanation": "847,300×420/480＝741387.5円。与件の指定で円未満四捨五入し741,388円です。2026年度価額での計算であり、将来の改定額や初年度の月割支給額ではありません。",
+    "explanation": "847,300×420/480＝741387.5円。与件の指定で円未満四捨五入し741,388円です。2026年度価額での計算であり、将来の改定額や初年度の月割支給額ではありません。 60歳以後の厚生年金57月は、20歳以上60歳未満の納付済相当月数に重ねて加えません。報酬比例部分には設例で指定した厚生年金の全期間を用います。",
     "topic": "年金・公的保障",
     "lawReferenceDate": "2026-04-01",
-    "revision": 47,
-    "contentReview": "v96_2026_nonlife_case1_migration",
+    "revision": 48,
+    "contentReview": "v172_pre_post60_month_separation",
     "sourceUrl": "https://www.nenkin.go.jp/service/jukyu/seido/roureinenkin/jukyu-yoken/20150401-02.html",
     "sourceCheckedDate": "2026-10-14",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_sonpo.pdf",
-    "reviewNote": "Ver.96：2026年度年金額、生年月日、加入期間の実現可能性、再評価済み平均報酬、公的医療保険・本人iDeCo掛金を限定確認。包括監修未完了。",
+    "reviewNote": "Ver.96：2026年度年金額、生年月日、加入期間の実現可能性、再評価済み平均報酬、公的医療保険・本人iDeCo掛金を限定確認。包括監修未完了。 Ver.172：厚生年金の60歳前後を区別する具体的期間を追加。独自指定記録の全月暦検算で、既存月数/正答を保持。新法改正・初回ID・追加移行には加算しない。",
     "blueprintCase": 1,
     "blueprintSet": 1,
     "unit": "円",
@@ -3236,26 +3264,29 @@ const PRACTICAL_QUESTIONS = [
     },
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "pensionYear": 2026,
-    "sourceLabel": "日本年金機構：老齢基礎年金の受給要件・年金額"
+    "sourceLabel": "日本年金機構：老齢基礎年金の受給要件・年金額",
+    "additionalSourceUrls": [
+      "https://www.nenkin.go.jp/service/jukyu/seido/roureinenkin/jukyu-yoken/20150401-02.html"
+    ]
   },
   {
     "id": "pr-kinzai2_nonlife-002",
     "track": "kinzai2_nonlife",
     "case": 1,
     "caseTitle": "年金と公的医療保険",
-    "caseText": "会社員の山田さん（1961年7月2日生まれ）は、2026年4月1日現在の制度で老後の資金計画と公的医療保険について相談している。健康保険は協会けんぽの被保険者である。65歳時の年金年額を2026年度価額で試算し、老齢基礎年金の満額は847,300円を用いる。20歳以上60歳未満の保険料納付済相当月数は420月で、免除・未納の扱いを別途加算する必要はない。厚生年金の計算資料：2003年3月以前24月・平均標準報酬月額250,000円、2003年4月以後276月・平均標準報酬額440,000円。上記の平均報酬は再評価済みの計算用の額とし、報酬比例の乗率は順に7.125/1000、5.481/1000を用いる。従前額保障・加給年金・経過的加算・在職による支給停止・以後の加入による増額は今回の計算対象外。実際の将来支給額や受給開始初年度の月割支給額は予測せず、与件の年額だけを計算する。",
+    "caseText": "会社員の山田さん（1961年7月2日生まれ）は、2026年4月1日現在の制度で老後の資金計画と公的医療保険について相談している。健康保険は協会けんぽの被保険者である。65歳時の年金年額を2026年度価額で試算し、老齢基礎年金の満額は847,300円を用いる。20歳以上60歳未満の保険料納付済相当月数は420月で、免除・未納の扱いを別途加算する必要はない。厚生年金の計算資料：2003年3月以前24月・平均標準報酬月額250,000円、2003年4月以後276月・平均標準報酬額440,000円。上記の平均報酬は再評価済みの計算用の額とし、報酬比例の乗率は順に7.125/1000、5.481/1000を用いる。従前額保障・加給年金・経過的加算・在職による支給停止・以後の加入による増額は今回の計算対象外。実際の将来支給額や受給開始初年度の月割支給額は予測せず、与件の年額だけを計算する。 加入記録の具体的な期間は、1981年7月から1996年3月まで国民年金第1号の納付済、1996年4月から2001年3月まで国民年金第1号の未納、2001年4月から2003年3月まで厚生年金（2003年3月以前）、2003年4月から2026年3月まで厚生年金（2003年4月以後）。各期間は両端の月を含み、重複や記載以外の期間はない。60歳到達日は2021年7月1日であり、その前月までの480月から未納期間を除いた420月を老齢基礎年金の計算に用いる。60歳以後の厚生年金57月は老齢基礎年金のこの月数に加えず、報酬比例部分は指定した全厚生年金期間で計算する。",
     "question": "資料に基づく老齢厚生年金の報酬比例部分の年額はいくらか。2期間の計算値を合計し、円未満四捨五入。",
     "kind": "numeric",
     "answer": 708363,
-    "explanation": "250,000×7.125/1000×24＋440,000×5.481/1000×276＝708362.640000円。合計後、円未満四捨五入して708,363円です。平均報酬は再評価済みとして与えられているため、さらに再評価率を掛けません。基礎年金・加給年金等は含めません。",
+    "explanation": "250,000×7.125/1000×24＋440,000×5.481/1000×276＝708362.640000円。合計後、円未満四捨五入して708,363円です。平均報酬は再評価済みとして与えられているため、さらに再評価率を掛けません。基礎年金・加給年金等は含めません。 60歳以後の厚生年金57月は、20歳以上60歳未満の納付済相当月数に重ねて加えません。報酬比例部分には設例で指定した厚生年金の全期間を用います。",
     "topic": "年金・公的保障",
     "lawReferenceDate": "2026-04-01",
-    "revision": 36,
-    "contentReview": "v96_2026_nonlife_case1_migration",
+    "revision": 37,
+    "contentReview": "v172_pre_post60_month_separation",
     "sourceUrl": "https://www.nenkin.go.jp/service/yougo/hagyo/hoshuhirei.html",
     "sourceCheckedDate": "2026-10-14",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_sonpo.pdf",
-    "reviewNote": "Ver.96：2026年度年金額、生年月日、加入期間の実現可能性、再評価済み平均報酬、公的医療保険・本人iDeCo掛金を限定確認。包括監修未完了。",
+    "reviewNote": "Ver.96：2026年度年金額、生年月日、加入期間の実現可能性、再評価済み平均報酬、公的医療保険・本人iDeCo掛金を限定確認。包括監修未完了。 Ver.172：厚生年金の60歳前後を区別する具体的期間を追加。独自指定記録の全月暦検算で、既存月数/正答を保持。新法改正・初回ID・追加移行には加算しない。",
     "blueprintCase": 1,
     "blueprintSet": 1,
     "unit": "円",
@@ -3268,26 +3299,29 @@ const PRACTICAL_QUESTIONS = [
     },
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "pensionYear": 2026,
-    "sourceLabel": "日本年金機構：報酬比例部分"
+    "sourceLabel": "日本年金機構：報酬比例部分",
+    "additionalSourceUrls": [
+      "https://www.nenkin.go.jp/service/jukyu/seido/roureinenkin/jukyu-yoken/20150401-02.html"
+    ]
   },
   {
     "id": "pr-kinzai2_nonlife-003",
     "track": "kinzai2_nonlife",
     "case": 1,
     "caseTitle": "年金と公的医療保険",
-    "caseText": "会社員の山田さん（1961年7月2日生まれ）は、2026年4月1日現在の制度で老後の資金計画と公的医療保険について相談している。健康保険は協会けんぽの被保険者である。65歳時の年金年額を2026年度価額で試算し、老齢基礎年金の満額は847,300円を用いる。20歳以上60歳未満の保険料納付済相当月数は420月で、免除・未納の扱いを別途加算する必要はない。厚生年金の計算資料：2003年3月以前24月・平均標準報酬月額250,000円、2003年4月以後276月・平均標準報酬額440,000円。上記の平均報酬は再評価済みの計算用の額とし、報酬比例の乗率は順に7.125/1000、5.481/1000を用いる。従前額保障・加給年金・経過的加算・在職による支給停止・以後の加入による増額は今回の計算対象外。実際の将来支給額や受給開始初年度の月割支給額は予測せず、与件の年額だけを計算する。",
+    "caseText": "会社員の山田さん（1961年7月2日生まれ）は、2026年4月1日現在の制度で老後の資金計画と公的医療保険について相談している。健康保険は協会けんぽの被保険者である。65歳時の年金年額を2026年度価額で試算し、老齢基礎年金の満額は847,300円を用いる。20歳以上60歳未満の保険料納付済相当月数は420月で、免除・未納の扱いを別途加算する必要はない。厚生年金の計算資料：2003年3月以前24月・平均標準報酬月額250,000円、2003年4月以後276月・平均標準報酬額440,000円。上記の平均報酬は再評価済みの計算用の額とし、報酬比例の乗率は順に7.125/1000、5.481/1000を用いる。従前額保障・加給年金・経過的加算・在職による支給停止・以後の加入による増額は今回の計算対象外。実際の将来支給額や受給開始初年度の月割支給額は予測せず、与件の年額だけを計算する。 加入記録の具体的な期間は、1981年7月から1996年3月まで国民年金第1号の納付済、1996年4月から2001年3月まで国民年金第1号の未納、2001年4月から2003年3月まで厚生年金（2003年3月以前）、2003年4月から2026年3月まで厚生年金（2003年4月以後）。各期間は両端の月を含み、重複や記載以外の期間はない。60歳到達日は2021年7月1日であり、その前月までの480月から未納期間を除いた420月を老齢基礎年金の計算に用いる。60歳以後の厚生年金57月は老齢基礎年金のこの月数に加えず、報酬比例部分は指定した全厚生年金期間で計算する。",
     "question": "2026年4月1日現在の制度について、次の説明の適否の組合せはどれか。①入院時食事療養費の自己負担額や保険外の差額ベッド代も高額療養費の対象となる。②傷病手当金の支給期間は同一傷病について支給開始日から通算1年6か月である。③加入資格を満たす者が本人のiDeCo掛金を支払った場合、その全額が小規模企業共済等掛金控除の対象となる。",
     "kind": "choice",
     "answer": 0,
     "explanation": "①×：入院時食事療養費の自己負担額や保険外の差額部分は高額療養費の対象外です。②○：同一傷病について支給開始から通算1年6か月です。③○：加入者本人が支払ったiDeCo掛金は全額が小規模企業共済等掛金控除の対象です。加入資格や掛金限度額の計算、高額療養費の2026年8月以後の上限額改定は本問の対象外です。",
     "topic": "年金・公的保障",
     "lawReferenceDate": "2026-04-01",
-    "revision": 59,
-    "contentReview": "v96_2026_nonlife_case1_migration",
+    "revision": 60,
+    "contentReview": "v172_pre_post60_month_separation",
     "sourceUrl": "https://www.kyoukaikenpo.or.jp/benefit/high_cost_medical_expenses/002/",
     "sourceCheckedDate": "2026-10-14",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_sonpo.pdf",
-    "reviewNote": "Ver.96：2026年度年金額、生年月日、加入期間の実現可能性、再評価済み平均報酬、公的医療保険・本人iDeCo掛金を限定確認。包括監修未完了。",
+    "reviewNote": "Ver.96：2026年度年金額、生年月日、加入期間の実現可能性、再評価済み平均報酬、公的医療保険・本人iDeCo掛金を限定確認。包括監修未完了。 Ver.172：厚生年金の60歳前後を区別する具体的期間を追加。独自指定記録の全月暦検算で、既存月数/正答を保持。新法改正・初回ID・追加移行には加算しない。",
     "blueprintCase": 1,
     "blueprintSet": 1,
     "choices": [
@@ -3305,7 +3339,8 @@ const PRACTICAL_QUESTIONS = [
     "sourceLabel": "協会けんぽ：高額療養費（傷病手当金・iDeCoの追加資料は監査記録参照）",
     "additionalSourceUrls": [
       "https://www.kyoukaikenpo.or.jp/benefit/injury_and_sickness_allowance/",
-      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm"
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm",
+      "https://www.nenkin.go.jp/service/jukyu/seido/roureinenkin/jukyu-yoken/20150401-02.html"
     ]
   },
   {
@@ -3746,18 +3781,20 @@ const PRACTICAL_QUESTIONS = [
       "記名被保険者自身が所有する車庫を壊した"
     ],
     "answer": 0,
-    "explanation": "設例の対物賠償は第三者の財物が対象で、自己所有の塀・車庫は明示された免責です。個別商品の支払可否を一律に断定した問題ではありません。",
+    "explanation": "設例の対物賠償は第三者の財物が対象で、自己所有の塀・車庫は明示された免責です。個別商品の支払可否を一律に断定した問題ではありません。 他人の財物に対する法律上の賠償責任と、自己所有財物の損害を区別します。本問で対象とする第三者の看板には他の免責がないと指定されており、一般の契約の全事故に同じ結論を当てはめるものではありません。",
     "topic": "自動車保険",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceUrl": "https://soudanguide.sonpo.or.jp/car/q008.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 38,
+    "revision": 39,
     "blueprintQuestion": 14,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v168_direct_sources_and_scope",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.168：公表試験PDFから直接根拠へ是正し、制度の要件・限定範囲を補足。全設例・全肢・正答保持。全文/全改正の包括監修ではない。",
+    "sourceLabel": "日本損害保険協会：対物賠償責任保険の対象",
+    "additionalSourceUrls": []
   },
   {
     "id": "pr-jafp3-015",
@@ -3827,18 +3864,21 @@ const PRACTICAL_QUESTIONS = [
       "一時所得だけ／領収書を保存すること"
     ],
     "answer": 0,
-    "explanation": "青色申告の対象は不動産・事業・山林所得。最大65万円控除には、55万円控除の要件を満たした上でe-Tax等の追加要件が必要です。所得の種類や規模により適用できる控除が異なります。",
+    "explanation": "青色申告の対象は不動産・事業・山林所得。最大65万円控除には、55万円控除の要件を満たした上でe-Tax等の追加要件が必要です。所得の種類や規模により適用できる控除が異なります。 青色申告を選べる所得の範囲と、55万円・65万円控除を受けられる所得の範囲は同じではありません。山林所得だけの場合に65万円控除を受けられるという意味ではなく、この場合は最高10万円の区分です。給与所得だけ・一時所得だけでは青色申告の対象になりません。電子帳簿の経路では優良な電子帳簿の要件と所定の届出等が必要で、領収書や給与明細の保存だけでは足りません。",
     "topic": "青色申告",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2072.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 38,
+    "revision": 39,
     "blueprintQuestion": 17,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v166_tax_source_and_option_rationale",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.166：非課税根拠URL/誤答理由、配偶者特別控除の所得帯、青色申告の所得範囲を該当問で是正・補足。設例・正答・全肢保持。全文/全改正の包括照合ではない。",
+    "additionalSourceUrls": [
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2070.htm"
+    ]
   },
   {
     "id": "pr-jafp3-018",
@@ -3983,39 +4023,39 @@ const PRACTICAL_QUESTIONS = [
       "31万円"
     ],
     "answer": 1,
-    "explanation": "この家族条件では各区分の上限4万円、合計12万円。23歳未満扶養親族がある場合の一般生命保険料控除の特則とは区別します。支払額31万円全額や住民税の7万円ではありません。",
+    "explanation": "一般生命・介護医療・個人年金はいずれも新契約で、各年間保険料は8万円を超えるため各4万円、4＋4＋4＝12万円です。この設例には23歳未満の扶養親族がいないので一般生命保険料の特則は使いません。選択肢1の14万円は所得税の合計上限12万円を超えます。選択肢3の7万円は住民税の合計上限との取り違え、選択肢4の31万円は支払保険料10＋12＋9万円を控除額とする誤りです。所得控除であり、税額そのものを12万円減らす制度ではありません。",
     "topic": "生命保険料控除",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1140.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 34,
+    "revision": 35,
     "blueprintQuestion": 14,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v163_choice_rationale_and_scoped_primary_recheck",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.163：設例・選択肢・正答位置を保持し、全肢の取り違えを解説へ補足。指定条件の算術と出典再読を分離して記録。包括監修・全文照合ではない。"
   },
   {
     "id": "pr-jafp2-015",
     "track": "jafp2",
     "case": 15,
     "caseTitle": "法人の養老保険",
-    "caseText": "【2026年4月1日基準の独自演習】2022年契約、会社が保険料負担、全役員・従業員を公平に対象。死亡受取人は各人の遺族、満期受取人は会社。特約なし、当期対応保険料600万円。",
-    "question": "資料の条件に関する次の①〜④について、適切なら○、不適切なら×を各欄で選びなさい。1：当期対応保険料600万円はすべて資産計上する。 2：当期対応保険料は300万円を資産計上し、300万円を損金に算入する。 3：当期対応保険料600万円はすべて社長への給与として処理する。 4：当期対応保険料600万円はすべて損金に算入する。",
+    "caseText": "2022年契約、会社が保険料負担、全役員・従業員を公平に対象。死亡受取人は各人の遺族、満期受取人は会社。特約なし、当期対応保険料600万円。",
+    "question": "資料の条件を前提として、次の①〜④について、適切なら○、不適切なら×を各欄で選びなさい。",
     "kind": "multi_choice",
     "explanation": "①×、②○、③×、④×。死亡保険金受取人が各人の遺族、満期保険金受取人が法人である養老保険は、当期対応保険料の2分の1を資産計上し、残額を当期の損金に算入します。600万円÷2＝300万円です。本設例は全役員・従業員を公平に対象とし、特定の役員等だけを被保険者とする給与処理の例外には当たりません。特約保険料もありません。",
     "topic": "法人保険",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/hojin/5363.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 35,
+    "revision": 36,
     "blueprintQuestion": 15,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-15",
-    "contentReview": "v150_four_true_false_fields_with_scoped_reconfirmation",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v169_self_contained_multi_choice_fields",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.150：公表例と同じ4欄○×へ。国税庁の令和8年4月1日現在法令等の説明を限定再確認。掲載基準日・確認日・施行日を区別し、全条文・全改正照合や正式配点の完了とはしない。",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.150：公表例と同じ4欄○×へ。国税庁の令和8年4月1日現在法令等の説明を限定再確認。掲載基準日・確認日・施行日を区別し、全条文・全改正照合や正式配点の完了とはしない。 Ver.169：全8問31欄を横断点検。回答欄の記述を単独で読める文章へ整理し、問題文の記述重複と独自演習見出しを除去。正誤・指定条件は維持。公式説明の既存論点再確認のみで、新法改正・ID初回・追加移行へ加算しない。基準日全文・正式配点は保留。",
     "subAnswers": [
       {
         "label": "① 当期対応保険料600万円はすべて資産計上する。",
@@ -4070,18 +4110,22 @@ const PRACTICAL_QUESTIONS = [
       "隣家からの通常の火災で建物が焼損した場合は、この設例の補償対象となる。"
     ],
     "answer": 1,
-    "explanation": "選択肢2が不適切です。設例では地震に起因する損害を対象外とし、地震保険も未加入なので、地震に起因する火災は補償対象になりません。選択肢1の落雷、選択肢3・4の通常の火災は、資料の補償条件と他の免責がないという前提の下で対象となります。この設例の条件を、すべての商品・約款へ一般化しないようにします。",
+    "explanation": "選択肢2が不適切です。設例では地震に起因する損害を対象外とし、地震保険も未加入なので、地震に起因する火災は補償対象になりません。選択肢1の落雷、選択肢3・4の通常の火災は、資料の補償条件と他の免責がないという前提の下で対象となります。この設例の条件を、すべての商品・約款へ一般化しないようにします。 この問題は資料で指定した建物の損害補償を判定します。商品によって設けられる地震火災費用保険金などの別の費用補償を比較する設例ではありません。実際の契約では、損害補償と費用補償のそれぞれの条件を確認します。",
     "topic": "火災保険",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceUrl": "https://soudanguide.sonpo.or.jp/home/q050.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 35,
+    "revision": 36,
     "blueprintQuestion": 16,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v156_choice_direction_and_full_option_check",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v165_fire_source_and_expense_coverage_scope",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.156：対象外事故の選択から、公表例問16と同じ不適切説明の選択へ。従来の独自補償条件を保持し、全4文の真偽を与件から確認。新たな商品約款・法令照合実績へ加算しない。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.156：対象外事故の選択から、公表例問16と同じ不適切説明の選択へ。従来の独自補償条件を保持し、全4文の真偽を与件から確認。新たな商品約款・法令照合実績へ加算しない。 Ver.165：補償根拠を試験PDFから損保協会の一次説明へ是正。地震火災の損害補償と別の費用補償を区別する注記を追加。正答・全肢・資料条件保持。個別商品の約款監修や2026-04-01時点の全法令確認ではない。",
+    "sourceLabel": "日本損害保険協会：火災保険の補償・地震火災費用との区別",
+    "additionalSourceUrls": [
+      "https://www.sonpo.or.jp/insurance/kasai/index.html"
+    ]
   },
   {
     "id": "pr-jafp2-017",
@@ -4112,24 +4156,30 @@ const PRACTICAL_QUESTIONS = [
     "track": "jafp2",
     "case": 18,
     "caseTitle": "年金と一時所得",
-    "caseText": "【2026年4月1日基準の独自演習】66歳、2026年公的年金収入210万円、他の所得が1,000万円以下で公的年金等控除110万円が適用される。本人負担の15年満期養老保険満期金680万円、払込保険料560万円。他の一時所得なし。",
+    "caseText": "2026年12月31日現在66歳。2026年公的年金収入210万円で、公的年金等控除110万円が適用される。本人が保険料を全額負担した15年満期・平準払の養老保険から、本人が満期一時金680万円を受け取り、正味払込保険料は560万円。金融類似商品の源泉分離課税には該当しない。この公的年金と満期一時金以外の所得はなく、他の一時所得・追加費用もない。公的年金等に係る雑所得以外の所得金額は1,000万円以下。",
     "question": "総所得金額を求めなさい。",
     "kind": "numeric",
     "choices": [],
     "answer": 135,
     "unit": "万円",
-    "explanation": "公的年金雑所得210－110＝100万円。一時所得680－560－50＝70万円、算入は35万円。合計135万円。",
+    "explanation": "年末時点で65歳以上、公的年金収入は110万円超330万円未満、公的年金等に係る雑所得以外の所得金額が1,000万円以下なので、公的年金等控除は110万円です。公的年金等に係る雑所得は210－110＝100万円。本人負担・本人受取の満期一時金について、一時所得は680－560－50＝70万円、その2分の1の35万円を総所得金額へ算入します。記載以外の所得はないので、100＋35＝135万円。これは所得控除前の所得金額であり、所得税額・源泉徴収税額・手取り額ではありません。",
     "topic": "総所得金額",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceUrl": "https://www.nta.go.jp/publication/pamph/koho/kurashi/html/03_1.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 34,
+    "revision": 35,
     "blueprintQuestion": 18,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v170_exclusive_income_conditions",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.170：総所得金額を一意にするため、記載以外の所得なしを明示し、共通設例の全3小問へ同期。正答と選択肢の意味は維持。新法改正・追加移行・ID初回へ加算しない。",
+    "sourceLabel": "国税庁：公的年金等の所得計算と一時所得",
+    "additionalSourceUrls": [
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1600.htm",
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1490.htm",
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1755.htm"
+    ]
   },
   {
     "id": "pr-jafp2-019",
@@ -4170,18 +4220,18 @@ const PRACTICAL_QUESTIONS = [
       "0円"
     ],
     "answer": 1,
-    "explanation": "この条件の内国法人の普通配当は所得税で10％の配当控除。40×10％＝4万円。申告分離課税では配当控除を受けられません。",
+    "explanation": "総合課税で申告する内国法人の普通株式の配当で、課税総所得金額等は全額1,000万円以下なので、所得税の配当控除は40万円×10％＝4万円です。算出税額10万円を下回るため全額を控除できます。選択肢1の2万円はこの設例に当てはまらない5％を用いた値、選択肢3の40万円は配当所得全額を税額控除する誤りです。選択肢4の0円は申告分離課税や申告不要など控除対象外の扱いとの取り違えで、この設例は総合課税を選択しています。",
     "topic": "配当控除",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1250.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 34,
+    "revision": 35,
     "blueprintQuestion": 20,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v163_choice_rationale_and_scoped_primary_recheck",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.163：設例・選択肢・正答位置を保持し、全肢の取り違えを解説へ補足。指定条件の算術と出典再読を分離して記録。包括監修・全文照合ではない。"
   },
   {
     "id": "pr-jafp2-021",
@@ -4212,21 +4262,21 @@ const PRACTICAL_QUESTIONS = [
     "track": "jafp2",
     "case": 22,
     "caseTitle": "住宅ローン控除の基礎",
-    "caseText": "【2026年4月1日基準の独自演習】2026年4月1日時点の制度の性質を確認する。個別の住宅性能・取得日・入居年等の要件は別途確認する。",
-    "question": "資料の条件に関する次の①〜④について、適切なら○、不適切なら×を各欄で選びなさい。1：対象年の所得から住宅ローン残高の全額を差し引く所得控除である。 2：所得税の税額から所定の金額を控除する制度であり、適用要件がある。 3：誰でも住宅ローン返済額の全額を税額から差し引ける。 4：住宅の取得・入居等の要件を満たさなくても、借入れだけで必ず適用される。",
+    "caseText": "2026年4月1日時点の制度の性質を確認する。個別の住宅性能・取得日・入居年等の要件は別途確認する。",
+    "question": "資料の条件を前提として、次の①〜④について、適切なら○、不適切なら×を各欄で選びなさい。",
     "kind": "multi_choice",
     "explanation": "①×、②○、③×、④×。住宅ローン控除は所得税の税額控除で、所得控除ではありません。年末の借入金残高等を基に所定の方法で計算する制度であり、返済額や借入金残高の全額をそのまま控除する制度ではありません。住宅の取得・入居等の要件を満たす必要があります。個別の住宅性能・取得日・入居年による限度額や適用可否は本問の判定対象外です。",
     "topic": "住宅ローン控除",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1210.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 35,
+    "revision": 36,
     "blueprintQuestion": 22,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-15",
-    "contentReview": "v150_four_true_false_fields_with_scoped_reconfirmation",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v169_self_contained_multi_choice_fields",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.150：公表例と同じ4欄○×へ。国税庁の令和8年4月1日現在法令等の説明を限定再確認。掲載基準日・確認日・施行日を区別し、全条文・全改正照合や正式配点の完了とはしない。",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.150：公表例と同じ4欄○×へ。国税庁の令和8年4月1日現在法令等の説明を限定再確認。掲載基準日・確認日・施行日を区別し、全条文・全改正照合や正式配点の完了とはしない。 Ver.169：全8問31欄を横断点検。回答欄の記述を単独で読める文章へ整理し、問題文の記述重複と独自演習見出しを除去。正誤・指定条件は維持。公式説明の既存論点再確認のみで、新法改正・ID初回・追加移行へ加算しない。基準日全文・正式配点は保留。",
     "subAnswers": [
       {
         "label": "① 対象年の所得から住宅ローン残高の全額を差し引く所得控除である。",
@@ -4401,39 +4451,39 @@ const PRACTICAL_QUESTIONS = [
       "1,200万円"
     ],
     "answer": 1,
-    "explanation": "自用地価額30×200＝6,000万円、借地権は6,000×60％＝3,600万円。残り2,400万円は底地の基本計算です。",
+    "explanation": "普通借地権は、自用地としての価額に借地権割合を掛けて評価します。30万円/㎡×200㎡×1.0＝6,000万円、6,000万円×60％＝3,600万円です。選択肢1の2,400万円は60％ではなく残り40％を掛けた底地側の基本計算との取り違え、選択肢3の6,000万円は借地権割合を掛けていない自用地価額です。選択肢4の1,200万円は20％を掛けた値で、与件の60％に一致しません。定期借地権等の評価や、実際の路線価・補正率を調査する問題ではありません。",
     "topic": "借地権評価",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/hyoka/4611.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 34,
+    "revision": 35,
     "blueprintQuestion": 26,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v163_choice_rationale_and_scoped_primary_recheck",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.163：設例・選択肢・正答位置を保持し、全肢の取り違えを解説へ補足。指定条件の算術と出典再読を分離して記録。包括監修・全文照合ではない。"
   },
   {
     "id": "pr-jafp2-027",
     "track": "jafp2",
     "case": 27,
     "caseTitle": "配偶者短期居住権",
-    "caseText": "【2026年4月1日基準の独自演習】被相続人所有の家屋に配偶者が相続開始時に無償で居住し、配偶者短期居住権の成立要件を満たす。",
-    "question": "資料の条件を前提として、次の①〜④について、適切なら○、不適切なら×を各欄で選びなさい。① この権利が成立すると、配偶者は居住建物の所有権を当然に取得する。 ② 成立要件を満たす配偶者が、法定の期間中、居住建物を無償で使用するための権利である。 ③ この権利の存続期間は、個別の事情にかかわらず必ず配偶者の終身である。 ④ 配偶者でない同居親族にも、同居していたことだけでこの権利が生じる。",
+    "caseText": "被相続人所有の家屋に配偶者が相続開始時に無償で居住し、配偶者短期居住権の成立要件を満たす。",
+    "question": "資料の条件を前提として、次の①〜④について、適切なら○、不適切なら×を各欄で選びなさい。",
     "kind": "multi_choice",
     "explanation": "①×、②○、③×、④×。配偶者短期居住権は、成立要件を満たす配偶者が居住建物を法定の期間、無償で使用するための権利です。建物の所有権そのものを当然に取得させる制度ではありません。終身の居住を必ず保障する制度でもなく、配偶者以外の同居親族に同居だけで同じ権利が生じるものでもありません。具体的な終期や消滅事由は、遺産分割・消滅申入れ等の条件に応じて区別します。",
     "topic": "配偶者短期居住権",
     "sourceUrl": "https://www.courts.go.jp/vc-files/courts/file4/H310121-04minnpouoyobikajijikenntetudukihounoitibuwokaiseisuruhouritu.pdf",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 35,
+    "revision": 36,
     "blueprintQuestion": 27,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-15",
-    "contentReview": "v152_format_and_enacted_amendment_scoped_reconfirmation",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v169_self_contained_multi_choice_fields",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.152：公表例問27の4欄○×へ。裁判所掲載の改正法本文の1037条（物理19〜20ページ）で使用権・配偶者・法定の終期を限定再確認。法務省案内本文は取得403。2026-04-01統合全文/全改正照合は追加保留であり、制定・改正法の限定確認を最新全文確認とはしない。",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.152：公表例問27の4欄○×へ。裁判所掲載の改正法本文の1037条（物理19〜20ページ）で使用権・配偶者・法定の終期を限定再確認。法務省案内本文は取得403。2026-04-01統合全文/全改正照合は追加保留であり、制定・改正法の限定確認を最新全文確認とはしない。 Ver.169：全8問31欄を横断点検。回答欄の記述を単独で読める文章へ整理し、問題文の記述重複と独自演習見出しを除去。正誤・指定条件は維持。公式説明の既存論点再確認のみで、新法改正・ID初回・追加移行へ加算しない。基準日全文・正式配点は保留。",
     "subAnswers": [
       {
         "label": "① この権利が成立すると、配偶者は居住建物の所有権を当然に取得する。",
@@ -4536,18 +4586,23 @@ const PRACTICAL_QUESTIONS = [
       "第一種と第二種では利息の扱いが異なる"
     ],
     "answer": 1,
-    "explanation": "貸与の第一種は無利子、第二種は有利子です。学生自身が申し込む制度で、予約採用・在学採用があります。",
+    "explanation": "貸与の第一種は無利子、第二種は有利子です。学生自身が申し込む制度で、予約採用・在学採用があります。 申込者・貸与を受ける主体は学生本人で、学校を通じた手続きを行います。「学生本人が申し込む」は学校を介さず自由に直接申し込めるという意味ではありません。採用要件・申込期限・利率や返還額の計算はこの問題では扱いません。",
     "topic": "奨学金",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceUrl": "https://www.jasso.go.jp/shogakukin/about/taiyo/index.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 2,
+    "revision": 3,
     "blueprintQuestion": 30,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v167_public_benefit_sources_and_option_reasons",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.167：直接の制度根拠・被保険者区分の誤答理由・対象範囲を補足。正答/全肢/設例保持。法令全文や全改正の包括監修ではない。",
+    "sourceLabel": "JASSO：貸与奨学金の種類と申込み",
+    "additionalSourceUrls": [
+      "https://www.jasso.go.jp/shogakukin/moshikomi/yoyaku/houhou.html",
+      "https://www.jasso.go.jp/shogakukin/moshikomi/zaigaku/houhou.html"
+    ]
   },
   {
     "id": "pr-jafp2-031",
@@ -4660,42 +4715,42 @@ const PRACTICAL_QUESTIONS = [
       "6回"
     ],
     "answer": 2,
-    "explanation": "5回分は9.8＋9.9＋10.0＋10.1＋10.2＝50万円。6回分60.3万円は上限を超えます。利息を元金へ加えません。",
+    "explanation": "3回までの累計元金は29.7万円、4回は39.8万円、5回は50.0万円、6回は60.3万円です。上限50万円以下で最も多いのは5回なので選択肢3が正解です。選択肢1・2も上限内ですが最大回数ではなく、選択肢4は上限を10.3万円超えます。この設例では利息や手数料を加えず、指定された各回の元金だけを累計します。",
     "topic": "繰上返済",
     "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 41,
+    "revision": 42,
     "blueprintQuestion": 35,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
     "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v149_full_form_matrix_and_targeted_correction",
+    "contentReview": "v163_choice_rationale_and_scoped_primary_recheck",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.149：公式問35の4択形式に合わせる。独自償還条件は保持し、3〜6回の全選択肢を累計元金で独立検算。法令照合の新規計上なし。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.149：公式問35の4択形式に合わせる。独自償還条件は保持し、3〜6回の全選択肢を累計元金で独立検算。法令照合の新規計上なし。 Ver.163：設例・選択肢・正答位置を保持し、全肢の取り違えを解説へ補足。指定条件の算術と出典再読を分離して記録。包括監修・全文照合ではない。"
   },
   {
     "id": "pr-jafp2-036",
     "track": "jafp2",
     "case": 36,
     "caseTitle": "公的年金の基礎",
-    "caseText": "【2026年4月1日基準の独自演習】①老齢基礎年金は原則65歳から。②受給資格期間は原則10年以上。③第3号期間は老齢基礎年金の額に反映されない。",
-    "question": "資料の①〜③と、追加記述④「基準日時点でも、老齢基礎年金の受給資格期間は原則25年以上必要である。」について、適切なら○、不適切なら×を各欄で選びなさい。",
+    "caseText": "①老齢基礎年金は原則65歳から。②受給資格期間は原則10年以上。③第3号期間は老齢基礎年金の額に反映されない。",
+    "question": "資料の条件を前提として、次の①〜④について、適切なら○、不適切なら×を各欄で選びなさい。",
     "kind": "multi_choice",
     "explanation": "原則65歳、受給資格期間は10年以上。第3号被保険者期間は納付済期間として基礎年金の額に反映されるので③は誤りです。 ④も誤りです。受給資格期間は2017年8月1日から原則10年に短縮されており、基準日に25年要件のままではありません。",
     "topic": "公的年金",
     "sourceUrl": "https://www.nenkin.go.jp/service/jukyu/seido/roureinenkin/jukyu-yoken/20150401-02.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 42,
+    "revision": 43,
     "blueprintQuestion": 36,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-15",
-    "contentReview": "v149_full_form_matrix_and_targeted_correction",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v169_self_contained_multi_choice_fields",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.149：公式問36の4欄○×形式へ。既存3論点と10年要件の裏返しの誤記述を再確認。現行ページ更新日2026-09-04と基準日2026-04-01を区別。基準日統合全文/公式配点は未確認。",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.149：公式問36の4欄○×形式へ。既存3論点と10年要件の裏返しの誤記述を再確認。現行ページ更新日2026-09-04と基準日2026-04-01を区別。基準日統合全文/公式配点は未確認。 Ver.169：全8問31欄を横断点検。回答欄の記述を単独で読める文章へ整理し、問題文の記述重複と独自演習見出しを除去。正誤・指定条件は維持。公式説明の既存論点再確認のみで、新法改正・ID初回・追加移行へ加算しない。基準日全文・正式配点は保留。",
     "subAnswers": [
       {
-        "label": "① 原則の受給開始年齢",
+        "label": "① 老齢基礎年金は原則として65歳から受給できる。",
         "kind": "choice",
         "choices": [
           "○",
@@ -4704,7 +4759,7 @@ const PRACTICAL_QUESTIONS = [
         "answer": 0
       },
       {
-        "label": "② 原則の受給資格期間",
+        "label": "② 老齢基礎年金の受給資格期間は原則10年以上である。",
         "kind": "choice",
         "choices": [
           "○",
@@ -4713,7 +4768,7 @@ const PRACTICAL_QUESTIONS = [
         "answer": 0
       },
       {
-        "label": "③ 第3号期間と年金額",
+        "label": "③ 第3号被保険者期間は、老齢基礎年金の額に反映されない。",
         "kind": "choice",
         "choices": [
           "○",
@@ -4722,7 +4777,7 @@ const PRACTICAL_QUESTIONS = [
         "answer": 1
       },
       {
-        "label": "④ 25年要件のままであるとの説明",
+        "label": "④ 基準日時点でも、老齢基礎年金の受給資格期間は原則25年以上必要である。",
         "kind": "choice",
         "choices": [
           "○",
@@ -4750,18 +4805,23 @@ const PRACTICAL_QUESTIONS = [
       "老齢厚生年金だけ"
     ],
     "answer": 1,
-    "explanation": "要件を満たす子のある配偶者には遺族基礎年金、厚生年金加入者の死亡では遺族厚生年金も対象となります。",
+    "explanation": "要件を満たす子のある配偶者には遺族基礎年金、厚生年金加入者の死亡では遺族厚生年金も対象となります。 本問は父が厚生年金被保険者として死亡し、妻40歳・子12歳で、生計維持・納付等の要件を満たす場合です。妻自身の老齢年金の受給を前提とする問題ではなく、老齢基礎年金だけ・老齢厚生年金だけという肢は適切ではありません。給付額、将来の子の年齢到達後や制度改正後の給付継続、他年金との併給調整全体は判定しません。",
     "topic": "遺族給付",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceUrl": "https://www.nenkin.go.jp/service/jukyu/seido/izokunenkin/jukyu-yoken/20150401-03.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 40,
+    "revision": 41,
     "blueprintQuestion": 37,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v167_public_benefit_sources_and_option_reasons",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.167：直接の制度根拠・被保険者区分の誤答理由・対象範囲を補足。正答/全肢/設例保持。法令全文や全改正の包括監修ではない。",
+    "sourceLabel": "日本年金機構：遺族基礎年金・遺族厚生年金",
+    "additionalSourceUrls": [
+      "https://www.nenkin.go.jp/service/jukyu/seido/izokunenkin/jukyu-yoken/20150401-04.html",
+      "https://www.nenkin.go.jp/service/jukyu/seido/izokunenkin/jukyu-yoken/20150424.html"
+    ]
   },
   {
     "id": "pr-jafp2-038",
@@ -4809,25 +4869,29 @@ const PRACTICAL_QUESTIONS = [
       "80歳以上／国税庁"
     ],
     "answer": 1,
-    "explanation": "原則75歳以上が対象で、都道府県ごとの広域連合が運営します。一定の障害認定による65〜74歳の加入は別です。",
+    "explanation": "原則75歳以上が対象で、都道府県ごとの広域連合が運営します。一定の障害認定による65〜74歳の加入は別です。 運営主体は都道府県そのものや協会けんぽではなく、都道府県の区域ごとに全市町村が加入する後期高齢者医療広域連合です。保険料徴収など市町村が担う事務もあります。原則の年齢要件を問うため、生活保護などの適用除外や個別の資格判定は別途確認します。",
     "topic": "後期高齢者医療",
-    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceUrl": "https://www.mhlw.go.jp/web/t_doc?dataId=82115000&dataType=0&pageNo=1",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 37,
+    "revision": 38,
     "blueprintQuestion": 39,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-13",
-    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v167_public_benefit_sources_and_option_reasons",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.167：直接の制度根拠・被保険者区分の誤答理由・対象範囲を補足。正答/全肢/設例保持。法令全文や全改正の包括監修ではない。",
+    "sourceLabel": "厚生労働省：高齢者医療確保法48・50〜52条",
+    "additionalSourceUrls": [
+      "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/koukikourei/"
+    ]
   },
   {
     "id": "pr-jafp2-040",
     "track": "jafp2",
     "case": 40,
     "caseTitle": "雇用保険",
-    "caseText": "【2026年4月1日基準の独自演習】2026年4月1日時点の一般的な適用要件。学生等の除外は考慮しない。",
+    "caseText": "2026年4月1日時点の一般的な適用要件。学生等の除外は考慮しない。",
     "question": "各記述について、2026年4月1日時点で適切なら○、不適切なら×を各欄で選びなさい。学生等の適用除外には該当しない一般的な労働者を対象とする。",
     "kind": "multi_choice",
     "explanation": "①②は適切。基準日時点の一般的な要件は週20時間以上、31日以上の雇用見込み等です。③は不適切。週10時間以上への適用拡大の施行は2028年10月1日であり、2026年4月1日にはまだ適用しません。",
@@ -4835,13 +4899,13 @@ const PRACTICAL_QUESTIONS = [
     "sourceUrl": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000147331.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 36,
+    "revision": 37,
     "blueprintQuestion": 40,
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
-    "sourceCheckedDate": "2026-10-15",
-    "contentReview": "v148_official_format_correction",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v169_self_contained_multi_choice_fields",
     "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.147：組合せ選択を欄別数値入力へ変更。独自条件/旧正答の意味を保持。保険給付は指定条件の内部検算、傷病手当金/雇用保険は既存論点の公式再確認。公式配点/包括監修は未完了。 Ver.148：公式公表問題40の欄別○×形式へ訂正。独自3記述。既存制度点を再確認し、将来施行と基準日を区別。V147の数値欄スナップショットは維持。",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.147：組合せ選択を欄別数値入力へ変更。独自条件/旧正答の意味を保持。保険給付は指定条件の内部検算、傷病手当金/雇用保険は既存論点の公式再確認。公式配点/包括監修は未完了。 Ver.148：公式公表問題40の欄別○×形式へ訂正。独自3記述。既存制度点を再確認し、将来施行と基準日を区別。V147の数値欄スナップショットは維持。 Ver.169：全8問31欄を横断点検。回答欄の記述を単独で読める文章へ整理し、問題文の記述重複と独自演習見出しを除去。正誤・指定条件は維持。公式説明の既存論点再確認のみで、新法改正・ID初回・追加移行へ加算しない。基準日全文・正式配点は保留。",
     "subAnswers": [
       {
         "label": "① 一般的な適用要件では週所定労働時間が20時間以上である。",
@@ -5371,22 +5435,22 @@ const PRACTICAL_QUESTIONS = [
     "kind": "choice",
     "choices": [
       "3,620.0万円",
-      "2,690.0万円",
+      "3,240.0万円",
       "2,390.0万円"
     ],
     "answer": 2,
-    "explanation": "妻は1/2の7200万円、子と代襲孫は各1/6の2400万円。税額は妻1460万円、各310万円。合計1460＋310×3＝2390万円。遺産全体に1つの税率を掛けず、基礎控除も再度差し引きません。 個別税額控除前の総額であり、妻が実際に納付する税額ではありません。代襲孫を含む3つの子の枝で子側の2分の1を等分します。",
+    "explanation": "妻は1/2の7200万円、子と代襲孫は各1/6の2400万円。税額は妻1460万円、各310万円。合計1460＋310×3＝2390万円。遺産全体に1つの税率を掛けず、基礎控除も再度差し引きません。 個別税額控除前の総額であり、妻が実際に納付する税額ではありません。代襲孫を含む3つの子の枝で子側の2分の1を等分します。 選択肢1の3,620.0万円は、課税遺産総額全体に30％と700万円の速算控除を一括適用した誤りです。選択肢2の3,240.0万円は、法定相続分ごとの税率だけを掛け、妻の700万円と子・代襲孫各50万円の速算控除を引き忘れた金額です。速算控除は各人の法定相続分に応じた税額の計算で適用します。",
     "topic": "相続税の総額",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
     "lawReferenceDate": "2026-04-01",
-    "revision": 46,
+    "revision": 47,
     "blueprintCase": 5,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_kojin.pdf",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v105_personal_case1_2_5_scoped_migration",
+    "contentReview": "v162_internal_choice_arithmetic_and_distractor_rationale",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.105：年金試算条件、共済、投資指標/注文/REIT、相続期限/控除/法定相続分を個別照合。包括監修未完了。",
+    "reviewNote": "Ver.105：年金試算条件、共済、投資指標/注文/REIT、相続期限/控除/法定相続分を個別照合。包括監修未完了。 Ver.162：正答・設例・正答位置を保持。第2選択肢を各法定取得分の速算控除を忘れた金額へ変更し、誤答の算術根拠を明記。新規公式法令照合ではない。旧保存演習は保持。",
     "additionalSourceUrls": [
       "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4155.htm",
       "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4132.htm"
@@ -5449,27 +5513,27 @@ const PRACTICAL_QUESTIONS = [
       "第1号被保険者は老齢基礎年金を受給できない"
     ],
     "answer": 0,
-    "explanation": "第3号は原則として厚生年金に加入する第2号被保険者に扶養される配偶者です。自営業の夫の扶養だけでは第3号になりません。第1号も要件を満たせば老齢基礎年金を受給できます。",
+    "explanation": "第3号は原則として厚生年金に加入する第2号被保険者に扶養される配偶者です。自営業の夫の扶養だけでは第3号になりません。第1号も要件を満たせば老齢基礎年金を受給できます。 第1号の妻の保険料納付と、夫の収入で家計を支えるという生活上の扶養は別に判断します。第3号は第2号被保険者の被扶養配偶者であることなどの要件が必要で、原則として国内に住所を有する20歳以上60歳未満の方が対象です。夫が第1号という本問ではその要件を満たしません。",
     "topic": "国民年金の区分",
     "sourceUrl": "https://www.nenkin.go.jp/section/faq/kokunen/seido/kanyu/seidosetsumei/20140116.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 103,
+    "revision": 104,
     "blueprintCase": 1,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v103_2026_kinzai3_insurance_pension_medical",
-    "reviewNote": "Ver.103：2026年4月1日基準へ設例条件を再構成し、正答・全選択肢・解説・資料表を限定確認。包括監修、個別商品約款、2026年8月以後の高額療養費改定は対象外。",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v167_public_benefit_sources_and_option_reasons",
+    "reviewNote": "Ver.103：2026年4月1日基準へ設例条件を再構成し、正答・全選択肢・解説・資料表を限定確認。包括監修、個別商品約款、2026年8月以後の高額療養費改定は対象外。 Ver.167：直接の制度根拠・被保険者区分の誤答理由・対象範囲を補足。正答/全肢/設例保持。法令全文や全改正の包括監修ではない。",
     "sourceLabel": "日本年金機構：国民年金の被保険者",
     "additionalSourceUrls": [
-      "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf"
+      "https://www.nenkin.go.jp/service/seidozenpan/20140710.html"
     ],
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
-      "正解。第3号は原則として厚生年金に加入する第2号被保険者に扶養される配偶者です。自営業の夫の扶養だけでは第3号になりません。第1号も要件を満たせば老齢基礎年金を受給できます。",
-      "不適切。設例の条件と計算式を用いると正答は「妻が20歳以上60歳未満で自営業に従事し厚生年金に加入していなければ原則第1号被保険者となる」です。",
-      "不適切。設例の条件と計算式を用いると正答は「妻が20歳以上60歳未満で自営業に従事し厚生年金に加入していなければ原則第1号被保険者となる」です。"
+      "正解。20歳以上60歳未満の自営業者等で第2号・第3号でなければ原則第1号です。",
+      "不適切。夫が第1号被保険者であるため、夫の扶養というだけで妻が第3号になることはありません。",
+      "不適切。第1号も受給資格期間等の要件を満たせば老齢基礎年金を受給できます。"
     ]
   },
   {
@@ -5595,27 +5659,27 @@ const PRACTICAL_QUESTIONS = [
       "原則非課税である"
     ],
     "answer": 2,
-    "explanation": "疾病・傷害に基因して受け取る本人の入院給付金は原則非課税です。医療費控除を計算する場合には、その給付の目的となる医療費から控除します。給与・退職により受け取った所得ではありません。",
+    "explanation": "疾病・傷害に基因して受け取る本人の入院給付金は原則非課税です。医療費控除を計算する場合には、その給付の目的となる医療費から控除します。給与・退職により受け取った所得ではありません。 非課税となる理由は疾病入院に基因する保険給付だからであり、会社員が受け取るというだけで給与所得にはならず、退職による給付でもありません。医療費控除では、補てん金をその給付目的の医療費まで差し引き、余った給付金を別の医療費から差し引くことはしません。",
     "topic": "給付金と税務",
-    "sourceUrl": "https://www.nta.go.jp/law/tsutatsu/kihon/shotoku/02/04.htm",
+    "sourceUrl": "https://www.nta.go.jp/about/organization/tokyo/bunshokaito/shotoku/130313/01.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 103,
+    "revision": 104,
     "blueprintCase": 2,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v103_2026_kinzai3_insurance_pension_medical",
-    "reviewNote": "Ver.103：2026年4月1日基準へ設例条件を再構成し、正答・全選択肢・解説・資料表を限定確認。包括監修、個別商品約款、2026年8月以後の高額療養費改定は対象外。",
-    "sourceLabel": "国税庁：所得税基本通達9-20・9-21",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v166_tax_source_and_option_rationale",
+    "reviewNote": "Ver.103：2026年4月1日基準へ設例条件を再構成し、正答・全選択肢・解説・資料表を限定確認。包括監修、個別商品約款、2026年8月以後の高額療養費改定は対象外。 Ver.166：非課税根拠URL/誤答理由、配偶者特別控除の所得帯、青色申告の所得範囲を該当問で是正・補足。設例・正答・全肢保持。全文/全改正の包括照合ではない。",
+    "sourceLabel": "国税庁：疾病に基因する入院給付金の非課税の説明",
     "additionalSourceUrls": [
-      "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf"
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm"
     ],
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
-      "不適切。設例の条件と計算式を用いると正答は「原則非課税である」です。",
-      "不適切。設例の条件と計算式を用いると正答は「原則非課税である」です。",
-      "正解。疾病・傷害に基因して受け取る本人の入院給付金は原則非課税です。医療費控除を計算する場合には、その給付の目的となる医療費から控除します。給与・退職により受け取った所得ではありません。"
+      "不適切。疾病入院に基因する保険契約上の給付で、勤務先からの労務の対価である給与ではありません。",
+      "不適切。退職を原因とする給付ではなく、本人の疾病入院に基因する保険給付です。",
+      "正解。疾病・傷害に基因して本人が受け取る入院給付金は原則非課税です。"
     ]
   },
   {
@@ -5704,19 +5768,19 @@ const PRACTICAL_QUESTIONS = [
       "以後の保険料払込みを止め、原資に応じた終身保障に変更する"
     ],
     "answer": 2,
-    "explanation": "設例では解約返戻金を原資に、以後の払込みがない終身保険へ変更します。元の保障額を必ず維持・増額できるわけではありません。変更可否と特約の扱いは商品によります。",
+    "explanation": "設例では解約返戻金を原資に、以後の払込みがない終身保険へ変更します。元の保障額を必ず維持・増額できるわけではありません。変更可否と特約の扱いは商品によります。 払済保険一般では保険期間をそのままにして保障額を減らす仕組みです。本問は商品条件として払済終身保険へ変更可能と指定しています。元の商品が何であっても必ず終身保障へ変更できるという説明ではありません。特約の継続・消滅や変更可否は個別契約で確認します。",
     "topic": "払済保険",
-    "sourceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf",
+    "sourceUrl": "https://www.jili.or.jp/knows_learns/q_a/life_insurance/153.html",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 104,
+    "revision": 105,
     "blueprintCase": 3,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v104_2026_kinzai3_insurance_retirement_tax_inheritance",
-    "reviewNote": "Ver.104：2026年4月1日基準で条件・正答・全選択肢・解説・資料表を限定確認。2026年12月1日施行で2026年分に適用される所得税改正は施行日を明示。包括監修・個別商品約款は未完了。",
-    "sourceLabel": "設例与件：払済終身保険への変更条件",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v168_direct_sources_and_scope",
+    "reviewNote": "Ver.104：2026年4月1日基準で条件・正答・全選択肢・解説・資料表を限定確認。2026年12月1日施行で2026年分に適用される所得税改正は施行日を明示。包括監修・個別商品約款は未完了。 Ver.168：公表試験PDFから直接根拠へ是正し、制度の要件・限定範囲を補足。全設例・全肢・正答保持。全文/全改正の包括監修ではない。",
+    "sourceLabel": "生命保険文化センター：払済保険への変更",
     "additionalSourceUrls": [],
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
@@ -5813,28 +5877,29 @@ const PRACTICAL_QUESTIONS = [
       "配偶者の給与収入140万円をそのまま控除する"
     ],
     "answer": 1,
-    "explanation": "配偶者の給与所得は140－74＝66万円で62万円を超えるため配偶者控除の対象外です。本人の合計所得金額は900万円以下、配偶者所得は62万円超85万円以下なので、他の要件を満たす設例では配偶者特別控除38万円です。",
+    "explanation": "配偶者の給与所得は140－74＝66万円で62万円を超えるため配偶者控除の対象外です。本人の合計所得金額は900万円以下、配偶者所得は62万円超95万円以下なので、他の要件を満たす設例では配偶者特別控除38万円です。 本人の合計所得金額は580＋（740－600－50）÷2＝625万円です。配偶者の給与収入140万円そのものを所得控除する制度ではありません。",
     "topic": "配偶者控除",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1191.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 104,
+    "revision": 105,
     "blueprintCase": 4,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v104_2026_kinzai3_insurance_retirement_tax_inheritance",
-    "reviewNote": "Ver.104：2026年4月1日基準で条件・正答・全選択肢・解説・資料表を限定確認。2026年12月1日施行で2026年分に適用される所得税改正は施行日を明示。包括監修・個別商品約款は未完了。",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v166_tax_source_and_option_rationale",
+    "reviewNote": "Ver.104：2026年4月1日基準で条件・正答・全選択肢・解説・資料表を限定確認。2026年12月1日施行で2026年分に適用される所得税改正は施行日を明示。包括監修・個別商品約款は未完了。 Ver.166：非課税根拠URL/誤答理由、配偶者特別控除の所得帯、青色申告の所得範囲を該当問で是正・補足。設例・正答・全肢保持。全文/全改正の包括照合ではない。",
     "sourceLabel": "国税庁：No.1191 配偶者控除",
     "additionalSourceUrls": [
       "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp03_j_hoken.pdf",
-      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm"
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm",
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1195.htm"
     ],
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
-      "誤り。2026年分の給与所得控除74万円と配偶者の所得要件62万円以下で判定します。",
-      "正解。2026年分の年末判定として給与所得と本人の所得区分を分けて確認します。",
-      "誤り。2026年分の給与所得控除74万円と配偶者の所得要件62万円以下で判定します。"
+      "不適切。配偶者の給与所得66万円は配偶者控除の所得要件62万円以下を超えます。",
+      "正解。本人の合計所得625万円は900万円以下、配偶者所得66万円は62万円超95万円以下なので、配偶者特別控除は38万円です。",
+      "不適切。配偶者の給与収入140万円をそのまま控除するのではなく、夫婦それぞれの合計所得金額に応じた控除額を適用します。"
     ]
   },
   {
@@ -6118,24 +6183,24 @@ const PRACTICAL_QUESTIONS = [
     "track": "kinzai2_personal",
     "case": 8,
     "caseTitle": "損益通算と所得控除",
-    "caseText": "【2026年4月1日基準の独自演習】個人事業主の遠藤さんの2026年分の事業所得（青色申告特別控除後）は920万円。国内の通常の賃貸物件に係る不動産所得は赤字70万円、そのうち土地取得借入金の利子20万円が必要経費に含まれる。組合・国外中古建物等の特例はない。本人負担の10年超保有の生命保険を解約し、一時金690万円、正味払込保険料570万円。他の一時所得はない。対象医療費64万円を本人が支払い、その同じ医療費を補填する給付金18万円、補填超過なし。生計を一にする長女は年末21歳、無収入、障害なし、事業専従者ではない。2027年に行う2026年分の確定申告の場面とし、長女は国内居住で、他に長女を扶養控除の対象とする者はない。2026年12月1日施行で2026年分から適用される扶養所得要件62万円以下を用い、施行前準確定申告等は対象外とする。生命保険の実際の全額保険料負担者と解約一時金受取人はいずれも本人で、金融類似商品の源泉分離課税には該当しない。事業所得は青色申告特別控除後の与件で再度控除しない。医療費は自己/生計同一家族のため本人がその年中に実際に支払った対象費用とする。",
+    "caseText": "【2026年4月1日基準の独自演習】個人事業主の遠藤さんの2026年分の事業所得（青色申告特別控除後）は920万円。国内の通常の賃貸物件に係る不動産所得は赤字70万円、そのうち土地取得借入金の利子20万円が必要経費に含まれる。組合・国外中古建物等の特例はない。本人負担の10年超保有の生命保険を解約し、一時金690万円、正味払込保険料570万円。他の一時所得はない。記載の事業所得・不動産所得・解約一時金以外の所得はない。対象医療費64万円を本人が支払い、その同じ医療費を補填する給付金18万円、補填超過なし。生計を一にする長女は年末21歳、無収入、障害なし、事業専従者ではない。2027年に行う2026年分の確定申告の場面とし、長女は国内居住で、他に長女を扶養控除の対象とする者はない。2026年12月1日施行で2026年分から適用される扶養所得要件62万円以下を用い、施行前準確定申告等は対象外とする。生命保険の実際の全額保険料負担者と解約一時金受取人はいずれも本人で、金融類似商品の源泉分離課税には該当しない。事業所得は青色申告特別控除後の与件で再度控除しない。医療費は自己/生計同一家族のため本人がその年中に実際に支払った対象費用とする。",
     "question": "損益通算と一時所得の2分の1算入後の総所得金額を求めなさい。",
     "kind": "numeric",
     "choices": [],
     "answer": 905.0,
     "unit": "万円",
-    "explanation": "通算可能な不動産損失＝70－土地利子20＝50万円。一時所得＝690－570－50＝70万円、算入額35万円。920－50＋35＝905万円。土地利子相当額は他所得との通算対象外です。 青色申告特別控除は事業所得の与件へ適用済みで再度控除せず、医療費/扶養等の所得控除前の総所得金額を求めます。",
+    "explanation": "通算可能な不動産損失＝70－土地利子20＝50万円。一時所得＝690－570－50＝70万円、算入額35万円。920－50＋35＝905万円。土地利子相当額は他所得との通算対象外です。 青色申告特別控除は事業所得の与件へ適用済みで再度控除せず、医療費/扶養等の所得控除前の総所得金額を求めます。 記載以外の所得がないため、この合計額を本問の総所得金額とします。",
     "topic": "損益通算",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1391.htm",
     "lawReferenceDate": "2026-04-01",
-    "revision": 32,
+    "revision": 33,
     "blueprintCase": 3,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_kojin.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v107_personal2_all30_scoped_migration",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v170_exclusive_income_conditions",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。",
+    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。 Ver.170：総所得金額を一意にするため、記載以外の所得なしを明示し、共通設例の全3小問へ同期。正答と選択肢の意味は維持。新法改正・追加移行・ID初回へ加算しない。",
     "additionalSourceUrls": [
       "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1490.htm",
       "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1755.htm"
@@ -6147,7 +6212,7 @@ const PRACTICAL_QUESTIONS = [
     "track": "kinzai2_personal",
     "case": 8,
     "caseTitle": "損益通算と所得控除",
-    "caseText": "【2026年4月1日基準の独自演習】個人事業主の遠藤さんの2026年分の事業所得（青色申告特別控除後）は920万円。国内の通常の賃貸物件に係る不動産所得は赤字70万円、そのうち土地取得借入金の利子20万円が必要経費に含まれる。組合・国外中古建物等の特例はない。本人負担の10年超保有の生命保険を解約し、一時金690万円、正味払込保険料570万円。他の一時所得はない。対象医療費64万円を本人が支払い、その同じ医療費を補填する給付金18万円、補填超過なし。生計を一にする長女は年末21歳、無収入、障害なし、事業専従者ではない。2027年に行う2026年分の確定申告の場面とし、長女は国内居住で、他に長女を扶養控除の対象とする者はない。2026年12月1日施行で2026年分から適用される扶養所得要件62万円以下を用い、施行前準確定申告等は対象外とする。生命保険の実際の全額保険料負担者と解約一時金受取人はいずれも本人で、金融類似商品の源泉分離課税には該当しない。事業所得は青色申告特別控除後の与件で再度控除しない。医療費は自己/生計同一家族のため本人がその年中に実際に支払った対象費用とする。",
+    "caseText": "【2026年4月1日基準の独自演習】個人事業主の遠藤さんの2026年分の事業所得（青色申告特別控除後）は920万円。国内の通常の賃貸物件に係る不動産所得は赤字70万円、そのうち土地取得借入金の利子20万円が必要経費に含まれる。組合・国外中古建物等の特例はない。本人負担の10年超保有の生命保険を解約し、一時金690万円、正味払込保険料570万円。他の一時所得はない。記載の事業所得・不動産所得・解約一時金以外の所得はない。対象医療費64万円を本人が支払い、その同じ医療費を補填する給付金18万円、補填超過なし。生計を一にする長女は年末21歳、無収入、障害なし、事業専従者ではない。2027年に行う2026年分の確定申告の場面とし、長女は国内居住で、他に長女を扶養控除の対象とする者はない。2026年12月1日施行で2026年分から適用される扶養所得要件62万円以下を用い、施行前準確定申告等は対象外とする。生命保険の実際の全額保険料負担者と解約一時金受取人はいずれも本人で、金融類似商品の源泉分離課税には該当しない。事業所得は青色申告特別控除後の与件で再度控除しない。医療費は自己/生計同一家族のため本人がその年中に実際に支払った対象費用とする。",
     "question": "通常の医療費控除額を求めなさい。",
     "kind": "numeric",
     "choices": [],
@@ -6157,14 +6222,14 @@ const PRACTICAL_QUESTIONS = [
     "topic": "医療費控除",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm",
     "lawReferenceDate": "2026-04-01",
-    "revision": 30,
+    "revision": 31,
     "blueprintCase": 3,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_kojin.pdf",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v107_personal2_all30_scoped_migration",
+    "contentReview": "v170_exclusive_income_conditions",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。",
+    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。 Ver.170：総所得金額を一意にするため、記載以外の所得なしを明示し、共通設例の全3小問へ同期。正答と選択肢の意味は維持。新法改正・追加移行・ID初回へ加算しない。",
     "taxYear": 2026
   },
   {
@@ -6172,7 +6237,7 @@ const PRACTICAL_QUESTIONS = [
     "track": "kinzai2_personal",
     "case": 8,
     "caseTitle": "損益通算と所得控除",
-    "caseText": "【2026年4月1日基準の独自演習】個人事業主の遠藤さんの2026年分の事業所得（青色申告特別控除後）は920万円。国内の通常の賃貸物件に係る不動産所得は赤字70万円、そのうち土地取得借入金の利子20万円が必要経費に含まれる。組合・国外中古建物等の特例はない。本人負担の10年超保有の生命保険を解約し、一時金690万円、正味払込保険料570万円。他の一時所得はない。対象医療費64万円を本人が支払い、その同じ医療費を補填する給付金18万円、補填超過なし。生計を一にする長女は年末21歳、無収入、障害なし、事業専従者ではない。2027年に行う2026年分の確定申告の場面とし、長女は国内居住で、他に長女を扶養控除の対象とする者はない。2026年12月1日施行で2026年分から適用される扶養所得要件62万円以下を用い、施行前準確定申告等は対象外とする。生命保険の実際の全額保険料負担者と解約一時金受取人はいずれも本人で、金融類似商品の源泉分離課税には該当しない。事業所得は青色申告特別控除後の与件で再度控除しない。医療費は自己/生計同一家族のため本人がその年中に実際に支払った対象費用とする。",
+    "caseText": "【2026年4月1日基準の独自演習】個人事業主の遠藤さんの2026年分の事業所得（青色申告特別控除後）は920万円。国内の通常の賃貸物件に係る不動産所得は赤字70万円、そのうち土地取得借入金の利子20万円が必要経費に含まれる。組合・国外中古建物等の特例はない。本人負担の10年超保有の生命保険を解約し、一時金690万円、正味払込保険料570万円。他の一時所得はない。記載の事業所得・不動産所得・解約一時金以外の所得はない。対象医療費64万円を本人が支払い、その同じ医療費を補填する給付金18万円、補填超過なし。生計を一にする長女は年末21歳、無収入、障害なし、事業専従者ではない。2027年に行う2026年分の確定申告の場面とし、長女は国内居住で、他に長女を扶養控除の対象とする者はない。2026年12月1日施行で2026年分から適用される扶養所得要件62万円以下を用い、施行前準確定申告等は対象外とする。生命保険の実際の全額保険料負担者と解約一時金受取人はいずれも本人で、金融類似商品の源泉分離課税には該当しない。事業所得は青色申告特別控除後の与件で再度控除しない。医療費は自己/生計同一家族のため本人がその年中に実際に支払った対象費用とする。",
     "question": "長女について適用する所得税の扶養控除の区分・額はどれか。",
     "kind": "choice",
     "choices": [
@@ -6185,14 +6250,14 @@ const PRACTICAL_QUESTIONS = [
     "topic": "扶養控除",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1180.htm",
     "lawReferenceDate": "2026-04-01",
-    "revision": 30,
+    "revision": 31,
     "blueprintCase": 3,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_kojin.pdf",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v107_personal2_all30_scoped_migration",
+    "contentReview": "v170_exclusive_income_conditions",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。",
+    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。 Ver.170：総所得金額を一意にするため、記載以外の所得なしを明示し、共通設例の全3小問へ同期。正答と選択肢の意味は維持。新法改正・追加移行・ID初回へ加算しない。",
     "lawEffectiveDate": "2026-12-01",
     "taxYear": 2026,
     "choiceExplanations": [
@@ -6360,7 +6425,7 @@ const PRACTICAL_QUESTIONS = [
     "track": "kinzai2_business",
     "case": 6,
     "caseTitle": "個人事業主の年金と共済",
-    "caseText": "【2026年4月1日基準の独自演習】飲食店を営む渡辺さんは2026年4月1日現在52歳で、国民年金第1号被保険者である。2026年3月までの20歳以上の記録は、厚生年金216月、国民年金第1号の納付済132月、未納36月で、免除期間はない。厚生年金は2003年3月以前72月・平均標準報酬月額220,000円、同年4月以後144月・平均標準報酬額350,000円である。2026年4月から60歳到達までの96月は国民年金保険料をすべて納めるものとし、60歳時の納付済相当期間は444月となる。老齢基礎年金は2026年度の満額847,300円を固定して見積もり、将来の年金額改定、任意加入、繰上げ・繰下げは考慮しない。報酬比例部分の乗率は順に7.125/1000、5.481/1000とし、再評価済みの報酬を用いる。経過的加算・加給年金は計算対象外とする。小規模企業共済の加入要件を満たし、2026年中に本人が掛金を支払った。",
+    "caseText": "【2026年4月1日基準の独自演習】飲食店を営む渡辺さん（1974年4月2日生まれ）は2026年4月1日現在52歳で、国民年金第1号被保険者である。2026年3月までの20歳以上の記録は、厚生年金216月、国民年金第1号の納付済132月、未納36月で、免除期間はない。厚生年金は2003年3月以前72月・平均標準報酬月額220,000円、同年4月以後144月・平均標準報酬額350,000円である。2026年4月から60歳到達までの96月は国民年金保険料をすべて納めるものとし、60歳時の納付済相当期間は444月となる。老齢基礎年金は2026年度の満額847,300円を固定して見積もり、将来の年金額改定、任意加入、繰上げ・繰下げは考慮しない。報酬比例部分の乗率は順に7.125/1000、5.481/1000とし、再評価済みの報酬を用いる。経過的加算・加給年金は計算対象外とする。小規模企業共済の加入要件を満たし、2026年中に本人が掛金を支払った。 年齢は誕生日の前日に到達するものとして扱い、20歳到達日は1994年4月1日、60歳到達日は2034年4月1日とする。加入記録の具体的な期間は、1994年4月から1997年3月まで国民年金第1号の未納、1997年4月から2003年3月まで厚生年金（2003年3月以前）、2003年4月から2015年3月まで厚生年金（2003年4月以後）、2015年4月から2026年3月まで国民年金第1号の納付済、2026年4月から2034年3月まで国民年金第1号の将来納付見込み。各期間は両端の月を含み、重複やこれ以外の加入・未納期間はない。",
     "question": "60歳時の見込み記録を用い、2026年度価額で老齢基礎年金の年額を求めなさい。円未満四捨五入。",
     "kind": "numeric",
     "choices": [],
@@ -6376,17 +6441,19 @@ const PRACTICAL_QUESTIONS = [
     },
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 31,
+    "revision": 32,
     "blueprintCase": 1,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_chusho.pdf",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v108_2026_business_practical_migration",
-    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。",
+    "contentReview": "v171_explicit_pension_month_chronology",
+    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。 Ver.171：生年月日と重複のない20歳到達月〜60歳到達前月の全480月を具体化。従来の月数・金額・正答を維持。公式案内による年齢到達月の限定再確認と内部暦検算であり、新法改正/初回ID/追加移行には加算しない。",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "sourceLabel": "日本年金機構：老齢基礎年金・2026年度年金額",
     "additionalSourceUrls": [
-      "https://www.mhlw.go.jp/stf/houdou/0000191631_00020.html"
+      "https://www.mhlw.go.jp/stf/houdou/0000191631_00020.html",
+      "https://www.nenkin.go.jp/service/scenebetsu/hatachi.html",
+      "https://www.nenkin.go.jp/service/kokunen/hokenryo/nofusho.html"
     ]
   },
   {
@@ -6394,7 +6461,7 @@ const PRACTICAL_QUESTIONS = [
     "track": "kinzai2_business",
     "case": 6,
     "caseTitle": "個人事業主の年金と共済",
-    "caseText": "【2026年4月1日基準の独自演習】飲食店を営む渡辺さんは2026年4月1日現在52歳で、国民年金第1号被保険者である。2026年3月までの20歳以上の記録は、厚生年金216月、国民年金第1号の納付済132月、未納36月で、免除期間はない。厚生年金は2003年3月以前72月・平均標準報酬月額220,000円、同年4月以後144月・平均標準報酬額350,000円である。2026年4月から60歳到達までの96月は国民年金保険料をすべて納めるものとし、60歳時の納付済相当期間は444月となる。老齢基礎年金は2026年度の満額847,300円を固定して見積もり、将来の年金額改定、任意加入、繰上げ・繰下げは考慮しない。報酬比例部分の乗率は順に7.125/1000、5.481/1000とし、再評価済みの報酬を用いる。経過的加算・加給年金は計算対象外とする。小規模企業共済の加入要件を満たし、2026年中に本人が掛金を支払った。",
+    "caseText": "【2026年4月1日基準の独自演習】飲食店を営む渡辺さん（1974年4月2日生まれ）は2026年4月1日現在52歳で、国民年金第1号被保険者である。2026年3月までの20歳以上の記録は、厚生年金216月、国民年金第1号の納付済132月、未納36月で、免除期間はない。厚生年金は2003年3月以前72月・平均標準報酬月額220,000円、同年4月以後144月・平均標準報酬額350,000円である。2026年4月から60歳到達までの96月は国民年金保険料をすべて納めるものとし、60歳時の納付済相当期間は444月となる。老齢基礎年金は2026年度の満額847,300円を固定して見積もり、将来の年金額改定、任意加入、繰上げ・繰下げは考慮しない。報酬比例部分の乗率は順に7.125/1000、5.481/1000とし、再評価済みの報酬を用いる。経過的加算・加給年金は計算対象外とする。小規模企業共済の加入要件を満たし、2026年中に本人が掛金を支払った。 年齢は誕生日の前日に到達するものとして扱い、20歳到達日は1994年4月1日、60歳到達日は2034年4月1日とする。加入記録の具体的な期間は、1994年4月から1997年3月まで国民年金第1号の未納、1997年4月から2003年3月まで厚生年金（2003年3月以前）、2003年4月から2015年3月まで厚生年金（2003年4月以後）、2015年4月から2026年3月まで国民年金第1号の納付済、2026年4月から2034年3月まで国民年金第1号の将来納付見込み。各期間は両端の月を含み、重複やこれ以外の加入・未納期間はない。",
     "question": "報酬比例部分の年額を求めなさい。円未満四捨五入。",
     "kind": "numeric",
     "choices": [],
@@ -6412,23 +6479,26 @@ const PRACTICAL_QUESTIONS = [
     },
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 31,
+    "revision": 32,
     "blueprintCase": 1,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_chusho.pdf",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v108_2026_business_practical_migration",
-    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。",
+    "contentReview": "v171_explicit_pension_month_chronology",
+    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。 Ver.171：生年月日と重複のない20歳到達月〜60歳到達前月の全480月を具体化。従来の月数・金額・正答を維持。公式案内による年齢到達月の限定再確認と内部暦検算であり、新法改正/初回ID/追加移行には加算しない。",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "sourceLabel": "日本年金機構：報酬比例部分",
-    "additionalSourceUrls": []
+    "additionalSourceUrls": [
+      "https://www.nenkin.go.jp/service/scenebetsu/hatachi.html",
+      "https://www.nenkin.go.jp/service/kokunen/hokenryo/nofusho.html"
+    ]
   },
   {
     "id": "pr-kinzai2_business-v16-003",
     "track": "kinzai2_business",
     "case": 6,
     "caseTitle": "個人事業主の年金と共済",
-    "caseText": "【2026年4月1日基準の独自演習】飲食店を営む渡辺さんは2026年4月1日現在52歳で、国民年金第1号被保険者である。2026年3月までの20歳以上の記録は、厚生年金216月、国民年金第1号の納付済132月、未納36月で、免除期間はない。厚生年金は2003年3月以前72月・平均標準報酬月額220,000円、同年4月以後144月・平均標準報酬額350,000円である。2026年4月から60歳到達までの96月は国民年金保険料をすべて納めるものとし、60歳時の納付済相当期間は444月となる。老齢基礎年金は2026年度の満額847,300円を固定して見積もり、将来の年金額改定、任意加入、繰上げ・繰下げは考慮しない。報酬比例部分の乗率は順に7.125/1000、5.481/1000とし、再評価済みの報酬を用いる。経過的加算・加給年金は計算対象外とする。小規模企業共済の加入要件を満たし、2026年中に本人が掛金を支払った。",
+    "caseText": "【2026年4月1日基準の独自演習】飲食店を営む渡辺さん（1974年4月2日生まれ）は2026年4月1日現在52歳で、国民年金第1号被保険者である。2026年3月までの20歳以上の記録は、厚生年金216月、国民年金第1号の納付済132月、未納36月で、免除期間はない。厚生年金は2003年3月以前72月・平均標準報酬月額220,000円、同年4月以後144月・平均標準報酬額350,000円である。2026年4月から60歳到達までの96月は国民年金保険料をすべて納めるものとし、60歳時の納付済相当期間は444月となる。老齢基礎年金は2026年度の満額847,300円を固定して見積もり、将来の年金額改定、任意加入、繰上げ・繰下げは考慮しない。報酬比例部分の乗率は順に7.125/1000、5.481/1000とし、再評価済みの報酬を用いる。経過的加算・加給年金は計算対象外とする。小規模企業共済の加入要件を満たし、2026年中に本人が掛金を支払った。 年齢は誕生日の前日に到達するものとして扱い、20歳到達日は1994年4月1日、60歳到達日は2034年4月1日とする。加入記録の具体的な期間は、1994年4月から1997年3月まで国民年金第1号の未納、1997年4月から2003年3月まで厚生年金（2003年3月以前）、2003年4月から2015年3月まで厚生年金（2003年4月以後）、2015年4月から2026年3月まで国民年金第1号の納付済、2026年4月から2034年3月まで国民年金第1号の将来納付見込み。各期間は両端の月を含み、重複やこれ以外の加入・未納期間はない。",
     "question": "小規模企業共済の掛金について適切なものはどれか。",
     "kind": "choice",
     "choices": [
@@ -6442,13 +6512,13 @@ const PRACTICAL_QUESTIONS = [
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 31,
+    "revision": 32,
     "blueprintCase": 1,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_chusho.pdf",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v108_2026_business_practical_migration",
-    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。",
+    "contentReview": "v171_explicit_pension_month_chronology",
+    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。 Ver.171：生年月日と重複のない20歳到達月〜60歳到達前月の全480月を具体化。従来の月数・金額・正答を維持。公式案内による年齢到達月の限定再確認と内部暦検算であり、新法改正/初回ID/追加移行には加算しない。",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
       "不適切。個人の所得控除として扱います。",
@@ -6456,7 +6526,10 @@ const PRACTICAL_QUESTIONS = [
       "正解。支払った掛金の全額が所得控除です。"
     ],
     "sourceLabel": "国税庁：小規模企業共済等掛金控除",
-    "additionalSourceUrls": []
+    "additionalSourceUrls": [
+      "https://www.nenkin.go.jp/service/scenebetsu/hatachi.html",
+      "https://www.nenkin.go.jp/service/kokunen/hokenryo/nofusho.html"
+    ]
   },
   {
     "id": "pr-kinzai2_business-v16-004",
@@ -6526,26 +6599,28 @@ const PRACTICAL_QUESTIONS = [
       "普通分配金0円、元本払戻金500円"
     ],
     "answer": 1,
-    "explanation": "分配後価額が個別元本を300円下回るため、300円は元本払戻金（特別分配金）、残り200円は普通分配金です。元本払戻金受領後の個別元本は9,700円になります。",
+    "explanation": "1万口当たり、元本払戻金は10,000－9,700＝300円、普通分配金は500－300＝200円です。分配後の個別元本は10,000－300＝9,700円です。全額500円を普通分配金とする肢は個別元本を下回った300円を無視し、全額を元本払戻金とする肢は普通分配金200円まで元本の払戻しとしてしまう誤りです。どの肢も合計は500円ですが、内訳が一致するのは200円・300円の組合せだけです。株式の株価や配当総額はこの分配金の区分には用いません。",
     "topic": "分配金区分",
     "sourceUrl": "https://www.toushin.or.jp/investmenttrust/about/what/dividend/",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 30,
+    "revision": 31,
     "blueprintCase": 2,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_chusho.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v108_2026_business_practical_migration",
-    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v163_choice_rationale_and_scoped_primary_recheck",
+    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。 Ver.163：設例・選択肢・正答位置を保持し、全肢の取り違えを解説へ補足。指定条件の算術と出典再読を分離して記録。包括監修・全文照合ではない。",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
-      "不適切。個別元本を下回る300円分は元本払戻金です。",
-      "正解。9,700円は個別元本10,000円を300円下回るため、その300円が元本払戻金、残額200円が普通分配金です。",
-      "不適切。全額が同一区分ではありません。"
+      "不適切。全額を普通分配金にすると、個別元本を下回る300円の払戻しを無視します。",
+      "正解。500円のうち、個別元本10,000円を分配落ち後価額9,700円が下回る300円が元本払戻金、残り200円が普通分配金です。",
+      "不適切。普通分配金200円も元本払戻金に含めてしまっています。"
     ],
     "sourceLabel": "投資信託協会：普通分配金と元本払戻金",
-    "additionalSourceUrls": []
+    "additionalSourceUrls": [
+      "https://www.mizuho-sc.com/product/toushin/price_way/individual_principal.html"
+    ]
   },
   {
     "id": "pr-kinzai2_business-v16-007",
@@ -6615,18 +6690,18 @@ const PRACTICAL_QUESTIONS = [
       "全額1000万円を社長への給与とする"
     ],
     "answer": 0,
-    "explanation": "死亡保険金受取人が被保険者の遺族、満期保険金受取人が会社で、特定者だけを対象としない養老保険は、保険料の2分の1（500万円）を資産計上し、残り2分の1を損金算入します。",
+    "explanation": "死亡保険金受取人が被保険者の遺族、満期保険金受取人が会社で、特定者だけを対象としない養老保険は、保険料の2分の1（500万円）を資産計上し、残り2分の1を損金算入します。特約なし・当期対応保険料という与件では、2019年7月8日前の契約と同日以後の契約のどちらも、この半額ずつの取扱いで一致します。全額資産の肢は死亡・満期とも会社受取の場合との取り違えで、全員を公平に対象とするこの設例の保険料全額を社長への給与とすることもできません。既に当期利益等に反映済みなので、法人所得を求める別問で再度500万円を控除しません。",
     "topic": "法人保険",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/hojin/5363.htm",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "revision": 34,
+    "revision": 35,
     "blueprintCase": 3,
     "blueprintSet": 2,
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_chusho.pdf",
-    "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v108_2026_business_practical_migration",
-    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v164_distractor_correction_and_contract_date_source_check",
+    "reviewNote": "Ver.108：共通設例の成立条件、正答、全選択肢、単位、主要な適用条件を2026年4月1日基準で限定確認。包括監修・正式配点は未完了。 Ver.164：契約日が指定されていない点を点検し、2019年7月8日前契約のNo.5360も補助根拠へ追加。特約なし・遺族死亡受取/法人満期受取・特定者限定なしという与件では、同日以後のNo.5363とともに半額資産/半額期間損金で一致。契約日を推定・追記していない。包括監修・法令全文照合ではない。",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
       "正解。死亡受取人が遺族、満期受取人が会社の養老保険は、2分の1を資産、2分の1を損金とします。",
@@ -6634,7 +6709,9 @@ const PRACTICAL_QUESTIONS = [
       "不適切。全員を公平に対象しており、特定者への給与処理ではありません。"
     ],
     "sourceLabel": "国税庁：養老保険の保険料処理",
-    "additionalSourceUrls": []
+    "additionalSourceUrls": [
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/hojin/5360.htm"
+    ]
   },
   {
     "id": "pr-kinzai2_business-v16-010",
@@ -7253,19 +7330,19 @@ const PRACTICAL_QUESTIONS = [
     "track": "kinzai2_nonlife",
     "case": 6,
     "caseTitle": "年金と公的医療保険",
-    "caseText": "会社員の山田さん（1961年12月2日生まれ）は、2026年4月1日現在の制度で老後の資金計画と公的医療保険について相談している。健康保険は協会けんぽの被保険者である。65歳時の年金年額を2026年度価額で試算し、老齢基礎年金の満額は847,300円を用いる。20歳以上60歳未満の保険料納付済相当月数は450月で、免除・未納の扱いを別途加算する必要はない。厚生年金の計算資料：2003年3月以前36月・平均標準報酬月額280,000円、2003年4月以後270月・平均標準報酬額420,000円。上記の平均報酬は再評価済みの計算用の額とし、報酬比例の乗率は順に7.125/1000、5.481/1000を用いる。従前額保障・加給年金・経過的加算・在職による支給停止・以後の加入による増額は今回の計算対象外。実際の将来支給額や受給開始初年度の月割支給額は予測せず、与件の年額だけを計算する。",
+    "caseText": "会社員の山田さん（1961年12月2日生まれ）は、2026年4月1日現在の制度で老後の資金計画と公的医療保険について相談している。健康保険は協会けんぽの被保険者である。65歳時の年金年額を2026年度価額で試算し、老齢基礎年金の満額は847,300円を用いる。20歳以上60歳未満の保険料納付済相当月数は450月で、免除・未納の扱いを別途加算する必要はない。厚生年金の計算資料：2003年3月以前36月・平均標準報酬月額280,000円、2003年4月以後270月・平均標準報酬額420,000円。上記の平均報酬は再評価済みの計算用の額とし、報酬比例の乗率は順に7.125/1000、5.481/1000を用いる。従前額保障・加給年金・経過的加算・在職による支給停止・以後の加入による増額は今回の計算対象外。実際の将来支給額や受給開始初年度の月割支給額は予測せず、与件の年額だけを計算する。 加入記録の具体的な期間は、1981年12月から1997年9月まで国民年金第1号の納付済、1997年10月から2000年3月まで国民年金第1号の未納、2000年4月から2003年3月まで厚生年金（2003年3月以前）、2003年4月から2003年9月まで国民年金第1号の納付済、2003年10月から2026年3月まで厚生年金（2003年4月以後）。各期間は両端の月を含み、重複や記載以外の期間はない。60歳到達日は2021年12月1日であり、その前月までの480月から未納期間を除いた450月を老齢基礎年金の計算に用いる。60歳以後の厚生年金52月は老齢基礎年金のこの月数に加えず、報酬比例部分は指定した全厚生年金期間で計算する。",
     "question": "資料に基づく老齢基礎年金の年額はいくらか。円未満は四捨五入。",
     "kind": "numeric",
     "answer": 794344,
-    "explanation": "847,300×450/480＝794343.75円。与件の指定で円未満四捨五入し794,344円です。2026年度価額での計算であり、将来の改定額や初年度の月割支給額ではありません。",
+    "explanation": "847,300×450/480＝794343.75円。与件の指定で円未満四捨五入し794,344円です。2026年度価額での計算であり、将来の改定額や初年度の月割支給額ではありません。 60歳以後の厚生年金52月は、20歳以上60歳未満の納付済相当月数に重ねて加えません。報酬比例部分には設例で指定した厚生年金の全期間を用います。",
     "topic": "年金・公的保障",
     "lawReferenceDate": "2026-04-01",
-    "revision": 60,
-    "contentReview": "v96_2026_nonlife_case1_migration",
+    "revision": 61,
+    "contentReview": "v172_pre_post60_month_separation",
     "sourceUrl": "https://www.nenkin.go.jp/service/jukyu/seido/roureinenkin/jukyu-yoken/20150401-02.html",
     "sourceCheckedDate": "2026-10-14",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_sonpo.pdf",
-    "reviewNote": "Ver.96：2026年度年金額、生年月日、加入期間の実現可能性、再評価済み平均報酬、公的医療保険・本人iDeCo掛金を限定確認。包括監修未完了。",
+    "reviewNote": "Ver.96：2026年度年金額、生年月日、加入期間の実現可能性、再評価済み平均報酬、公的医療保険・本人iDeCo掛金を限定確認。包括監修未完了。 Ver.172：厚生年金の60歳前後を区別する具体的期間を追加。独自指定記録の全月暦検算で、既存月数/正答を保持。新法改正・初回ID・追加移行には加算しない。",
     "blueprintCase": 1,
     "blueprintSet": 2,
     "unit": "円",
@@ -7276,26 +7353,29 @@ const PRACTICAL_QUESTIONS = [
     },
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "pensionYear": 2026,
-    "sourceLabel": "日本年金機構：老齢基礎年金の受給要件・年金額"
+    "sourceLabel": "日本年金機構：老齢基礎年金の受給要件・年金額",
+    "additionalSourceUrls": [
+      "https://www.nenkin.go.jp/service/jukyu/seido/roureinenkin/jukyu-yoken/20150401-02.html"
+    ]
   },
   {
     "id": "pr-kinzai2_nonlife-v16-002",
     "track": "kinzai2_nonlife",
     "case": 6,
     "caseTitle": "年金と公的医療保険",
-    "caseText": "会社員の山田さん（1961年12月2日生まれ）は、2026年4月1日現在の制度で老後の資金計画と公的医療保険について相談している。健康保険は協会けんぽの被保険者である。65歳時の年金年額を2026年度価額で試算し、老齢基礎年金の満額は847,300円を用いる。20歳以上60歳未満の保険料納付済相当月数は450月で、免除・未納の扱いを別途加算する必要はない。厚生年金の計算資料：2003年3月以前36月・平均標準報酬月額280,000円、2003年4月以後270月・平均標準報酬額420,000円。上記の平均報酬は再評価済みの計算用の額とし、報酬比例の乗率は順に7.125/1000、5.481/1000を用いる。従前額保障・加給年金・経過的加算・在職による支給停止・以後の加入による増額は今回の計算対象外。実際の将来支給額や受給開始初年度の月割支給額は予測せず、与件の年額だけを計算する。",
+    "caseText": "会社員の山田さん（1961年12月2日生まれ）は、2026年4月1日現在の制度で老後の資金計画と公的医療保険について相談している。健康保険は協会けんぽの被保険者である。65歳時の年金年額を2026年度価額で試算し、老齢基礎年金の満額は847,300円を用いる。20歳以上60歳未満の保険料納付済相当月数は450月で、免除・未納の扱いを別途加算する必要はない。厚生年金の計算資料：2003年3月以前36月・平均標準報酬月額280,000円、2003年4月以後270月・平均標準報酬額420,000円。上記の平均報酬は再評価済みの計算用の額とし、報酬比例の乗率は順に7.125/1000、5.481/1000を用いる。従前額保障・加給年金・経過的加算・在職による支給停止・以後の加入による増額は今回の計算対象外。実際の将来支給額や受給開始初年度の月割支給額は予測せず、与件の年額だけを計算する。 加入記録の具体的な期間は、1981年12月から1997年9月まで国民年金第1号の納付済、1997年10月から2000年3月まで国民年金第1号の未納、2000年4月から2003年3月まで厚生年金（2003年3月以前）、2003年4月から2003年9月まで国民年金第1号の納付済、2003年10月から2026年3月まで厚生年金（2003年4月以後）。各期間は両端の月を含み、重複や記載以外の期間はない。60歳到達日は2021年12月1日であり、その前月までの480月から未納期間を除いた450月を老齢基礎年金の計算に用いる。60歳以後の厚生年金52月は老齢基礎年金のこの月数に加えず、報酬比例部分は指定した全厚生年金期間で計算する。",
     "question": "資料に基づく老齢厚生年金の報酬比例部分の年額はいくらか。2期間の計算値を合計し、円未満四捨五入。",
     "kind": "numeric",
     "answer": 693365,
-    "explanation": "280,000×7.125/1000×36＋420,000×5.481/1000×270＝693365.400000円。合計後、円未満四捨五入して693,365円です。平均報酬は再評価済みとして与えられているため、さらに再評価率を掛けません。基礎年金・加給年金等は含めません。",
+    "explanation": "280,000×7.125/1000×36＋420,000×5.481/1000×270＝693365.400000円。合計後、円未満四捨五入して693,365円です。平均報酬は再評価済みとして与えられているため、さらに再評価率を掛けません。基礎年金・加給年金等は含めません。 60歳以後の厚生年金52月は、20歳以上60歳未満の納付済相当月数に重ねて加えません。報酬比例部分には設例で指定した厚生年金の全期間を用います。",
     "topic": "年金・公的保障",
     "lawReferenceDate": "2026-04-01",
-    "revision": 60,
-    "contentReview": "v96_2026_nonlife_case1_migration",
+    "revision": 61,
+    "contentReview": "v172_pre_post60_month_separation",
     "sourceUrl": "https://www.nenkin.go.jp/service/yougo/hagyo/hoshuhirei.html",
     "sourceCheckedDate": "2026-10-14",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_sonpo.pdf",
-    "reviewNote": "Ver.96：2026年度年金額、生年月日、加入期間の実現可能性、再評価済み平均報酬、公的医療保険・本人iDeCo掛金を限定確認。包括監修未完了。",
+    "reviewNote": "Ver.96：2026年度年金額、生年月日、加入期間の実現可能性、再評価済み平均報酬、公的医療保険・本人iDeCo掛金を限定確認。包括監修未完了。 Ver.172：厚生年金の60歳前後を区別する具体的期間を追加。独自指定記録の全月暦検算で、既存月数/正答を保持。新法改正・初回ID・追加移行には加算しない。",
     "blueprintCase": 1,
     "blueprintSet": 2,
     "unit": "円",
@@ -7308,26 +7388,29 @@ const PRACTICAL_QUESTIONS = [
     },
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "pensionYear": 2026,
-    "sourceLabel": "日本年金機構：報酬比例部分"
+    "sourceLabel": "日本年金機構：報酬比例部分",
+    "additionalSourceUrls": [
+      "https://www.nenkin.go.jp/service/jukyu/seido/roureinenkin/jukyu-yoken/20150401-02.html"
+    ]
   },
   {
     "id": "pr-kinzai2_nonlife-v16-003",
     "track": "kinzai2_nonlife",
     "case": 6,
     "caseTitle": "年金と公的医療保険",
-    "caseText": "会社員の山田さん（1961年12月2日生まれ）は、2026年4月1日現在の制度で老後の資金計画と公的医療保険について相談している。健康保険は協会けんぽの被保険者である。65歳時の年金年額を2026年度価額で試算し、老齢基礎年金の満額は847,300円を用いる。20歳以上60歳未満の保険料納付済相当月数は450月で、免除・未納の扱いを別途加算する必要はない。厚生年金の計算資料：2003年3月以前36月・平均標準報酬月額280,000円、2003年4月以後270月・平均標準報酬額420,000円。上記の平均報酬は再評価済みの計算用の額とし、報酬比例の乗率は順に7.125/1000、5.481/1000を用いる。従前額保障・加給年金・経過的加算・在職による支給停止・以後の加入による増額は今回の計算対象外。実際の将来支給額や受給開始初年度の月割支給額は予測せず、与件の年額だけを計算する。",
+    "caseText": "会社員の山田さん（1961年12月2日生まれ）は、2026年4月1日現在の制度で老後の資金計画と公的医療保険について相談している。健康保険は協会けんぽの被保険者である。65歳時の年金年額を2026年度価額で試算し、老齢基礎年金の満額は847,300円を用いる。20歳以上60歳未満の保険料納付済相当月数は450月で、免除・未納の扱いを別途加算する必要はない。厚生年金の計算資料：2003年3月以前36月・平均標準報酬月額280,000円、2003年4月以後270月・平均標準報酬額420,000円。上記の平均報酬は再評価済みの計算用の額とし、報酬比例の乗率は順に7.125/1000、5.481/1000を用いる。従前額保障・加給年金・経過的加算・在職による支給停止・以後の加入による増額は今回の計算対象外。実際の将来支給額や受給開始初年度の月割支給額は予測せず、与件の年額だけを計算する。 加入記録の具体的な期間は、1981年12月から1997年9月まで国民年金第1号の納付済、1997年10月から2000年3月まで国民年金第1号の未納、2000年4月から2003年3月まで厚生年金（2003年3月以前）、2003年4月から2003年9月まで国民年金第1号の納付済、2003年10月から2026年3月まで厚生年金（2003年4月以後）。各期間は両端の月を含み、重複や記載以外の期間はない。60歳到達日は2021年12月1日であり、その前月までの480月から未納期間を除いた450月を老齢基礎年金の計算に用いる。60歳以後の厚生年金52月は老齢基礎年金のこの月数に加えず、報酬比例部分は指定した全厚生年金期間で計算する。",
     "question": "2026年4月1日現在の制度について、次の説明の適否の組合せはどれか。①入院時食事療養費の自己負担額や保険外の差額ベッド代も高額療養費の対象となる。②傷病手当金の支給期間は同一傷病について支給開始日から通算1年6か月である。③加入資格を満たす者が本人のiDeCo掛金を支払った場合、その全額が小規模企業共済等掛金控除の対象となる。",
     "kind": "choice",
     "answer": 0,
     "explanation": "①×：入院時食事療養費の自己負担額や保険外の差額部分は高額療養費の対象外です。②○：同一傷病について支給開始から通算1年6か月です。③○：加入者本人が支払ったiDeCo掛金は全額が小規模企業共済等掛金控除の対象です。加入資格や掛金限度額の計算、高額療養費の2026年8月以後の上限額改定は本問の対象外です。",
     "topic": "年金・公的保障",
     "lawReferenceDate": "2026-04-01",
-    "revision": 60,
-    "contentReview": "v96_2026_nonlife_case1_migration",
+    "revision": 61,
+    "contentReview": "v172_pre_post60_month_separation",
     "sourceUrl": "https://www.kyoukaikenpo.or.jp/benefit/high_cost_medical_expenses/002/",
     "sourceCheckedDate": "2026-10-14",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_sonpo.pdf",
-    "reviewNote": "Ver.96：2026年度年金額、生年月日、加入期間の実現可能性、再評価済み平均報酬、公的医療保険・本人iDeCo掛金を限定確認。包括監修未完了。",
+    "reviewNote": "Ver.96：2026年度年金額、生年月日、加入期間の実現可能性、再評価済み平均報酬、公的医療保険・本人iDeCo掛金を限定確認。包括監修未完了。 Ver.172：厚生年金の60歳前後を区別する具体的期間を追加。独自指定記録の全月暦検算で、既存月数/正答を保持。新法改正・初回ID・追加移行には加算しない。",
     "blueprintCase": 1,
     "blueprintSet": 2,
     "choices": [
@@ -7345,7 +7428,8 @@ const PRACTICAL_QUESTIONS = [
     "sourceLabel": "協会けんぽ：高額療養費（傷病手当金・iDeCoの追加資料は監査記録参照）",
     "additionalSourceUrls": [
       "https://www.kyoukaikenpo.or.jp/benefit/injury_and_sickness_allowance/",
-      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm"
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1135.htm",
+      "https://www.nenkin.go.jp/service/jukyu/seido/roureinenkin/jukyu-yoken/20150401-02.html"
     ]
   },
   {
@@ -7424,16 +7508,16 @@ const PRACTICAL_QUESTIONS = [
     "question": "2026年分の所得税における、設例の地震保険料控除額はいくらか。",
     "kind": "choice",
     "answer": 1,
-    "explanation": "地震保険料の控除額は32,000円です。別契約の旧長期損害保険料18,000円は10,000円超20,000円以下なので18,000×1/2＋5,000＝14,000円。合計32,000＋14,000＝46,000円で、両区分合算の上限50,000円以内です。同一契約に両方の保険料がある場合は一方を選択しますが、本設例は別契約なので合算します。住民税の控除額ではありません。",
+    "explanation": "地震保険料の控除額は32,000円です。別契約の旧長期損害保険料18,000円は10,000円超20,000円以下なので18,000×1/2＋5,000＝14,000円。合計32,000＋14,000＝46,000円で、両区分合算の上限50,000円以内です。同一契約に両方の保険料がある場合は一方を選択しますが、本設例は別契約なので合算します。住民税の控除額ではありません。選択肢1の32,000円は、地震保険料分だけを計算し、別契約の旧長期分14,000円を合算していない誤りです。選択肢3の50,000円は上限であり、支払保険料から計算した額を超えて一律に控除するものではありません。",
     "topic": "火災・地震保険",
     "lawReferenceDate": "2026-04-01",
-    "revision": 30,
-    "contentReview": "v97_2026_nonlife_case2_migration",
+    "revision": 31,
+    "contentReview": "v164_distractor_correction_and_contract_date_source_check",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1145.htm",
-    "sourceCheckedDate": "2026-10-14",
+    "sourceCheckedDate": "2026-10-16",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_sonpo.pdf",
     "taxYear": 2026,
-    "reviewNote": "Ver.97：居住用・生活用家財、契約割合と上限、所得税の地震保険料控除と別契約の旧長期経過措置を限定確認。包括監修未完了。",
+    "reviewNote": "Ver.97：居住用・生活用家財、契約割合と上限、所得税の地震保険料控除と別契約の旧長期経過措置を限定確認。包括監修未完了。 Ver.164：第1選択肢32,000円の誤答理由を、別契約の旧長期分14,000円の合算漏れと明記。正答46,000円と全設例を保持。包括監修・法令全文照合ではない。",
     "blueprintCase": 2,
     "blueprintSet": 2,
     "choices": [
@@ -7443,7 +7527,7 @@ const PRACTICAL_QUESTIONS = [
     ],
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
-      "不適切。支払保険料は所得控除の対象です。",
+      "不適切。32,000円は地震保険料分だけの控除額です。別契約の旧長期損害保険料分18,000円×1/2＋5,000円＝14,000円も合算できるため、合計46,000円になります。",
       "正解。地震保険料の控除額は32,000円です。別契約の旧長期損害保険料18,000円は10,000円超20,000円以下なので18,000×1/2＋5,000＝14,000円。合計32,000＋14,000＝46,000円で、両区分合算の上限50,000円以内です。同一契約に両方の保険料がある場合は一方を選択しますが、本設例は別契約なので合算します。住民税の控除額ではありません。",
       "不適切。上限50,000円は常に控除できる固定額ではなく、計算額46,000円を控除します。"
     ],
