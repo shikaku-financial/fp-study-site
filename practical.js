@@ -356,6 +356,15 @@
     $p('prRetryMistakes').disabled=r.correct===total;
     $p('prRetryMistakes').textContent=r.correct===total?'全問正解（復習不要）':`間違えた${total-r.correct}問だけ再演習`;
     $p('prResultNote').textContent=`これは${total}問のオリジナル体験演習です。本試験は${tr.officialCount}問で配点も異なります。したがって、この正答率から本試験の合否は判定できません。`;
+    if(r.questions.some(isMulti)){
+      let fields=0,correctFields=0;
+      r.questions.forEach((q,i)=>{
+        const parts=isMulti(q)?q.subAnswers:[q];
+        const values=isMulti(q)?(Array.isArray(r.answers[i])?r.answers[i]:[]):[r.answers[i]];
+        parts.forEach((part,j)=>{fields++;if(grade(part,values[j]))correctFields++;});
+      });
+      $p('prResultNote').textContent+=` 全解答欄の正答：${correctFields}/${fields}欄（参考）。複数欄の問題は全欄正解で1問正解として集計します。欄ごとの正答数は公式の得点・部分点ではありません。`;
+    }
     $p('prIssues').classList.toggle('active',reviewFilter==='issues');$p('prAll').classList.toggle('active',reviewFilter==='all');
     const errors=r.questions.map((q,i)=>({q,i})).filter(({q,i})=>!grade(q,r.answers[i]));
     $p('prIssues').textContent=`要復習（${errors.length}問）`;
@@ -374,6 +383,7 @@
       if(window.__fpMaterialView)window.__fpMaterialView.render(material,q);else material.textContent='設例：'+q.caseText;
       body.append(material);
       [['問題：',q.question],['あなたの回答：',answerStr(q,r.answers[i])],['正解：',correctStr(q)],['解説：',q.explanation]].forEach(([k,v])=>{const p=document.createElement('p');p.textContent=k+v;body.append(p);});
+      if(q.kind==='choice' && typeof appendChoiceExplanations==='function')appendChoiceExplanations(body,q);
       if(isMulti(q)){
         q.subAnswers.forEach((part,j)=>{const detail=document.createElement('p');const value=Array.isArray(r.answers[i])?r.answers[i][j]:null;detail.textContent=`${part.label}：${blank(value)?'未回答':grade(part,value)?'正解':'不正解'}（あなたの回答：${answerStr(part,value)}／正解：${correctStr(part)}）`;body.append(detail);});
         const policy=document.createElement('p');policy.textContent='全欄正解で1問正解として集計しています。公式の配点・部分点には対応していません。';body.append(policy);
