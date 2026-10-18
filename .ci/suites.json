@@ -1,5 +1,5 @@
 [
-  "test_asset_cache_v199",
+  "test_asset_cache_v200",
   "test_multi_numeric_v145_v189_v190_v191_v192_v193_v194_v195_v196_v197",
   "test_multi_snapshots_v169_v182_v189_v190_v191_v192_v193_v194_v195_v196_v197",
   "test_wordbank_v153_v189_v190_v191_v192_v193_v194_v195_v196_v197",
@@ -39,5 +39,7 @@
   "test_jafp3_purchase_benefits_tables_v197",
   "test_mock_counts_v198",
   "test_jafp3_survivor_auto_v199",
-  "test_jafp3_survivor_auto_tables_v199"
+  "test_jafp3_survivor_auto_tables_v199",
+  "test_jafp3_tax_v200",
+  "test_jafp3_tax_tables_v200"
 ]
