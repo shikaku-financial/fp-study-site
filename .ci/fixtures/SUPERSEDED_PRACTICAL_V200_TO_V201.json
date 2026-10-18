@@ -1,0 +1,73 @@
+[
+  {
+    "id": "pr-jafp3-018",
+    "track": "jafp3",
+    "case": 18,
+    "caseTitle": "代襲相続と法定相続分",
+    "caseText": "【2026年4月1日基準の独自演習】被相続人の相続人は妻、生存する長男、先に亡くなった長女の子2人（孫）。放棄・養子はない。",
+    "question": "妻／長男／孫各人の法定相続分はどれか。",
+    "kind": "choice",
+    "choices": [
+      "1/4／1/4／各1/4",
+      "1/2／1/6／各1/6",
+      "1/2／1/4／各1/8"
+    ],
+    "answer": 2,
+    "explanation": "妻は1/2、子全体は1/2。長男と長女の系統が各1/4、長女の1/4を孫2人で分け各1/8です。代襲者の人数で子全体を単純に均分しません。",
+    "topic": "法定相続分",
+    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 39,
+    "blueprintQuestion": 18,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v178_social_tax_option_conditions_rechecked",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.178：既存制度の指定条件と選択肢を限定再確認し個別解説を追加。新改正照合/ID初回/追加移行や全条件の包括監修へ加算しない。",
+    "choiceExplanations": [
+      "不適切。全員を1/4ずつにすると配偶者の法定相続分1/2が反映されません。妻の1/2を先に確保し、残る子全体の1/2を長男と長女の系統へ分けます。",
+      "不適切。妻1/2は適切ですが、長男と孫2人を各1/6とするのは子の残りを3人で単純等分した値です。亡くなった長女の系統が1/4で、その1/4を孫2人が代襲して各1/8となります。",
+      "正解。妻1/2、子全体1/2を長男と長女の2系統で各1/4に分け、長女の1/4を孫2人で分けるため各1/8です。1/2＋1/4＋1/8＋1/8＝1となります。"
+    ],
+    "additionalSourceUrls": [
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4132.htm"
+    ]
+  },
+  {
+    "id": "pr-jafp3-019",
+    "track": "jafp3",
+    "case": 19,
+    "caseTitle": "相続税の基礎控除",
+    "caseText": "【2026年4月1日基準の独自演習】相続人は妻、生存する子1人、先に亡くなった子の子2人（代襲孫）。養子・放棄はない。",
+    "question": "遺産に係る基礎控除額はどれか。",
+    "kind": "choice",
+    "choices": [
+      "4,800万円",
+      "5,400万円",
+      "2,000万円"
+    ],
+    "answer": 1,
+    "explanation": "法定相続人は4人。3,000＋600×4＝5,400万円。4,800万円は孫の人数を1人とする誤り、2,000万円は死亡保険金非課税限度額です。",
+    "topic": "相続基礎控除",
+    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 39,
+    "blueprintQuestion": 19,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v178_social_tax_option_conditions_rechecked",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.178：既存制度の指定条件と選択肢を限定再確認し個別解説を追加。新改正照合/ID初回/追加移行や全条件の包括監修へ加算しない。",
+    "choiceExplanations": [
+      "不適切。4800万円は3000＋600×3で相続人を3人とした額です。基礎控除の人数には代襲孫2人をそれぞれ数え、妻・生存する子・孫2人の4人を用います。",
+      "正解。法定相続人は4人なので3000＋600×4＝5400万円です。法定相続分を分けるときの子の系統の数と、基礎控除の法定相続人の人数を混同しません。",
+      "不適切。2000万円は500×4で求める死亡保険金の非課税限度額と同じ値です。遺産に係る基礎控除は3000＋600×4で計算します。"
+    ],
+    "additionalSourceUrls": [
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4152.htm",
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4114.htm"
+    ]
+  }
+]
