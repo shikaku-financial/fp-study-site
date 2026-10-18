@@ -26,8 +26,10 @@ for(const q of qs){
  // Mismatched legacy snapshots must never show a current table.
  const legacy={...q,caseText:'旧版の設例。<img src=x onerror=alert(1)>100万円。'};assert.equal(renderer.lookup(legacy),null);renderer.render(container,legacy);assert.equal(flat(container).filter(e=>e.tagName==='TABLE').length,0);assert.ok(container.textContent.includes(legacy.caseText));assert.equal(flat(container).filter(e=>e.tagName==='IMG').length,0);checks+=4;
 }
-assert.equal(qs.length,240);assert.equal(Object.keys(map).length,240);assert.equal(Object.values(map).filter(m=>m.inputRows.length).length,223);
-console.log(JSON.stringify({result:'PASS',questions:240,curatedInputTables:223,renderedTables:tables,checks,scope:'all substantive source sentences visible; no auto numbering; one small basis note; semantic tables; enlarging; original condition text except editorial prefix; legacy fallback; HTML-looking text never interpreted as markup',limit:'DOM simulation; no browser layout or iPhone validation'},null,2));
+// V203 intentionally replaces four two-column inputRows tables with six detailed tables.
+// Their complete cells and 21 rows are checked by test_jafp2_finance_tables_v203.
+assert.equal(qs.length,240);assert.equal(Object.keys(map).length,240);assert.equal(Object.values(map).filter(m=>m.inputRows.length).length,219);
+console.log(JSON.stringify({result:'PASS',questions:240,curatedInputTables:219,renderedTables:tables,checks,scope:'all substantive source sentences visible; no auto numbering; one small basis note; semantic tables; enlarging; original condition text except editorial prefix; legacy fallback; HTML-looking text never interpreted as markup',limit:'DOM simulation; no browser layout or iPhone validation'},null,2));
 
 // Separate review documents must toggle according to their own displayed state.
 const first=new Element(),second=new Element();renderer.render(first,qs[0]);renderer.render(second,qs[1]);
