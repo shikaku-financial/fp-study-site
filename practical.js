@@ -53,7 +53,17 @@
     if(!/^[1-9]\d*$/.test(normalized))return NaN;
     const n=Number(normalized);return Number.isSafeInteger(n)&&n<=bank.length?n:NaN;
   };
-  const numericParser = q => q.numericInputFormat==='wordbank-index-v1'?(v=>parseWordBank(v,q.wordBank)): q.numericInputFormat==='grouped-decimal-v1'?parseStrictNumber:parseNumber;
+  // The parser version lives in each snapshot: new kana input never reinterprets old numeric codes.
+  const WORD_BANK_SYMBOLS = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホ';
+  const isSymbolBank = q => q.numericInputFormat==='wordbank-symbol-v1';
+  const parseWordBankSymbol = (value,bank) => {
+    if(typeof value!=='string'||!Array.isArray(bank)||bank.length>WORD_BANK_SYMBOLS.length)return NaN;
+    const normalized=value.trim().normalize('NFKC').replace(/[ぁ-ゖ]/g,c=>String.fromCharCode(c.charCodeAt(0)+0x60));
+    if(normalized.length!==1)return NaN;
+    const index=WORD_BANK_SYMBOLS.indexOf(normalized);
+    return index>=0&&index<bank.length?index+1:NaN;
+  };
+  const numericParser = q => isSymbolBank(q)?(v=>parseWordBankSymbol(v,q.wordBank)):q.numericInputFormat==='wordbank-index-v1'?(v=>parseWordBank(v,q.wordBank)): q.numericInputFormat==='grouped-decimal-v1'?parseStrictNumber:parseNumber;
   function updateNumericFeedback(q,value){
     const strict=q.numericInputFormat==='grouped-decimal-v1';
     const invalid=strict && String(value).trim()!=='' && !Number.isFinite(parseStrictNumber(String(value)));
@@ -73,10 +83,11 @@
   const answerStr = (q,a) => {
     if(isMulti(q))return q.subAnswers.map((part,i)=>`${part.label}：${answerStr(part,Array.isArray(a)?a[i]:null)}`).join(' ／ ');
     if (a===null||a===undefined||a==='')return '未回答';
+    if(isSymbolBank(q)){const n=parseWordBankSymbol(String(a),q.wordBank);return Number.isFinite(n)?`${WORD_BANK_SYMBOLS[n-1]}（${q.wordBank[n-1]}）`:`${a}（無効な記号）`;}
     if(q.numericInputFormat==='wordbank-index-v1'){const n=parseWordBank(String(a),q.wordBank);return Number.isFinite(n)?`${n}番（${q.wordBank[n-1]}）`:`${a}（無効な番号）`;}
     return q.kind==='choice' ? (q.choices[a]||'無効な選択') : `${a} ${q.unit||''}`;
   };
-  const correctStr = q => isMulti(q)?q.subAnswers.map(part=>`${part.label}：${correctStr(part)}`).join(' ／ '):q.kind==='choice' ? q.choices[q.answer] : q.numericInputFormat==='wordbank-index-v1'?`${q.answer}番（${q.wordBank[q.answer-1]}）`:`${readableNum(q.answer)} ${q.unit||''}`;
+  const correctStr = q => isMulti(q)?q.subAnswers.map(part=>`${part.label}：${correctStr(part)}`).join(' ／ '):q.kind==='choice' ? q.choices[q.answer] : isSymbolBank(q)?`${WORD_BANK_SYMBOLS[q.answer-1]}（${q.wordBank[q.answer-1]}）`:q.numericInputFormat==='wordbank-index-v1'?`${q.answer}番（${q.wordBank[q.answer-1]}）`:`${readableNum(q.answer)} ${q.unit||''}`;
   const label = tr => `FP${tr.level}級｜${tr.org}｜${tr.name}`;
   function renderCourses(){
     // Two clear steps on mobile: grade first, then organizer.
@@ -241,8 +252,8 @@
       updateNumericFeedback(q,$p('prNumberInput').value);
     }else if(multi){
       if(q.kind==='wordbank_number'){
-        const table=document.createElement('table');table.className='material-table';const caption=document.createElement('caption');caption.textContent='語群（入力するのは番号です）';table.append(caption);
-        q.subAnswers[0].wordBank.forEach((word,i)=>{const row=document.createElement('tr');const code=document.createElement('th');code.scope='row';code.textContent=String(i+1);const value=document.createElement('td');value.textContent=word;row.append(code,value);table.append(row);});$p('prMultiNumeric').append(table);
+        const table=document.createElement('table');table.className='material-table';const caption=document.createElement('caption');caption.textContent=isSymbolBank(q.subAnswers[0])?'語群（入力するのは記号です）':'語群（入力するのは番号です）';table.append(caption);
+        q.subAnswers[0].wordBank.forEach((word,i)=>{const row=document.createElement('tr');const code=document.createElement('th');code.scope='row';code.textContent=isSymbolBank(q.subAnswers[0])?WORD_BANK_SYMBOLS[i]:String(i+1);const value=document.createElement('td');value.textContent=word;row.append(code,value);table.append(row);});$p('prMultiNumeric').append(table);
       }
       q.subAnswers.forEach((part,i)=>{
         const group=document.createElement('div');group.className='pr-sub-answer';
@@ -261,11 +272,11 @@
         }
         const label=document.createElement('label');label.className='field-label';label.textContent=part.label;label.setAttribute('for',`prSubInput${i}`);
         const wrap=document.createElement('div');wrap.className='pr-num-wrap';
-        const input=document.createElement('input');input.id=`prSubInput${i}`;input.type='text';input.inputMode=part.numericInputFormat==='wordbank-index-v1'?'numeric':'decimal';input.autocomplete='off';input.value=Array.isArray(attempt.answers[attempt.pos])?attempt.answers[attempt.pos][i]??'':'';
+        const input=document.createElement('input');input.id=`prSubInput${i}`;input.type='text';input.inputMode=isSymbolBank(part)?'text':part.numericInputFormat==='wordbank-index-v1'?'numeric':'decimal';input.autocomplete='off';input.value=Array.isArray(attempt.answers[attempt.pos])?attempt.answers[attempt.pos][i]??'':'';
         input.setAttribute('aria-describedby',`prSubUnit${i} prSubFeedback${i}`);
         const unit=document.createElement('span');unit.id=`prSubUnit${i}`;unit.textContent=part.unit||'';
         const feedback=document.createElement('p');feedback.id=`prSubFeedback${i}`;feedback.className='small';feedback.setAttribute('role','status');feedback.setAttribute('aria-live','polite');
-        const check=()=>{const invalid=String(input.value).trim()!==''&&!Number.isFinite(numericParser(part)(String(input.value)));input.setAttribute('aria-invalid',String(invalid));feedback.textContent=invalid?(part.numericInputFormat==='wordbank-index-v1'?`語群の番号1〜${part.wordBank.length}を整数で入力してください。`:'数字で入力してください。カンマは3桁区切りで使えます。'):'';};check();
+        const check=()=>{const invalid=String(input.value).trim()!==''&&!Number.isFinite(numericParser(part)(String(input.value)));input.setAttribute('aria-invalid',String(invalid));feedback.textContent=invalid?(isSymbolBank(part)?`語群の記号ア〜${WORD_BANK_SYMBOLS[part.wordBank.length-1]}を1文字で入力してください。ひらがな・半角カナも使えます。`:part.numericInputFormat==='wordbank-index-v1'?`語群の番号1〜${part.wordBank.length}を整数で入力してください。`:'数字で入力してください。カンマは3桁区切りで使えます。'):'';};check();
         input.addEventListener('input',()=>{
           if(!Array.isArray(attempt.answers[attempt.pos]))attempt.answers[attempt.pos]=q.subAnswers.map(()=>null);
           attempt.answers[attempt.pos][i]=input.value;check();save(DRAFT,attempt);
@@ -317,7 +328,7 @@
       if(isMulti(q))return Array.isArray(q.subAnswers) && q.subAnswers.length>=2 && q.subAnswers.length<=8 &&
         q.subAnswers.every(part=>part && typeof part.label==='string' && part.label.trim() &&
           (q.kind==='multi_choice' ? part.kind==='choice' && Array.isArray(part.choices) && part.choices.length>=2 && part.choices.every(c=>typeof c==='string') && Number.isInteger(part.answer) && part.answer>=0 && part.answer<part.choices.length :
-           part.kind==='numeric' && Number.isFinite(part.answer) && typeof part.unit==='string' && (q.kind==='wordbank_number'?part.numericInputFormat==='wordbank-index-v1' && Array.isArray(part.wordBank) && part.wordBank.length>=2 && part.wordBank.length<=30 && part.wordBank.every(w=>typeof w==='string'&&w.trim()) && JSON.stringify(part.wordBank)===JSON.stringify(q.subAnswers[0].wordBank) && Number.isInteger(part.answer) && part.answer>=1 && part.answer<=part.wordBank.length && (part.tolerance===undefined||part.tolerance===0):part.numericInputFormat==='grouped-decimal-v1' && (part.tolerance===undefined || Number.isFinite(part.tolerance)&&part.tolerance>=0)))) &&
+           part.kind==='numeric' && Number.isFinite(part.answer) && typeof part.unit==='string' && (q.kind==='wordbank_number'?['wordbank-index-v1','wordbank-symbol-v1'].includes(part.numericInputFormat) && part.numericInputFormat===q.subAnswers[0].numericInputFormat && Array.isArray(part.wordBank) && part.wordBank.length>=2 && part.wordBank.length<=30 && part.wordBank.every(w=>typeof w==='string'&&w.trim()) && JSON.stringify(part.wordBank)===JSON.stringify(q.subAnswers[0].wordBank) && Number.isInteger(part.answer) && part.answer>=1 && part.answer<=part.wordBank.length && (part.tolerance===undefined||part.tolerance===0):part.numericInputFormat==='grouped-decimal-v1' && (part.tolerance===undefined || Number.isFinite(part.tolerance)&&part.tolerance>=0)))) &&
         (a===null || Array.isArray(a) && a.length===q.subAnswers.length && a.every((v,j)=>v===null || (q.kind==='multi_choice'?Number.isInteger(v)&&v>=0&&v<q.subAnswers[j].choices.length:typeof v==='string' || typeof v==='number'&&Number.isFinite(v))));
       if(q.kind==='numeric')return (q.numericInputFormat===undefined || q.numericInputFormat==='grouped-decimal-v1') && Number.isFinite(q.answer) &&
         (q.tolerance===undefined || (Number.isFinite(q.tolerance)&&q.tolerance>=0)) &&

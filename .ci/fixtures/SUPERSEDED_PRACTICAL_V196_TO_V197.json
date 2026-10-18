@@ -1,0 +1,66 @@
+[
+  {
+    "id": "pr-jafp3-007",
+    "track": "jafp3",
+    "case": 7,
+    "caseTitle": "投資信託の購入",
+    "caseText": "【2026年4月1日基準の独自演習】基準価額は1万口当たり12,400円。購入時手数料は税込2.2％、購入口数は15万口。信託報酬・税等を購入金額に別途加算しない。",
+    "question": "購入に必要な金額はどれか。",
+    "kind": "choice",
+    "choices": [
+      "186,000円",
+      "190,092円",
+      "4,092円"
+    ],
+    "answer": 1,
+    "explanation": "12,400×15＝186,000円。手数料186,000×2.2％＝4,092円を加えて190,092円。186,000円は手数料なし、4,092円は手数料だけです。",
+    "topic": "投信購入",
+    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 28,
+    "blueprintQuestion": 7,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-13",
+    "contentReview": "v177_specified_calculation_choice_reasons",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.177：指定条件と全選択肢の計算を検算し、個別解説を追加。内部検算を法改正照合/初回ID/追加移行へ加算しない。",
+    "choiceExplanations": [
+      "不適切。12400×15＝186000円は投資信託の購入代金だけで、税込購入時手数料4092円を含みません。1万口単位の金額なので15万口は15倍です。",
+      "正解。購入代金12400×15＝186000円、税込手数料186000×2.2％＝4092円、必要額は190092円です。税込率を指定しているため、手数料へ消費税を重ねて加えません。",
+      "不適切。186000×2.2％＝4092円は購入時手数料だけです。必要額には購入代金186000円も含めます。信託報酬等を今回別途加える条件ではありません。"
+    ]
+  },
+  {
+    "id": "pr-jafp3-012",
+    "track": "jafp3",
+    "case": 12,
+    "caseTitle": "生命保険の給付",
+    "caseText": "【2026年4月1日基準の独自演習】終身死亡保障300万円、定期死亡保障1,500万円、事故死亡限定の追加保障600万円、疾病入院日額8,000円。疾病死亡では終身と定期だけが対象。契約はすべて有効、他給付・既払給付はない。",
+    "question": "疾病死亡時の死亡保険金合計はどれか。",
+    "kind": "choice",
+    "choices": [
+      "2,400万円",
+      "1,500万円",
+      "1,800万円"
+    ],
+    "answer": 2,
+    "explanation": "300＋1,500＝1,800万円。事故限定600万円を疾病死亡に加算せず、終身300万円も漏らしません。給付は設例で明示した契約条件によります。",
+    "topic": "保険給付",
+    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 32,
+    "blueprintQuestion": 12,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-13",
+    "contentReview": "v177_specified_calculation_choice_reasons",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.177：指定条件と全選択肢の計算を検算し、個別解説を追加。内部検算を法改正照合/初回ID/追加移行へ加算しない。",
+    "choiceExplanations": [
+      "不適切。300＋1500＋600＝2400万円は事故死亡限定の追加保障600万円も加算しています。今回の原因は疾病なので、設例で明示した事故限定分は含めません。",
+      "不適切。1500万円は定期死亡保障だけです。疾病死亡でも対象となる終身死亡保障300万円を漏らしています。",
+      "正解。疾病死亡で対象となる終身300万円と定期1500万円を合わせ1800万円です。事故限定600万円や疾病入院日額8000円は死亡保険金に加算しません。設例で指定した契約条件だけを判定します。"
+    ]
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "id": "pr-jafp3-005",
+    "track": "jafp3",
+    "case": 5,
+    "caseTitle": "退職後の健康保険",
+    "caseText": "【2026年4月1日基準の独自演習】上田さんは勤務先の健康保険を脱退し、協会けんぽの任意継続を検討している。基準日は2026年4月1日。",
+    "question": "任意継続の一般的な要件の組合せはどれか。",
+    "kind": "choice",
+    "choices": [
+      "退職前の継続加入2カ月以上・資格喪失日から20日以内に申請・最長2年間",
+      "退職前の継続加入1カ月以上・資格喪失日から60日以内に申請・最長5年間",
+      "加入期間不問・資格喪失日から1年以内に申請・期間無制限"
+    ],
+    "answer": 0,
+    "explanation": "通常は資格喪失前の被保険者期間が継続2カ月以上、資格喪失日から20日以内の申請、最長2年間です。任意脱退等の資格喪失事由や期限が休日の場合の扱いは別に確認します。",
+    "topic": "任意継続",
+    "sourceUrl": "https://www.kyoukaikenpo.or.jp/benefit/voluntary_continuation/",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 28,
+    "blueprintQuestion": 5,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v178_social_tax_option_conditions_rechecked",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.178：既存制度の指定条件と選択肢を限定再確認し個別解説を追加。新改正照合/ID初回/追加移行や全条件の包括監修へ加算しない。",
+    "choiceExplanations": [
+      "正解。一般的な加入条件は資格喪失前に継続2か月以上、資格喪失日から20日以内の申請で、加入期間は最長2年間です。途中の資格喪失や、20日目が休日の場合等の取扱いは別にあります。",
+      "不適切。「継続1か月」「60日以内」「最長5年間」の3点が誤りです。通常は継続2か月以上・20日以内・最長2年間です。加入条件と申請期限、加入可能期間を別々に確認します。",
+      "不適切。加入期間が不問になるわけではなく、継続2か月以上が通常の要件です。また通常の申請期限は20日以内、加入は最長2年間であり、「1年以内」「無制限」も誤りです。"
+    ],
+    "additionalSourceUrls": [
+      "https://www.kyoukaikenpo.or.jp/benefit/voluntary_continuation/"
+    ]
+  },
+  {
+    "id": "pr-jafp3-010",
+    "track": "jafp3",
+    "case": 10,
+    "caseTitle": "不動産の評価手法",
+    "caseText": "【2026年4月1日基準の独自演習】FPの山崎さんは、不動産の価格を試算する手法の違いを説明している。",
+    "question": "将来期待される純収益を現在価値にして価格を求める手法はどれか。",
+    "kind": "choice",
+    "choices": [
+      "原価法",
+      "収益還元法",
+      "取引事例比較法"
+    ],
+    "answer": 1,
+    "explanation": "純収益の現在価値を基礎にするのは収益還元法。原価法は再調達原価に減価修正、取引事例比較法は比較可能な取引価格を参考にします。 手法の定義を問う問題であり、純収益額・還元利回り・割引率を仮定して具体的な鑑定価格を確定するものではありません。",
+    "topic": "不動産評価",
+    "sourceUrl": "https://www.mlit.go.jp/notice/noticedata/sgml/018/74000514/74000514.html",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 39,
+    "blueprintQuestion": 10,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v179_remaining_option_reasons_scoped",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.168：公表試験PDFから直接根拠へ是正し、制度の要件・限定範囲を補足。全設例・全肢・正答保持。全文/全改正の包括監修ではない。 Ver.179：全選択肢の個別解説を追加。既存根拠の限定再確認。新法改正/初回ID/追加移行/包括監修へ加算しない。",
+    "sourceLabel": "国土交通省：不動産鑑定評価基準・評価手法",
+    "additionalSourceUrls": [
+      "https://www.mlit.go.jp/totikensangyo/totikensangyo_tk4_000024.html",
+      "https://www.mlit.go.jp/notice/noticedata/sgml/018/74000514/74000514.html",
+      "https://www.mlit.go.jp/common/001204083.pdf"
+    ],
+    "choiceExplanations": [
+      "不適切。原価法は再調達原価を基に減価修正して価格を求める方法です。将来の純収益を現在価値へ換算するという問われた定義とは異なります。",
+      "正解。収益還元法は、将来期待される純収益の現在価値を基に価格を求める方法です。本問は手法の定義の識別であり、還元利回り等を仮定して鑑定価格を確定するものではありません。",
+      "不適切。取引事例比較法は、比較できる取引事例の価格に必要な補修正等を行って価格を求めます。将来の純収益を現在価値へ換算する方法の名称ではありません。"
+    ]
+  },
+  {
+    "id": "pr-jafp3-011",
+    "track": "jafp3",
+    "case": 11,
+    "caseTitle": "定期借家",
+    "caseText": "【2026年4月1日基準の独自演習】貸主が住宅を定期借家契約で貸す場合を検討中。基準日は2026年4月1日。",
+    "question": "適切な説明はどれか。",
+    "kind": "choice",
+    "choices": [
+      "更新がないことを定めた所定の書面等で契約し、原則として事前の説明も必要である",
+      "口頭で合意すれば当然に定期借家となり更新されない",
+      "契約期間が短ければ普通借家も自動的に更新がない契約になる"
+    ],
+    "answer": 0,
+    "explanation": "定期借家は所定の書面等による契約に加え、更新がなく期間満了で終了する旨の説明等が必要です。単に期間を短くするだけでは普通借家の更新を排除できません。 契約の締結と、更新がなく期間満了で終了することの事前説明は区別します。契約書だけに記載すれば別の事前説明が当然に不要となるわけではありません。2022年5月18日施行の改正による契約・事前説明事項の提供の電子化にも対応しており、紙のみが認められるという意味ではありません。所定の承諾・方式等の要件を確認します。",
+    "topic": "借家契約",
+    "sourceUrl": "https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000030.html",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 29,
+    "blueprintQuestion": 11,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v179_remaining_option_reasons_scoped",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.168：公表試験PDFから直接根拠へ是正し、制度の要件・限定範囲を補足。全設例・全肢・正答保持。全文/全改正の包括監修ではない。 Ver.179：全選択肢の個別解説を追加。既存根拠の限定再確認。新法改正/初回ID/追加移行/包括監修へ加算しない。",
+    "sourceLabel": "国土交通省：定期賃貸住宅標準契約書と電子化",
+    "additionalSourceUrls": [
+      "https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000060.html",
+      "https://www.moj.go.jp/content/001372507.pdf"
+    ],
+    "choiceExplanations": [
+      "正解。更新がなく期間満了で終了する契約とする所定の方式と、契約前にその旨を説明する手続きを区別します。所定の電子化も認められるため紙の書面だけに限る意味ではなく、事前説明事項の電磁的提供には承諾等の要件があります。",
+      "不適切。口頭の合意だけで当然に定期借家になるわけではありません。所定の契約方式と、更新がなく期間満了で終了する旨の事前説明等が必要です。",
+      "不適切。契約期間を短く定めただけで普通借家が定期借家へ変わるわけではありません。期間の長短と、更新をしない契約を有効に成立させる方式・手続きは別です。"
+    ]
+  }
+]
