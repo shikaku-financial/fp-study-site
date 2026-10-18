@@ -7184,87 +7184,521 @@ const PRACTICAL_MATERIALS = {
     ]
   },
   "pr-jafp3-018": {
-    "sourceText": "【2026年4月1日基準の独自演習】被相続人の相続人は妻、生存する長男、先に亡くなった長女の子2人（孫）。放棄・養子はない。",
+    "sourceText": "修一さんが2026年4月1日に死亡した。親族関係と各人の状況は資料のとおりで、各子はすべて修一さんの実子である。図の二重線は婚姻、下向きの線は親子関係を示す。美和さんは修一さんの法律上の配偶者である。長男の航平さんは修一さんの相続について、期限内に家庭裁判所へ申述し、適法に相続を放棄した。航平さんの子は遥さん1人である。長女の香織さんは修一さんより前に死亡しており、その実子は葵さん・陸さんの2人である。次男の直樹さんを含め、香織さんと被相続人以外の図中の人は相続開始時に生存している。養子、図外の子・子孫、胎児、相続欠格、廃除はない。他に相続放棄をした人もいない。遺言による相続分指定、特別受益や寄与分による調整は考えず、民法上の相続人と法定相続分だけを答える。相続税の人数計算と区別する。",
     "organization": "jafp",
+    "sentences": [
+      "修一さんが2026年4月1日に死亡した。親族関係と各人の状況は資料のとおりで、各子はすべて修一さんの実子である。図の二重線は婚姻、下向きの線は親子関係を示す。",
+      "美和さんは修一さんの法律上の配偶者である。長男の航平さんは修一さんの相続について、期限内に家庭裁判所へ申述し、適法に相続を放棄した。航平さんの子は遥さん1人である。",
+      "長女の香織さんは修一さんより前に死亡しており、その実子は葵さん・陸さんの2人である。次男の直樹さんを含め、香織さんと被相続人以外の図中の人は相続開始時に生存している。",
+      "養子、図外の子・子孫、胎児、相続欠格、廃除はない。他に相続放棄をした人もいない。",
+      "遺言による相続分指定、特別受益や寄与分による調整は考えず、民法上の相続人と法定相続分だけを答える。相続税の人数計算と区別する。"
+    ],
     "inputRows": [
       [
-        "被相続人との関係",
-        "妻・長男・亡くなった長女の子2人"
+        "相続の開始",
+        "修一さんの死亡日：2026年4月1日"
       ],
       [
-        "孫の人数",
-        "2人"
+        "判定の対象",
+        "民法上の相続人・法定相続分"
       ]
     ],
-    "sentences": [
-      "【2026年4月1日基準の独自演習】被相続人の相続人は妻、生存する長男、先に亡くなった長女の子2人（孫）。",
-      "放棄・養子はない。"
+    "tables": [
+      {
+        "title": "親族の続柄と相続開始時の状況",
+        "headers": [
+          "氏名",
+          "修一さんとの関係",
+          "状況"
+        ],
+        "rows": [
+          [
+            "美和",
+            "修一の配偶者",
+            "生存"
+          ],
+          [
+            "航平",
+            "修一の実子（長男）",
+            "生存。修一の相続を適法に放棄"
+          ],
+          [
+            "香織",
+            "修一の実子（長女）",
+            "修一の相続開始前に死亡"
+          ],
+          [
+            "直樹",
+            "修一の実子（次男）",
+            "生存"
+          ],
+          [
+            "遥",
+            "航平の実子",
+            "生存"
+          ],
+          [
+            "葵・陸",
+            "香織の実子2人",
+            "いずれも生存"
+          ]
+        ]
+      }
     ],
     "diagram": {
       "kind": "family",
-      "title": "親族関係図",
-      "alt": "被相続人の配偶者は妻。子の欄は長男、長女（先に死亡）。先に死亡した子の子（孫）は2人。",
-      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>被相続人の配偶者は妻。子の欄は長男、長女（先に死亡）。先に死亡した子の子（孫）は2人。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">被相続人</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">長男</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#ad3949\" stroke-width=\"2\" stroke-dasharray=\"5 3\" /><text x=\"300.0\" y=\"171\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">長女</text><text x=\"300.0\" y=\"194\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡</text><line x1=\"300\" y1=\"210\" x2=\"300\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"255\" y1=\"250\" x2=\"345\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"255\" y1=\"250\" x2=\"255\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"213\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"255.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 1</text><line x1=\"345\" y1=\"250\" x2=\"345\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"303\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"345.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 2</text></svg>",
+      "title": "修一家の親族関係図",
+      "alt": "被相続人は修一、配偶者は美和。修一の実子は航平、香織、直樹。航平は生存し修一の相続を適法に放棄、航平の実子は遥。香織は修一より先に死亡、香織の実子は葵と陸。美和、航平、直樹、遥、葵、陸は修一の相続開始時に生存。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 380\" width=\"660\" height=\"380\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>修一家の親族関係図</title><desc>被相続人は修一、配偶者は美和。修一の実子は航平、香織、直樹。航平は生存し修一の相続を適法に放棄、航平の実子は遥。香織は修一より先に死亡、香織の実子は葵と陸。美和、航平、直樹、遥、葵、陸は修一の相続開始時に生存。</desc><line x1=\"320\" y1=\"46\" x2=\"420\" y2=\"46\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"320\" y1=\"54\" x2=\"420\" y2=\"54\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"250\" y1=\"80\" x2=\"250\" y2=\"115\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"110\" y1=\"115\" x2=\"550\" y2=\"115\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"110\" y1=\"115\" x2=\"110\" y2=\"150\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"115\" x2=\"330\" y2=\"150\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"550\" y1=\"115\" x2=\"550\" y2=\"150\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"110\" y1=\"210\" x2=\"110\" y2=\"285\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"210\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"300\" y1=\"250\" x2=\"420\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"300\" y1=\"250\" x2=\"300\" y2=\"285\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"420\" y1=\"250\" x2=\"420\" y2=\"285\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"180\" y=\"20\" width=\"140\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"250.0\" y=\"43\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">被相続人 修一</text><text x=\"250.0\" y=\"66\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">2026年4月1日死亡</text><rect x=\"420\" y=\"20\" width=\"140\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"490.0\" y=\"43\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">配偶者 美和</text><text x=\"490.0\" y=\"66\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">生存</text><rect x=\"40\" y=\"150\" width=\"140\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#9a6700\" stroke-width=\"2\" /><text x=\"110.0\" y=\"173\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">長男 航平</text><text x=\"110.0\" y=\"196\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">生存・相続放棄</text><rect x=\"260\" y=\"150\" width=\"140\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#ad3949\" stroke-width=\"2\" stroke-dasharray=\"5 3\" /><text x=\"330.0\" y=\"173\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">長女 香織</text><text x=\"330.0\" y=\"196\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">相続開始前に死亡</text><rect x=\"480\" y=\"150\" width=\"140\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"550.0\" y=\"173\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">次男 直樹</text><text x=\"550.0\" y=\"196\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">生存</text><rect x=\"50\" y=\"285\" width=\"120\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"110.0\" y=\"308\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">航平の子 遥</text><text x=\"110.0\" y=\"331\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">生存</text><rect x=\"250\" y=\"285\" width=\"100\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"308\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">香織の子 葵</text><text x=\"300.0\" y=\"331\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">生存</text><rect x=\"370\" y=\"285\" width=\"100\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"420.0\" y=\"308\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">香織の子 陸</text><text x=\"420.0\" y=\"331\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">生存</text></svg>",
       "notes": [
-        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
-        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+        "二重線は婚姻、単線は親子関係。各子は修一さんの実子で、美和さんとの親子関係は指定していません。",
+        "「相続放棄」は修一さんの相続についての手続です。「相続開始前に死亡」と区別してください。"
       ],
       "facts": {
-        "root": "被相続人",
-        "spouse": "妻",
+        "root": "修一",
+        "spouse": "美和",
         "children": [
           {
-            "label": "長男"
+            "label": "航平",
+            "renounced": true,
+            "dead": false,
+            "children": [
+              "遥"
+            ]
           },
           {
-            "label": "長女",
-            "dead": true
+            "label": "香織",
+            "dead": true,
+            "renounced": false,
+            "children": [
+              "葵",
+              "陸"
+            ]
+          },
+          {
+            "label": "直樹",
+            "dead": false,
+            "renounced": false,
+            "children": []
           }
         ],
-        "grandIndex": 1,
-        "grandCount": 2
+        "nodes": [
+          {
+            "id": "deceased",
+            "name": "修一",
+            "role": "被相続人",
+            "x": 180,
+            "y": 20,
+            "w": 140,
+            "h": 60,
+            "status": "2026年4月1日死亡"
+          },
+          {
+            "id": "spouse",
+            "name": "美和",
+            "role": "配偶者",
+            "x": 420,
+            "y": 20,
+            "w": 140,
+            "h": 60,
+            "status": "生存"
+          },
+          {
+            "id": "renounced",
+            "name": "航平",
+            "role": "長男",
+            "x": 40,
+            "y": 150,
+            "w": 140,
+            "h": 60,
+            "status": "生存・相続放棄"
+          },
+          {
+            "id": "predeceased",
+            "name": "香織",
+            "role": "長女",
+            "x": 260,
+            "y": 150,
+            "w": 140,
+            "h": 60,
+            "status": "相続開始前に死亡"
+          },
+          {
+            "id": "living",
+            "name": "直樹",
+            "role": "次男",
+            "x": 480,
+            "y": 150,
+            "w": 140,
+            "h": 60,
+            "status": "生存"
+          },
+          {
+            "id": "renounced_child",
+            "name": "遥",
+            "role": "航平の子",
+            "x": 50,
+            "y": 285,
+            "w": 120,
+            "h": 60,
+            "status": "生存"
+          },
+          {
+            "id": "grand_a",
+            "name": "葵",
+            "role": "香織の子",
+            "x": 250,
+            "y": 285,
+            "w": 100,
+            "h": 60,
+            "status": "生存"
+          },
+          {
+            "id": "grand_b",
+            "name": "陸",
+            "role": "香織の子",
+            "x": 370,
+            "y": 285,
+            "w": 100,
+            "h": 60,
+            "status": "生存"
+          }
+        ],
+        "segments": [
+          [
+            320,
+            46,
+            420,
+            46
+          ],
+          [
+            320,
+            54,
+            420,
+            54
+          ],
+          [
+            250,
+            80,
+            250,
+            115
+          ],
+          [
+            110,
+            115,
+            550,
+            115
+          ],
+          [
+            110,
+            115,
+            110,
+            150
+          ],
+          [
+            330,
+            115,
+            330,
+            150
+          ],
+          [
+            550,
+            115,
+            550,
+            150
+          ],
+          [
+            110,
+            210,
+            110,
+            285
+          ],
+          [
+            330,
+            210,
+            330,
+            250
+          ],
+          [
+            300,
+            250,
+            420,
+            250
+          ],
+          [
+            300,
+            250,
+            300,
+            285
+          ],
+          [
+            420,
+            250,
+            420,
+            285
+          ]
+        ]
       },
-      "evidence": "【2026年4月1日基準の独自演習】被相続人の相続人は妻、生存する長男、先に亡くなった長女の子2人（孫）。放棄・養子はない。"
+      "evidence": "修一さんが2026年4月1日に死亡した。親族関係と各人の状況は資料のとおりで、各子はすべて修一さんの実子である。図の二重線は婚姻、下向きの線は親子関係を示す。美和さんは修一さんの法律上の配偶者である。長男の航平さんは修一さんの相続について、期限内に家庭裁判所へ申述し、適法に相続を放棄した。航平さんの子は遥さん1人である。長女の香織さんは修一さんより前に死亡しており、その実子は葵さん・陸さんの2人である。次男の直樹さんを含め、香織さんと被相続人以外の図中の人は相続開始時に生存している。養子、図外の子・子孫、胎児、相続欠格、廃除はない。他に相続放棄をした人もいない。"
     }
   },
   "pr-jafp3-019": {
-    "sourceText": "【2026年4月1日基準の独自演習】相続人は妻、生存する子1人、先に亡くなった子の子2人（代襲孫）。養子・放棄はない。",
+    "sourceText": "修一さんが2026年4月1日に死亡した。親族関係と各人の状況は資料のとおりで、各子はすべて修一さんの実子である。図の二重線は婚姻、下向きの線は親子関係を示す。美和さんは修一さんの法律上の配偶者である。長男の航平さんは修一さんの相続について、期限内に家庭裁判所へ申述し、適法に相続を放棄した。航平さんの子は遥さん1人である。長女の香織さんは修一さんより前に死亡しており、その実子は葵さん・陸さんの2人である。次男の直樹さんを含め、香織さんと被相続人以外の図中の人は相続開始時に生存している。養子、図外の子・子孫、胎児、相続欠格、廃除はない。他に相続放棄をした人もいない。この設例では、遺産に係る基礎控除だけを計算する。法定相続人の数は、相続放棄がなかったものとして判定する。課税遺産総額、納付税額、死亡保険金の非課税限度額は求めない。",
     "organization": "jafp",
+    "sentences": [
+      "修一さんが2026年4月1日に死亡した。親族関係と各人の状況は資料のとおりで、各子はすべて修一さんの実子である。図の二重線は婚姻、下向きの線は親子関係を示す。",
+      "美和さんは修一さんの法律上の配偶者である。長男の航平さんは修一さんの相続について、期限内に家庭裁判所へ申述し、適法に相続を放棄した。航平さんの子は遥さん1人である。",
+      "長女の香織さんは修一さんより前に死亡しており、その実子は葵さん・陸さんの2人である。次男の直樹さんを含め、香織さんと被相続人以外の図中の人は相続開始時に生存している。",
+      "養子、図外の子・子孫、胎児、相続欠格、廃除はない。他に相続放棄をした人もいない。",
+      "この設例では、遺産に係る基礎控除だけを計算する。法定相続人の数は、相続放棄がなかったものとして判定する。課税遺産総額、納付税額、死亡保険金の非課税限度額は求めない。"
+    ],
     "inputRows": [
       [
-        "相続人の関係",
-        "妻・生存する子1人・代襲孫2人"
+        "相続の開始",
+        "修一さんの死亡日：2026年4月1日"
+      ],
+      [
+        "判定の対象",
+        "相続税の遺産に係る基礎控除"
       ]
     ],
-    "sentences": [
-      "【2026年4月1日基準の独自演習】相続人は妻、生存する子1人、先に亡くなった子の子2人（代襲孫）。",
-      "養子・放棄はない。"
+    "tables": [
+      {
+        "title": "親族の続柄と相続開始時の状況",
+        "headers": [
+          "氏名",
+          "修一さんとの関係",
+          "状況"
+        ],
+        "rows": [
+          [
+            "美和",
+            "修一の配偶者",
+            "生存"
+          ],
+          [
+            "航平",
+            "修一の実子（長男）",
+            "生存。修一の相続を適法に放棄"
+          ],
+          [
+            "香織",
+            "修一の実子（長女）",
+            "修一の相続開始前に死亡"
+          ],
+          [
+            "直樹",
+            "修一の実子（次男）",
+            "生存"
+          ],
+          [
+            "遥",
+            "航平の実子",
+            "生存"
+          ],
+          [
+            "葵・陸",
+            "香織の実子2人",
+            "いずれも生存"
+          ]
+        ]
+      }
     ],
     "diagram": {
       "kind": "family",
-      "title": "親族関係図",
-      "alt": "被相続人の配偶者は妻。子の欄は生存する子、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は2人。",
-      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 360\" width=\"400\" height=\"360\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>親族関係図</title><desc>被相続人の配偶者は妻。子の欄は生存する子、先に死亡した子（先に死亡）。先に死亡した子の子（孫）は2人。</desc><rect x=\"28\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"98.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">被相続人</text><rect x=\"232\" y=\"24\" width=\"140\" height=\"56\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"302.0\" y=\"59.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">妻</text><line x1=\"168\" y1=\"48\" x2=\"232\" y2=\"48\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"168\" y1=\"56\" x2=\"232\" y2=\"56\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"98\" y1=\"80\" x2=\"98\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"300\" y2=\"117\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"100\" y1=\"117\" x2=\"100\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"43\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"100.0\" y=\"186.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">生存する子</text><line x1=\"300\" y1=\"117\" x2=\"300\" y2=\"148\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"243\" y=\"148\" width=\"114\" height=\"62\" rx=\"6\" fill=\"#fff\" stroke=\"#ad3949\" stroke-width=\"2\" stroke-dasharray=\"5 3\" /><text x=\"300.0\" y=\"171\" font-size=\"15\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡した子</text><text x=\"300.0\" y=\"194\" font-size=\"15\" font-weight=\"normal\" text-anchor=\"middle\" fill=\"#172a3a\">先に死亡</text><line x1=\"300\" y1=\"210\" x2=\"300\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"255\" y1=\"250\" x2=\"345\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"255\" y1=\"250\" x2=\"255\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"213\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"255.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 1</text><line x1=\"345\" y1=\"250\" x2=\"345\" y2=\"273\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"303\" y=\"273\" width=\"84\" height=\"52\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"345.0\" y=\"306.0\" font-size=\"18\" font-weight=\"600\" text-anchor=\"middle\" fill=\"#172a3a\">孫 2</text></svg>",
+      "title": "修一家の親族関係図",
+      "alt": "被相続人は修一、配偶者は美和。修一の実子は航平、香織、直樹。航平は生存し修一の相続を適法に放棄、航平の実子は遥。香織は修一より先に死亡、香織の実子は葵と陸。美和、航平、直樹、遥、葵、陸は修一の相続開始時に生存。",
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 380\" width=\"660\" height=\"380\" role=\"img\" font-family=\"system-ui, sans-serif\"><title>修一家の親族関係図</title><desc>被相続人は修一、配偶者は美和。修一の実子は航平、香織、直樹。航平は生存し修一の相続を適法に放棄、航平の実子は遥。香織は修一より先に死亡、香織の実子は葵と陸。美和、航平、直樹、遥、葵、陸は修一の相続開始時に生存。</desc><line x1=\"320\" y1=\"46\" x2=\"420\" y2=\"46\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"320\" y1=\"54\" x2=\"420\" y2=\"54\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"250\" y1=\"80\" x2=\"250\" y2=\"115\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"110\" y1=\"115\" x2=\"550\" y2=\"115\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"110\" y1=\"115\" x2=\"110\" y2=\"150\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"115\" x2=\"330\" y2=\"150\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"550\" y1=\"115\" x2=\"550\" y2=\"150\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"110\" y1=\"210\" x2=\"110\" y2=\"285\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"330\" y1=\"210\" x2=\"330\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"300\" y1=\"250\" x2=\"420\" y2=\"250\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"300\" y1=\"250\" x2=\"300\" y2=\"285\" stroke=\"#253f50\" stroke-width=\"2\" /><line x1=\"420\" y1=\"250\" x2=\"420\" y2=\"285\" stroke=\"#253f50\" stroke-width=\"2\" /><rect x=\"180\" y=\"20\" width=\"140\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"250.0\" y=\"43\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">被相続人 修一</text><text x=\"250.0\" y=\"66\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">2026年4月1日死亡</text><rect x=\"420\" y=\"20\" width=\"140\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"490.0\" y=\"43\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">配偶者 美和</text><text x=\"490.0\" y=\"66\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">生存</text><rect x=\"40\" y=\"150\" width=\"140\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#9a6700\" stroke-width=\"2\" /><text x=\"110.0\" y=\"173\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">長男 航平</text><text x=\"110.0\" y=\"196\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">生存・相続放棄</text><rect x=\"260\" y=\"150\" width=\"140\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#ad3949\" stroke-width=\"2\" stroke-dasharray=\"5 3\" /><text x=\"330.0\" y=\"173\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">長女 香織</text><text x=\"330.0\" y=\"196\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">相続開始前に死亡</text><rect x=\"480\" y=\"150\" width=\"140\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"550.0\" y=\"173\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">次男 直樹</text><text x=\"550.0\" y=\"196\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">生存</text><rect x=\"50\" y=\"285\" width=\"120\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"110.0\" y=\"308\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">航平の子 遥</text><text x=\"110.0\" y=\"331\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">生存</text><rect x=\"250\" y=\"285\" width=\"100\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"300.0\" y=\"308\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">香織の子 葵</text><text x=\"300.0\" y=\"331\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">生存</text><rect x=\"370\" y=\"285\" width=\"100\" height=\"60\" rx=\"6\" fill=\"#fff\" stroke=\"#253f50\" stroke-width=\"2\" /><text x=\"420.0\" y=\"308\" font-size=\"16\" text-anchor=\"middle\" fill=\"#172a3a\">香織の子 陸</text><text x=\"420.0\" y=\"331\" font-size=\"12\" text-anchor=\"middle\" fill=\"#172a3a\">生存</text></svg>",
       "notes": [
-        "番号は図中の便宜上の表記です。図には設例にない性別・年齢・法定相続分を加えていません。",
-        "親子の線は本人から引いています。配偶者と各子の親子関係は、設例にない場合は示していません。"
+        "二重線は婚姻、単線は親子関係。各子は修一さんの実子で、美和さんとの親子関係は指定していません。",
+        "「相続放棄」は修一さんの相続についての手続です。「相続開始前に死亡」と区別してください。"
       ],
       "facts": {
-        "root": "被相続人",
-        "spouse": "妻",
+        "root": "修一",
+        "spouse": "美和",
         "children": [
           {
-            "label": "生存する子"
+            "label": "航平",
+            "renounced": true,
+            "dead": false,
+            "children": [
+              "遥"
+            ]
           },
           {
-            "label": "先に死亡した子",
-            "dead": true
+            "label": "香織",
+            "dead": true,
+            "renounced": false,
+            "children": [
+              "葵",
+              "陸"
+            ]
+          },
+          {
+            "label": "直樹",
+            "dead": false,
+            "renounced": false,
+            "children": []
           }
         ],
-        "grandIndex": 1,
-        "grandCount": 2
+        "nodes": [
+          {
+            "id": "deceased",
+            "name": "修一",
+            "role": "被相続人",
+            "x": 180,
+            "y": 20,
+            "w": 140,
+            "h": 60,
+            "status": "2026年4月1日死亡"
+          },
+          {
+            "id": "spouse",
+            "name": "美和",
+            "role": "配偶者",
+            "x": 420,
+            "y": 20,
+            "w": 140,
+            "h": 60,
+            "status": "生存"
+          },
+          {
+            "id": "renounced",
+            "name": "航平",
+            "role": "長男",
+            "x": 40,
+            "y": 150,
+            "w": 140,
+            "h": 60,
+            "status": "生存・相続放棄"
+          },
+          {
+            "id": "predeceased",
+            "name": "香織",
+            "role": "長女",
+            "x": 260,
+            "y": 150,
+            "w": 140,
+            "h": 60,
+            "status": "相続開始前に死亡"
+          },
+          {
+            "id": "living",
+            "name": "直樹",
+            "role": "次男",
+            "x": 480,
+            "y": 150,
+            "w": 140,
+            "h": 60,
+            "status": "生存"
+          },
+          {
+            "id": "renounced_child",
+            "name": "遥",
+            "role": "航平の子",
+            "x": 50,
+            "y": 285,
+            "w": 120,
+            "h": 60,
+            "status": "生存"
+          },
+          {
+            "id": "grand_a",
+            "name": "葵",
+            "role": "香織の子",
+            "x": 250,
+            "y": 285,
+            "w": 100,
+            "h": 60,
+            "status": "生存"
+          },
+          {
+            "id": "grand_b",
+            "name": "陸",
+            "role": "香織の子",
+            "x": 370,
+            "y": 285,
+            "w": 100,
+            "h": 60,
+            "status": "生存"
+          }
+        ],
+        "segments": [
+          [
+            320,
+            46,
+            420,
+            46
+          ],
+          [
+            320,
+            54,
+            420,
+            54
+          ],
+          [
+            250,
+            80,
+            250,
+            115
+          ],
+          [
+            110,
+            115,
+            550,
+            115
+          ],
+          [
+            110,
+            115,
+            110,
+            150
+          ],
+          [
+            330,
+            115,
+            330,
+            150
+          ],
+          [
+            550,
+            115,
+            550,
+            150
+          ],
+          [
+            110,
+            210,
+            110,
+            285
+          ],
+          [
+            330,
+            210,
+            330,
+            250
+          ],
+          [
+            300,
+            250,
+            420,
+            250
+          ],
+          [
+            300,
+            250,
+            300,
+            285
+          ],
+          [
+            420,
+            250,
+            420,
+            285
+          ]
+        ]
       },
-      "evidence": "【2026年4月1日基準の独自演習】相続人は妻、生存する子1人、先に亡くなった子の子2人（代襲孫）。養子・放棄はない。"
+      "evidence": "修一さんが2026年4月1日に死亡した。親族関係と各人の状況は資料のとおりで、各子はすべて修一さんの実子である。図の二重線は婚姻、下向きの線は親子関係を示す。美和さんは修一さんの法律上の配偶者である。長男の航平さんは修一さんの相続について、期限内に家庭裁判所へ申述し、適法に相続を放棄した。航平さんの子は遥さん1人である。長女の香織さんは修一さんより前に死亡しており、その実子は葵さん・陸さんの2人である。次男の直樹さんを含め、香織さんと被相続人以外の図中の人は相続開始時に生存している。養子、図外の子・子孫、胎児、相続欠格、廃除はない。他に相続放棄をした人もいない。"
     }
   },
   "pr-jafp3-020": {
