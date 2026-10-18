@@ -10,6 +10,9 @@ function boot(storage=new Map()){
  const el=id=>{if(!elements.has(id))elements.set(id,new Element());return elements.get(id)};
  const ctx=vm.createContext({console,Date,Math,Number,JSON,Map,Set,Array,String,Object,Boolean,parseInt,parseFloat,isNaN,document:{getElementById:el,createElement:()=>new Element(),addEventListener(){},hidden:false,querySelectorAll(){return []}},localStorage:{getItem:k=>storage.get(k)??null,setItem:(k,v)=>{if(fault.key===k||fault.key==='*')throw Error('quota');storage.set(k,v)},removeItem:k=>storage.delete(k)},alert:s=>alerts.push(s),confirm:()=>true,setInterval:()=>{timers.add(++tick);return tick},clearInterval:i=>timers.delete(i),setTimeout:()=>1});ctx.window=ctx;ctx.scrollTo=()=>{};
  for(const n of ['questions.js','app.js','practical-questions.js','practical.js'])vm.runInContext(fs.readFileSync(path.join(root,n),'utf8'),ctx,{filename:n});
+ // This legacy fixture tests the original PER/PBR input workflow; current payout/PBR is covered by V203.
+ const old=JSON.parse(fs.readFileSync(path.join(root,'development-notes/SUPERSEDED_PRACTICAL_V202_TO_V203.json'),'utf8')).find(q=>q.id==='pr-jafp2-005');
+ vm.runInContext('PRACTICAL_QUESTIONS.splice(PRACTICAL_QUESTIONS.findIndex(q=>q.id==="pr-jafp2-005"),1,'+JSON.stringify(old)+')',ctx);
  return {ctx,el,storage,fault,alerts,timers,run:s=>vm.runInContext(s,ctx)};
 }
 
