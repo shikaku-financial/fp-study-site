@@ -1,0 +1,30 @@
+[
+  {
+    "id": "pr-jafp2-005",
+    "track": "jafp2",
+    "case": 5,
+    "caseTitle": "株式指標の比較",
+    "caseText": "【2026年4月1日基準の独自演習】株価2,800円、1株利益200円、1株純資産1,750円。",
+    "question": "PER／PBRの組合せはどれか。",
+    "kind": "choice",
+    "choices": [
+      "1.6倍／14倍",
+      "14倍／1.6倍",
+      "14倍／16倍",
+      "7倍／1.6倍"
+    ],
+    "answer": 1,
+    "explanation": "PER＝2,800/200＝14倍。PBR＝2,800/1,750＝1.6倍。今回は複数数値を組合せ選択で回答します。",
+    "topic": "株式指標",
+    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 31,
+    "blueprintQuestion": 5,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-13",
+    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+  }
+]

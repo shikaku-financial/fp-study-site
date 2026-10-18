@@ -247,3 +247,7 @@
 .academic-document.material-enlarged .material-table { font-size: 20px; }
 .academic-document .material-original p { white-space: pre-line; }
 .review-question .academic-stem { font-weight: 600; }
+
+/* Wide practical data sheets retain readable columns within the existing scroll region. */
+.material-table.material-table-matrix{min-width:540px;table-layout:auto}
+.material-table.material-table-matrix th:first-child{width:auto;min-width:8em}

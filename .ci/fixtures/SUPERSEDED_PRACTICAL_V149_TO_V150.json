@@ -1,0 +1,111 @@
+[
+  {
+    "id": "pr-jafp2-007",
+    "track": "jafp2",
+    "case": 7,
+    "caseTitle": "NISA制度",
+    "caseText": "【2026年4月1日基準の独自演習】基準日2026年4月1日のNISA。①年間枠はつみたて120万円・成長240万円。②非課税保有期間は無期限。③売却した取得価額分の総枠は翌年以降に再利用できる。",
+    "question": "資料の①〜③について、適切なら○、不適切なら×を各欄で選択しなさい。2024年からのNISAにおける成人の通常の利用を対象とする。",
+    "kind": "multi_choice",
+    "explanation": "年間投資枠は合計360万円、非課税保有期間は無期限。売却分の総枠は取得価額で翌年以降復活します。復活しても年間枠を超えて投資できません。",
+    "topic": "NISA",
+    "sourceUrl": "https://www.fsa.go.jp/policy/nisa2/know/index.html",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 29,
+    "blueprintQuestion": 7,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-15",
+    "contentReview": "v146_per_field_true_false_with_reconfirmation",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.146：3欄○×へ変更。金融庁2025年9月改訂資料p3/p5と現行案内で既存3論点を再確認。2027年以後の年齢要件等は基準日へ遡及させない。包括監修/公式配点は未完了。",
+    "subAnswers": [
+      {
+        "label": "① 年間投資枠",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 0
+      },
+      {
+        "label": "② 非課税保有期間",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 0
+      },
+      {
+        "label": "③ 売却後の総枠再利用",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 0
+      }
+    ],
+    "additionalSourceUrls": [
+      "https://www.fsa.go.jp/policy/nisa2/about/nisa2024/slide_202406.pdf"
+    ]
+  },
+  {
+    "id": "pr-jafp2-015",
+    "track": "jafp2",
+    "case": 15,
+    "caseTitle": "法人の養老保険",
+    "caseText": "【2026年4月1日基準の独自演習】2022年契約、会社が保険料負担、全役員・従業員を公平に対象。死亡受取人は各人の遺族、満期受取人は会社。特約なし、当期対応保険料600万円。",
+    "question": "保険料の処理はどれか。",
+    "kind": "choice",
+    "choices": [
+      "600万円すべて資産",
+      "300万円資産・300万円損金",
+      "600万円すべて社長への給与",
+      "600万円すべて損金"
+    ],
+    "answer": 1,
+    "explanation": "死亡受取人遺族・満期受取人法人の養老保険は原則1/2資産、1/2損金。特定の役員だけを対象とした契約ではありません。",
+    "topic": "法人保険",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/hojin/5363.htm",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 34,
+    "blueprintQuestion": 15,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-13",
+    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+  },
+  {
+    "id": "pr-jafp2-022",
+    "track": "jafp2",
+    "case": 22,
+    "caseTitle": "住宅ローン控除の基礎",
+    "caseText": "【2026年4月1日基準の独自演習】2026年4月1日時点の制度の性質を確認する。個別の住宅性能・取得日・入居年等の要件は別途確認する。",
+    "question": "適切な説明はどれか。",
+    "kind": "choice",
+    "choices": [
+      "対象年の所得から住宅ローン残高全額を差し引く制度",
+      "所得税等の税額から所定の金額を控除する制度で、適用要件がある",
+      "誰でも返済額全額を税額から差し引ける制度",
+      "申告をせず自動的に全員へ適用される制度"
+    ],
+    "answer": 1,
+    "explanation": "住宅ローン控除は税額控除で、所得控除とは異なります。取得・入居・所得・住宅等の条件により適用可否や限度額が異なります。",
+    "topic": "住宅ローン控除",
+    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 34,
+    "blueprintQuestion": 22,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-13",
+    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+  }
+]

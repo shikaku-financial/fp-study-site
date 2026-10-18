@@ -1,0 +1,86 @@
+[
+  {
+    "id": "pr-jafp2-038",
+    "track": "jafp2",
+    "case": 38,
+    "caseTitle": "傷病手当金",
+    "caseText": "【2026年4月1日基準の独自演習】協会けんぽ被保険者が業務外の疾病で休業し、無給、労務不能等の要件を満たす。",
+    "question": "（ア）待期に必要な連続休業の日数と、（イ）支給開始から通算する支給期間の上限を、それぞれ数値で答えなさい。（ア）は日、（イ）はか月の単位とし、1年を12か月として表す。",
+    "kind": "multi_numeric",
+    "explanation": "連続3日の待期後の4日目から支給され、支給期間は通算1年6カ月。給付額は標準報酬等の所定の算式によります。 1年6か月は月数で18か月です。これは540日などの固定日数への換算を意味しません。",
+    "topic": "傷病手当金",
+    "sourceUrl": "https://www.kyoukaikenpo.or.jp/shibu/ishikawa/assets/48_sogo_syoute2412.pdf",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 35,
+    "blueprintQuestion": 38,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-15",
+    "contentReview": "v147_multiple_numeric_fields_and_stated_units",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.147：組合せ選択を欄別数値入力へ変更。独自条件/旧正答の意味を保持。保険給付は指定条件の内部検算、傷病手当金/雇用保険は既存論点の公式再確認。公式配点/包括監修は未完了。",
+    "subAnswers": [
+      {
+        "label": "（ア）連続する待期",
+        "kind": "numeric",
+        "answer": 3,
+        "unit": "日",
+        "tolerance": 0,
+        "numericInputFormat": "grouped-decimal-v1"
+      },
+      {
+        "label": "（イ）通算支給期間の上限",
+        "kind": "numeric",
+        "answer": 18,
+        "unit": "か月",
+        "tolerance": 0,
+        "numericInputFormat": "grouped-decimal-v1"
+      }
+    ],
+    "additionalSourceUrls": [
+      "https://www.kyoukaikenpo.or.jp/benefit/injury_and_sickness_allowance/index.html"
+    ]
+  },
+  {
+    "id": "pr-jafp2-040",
+    "track": "jafp2",
+    "case": 40,
+    "caseTitle": "雇用保険",
+    "caseText": "【2026年4月1日基準の独自演習】2026年4月1日時点の一般的な適用要件。学生等の除外は考慮しない。",
+    "question": "学生等の適用除外には該当しない一般的な労働者について、雇用保険の適用要件となる（ア）週所定労働時間の下限と、（イ）継続雇用の見込み期間の下限を答えなさい。（ア）は時間以上、（イ）は日以上。2026年4月1日時点で判断する。",
+    "kind": "multi_numeric",
+    "explanation": "基準日時点では週20時間以上、31日以上の雇用見込み等が基本です。将来の適用拡大と基準日時点の要件を混同しません。",
+    "topic": "雇用保険",
+    "sourceUrl": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000147331.html",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 35,
+    "blueprintQuestion": 40,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-15",
+    "contentReview": "v147_multiple_numeric_fields_and_stated_units",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.147：組合せ選択を欄別数値入力へ変更。独自条件/旧正答の意味を保持。保険給付は指定条件の内部検算、傷病手当金/雇用保険は既存論点の公式再確認。公式配点/包括監修は未完了。",
+    "subAnswers": [
+      {
+        "label": "（ア）週所定労働時間",
+        "kind": "numeric",
+        "answer": 20,
+        "unit": "時間以上",
+        "tolerance": 0,
+        "numericInputFormat": "grouped-decimal-v1"
+      },
+      {
+        "label": "（イ）継続雇用の見込み",
+        "kind": "numeric",
+        "answer": 31,
+        "unit": "日以上",
+        "tolerance": 0,
+        "numericInputFormat": "grouped-decimal-v1"
+      }
+    ],
+    "additionalSourceUrls": [
+      "https://www.mhlw.go.jp/content/11600000/001255172.pdf"
+    ]
+  }
+]

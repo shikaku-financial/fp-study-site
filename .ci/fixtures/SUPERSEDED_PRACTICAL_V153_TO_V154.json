@@ -1,0 +1,30 @@
+[
+  {
+    "id": "pr-jafp2-001",
+    "track": "jafp2",
+    "case": 1,
+    "caseTitle": "FPと関連業法",
+    "caseText": "【2026年4月1日基準の独自演習】他の資格登録がないFPの行為を考える。①報酬を得て紛争のある財産分与を代理交渉する。②NISAの一般的な制度を説明する。③仮定事例の一般的な税制セミナーで講師料を得る。",
+    "question": "①②③の正誤の組合せはどれか。",
+    "kind": "choice",
+    "choices": [
+      "○・○・×",
+      "×・○・○",
+      "×・×・○",
+      "○・×・×"
+    ],
+    "answer": 1,
+    "explanation": "有償の法律事件の代理交渉は不可。一般的なNISA制度説明と仮定事例による税制の一般解説は、具体的な他資格独占業務の代行と区別します。",
+    "topic": "関連業法",
+    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 1,
+    "blueprintQuestion": 1,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-13",
+    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+  }
+]

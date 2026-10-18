@@ -1,0 +1,26 @@
+[
+  {
+    "id": "pr-kinzai2_personal-006",
+    "track": "kinzai2_personal",
+    "case": 2,
+    "caseTitle": "株式指標と取引ルール",
+    "caseText": "【2026年4月1日基準の独自演習】安藤さんの家族は株式投資を検討している。上場会社の株価2400円、発行済株式数100万株、当期純利益200,000,000円、自己資本1,600,000,000円。自己株式・潜在株式・株式分割はない。注文方法と価格・時間優先の基本原則も確認したい。指値の買い注文について、通常のザラバ取引を想定し、寄り付き・引け・特別な配分等は考慮しない。財務数値は同じ決算期・普通株式を対象とし、EPS/BPSは設例の株数で計算する。単位は利益・自己資本の総額が円、株価や1株当たりの指標が円/株、PER/PBRが倍である。実際の投資判断、将来利益、税・手数料は計算しない。",
+    "question": "PBRを求めなさい。",
+    "kind": "numeric",
+    "choices": [],
+    "answer": 1.5,
+    "unit": "倍",
+    "explanation": "1株当たり自己資本＝1,600,000,000÷1,000,000＝1600円。PBR＝2400÷1600＝1.5倍。PERの分母である利益と混同しません。 BPSは自己資本総額を対象普通株数で割った円/株です。市場での割安/割高を保証するものではありません。",
+    "topic": "PBR",
+    "sourceUrl": "https://www.jpx.co.jp/glossary/ka/74.html",
+    "lawReferenceDate": "2026-04-01",
+    "revision": 2,
+    "blueprintCase": 2,
+    "blueprintSet": 1,
+    "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202505/cbt_fp02_j_kojin.pdf",
+    "sourceCheckedDate": "2026-10-14",
+    "contentReview": "v107_personal2_all30_scoped_migration",
+    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.107：共通論点別に30問を照合。指定株式評価算式4問は与件検算と公式制度概要の確認で、実会社の全面評価監修ではない。包括監修未完了。"
+  }
+]
