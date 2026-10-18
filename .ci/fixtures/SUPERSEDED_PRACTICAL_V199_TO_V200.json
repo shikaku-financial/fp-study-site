@@ -1,0 +1,108 @@
+[
+  {
+    "id": "pr-jafp3-015",
+    "track": "jafp3",
+    "case": 15,
+    "caseTitle": "所得税の計算",
+    "caseText": "【2026年4月1日基準の独自演習】2026年分の不動産所得は青色申告特別控除後650万円。所得控除の合計額は制度に従って別途計算済みの200万円と与える。他の所得・税額控除はない。課税所得330万円超695万円以下の税率20％、速算控除427,500円。復興特別所得税は計算対象外。",
+    "question": "所得税額はどれか。",
+    "kind": "choice",
+    "choices": [
+      "900,000円",
+      "872,500円",
+      "472,500円"
+    ],
+    "answer": 2,
+    "explanation": "課税所得(650－200)万円＝4,500,000円。×20％－427,500＝472,500円。速算控除を忘れたり所得控除前の金額を使ったりしません。基礎控除等は合計額に反映済みです。",
+    "topic": "所得税計算",
+    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 39,
+    "blueprintQuestion": 15,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v177_specified_calculation_choice_reasons",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.177：指定条件と全選択肢の計算を検算し、個別解説を追加。内部検算を法改正照合/初回ID/追加移行へ加算しない。",
+    "choiceExplanations": [
+      "不適切。(650－200)万円×20％＝900000円は、速算控除427500円を引いていません。所得控除と速算控除は別の計算段階でそれぞれ反映します。",
+      "不適切。650万円×20％－427500円＝872500円は、所得控除200万円を引く前の所得へ税率を適用した値です。税率を掛ける対象は450万円です。",
+      "正解。所得控除後の課税所得は650－200＝450万円。4500000×20％－427500＝472500円です。基礎控除等は指定の200万円に反映済みで、復興特別所得税は今回の計算対象外です。"
+    ],
+    "additionalSourceUrls": [
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm"
+    ]
+  },
+  {
+    "id": "pr-jafp3-016",
+    "track": "jafp3",
+    "case": 16,
+    "caseTitle": "医療費控除",
+    "caseText": "【2026年4月1日基準の独自演習】2026年の総所得金額等700万円。対象医療費は本人が支払った家族分を含め46万円。同じ医療費を補填する給付金11万円。補填超過はなく、他の医療費はない。",
+    "question": "通常の医療費控除額はどれか。",
+    "kind": "choice",
+    "choices": [
+      "35万円",
+      "25万円",
+      "36万円"
+    ],
+    "answer": 1,
+    "explanation": "46－11－10＝25万円。総所得金額等が200万円以上なので10万円を控除します。補填金を引かない36万円、10万円を引かない35万円は誤りです。",
+    "topic": "医療費控除",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 39,
+    "blueprintQuestion": 16,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v177_specified_calculation_choice_reasons",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.177：指定条件と全選択肢の計算を検算し、個別解説を追加。内部検算を法改正照合/初回ID/追加移行へ加算しない。",
+    "choiceExplanations": [
+      "不適切。46－11＝35万円は補てん金だけを引いた金額です。総所得金額等700万円の与件では、さらに10万円を差し引きます。",
+      "正解。同じ医療費の補てん金11万円を46万円から差し引き、さらに10万円を控除して25万円です。総所得金額等は200万円以上のため、この設例では5％基準ではなく10万円を用います。",
+      "不適切。46－10＝36万円は、同じ医療費を補てんする11万円を差し引いていません。保険金等の補てんと差引基準額の両方を反映します。"
+    ],
+    "additionalSourceUrls": [
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm"
+    ]
+  },
+  {
+    "id": "pr-jafp3-017",
+    "track": "jafp3",
+    "case": 17,
+    "caseTitle": "青色申告制度",
+    "caseText": "【2026年4月1日基準の独自演習】個人の青色申告制度について確認する。基準日は2026年4月1日。",
+    "question": "対象の所得／最大65万円控除に必要な追加要件の組合せはどれか。",
+    "kind": "choice",
+    "choices": [
+      "不動産・事業・山林所得／55万円控除の要件に加えe-Tax提出または所定の電子帳簿保存",
+      "給与所得だけ／給与明細を保存すること",
+      "一時所得だけ／領収書を保存すること"
+    ],
+    "answer": 0,
+    "explanation": "青色申告の対象は不動産・事業・山林所得。最大65万円控除には、55万円控除の要件を満たした上でe-Tax等の追加要件が必要です。所得の種類や規模により適用できる控除が異なります。 青色申告を選べる所得の範囲と、55万円・65万円控除を受けられる所得の範囲は同じではありません。山林所得だけの場合に65万円控除を受けられるという意味ではなく、この場合は最高10万円の区分です。給与所得だけ・一時所得だけでは青色申告の対象になりません。電子帳簿の経路では優良な電子帳簿の要件と所定の届出等が必要で、領収書や給与明細の保存だけでは足りません。",
+    "topic": "青色申告",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2072.htm",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 40,
+    "blueprintQuestion": 17,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j3_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v178_social_tax_option_conditions_rechecked",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.166：非課税根拠URL/誤答理由、配偶者特別控除の所得帯、青色申告の所得範囲を該当問で是正・補足。設例・正答・全肢保持。全文/全改正の包括照合ではない。 Ver.178：既存制度の指定条件と選択肢を限定再確認し個別解説を追加。新改正照合/ID初回/追加移行や全条件の包括監修へ加算しない。",
+    "additionalSourceUrls": [
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2070.htm",
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2072.htm"
+    ],
+    "choiceExplanations": [
+      "正解。青色申告の対象所得は不動産・事業・山林所得です。ただし最大65万円控除には55万円控除の要件を満たし、期限内e-Tax提出または所定の優良電子帳簿保存等が必要です。山林所得だけでも65万円控除になるという意味ではありません。",
+      "不適切。給与所得だけでは青色申告の対象になりません。給与明細を保存することは、55万円控除の要件や65万円控除の追加要件の代わりにはなりません。",
+      "不適切。一時所得だけでは青色申告の対象になりません。領収書を保存するだけでは青色申告の対象所得も65万円控除の要件も満たしません。"
+    ]
+  }
+]
