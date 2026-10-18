@@ -120,12 +120,14 @@ function fullExamAvailability(targetLevel) {
   if (targetLevel === '3') {
     const tf = pool.filter(q => q.format === 'true_false').length;
     const tri = pool.filter(q => q.format === 'three_choice').length;
-    return { ready: tf >= 30 && tri >= 30 && subjectOK && balanced3,
-      message: `○× ${tf}/30問・三択 ${tri}/30問｜90分・全60問・36問以上で学習用合格圏判定` };
+    const ready = tf >= 30 && tri >= 30 && subjectOK && balanced3;
+    return { ready,
+      message: `1回の出題：○×30問＋三択30問｜90分・全60問・36問以上で学習用合格圏判定。収録：○×${tf}問・三択${tri}問。${ready ? '' : '分野・形式別の必要問題数が不足しています。'}` };
   }
   const four = pool.filter(q => q.format === 'four_choice').length;
-  return { ready: four >= 60 && subjectOK,
-    message: `四択 ${four}/60問｜120分・全60問・36問以上で学習用合格圏判定` };
+  const ready = four >= 60 && subjectOK;
+  return { ready,
+    message: `1回の出題：四択60問｜120分・全60問・36問以上で学習用合格圏判定。収録：四択${four}問。${ready ? '' : '分野・形式別の必要問題数が不足しています。'}` };
 }
 // 現在の級・分野に応じて、選択可能な演習問題数だけを表示します。
 function updatePracticeCountOptions(pool) {
@@ -187,7 +189,7 @@ function savedExamDetails(id) {
 }
 function updateHome() {
   const pool = validQuestions(level);
-  $('count').textContent = `現在の収録問題：${pool.length}問（Ver.74・学科）`;
+  $('count').textContent = `現在の収録問題：${pool.length}問（学科）`;
   const old = $('category').value;
   $('category').replaceChildren();
   for (const c of CATEGORIES) {
