@@ -4,6 +4,7 @@
   const $p = id => document.getElementById(id);
   const DRAFT = 'fp-training-practical-v12-draft';
   const HISTORY = 'fp-training-practical-v12-results';
+  const AUTO_NEXT_PREF = 'fp-training-practical-auto-next';
   const VIEWS = ['home','quiz','finish','exam','examResult','practicalHome','practicalExam','practicalResult'];
   let attempt = null;
   let expectedDraftToken = null;
@@ -412,6 +413,12 @@
   $p('openPracticalTop').addEventListener('click',()=>navigate('practicalHome'));
   $p('prBackHome').addEventListener('click',()=>navigate('home'));
   $p('prResume').addEventListener('click',resume);
+  // Optional UI preference only; no change to draft/result storage format.
+  try {$p('prAutoNext').checked=localStorage.getItem(AUTO_NEXT_PREF)==='1';}catch{$p('prAutoNext').checked=false;}
+  $p('prAutoNext').addEventListener('change',()=>{
+    try {localStorage.setItem(AUTO_NEXT_PREF,$p('prAutoNext').checked?'1':'0');}
+    catch { /* auto-next remains usable in this tab without persisted preference */ }
+  });
   $p('prPrev').addEventListener('click',()=>attempt&&jump(attempt.pos-1));
   $p('prNext').addEventListener('click',()=>attempt&&jump(attempt.pos+1));
   $p('prJumpUnanswered').addEventListener('click',()=>{
