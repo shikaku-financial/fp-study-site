@@ -223,8 +223,7 @@
   function start(id, setNumber=1){
     const tr=trackFor(id);
     if(!tr||tr.disabled)return;
-    const draft=read(DRAFT,null);
-    if(draft && !confirm('保存している実技演習を終了し、新しく始めますか？前回の未採点の回答は消えます。'))return;
+    // startFromQuestions handles the existing-draft confirmation once.
     const source=qsFor(id);
     const selected=(id.startsWith('kinzai') && source.length>=30) ? source.slice((setNumber-1)*15,setNumber*15) : source;
     startFromQuestions(id,selected,`set-${setNumber}`);
