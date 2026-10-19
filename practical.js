@@ -312,6 +312,8 @@
       b.addEventListener('click',()=>jump(i));nav.append(b);
     }
     $p('prAnswered').textContent=`${attempt.answers.filter((a,i)=>completeAnswer(attempt.questions[i],a)).length}/${attempt.answers.length}問 回答済`;
+    const remaining=attempt.answers.filter((a,i)=>!completeAnswer(attempt.questions[i],a)).length;
+    $p('prSubmitReadiness').textContent=remaining?`未回答が${remaining}問あります。採点前に確認できます。`:'全問回答済みです。採点できます。';
   }
   function jump(i){
     if(!attempt || i<0||i>=attempt.questions.length)return;
