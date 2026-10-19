@@ -85,7 +85,7 @@
     if (a===null||a===undefined||a==='')return '未回答';
     if(isSymbolBank(q)){const n=parseWordBankSymbol(String(a),q.wordBank);return Number.isFinite(n)?`${WORD_BANK_SYMBOLS[n-1]}（${q.wordBank[n-1]}）`:`${a}（無効な記号）`;}
     if(q.numericInputFormat==='wordbank-index-v1'){const n=parseWordBank(String(a),q.wordBank);return Number.isFinite(n)?`${n}番（${q.wordBank[n-1]}）`:`${a}（無効な番号）`;}
-    return q.kind==='choice' ? (q.choices[a]||'無効な選択') : `${a} ${q.unit||''}`;
+    return q.kind==='choice' ? (Number.isInteger(a)&&a>=0&&a<q.choices.length?q.choices[a]:'無効な選択') : Number.isFinite(numericParser(q)(String(a))) ? `${a} ${q.unit||''}` : `${a}（無効な入力）`;
   };
   const correctStr = q => isMulti(q)?q.subAnswers.map(part=>`${part.label}：${correctStr(part)}`).join(' ／ '):q.kind==='choice' ? q.choices[q.answer] : isSymbolBank(q)?`${WORD_BANK_SYMBOLS[q.answer-1]}（${q.wordBank[q.answer-1]}）`:q.numericInputFormat==='wordbank-index-v1'?`${q.answer}番（${q.wordBank[q.answer-1]}）`:`${readableNum(q.answer)} ${q.unit||''}`;
   const label = tr => `FP${tr.level}級｜${tr.org}｜${tr.name}`;
