@@ -54,5 +54,6 @@
   "test_insurance_workflow_v206",
   "test_insurance_tables_v206",
   "test_basic_deduction_explanation_2026",
-  "test_mobile_question_nav_v207"
+  "test_mobile_question_nav_v207",
+  "test_practical_unanswered_jump_v207"
 ]

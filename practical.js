@@ -413,6 +413,14 @@
   $p('prResume').addEventListener('click',resume);
   $p('prPrev').addEventListener('click',()=>attempt&&jump(attempt.pos-1));
   $p('prNext').addEventListener('click',()=>attempt&&jump(attempt.pos+1));
+  $p('prJumpUnanswered').addEventListener('click',()=>{
+    if(!attempt)return;
+    const n=attempt.questions.length;
+    for(let offset=1;offset<=n;offset++){
+      const i=(attempt.pos+offset)%n;
+      if(!completeAnswer(attempt.questions[i],attempt.answers[i])){jump(i);return;}
+    }
+  });
   $p('prNumberInput').addEventListener('input',e=>{
     if(!attempt)return;
     attempt.answers[attempt.pos]=e.target.value;
