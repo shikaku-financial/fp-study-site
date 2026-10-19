@@ -1,0 +1,12 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
+const js=fs.readFileSync(path.join(root,'practical.js'),'utf8');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const hit="$p('prNav').children[attempt.pos]?.classList.toggle('done',completeAnswer(attempt.questions[attempt.pos],attempt.answers[attempt.pos]));";
+assert.ok(js.includes(hit),'numeric input must use same completion predicate as progress and submit readiness');
+assert.ok(!js.includes("classList.toggle('done',e.target.value!=='')"),'raw text comparison must not replace completion policy');
+assert.match(js,/function updateSubmitReadiness\(\)/);
+assert.match(js,/\$p\('prSubmitReadiness'\)\.textContent/);
+assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+console.log('PASS: numeric completion indicators are based on the shared answer-completion predicate.');
