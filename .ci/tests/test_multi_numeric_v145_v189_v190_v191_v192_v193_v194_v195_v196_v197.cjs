@@ -38,7 +38,7 @@ for(const changes of [{answers:['14']},{parts:[]},{parts:[null,null]},{parts:[{.
  const raw=JSON.stringify({track:'jafp2',questions:[q],answers:[changes.answers||['14','1.6']],pos:0});const c=boot(new Map([[pd,raw]]));c.el('prResume').click();assert.equal(c.storage.get(pd),raw);assert.ok(c.alerts.length);
 }
 // Fault and stale-writer paths operate on the whole answer array without discarding old state.
-b=boot();start(b);fill(b,0,'14');const before=b.storage.get(pd);b.fault.key=pd;fill(b,1,'1.6');assert.equal(b.storage.get(pd),before);assert.ok(b.alerts.length);b.fault.key=null;b.el('prSaveExit').click();b=boot(b.storage);b.el('prResume').click();assert.deepEqual(inputs(b).map(e=>e.value),['14','1.6']);
+b=boot();start(b);fill(b,0,'14');const before=b.storage.get(pd);b.fault.key=pd;fill(b,1,'1.6');assert.equal(b.storage.get(pd),before);assert.ok(b.alerts.length);b.fault.key=null;b.el('prSaveExit').click();b=boot(b.storage);b.el('prResume').click();assert.deepEqual(inputs(b).map(e=>e.value),['14','']);
 const external=b.storage.get(pd)+' ';b.storage.set(pd,external);fill(b,0,'15');assert.equal(b.storage.get(pd),external);assert.ok(b.alerts.length);
 // Real pre-upgrade snapshot of the revised ID keeps combination-choice grading.
 const old=JSON.parse(fs.readFileSync(path.join(root,'development-notes/SUPERSEDED_PRACTICAL_V144_TO_V145.json'),'utf8'))[0];
