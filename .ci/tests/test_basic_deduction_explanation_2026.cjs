@@ -1,0 +1,15 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
+const ctx=vm.createContext({});
+vm.runInContext(fs.readFileSync(path.join(root,'questions.js'),'utf8'),ctx,{filename:'questions.js'});
+const q=JSON.parse(vm.runInContext("JSON.stringify(QUESTIONS.find(q=>q.id==='fp2-004'))",ctx));
+assert.ok(q,'fp2-004 must exist');
+assert.equal(q.answer,0);
+assert.equal(q.choices[0],'67万円');
+assert.equal(q.lawReferenceDate,'2026-04-01');
+assert.ok(q.explanation.includes('600万円は489万円超655万円以下なので67万円'));
+assert.ok(q.explanation.includes('104万円は2026年分の合計所得金額132万円以下'));
+assert.ok(!q.explanation.includes('104万円は2026年分の489万円以下'));
+assert.ok(q.explanation.includes('原則施行日は2026年12月1日'));
+console.log('PASS: fp2-004 correct answer, 2026 tax-year distinction, 104万円 bracket, and effective date remain consistent.');
