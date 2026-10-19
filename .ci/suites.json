@@ -73,5 +73,6 @@
   "test_inheritance_shares_reserved_2026",
   "test_student_pension_eligibility_2026",
   "test_workers_comp_premium_2026",
-  "test_practical_invalid_numeric_unanswered_v211"
+  "test_practical_invalid_numeric_unanswered_v211",
+  "test_practical_multi_numeric_completion_v212"
 ]
