@@ -242,7 +242,7 @@
     $p('prProgress').textContent=`${attempt.pos+1}/${attempt.questions.length}問`;
     $p('prBar').style.width=`${attempt.answers.filter((v,i)=>completeAnswer(attempt.questions[i],v)).length/attempt.questions.length*100}%`;
     // Kinzai questions share a scenario in contiguous blocks; show position within the block.
-    const sameCase=(a,b)=>a && b && a.caseTitle===b.caseTitle && a.caseText===b.caseText;
+    const sameCase=(a,b)=>a && b && a.caseTitle===b.caseTitle;
     let caseStart=attempt.pos,caseEnd=attempt.pos;
     while(caseStart>0 && sameCase(attempt.questions[caseStart-1],q))caseStart--;
     while(caseEnd+1<attempt.questions.length && sameCase(attempt.questions[caseEnd+1],q))caseEnd++;
