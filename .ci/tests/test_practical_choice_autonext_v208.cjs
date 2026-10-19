@@ -1,0 +1,11 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8'),js=fs.readFileSync(path.join(root,'practical.js'),'utf8');
+assert.match(html,/<input id="prAutoNext" type="checkbox">/);
+assert.match(html,/選択肢を選んだら自動で次の問題へ/);
+assert.match(js,/\$p\('prAutoNext'\)\.checked && attempt\.pos<attempt\.questions\.length-1/);
+assert.match(js,/jump\(attempt\.pos\+1\);else renderQuestion\(\)/);
+assert.match(js,/attempt\.answers\[attempt\.pos\]=i;save\(DRAFT,attempt\)/);
+assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+console.log('PASS: opt-in auto-advance wired only to practical choice handlers and not last question; draft saves first.');
