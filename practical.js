@@ -279,7 +279,7 @@
             button.setAttribute('aria-label',`${part.label}：${value}`);
             button.addEventListener('click',()=>{
               if(!Array.isArray(attempt.answers[attempt.pos]))attempt.answers[attempt.pos]=q.subAnswers.map(()=>null);
-              attempt.answers[attempt.pos][i]=j;save(DRAFT,attempt);renderQuestion();
+              attempt.answers[attempt.pos][i]=j;if(!save(DRAFT,attempt))return;renderQuestion();
             });fieldset.append(button);
           });group.append(fieldset);$p('prMultiNumeric').append(group);return;
         }
@@ -307,7 +307,7 @@
         const b=document.createElement('button');b.type='button';b.className='wide';b.textContent=`${i+1}. ${choice}`;
         const active=attempt.answers[attempt.pos]===i;
         b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));
-        b.addEventListener('click',()=>{attempt.answers[attempt.pos]=i;save(DRAFT,attempt);if($p('prAutoNext').checked && attempt.pos<attempt.questions.length-1)jump(attempt.pos+1);else renderQuestion();});
+        b.addEventListener('click',()=>{attempt.answers[attempt.pos]=i;if(!save(DRAFT,attempt))return;if($p('prAutoNext').checked && attempt.pos<attempt.questions.length-1)jump(attempt.pos+1);else renderQuestion();});
         $p('prChoices').append(b);
       });
     }
@@ -328,7 +328,9 @@
   }
   function jump(i){
     if(!attempt || i<0||i>=attempt.questions.length)return;
-    attempt.pos=i;save(DRAFT,attempt);renderQuestion();window.scrollTo(0,0);
+    const previousPos=attempt.pos;attempt.pos=i;
+    if(!save(DRAFT,attempt)){attempt.pos=previousPos;return;}
+    renderQuestion();window.scrollTo(0,0);
   }
   function validDraft(d){
     if(!d || !trackFor(d.track) || !Array.isArray(d.questions) || !d.questions.length ||
