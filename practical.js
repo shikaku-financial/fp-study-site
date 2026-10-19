@@ -241,7 +241,7 @@
     let start=index,end=index;
     while(start>0 && questions[start-1].caseTitle===q.caseTitle)start--;
     while(end+1<questions.length && questions[end+1].caseTitle===q.caseTitle)end++;
-    return `（設例内 ${index-start+1}/${end-start+1}問）`;
+    return end===start?'':`（設例内 ${index-start+1}/${end-start+1}問）`;
   }
   function renderQuestion(){
     if(!attempt)return;
