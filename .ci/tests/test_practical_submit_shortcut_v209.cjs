@@ -1,0 +1,9 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
+const h=fs.readFileSync(path.join(root,'index.html'),'utf8'),j=fs.readFileSync(path.join(root,'practical.js'),'utf8');
+assert.match(h,/id="prSubmitJumpUnanswered" type="button" class="outline-full hidden"/);
+assert.match(j,/\$p\('prSubmitJumpUnanswered'\)\.classList\.toggle\('hidden',remaining===0\)/);
+assert.match(j,/\$p\('prSubmitJumpUnanswered'\)\.addEventListener\('click',\(\)=>\{\$p\('prJumpUnanswered'\)\.click\(\);\}\)/);
+assert.match(h,/practical\.js\?v=[a-f0-9]{14}/);
+console.log('PASS: submit shortcut follows readiness state and reuses the existing unanswered navigation handler.');
