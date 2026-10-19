@@ -166,7 +166,7 @@
       const row=document.createElement('div');row.className='pr-history-entry';
       const summary=document.createElement('div');summary.className='pr-history-summary';
       const course=document.createElement('strong');course.textContent=`FP${tr.level}級｜${tr.org==='金融財政事情研究会'?'金財':'日本FP協会'}｜${tr.name}`;
-      const details=document.createElement('span');details.className='muted small';details.textContent=`${Number.isFinite(a.finishedAt)&&Number.isFinite(new Date(a.finishedAt).getTime())?new Date(a.finishedAt).toLocaleDateString('ja-JP'):'日付不明'}｜${a.correct}/${a.questions.length}問正解`;
+      const details=document.createElement('span');details.className='muted small';const setLabel=a.mode==='set-1'?'第1回｜':a.mode==='set-2'?'第2回｜':a.mode==='mistakes'?'要復習｜':a.mode==='retry'?'再受験｜':'';details.textContent=`${setLabel}${Number.isFinite(a.finishedAt)&&Number.isFinite(new Date(a.finishedAt).getTime())?new Date(a.finishedAt).toLocaleDateString('ja-JP'):'日付不明'}｜${a.correct}/${a.questions.length}問正解`;
       summary.append(course,details);
       const buttons=document.createElement('div');buttons.className='pr-history-actions';
       const open=document.createElement('button');open.type='button';open.textContent='答え合わせ';
