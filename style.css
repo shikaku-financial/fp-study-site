@@ -214,6 +214,9 @@
  .material-table-wrap{padding:13px 10px}
  .material-table th,.material-table td{padding:9px 8px}
  .material-table th:first-child{width:38%}
+ /* Four-column exam tables retain readable cells; scroll the table rather than squeeze text. */
+ .material-table:has(tr > :nth-child(4)){min-width:620px}
+ .material-document.material-enlarged .material-table:has(tr > :nth-child(4)){min-width:760px}
  .material-statements{padding:2px 12px 12px}
  .material-kicker{font-size:16px}
  .material-size-button{font-size:13px;padding:8px}
