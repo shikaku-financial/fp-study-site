@@ -1,0 +1,11 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
+const css=fs.readFileSync(path.join(root,'style.css'),'utf8');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+assert.match(css,/\.material-table-matrix tbody th:first-child\{position:sticky;left:0;z-index:1/);
+assert.match(css,/\.material-table-matrix thead th:first-child\{position:sticky;left:0;z-index:2/);
+assert.match(css,/\.material-table-wrap\{overscroll-behavior-x:contain\}/);
+assert.match(css,/@media\(prefers-reduced-motion:reduce\)\{\.bar>div\{transition:none\}\}/);
+assert.match(html,/style\.css\?v=[a-f0-9]{14}/);
+console.log('PASS: wide practical matrix labels remain visible while scrolling, reduced motion honored and CSS asset versioned.');

@@ -257,3 +257,9 @@
 #quiz .wide,#practicalExam .wide{line-height:1.65;text-align:left;overflow-wrap:anywhere}
 #practicalExam .material-table-wrap:focus-visible{outline:3px solid #f0ad4e;outline-offset:-3px}
 @media(max-width:470px){#quiz .question-text,#practicalExam .question-text{font-size:20px;margin:18px 0}#quiz .wide,#practicalExam .wide{padding:15px 14px}}
+
+/* Keep row labels visible while reading wide practical comparison tables on a phone. */
+.material-table-matrix tbody th:first-child{position:sticky;left:0;z-index:1;background:#f7f9fb;box-shadow:2px 0 0 #9eafbc}
+.material-table-matrix thead th:first-child{position:sticky;left:0;z-index:2;background:#eaf0f4;box-shadow:2px 0 0 #9eafbc}
+.material-table-wrap{overscroll-behavior-x:contain}
+@media(prefers-reduced-motion:reduce){.bar>div{transition:none}}
