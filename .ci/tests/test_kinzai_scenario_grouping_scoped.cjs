@@ -17,6 +17,7 @@ for(const track of tracks){
 }
 const app=fs.readFileSync(path.join(root,'practical.js'),'utf8');
 assert.match(app,/casePosition=tr\.id\.startsWith\('kinzai'\)/,'Scenario position must be limited to Kinzai');
-assert.match(app,/while\(caseStart>0 && sameCase/,'Scenario position must scan the previous questions');
-assert.match(app,/while\(caseEnd\+1<attempt\.questions\.length && sameCase/,'Scenario position must scan the next questions');
+assert.match(app,/while\(start>0 && questions\[start-1\]\.caseTitle===q\.caseTitle/,'Scenario position must scan the previous questions');
+assert.match(app,/while\(end\+1<questions\.length && questions\[end\+1\]\.caseTitle===q\.caseTitle/,'Scenario position must scan the next questions');
+assert.match(app,/scenarioPosition\(r\.questions,i\)/,'Review must use the original full attempt for scenario position');
 console.log('PASS: six Kinzai tracks retain 10 contiguous three-question scenario groups each.');
