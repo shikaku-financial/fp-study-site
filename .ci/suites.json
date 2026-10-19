@@ -77,5 +77,6 @@
   "test_practical_multi_numeric_completion_v212",
   "test_practical_single_choice_validity_v213",
   "test_practical_review_invalid_values_v214",
-  "test_practical_2026_pension_inheritance_scoped"
+  "test_practical_2026_pension_inheritance_scoped",
+  "test_academic_2026_tax_scoped"
 ]
