@@ -1,0 +1,23 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.join(__dirname,'../..'));
+const context=vm.createContext({});
+vm.runInContext(fs.readFileSync(path.join(root,'questions.js'),'utf8')+';this.__auditQuestions=QUESTIONS;',context);
+const qs=context.__auditQuestions;
+const byId=id=>{const q=qs.find(item=>item.id===id);assert.ok(q,id+' must exist');return q;};
+// Scoped independently calculated audit of the exact bond cases currently published.
+const direct=byId('fp3-003');
+const directYield=(1.8/90)*100;
+assert.equal(directYield,2);
+assert.equal(direct.format,'three_choice');
+assert.equal(direct.choices[direct.answer],'2.0');
+assert.match(direct.explanation,/直接利回り/);
+const redemption=byId('fp2-003');
+const yieldPercent=(1.6+(100-96)/4)/96*100;
+const rounded=Math.round((yieldPercent+Number.EPSILON)*100)/100;
+assert.equal(rounded,2.71);
+assert.equal(redemption.format,'four_choice');
+assert.equal(redemption.choices[redemption.answer],'2.71％');
+assert.match(redemption.explanation,/償還差益/);
+for(const q of [direct,redemption])assert.equal(q.lawReferenceDate,'2026-04-01');
+console.log('PASS: independently recomputed direct and simple redemption yields, answers, formats and explanations for fp3-003 and fp2-003.');
