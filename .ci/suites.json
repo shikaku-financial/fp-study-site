@@ -80,5 +80,6 @@
   "test_practical_2026_pension_inheritance_scoped",
   "test_academic_2026_tax_scoped",
   "test_kinzai2_nonlife_scenarios_scoped",
-  "test_kinzai2_nonlife_v16_scenarios_scoped"
+  "test_kinzai2_nonlife_v16_scenarios_scoped",
+  "test_practical_single_start_confirm_scoped"
 ]
