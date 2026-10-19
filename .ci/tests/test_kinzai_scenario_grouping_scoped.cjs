@@ -12,6 +12,7 @@ for(const track of tracks){
   for(let i=0;i<questions.length;i+=3){
     const group=questions.slice(i,i+3);
     assert.equal(new Set(group.map(q=>q.caseTitle)).size,1,`${track} group ${i/3+1}: mismatched case titles`);
+    if(i>0)assert.notEqual(group[0].caseTitle,questions[i-1].caseTitle,`${track} group ${i/3+1}: same title as preceding scenario would merge position counters`);
     assert.ok(group.every(q=>typeof q.caseTitle==='string'&&q.caseTitle.trim()&&typeof q.caseText==='string'&&q.caseText.trim()),`${track} group ${i/3+1}: missing case material`);
   }
 }
