@@ -241,7 +241,13 @@
     $p('prLabel').textContent=`FP${tr.level}級｜${tr.name}`;
     $p('prProgress').textContent=`${attempt.pos+1}/${attempt.questions.length}問`;
     $p('prBar').style.width=`${attempt.answers.filter((v,i)=>completeAnswer(attempt.questions[i],v)).length/attempt.questions.length*100}%`;
-    $p('prCaseTitle').textContent=`${tr.id.startsWith('kinzai')?'設例':''} ${q.caseTitle}`.trim();
+    // Kinzai questions share a scenario in contiguous blocks; show position within the block.
+    const sameCase=(a,b)=>a && b && a.caseTitle===b.caseTitle;
+    let caseStart=attempt.pos,caseEnd=attempt.pos;
+    while(caseStart>0 && sameCase(attempt.questions[caseStart-1],q))caseStart--;
+    while(caseEnd+1<attempt.questions.length && sameCase(attempt.questions[caseEnd+1],q))caseEnd++;
+    const casePosition=tr.id.startsWith('kinzai')?`（設例内 ${attempt.pos-caseStart+1}/${caseEnd-caseStart+1}問）`:'';
+    $p('prCaseTitle').textContent=`${tr.id.startsWith('kinzai')?'設例':''} ${q.caseTitle}${casePosition}`.trim();
     if(window.__fpMaterialView)window.__fpMaterialView.render($p('prCaseText'),q);
     else $p('prCaseText').textContent=String(q.caseText).replaceAll('【2026年4月1日基準の独自演習】','')+`\n（注）法令基準日：${q.lawReferenceDate||'未登録'}。`;
     $p('prTopic').textContent=`学習テーマ：${q.topic}｜この問題の法令基準日：${q.lawReferenceDate || "未登録"}（数値条件は設例指定）`;
