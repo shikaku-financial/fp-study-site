@@ -66,14 +66,13 @@
   };
   const numericParser = q => isSymbolBank(q)?(v=>parseWordBankSymbol(v,q.wordBank)):q.numericInputFormat==='wordbank-index-v1'?(v=>parseWordBank(v,q.wordBank)): q.numericInputFormat==='grouped-decimal-v1'?parseStrictNumber:parseNumber;
   function updateNumericFeedback(q,value){
-    const strict=q.numericInputFormat==='grouped-decimal-v1';
-    const invalid=strict && String(value).trim()!=='' && !Number.isFinite(parseStrictNumber(String(value)));
+    const invalid=String(value).trim()!=='' && !Number.isFinite(numericParser(q)(String(value)));
     $p('prNumberInput').setAttribute('aria-invalid',String(invalid));
     $p('prNumberFeedback').textContent=invalid?'数字で入力してください。カンマは3桁区切り（例：1,234.5）で使えます。単位は入力欄の右側を確認してください。':'';
   }
   const isMulti = q => q.kind==='multi_numeric' || q.kind==='multi_choice' || q.kind==='wordbank_number';
   const blank = a => a===null || a===undefined || a==='';
-  const completeAnswer = (q,a) => isMulti(q) ? Array.isArray(a) && a.length===q.subAnswers.length && a.every((v,i)=>!blank(v)&&(q.kind!=='wordbank_number'||Number.isFinite(numericParser(q.subAnswers[i])(String(v))))) : !blank(a);
+  const completeAnswer = (q,a) => isMulti(q) ? Array.isArray(a) && a.length===q.subAnswers.length && a.every((v,i)=>!blank(v)&&(q.kind!=='wordbank_number'||Number.isFinite(numericParser(q.subAnswers[i])(String(v))))) : q.kind==='numeric' ? !blank(a) && Number.isFinite(numericParser(q)(String(a))) : !blank(a);
   const grade = (q,a) => {
     if(isMulti(q))return Array.isArray(a) && a.length===q.subAnswers.length && q.subAnswers.every((part,i)=>grade(part,a[i]));
     if (a===null||a===undefined||a==='') return false;
