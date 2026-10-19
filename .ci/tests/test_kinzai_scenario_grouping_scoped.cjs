@@ -21,4 +21,5 @@ assert.match(app,/casePosition=tr\.id\.startsWith\('kinzai'\)/,'Scenario positio
 assert.match(app,/while\(start>0 && questions\[start-1\]\.caseTitle===q\.caseTitle/,'Scenario position must scan the previous questions');
 assert.match(app,/while\(end\+1<questions\.length && questions\[end\+1\]\.caseTitle===q\.caseTitle/,'Scenario position must scan the next questions');
 assert.match(app,/scenarioPosition\(r\.questions,i\)/,'Review must use the original full attempt for scenario position');
+assert.match(app,/return end===start\?'':/,'Singleton scenarios in mistake-only retry must omit redundant 1/1 position');
 console.log('PASS: six Kinzai tracks retain 10 contiguous three-question scenario groups each.');
