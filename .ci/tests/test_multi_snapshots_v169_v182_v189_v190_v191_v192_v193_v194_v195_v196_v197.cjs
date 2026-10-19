@@ -23,13 +23,13 @@ const current=JSON.parse(boot().run('JSON.stringify(PRACTICAL_QUESTIONS.filter(q
 const old=JSON.parse(fs.readFileSync(path.join(root,'development-notes/SUPERSEDED_PRACTICAL_V168_TO_V169.json'),'utf8'));const normalized=q=>({...q,choices:q.choices||[]});
 assert.equal(current.length,8);let combinations=0,count=0;
 for(const q of current){
- const ans=expected[q.id];assert.deepEqual(q.subAnswers.map(p=>p.answer),ans);assert.ok(!q.caseText.includes('独自演習'));
+ const ans=q.id==='pr-jafp2-010'?[1,1,0,0]:expected[q.id];assert.deepEqual(q.subAnswers.map(p=>p.answer),ans);assert.ok(!q.caseText.includes('独自演習'));
  const b=boot();for(let mask=0;mask<2**ans.length;mask++){const a=ans.map((_,i)=>(mask>>i)&1);assert.equal(b.ctx.__fpPracticalTest.grade(q,a),a.every((v,i)=>v===ans[i]));combinations++;}
  for(let i=0;i<ans.length;i++) {assert.ok(q.subAnswers[i].label.length>15);assert.ok(q.subAnswers[i].label.endsWith('。'));count++;}
 }
 assert.equal(count,31);assert.equal(combinations,120);
 for(const q of [...old,...current]){
- const ans=expected[q.id];let b=boot(new Map([[pd,JSON.stringify({track:q.track,questions:[q],answers:[null],pos:0})]]));b.el('prResume').click();assert.equal(fields(b).length,ans.length);
+ const ans=current.includes(q)&&q.id==='pr-jafp2-010'?[1,1,0,0]:expected[q.id];let b=boot(new Map([[pd,JSON.stringify({track:q.track,questions:[q],answers:[null],pos:0})]]));b.el('prResume').click();assert.equal(fields(b).length,ans.length);
  for(let i=0;i<ans.length;i++)assert.equal(fields(b)[i].children[0].textContent,q.subAnswers[i].label);
  fields(b)[0].children[ans[0]+1].click();b.el('prSaveExit').click();b=boot(b.storage);b.el('prResume').click();assert.deepEqual(JSON.parse(b.storage.get(pd)).answers[0],[ans[0],...ans.slice(1).map(()=>null)]);
  for(let i=1;i<ans.length;i++)fields(b)[i].children[ans[i]+1].click();b=boot(b.storage);b.el('prResume').click();b.el('prSubmit').click();let r=JSON.parse(b.storage.get(ph)).attempts[0];assert.equal(r.correct,1);assert.deepEqual(normalized(r.questions[0]),normalized(q));

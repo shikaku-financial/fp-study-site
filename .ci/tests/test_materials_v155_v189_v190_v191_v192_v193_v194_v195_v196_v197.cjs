@@ -28,9 +28,10 @@ for(const q of qs){
 }
 // V203 intentionally replaces four two-column inputRows tables with six detailed tables.
 // V204 replaces2 more inputRows with4 detailed tables/16rows, tested separately.
+// Property draft removes008 inputRows;adds its diagram and009/010 detailed tables.
 // Their complete cells and 21 rows are checked by test_jafp2_finance_tables_v203.
-assert.equal(qs.length,240);assert.equal(Object.keys(map).length,240);assert.equal(Object.values(map).filter(m=>m.inputRows.length).length,217);
-console.log(JSON.stringify({result:'PASS',questions:240,curatedInputTables:217,renderedTables:tables,checks,scope:'all substantive source sentences visible; no auto numbering; one small basis note; semantic tables; enlarging; original condition text except editorial prefix; legacy fallback; HTML-looking text never interpreted as markup',limit:'DOM simulation; no browser layout or iPhone validation'},null,2));
+assert.equal(qs.length,240);assert.equal(Object.keys(map).length,240);assert.equal(Object.values(map).filter(m=>m.inputRows.length).length,216);
+console.log(JSON.stringify({result:'PASS',questions:240,curatedInputTables:216,renderedTables:tables,checks,scope:'all substantive source sentences visible; no auto numbering; one small basis note; semantic tables; enlarging; original condition text except editorial prefix; legacy fallback; HTML-looking text never interpreted as markup',limit:'DOM simulation; no browser layout or iPhone validation'},null,2));
 
 // Separate review documents must toggle according to their own displayed state.
 const first=new Element(),second=new Element();renderer.render(first,qs[0]);renderer.render(second,qs[1]);
@@ -45,7 +46,7 @@ for(const q of qs){
  const original=m.diagram.svg;m.diagram.svg='<svg xmlns="http://www.w3.org/2000/svg"><script>alert(1)</script></svg>';renderer.render(container,q);assert.equal(flat(container).filter(e=>e.className==='material-diagram').length,0);assert.ok(container.textContent.includes(clean(m.sentences[0])));m.diagram.svg=original;
  renderer.render(container,{...q,caseText:'旧版の図を含まない設例。'});assert.equal(flat(container).filter(e=>e.tagName==='IMG').length,0);assert.ok(container.textContent.includes('旧版の図を含まない設例。'));
 }
-assert.equal(figures,82);console.log('PASS: 82 diagram instances, paired SVG image data, alternative text, expansion, static SVG guard, legacy fallback.');
+assert.equal(figures,83);console.log('PASS: 83 diagram instances, paired SVG image data, alternative text, expansion, static SVG guard, legacy fallback.');
 
 // The annotation follows the snapshot date, not the current global basis.
 const legacyDate={...qs[0],caseText:'【2026年4月1日基準の独自演習】①契約条件は2025年4月1日。②10万円。',lawReferenceDate:'2025-04-01'};const box=new Element();renderer.render(box,legacyDate);assert.ok(box.textContent.includes('①契約条件は2025年4月1日。②10万円。'));assert.equal(box.textContent.includes('【2026年4月1日基準の独自演習】'),false);assert.ok(flat(box).some(e=>e.className==='material-basis-note'&&e.textContent.includes('2025年4月1日')));assert.equal(flat(box).filter(e=>e.tagName==='OL').length,0);

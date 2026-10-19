@@ -1,0 +1,124 @@
+[
+  {
+    "id": "pr-jafp2-008",
+    "track": "jafp2",
+    "case": 8,
+    "caseTitle": "耐火建築物と建蔽率",
+    "caseText": "【2026年4月1日基準の独自演習】敷地420㎡、指定建蔽率80％、防火地域内の耐火建築物。建築基準法上の建蔽率制限が適用されない要件を満たす。道路後退等はない。",
+    "question": "建築面積の上限を求めなさい。",
+    "kind": "numeric",
+    "choices": [],
+    "answer": 420,
+    "unit": "㎡",
+    "explanation": "指定80％の防火地域内の耐火建築物で設例の要件を満たすため建蔽率制限は適用されず、敷地420㎡が上限です。他の高さ等の規制は別です。",
+    "topic": "建蔽率",
+    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 34,
+    "blueprintQuestion": 8,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-13",
+    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+  },
+  {
+    "id": "pr-jafp2-009",
+    "track": "jafp2",
+    "case": 9,
+    "caseTitle": "固定資産税",
+    "caseText": "【2026年4月1日基準の独自演習】固定資産税について確認する。",
+    "question": "原則の賦課期日／課税主体はどれか。",
+    "kind": "choice",
+    "choices": [
+      "4月1日／国",
+      "1月1日／市町村（東京23区は東京都）",
+      "12月31日／国",
+      "1月1日／必ず国税庁"
+    ],
+    "answer": 1,
+    "explanation": "固定資産税は原則1月1日の所有者に対し市町村が課税し、東京23区は東京都です。所得税の課税年分や国税とは区別します。 賦課期日と納期限は別です。売買時に当事者間で税相当額を精算しても、それだけで当該年度の課税上の納税義務者が切り替わるわけではありません。本問は税率・課税標準や個別の減免額を計算しません。",
+    "topic": "固定資産税",
+    "sourceUrl": "https://www.tax.metro.tokyo.lg.jp/kazei/real_estate/kotei_tosi",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 39,
+    "blueprintQuestion": 9,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v179_remaining_option_reasons_scoped",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.168：公表試験PDFから直接根拠へ是正し、制度の要件・限定範囲を補足。全設例・全肢・正答保持。全文/全改正の包括監修ではない。 Ver.179：全選択肢の個別解説を追加。既存根拠の限定再確認。新法改正/初回ID/追加移行/包括監修へ加算しない。",
+    "sourceLabel": "東京都主税局：固定資産税・都市計画税",
+    "additionalSourceUrls": [
+      "https://www.city.chiba.jp/faq/zaiseikyoku/zeimu/kazeikanri/116.html",
+      "https://www.tax.metro.tokyo.lg.jp/kazei/real_estate/kotei_tosi"
+    ],
+    "choiceExplanations": [
+      "不適切。原則の賦課期日は4月1日ではなく1月1日です。また国税ではなく市町村の税で、東京23区では東京都が課税します。",
+      "正解。原則の賦課期日は1月1日、課税主体は市町村で、東京23区では東京都です。賦課期日を納期限や売買時の当事者間の精算日と混同しません。",
+      "不適切。原則の賦課期日は12月31日ではなく1月1日です。課税主体を国とする点も誤りです。所得税の年分の区切りと固定資産税の賦課期日は別です。",
+      "不適切。1月1日という期日は適切ですが、課税主体を国税庁とする点が誤りです。原則は市町村、東京23区では東京都が課税します。"
+    ]
+  },
+  {
+    "id": "pr-jafp2-010",
+    "track": "jafp2",
+    "case": 10,
+    "caseTitle": "定期借地権",
+    "caseText": "①一般定期借地権は存続期間50年以上。②事業用定期借地権は居住用を除く専ら事業用建物を目的とする。③事業用定期借地権の設定契約は口頭だけで足りる。",
+    "question": "資料の条件を前提として、次の①〜④について、適切なら○、不適切なら×を各欄で選びなさい。",
+    "kind": "multi_choice",
+    "explanation": "①○、②○、③×、④×。一般定期借地権の存続期間は50年以上です。事業用定期借地権は専ら事業用建物の所有を目的とし、居住用の建物は対象外です。貸主の事業として建てる場合でも、賃貸住宅は居住用であるため、この事業用定期借地権は利用できません。事業用定期借地権の設定契約は公正証書によるため、口頭だけでは足りません。一般定期借地権の契約方法と混同しないようにします。",
+    "topic": "借地契約",
+    "sourceUrl": "https://www.mlit.go.jp/totikensangyo/totikensangyo_tk5_000106.html",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 33,
+    "blueprintQuestion": 10,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v169_self_contained_multi_choice_fields",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.151：公表例問10と同じ4欄○×へ。国交省の期間・目的・契約方法表で既存論点を限定再確認。④は既存の居住用除外を賃貸住宅に具体化。本文公表日・2026年4月1日全文/全改正照合は未確認。 Ver.169：全8問31欄を横断点検。回答欄の記述を単独で読める文章へ整理し、問題文の記述重複と独自演習見出しを除去。正誤・指定条件は維持。公式説明の既存論点再確認のみで、新法改正・ID初回・追加移行へ加算しない。基準日全文・正式配点は保留。",
+    "subAnswers": [
+      {
+        "label": "① 一般定期借地権の存続期間は50年以上である。",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 0
+      },
+      {
+        "label": "② 事業用定期借地権は、居住用を除く専ら事業用の建物の所有を目的とする。",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 0
+      },
+      {
+        "label": "③ 事業用定期借地権の設定契約は、口頭だけで足りる。",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 1
+      },
+      {
+        "label": "④ 事業用定期借地権は、賃貸住宅を建てるための借地にも利用できる。",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 1
+      }
+    ]
+  }
+]
