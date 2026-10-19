@@ -292,7 +292,7 @@
         const check=()=>{const invalid=String(input.value).trim()!==''&&!Number.isFinite(numericParser(part)(String(input.value)));input.setAttribute('aria-invalid',String(invalid));feedback.textContent=invalid?(isSymbolBank(part)?`語群の記号ア〜${WORD_BANK_SYMBOLS[part.wordBank.length-1]}を1文字で入力してください。ひらがな・半角カナも使えます。`:part.numericInputFormat==='wordbank-index-v1'?`語群の番号1〜${part.wordBank.length}を整数で入力してください。`:'数字で入力してください。カンマは3桁区切りで使えます。'):'';};check();
         input.addEventListener('input',()=>{
           if(!Array.isArray(attempt.answers[attempt.pos]))attempt.answers[attempt.pos]=q.subAnswers.map(()=>null);
-          attempt.answers[attempt.pos][i]=input.value;check();save(DRAFT,attempt);
+          attempt.answers[attempt.pos][i]=input.value;check();if(!save(DRAFT,attempt))return;
           const count=attempt.answers.filter((a,j)=>completeAnswer(attempt.questions[j],a)).length;
           $p('prAnswered').textContent=`${count}/${attempt.answers.length}問 回答済`;
           $p('prBar').style.width=`${count/attempt.answers.length*100}%`;
@@ -457,7 +457,7 @@
     if(!attempt)return;
     attempt.answers[attempt.pos]=e.target.value;
     updateNumericFeedback(attempt.questions[attempt.pos],e.target.value);
-    save(DRAFT,attempt);
+    if(!save(DRAFT,attempt))return;
     $p('prAnswered').textContent=`${attempt.answers.filter((a,i)=>completeAnswer(attempt.questions[i],a)).length}/${attempt.answers.length}問 回答済`;
     $p('prNav').children[attempt.pos]?.classList.toggle('done',completeAnswer(attempt.questions[attempt.pos],attempt.answers[attempt.pos]));
     updateSubmitReadiness();
