@@ -453,7 +453,7 @@
     updateNumericFeedback(attempt.questions[attempt.pos],e.target.value);
     save(DRAFT,attempt);
     $p('prAnswered').textContent=`${attempt.answers.filter((a,i)=>completeAnswer(attempt.questions[i],a)).length}/${attempt.answers.length}問 回答済`;
-    $p('prNav').children[attempt.pos]?.classList.toggle('done',e.target.value!=='');
+    $p('prNav').children[attempt.pos]?.classList.toggle('done',completeAnswer(attempt.questions[attempt.pos],attempt.answers[attempt.pos]));
     updateSubmitReadiness();
     $p('prBar').style.width=`${attempt.answers.filter((a,i)=>completeAnswer(attempt.questions[i],a)).length/attempt.answers.length*100}%`;
   });
