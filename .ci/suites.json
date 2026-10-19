@@ -59,5 +59,6 @@
   "test_practical_choice_autonext_v208",
   "test_practical_autonext_visibility_v208",
   "test_practical_autonext_preference_v208",
-  "test_practical_submit_readiness_v209"
+  "test_practical_submit_readiness_v209",
+  "test_practical_submit_shortcut_v209"
 ]
