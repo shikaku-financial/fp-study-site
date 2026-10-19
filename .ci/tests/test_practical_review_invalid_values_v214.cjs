@@ -8,7 +8,7 @@ const isMulti=q=>['multi_numeric','multi_choice','wordbank_number'].includes(q.k
 const isSymbolBank=()=>false;
 const parseWordBank=()=>NaN;
 const parseWordBankSymbol=()=>NaN;
-const numericParser=q=>v=>/^\\d+$/.test(v)?Number(v):NaN;
+const numericParser=q=>v=>(v==='100'?100:NaN);
 const WORD_BANK_SYMBOLS=[];
 const answerStr=new Function('isMulti','isSymbolBank','parseWordBank','parseWordBankSymbol','numericParser','WORD_BANK_SYMBOLS',`return ${match[1]};`)(isMulti,isSymbolBank,parseWordBank,parseWordBankSymbol,numericParser,WORD_BANK_SYMBOLS);
 assert.match(answerStr({kind:'numeric',unit:'円'},'oops'),/無効な入力/);
