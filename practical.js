@@ -89,6 +89,7 @@
   };
   const correctStr = q => isMulti(q)?q.subAnswers.map(part=>`${part.label}：${correctStr(part)}`).join(' ／ '):q.kind==='choice' ? q.choices[q.answer] : isSymbolBank(q)?`${WORD_BANK_SYMBOLS[q.answer-1]}（${q.wordBank[q.answer-1]}）`:q.numericInputFormat==='wordbank-index-v1'?`${q.answer}番（${q.wordBank[q.answer-1]}）`:`${readableNum(q.answer)} ${q.unit||''}`;
   const label = tr => `FP${tr.level}級｜${tr.org}｜${tr.name}`;
+  const modeLabel = mode => mode==='set-1'?'第1回':mode==='set-2'?'第2回':mode==='mistakes'?'要復習':mode==='retry'?'再受験':'';
   function renderCourses(){
     // Two clear steps on mobile: grade first, then organizer.
     for (const level of ['3','2']) {
@@ -166,7 +167,7 @@
       const row=document.createElement('div');row.className='pr-history-entry';
       const summary=document.createElement('div');summary.className='pr-history-summary';
       const course=document.createElement('strong');course.textContent=`FP${tr.level}級｜${tr.org==='金融財政事情研究会'?'金財':'日本FP協会'}｜${tr.name}`;
-      const details=document.createElement('span');details.className='muted small';const setLabel=a.mode==='set-1'?'第1回｜':a.mode==='set-2'?'第2回｜':a.mode==='mistakes'?'要復習｜':a.mode==='retry'?'再受験｜':'';details.textContent=`${setLabel}${Number.isFinite(a.finishedAt)&&Number.isFinite(new Date(a.finishedAt).getTime())?new Date(a.finishedAt).toLocaleDateString('ja-JP'):'日付不明'}｜${a.correct}/${a.questions.length}問正解`;
+      const details=document.createElement('span');details.className='muted small';const setLabel=modeLabel(a.mode);details.textContent=`${setLabel?setLabel+'｜':''}${Number.isFinite(a.finishedAt)&&Number.isFinite(new Date(a.finishedAt).getTime())?new Date(a.finishedAt).toLocaleDateString('ja-JP'):'日付不明'}｜${a.correct}/${a.questions.length}問正解`;
       summary.append(course,details);
       const buttons=document.createElement('div');buttons.className='pr-history-actions';
       const open=document.createElement('button');open.type='button';open.textContent='答え合わせ';
@@ -383,7 +384,7 @@
   function renderResult(){
     if(!lastResult)return;
     const r=lastResult, total=r.questions.length,ratio=Math.round(100*r.correct/total),tr=trackFor(r.track);
-    $p('prSummary').textContent=`${label(tr)}｜${total}問中${r.correct}問正解（${ratio}％）`;
+    $p('prSummary').textContent=`${label(tr)}${modeLabel(r.mode)?'｜'+modeLabel(r.mode):''}｜${total}問中${r.correct}問正解（${ratio}％）`;
     $p('prRetryMistakes').disabled=r.correct===total;
     $p('prRetryMistakes').textContent=r.correct===total?'全問正解（復習不要）':`間違えた${total-r.correct}問だけ再演習`;
     $p('prResultNote').textContent=`これは${total}問のオリジナル体験演習です。本試験は${tr.officialCount}問で配点も異なります。したがって、この正答率から本試験の合否は判定できません。`;
