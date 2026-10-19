@@ -311,7 +311,7 @@
         const b=document.createElement('button');b.type='button';b.className='wide';b.textContent=`${i+1}. ${choice}`;
         const active=attempt.answers[attempt.pos]===i;
         b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));
-        b.addEventListener('click',()=>{attempt.answers[attempt.pos]=i;if(!save(DRAFT,attempt))return;if($p('prAutoNext').checked && attempt.pos<attempt.questions.length-1)jump(attempt.pos+1);else renderQuestion();});
+        b.addEventListener('click',()=>{const pos=attempt.pos,previous=attempt.answers[pos];attempt.answers[pos]=i;if(!save(DRAFT,attempt)){attempt.answers[pos]=previous;return;}if($p('prAutoNext').checked && attempt.pos<attempt.questions.length-1)jump(attempt.pos+1);else renderQuestion();});
         $p('prChoices').append(b);
       });
     }
