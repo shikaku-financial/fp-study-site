@@ -373,7 +373,7 @@
     const unfilled=attempt.answers.filter((a,i)=>!completeAnswer(attempt.questions[i],a)).length;
     if(!confirm(unfilled?`未回答が${unfilled}問あります。採点しますか？`:'演習を終了して採点しますか？'))return;
     const correct=attempt.questions.filter((q,i)=>grade(q,attempt.answers[i])).length;
-    const result={id:`${Date.now()}-${Math.floor(Math.random()*100000)}`,track:attempt.track,questions:attempt.questions,answers:attempt.answers.slice(),correct,finishedAt:Date.now()};
+    const result={id:`${Date.now()}-${Math.floor(Math.random()*100000)}`,track:attempt.track,mode:attempt.mode,questions:attempt.questions,answers:attempt.answers.slice(),correct,finishedAt:Date.now()};
     const prior=read(HISTORY,{attempts:[]});
     const rows=Array.isArray(prior.attempts)?prior.attempts:[];
     if(!save(DRAFT,attempt))return;
