@@ -235,6 +235,7 @@
     const remaining=attempt.answers.filter((a,i)=>!completeAnswer(attempt.questions[i],a)).length;
     $p('prSubmitReadiness').textContent=remaining?`未回答が${remaining}問あります。採点前に確認できます。`:'全問回答済みです。採点できます。';
     $p('prSubmitJumpUnanswered').classList.toggle('hidden',remaining===0);
+    $p('prReviewAnswered').classList.toggle('hidden',remaining===attempt.questions.length);
   }
   function renderQuestion(){
     if(!attempt)return;
@@ -438,6 +439,14 @@
     }
   });
   $p('prSubmitJumpUnanswered').addEventListener('click',()=>{$p('prJumpUnanswered').click();});
+  $p('prReviewAnswered').addEventListener('click',()=>{
+    if(!attempt)return;
+    const n=attempt.questions.length;
+    for(let offset=1;offset<=n;offset++){
+      const i=(attempt.pos+offset)%n;
+      if(completeAnswer(attempt.questions[i],attempt.answers[i])){jump(i);return;}
+    }
+  });
   $p('prNumberInput').addEventListener('input',e=>{
     if(!attempt)return;
     attempt.answers[attempt.pos]=e.target.value;
