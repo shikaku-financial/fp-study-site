@@ -36,6 +36,6 @@ for(const key of [pd,ph]){
  b=boot(b.storage);b.el('prResume').click();b.el('prSubmit').click();assert.equal(JSON.parse(b.storage.get(ph)).attempts.length,1);assert.equal(JSON.parse(b.storage.get(ph)).attempts[0].answers[0],1);assert.equal(b.storage.has(pd),false);checks++;
 }
 for(const leave of ['prSaveExit','siteHomeLink']){
- b=boot();startPr(b);b.fault.key=pd;b.el('prChoices').children[1].click();b.el(leave).click();b.fault.key=null;b.el('prSaveExit').click();assert.equal(JSON.parse(b.storage.get(pd)).answers[0],1);checks++;
+ b=boot();startPr(b);b.fault.key=pd;b.el('prChoices').children[1].click();b.el(leave).click();b.fault.key=null;b.el('prSaveExit').click();assert.equal(JSON.parse(b.storage.get(pd)).answers[0],null);b.el('prChoices').children[1].click();assert.equal(JSON.parse(b.storage.get(pd)).answers[0],1);checks++;
 }
 console.log(JSON.stringify({result:'PASS',scenarios:checks,scope:'新しいVM・DOMでの学科2級/3級・実技の再開。学科4保存段階と実技2保存段階の失敗、再読込後の再採点・重複防止、保存失敗時の離脱抑止、時間切れ保存失敗後の手動再採点。',limit:'localStorage模擬。実ブラウザの再読込・実容量制限・描画・タッチ未検証。'},null,2));
