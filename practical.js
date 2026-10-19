@@ -72,7 +72,7 @@
   }
   const isMulti = q => q.kind==='multi_numeric' || q.kind==='multi_choice' || q.kind==='wordbank_number';
   const blank = a => a===null || a===undefined || a==='';
-  const completeAnswer = (q,a) => isMulti(q) ? Array.isArray(a) && a.length===q.subAnswers.length && a.every((v,i)=>!blank(v)&&(q.kind!=='wordbank_number'||Number.isFinite(numericParser(q.subAnswers[i])(String(v))))) : q.kind==='numeric' ? !blank(a) && Number.isFinite(numericParser(q)(String(a))) : !blank(a);
+  const completeAnswer = (q,a) => isMulti(q) ? Array.isArray(a) && a.length===q.subAnswers.length && a.every((v,i)=>!blank(v)&&(q.subAnswers[i].kind==='numeric'?Number.isFinite(numericParser(q.subAnswers[i])(String(v))):Number.isInteger(v)&&v>=0&&v<q.subAnswers[i].choices.length)) : q.kind==='numeric' ? !blank(a) && Number.isFinite(numericParser(q)(String(a))) : !blank(a);
   const grade = (q,a) => {
     if(isMulti(q))return Array.isArray(a) && a.length===q.subAnswers.length && q.subAnswers.every((part,i)=>grade(part,a[i]));
     if (a===null||a===undefined||a==='') return false;
