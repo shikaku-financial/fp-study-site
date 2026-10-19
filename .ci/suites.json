@@ -1,5 +1,5 @@
 [
-  "test_asset_cache_v205",
+  "test_asset_cache_v206",
   "test_multi_numeric_v145_v189_v190_v191_v192_v193_v194_v195_v196_v197",
   "test_multi_snapshots_v169_v182_v189_v190_v191_v192_v193_v194_v195_v196_v197",
   "test_wordbank_v153_v189_v190_v191_v192_v193_v194_v195_v196_v197",
@@ -50,5 +50,7 @@
   "test_jafp2_property_tables_v204",
   "test_property_basis_v205",
   "test_property_display_v205",
-  "test_property_workflow_v205"
+  "test_property_workflow_v205",
+  "test_insurance_workflow_v206",
+  "test_insurance_tables_v206"
 ]

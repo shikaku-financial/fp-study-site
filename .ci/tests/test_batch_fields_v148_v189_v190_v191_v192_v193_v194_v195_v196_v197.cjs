@@ -1,3 +1,4 @@
+// Insurance draft: current admission benefit is 9; actual old 10 snapshot remains in OLD_INSURANCE.json and the dedicated workflow suite.
 // Fresh VM and DOM per reload; persistent storage survives. Not a real browser.
 const vm=require('node:vm'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=process.argv[2]?path.resolve(process.argv[2]):path.resolve(__dirname,'..');
@@ -18,7 +19,7 @@ function boot(storage=new Map()){
 const flat=e=>[e,...e.children.flatMap(flat)];const pd='fp-training-practical-v12-draft',ph='fp-training-practical-v12-results';
 const inputs=b=>flat(b.el('prMultiNumeric')).filter(e=>e.id&&e.id.startsWith('prSubInput'));
 function start(b,pos){b.ctx.__fpPracticalTest.openPractical();b.el('prSelectLevel2').click();const card=flat(b.el('prTracks')).find(e=>e.className==='pr-track'&&e.children.some(c=>c.textContent==='資産設計提案業務'));card.children.find(e=>e.textContent==='この科目を練習する').click();b.el('prNav').children[pos].click();}
-const cases=[{id:'pr-jafp2-013',pos:12,a:['1,700','２，２００','10']}];let fields=0;
+const cases=[{id:'pr-jafp2-013',pos:12,a:['1,700','２，２００','9']}];let fields=0;
 for(const c of cases){
  let b=boot();start(b,c.pos);assert.equal(inputs(b).length,c.a.length);
  for(let i=0;i<c.a.length;i++){const input=inputs(b)[i];input.value=c.a[i];input.events.input({target:input});fields++;}
