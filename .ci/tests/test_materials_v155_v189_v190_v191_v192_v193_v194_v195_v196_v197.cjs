@@ -1,3 +1,4 @@
+// Insurance draft: four inputRows replaced by detailed tables; dedicated suite checks all 8 tables / 32 rows / 73 cells.
 const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(process.argv[2]||path.join(__dirname,'..'));
 class Element{
@@ -30,8 +31,8 @@ for(const q of qs){
 // V204 replaces2 more inputRows with4 detailed tables/16rows, tested separately.
 // Property draft removes008 inputRows;adds its diagram and009/010 detailed tables.
 // Their complete cells and 21 rows are checked by test_jafp2_finance_tables_v203.
-assert.equal(qs.length,240);assert.equal(Object.keys(map).length,240);assert.equal(Object.values(map).filter(m=>m.inputRows.length).length,216);
-console.log(JSON.stringify({result:'PASS',questions:240,curatedInputTables:216,renderedTables:tables,checks,scope:'all substantive source sentences visible; no auto numbering; one small basis note; semantic tables; enlarging; original condition text except editorial prefix; legacy fallback; HTML-looking text never interpreted as markup',limit:'DOM simulation; no browser layout or iPhone validation'},null,2));
+assert.equal(qs.length,240);assert.equal(Object.keys(map).length,240);assert.equal(Object.values(map).filter(m=>m.inputRows.length).length,212);
+console.log(JSON.stringify({result:'PASS',questions:240,curatedInputTables:212,renderedTables:tables,checks,scope:'all substantive source sentences visible; no auto numbering; one small basis note; semantic tables; enlarging; original condition text except editorial prefix; legacy fallback; HTML-looking text never interpreted as markup',limit:'DOM simulation; no browser layout or iPhone validation'},null,2));
 
 // Separate review documents must toggle according to their own displayed state.
 const first=new Element(),second=new Element();renderer.render(first,qs[0]);renderer.render(second,qs[1]);

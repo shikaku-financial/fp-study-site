@@ -1,0 +1,207 @@
+[
+  {
+    "id": "pr-jafp2-013",
+    "track": "jafp2",
+    "case": 13,
+    "caseTitle": "生命保険の保障資料",
+    "caseText": "【2026年4月1日基準の独自演習】終身死亡保障500万円、定期死亡保障1,200万円、事故死亡のみの災害割増500万円、疾病入院日額1万円。契約有効、給付重複可、疾病入院10日がすべて対象、手術等なし。",
+    "question": "資料の条件で（ア）疾病死亡時、（イ）事故死亡時、（ウ）疾病入院10日間の給付額をそれぞれ求めなさい。各欄の単位は万円。",
+    "kind": "multi_numeric",
+    "explanation": "疾病死亡500＋1,200＝1,700万円。事故死亡では500万円が追加され2,200万円。入院1万円×10＝10万円です。",
+    "topic": "保険給付",
+    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 35,
+    "blueprintQuestion": 13,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-13",
+    "contentReview": "v147_multiple_numeric_fields_and_stated_units",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.147：組合せ選択を欄別数値入力へ変更。独自条件/旧正答の意味を保持。保険給付は指定条件の内部検算、傷病手当金/雇用保険は既存論点の公式再確認。公式配点/包括監修は未完了。",
+    "subAnswers": [
+      {
+        "label": "（ア）疾病死亡",
+        "kind": "numeric",
+        "answer": 1700,
+        "unit": "万円",
+        "tolerance": 0,
+        "numericInputFormat": "grouped-decimal-v1"
+      },
+      {
+        "label": "（イ）事故死亡",
+        "kind": "numeric",
+        "answer": 2200,
+        "unit": "万円",
+        "tolerance": 0,
+        "numericInputFormat": "grouped-decimal-v1"
+      },
+      {
+        "label": "（ウ）疾病入院10日",
+        "kind": "numeric",
+        "answer": 10,
+        "unit": "万円",
+        "tolerance": 0,
+        "numericInputFormat": "grouped-decimal-v1"
+      }
+    ]
+  },
+  {
+    "id": "pr-jafp2-014",
+    "track": "jafp2",
+    "case": 14,
+    "caseTitle": "生命保険料控除",
+    "caseText": "【2026年4月1日基準の独自演習】2026年分、新契約の一般生命保険料10万円、介護医療保険料12万円、新個人年金保険料9万円。すべて控除要件を満たす。旧契約なし、23歳未満の扶養親族はいない。",
+    "question": "所得税の生命保険料控除の合計はどれか。",
+    "kind": "choice",
+    "choices": [
+      "14万円",
+      "12万円",
+      "7万円",
+      "31万円"
+    ],
+    "answer": 1,
+    "explanation": "一般生命・介護医療・個人年金はいずれも新契約で、各年間保険料は8万円を超えるため各4万円、4＋4＋4＝12万円です。この設例には23歳未満の扶養親族がいないので一般生命保険料の特則は使いません。選択肢1の14万円は所得税の合計上限12万円を超えます。選択肢3の7万円は住民税の合計上限との取り違え、選択肢4の31万円は支払保険料10＋12＋9万円を控除額とする誤りです。所得控除であり、税額そのものを12万円減らす制度ではありません。",
+    "topic": "生命保険料控除",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1140.htm",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 36,
+    "blueprintQuestion": 14,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v178_social_tax_option_conditions_rechecked",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.163：設例・選択肢・正答位置を保持し、全肢の取り違えを解説へ補足。指定条件の算術と出典再読を分離して記録。包括監修・全文照合ではない。 Ver.178：既存制度の指定条件と選択肢を限定再確認し個別解説を追加。新改正照合/ID初回/追加移行や全条件の包括監修へ加算しない。",
+    "choiceExplanations": [
+      "不適切。14万円は所得税の生命保険料控除の合計上限12万円を超えています。各区分の控除額を合算しても合計上限を超えて控除することはできません。",
+      "正解。新契約の一般生命10万円・介護医療12万円・個人年金9万円はいずれも年間8万円超なので各4万円、合計12万円です。23歳未満の扶養親族がいないため一般生命の特則を適用しません。",
+      "不適切。今回の所得税の計算は各区分4万円ずつで合計12万円となり、7万円ではありません。所得税と住民税の控除額・上限を混同しないようにします。",
+      "不適切。31万円は支払保険料10＋12＋9万円の合計です。支払額がそのまま所得控除になるわけではなく、各区分の算式と上限に従って12万円を求めます。"
+    ],
+    "additionalSourceUrls": [
+      "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1140.htm"
+    ]
+  },
+  {
+    "id": "pr-jafp2-015",
+    "track": "jafp2",
+    "case": 15,
+    "caseTitle": "法人の養老保険",
+    "caseText": "2022年契約、会社が保険料負担、全役員・従業員を公平に対象。死亡受取人は各人の遺族、満期受取人は会社。特約なし、当期対応保険料600万円。",
+    "question": "資料の条件を前提として、次の①〜④について、適切なら○、不適切なら×を各欄で選びなさい。",
+    "kind": "multi_choice",
+    "explanation": "①×、②○、③×、④×。死亡保険金受取人が各人の遺族、満期保険金受取人が法人である養老保険は、当期対応保険料の2分の1を資産計上し、残額を当期の損金に算入します。600万円÷2＝300万円です。本設例は全役員・従業員を公平に対象とし、特定の役員等だけを被保険者とする給与処理の例外には当たりません。特約保険料もありません。",
+    "topic": "法人保険",
+    "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/hojin/5363.htm",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 36,
+    "blueprintQuestion": 15,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v169_self_contained_multi_choice_fields",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.150：公表例と同じ4欄○×へ。国税庁の令和8年4月1日現在法令等の説明を限定再確認。掲載基準日・確認日・施行日を区別し、全条文・全改正照合や正式配点の完了とはしない。 Ver.169：全8問31欄を横断点検。回答欄の記述を単独で読める文章へ整理し、問題文の記述重複と独自演習見出しを除去。正誤・指定条件は維持。公式説明の既存論点再確認のみで、新法改正・ID初回・追加移行へ加算しない。基準日全文・正式配点は保留。",
+    "subAnswers": [
+      {
+        "label": "① 当期対応保険料600万円はすべて資産計上する。",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 1
+      },
+      {
+        "label": "② 当期対応保険料は300万円を資産計上し、300万円を損金に算入する。",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 0
+      },
+      {
+        "label": "③ 当期対応保険料600万円はすべて社長への給与として処理する。",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 1
+      },
+      {
+        "label": "④ 当期対応保険料600万円はすべて損金に算入する。",
+        "kind": "choice",
+        "choices": [
+          "○",
+          "×"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  {
+    "id": "pr-jafp2-016",
+    "track": "jafp2",
+    "case": 16,
+    "caseTitle": "火災保険の補償資料",
+    "caseText": "【2026年4月1日基準の独自演習】設例の火災保険は火災・落雷を対象とし、地震・噴火・津波による損害は対象外。地震保険は未加入。他の免責はなく、保険は有効。",
+    "question": "資料の火災保険の補償について、最も不適切な説明はどれか。",
+    "kind": "choice",
+    "choices": [
+      "落雷により建物設備が損壊した場合は、この設例の補償対象となる。",
+      "地震が原因で発生した火災により建物が焼損した場合も、この火災保険の補償対象となる。",
+      "地震に起因しない通常の火災により建物が焼損した場合は、この設例の補償対象となる。",
+      "隣家からの通常の火災で建物が焼損した場合は、この設例の補償対象となる。"
+    ],
+    "answer": 1,
+    "explanation": "選択肢2が不適切です。設例では地震に起因する損害を対象外とし、地震保険も未加入なので、地震に起因する火災は補償対象になりません。選択肢1の落雷、選択肢3・4の通常の火災は、資料の補償条件と他の免責がないという前提の下で対象となります。この設例の条件を、すべての商品・約款へ一般化しないようにします。 この問題は資料で指定した建物の損害補償を判定します。商品によって設けられる地震火災費用保険金などの別の費用補償を比較する設例ではありません。実際の契約では、損害補償と費用補償のそれぞれの条件を確認します。",
+    "topic": "火災保険",
+    "sourceUrl": "https://soudanguide.sonpo.or.jp/home/q050.html",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 37,
+    "blueprintQuestion": 16,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-16",
+    "contentReview": "v179_remaining_option_reasons_scoped",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。 Ver.156：対象外事故の選択から、公表例問16と同じ不適切説明の選択へ。従来の独自補償条件を保持し、全4文の真偽を与件から確認。新たな商品約款・法令照合実績へ加算しない。 Ver.165：補償根拠を試験PDFから損保協会の一次説明へ是正。地震火災の損害補償と別の費用補償を区別する注記を追加。正答・全肢・資料条件保持。個別商品の約款監修や2026-04-01時点の全法令確認ではない。 Ver.179：全選択肢の個別解説を追加。明示された設例条件の内部判定・検算のみ。公式根拠の再照合には加算しない。新法改正/初回ID/追加移行/包括監修へ加算しない。",
+    "sourceLabel": "日本損害保険協会：火災保険の補償・地震火災費用との区別",
+    "additionalSourceUrls": [
+      "https://www.sonpo.or.jp/insurance/kasai/index.html"
+    ],
+    "choiceExplanations": [
+      "適切な記述。資料では落雷が補償対象と明示され、他の免責もないため、落雷による建物設備の損害はこの設例の補償対象です。",
+      "正解（不適切な記述）。地震が原因の火災であるため、資料で明示された地震に起因する損害の対象外条件に該当します。地震保険は未加入で、別の費用補償の支払可否を比較する問題でもありません。",
+      "適切な記述。地震に起因しない通常の火災は資料で指定された補償対象で、他の免責もないという与件に合います。",
+      "適切な記述。隣家からの通常の火災も、資料の火災補償と他の免責なしという前提で対象です。出火元の賠償責任の有無と、設例の自分の建物に対する保険の補償は区別します。"
+    ]
+  },
+  {
+    "id": "pr-jafp2-017",
+    "track": "jafp2",
+    "case": 17,
+    "caseTitle": "地震保険料",
+    "caseText": "【2026年4月1日基準の独自演習】火災保険金額2,400万円、地震保険はその50％で契約する。保険金額1,000万円当たりの1年保険料は資料上20,000円。これは演習用の仮定料率で、地域・構造別の現行料率ではない。割引なし。",
+    "question": "資料に基づく年間保険料を求めなさい。",
+    "kind": "numeric",
+    "choices": [],
+    "answer": 24000,
+    "unit": "円",
+    "explanation": "地震保険金額2,400×50％＝1,200万円。20,000×1,200/1,000＝24,000円。一般の建物上限5,000万円の範囲です。",
+    "topic": "地震保険料",
+    "sourceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "lawReferenceDate": "2026-04-01",
+    "taxYear": 2026,
+    "revision": 34,
+    "blueprintQuestion": 17,
+    "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/j2_202605_q.pdf",
+    "sourceCheckedDate": "2026-10-13",
+    "contentReview": "v77_blueprint_and_selected_current_law_review",
+    "verificationStatus": "scoped_review_comprehensive_audit_incomplete",
+    "reviewNote": "Ver.77：2026年公表資料の問題順のテーマに沿った独自問題。法令基準日2026-04-01、適用年分・施行日を区別。数値・主要論点の限定点検であり、全小問・個別約款・正式配点・包括監修は未完了。"
+  }
+]
