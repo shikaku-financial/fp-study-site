@@ -74,5 +74,6 @@
   "test_student_pension_eligibility_2026",
   "test_workers_comp_premium_2026",
   "test_practical_invalid_numeric_unanswered_v211",
-  "test_practical_multi_numeric_completion_v212"
+  "test_practical_multi_numeric_completion_v212",
+  "test_practical_single_choice_validity_v213"
 ]
