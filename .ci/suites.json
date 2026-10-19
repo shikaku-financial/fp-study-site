@@ -70,5 +70,6 @@
   "test_pension_primary_calculations_2026",
   "test_inheritance_deductions_2026",
   "test_2026_gift_tax_election_and_annual",
-  "test_inheritance_shares_reserved_2026"
+  "test_inheritance_shares_reserved_2026",
+  "test_student_pension_eligibility_2026"
 ]
