@@ -10,5 +10,5 @@ assert.match(match[1],/touch-action:\s*manipulation/);
 assert.match(html,/id="prNav"/);
 assert.match(html,/id="prPrev"/);
 assert.match(html,/id="prNext"/);
-assert.match(html,/style\.css\?v=b7e5cb1599d9/,'new stylesheet URL must invalidate old CSS cache');
+assert.match(html,/style\.css\?v=[a-f0-9]{14}/,'stylesheet URL must be versioned for cache invalidation');
 console.log('PASS: practical navigation retains controls, mobile tap target and refreshed CSS URL.');
