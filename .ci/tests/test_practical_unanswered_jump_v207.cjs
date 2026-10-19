@@ -1,0 +1,13 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const js=fs.readFileSync(path.join(root,'practical.js'),'utf8');
+assert.match(html,/id="prJumpUnanswered"[^>]*type="button"|id="prJumpUnanswered" type="button"/);
+assert.match(html,/次の未回答問題へ移動/);
+assert.match(js,/\$p\('prJumpUnanswered'\)\.addEventListener\('click'/);
+assert.match(js,/\(attempt\.pos\+offset\)%n/);
+assert.match(js,/!completeAnswer\(attempt\.questions\[i\],attempt\.answers\[i\]\)/);
+assert.match(js,/if\(!completeAnswer\(attempt\.questions\[i\],attempt\.answers\[i\]\)\)\{jump\(i\);return;\}/);
+assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+console.log('PASS: practical next-unanswered button and cyclic search wiring; behavior remains subject to existing VM/DOM regression.');
