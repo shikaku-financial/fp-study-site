@@ -76,5 +76,6 @@
   "test_practical_invalid_numeric_unanswered_v211",
   "test_practical_multi_numeric_completion_v212",
   "test_practical_single_choice_validity_v213",
-  "test_practical_review_invalid_values_v214"
+  "test_practical_review_invalid_values_v214",
+  "test_practical_2026_pension_inheritance_scoped"
 ]
