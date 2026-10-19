@@ -230,6 +230,11 @@
     const selected=(id.startsWith('kinzai') && source.length>=30) ? source.slice((setNumber-1)*15,setNumber*15) : source;
     startFromQuestions(id,selected,`set-${setNumber}`);
   }
+  function updateSubmitReadiness(){
+    if(!attempt)return;
+    const remaining=attempt.answers.filter((a,i)=>!completeAnswer(attempt.questions[i],a)).length;
+    $p('prSubmitReadiness').textContent=remaining?`未回答が${remaining}問あります。採点前に確認できます。`:'全問回答済みです。採点できます。';
+  }
   function renderQuestion(){
     if(!attempt)return;
     const tr=trackFor(attempt.track),q=attempt.questions[attempt.pos];
@@ -285,6 +290,7 @@
           const count=attempt.answers.filter((a,j)=>completeAnswer(attempt.questions[j],a)).length;
           $p('prAnswered').textContent=`${count}/${attempt.answers.length}問 回答済`;
           $p('prBar').style.width=`${count/attempt.answers.length*100}%`;
+          updateSubmitReadiness();
           $p('prNav').children[attempt.pos]?.classList.toggle('done',completeAnswer(q,attempt.answers[attempt.pos]));
         });
         wrap.append(input,unit);group.append(label,wrap,feedback);$p('prMultiNumeric').append(group);
@@ -312,6 +318,7 @@
       b.addEventListener('click',()=>jump(i));nav.append(b);
     }
     $p('prAnswered').textContent=`${attempt.answers.filter((a,i)=>completeAnswer(attempt.questions[i],a)).length}/${attempt.answers.length}問 回答済`;
+    updateSubmitReadiness();
   }
   function jump(i){
     if(!attempt || i<0||i>=attempt.questions.length)return;
@@ -436,6 +443,7 @@
     save(DRAFT,attempt);
     $p('prAnswered').textContent=`${attempt.answers.filter((a,i)=>completeAnswer(attempt.questions[i],a)).length}/${attempt.answers.length}問 回答済`;
     $p('prNav').children[attempt.pos]?.classList.toggle('done',e.target.value!=='');
+    updateSubmitReadiness();
     $p('prBar').style.width=`${attempt.answers.filter((a,i)=>completeAnswer(attempt.questions[i],a)).length/attempt.answers.length*100}%`;
   });
   $p('prSaveExit').addEventListener('click',()=>{if(attempt&&!save(DRAFT,attempt))return;attempt=null;navigate('practicalHome');});

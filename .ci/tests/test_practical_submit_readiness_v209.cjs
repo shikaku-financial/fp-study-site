@@ -1,0 +1,11 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const js=fs.readFileSync(path.join(root,'practical.js'),'utf8');
+assert.match(html,/id="prSubmitReadiness"[^>]*role="status" aria-live="polite"/);
+assert.match(js,/const remaining=attempt\.answers\.filter\(\(a,i\)=>!completeAnswer\(attempt\.questions\[i\],a\)\)\.length/);
+assert.match(js,/\$p\('prSubmitReadiness'\)\.textContent=remaining\?/);
+assert.match(js,/全問回答済みです。採点できます。/);
+assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+console.log('PASS: practical grading readiness has accessible dynamic status and counts incomplete answers.');
