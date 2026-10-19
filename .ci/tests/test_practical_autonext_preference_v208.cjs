@@ -1,0 +1,12 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
+const js=fs.readFileSync(path.join(root,'practical.js'),'utf8'),html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+assert.match(js,/const AUTO_NEXT_PREF = 'fp-training-practical-auto-next'/);
+assert.match(js,/localStorage\.getItem\(AUTO_NEXT_PREF\)==='1'/);
+assert.match(js,/\$p\('prAutoNext'\)\.addEventListener\('change'/);
+assert.match(js,/localStorage\.setItem\(AUTO_NEXT_PREF,\$p\('prAutoNext'\)\.checked\?'1':'0'\)/);
+assert.match(js,/catch\s*\{\s*\/\* auto-next remains usable/);
+assert.match(js,/\$p\('prAutoNext'\)\.checked && attempt\.pos<attempt\.questions\.length-1/);
+assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+console.log('PASS: optional auto-next preference persists separately from exam history and tolerates disabled storage.');
