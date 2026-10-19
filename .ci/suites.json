@@ -52,5 +52,6 @@
   "test_property_display_v205",
   "test_property_workflow_v205",
   "test_insurance_workflow_v206",
-  "test_insurance_tables_v206"
+  "test_insurance_tables_v206",
+  "test_basic_deduction_explanation_2026"
 ]
