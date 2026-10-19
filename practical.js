@@ -235,18 +235,21 @@
     $p('prSubmitJumpUnanswered').classList.toggle('hidden',remaining===0);
     $p('prReviewAnswered').classList.toggle('hidden',remaining===attempt.questions.length);
   }
+  // Use the complete attempt (not the filtered review list) to number a scenario.
+  function scenarioPosition(questions,index){
+    const q=questions[index];if(!q)return '';
+    let start=index,end=index;
+    while(start>0 && questions[start-1].caseTitle===q.caseTitle)start--;
+    while(end+1<questions.length && questions[end+1].caseTitle===q.caseTitle)end++;
+    return `（設例内 ${index-start+1}/${end-start+1}問）`;
+  }
   function renderQuestion(){
     if(!attempt)return;
     const tr=trackFor(attempt.track),q=attempt.questions[attempt.pos];
     $p('prLabel').textContent=`FP${tr.level}級｜${tr.name}`;
     $p('prProgress').textContent=`${attempt.pos+1}/${attempt.questions.length}問`;
     $p('prBar').style.width=`${attempt.answers.filter((v,i)=>completeAnswer(attempt.questions[i],v)).length/attempt.questions.length*100}%`;
-    // Kinzai questions share a scenario in contiguous blocks; show position within the block.
-    const sameCase=(a,b)=>a && b && a.caseTitle===b.caseTitle;
-    let caseStart=attempt.pos,caseEnd=attempt.pos;
-    while(caseStart>0 && sameCase(attempt.questions[caseStart-1],q))caseStart--;
-    while(caseEnd+1<attempt.questions.length && sameCase(attempt.questions[caseEnd+1],q))caseEnd++;
-    const casePosition=tr.id.startsWith('kinzai')?`（設例内 ${attempt.pos-caseStart+1}/${caseEnd-caseStart+1}問）`:'';
+    const casePosition=tr.id.startsWith('kinzai')?scenarioPosition(attempt.questions,attempt.pos):'';
     $p('prCaseTitle').textContent=`${tr.id.startsWith('kinzai')?'設例':''} ${q.caseTitle}${casePosition}`.trim();
     if(window.__fpMaterialView)window.__fpMaterialView.render($p('prCaseText'),q);
     else $p('prCaseText').textContent=String(q.caseText).replaceAll('【2026年4月1日基準の独自演習】','')+`\n（注）法令基準日：${q.lawReferenceDate||'未登録'}。`;
@@ -404,7 +407,7 @@
       const good=grade(q,r.answers[i]);
       const d=document.createElement('details');d.className='review-details';
       const heading=document.createElement('summary');
-      const name=document.createElement('span');name.textContent=`第${i+1}問｜${q.caseTitle}`;
+      const name=document.createElement('span');name.textContent=`第${i+1}問｜${q.caseTitle}${r.track.startsWith('kinzai')?scenarioPosition(r.questions,i):''}`;
       const status=document.createElement('strong');status.className=good?'correct':'wrong';status.textContent=good?'正解':!completeAnswer(q,r.answers[i])?'未回答':'不正解';heading.append(name,status);
       const body=document.createElement('div');body.className='review-details-body';
       const material=document.createElement('div');
