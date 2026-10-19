@@ -1,0 +1,18 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.join(__dirname,'../..'));
+const js=fs.readFileSync(path.join(root,'practical.js'),'utf8');
+const match=js.match(/const answerStr = (.*?);\n  const correctStr =/s);
+assert.ok(match,'answerStr helper missing');
+const isMulti=q=>['multi_numeric','multi_choice','wordbank_number'].includes(q.kind);
+const isSymbolBank=()=>false;
+const parseWordBank=()=>NaN;
+const parseWordBankSymbol=()=>NaN;
+const numericParser=q=>v=>/^\\d+$/.test(v)?Number(v):NaN;
+const WORD_BANK_SYMBOLS=[];
+const answerStr=new Function('isMulti','isSymbolBank','parseWordBank','parseWordBankSymbol','numericParser','WORD_BANK_SYMBOLS',`return ${match[1]};`)(isMulti,isSymbolBank,parseWordBank,parseWordBankSymbol,numericParser,WORD_BANK_SYMBOLS);
+assert.match(answerStr({kind:'numeric',unit:'円'},'oops'),/無効な入力/);
+assert.match(answerStr({kind:'numeric',unit:'円'},'100'),/100 円/);
+assert.equal(answerStr({kind:'choice',choices:['A','B']},9),'無効な選択');
+assert.equal(answerStr({kind:'choice',choices:['A','B']},0),'A');
+console.log('PASS: review distinguishes malformed numeric entries and invalid choices from valid answers.');
