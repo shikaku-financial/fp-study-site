@@ -1,0 +1,16 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
+const src=fs.readFileSync(path.join(root,'practical.js'),'utf8');
+const match=src.match(/const completeAnswer = (.*?);\n  const grade =/s);
+assert.ok(match,'completion helper');
+const isMulti=q=>['multi_numeric','multi_choice','wordbank_number'].includes(q.kind);
+const blank=v=>v===null||v===undefined||v==='';
+const numericParser=q=>v=>/^\d+$/.test(v)?Number(v):NaN;
+const completeAnswer=new Function('isMulti','blank','numericParser',`return ${match[1]};`)(isMulti,blank,numericParser);
+const choice={kind:'choice',choices:['A','B','C']};
+for(const [v,expected] of [[0,true],[1,true],[2,true],[3,false],[-1,false],['1',false],[null,false],[1.5,false]])assert.equal(completeAnswer(choice,v),expected,'choice '+v);
+assert.equal(completeAnswer({kind:'numeric'},'16'),true);
+assert.equal(completeAnswer({kind:'numeric'},'bad'),false);
+assert.equal(completeAnswer({kind:'multi_choice',subAnswers:[{kind:'choice',choices:['X','Y']},{kind:'choice',choices:['A','B']}]},[1,0]),true);
+console.log('PASS: single-choice indices must be valid; numeric and multi-choice completion preserved.');
