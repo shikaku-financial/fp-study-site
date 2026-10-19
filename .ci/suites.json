@@ -66,5 +66,6 @@
   "test_practical_matrix_sticky_labels_v210",
   "test_practical_numeric_completion_sync_v210",
   "test_bond_yield_calculations_2026",
-  "test_2026_tax_deduction_table"
+  "test_2026_tax_deduction_table",
+  "test_pension_primary_calculations_2026"
 ]
