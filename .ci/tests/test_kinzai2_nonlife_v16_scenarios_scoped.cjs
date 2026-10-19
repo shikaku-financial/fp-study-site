@@ -1,0 +1,27 @@
+'use strict';
+// Scoped arithmetic and answer-mapping regression for Kinzai FP2 nonlife v16 scenario.
+// Does not replace primary-source legal review.
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.join(__dirname,'../..'));
+const ctx=vm.createContext({});
+vm.runInContext(fs.readFileSync(path.join(root,'practical-questions.js'),'utf8')+';this.items=PRACTICAL_QUESTIONS;',ctx);
+const get=n=>{const id='pr-kinzai2_nonlife-v16-'+String(n).padStart(3,'0');const q=ctx.items.find(x=>x.id===id);assert.ok(q,id);assert.equal(q.track,'kinzai2_nonlife');assert.equal(q.lawReferenceDate,'2026-04-01');return q};
+const round=x=>Math.floor(x+.5);
+assert.equal(get(1).answer,round(847300*450/480));
+assert.equal(get(2).answer,round(280000*7.125/1000*36+420000*5.481/1000*270));
+assert.equal(get(3).choices[get(3).answer],'①×・②○・③○');
+assert.equal(get(4).answer,4600*.4);
+assert.equal(get(5).choices[get(5).answer],'①○・②○・③×');
+assert.equal(get(6).choices[get(6).answer],'46,000円');
+assert.equal(get(6).answer,1);
+assert.equal(get(7).answer,800+70*(31-20));
+assert.equal(get(8).answer,(4100-get(7).answer)/2);
+assert.equal(get(9).choices[get(9).answer],'①×・②○・③○');
+assert.equal(get(10).answer,(12-Math.min(22,12))+70-10);
+assert.equal(get(11).answer,(820-(820*.1+110))+(750-600-50)/2);
+assert.equal(get(12).choices[get(12).answer],'①×・②○・③○');
+assert.equal(get(13).answer,(750-110)*.3-90);
+assert.equal(get(14).answer,500*4);
+assert.equal(get(15).choices[get(15).answer],'①○・②×・③×');
+assert.equal(9000-9000*330/360*.8,2400);
+console.log('PASS: Kinzai FP2 nonlife v16 scenario 001-015 arithmetic and answer mapping.');
