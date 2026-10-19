@@ -282,8 +282,9 @@
             button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));
             button.setAttribute('aria-label',`${part.label}：${value}`);
             button.addEventListener('click',()=>{
-              if(!Array.isArray(attempt.answers[attempt.pos]))attempt.answers[attempt.pos]=q.subAnswers.map(()=>null);
-              attempt.answers[attempt.pos][i]=j;if(!save(DRAFT,attempt))return;renderQuestion();
+              const pos=attempt.pos,previous=attempt.answers[pos];
+              attempt.answers[pos]=Array.isArray(previous)?previous.slice():q.subAnswers.map(()=>null);
+              attempt.answers[pos][i]=j;if(!save(DRAFT,attempt)){attempt.answers[pos]=previous;return;}renderQuestion();
             });fieldset.append(button);
           });group.append(fieldset);$p('prMultiNumeric').append(group);return;
         }
