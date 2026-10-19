@@ -141,7 +141,7 @@
     const d=read(DRAFT,null);
     const okay=validDraft(d);
     $p('prResumeBox').classList.toggle('hidden',!okay);
-    if(okay){$p('prResume').textContent=`FP${trackFor(d.track).level}級｜${trackFor(d.track).name}の続きから再開`;}
+    if(okay){const mode=modeLabel(d.mode);$p('prResume').textContent=`FP${trackFor(d.track).level}級｜${trackFor(d.track).name}${mode?'｜'+mode:''}の続きから再開`;}
     renderPracticalHistory();
   }
   function historyRows(){
