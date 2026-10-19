@@ -298,7 +298,11 @@
         input.addEventListener('input',()=>{
           const pos=attempt.pos,previous=attempt.answers[pos];
           attempt.answers[pos]=Array.isArray(previous)?previous.slice():q.subAnswers.map(()=>null);
-          attempt.answers[pos][i]=input.value;check();if(!save(DRAFT,attempt)){attempt.answers[pos]=previous;return;}
+          attempt.answers[pos][i]=input.value;check();if(!save(DRAFT,attempt)){
+            attempt.answers[pos]=previous;
+            input.value=Array.isArray(previous)?previous[i]??'':'';
+            check();return;
+          }
           const count=attempt.answers.filter((a,j)=>completeAnswer(attempt.questions[j],a)).length;
           $p('prAnswered').textContent=`${count}/${attempt.answers.length}問 回答済`;
           $p('prBar').style.width=`${count/attempt.answers.length*100}%`;
@@ -464,7 +468,12 @@
     const pos=attempt.pos,previous=attempt.answers[pos];
     attempt.answers[pos]=e.target.value;
     updateNumericFeedback(attempt.questions[pos],e.target.value);
-    if(!save(DRAFT,attempt)){attempt.answers[pos]=previous;return;}
+    if(!save(DRAFT,attempt)){
+      attempt.answers[pos]=previous;
+      e.target.value=previous??'';
+      updateNumericFeedback(attempt.questions[pos],e.target.value);
+      return;
+    }
     $p('prAnswered').textContent=`${attempt.answers.filter((a,i)=>completeAnswer(attempt.questions[i],a)).length}/${attempt.answers.length}問 回答済`;
     $p('prNav').children[attempt.pos]?.classList.toggle('done',completeAnswer(attempt.questions[attempt.pos],attempt.answers[attempt.pos]));
     updateSubmitReadiness();
