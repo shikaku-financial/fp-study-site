@@ -245,7 +245,7 @@
     $p('prCaseTitle').textContent=`${tr.id.startsWith('kinzai')?'設例':''} ${q.caseTitle}`.trim();
     if(window.__fpMaterialView)window.__fpMaterialView.render($p('prCaseText'),q);
     else $p('prCaseText').textContent=String(q.caseText).replaceAll('【2026年4月1日基準の独自演習】','')+`\n（注）法令基準日：${q.lawReferenceDate||'未登録'}。`;
-    $p('prTopic').textContent=`学習テーマ：${q.topic}｜参考問題の法令基準日：${q.lawReferenceDate || "2025-04-01"}（数値条件は設例指定）`;
+    $p('prTopic').textContent=`学習テーマ：${q.topic}｜参考問題の法令基準日：${q.lawReferenceDate || "未登録"}（数値条件は設例指定）`;
     $p('prQuestion').textContent=q.question;
     $p('prChoices').replaceChildren();
     const number=q.kind==='numeric',multi=isMulti(q);
