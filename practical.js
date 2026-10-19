@@ -293,7 +293,7 @@
         const b=document.createElement('button');b.type='button';b.className='wide';b.textContent=`${i+1}. ${choice}`;
         const active=attempt.answers[attempt.pos]===i;
         b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));
-        b.addEventListener('click',()=>{attempt.answers[attempt.pos]=i;save(DRAFT,attempt);renderQuestion();});
+        b.addEventListener('click',()=>{attempt.answers[attempt.pos]=i;save(DRAFT,attempt);if($p('prAutoNext').checked && attempt.pos<attempt.questions.length-1)jump(attempt.pos+1);else renderQuestion();});
         $p('prChoices').append(b);
       });
     }
