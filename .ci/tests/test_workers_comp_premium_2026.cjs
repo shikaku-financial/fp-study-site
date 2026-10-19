@@ -1,0 +1,13 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
+const ctx=vm.createContext({});
+vm.runInContext(fs.readFileSync(path.join(root,'questions.js'),'utf8')+';this.qs=QUESTIONS;',ctx);
+const q=ctx.qs.find(v=>v.id==='fp3-121');assert.ok(q);
+assert.equal(q.lawReferenceDate,'2026-04-01');
+assert.equal(q.answer,1,'employee-sharing statement must be marked false');
+assert.match(q.question,/従業員給与から保険料の半額を控除/);
+assert.match(q.explanation,/労災保険料は事業主が全額負担/);
+assert.match(q.explanation,/雇用保険料とは区別/);
+assert.match(q.choices[q.answer],/誤り/);
+console.log('PASS: workers compensation premiums entirely employer-funded, distinct from employment insurance.');
