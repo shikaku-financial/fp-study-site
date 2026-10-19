@@ -56,5 +56,6 @@
   "test_basic_deduction_explanation_2026",
   "test_mobile_question_nav_v207",
   "test_practical_unanswered_jump_v207",
-  "test_practical_choice_autonext_v208"
+  "test_practical_choice_autonext_v208",
+  "test_practical_autonext_visibility_v208"
 ]
