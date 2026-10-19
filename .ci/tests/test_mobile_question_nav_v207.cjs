@@ -1,0 +1,14 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
+const css=fs.readFileSync(path.join(root,'style.css'),'utf8');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const match=css.match(/\.question-nav button\{([^}]*)\}/);
+assert.ok(match,'question navigation button styling exists');
+assert.match(match[1],/min-height:\s*44px/,'tap targets must be at least 44px high');
+assert.match(match[1],/touch-action:\s*manipulation/);
+assert.match(html,/id="prNav"/);
+assert.match(html,/id="prPrev"/);
+assert.match(html,/id="prNext"/);
+assert.match(html,/style\.css\?v=b7e5cb1599d9/,'new stylesheet URL must invalidate old CSS cache');
+console.log('PASS: practical navigation retains controls, mobile tap target and refreshed CSS URL.');
