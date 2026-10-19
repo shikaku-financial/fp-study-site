@@ -242,6 +242,7 @@
     $p('prQuestion').textContent=q.question;
     $p('prChoices').replaceChildren();
     const number=q.kind==='numeric',multi=isMulti(q);
+    $p('prAutoNextLabel').classList.toggle('hidden',number||multi);
     $p('prMultiNumeric').classList.toggle('hidden',!multi);
     $p('prMultiNumeric').replaceChildren();
     $p('prChoices').classList.toggle('hidden',number||multi);

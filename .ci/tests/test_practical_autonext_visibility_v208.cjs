@@ -1,0 +1,11 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const js=fs.readFileSync(path.join(root,'practical.js'),'utf8');
+assert.match(html,/<label id="prAutoNextLabel" class="check-label"><input id="prAutoNext" type="checkbox">/);
+assert.match(js,/\$p\('prAutoNextLabel'\)\.classList\.toggle\('hidden',number\|\|multi\)/);
+assert.match(js,/const number=q\.kind==='numeric',multi=isMulti\(q\)/);
+assert.match(js,/\$p\('prAutoNext'\)\.checked && attempt\.pos<attempt\.questions\.length-1/);
+assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+console.log('PASS: auto-next setting shows for choice questions only, remains available with existing opt-in behavior.');
