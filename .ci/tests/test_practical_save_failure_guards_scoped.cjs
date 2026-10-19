@@ -8,7 +8,7 @@ const render=section('function renderQuestion(){','function jump(i){');
 const jump=section('function jump(i){','function validDraft(');
 const handlers=section("$p('prNumberInput').addEventListener('input',","$p('prSaveExit').addEventListener");
 assert.match(render,/const pos=attempt\.pos,previous=attempt\.answers\[pos\];attempt\.answers\[pos\]=i;if\(!save\(DRAFT,attempt\)\)\{attempt\.answers\[pos\]=previous;return;\}if\(\$p\('prAutoNext'\)/,'Single choice must roll back its in-memory answer if save fails');
-assert.match(render,/attempt\.answers\[attempt\.pos\]\[i\]=j;if\(!save\(DRAFT,attempt\)\)return;renderQuestion\(\)/,'Multi-choice must save before repaint');
+assert.match(render,/attempt\.answers\[pos\]=Array\.isArray\(previous\)\?previous\.slice\(\):q\.subAnswers\.map\(\(\)=>null\);\s*attempt\.answers\[pos\]\[i\]=j;if\(!save\(DRAFT,attempt\)\)\{attempt\.answers\[pos\]=previous;return;\}renderQuestion\(\)/,'Multi-choice must clone and restore answer array on failed save');
 assert.match(render,/attempt\.answers\[attempt\.pos\]\[i\]=input\.value;check\(\);if\(!save\(DRAFT,attempt\)\)return;/,'Multi-numeric must stop status updates on failure');
 assert.match(handlers,/if\(!save\(DRAFT,attempt\)\)return;/,'Single numeric must stop status updates on failure');
 assert.match(jump,/const previousPos=attempt\.pos;attempt\.pos=i;/,'Jump must retain the previous position');
