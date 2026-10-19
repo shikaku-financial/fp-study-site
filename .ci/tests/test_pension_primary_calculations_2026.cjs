@@ -17,7 +17,7 @@ assert.equal(early.choices[early.answer],'4.8');
 assert.match(early.question,/1962年6月2日/);
 assert.match(early.explanation,/1962年4月2日以後/);
 const deferred=get('fp2-128');
-assert.equal(800000*(1+0.007*24),934400);
+assert.equal(Math.round(800000*(1+0.007*24)),934400);
 assert.equal(deferred.choices[deferred.answer],'934,400円');
 assert.match(deferred.explanation,/0.7％×24月/);
 for(const q of [supplement,early,deferred])assert.equal(q.lawReferenceDate,'2026-04-01');
