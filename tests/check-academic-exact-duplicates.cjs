@@ -7,11 +7,7 @@ const file = fs.readFileSync(path.join(__dirname, '..', 'questions.js'), 'utf8')
 const match = file.match(/const QUESTIONS\s*=\s*(\[[\s\S]*?\n\]);/);
 if (!match) throw new Error('Cannot locate QUESTIONS array in questions.js');
 const questions = JSON.parse(match[1]);
-const known = new Set([
-  'fp2-008|fp2-063',
-  'fp3-017|fp3-073',
-  'fp3-053|fp3-111',
-]);
+const known = new Set(); // All previously identified exact duplicates have been resolved.
 const groups = new Map();
 for (const q of questions) {
   const signature = JSON.stringify([q.question, q.choices, q.answer, q.explanation]);
