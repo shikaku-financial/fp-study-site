@@ -10,6 +10,15 @@ const ctx=vm.createContext({console,document:{createElement:tag=>new Element(tag
 for(const name of ['practical-questions.js','practical-materials.js'])vm.runInContext(fs.readFileSync(path.join(root,name),'utf8'),ctx,{filename:name});
 const qs=vm.runInContext('PRACTICAL_QUESTIONS',ctx),map=vm.runInContext('PRACTICAL_MATERIALS',ctx),renderer=ctx.__fpMaterialView;
 const clean=v=>String(v).replaceAll('【2026年4月1日基準の独自演習】','');
+// Active cases and snapshots must never reintroduce the retired editorial heading.
+const retiredHeading='【2026年4月1日基準の独自演習】';
+assert.equal(qs.length,240);
+for(const q of qs){assert.equal(q.caseText.includes(retiredHeading),false,'retired heading in active case: '+q.id);}
+for(const [id,m] of Object.entries(map)){
+ assert.equal(m.sourceText.includes(retiredHeading),false,'retired heading in source snapshot: '+id);
+ assert.equal(m.sentences.some(s=>s.includes(retiredHeading)),false,'retired heading in sentence snapshot: '+id);
+}
+
 const flat=e=>[e,...e.children.flatMap(flat)];let checks=0,tables=0;
 for(const q of qs){
  const m=map[q.id];assert.equal(clean(m.sourceText),q.caseText);assert.equal(renderer.lookup(q),m);
