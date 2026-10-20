@@ -316,11 +316,14 @@ function appendChoiceExplanations(container, q) {
 }
 function submitAnswer() {
   if (answered || selected === null) return;
-  answered = true;
   const q = session[index], isCorrect = selected === q.answer;
+  const data = load();
+  data[q.id] = { correct: isCorrect, selected, at: Date.now(), revision: questionRevision(q) };
+  // 保存できなかった回答を採点済み・回答済みとして扱わず、再試行できるようにする。
+  if (!writeJSON(STORAGE, data)) return;
+  answered = true;
   if (isCorrect) correct++;
   archiveOldRevisionResults();
-  const data = load(); data[q.id] = { correct: isCorrect, selected, at: Date.now(), revision: questionRevision(q) }; writeJSON(STORAGE, data);
   const fb = $('feedback'); fb.replaceChildren(); fb.classList.remove('hidden');
   const head = document.createElement('strong'); head.className = isCorrect ? 'correct' : 'wrong'; head.textContent = isCorrect ? '正解です！' : '不正解です';
   const answer = document.createElement('p'); answer.textContent = `正解：${q.choices[q.answer]}`;
