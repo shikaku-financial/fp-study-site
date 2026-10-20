@@ -329,7 +329,11 @@
       const b=document.createElement('button');b.type='button';b.textContent=String(i+1);
       const a=attempt.answers[i];const done=completeAnswer(attempt.questions[i],a);
       b.classList.toggle('done',done);b.classList.toggle('current',i===attempt.pos);
-      b.setAttribute('aria-label',`第${i+1}問${done?'回答済み':'未回答'}`);
+      const isKinzai=tr.id.startsWith('kinzai');
+      const scenarioStart=isKinzai && i>0 && attempt.questions[i-1].caseTitle!==attempt.questions[i].caseTitle;
+      b.classList.toggle('scenario-start',scenarioStart);
+      const scenarioLabel=isKinzai?`｜設例 ${attempt.questions[i].caseTitle}${scenarioPosition(attempt.questions,i)}`:'';
+      b.setAttribute('aria-label',`第${i+1}問${done?'回答済み':'未回答'}${scenarioLabel}`);
       if(i===attempt.pos)b.setAttribute('aria-current','step');
       b.addEventListener('click',()=>jump(i));nav.append(b);
     }
