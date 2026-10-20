@@ -2,7 +2,7 @@
 // Verify all Kinzai practical tracks preserve three-question scenario blocks.
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
 const root=path.resolve(process.argv[2]||path.join(__dirname,'../..'));
-const ctx=vm.createContext({});
+const ctx=vm.createContext({});ctx.window=ctx;
 vm.runInContext(fs.readFileSync(path.join(root,'practical-questions.js'),'utf8')+';this.items=PRACTICAL_QUESTIONS;',ctx);
 const tracks=[...new Set(ctx.items.map(q=>q.track))].filter(track=>track.startsWith('kinzai'));
 assert.equal(tracks.length,6,'Expected all six Kinzai practical tracks');
