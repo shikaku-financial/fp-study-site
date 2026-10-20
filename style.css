@@ -258,7 +258,9 @@
 /* Shared question-reading rhythm across academic and practical exercises. */
 #quiz .question-text,#practicalExam .question-text{line-height:1.75;overflow-wrap:anywhere}
 #quiz .wide,#practicalExam .wide{line-height:1.65;text-align:left;overflow-wrap:anywhere}
-#practicalExam .material-table-wrap:focus-visible{outline:3px solid #f0ad4e;outline-offset:-3px}
+/* Keyboard focus is visible for scrollable matrices in exam, review and academic views. */
+.material-table-wrap[tabindex="0"]:focus-visible{outline:3px solid #f0ad4e;outline-offset:-3px;scroll-margin:12px}
+.material-table-wrap[tabindex="0"]{scroll-padding-inline:12px}
 @media(max-width:470px){#quiz .question-text,#practicalExam .question-text{font-size:20px;margin:18px 0}#quiz .wide,#practicalExam .wide{padding:15px 14px}}
 
 /* Keep row labels visible while reading wide practical comparison tables on a phone. */
