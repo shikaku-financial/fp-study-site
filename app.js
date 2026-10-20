@@ -316,11 +316,14 @@ function appendChoiceExplanations(container, q) {
 }
 function submitAnswer() {
   if (answered || selected === null) return;
-  answered = true;
   const q = session[index], isCorrect = selected === q.answer;
+  const data = load();
+  data[q.id] = { correct: isCorrect, selected, at: Date.now(), revision: questionRevision(q) };
+  // 保存できなかった回答を採点済み・回答済みとして扱わず、再試行できるようにする。
+  if (!writeJSON(STORAGE, data)) return;
+  answered = true;
   if (isCorrect) correct++;
   archiveOldRevisionResults();
-  const data = load(); data[q.id] = { correct: isCorrect, selected, at: Date.now(), revision: questionRevision(q) }; writeJSON(STORAGE, data);
   const fb = $('feedback'); fb.replaceChildren(); fb.classList.remove('hidden');
   const head = document.createElement('strong'); head.className = isCorrect ? 'correct' : 'wrong'; head.textContent = isCorrect ? '正解です！' : '不正解です';
   const answer = document.createElement('p'); answer.textContent = `正解：${q.choices[q.answer]}`;
@@ -435,8 +438,10 @@ function renderExam() {
   renderAcademicQuestion($('examQuestion'),q);
   makeOptionButtons($('examChoices'), q, exam.answers[exam.pos], (answer) => {
     if (!exam) return;
-    exam.answers[exam.pos] = answer;
-    saveExamDraft(); renderExam();
+    const pos = exam.pos, previous = exam.answers[pos];
+    exam.answers[pos] = answer;
+    if (!saveExamDraft()) { exam.answers[pos] = previous; return; }
+    renderExam();
   });
   $('examPrev').disabled = exam.pos === 0;
   $('examNext').textContent = exam.pos + 1 === questions.length ? '最後の問題です' : '次の問題';
@@ -457,7 +462,10 @@ function renderExam() {
 }
 function moveExam(newPos) {
   if (!exam || !Number.isInteger(newPos) || newPos < 0 || newPos >= exam.ids.length) return;
-  exam.pos = newPos; saveExamDraft(); renderExam(); window.scrollTo(0, 0);
+  const previousPos = exam.pos;
+  exam.pos = newPos;
+  if (!saveExamDraft()) { exam.pos = previousPos; return; }
+  renderExam(); window.scrollTo(0, 0);
 }
 function jumpToUnanswered() {
   if (!exam) return;
@@ -470,8 +478,10 @@ function jumpToUnanswered() {
 function toggleExamFlag() {
   if (!exam) return;
   if (!Array.isArray(exam.flags) || exam.flags.length !== exam.ids.length || !exam.flags.every(f => typeof f === 'boolean')) exam.flags = exam.ids.map(() => false);
-  exam.flags[exam.pos] = !exam.flags[exam.pos];
-  saveExamDraft(); renderExam();
+  const pos = exam.pos, previous = exam.flags[pos];
+  exam.flags[pos] = !previous;
+  if (!saveExamDraft()) { exam.flags[pos] = previous; return; }
+  renderExam();
 }
 function jumpToFlagged() {
   if (!exam || !Array.isArray(exam.flags)) return;
