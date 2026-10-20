@@ -62,7 +62,8 @@ assert.equal(figures,83);console.log('PASS: 83 diagram instances, paired SVG ima
 const legacyDate={...qs[0],caseText:'【2026年4月1日基準の独自演習】①契約条件は2025年4月1日。②10万円。',lawReferenceDate:'2025-04-01'};const box=new Element();renderer.render(box,legacyDate);assert.ok(box.textContent.includes('①契約条件は2025年4月1日。②10万円。'));assert.equal(box.textContent.includes('【2026年4月1日基準の独自演習】'),false);assert.ok(flat(box).some(e=>e.className==='material-basis-note'&&e.textContent.includes('2025年4月1日')));assert.equal(flat(box).filter(e=>e.tagName==='OL').length,0);
 console.log('PASS: legacy fallback preserves meaningful statement numbers and dated conditions; note follows snapshot basis.');
 
-\n// Academic three-column tables must use the same accessible, scrollable matrix
+
+// Academic three-column tables must use the same accessible, scrollable matrix
 // as practical material tables, including when rendered again for review.
 vm.runInContext(fs.readFileSync(path.join(root,'questions.js'),'utf8'),ctx,{filename:'questions.js'});
 const academicQuestions=vm.runInContext('QUESTIONS',ctx),academicMap=vm.runInContext('ACADEMIC_MATERIALS',ctx);
