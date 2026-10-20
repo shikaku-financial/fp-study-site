@@ -253,6 +253,11 @@
 
 /* Wide practical data sheets retain readable columns within the existing scroll region. */
 .material-table.material-table-matrix{min-width:540px;table-layout:auto}
+/* Keep five- and seven-column comparison sheets legible on narrow phones. */
+@media(max-width:470px){
+ .material-table.material-table-matrix:has(thead tr > :nth-child(5)){min-width:680px}
+ .material-table.material-table-matrix:has(thead tr > :nth-child(7)){min-width:860px}
+}
 .material-table.material-table-matrix th:first-child{width:auto;min-width:8em}
 
 /* Shared question-reading rhythm across academic and practical exercises. */
