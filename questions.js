@@ -6001,7 +6001,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "PBR（株価純資産倍率）＝株価÷BPS（1株当たり純資産）です。2,400円÷800円＝3倍。15倍はPER（株価÷EPS）、50倍は株価÷年間配当の値で、PBRではありません。",
     "topic": "PBRとPERの分母の違い",
-    "sourceUrl": "https://www.jpx.co.jp/glossary/ka/73.html",
+    "sourceUrl": "https://port.jpx.co.jp/jpxhp/portdocs/beginner_a_03.html",
     "id": "fp2-081",
     "revision": 5,
     "createdVersion": 8,
@@ -6015,9 +6015,9 @@ const QUESTIONS = [
       "不適切。2,400円÷48円＝50倍は株価を年間配当で割った値です。"
     ],
     "additionalSourceUrls": [
-      "https://port.jpx.co.jp/jpxhp/portdocs/beginner_a_03.html"
+      "https://www.jpx.co.jp/glossary/ka/73.html"
     ],
-    "sourceLabel": "JPXの株式指標定義／独自提示額の独立検算",
+    "sourceLabel": "JPXの株式指標解説／独自提示額の独立検算",
     "sourceCheckedDate": "2026-10-15",
     "reviewNote": "同じPERの数値差し替え設問を、PBRとPERの区別を問う問題に変更。提示数値・選択肢を独立検算。法令改正や実企業の投資判断の包括監修ではない。"
   },
