@@ -5017,13 +5017,14 @@ const QUESTIONS = [
   {
     "level": "3",
     "category": "不動産",
-    "format": "true_false",
-    "question": "敷地面積200㎡、容積率算定の対象となる延べ面積300㎡の建物について、容積率は150％である。延べ面積と敷地面積は計算上の確定値とし、各種不算入や建築規制の適否は考慮しない。",
+    "format": "three_choice",
+    "question": "敷地面積200㎡、容積率算定の対象となる延べ面積300㎡の建物について、容積率として最も適切なものはどれか。延べ面積と敷地面積は計算上の確定値とし、各種不算入や建築規制の適否は考慮しない。",
     "choices": [
-      "〇 正しい",
-      "× 誤り"
+      "60％",
+      "150％",
+      "250％"
     ],
-    "answer": 0,
+    "answer": 1,
     "explanation": "容積率＝容積率算定対象の延べ面積÷敷地面積×100＝300㎡÷200㎡×100＝150％です。建ぺい率は建築面積を用いる別の指標です。",
     "topic": "容積率の計算",
     "sourceUrl": "https://www.mlit.go.jp/plateaudocument/toc4/toc4_02/toc4_02_03/toc4_02_03_02/_urobuildingdetailattribute/",
@@ -5034,8 +5035,9 @@ const QUESTIONS = [
     "contentReview": "v215_exact_duplicate_replacement_far",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
+      "不適切。300㎡÷200㎡の計算とは一致しません。",
       "正解。300㎡÷200㎡×100＝150％です。",
-      "不適切。容積率の計算には建築面積ではなく算定対象の延べ面積を用います。"
+      "不適切。延べ面積と敷地面積の比を誤っています。"
     ],
     "sourceLabel": "国土交通省：比率の基本定義と指定条件の検算",
     "sourceCheckedDate": "2026-10-15",
@@ -5406,7 +5408,7 @@ const QUESTIONS = [
       "206万円"
     ],
     "answer": 1,
-    "explanation": "200万円×1.02³＝212万2,416円です。212万円は単利計算、208万800円は2年間の複利、206万円は1年当たりの利息を誤って扱った金額です。",
+    "explanation": "200万円×1.02³＝212万2,416円です。212万円は単利計算、208万800円は2年間の複利、206万円は年利や期間を取り違えた金額です。",
     "topic": "教育資金の3年複利計算",
     "sourceUrl": "https://www.j-flec.go.jp/public/learn/glossary/h_fukuri/",
     "id": "fp2-063",
