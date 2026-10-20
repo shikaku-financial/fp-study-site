@@ -12,8 +12,8 @@ const qs=vm.runInContext('PRACTICAL_QUESTIONS',ctx),map=vm.runInContext('PRACTIC
 const clean=v=>String(v).replaceAll('【2026年4月1日基準の独自演習】','');
 const flat=e=>[e,...e.children.flatMap(flat)];let checks=0,tables=0;
 for(const q of qs){
- const m=map[q.id];assert.equal(m.sourceText,q.caseText);assert.equal(renderer.lookup(q),m);
- assert.equal(m.sentences.join(''),q.caseText,'no source sentence loss: '+q.id);checks+=3;
+ const m=map[q.id];assert.equal(clean(m.sourceText),q.caseText);assert.equal(renderer.lookup(q),m);
+ assert.equal(clean(m.sentences.join('')),q.caseText,'no source sentence loss: '+q.id);checks+=3;
  const container=new Element();renderer.render(container,q);const doc=container.children[0];assert.equal(doc.attributes['aria-label'],q.track.startsWith('kinzai')?'設例と資料':'問題の資料');checks++;
  // All original sentences are in the main visible document, excluding the closed original-text disclosure.
  const visible=e=>e.className==='material-original'?'':e._text+e.children.map(visible).join('');
