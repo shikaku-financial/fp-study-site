@@ -61,3 +61,40 @@ assert.equal(figures,83);console.log('PASS: 83 diagram instances, paired SVG ima
 // The annotation follows the snapshot date, not the current global basis.
 const legacyDate={...qs[0],caseText:'【2026年4月1日基準の独自演習】①契約条件は2025年4月1日。②10万円。',lawReferenceDate:'2025-04-01'};const box=new Element();renderer.render(box,legacyDate);assert.ok(box.textContent.includes('①契約条件は2025年4月1日。②10万円。'));assert.equal(box.textContent.includes('【2026年4月1日基準の独自演習】'),false);assert.ok(flat(box).some(e=>e.className==='material-basis-note'&&e.textContent.includes('2025年4月1日')));assert.equal(flat(box).filter(e=>e.tagName==='OL').length,0);
 console.log('PASS: legacy fallback preserves meaningful statement numbers and dated conditions; note follows snapshot basis.');
+
+
+// Academic three-column tables must use the same accessible, scrollable matrix
+// as practical material tables, including when rendered again for review.
+vm.runInContext(fs.readFileSync(path.join(root,'questions.js'),'utf8'),ctx,{filename:'questions.js'});
+const academicQuestions=vm.runInContext('QUESTIONS',ctx),academicMap=vm.runInContext('ACADEMIC_MATERIALS',ctx);
+const academicRenderer=ctx.__fpAcademicMaterialView;
+const threeColumn=Object.entries(academicMap).filter(([,m])=>m.headers.length===3&&m.rows.length);
+assert.deepEqual(threeColumn.map(([id])=>id).sort(),['fp2-020','fp3-004','fp3-018','fp3-021','fp3-043'].sort());
+for(const [id,m] of threeColumn){
+ const q=academicQuestions.find(item=>item.id===id);
+ assert.ok(q,'academic question missing: '+id);
+ assert.equal(academicRenderer.lookup(q),m);
+ for(const mode of ['quiz','review']){
+  const container=new Element();academicRenderer.render(container,q);
+  const wrap=flat(container).find(e=>e.className==='material-table-wrap');
+  assert.ok(wrap,'missing matrix wrap: '+id+' '+mode);
+  assert.equal(wrap.attributes.tabindex,'0');
+  assert.equal(wrap.attributes.role,'region');
+  assert.ok(wrap.attributes['aria-label'].includes(m.title));
+  assert.ok(wrap.attributes['aria-label'].includes('横にスクロール'));
+  const rendered=flat(wrap).find(e=>e.tagName==='TABLE');
+  assert.ok(rendered.className.includes('material-table-matrix'));
+  assert.deepEqual(rendered.children[1].children[0].children.map(e=>e.textContent),Array.from(m.headers));
+  assert.ok(rendered.children[1].children[0].children.every(e=>e.attributes.scope==='col'));
+  assert.deepEqual(rendered.children[2].children.map(e=>e.children.map(cell=>cell.textContent)),
+    Array.from(m.rows,row=>Array.from(row)));
+  assert.ok(rendered.children[2].children.every(row=>row.children[0].attributes.scope==='row'));
+ }
+}
+const twoColumnExample=academicQuestions.find(q=>academicMap[q.id]?.headers.length===2&&academicMap[q.id].rows.length);
+assert.ok(twoColumnExample);
+const simpleContainer=new Element();academicRenderer.render(simpleContainer,twoColumnExample);
+const simpleWrap=flat(simpleContainer).find(e=>e.className==='material-table-wrap');
+assert.ok(simpleWrap);assert.equal(simpleWrap.attributes.tabindex,undefined);
+assert.ok(!flat(simpleWrap).find(e=>e.tagName==='TABLE').className.includes('material-table-matrix'));
+console.log('PASS: five three-column academic tables are accessible scrollable matrices in exam and review; two-column tables unchanged.');

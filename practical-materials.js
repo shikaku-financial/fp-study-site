@@ -26676,9 +26676,15 @@ const ACADEMIC_MATERIALS = {
     button.addEventListener('click',()=>{localEnlarged=!localEnlarged;enlarged=localEnlarged;doc.classList.toggle('material-enlarged',localEnlarged);button.textContent=localEnlarged?'標準の文字':'文字を大きく';button.setAttribute('aria-pressed',String(localEnlarged));});top.append(button);doc.append(top);
     const drawing=diagramView(m);if(drawing)doc.append(drawing);
     if(m.rows.length){
-      const wrap=element('div','material-table-wrap'),t=element('table','material-table');t.append(element('caption','',m.title));
-      const head=element('thead'),hr=element('tr');for(const h of m.headers){const th=element('th','',h);th.setAttribute('scope','col');hr.append(th);}head.append(hr);t.append(head);
-      const body=element('tbody');for(const row of m.rows){const tr=element('tr');row.forEach((v,i)=>{const cell=element(i===0?'th':'td');if(i===0)cell.setAttribute('scope','row');emphasize(cell,v);tr.append(cell);});body.append(tr);}t.append(body);wrap.append(t);doc.append(wrap);
+      if(m.headers.length>2){
+        // Share the practical matrix renderer: scrollable region, readable columns
+        // and sticky row labels, including during academic review.
+        doc.append(table(m.title,m.headers,m.rows));
+      }else{
+        const wrap=element('div','material-table-wrap'),t=element('table','material-table');t.append(element('caption','',m.title));
+        const head=element('thead'),hr=element('tr');for(const h of m.headers){const th=element('th','',h);th.setAttribute('scope','col');hr.append(th);}head.append(hr);t.append(head);
+        const body=element('tbody');for(const row of m.rows){const tr=element('tr');row.forEach((v,i)=>{const cell=element(i===0?'th':'td');if(i===0)cell.setAttribute('scope','row');emphasize(cell,v);tr.append(cell);});body.append(tr);}t.append(body);wrap.append(t);doc.append(wrap);
+      }
     }
     for(const note of m.notes){const p=element('p','material-diagram-note');emphasize(p,note);doc.append(p);}
     const original=element('details','material-original');original.append(element('summary','','問題文・資料の全文を表示'));original.append(element('p','',q.question));doc.append(original);container.append(doc);
