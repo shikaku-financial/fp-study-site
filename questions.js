@@ -3618,28 +3618,28 @@ const QUESTIONS = [
     "level": "3",
     "category": "ライフプランニングと資金計画",
     "format": "true_false",
-    "question": "資料の条件で運用した2年後の元利合計は、110万2,500円である。\n〈一時金の複利運用条件〉\n項目 / 内容\n運用開始時の元金 / 100万円\n年利 / 5％（固定）\n運用期間 / 2年間\n利息組入れ / 各年末・年1回\n期間中の追加入出金はない。税金・手数料は考慮しない。",
+    "question": "元金100万円を年利5％の単利で2年間運用した場合、元利合計は110万円である。期間中の追加入出金はなく、税金・手数料は考慮しない。",
     "choices": [
       "〇 正しい",
       "× 誤り"
     ],
     "answer": 0,
-    "explanation": "〇。100×1.05²＝110.25万円＝110万2,500円です。単利の110万円との違いは、1年目の利息5万円にも2年目の利息2,500円が付くことです。",
-    "topic": "年1回複利の元利合計",
+    "explanation": "〇。単利は当初元金だけに利息が付くため、100万円×（1＋0.05×2）＝110万円です。年1回複利なら100万円×1.05²＝110万2,500円となります。",
+    "topic": "単利と複利の違い",
     "sourceUrl": "https://www.j-flec.go.jp/public/learn/glossary/h_fukuri/",
     "id": "fp3-064",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
     "sourceCheckedDate": "2026-10-14",
-    "contentReview": "v109_time_value_and_repayment_scoped_check",
+    "contentReview": "v219_simple_vs_compound_diversity",
     "verificationStatus": "math_and_stated_assumptions_checked_comprehensive_audit_incomplete",
-    "reviewNote": "Ver.109：2026年4月1日をサイト基準日として、数学的定義・与件・全選択肢・解説・単位・資料を限定確認。法令の施行日や税年に依存しない固定仮定。制度改正照合・包括監修の完了数には含めない。",
+    "reviewNote": "fp3-033と同一条件・逆真偽の重複を解消し、単利と複利の計算比較に変更。独立検算、法令依存なし。包括監修未完了。",
     "sourceLabel": "J-FLEC：複利の定義／設例数値は独立検算",
     "additionalSourceUrls": [],
     "choiceExplanations": [
-      "正解。〇。100×1.05²＝110.25万円＝110万2,500円です。単利の110万円との違いは、1年目の利息5万円にも2年目の利息2,500円が付くことです。",
-      "不適切。〇。100×1.05²＝110.25万円＝110万2,500円です。単利の110万円との違いは、1年目の利息5万円にも2年目の利息2,500円が付くことです。"
+      "正解。単利では毎年の利息は元金100万円の5％である5万円、2年間で10万円です。",
+      "不適切。単利の元利合計は110万円です。複利の110万2,500円と区別します。"
     ]
   },
   {
