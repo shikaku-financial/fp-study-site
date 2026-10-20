@@ -84,5 +84,6 @@
   "test_practical_single_start_confirm_scoped",
   "test_kinzai_scenario_grouping_scoped",
   "test_practical_save_failure_guards_scoped",
-  "test_practical_history_mode_label_scoped"
+  "test_practical_history_mode_label_scoped",
+  "test_practical_navigation_transaction_scoped"
 ]
