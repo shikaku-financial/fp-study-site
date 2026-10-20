@@ -28,7 +28,7 @@ const flat=e=>[e,...e.children.flatMap(flat)],pd='fp-training-practical-v12-draf
 
 
 const all=JSON.parse(boot().run('JSON.stringify(PRACTICAL_QUESTIONS)')),old=JSON.parse(fs.readFileSync(path.join(root,'development-notes/SUPERSEDED_PRACTICAL_V183_TO_V184.json'),'utf8')),q4=all.find(q=>q.id==='pr-kinzai2_personal-004'),q5=all.find(q=>q.id==='pr-kinzai2_personal-005'),eng=boot().ctx.__fpPracticalTest;
-assert.equal(q4.kind,'multi_choice');assert.equal(q5.kind,'multi_numeric');for(const q of [q4,q5]){const o=old.find(x=>x.id===q.id);assert.equal(q.revision,o.revision+1);assert.equal(q.caseText,o.caseText);}
+assert.equal(q4.kind,'multi_choice');assert.equal(q5.kind,'multi_numeric');for(const q of [q4,q5]){const o=old.find(x=>x.id===q.id);assert.equal(q.revision,o.revision+1);assert.equal(q.caseText,o.caseText.replaceAll('【2026年4月1日基準の独自演習】',''));}
 assert.deepEqual(q4.subAnswers.map(p=>p.answer),[0,1,0]);for(let mask=0;mask<8;mask++)assert.equal(eng.grade(q4,[mask&1,(mask>>1)&1,(mask>>2)&1]),mask===2);
 // Independent exact rational arithmetic: no use of question answer constants.
 const profit=200000000n,shares=1000000n,capital=1600000000n,price=2400n,dividend=60n;
