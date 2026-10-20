@@ -48,6 +48,36 @@ assert.ok(inheritance);
 assert.match(inheritance.question,/（ア）は法定相続人3人の基礎控除額/);
 assert.match(inheritance.question,/（イ）は子1人の法定相続分に応ずる税額/);
 assert.match(inheritance.question,/（ウ）は法定相続分で計算する相続税の総額/);
+
+// Compare each scenario's structured inputs, detailed tables and diagrams. A case
+// shared by three questions must not acquire question-specific answer blanks.
+const mctx=vm.createContext({document:{createElement:()=>({})}});mctx.window=mctx;
+vm.runInContext(fs.readFileSync(path.join(root,'practical-materials.js'),'utf8'),mctx,{filename:'practical-materials.js'});
+const materials=vm.runInContext('PRACTICAL_MATERIALS',mctx);
+let checkedCases=0;
+for(const track of tracks){
+ const questions=ctx.items.filter(q=>q.track===track);
+ for(let i=0;i<questions.length;i+=3){
+  const group=questions.slice(i,i+3),baseline=materials[group[0].id];
+  assert.ok(baseline,group[0].id+': missing material');
+  for(const q of group){
+   const material=materials[q.id];
+   assert.ok(material,q.id+': missing material');
+   assert.equal(material.sourceText,q.caseText,q.id+': sourceText mismatch');
+   assert.equal(material.sentences.join(''),q.caseText,q.id+': sentence mismatch');
+   for(const key of ['inputRows','tables','diagram']){
+    assert.equal(JSON.stringify(material[key]??null),JSON.stringify(baseline[key]??null),
+     q.id+': shared scenario '+key+' differs');
+   }
+  }
+  checkedCases++;
+ }
+}
+assert.equal(checkedCases,60);
+const scenario15=materials['pr-kinzai2_personal-015'];
+assert.equal(scenario15.inputRows.length,10);
+assert.equal(scenario15.inputRows.some(row=>row[1]==='（ア）万円'||row[1]==='（イ）万円'||row[1]==='（ウ）万円'),false);
+
 const app=fs.readFileSync(path.join(root,'practical.js'),'utf8');
 assert.match(app,/casePosition=tr\.id\.startsWith\('kinzai'\)/,'Scenario position must be limited to Kinzai');
 assert.match(app,/while\(start>0 && questions\[start-1\]\.caseTitle===q\.caseTitle/,'Scenario position must scan the previous questions');
