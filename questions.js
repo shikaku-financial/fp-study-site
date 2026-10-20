@@ -4968,7 +4968,7 @@ const QUESTIONS = [
     "topic": "生命保険料控除（新旧契約併存）",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1140.htm",
     "id": "fp3-109",
-    "revision": 60,
+    "revision": 61,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
     "reviewedAt": "2026-10-12",
@@ -4976,12 +4976,12 @@ const QUESTIONS = [
     "contentReview": "v88_2026_new_old_life_insurance_contracts_scoped_primary_review",
     "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
     "taxYear": 2026,
-    "sourceCheckedDate": "2026-10-14",
-    "reviewNote": "Ver.88：新旧一般生命保険料・個人年金保険料の併存時に、旧契約支払6万円以下の合算上限4万円と、6万円超の旧契約単独計算を公式照合。包括監修未完了。",
+    "sourceCheckedDate": "2026-10-20",
+    "reviewNote": "国税庁No.1140を照合。選択肢の誤答解説のみ訂正。包括監修未完了。",
     "choiceExplanations": [
       "正解。計算額合計5万2,500円に新旧併用の上限4万円を適用します。",
       "誤り。新旧の計算額を合計しただけで、4万円の上限を適用していません。",
-      "誤り。支払保険料の合計であり、控除額の計算結果ではありません。"
+      "誤り。7万2,500円は、旧契約の控除計算額3万2,500円に旧契約の支払保険料4万円を誤って足した値です。正しくは新契約の控除計算額2万円を足し、合計5万2,500円に新旧併用の上限4万円を適用します。"
     ]
   },
   {
