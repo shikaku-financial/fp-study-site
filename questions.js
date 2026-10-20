@@ -5991,35 +5991,35 @@ const QUESTIONS = [
     "level": "2",
     "category": "金融資産運用",
     "format": "four_choice",
-    "question": "資料のPERとして、最も適切なものはどれか。\n〈同一の株式単位で比較するPER〉\n項目 / 条件\n株価 / 2026年4月1日の提示株価 2400円\nEPS / 2025年1～12月の実績1株当たり当期純利益 160円\nBPS / 2025年末実績の1株当たり純資産 800円\n年間1株配当 / 2025年1～12月の実績合計 48円\n普通株式のみ。EPS・BPSは必要な調整後の提示値。株式分割/併合、優先株、自己株式数の追加計算なし。\n配当は税引前。手数料・個人税額・売買差益なし。実績配当の将来継続を保証しない。\n法令基準日：2026年4月1日。企業・金額は独自仮定。指標の数学/定義確認であり、実企業の会計・投資判断・税法改正の包括監修ではない。",
+    "question": "資料のPBR（株価純資産倍率）として、最も適切なものはどれか。\n〈同一の株式単位で比較するPBR〉\n項目 / 条件\n株価 / 2026年4月1日の提示株価 2400円\nEPS / 2025年1～12月の実績1株当たり当期純利益 160円\nBPS / 2025年末実績の1株当たり純資産 800円\n年間1株配当 / 2025年1～12月の実績合計 48円\n普通株式のみ。EPS・BPSは必要な調整後の提示値。株式分割/併合、優先株、自己株式数の追加計算なし。\n配当は税引前。手数料・個人税額・売買差益なし。実績配当の将来継続を保証しない。\n法令基準日：2026年4月1日。企業・金額は独自仮定。指標の数学/定義確認であり、実企業の会計・投資判断・税法改正の包括監修ではない。",
     "choices": [
-      "3倍",
       "15倍",
-      "約0.0667倍",
+      "3倍",
+      "0.3333倍",
       "50倍"
     ],
     "answer": 1,
-    "explanation": "PERの計算は株価÷EPSです。PER:2400÷160=15倍。倍率と百分率を区別します。提示した実績年度・1株単位の値を用い、会社全体の利益や予想値へ置き換えません。指標だけで値上がりや割安が保証されるわけではありません。",
-    "topic": "PERの分母・単位・年度",
-    "sourceUrl": "https://www.jpx.co.jp/glossary/ka/73.html",
+    "explanation": "PBR（株価純資産倍率）＝株価÷BPS（1株当たり純資産）です。2,400円÷800円＝3倍。15倍はPER（株価÷EPS）、50倍は株価÷年間配当の値で、PBRではありません。",
+    "topic": "PBRとPERの分母の違い",
+    "sourceUrl": "https://port.jpx.co.jp/jpxhp/portdocs/beginner_a_03.html",
     "id": "fp2-081",
-    "revision": 4,
+    "revision": 5,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
-    "contentReview": "v121_equity_metrics_scoped_migration",
+    "contentReview": "v217_equity_pbr_diversity",
     "verificationStatus": "given_assumptions_math_checked_comprehensive_audit_incomplete",
     "choiceExplanations": [
-      "不適切。PBR:2400÷800=3倍。",
-      "正解。PER:2400÷160=15倍。",
-      "不適切。EPS÷株価:160÷2400≒0.0667倍（逆数）。",
-      "不適切。株価÷年間配当:2400÷48=50倍。"
+      "不適切。2,400円÷160円＝15倍はPERです。",
+      "正解。2,400円÷800円＝3倍がPBRです。",
+      "不適切。800円÷2,400円≒0.3333はPBRの逆数です。",
+      "不適切。2,400円÷48円＝50倍は株価を年間配当で割った値です。"
     ],
     "additionalSourceUrls": [
-      "https://port.jpx.co.jp/jpxhp/portdocs/beginner_a_03.html"
+      "https://www.jpx.co.jp/glossary/ka/73.html"
     ],
-    "sourceLabel": "JPXの株式指標定義／独自提示額の独立検算",
+    "sourceLabel": "JPXの株式指標解説／独自提示額の独立検算",
     "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "新改訂の指定数値/全選択肢を内部検算。公式定義との対応を併記し8問を法令改正照合件数に数えない。初回ID時期未確定。"
+    "reviewNote": "同じPERの数値差し替え設問を、PBRとPERの区別を問う問題に変更。提示数値・選択肢を独立検算。法令改正や実企業の投資判断の包括監修ではない。"
   },
   {
     "level": "2",
