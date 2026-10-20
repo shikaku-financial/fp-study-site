@@ -23,6 +23,29 @@ assert.ok(inheritance);
 assert.match(inheritance.question,/（ア）は法定相続人3人の基礎控除額/);
 assert.match(inheritance.question,/（イ）は子1人の法定相続分に応ずる税額/);
 assert.match(inheritance.question,/（ウ）は法定相続分で計算する相続税の総額/);
+// Each Kinzai scenario must show one shared set of reference figures and tables.
+const materialSource=fs.readFileSync(path.join(root,'practical-materials.js'),'utf8');
+vm.runInContext(materialSource+';this.materials=PRACTICAL_MATERIALS;',ctx);
+let checkedScenarioMaterials=0;
+for(const track of tracks){
+  const questions=ctx.items.filter(q=>q.track===track);
+  for(let i=0;i<questions.length;i+=3){
+    const group=questions.slice(i,i+3);
+    const snapshots=group.map(q=>ctx.materials[q.id]);
+    assert.ok(snapshots.every(m=>m&&m.sourceText===group[0].caseText),track+' scenario '+(i/3+1)+': source text mismatch');
+    for(const key of ['inputRows','tables','diagram','sentences']){
+      assert.equal(new Set(snapshots.map(m=>JSON.stringify(m[key]??null))).size,1,
+        track+' scenario '+(i/3+1)+': shared '+key+' differs by question');
+    }
+    checkedScenarioMaterials++;
+  }
+}
+assert.equal(checkedScenarioMaterials,60);
+const sheetQuestion=ctx.items.find(q=>q.id==='pr-kinzai2_personal-015');
+assert.ok(sheetQuestion.question.includes('（ア）は法定相続人3人の基礎控除額'));
+assert.ok(sheetQuestion.question.includes('（イ）は子1人の法定相続分に応ずる税額'));
+assert.ok(sheetQuestion.question.includes('（ウ）は法定相続分で計算する相続税の総額'));
+assert.equal(ctx.materials[sheetQuestion.id].inputRows.length,10);
 const app=fs.readFileSync(path.join(root,'practical.js'),'utf8');
 assert.match(app,/casePosition=tr\.id\.startsWith\('kinzai'\)/,'Scenario position must be limited to Kinzai');
 assert.match(app,/while\(start>0 && questions\[start-1\]\.caseTitle===q\.caseTitle/,'Scenario position must scan the previous questions');
