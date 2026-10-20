@@ -26547,7 +26547,7 @@ const ACADEMIC_MATERIALS = {
     return el;
   };
   // Editorial metadata belongs in a note, never in the case narrative.
-  const displayText = value => String(value).replaceAll('','');
+  const displayText = value => String(value).replaceAll('【2026年4月1日基準の独自演習】','');
   const emphasize = (node, value) => {
     const text = displayText(value);
     const pattern = /[+-]?\d[\d,]*(?:\.\d+)?(?:万円|円|％|%|㎡|カ月|か月|月|年|歳|人|日|万口|口|m|ポイント|倍)/g;
