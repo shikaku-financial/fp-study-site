@@ -17,6 +17,31 @@ for(const track of tracks){
     assert.ok(group.every(q=>typeof q.caseTitle==='string'&&q.caseTitle.trim()&&typeof q.caseText==='string'&&q.caseText.trim()),`${track} group ${i/3+1}: missing case material`);
   }
 }
+// Material snapshots (tables, numeric conditions, diagrams and paragraphs) must
+// remain identical for every question in the same three-question Kinzai case.
+ctx.window=ctx;
+vm.runInContext(fs.readFileSync(path.join(root,'practical-materials.js'),'utf8')+';this.caseMaterials=PRACTICAL_MATERIALS;',ctx);
+let verifiedCases=0;
+for(const track of tracks){
+ const items=ctx.items.filter(q=>q.track===track);
+ for(let i=0;i<items.length;i+=3){
+  const group=items.slice(i,i+3);
+  const sheets=group.map(q=>ctx.caseMaterials[q.id]);
+  assert.ok(sheets.every(Boolean),track+' case '+(i/3+1)+': missing material');
+  for(const key of ['sourceText','sentences','inputRows','tables','diagram']){
+   const values=sheets.map(m=>JSON.stringify(m[key]??null));
+   assert.equal(new Set(values).size,1,track+' case '+(i/3+1)+': inconsistent '+key);
+  }
+  for(let j=0;j<3;j++)assert.equal(sheets[j].sourceText,group[j].caseText,'material/source mismatch: '+group[j].id);
+  verifiedCases++;
+ }
+}
+assert.equal(verifiedCases,60);
+for(const id of ['pr-kinzai2_personal-013','pr-kinzai2_personal-014','pr-kinzai2_personal-015']){
+ const rows=ctx.caseMaterials[id].inputRows;
+ assert.equal(rows.length,10,id+': the shared scenario sheet must contain ten conditions');
+ assert.ok(!rows.some(([key])=>['基礎控除額','子1人の法定相続分に応ずる税額','相続税の総額（個別税額控除前）'].includes(key)));
+}
 // The answer-sheet mapping is unique to question 15, not to the shared case.
 const inheritance=ctx.items.find(q=>q.id==='pr-kinzai2_personal-015');
 assert.ok(inheritance);
