@@ -273,3 +273,6 @@
 .material-table-matrix thead th:first-child{position:sticky;left:0;z-index:2;background:#eaf0f4;box-shadow:2px 0 0 #9eafbc}
 .material-table-wrap{overscroll-behavior-x:contain}
 @media(prefers-reduced-motion:reduce){.bar>div{transition:none}}
+
+/* Distinguish the start of the next Kinzai case without altering navigation button order. */
+#prNav button.scenario-start{box-shadow:inset 4px 0 0 #9db7c7}
