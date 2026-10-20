@@ -1,5 +1,5 @@
 'use strict';
-// Regression guard for four previously audited 2026 academic tax questions.
+// Regression guard for five selected 2026 academic tax questions.
 // Source: https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1180.htm
 // Source: https://www.nta.go.jp/publication/pamph/gensen/2026kaisei.pdf
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
@@ -26,4 +26,10 @@ assert.equal(threshold.answer,1);
 assert.equal(threshold.choices[1],'62万円');
 assert.match(threshold.explanation,/2026年12月1日/);
 assert.match(threshold.explanation,/2026年分の所得税から適用/);
-console.log('PASS: four 2026 academic tax questions retain audited answers, legal thresholds and filing assumptions.');
+const rate=get('fp2-020');
+assert.equal(rate.answer,1);
+assert.equal(rate.choices[1],'412,500円');
+assert.match(rate.sourceName,/所得税の税率/);
+assert.match(rate.reviewNote,/速算表/);
+assert.equal(4200000*0.2-427500,412500);
+console.log('PASS: five 2026 academic tax questions retain audited answers, legal thresholds and filing assumptions.');
