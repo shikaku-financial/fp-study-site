@@ -12,10 +12,17 @@ for(const track of tracks){
   for(let i=0;i<questions.length;i+=3){
     const group=questions.slice(i,i+3);
     assert.equal(new Set(group.map(q=>q.caseTitle)).size,1,`${track} group ${i/3+1}: mismatched case titles`);
+    assert.equal(new Set(group.map(q=>q.caseText)).size,1,`${track} group ${i/3+1}: mismatched shared case conditions`);
     if(i>0)assert.notEqual(group[0].caseTitle,questions[i-1].caseTitle,`${track} group ${i/3+1}: same title as preceding scenario would merge position counters`);
     assert.ok(group.every(q=>typeof q.caseTitle==='string'&&q.caseTitle.trim()&&typeof q.caseText==='string'&&q.caseText.trim()),`${track} group ${i/3+1}: missing case material`);
   }
 }
+// The answer-sheet mapping is unique to question 15, not to the shared case.
+const inheritance=ctx.items.find(q=>q.id==='pr-kinzai2_personal-015');
+assert.ok(inheritance);
+assert.match(inheritance.question,/（ア）は法定相続人3人の基礎控除額/);
+assert.match(inheritance.question,/（イ）は子1人の法定相続分に応ずる税額/);
+assert.match(inheritance.question,/（ウ）は法定相続分で計算する相続税の総額/);
 const app=fs.readFileSync(path.join(root,'practical.js'),'utf8');
 assert.match(app,/casePosition=tr\.id\.startsWith\('kinzai'\)/,'Scenario position must be limited to Kinzai');
 assert.match(app,/while\(start>0 && questions\[start-1\]\.caseTitle===q\.caseTitle/,'Scenario position must scan the previous questions');
