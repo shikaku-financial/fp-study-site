@@ -412,7 +412,17 @@ async function main(){
       await page.locator('#prNext').click();
       assert.match(await page.locator('#prProgress').innerText(),/^3\/40問/);
       const table=page.locator('#prCaseText table.material-table-distribution');
-      assert.equal(await table.count(),1,'target only the distribution amount table');
+      const markedCount=await table.count();
+      if(markedCount!==1){
+        const dom=await page.locator('#prCaseText').evaluate(root=>
+          [...root.querySelectorAll('table')].map(t=>({
+            caption:t.caption?.textContent?.trim()||'',
+            headings:[...t.querySelectorAll('thead th')].map(h=>h.textContent.trim()),
+            classes:t.className
+          })));
+        console.error('Distribution table DOM:',JSON.stringify(dom));
+      }
+      assert.equal(markedCount,1,'target only the distribution amount table');
       assert.deepEqual(await table.locator('thead th').allTextContents(),['項目','金額']);
       const values=await table.locator('tbody tr td:last-child').allTextContents();
       for(const amount of ['10,500円','500円','10,200円'])
