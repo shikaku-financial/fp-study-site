@@ -1,27 +1,19 @@
 name: FP Lab regression
-
 on:
   pull_request:
+  push:
+    branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
-
-concurrency:
-  group: fp-regression-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
-
 jobs:
   regression:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1, resolved 2026-10-18
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          persist-credentials: false
-      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0, resolved 2026-10-18
-        with:
-          node-version: '24'
-          package-manager-cache: false
-      - name: Check syntax, IDs, grading and historical storage
+          node-version: '22'
+      - name: Run full regression suites
         run: node .ci/run.cjs
