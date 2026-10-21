@@ -4,7 +4,9 @@ on:
   push:
     branches: [main]
     paths:
-      - 'index.html'
+      - '*.html'
+      - 'info.css'
+      - 'sitemap.xml'
       - 'style.css'
       - 'app.js'
       - 'questions.js'
@@ -37,6 +39,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html style.css app.js questions.js practical.js practical-questions.js practical-materials.js financial-license-lab-logo.png _site/
+          cp about.html privacy.html contact.html guide.html info.css sitemap.xml _site/
           touch _site/.nojekyll
       - name: Configure Pages
         uses: actions/configure-pages@v5
