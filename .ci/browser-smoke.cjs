@@ -115,6 +115,86 @@ async function main(){
       await page.locator('#prResultHome').click();
       await visible('#practicalHome');
     });
+    await step('FP2 JAFP mixed-choice, numeric and multi-numeric inputs persist and grade',async()=>{
+      // FP2 Japan FP Association practice: q1=4-part multi_choice, q4=numeric, q5=multi_numeric.
+      await visible('#practicalHome');
+      await page.locator('#prSelectLevel2').click();
+      await page.locator('#prTracks .pr-track').first().locator('button.primary').click();
+      await visible('#practicalExam');
+      assert.equal(await page.locator('#prMultiNumeric .pr-sub-answer').count(),4,'four answer fields in JAFP2 q1');
+      for(const [i,correctIndex] of [1,0,0,1].entries()){
+        // The partial answer rerenders the fieldset after each click.
+        await page.locator('#prMultiNumeric .pr-sub-answer').nth(i).locator('button').nth(correctIndex).click();
+        assert.equal(await page.locator('#prMultiNumeric .pr-sub-answer').nth(i).locator('button').nth(correctIndex).getAttribute('aria-pressed'),'true','q1 choice '+i);
+      }
+      await page.locator('#prSaveExit').click();
+      await visible('#practicalHome');
+      await page.reload({waitUntil:'load'});
+      await page.locator('#openPractical').click();
+      await page.locator('#prResume').click();
+      await visible('#practicalExam');
+      assert.match(await page.locator('#prProgress').innerText(),/^1\/40問/);
+      for(const [i,correctIndex] of [1,0,0,1].entries()){
+        assert.equal(await page.locator('#prMultiNumeric .pr-sub-answer').nth(i).locator('button').nth(correctIndex).getAttribute('aria-pressed'),'true','saved choice '+i);
+      }
+      for(let i=0;i<3;i++)await page.locator('#prNext').click();
+      assert.match(await page.locator('#prProgress').innerText(),/^4\/40問/);
+      await visible('#prNumberInput');
+      await page.locator('#prNumberInput').fill('12,34');
+      assert.equal(await page.locator('#prNumberInput').getAttribute('aria-invalid'),'true','malformed grouped number rejected');
+      await page.locator('#prNumberInput').fill('２．１４２');
+      assert.equal(await page.locator('#prNumberInput').getAttribute('aria-invalid'),'false','fullwidth decimal accepted');
+      await page.locator('#prNext').click();
+      assert.match(await page.locator('#prProgress').innerText(),/^5\/40問/);
+      assert.equal(await page.locator('#prMultiNumeric .pr-sub-answer input').count(),2);
+      await page.locator('#prSubInput0').fill('３８．１');
+      await page.locator('#prSubInput1').fill('１．６４');
+      assert.equal(await page.locator('#prSubInput0').getAttribute('aria-invalid'),'false');
+      assert.equal(await page.locator('#prSubInput1').getAttribute('aria-invalid'),'false');
+      await page.locator('#prSaveExit').click();
+      await page.reload({waitUntil:'load'});
+      await page.locator('#openPractical').click();
+      await page.locator('#prResume').click();
+      await visible('#practicalExam');
+      assert.match(await page.locator('#prProgress').innerText(),/^5\/40問/);
+      assert.equal(await page.locator('#prSubInput0').inputValue(),'３８．１');
+      assert.equal(await page.locator('#prSubInput1').inputValue(),'１．６４');
+      await page.locator('#prPrev').click();
+      assert.equal(await page.locator('#prNumberInput').inputValue(),'２．１４２');
+      await page.locator('#prNext').click();
+      await page.locator('#prSubmit').click();
+      await visible('#practicalResult');
+      assert.match(await page.locator('#prSummary').innerText(),/40問中3問正解/);
+      await page.locator('#prAll').click();
+      await page.locator('#prReviews details').first().locator('summary').first().click();
+      assert.match(await page.locator('#prReviews details').first().innerText(),/正解/);
+      await page.locator('#prResultHome').click();
+      await visible('#practicalHome');
+    });
+    await step('FP2 Kinzai kana wordbank supports hiragana and survives reload',async()=>{
+      await page.locator('#prSelectLevel2').click();
+      // Japan FP Association is first; Kinzai individual consultation is second.
+      await page.locator('#prTracks .pr-track').nth(1).locator('button.primary').click();
+      await visible('#practicalExam');
+      assert.match(await page.locator('#prQuestion').innerText(),/語群/);
+      assert.equal(await page.locator('#prMultiNumeric .pr-sub-answer input').count(),3);
+      // Word-bank codes: ア=1, エ=4, キ=7.
+      for(const [i,val] of ['あ','え','き'].entries()){
+        await page.locator('#prSubInput'+i).fill(val);
+        assert.equal(await page.locator('#prSubInput'+i).getAttribute('aria-invalid'),'false','kana input '+i);
+      }
+      await page.locator('#prSaveExit').click();
+      await page.reload({waitUntil:'load'});
+      await page.locator('#openPractical').click();
+      await page.locator('#prResume').click();
+      await visible('#practicalExam');
+      for(const [i,val] of ['あ','え','き'].entries())assert.equal(await page.locator('#prSubInput'+i).inputValue(),val);
+      await page.locator('#prSubmit').click();
+      await visible('#practicalResult');
+      assert.match(await page.locator('#prSummary').innerText(),/15問中1問正解/);
+      await page.locator('#prResultHome').click();
+      await visible('#practicalHome');
+    });
     assert.deepEqual(jsErrors,[],'uncaught JS errors');
     console.log('PASS: mobile '+engineName+' RC1 smoke (not Safari hardware)');
   } catch(error){
