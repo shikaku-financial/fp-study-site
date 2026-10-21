@@ -31,6 +31,10 @@ const mapped=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>x[1]);
 assert.equal(mapped.length,pages.length,'sitemap must enumerate each public HTML once');
 assert.equal(new Set(mapped).size,mapped.length,'duplicate sitemap URL');
 assert.deepEqual(new Set(mapped),urls,'sitemap and canonical URLs disagree');
+const robots=fs.readFileSync(path.join(root,'robots.txt'),'utf8');
+assert.match(robots,/^User-agent:\s*\*/m,'robots.txt must state user-agent');
+assert.ok(robots.includes('Sitemap: '+site+'sitemap.xml'),'robots.txt points to incorrect sitemap URL');
+assert.ok(!robots.includes('Disallow: /'),'production crawl disallowed');
 for(const file of ['fp3-study.html','practical-tracks.html']){
   assert.ok(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('href="'+file+'"'),file+' not discoverable from home');
 }
