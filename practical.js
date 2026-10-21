@@ -253,6 +253,38 @@
     while(end+1<questions.length && questions[end+1].caseTitle===q.caseTitle)end++;
     return end===start?'':`（設例内 ${index-start+1}/${end-start+1}問）`;
   }
+  // Only the distribution-amount table in JAFP2 question 3 needs a near-equal
+  // label/value split. Avoid restyling other materials, including review snapshots.
+  function markDistributionAmountTable(container,q){
+    if(q?.id!=='pr-jafp2-003' || typeof container.querySelectorAll!=='function')return;
+    for(const table of container.querySelectorAll('table')){
+      // Scope this display-only adjustment to the named table; source data and
+      // grading stay unchanged. The original table has 3 columns:
+      // 項目 / 金額 / 表示単位. Stack the latter two in one readable cell.
+      if(!table.caption?.textContent?.includes('分配時の資料'))continue;
+      const headers=table.tHead?.rows[0]?.cells;
+      if(headers?.length===3 &&
+         headers[0].textContent.trim()==='項目' &&
+         headers[1].textContent.trim()==='金額' &&
+         headers[2].textContent.trim()==='表示単位'){
+        headers[1].textContent='金額・単位';
+        headers[2].remove();
+        for(const row of table.tBodies[0]?.rows||[]){
+          const amount=row.cells[1],unit=row.cells[2];
+          if(!amount||!unit)continue;
+          const value=document.createElement('span');
+          value.className='distribution-amount-value';
+          value.textContent=amount.textContent.trim();
+          const suffix=document.createElement('span');
+          suffix.className='distribution-amount-unit';
+          suffix.textContent=unit.textContent.trim();
+          amount.replaceChildren(value,suffix);
+          unit.remove();
+        }
+      }
+      table.classList.add('material-table-distribution');
+    }
+  }
   function renderQuestion(){
     if(!attempt)return;
     const tr=trackFor(attempt.track),q=attempt.questions[attempt.pos];
@@ -263,6 +295,7 @@
     $p('prCaseTitle').textContent=`${tr.id.startsWith('kinzai')?'設例':''} ${q.caseTitle}${casePosition}`.trim();
     if(window.__fpMaterialView)window.__fpMaterialView.render($p('prCaseText'),q);
     else $p('prCaseText').textContent=String(q.caseText).replaceAll('【2026年4月1日基準の独自演習】','')+`\n（注）法令基準日：${q.lawReferenceDate||'未登録'}。`;
+    markDistributionAmountTable($p('prCaseText'),q);
     $p('prTopic').textContent=`学習テーマ：${q.topic}｜この問題の法令基準日：${q.lawReferenceDate || "未登録"}（数値条件は設例指定）`;
     $p('prQuestion').textContent=q.question;
     $p('prChoices').replaceChildren();
@@ -433,6 +466,7 @@
       const body=document.createElement('div');body.className='review-details-body';
       const material=document.createElement('div');
       if(window.__fpMaterialView)window.__fpMaterialView.render(material,q);else material.textContent='設例：'+q.caseText;
+      markDistributionAmountTable(material,q);
       body.append(material);
       [['問題：',q.question],['あなたの回答：',answerStr(q,r.answers[i])],['正解：',correctStr(q)],['解説：',q.explanation]].forEach(([k,v])=>{const p=document.createElement('p');p.textContent=k+v;body.append(p);});
       if(q.kind==='choice' && typeof appendChoiceExplanations==='function')appendChoiceExplanations(body,q);
