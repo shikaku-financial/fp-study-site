@@ -11,7 +11,7 @@ const direct=section('function start(id, setNumber=1)', 'function updateSubmitRe
 const retry=section('function retrySameSet(', 'function start(id, setNumber=1)');
 const prompt='保存している実技演習を終了し、新しく始めますか？';
 assert.equal(source.split(prompt).length-1,1,'The discard prompt must have a single implementation');
-assert.match(shared,/if\(draft && !confirm\(/,'Shared start path must request confirmation');
+assert.match(shared,/if\(draft && !alreadyFinished\(draft\) && !confirm\(/,'Shared start path must confirm an unfinished draft, not a completed orphan');
 assert.doesNotMatch(direct,/\bconfirm\(/,'Direct course start must not prompt a second time');
 assert.match(direct,/startFromQuestions\(id,selected,/,'Direct start must use the shared path');
 assert.match(retry,/startFromQuestions\(lastResult\.track,lastResult\.questions,/,'Retry must use the shared path');
