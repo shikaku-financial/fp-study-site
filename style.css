@@ -210,10 +210,25 @@
 }
 .material-table.material-table-distribution tbody td:last-child{
   text-align:right;
+  white-space:normal;
+  font-variant-numeric:tabular-nums;
+}
+.material-table-distribution .distribution-amount-value{
+  display:block;
   white-space:nowrap;
   font-size:calc(var(--material-font) + 1px);
   font-weight:750;
-  font-variant-numeric:tabular-nums;
+  line-height:1.45;
+}
+.material-table-distribution .distribution-amount-unit{
+  display:block;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  font-size:calc(var(--material-font) * .76);
+  font-weight:500;
+  color:#465c6e;
+  line-height:1.4;
+  margin-top:2px;
 }
 
 .material-statements{padding:2px 16px 14px}
