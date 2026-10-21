@@ -231,6 +231,61 @@ async function main(){
       assert.equal(after.length,before.results+1,'new attempt creates exactly one more history record');
       assert.notEqual(after[0].id,after[1].id,'attempt IDs remain distinct');
     });
+    await step('every practical question renders with matching input controls across all 8 courses',async()=>{
+      // Unlike the first-question smoke above, visit all 240 practical questions (including both 15-question Kinzai sets).
+      // Check *current* source data against the real rendered screen to catch silently blank/incorrectly wired questions.
+      const tracks=await page.evaluate(()=>PRACTICAL_TRACKS.map(t=>({id:t.id,level:t.level})));
+      assert.equal(tracks.length,8,'expected eight practical courses');
+      let checked=0;
+      const signatures=new Set();
+      for(const tr of tracks){
+        await page.locator('#prSelectLevel'+tr.level).click();
+        const inLevel=tracks.filter(t=>t.level===tr.level);
+        const trackIndex=inLevel.findIndex(t=>t.id===tr.id);
+        assert.ok(trackIndex>=0);
+        const cards=page.locator('#prTracks .pr-track');
+        assert.equal(await cards.count(),inLevel.length,'course card count for FP'+tr.level);
+        const records=await page.evaluate(track=>PRACTICAL_QUESTIONS.filter(q=>q.track===track).map(q=>({
+          id:q.id,question:q.question,caseTitle:q.caseTitle,kind:q.kind,
+          count:q.kind==='choice'?q.choices.length:(q.subAnswers||[]).length
+        })),tr.id);
+        const perSet=tr.id.startsWith('kinzai')&&records.length>=30?15:records.length;
+        const sets=records.length/perSet;
+        assert.equal(Number.isInteger(sets),true,'incomplete practical set '+tr.id);
+        for(let set=0;set<sets;set++){
+          const button=cards.nth(trackIndex).locator(set===0?'button.primary':'button.pr-second-set');
+          await button.click();
+          await visible('#practicalExam');
+          for(let i=0;i<perSet;i++){
+            const q=records[set*perSet+i];
+            const questionText=await page.locator('#prQuestion').textContent();
+            assert.equal(questionText,q.question,'mismatched render '+q.id);
+            const progress=await page.locator('#prProgress').innerText();
+            assert.match(progress,new RegExp('^'+(i+1)+'/'+perSet+'問'),'bad progress '+q.id);
+            assert.ok((await page.locator('#prCaseText').innerText()).trim().length>0,'blank case material '+q.id);
+            assert.ok((await page.locator('#prCaseTitle').innerText()).includes(q.caseTitle),'wrong case title '+q.id);
+            if(q.kind==='choice'){
+              assert.equal(await page.locator('#prChoices button').count(),q.count,'choice control count '+q.id);
+              await visible('#prChoices');
+            }else if(q.kind==='numeric'){
+              await visible('#prNumberInput');
+              assert.equal(await page.locator('#prNumberInput').getAttribute('inputmode'),'decimal','numeric inputmode '+q.id);
+            }else{
+              await visible('#prMultiNumeric');
+              assert.equal(await page.locator('#prMultiNumeric .pr-sub-answer').count(),q.count,'subanswer control count '+q.id);
+            }
+            assert.ok(!signatures.has(q.id),'practical ID rendered twice: '+q.id);
+            signatures.add(q.id);checked++;
+            if(i<perSet-1)await page.locator('#prNext').click();
+          }
+          await page.locator('#prSaveExit').click();
+          await visible('#practicalHome');
+        }
+        console.log('PASS exhaustive practical: '+tr.id+' '+records.length+' questions');
+      }
+      assert.equal(checked,240,'all practical questions must be rendered exactly once');
+      console.log('PASS exhaustive practical: '+checked+' unique question screens checked');
+    });
     assert.deepEqual(jsErrors,[],'uncaught JS errors');
     console.log('PASS: mobile '+engineName+' RC1 smoke (not Safari hardware)');
   } catch(error){
