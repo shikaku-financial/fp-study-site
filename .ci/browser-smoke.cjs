@@ -166,7 +166,7 @@ async function main(){
       await visible('#practicalResult');
       assert.match(await page.locator('#prSummary').innerText(),/40問中3問正解/);
       await page.locator('#prAll').click();
-      await page.locator('#prReviews details').first().locator('summary').click();
+      await page.locator('#prReviews details').first().locator('summary').first().click();
       assert.match(await page.locator('#prReviews details').first().innerText(),/正解/);
       await page.locator('#prResultHome').click();
       await visible('#practicalHome');
