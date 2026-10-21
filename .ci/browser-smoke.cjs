@@ -440,6 +440,7 @@ async function main(){
           const rect=el.getBoundingClientRect();
           return {
             ratio:header[1].getBoundingClientRect().width/rect.width,
+            tableFits:rect.width<=(el.closest('.material-table-wrap')?.clientWidth||window.innerWidth)+2,
             nowrap:cells.every(c=>getComputedStyle(c.querySelector('.distribution-amount-value')).whiteSpace==='nowrap'),
             rightAligned:cells.every(c=>getComputedStyle(c).textAlign==='right'),
             fits:cells.every(c=>c.scrollWidth<=c.clientWidth+2),
@@ -448,7 +449,7 @@ async function main(){
           };
         });
         assert.ok(sizes.ratio>=0.44 && sizes.ratio<=0.53,'amount column needs near-half width @'+width+': '+JSON.stringify(sizes));
-        assert.ok(sizes.nowrap&&sizes.rightAligned&&sizes.fits&&sizes.unitsVisible&&!sizes.wholePageOverflow,
+        assert.ok(sizes.tableFits&&sizes.nowrap&&sizes.rightAligned&&sizes.fits&&sizes.unitsVisible&&!sizes.wholePageOverflow,
           'distribution amount visibility @'+width+': '+JSON.stringify(sizes));
       }
       await page.locator('#prSaveExit').click();
