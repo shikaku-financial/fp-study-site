@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://shikaku-financial.github.io/fp-study-site/</loc></url>
-  <url><loc>https://shikaku-financial.github.io/fp-study-site/guide.html</loc></url>
-  <url><loc>https://shikaku-financial.github.io/fp-study-site/fp3-study.html</loc></url>
-  <url><loc>https://shikaku-financial.github.io/fp-study-site/practical-tracks.html</loc></url>
-  <url><loc>https://shikaku-financial.github.io/fp-study-site/about.html</loc></url>
-  <url><loc>https://shikaku-financial.github.io/fp-study-site/privacy.html</loc></url>
-  <url><loc>https://shikaku-financial.github.io/fp-study-site/contact.html</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/guide.html</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/fp3-study.html</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/practical-tracks.html</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/about.html</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/privacy.html</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/contact.html</loc></url>
 </urlset>
