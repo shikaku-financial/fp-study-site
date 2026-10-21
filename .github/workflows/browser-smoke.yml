@@ -1,0 +1,47 @@
+name: FP Lab mobile browser smoke
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'style.css'
+      - 'app.js'
+      - 'questions.js'
+      - 'practical.js'
+      - 'practical-questions.js'
+      - 'practical-materials.js'
+      - '.ci/browser-smoke.cjs'
+      - '.github/workflows/browser-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  chromium-mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Install isolated browser test dependency
+        run: npm install --no-save --no-package-lock playwright@1.56.1
+      - name: Install Chromium runtime
+        run: npx playwright install --with-deps chromium webkit
+      - name: Run local mobile viewport smoke
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/fp-lab-http.log 2>&1 &
+          FP_LAB_BROWSER=chromium node .ci/browser-smoke.cjs
+          FP_LAB_BROWSER=webkit node .ci/browser-smoke.cjs
+      - name: Save failure screenshot
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-browser-smoke-failure
+          path: .ci/browser-failure.png
+          if-no-files-found: ignore
