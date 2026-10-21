@@ -288,6 +288,65 @@ async function main(){
       assert.equal(checked,240,'all practical questions must be rendered exactly once');
       console.log('PASS exhaustive practical: '+checked+' unique question screens checked');
     });
+    await step('all 360 academic questions render, grade and persist in real mobile browsers',async()=>{
+      // The practical 240-question sweep ran above. Complete RC1 screen/answer coverage for the academic 360.
+      await page.locator('#prBackHome').click();
+      await visible('#home');
+      const seen=new Set();
+      for(const level of ['3','2']){
+        await page.locator('#level'+level).click();
+        await page.locator('#category').selectOption('すべての分野');
+        await page.locator('#shuffle').uncheck();
+        await page.locator('#practiceCount').selectOption('all');
+        const records=await page.evaluate(target=>QUESTIONS.filter(q=>q.level===target).map(q=>({
+          id:q.id,category:q.category,choices:q.choices,answer:q.answer,explanation:q.explanation
+        })),level);
+        assert.equal(records.length,180,'academic level '+level+' must contain 180 questions');
+        await page.locator('#startPractice').click();
+        await visible('#quiz');
+        let wrong=0;
+        for(let i=0;i<records.length;i++){
+          const q=records[i];
+          assert.ok(!seen.has(q.id),'academic question rendered twice: '+q.id);
+          seen.add(q.id);
+          assert.equal(await page.locator('#qprogress').innerText(),(i+1)+' / 180問','progress '+q.id);
+          assert.ok((await page.locator('#qmeta').innerText()).includes(q.category),'wrong category '+q.id);
+          assert.ok((await page.locator('#question').innerText()).trim().length>0,'blank academic material '+q.id);
+          assert.equal(await page.locator('#choices button').count(),q.choices.length,'wrong choice count '+q.id);
+          const choices=await page.locator('#choices button').allTextContents();
+          assert.deepEqual(choices,q.choices,'choice text/order mismatch '+q.id);
+          const selected=i%7===0?(q.answer+1)%q.choices.length:q.answer;
+          if(selected!==q.answer)wrong++;
+          await page.locator('#choices button').nth(selected).click();
+          await page.locator('#submit').click();
+          await visible('#feedback');
+          const feedback=await page.locator('#feedback').innerText();
+          assert.ok(feedback.includes(q.explanation),'missing explanation '+q.id);
+          assert.ok(feedback.includes(q.choices[q.answer]),'missing correct answer '+q.id);
+          assert.ok(feedback.includes(selected===q.answer?'正解です！':'不正解です'),'incorrect feedback '+q.id);
+          await page.locator('#next').click();
+        }
+        await visible('#finish');
+        assert.match(await page.locator('#summary').innerText(),new RegExp('180問中 '+(180-wrong)+'問正解'));
+        await page.locator('#finishHome').click();
+        await visible('#home');
+        const persisted=await page.evaluate(()=>JSON.parse(localStorage.getItem('fp-training-v12')||'{}'));
+        for(const q of records){
+          assert.ok(persisted[q.id],'answer not persisted for '+q.id);
+          assert.equal(typeof persisted[q.id].correct,'boolean','answer correctness invalid '+q.id);
+        }
+        assert.ok((await page.locator('#stats').innerText()).includes('解答済み 180問'),'incomplete stats level '+level);
+        console.log('PASS exhaustive academic: FP'+level+' '+records.length+' unique rendered/graded/stored; wrong='+wrong);
+      }
+      assert.equal(seen.size,360,'all 360 academic questions must render once');
+      await page.reload({waitUntil:'load'});
+      await visible('#home');
+      for(const level of ['3','2']){
+        await page.locator('#level'+level).click();
+        assert.ok((await page.locator('#stats').innerText()).includes('解答済み 180問'),'academic save not preserved after reload FP'+level);
+      }
+      console.log('PASS exhaustive academic: 360 unique question screens and saved grade records checked');
+    });
     assert.deepEqual(jsErrors,[],'uncaught JS errors');
     console.log('PASS: mobile '+engineName+' RC1 smoke (not Safari hardware)');
   } catch(error){
