@@ -27,3 +27,5 @@ jobs:
           package-manager-cache: false
       - name: Check syntax, IDs, grading and historical storage
         run: node .ci/run.cjs
+      - name: Check static search landing pages and sitemap
+        run: node .ci/seo-pages-check.cjs
