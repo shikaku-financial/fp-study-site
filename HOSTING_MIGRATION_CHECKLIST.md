@@ -1,27 +1,62 @@
-# FPラボ公開先移行チェックリスト（広告導入前）
+# FPラボ｜Cloudflare Pages公開手順（iPhoneだけで可能）
 
-2026-10-21作成。GitHub PagesからCloudflare Pages等へ変更する際の作業手順。**未契約／未実施**であり、変更先URL・公開日・商用利用の適否は確定していません。
+最終更新：2026-10-21。**未接続・未公開・独自ドメイン未購入**。この手順は、Cloudflareアカウントをまだ持たない運営者向けです。
 
-## 推奨順序
-1. 現在の学習履歴がブラウザ内 `localStorage` に保存され、同一ブラウザであってもホスト名変更後は自動移行されないことを確認する。現時点では利用者の履歴移行機能を新設しない。既存サイトの稼働を維持し、利用者向けに事前周知する。
-2. Cloudflare Pages の利用規約・Acceptable Use Policy・無料枠・広告掲載方針を運営者が確認する。個別の商用利用承認を得たとは断定しない。ログイン・契約・Github App連携は本人操作。
-3. Cloudflare ダッシュボード > Workers & Pages > Create > Pages > Connect to Git を開き、`shikaku-financial/fp-study-site` の `main` を接続。通常の静的HTML配信なのでビルドコマンド不要。ビルド出力ディレクトリはリポジトリのルートを使う構成を検討する（現在のリポジトリにはREADMEなどの開発用ファイルもあるため、公開領域を限定する専用ビルド出力設定を優先）。
-4. **実際に公開するファイルのみ** `_site` へコピーするスクリプトを移植対象に使う。現在のGitHub Actions Pages公開は `.github/workflows/pages.yml` の `Assemble site files` に定義されている。Cloudflareの公開出力ディレクトリに `_site` を指定し、スクリプトの動作をローカルでテストしてから接続する。
-5. Cloudflareの一時URLで、学科・実技の表示、採点、途中保存、資料画像／CSS、各ガイド、404時の挙動を確認する。検索エンジンが一時URLを正規URLとして誤解しないよう、移行前のcanonicalを暫定のGitHub URLに維持する。
-6. 独自ドメインを購入する場合は、予算、商標・誤認防止、名称、更新費を本人が確定し、DNS切替後にHTTPSの状態を確認する。購入やドメイン移管は**本人承認なしに実行しない**。
-7. 新URLが正式に決定・稼働したら、全HTMLのcanonical、sitemap.xml、内部リンク、告知文、Search Consoleの対象プロパティを**同じリリースで**更新する。旧GitHub URLから完全なサーバー301リダイレクトを設定できるとは想定しない。
-8. 旧ホストの既存ユーザーにはURL変更と履歴が自動移行されない注意を表示する。旧サイトを即時停止せず、履歴の扱いを決定してから段階的に移す。
-9. Search Consoleで確定ドメインの所有権を確認し、sitemapを送信する。審査や検索登録は自動的に保証されない。
-10. AdSenseに本人のアカウントで申請。承認後に広告配信タグを設置し、プライバシー記載・必要な同意設定・広告位置のテストを行う。回答操作画面の近くや模擬試験の途中には載せない。
+## 現段階の決定事項
 
-## 公開と制約の根拠
-- GitHub Pages（無料ホスティングによるオンライン事業への制限）：https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits
-- GitHub追加サービス規約：https://docs.github.com/en/site-policy/github-terms/github-terms-for-additional-products-and-features
-- Cloudflare Pages Git連携：https://developers.cloudflare.com/pages/configuration/git-integration/
-- Cloudflare Pages無料枠：https://developers.cloudflare.com/pages/platform/limits/
-- Google Search Consoleの所有権確認：https://support.google.com/webmasters/answer/9008080
+- **無料・登録不要・広告による運営**を継続。GitHub `shikaku-financial/fp-study-site` はソースコードの管理元として維持。
+- 広告運営の候補公開先としてCloudflare Pages無料プランを優先検討する。規約上の個別適合やAdSense承認は保証しない。
+- 運営者の指定により**正式リリース前の学習履歴は引き継がない**。移行ツール・互換性修正・履歴エクスポート機能を作らない。新URLで演習履歴は初期状態から始まる。
+- 現在のGitHub PagesはCloudflareでテストが終わるまで止めない。広告タグ・解析タグは未導入のまま。
 
-## 許容する現状
-- GitHubは**コード管理を継続**し、広告運営を前提にした公開先だけを移行する方針。
-- 広告、解析タグ、独自ドメイン、外部アカウント連携、本人確認はまだ導入しない。
-- 監査済み学科360問＋実技240問、現在の採点・保存ロジックには手を加えない。
+## 最初に運営者がiPhoneで行う操作
+
+1. Safariで [Cloudflare公式サイト](https://dash.cloudflare.com/sign-up) を開き、無料アカウントを作成し、必要に応じてメールを認証する。秘密情報はChatGPT/GitHub Issueに貼らない。
+2. Cloudflareのダッシュボードで **Workers & Pages → Create application → Pages → Import an existing Git repository**（表示文言は変わる場合あり）と進む。
+3. GitHub認証で **`shikaku-financial/fp-study-site`** を選択する。GitHub Appのアクセス範囲を選べる場合は **このリポジトリのみ** を許可する。
+4. Pagesの設定値は次の通りにする。
+
+| 設定 | 指定する値 |
+| --- | --- |
+| Project name | `fll-fp-lab`（利用可能な名前なら任意に変更してよい） |
+| Framework preset | `None` / 設定なし |
+| Production branch | `main` |
+| Root directory | リポジトリのルート（デフォルトのまま） |
+| **Build command** | `node .ci/build-static.cjs` |
+| **Build output directory** | `dist` |
+| 環境変数・Secrets | 追加しない |
+| 有料プラン・独自ドメイン | この段階では不要 |
+
+5. **Save and Deploy / Deploy site** を実行。完了画面に表示される **`https://（プロジェクト名）.pages.dev`** を控えて、このURLだけをChatGPTに伝える。アカウントのログイン情報・認証コード・APIキーは送らない。
+
+## この構成で公開されるもの
+
+- `.ci/build-static.cjs` が、サイト公開に必要なHTML、JS、CSS、ロゴ、サイトマップのみを `dist/` にコピー。
+- `.ci/`、`.github/`、README、計画書、開発データなどは公開成果物に含めない。
+- GitHub Pagesも同じ `dist/` を使う。新しい公開先とのコンテンツ差分を減らすためで、公開先は**まだ切り替えない**。
+- CloudflareはGitHubの `main` への更新を検知して自動デプロイする。PRはプレビューデプロイになる場合がある。
+
+## URL受領後に行う確認（この順序で）
+
+1. Cloudflareの `pages.dev` で学科・実技の起動、1問回答、模試の保存→再読込→再開、資料表の表示、ガイド7ページ、画像を確認。
+2. 新しいホストでは **以前の学習履歴が表示されなくても正常**。利用者が新しい学習履歴を記録できることだけ確認。
+3. 旧GitHub PagesのURLとCloudflareのURLが共に開く間、canonicalやサイトマップは旧URLを暫定的に指していてよい。ただし **新URLの検索登録・AdSense申請を進める前に正式公開URLを一つ決めて修正する**。
+4. 正式なURLを `pages.dev` とするか、独自ドメインを購入するかは本人が費用と名称を確認して決定。**独自ドメインは必須ではない**。購入は本人の確認を得てから行う。
+5. 正式なURL決定後、すべてのcanonical、サイトマップ、プライバシーのホスト説明、サイト内のリンク、検索登録方針を合わせて更新する。旧GitHub URLは必要なら案内専用として残す。
+6. Search Consoleで確定URLの所有権を確認してサイトマップを送信する。AdSenseの本人登録・審査とCookie等への説明・同意設定は後段階。
+
+## 必要な作業と不要な作業
+
+**運営者が実施するもの：** Cloudflareアカウント作成と本人認証、GitHub認可、初回デプロイ、必要に応じたドメイン購入、Search Console/AdSenseの本人登録。
+
+**不要：** リリース前履歴のエクスポート・インポート・移行用コード・学科360問と実技240問の再監査。
+
+**まだ実施しない：** 旧サイト停止、ドメイン購入、広告・解析タグ設置、AdSense審査申請。
+
+## 参照
+
+- Cloudflare Pages 静的HTML: https://developers.cloudflare.com/pages/framework-guides/deploy-anything/
+- Cloudflare Pages Git連携: https://developers.cloudflare.com/pages/configuration/git-integration/
+- Cloudflare Pages ビルド設定: https://developers.cloudflare.com/pages/configuration/build-configuration/
+- Cloudflare Pages 無料枠: https://developers.cloudflare.com/pages/platform/limits/
+- GitHub Pages利用制限: https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits
