@@ -51,5 +51,24 @@ for(const saved of [false,true]){
   vm.runInNewContext(flag+';toggleExamFlag();',ctx);
   assert.equal(exam.flags[0],saved,'failed flag write rolls back');
 }
-assert.match(src,/exam\.answers\[pos\] = answer;\s*if \(!saveExamDraft\(\)\) \{ exam\.answers\[pos\] = previous; return; \}/,'answer click must restore on write failure');
+// Execute the actual callback supplied to the exam choice buttons, rather than only
+// checking its source code. Cover both a new answer and changing a saved answer.
+const render=section('function renderExam() {','function moveExam(newPos) {');
+const callback=render.match(/makeOptionButtons\(\$\('examChoices'\), q, exam\.answers\[exam\.pos\], \(answer\) => \{([\s\S]*?)\n  \}\);/);
+assert.ok(callback,'exam choice callback present');
+for(const saved of [false,true]){
+  for(const previous of [null,0]){
+    const exam={pos:0,answers:[previous, null]};
+    let savedCalls=0,renderCalls=0;
+    const ctx={
+      exam,
+      saveExamDraft:()=>{savedCalls++;return saved;},
+      renderExam:()=>{renderCalls++;}
+    };
+    vm.runInNewContext('(function(answer){'+callback[1]+'\n})(1)',ctx);
+    assert.equal(exam.answers[0],saved?1:previous,'only saved exam answer may be retained');
+    assert.equal(savedCalls,1,'answer selection should attempt one draft save');
+    assert.equal(renderCalls,saved?1:0,'failed save must not render an unsaved answer');
+  }
+}
 console.log('PASS: academic practice and exam save-failure transactions.');
