@@ -4,7 +4,7 @@ const fs=require('node:fs');
 const assert=require('node:assert/strict');
 const path=require('node:path');
 const root=path.resolve(__dirname,'..');
-const site='https://shikaku-financial.github.io/fp-study-site/';
+const site='https://fll-fp-lab.pages.dev/';
 const pages=['index.html','guide.html','fp3-study.html','practical-tracks.html','about.html','privacy.html','contact.html'];
 const urls=new Set();
 for(const file of pages){
