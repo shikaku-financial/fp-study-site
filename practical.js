@@ -257,11 +257,11 @@
   // label/value split. Avoid restyling other materials, including review snapshots.
   function markDistributionAmountTable(container,q){
     if(q?.id!=='pr-jafp2-003' || typeof container.querySelectorAll!=='function')return;
-    for(const table of container.querySelectorAll('table.material-table')){
-      const headings=table.tHead?.rows[0]?.cells || table.rows[0]?.cells;
-      if(headings?.length===2 &&
-        headings[0].textContent.trim()==='項目' &&
-        headings[1].textContent.trim()==='金額'){
+    for(const table of container.querySelectorAll('table')){
+      // The material renderer stores the title in <caption>, not necessarily
+      // plain header labels; match that title instead of relying on th text.
+      const title=table.caption?.textContent?.trim() || '';
+      if(title.includes('分配時の資料')){
         table.classList.add('material-table-distribution');
       }
     }
