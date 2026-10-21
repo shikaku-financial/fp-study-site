@@ -347,6 +347,59 @@ async function main(){
       }
       console.log('PASS exhaustive academic: 360 unique question screens and saved grade records checked');
     });
+    await step('compact 320–430px mobile viewports keep primary actions inside the visible page',async()=>{
+      // Small iPhone-class widths are different from the existing 390px sweep.
+      // Material tables may scroll INSIDE .material-table-wrap, but the whole page must not scroll sideways.
+      async function check(stage,width,selectors){
+        const layout=await page.evaluate(()=>({
+          innerWidth:window.innerWidth,
+          htmlScrollWidth:document.documentElement.scrollWidth,
+          bodyScrollWidth:document.body.scrollWidth,
+          topOffenders:[...document.querySelectorAll('body *')].filter(el=>{
+            const b=el.getBoundingClientRect();
+            return b.width>0 && (b.left<-2 || b.right>window.innerWidth+2) &&
+              getComputedStyle(el).display!=='none';
+          }).slice(0,6).map(el=>({tag:el.tagName,id:el.id,cls:String(el.className).slice(0,80)}))
+        }));
+        assert.ok(layout.htmlScrollWidth<=layout.innerWidth+2,
+          'whole-page horizontal overflow '+stage+' @'+width+': '+JSON.stringify(layout));
+        for(const selector of selectors){
+          const element=page.locator(selector).first();
+          assert.equal(await element.isVisible(),true,'required control hidden '+stage+' '+selector+' @'+width);
+          const rect=await element.boundingBox();
+          assert.ok(rect && rect.x>=-2 && rect.x+rect.width<=layout.innerWidth+2,
+            'control clipped '+stage+' '+selector+' @'+width+': '+JSON.stringify(rect));
+        }
+      }
+      for(const width of [320,360,390,430]){
+        await page.setViewportSize({width,height:780});
+        await visible('#home');
+        await check('academic home',width,['#startPractice','#startFull','#openPractical']);
+        await page.locator('#openPractical').click();
+        await visible('#practicalHome');
+        await check('practical course select',width,['#prSelectLevel2','#prSelectLevel3']);
+        await page.locator('#prSelectLevel2').click();
+        // After JAFP2 and Kinzai2-personal, Kinzai2-business opens on numeric input.
+        await page.locator('#prTracks .pr-track').nth(2).locator('button.primary').click();
+        await visible('#practicalExam');
+        await check('practical numeric input',width,['#prNumberInput','#prNext','#prSaveExit']);
+        await page.locator('#prNumberInput').fill('２，０００');
+        assert.equal(await page.locator('#prNumberInput').getAttribute('aria-invalid'),'false',
+          'fullwidth grouped number accepted at '+width+'px');
+        // If the material itself is wide, verify it is horizontally scrollable in its own wrapper.
+        const wrappers=page.locator('#prCaseText .material-table-wrap');
+        for(let i=0;i<await wrappers.count();i++){
+          const dims=await wrappers.nth(i).evaluate(el=>({client:el.clientWidth,scroll:el.scrollWidth,overflow:getComputedStyle(el).overflowX}));
+          if(dims.scroll>dims.client+1)assert.equal(dims.overflow,'auto','wide material must scroll inside wrapper @'+width);
+        }
+        await page.locator('#prSaveExit').click();
+        await visible('#practicalHome');
+        await page.locator('#prBackHome').click();
+        await visible('#home');
+        console.log('PASS compact viewport: '+width+'px');
+      }
+      await page.setViewportSize({width:390,height:844});
+    });
     assert.deepEqual(jsErrors,[],'uncaught JS errors');
     console.log('PASS: mobile '+engineName+' RC1 smoke (not Safari hardware)');
   } catch(error){
