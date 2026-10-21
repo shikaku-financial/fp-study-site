@@ -90,5 +90,6 @@
   "test_academic_save_transactions",
   "test_academic_finish_timer_recovery",
   "test_academic_finish_retry_transaction",
-  "test_rc1_tax_year_transition_scoped"
+  "test_rc1_tax_year_transition_scoped",
+  "test_practical_finish_idempotence_scoped"
 ]
