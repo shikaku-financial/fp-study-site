@@ -195,6 +195,42 @@ async function main(){
       await page.locator('#prResultHome').click();
       await visible('#practicalHome');
     });
+    await step('practical finish does not offer an already-graded orphan draft or duplicate history',async()=>{
+      await visible('#practicalHome');
+      await page.locator('#prSelectLevel3').click();
+      await page.locator('#prTracks .pr-track').first().locator('button.primary').click();
+      await visible('#practicalExam');
+      // Simulate a storage error that occurs only after the final result has been stored.
+      await page.evaluate(()=>{
+        const original=Storage.prototype.removeItem;
+        Storage.prototype.removeItem=function(key){
+          if(key==='fp-training-practical-v12-draft')throw new Error('simulated draft cleanup failure');
+          return original.call(this,key);
+        };
+      });
+      await page.locator('#prSubmit').click();
+      await visible('#practicalResult');
+      const before=await page.evaluate(()=>({
+        orphan:!!localStorage.getItem('fp-training-practical-v12-draft'),
+        results:JSON.parse(localStorage.getItem('fp-training-practical-v12-results')).attempts.length,
+      }));
+      assert.equal(before.orphan,true,'simulated cleanup failure leaves draft');
+      await page.locator('#prResultHome').click();
+      await visible('#practicalHome');
+      assert.equal(await page.locator('#prResume').isVisible(),false,'completed attempt must not appear as resumable');
+      await page.reload({waitUntil:'load'});
+      await page.locator('#openPractical').click();
+      await visible('#practicalHome');
+      assert.equal(await page.locator('#prResume').isVisible(),false,'completed attempt stays hidden after reload');
+      await page.locator('#prSelectLevel3').click();
+      await page.locator('#prTracks .pr-track').first().locator('button.primary').click();
+      await visible('#practicalExam');
+      await page.locator('#prSubmit').click();
+      await visible('#practicalResult');
+      const after=await page.evaluate(()=>JSON.parse(localStorage.getItem('fp-training-practical-v12-results')).attempts);
+      assert.equal(after.length,before.results+1,'new attempt creates exactly one more history record');
+      assert.notEqual(after[0].id,after[1].id,'attempt IDs remain distinct');
+    });
     assert.deepEqual(jsErrors,[],'uncaught JS errors');
     console.log('PASS: mobile '+engineName+' RC1 smoke (not Safari hardware)');
   } catch(error){
