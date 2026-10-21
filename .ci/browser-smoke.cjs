@@ -232,6 +232,8 @@ async function main(){
       assert.notEqual(after[0].id,after[1].id,'attempt IDs remain distinct');
     });
     await step('every practical question renders with matching input controls across all 8 courses',async()=>{
+      await page.locator('#prResultHome').click();
+      await visible('#practicalHome');
       // Unlike the first-question smoke above, visit all 240 practical questions (including both 15-question Kinzai sets).
       // Check *current* source data against the real rendered screen to catch silently blank/incorrectly wired questions.
       const tracks=await page.evaluate(()=>PRACTICAL_TRACKS.map(t=>({id:t.id,level:t.level})));
