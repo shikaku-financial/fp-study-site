@@ -400,6 +400,49 @@ async function main(){
       }
       await page.setViewportSize({width:390,height:844});
     });
+    await step('JAFP2 investment distribution values remain readable at 320px and 390px',async()=>{
+      // Reported iPhone screenshot: FP2 JAFP practical question 3, "分配時の資料".
+      await visible('#home');
+      await page.locator('#openPractical').click();
+      await visible('#practicalHome');
+      await page.locator('#prSelectLevel2').click();
+      await page.locator('#prTracks .pr-track').first().locator('button.primary').click();
+      await visible('#practicalExam');
+      await page.locator('#prNext').click();
+      await page.locator('#prNext').click();
+      assert.match(await page.locator('#prProgress').innerText(),/^3\/40問/);
+      const table=page.locator('#prCaseText table.material-table-distribution');
+      assert.equal(await table.count(),1,'target only the distribution amount table');
+      assert.deepEqual(await table.locator('thead th').allTextContents(),['項目','金額']);
+      const values=await table.locator('tbody tr td:last-child').allTextContents();
+      for(const amount of ['10,500円','500円','10,200円'])
+        assert.ok(values.some(v=>v.includes(amount)),'missing amount '+amount);
+      // The earlier "購入時の資料" table must keep its original layout.
+      assert.ok(await page.locator('#prCaseText table.material-table:not(.material-table-distribution)').count()>0);
+      for(const width of [320,390]){
+        await page.setViewportSize({width,height:780});
+        const sizes=await table.evaluate(el=>{
+          const header=el.tHead?.rows[0]?.cells;
+          const cells=[...el.tBodies[0].rows].map(row=>row.cells[row.cells.length-1]);
+          const rect=el.getBoundingClientRect();
+          return {
+            ratio:header[1].getBoundingClientRect().width/rect.width,
+            nowrap:cells.every(c=>getComputedStyle(c).whiteSpace==='nowrap'),
+            rightAligned:cells.every(c=>getComputedStyle(c).textAlign==='right'),
+            fits:cells.every(c=>c.scrollWidth<=c.clientWidth+2),
+            wholePageOverflow:document.documentElement.scrollWidth>window.innerWidth+2
+          };
+        });
+        assert.ok(sizes.ratio>=0.44 && sizes.ratio<=0.53,'amount column needs near-half width @'+width+': '+JSON.stringify(sizes));
+        assert.ok(sizes.nowrap&&sizes.rightAligned&&sizes.fits&&!sizes.wholePageOverflow,
+          'distribution amount visibility @'+width+': '+JSON.stringify(sizes));
+      }
+      await page.locator('#prSaveExit').click();
+      await visible('#practicalHome');
+      await page.locator('#prBackHome').click();
+      await visible('#home');
+      await page.setViewportSize({width:390,height:844});
+    });
     assert.deepEqual(jsErrors,[],'uncaught JS errors');
     console.log('PASS: mobile '+engineName+' RC1 smoke (not Safari hardware)');
   } catch(error){
