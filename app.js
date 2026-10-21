@@ -512,7 +512,9 @@ function finishExam(timeOver = false) {
   timeOver = timeOver || exam.deadline <= Date.now();
   exam.resultId = exam.resultId || `${Date.now()}-${Math.floor(Math.random()*1000000)}`;
   stopTimer();
-  if (!saveExamDraft()) return;
+  // 手動終了で保存に失敗した場合、回答操作と残り時間の計測を継続できるよう復帰する。
+  const recoverTimer = () => { if (!timeOver && exam && exam.deadline > Date.now()) startTimer(); };
+  if (!saveExamDraft()) { recoverTimer(); return; }
   const qs = getExamQuestions(), a = exam.answers.slice();
   const points = qs.reduce((n, q, i) => n + (a[i] === q.answer ? 1 : 0), 0);
   const pct = Math.round(points / qs.length * 100);
@@ -529,7 +531,7 @@ function finishExam(timeOver = false) {
     if (prior && priorRevision > questionRevision(q)) return;
     history[q.id] = { correct: a[i] === q.answer, selected: a[i], at: Date.now(), revision: questionRevision(q) };
   });
-  if (!writeJSON(STORAGE, history)) return;
+  if (!writeJSON(STORAGE, history)) { recoverTimer(); return; }
   const log = readJSON(EXAM_HISTORY_KEY, { attempts: [] });
   const attemptId = currentExam.resultId;
   const attempts = (Array.isArray(log.attempts) ? log.attempts : []).filter(row => !row || row.id !== attemptId);
@@ -540,8 +542,8 @@ function finishExam(timeOver = false) {
   const detailRows = (Array.isArray(prior.attempts) ? prior.attempts : []).filter(row => !row || row.id !== attemptId);
   const detail = { id: attemptId, level: currentExam.level, kind: currentExam.kind, finishedAt, timeOver,
     questions: qs.map(q => ({ id:q.id,level:q.level,category:q.category,format:q.format,question:q.question,choices:q.choices.slice(),answer:q.answer,explanation:q.explanation,sourceUrl:q.sourceUrl||'',sourceLabel:q.sourceLabel||'',themeReferenceUrl:q.themeReferenceUrl||'',themeReferenceLabel:q.themeReferenceLabel||'',lawReferenceDate:q.lawReferenceDate||null,revision:questionRevision(q) })), answers: a };
-  if (!writeJSON(EXAM_DETAILS_KEY, { attempts: [detail, ...detailRows].slice(0, 12) })) return;
-  if (!writeJSON(EXAM_HISTORY_KEY, { attempts: attempts.slice(0, 30) })) return;
+  if (!writeJSON(EXAM_DETAILS_KEY, { attempts: [detail, ...detailRows].slice(0, 12) })) { recoverTimer(); return; }
+  if (!writeJSON(EXAM_HISTORY_KEY, { attempts: attempts.slice(0, 30) })) { recoverTimer(); return; }
   try { localStorage.removeItem(EXAM_DRAFT_KEY); } catch { /* 保存できない環境でも結果を表示 */ }
   exam = null;
   $('examResultTitle').textContent = currentExam.kind === 'mini' ? 'ミニ模試・採点結果' : '60問模試・採点結果';
