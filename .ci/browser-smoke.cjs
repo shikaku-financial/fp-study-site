@@ -1,10 +1,13 @@
 'use strict';
-// RC1 browser smoke: real Chromium DOM, touch/mobile viewport. This is NOT Safari/iPhone hardware.
+// RC1 browser smoke: real Chromium/WebKit DOM, touch/mobile viewport. Not iPhone Safari hardware.
 const assert = require('node:assert/strict');
-const {chromium} = require('playwright');
+const {chromium, webkit} = require('playwright');
 const BASE = process.env.FP_LAB_TEST_URL || 'http://127.0.0.1:8765/';
 async function main(){
-  const browser = await chromium.launch({headless:true, args:['--no-sandbox']});
+  const engineName = process.env.FP_LAB_BROWSER || 'chromium';
+  assert.ok(['chromium','webkit'].includes(engineName),'unknown browser engine');
+  const engine = engineName==='webkit'?webkit:chromium;
+  const browser = await engine.launch({headless:true,...(engineName==='chromium'?{args:['--no-sandbox']}: {})});
   const ctx = await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:3,isMobile:true,hasTouch:true,locale:'ja-JP'});
   const page = await ctx.newPage();
   const jsErrors = [];
@@ -113,7 +116,7 @@ async function main(){
       await visible('#practicalHome');
     });
     assert.deepEqual(jsErrors,[],'uncaught JS errors');
-    console.log('PASS: mobile Chromium RC1 smoke (not Safari hardware)');
+    console.log('PASS: mobile '+engineName+' RC1 smoke (not Safari hardware)');
   } catch(error){
     try { await page.screenshot({path:'.ci/browser-failure.png',fullPage:true}); } catch {}
     if(jsErrors.length)console.error('JS errors:',jsErrors);
