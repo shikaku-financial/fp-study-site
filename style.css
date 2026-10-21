@@ -198,10 +198,12 @@
    Only tables explicitly tagged by practical.js get this layout. */
 .material-table.material-table-distribution{
   table-layout:fixed;
-  min-width:0;
   width:100%;
+  max-width:100%;
+  /* Override generic wide-matrix minimums for this now-two-column table. */
+  min-width:0!important;
 }
-.material-table.material-table-distribution th:first-child{width:52%}
+.material-table.material-table-distribution th:first-child{width:52%;min-width:0}
 .material-table.material-table-distribution th:nth-child(2){width:48%}
 .material-table.material-table-distribution th,
 .material-table.material-table-distribution td{
