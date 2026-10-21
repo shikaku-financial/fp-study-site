@@ -87,5 +87,6 @@
   "test_practical_history_mode_label_scoped",
   "test_practical_navigation_transaction_scoped",
   "test_academic_exact_duplicates",
-  "test_academic_save_transactions"
+  "test_academic_save_transactions",
+  "test_academic_finish_timer_recovery"
 ]
