@@ -258,12 +258,31 @@
   function markDistributionAmountTable(container,q){
     if(q?.id!=='pr-jafp2-003' || typeof container.querySelectorAll!=='function')return;
     for(const table of container.querySelectorAll('table')){
-      // The material renderer stores the title in <caption>, not necessarily
-      // plain header labels; match that title instead of relying on th text.
-      const title=table.caption?.textContent?.trim() || '';
-      if(title.includes('分配時の資料')){
-        table.classList.add('material-table-distribution');
+      // Scope this display-only adjustment to the named table; source data and
+      // grading stay unchanged. The original table has 3 columns:
+      // 項目 / 金額 / 表示単位. Stack the latter two in one readable cell.
+      if(!table.caption?.textContent?.includes('分配時の資料'))continue;
+      const headers=table.tHead?.rows[0]?.cells;
+      if(headers?.length===3 &&
+         headers[0].textContent.trim()==='項目' &&
+         headers[1].textContent.trim()==='金額' &&
+         headers[2].textContent.trim()==='表示単位'){
+        headers[1].textContent='金額・単位';
+        headers[2].remove();
+        for(const row of table.tBodies[0]?.rows||[]){
+          const amount=row.cells[1],unit=row.cells[2];
+          if(!amount||!unit)continue;
+          const value=document.createElement('span');
+          value.className='distribution-amount-value';
+          value.textContent=amount.textContent.trim();
+          const suffix=document.createElement('span');
+          suffix.className='distribution-amount-unit';
+          suffix.textContent=unit.textContent.trim();
+          amount.replaceChildren(value,suffix);
+          unit.remove();
+        }
       }
+      table.classList.add('material-table-distribution');
     }
   }
   function renderQuestion(){
