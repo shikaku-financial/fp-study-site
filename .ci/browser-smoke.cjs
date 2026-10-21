@@ -445,11 +445,17 @@ async function main(){
             rightAligned:cells.every(c=>getComputedStyle(c).textAlign==='right'),
             fits:cells.every(c=>c.scrollWidth<=c.clientWidth+2),
             unitsVisible:cells.every(c=>c.querySelector('.distribution-amount-unit')?.getBoundingClientRect().height>0),
+            unitsReadable:cells.every(c=>{
+              const el=c.querySelector('.distribution-amount-unit');
+              const st=getComputedStyle(el);
+              return parseFloat(st.fontSize)>=13 && parseInt(st.fontWeight,10)>=600 &&
+                st.whiteSpace==='nowrap' && el.scrollWidth<=el.clientWidth+2;
+            }),
             wholePageOverflow:document.documentElement.scrollWidth>window.innerWidth+2
           };
         });
         assert.ok(sizes.ratio>=0.44 && sizes.ratio<=0.53,'amount column needs near-half width @'+width+': '+JSON.stringify(sizes));
-        assert.ok(sizes.tableFits&&sizes.nowrap&&sizes.rightAligned&&sizes.fits&&sizes.unitsVisible&&!sizes.wholePageOverflow,
+        assert.ok(sizes.tableFits&&sizes.nowrap&&sizes.rightAligned&&sizes.fits&&sizes.unitsVisible&&sizes.unitsReadable&&!sizes.wholePageOverflow,
           'distribution amount visibility @'+width+': '+JSON.stringify(sizes));
       }
       await page.locator('#prSaveExit').click();
