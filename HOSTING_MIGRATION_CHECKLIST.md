@@ -1,6 +1,6 @@
-# FPラボ｜Cloudflare Pages公開手順（iPhoneだけで可能）
+# FPラボ｜Cloudflare Pages公開・SEO切替状況
 
-最終更新：2026-10-21。**未接続・未公開・独自ドメイン未購入**。この手順は、Cloudflareアカウントをまだ持たない運営者向けです。
+最終更新：2026-10-21。**Cloudflareアカウント作成／GitHubリポジトリ連携／初回デプロイ成功はユーザーの画面で確認済み**。本番候補URLは https://fll-fp-lab.pages.dev/ 。トップページの表示もユーザーのスクリーンショットで確認済み。こちらのネットワークからの新URL直接検証と、Cloudflareでの全機能動作検証はまだ未了。独自ドメイン未購入、AdSense未申請。以下の登録手順は実施済みの記録として残す。
 
 ## 現段階の決定事項
 
@@ -35,6 +35,18 @@
 - `.ci/`、`.github/`、README、計画書、開発データなどは公開成果物に含めない。
 - GitHub Pagesも同じ `dist/` を使う。新しい公開先とのコンテンツ差分を減らすためで、公開先は**まだ切り替えない**。
 - CloudflareはGitHubの `main` への更新を検知して自動デプロイする。PRはプレビューデプロイになる場合がある。
+
+## 新公開先の確認状況
+
+- [x] Cloudflare無料アカウント作成、GitHubリポジトリ `shikaku-financial/fp-study-site` との接続をユーザー画面で確認
+- [x] ビルド設定：`node .ci/build-static.cjs`、出力 `dist`、production branch `main`
+- [x] Cloudflareのデプロイ成功画面、および新URLでのトップページのユーザースクリーンショットを確認
+- [x] リリース前の学習履歴を引き継がない方針を確認
+- [ ] 新公開先で学科と実技を1問ずつ回答、模試の保存・再開・採点、ヘルプページと資料表の表示をユーザー実機またはWorkのブラウザで再確認
+- [ ] 新公開先で `sitemap.xml` と `robots.txt` が公開されていることを確認
+- [ ] 正規URL・サイトマップを新URLへ変更したmainの公開結果を確認（該当PRのCI完了後）
+- [ ] Google Search Consoleで新URLプレフィックス `https://fll-fp-lab.pages.dev/` の所有権を確認し、`sitemap.xml` を登録する（運営者本人操作）
+- [ ] AdSense申請は運営者本人による別ステップ。プライバシー方針・Cookie同意の実装を先に確認
 
 ## URL受領後に行う確認（この順序で）
 
