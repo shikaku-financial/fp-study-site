@@ -224,13 +224,13 @@
 }
 .material-table-distribution .distribution-amount-unit{
   display:block;
-  white-space:normal;
-  overflow-wrap:anywhere;
-  font-size:calc(var(--material-font) * .76);
-  font-weight:500;
-  color:#465c6e;
-  line-height:1.4;
-  margin-top:2px;
+  /* Do not shrink the unit into caption-sized text on a small phone. */
+  white-space:nowrap;
+  font-size:max(13px, calc(var(--material-font) * .86));
+  font-weight:650;
+  color:#30495b;
+  line-height:1.5;
+  margin-top:3px;
 }
 
 .material-statements{padding:2px 16px 14px}
