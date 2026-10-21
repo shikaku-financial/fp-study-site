@@ -72,4 +72,3 @@ for(const saved of [false,true]){
   }
 }
 console.log('PASS: academic practice and exam save-failure transactions.');
-console.log('PASS: academic practice and exam save-failure transactions.');
