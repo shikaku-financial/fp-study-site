@@ -27,6 +27,7 @@ const publicAssets = [
   'practical-materials.js',
   'financial-license-lab-logo.png',
   'sitemap.xml',
+  'robots.txt',
 ];
 const allowed = [...publicHtml, ...publicAssets];
 
