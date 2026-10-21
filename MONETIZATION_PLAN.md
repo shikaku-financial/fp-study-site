@@ -1,6 +1,13 @@
 # FPラボ 収益化計画
 更新: 2026-10-21 / リリースゲートはIssue #114完了。ここからは集客と収益化を優先する。
 
+## Cloudflare Pages移行とSEO切替（2026-10-21）
+- 運営者本人が無料Cloudflareアカウントを作成し、GitHubの `shikaku-financial/fp-study-site` に接続。初回デプロイ成功、`https://fll-fp-lab.pages.dev/` のトップ画面表示をスクリーンショットで確認。
+- `pages.dev` を現段階の正規公開URLとしてHTML 7ページのcanonical、sitemap.xml、robots.txtを統一する。旧GitHub Pagesは停止せず、重複URLの正規化用canonicalをCloudflareに向ける（完全な301リダイレクトではない）。
+- プライバシーポリシーにCloudflareの配信基盤と移行期間中のGitHub Pagesを明示する。広告・解析タグは未導入。
+- **未了:** 新URLへの外部からの独立アクセス・全操作の検証、Google Search Consoleの所有権確認・サイトマップ送信、AdSenseの本人登録・審査。
+- 正式リリース前の学習履歴は移行対象外。ドメイン購入も未実施。
+
 ## 第1バッチ
 - 独立した運営方針・プライバシー・問い合わせ・学習ガイドを追加。
 - トップとフッターから到達可能。静的HTMLなので案内の閲覧にJavaScript不要。
