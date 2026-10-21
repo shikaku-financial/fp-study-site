@@ -423,10 +423,13 @@ async function main(){
         console.error('Distribution table DOM:',JSON.stringify(dom));
       }
       assert.equal(markedCount,1,'target only the distribution amount table');
-      assert.deepEqual(await table.locator('thead th').allTextContents(),['項目','金額']);
+      assert.deepEqual(await table.locator('thead th').allTextContents(),['項目','金額・単位']);
       const values=await table.locator('tbody tr td:last-child').allTextContents();
       for(const amount of ['10,500円','500円','10,200円'])
         assert.ok(values.some(v=>v.includes(amount)),'missing amount '+amount);
+      const units=await table.locator('tbody .distribution-amount-unit').allTextContents();
+      assert.equal(units.length,3,'all three display units must stay visible');
+      assert.ok(units.every(unit=>unit.trim()),'display unit must not be blank');
       // The earlier "購入時の資料" table must keep its original layout.
       assert.ok(await page.locator('#prCaseText table.material-table:not(.material-table-distribution)').count()>0);
       for(const width of [320,390]){
@@ -437,14 +440,15 @@ async function main(){
           const rect=el.getBoundingClientRect();
           return {
             ratio:header[1].getBoundingClientRect().width/rect.width,
-            nowrap:cells.every(c=>getComputedStyle(c).whiteSpace==='nowrap'),
+            nowrap:cells.every(c=>getComputedStyle(c.querySelector('.distribution-amount-value')).whiteSpace==='nowrap'),
             rightAligned:cells.every(c=>getComputedStyle(c).textAlign==='right'),
             fits:cells.every(c=>c.scrollWidth<=c.clientWidth+2),
+            unitsVisible:cells.every(c=>c.querySelector('.distribution-amount-unit')?.getBoundingClientRect().height>0),
             wholePageOverflow:document.documentElement.scrollWidth>window.innerWidth+2
           };
         });
         assert.ok(sizes.ratio>=0.44 && sizes.ratio<=0.53,'amount column needs near-half width @'+width+': '+JSON.stringify(sizes));
-        assert.ok(sizes.nowrap&&sizes.rightAligned&&sizes.fits&&!sizes.wholePageOverflow,
+        assert.ok(sizes.nowrap&&sizes.rightAligned&&sizes.fits&&sizes.unitsVisible&&!sizes.wholePageOverflow,
           'distribution amount visibility @'+width+': '+JSON.stringify(sizes));
       }
       await page.locator('#prSaveExit').click();
