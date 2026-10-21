@@ -12,6 +12,7 @@ const publicHtml = [
   'index.html',
   'guide.html',
   'fp3-study.html',
+  'fp2-study.html',
   'practical-tracks.html',
   'about.html',
   'privacy.html',
