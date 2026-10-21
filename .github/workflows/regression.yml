@@ -29,3 +29,5 @@ jobs:
         run: node .ci/run.cjs
       - name: Check static search landing pages and sitemap
         run: node .ci/seo-pages-check.cjs
+      - name: Validate Cloudflare-ready public output
+        run: node .ci/build-static.cjs
