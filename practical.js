@@ -139,11 +139,20 @@
       group.append(groupHead,desc,listing);cards.append(group);
     }
     const d=read(DRAFT,null);
-    const okay=validDraft(d);
+    const okay=validDraft(d) && !alreadyFinished(d);
     $p('prResumeBox').classList.toggle('hidden',!okay);
     if(okay){const mode=modeLabel(d.mode);$p('prResume').textContent=`FP${trackFor(d.track).level}級｜${trackFor(d.track).name}${mode?'｜'+mode:''}の続きから再開`;}
     renderPracticalHistory();
   }
+  // A durable per-attempt key prevents duplicate results if draft removal fails after a successful history write.
+  // Legacy drafts retain their original startedAt/track identity.
+  const attemptKey = d => d && (typeof d.attemptId === 'string' && d.attemptId
+    ? d.attemptId : Number.isFinite(d.startedAt) && typeof d.track === 'string'
+      ? `legacy-${d.track}-${d.startedAt}` : null);
+  const alreadyFinished = d => {
+    const id=attemptKey(d);
+    return !!id && historyRows().some(row=>row && row.id===id);
+  };
   function historyRows(){
     const stored=read(HISTORY,{attempts:[]});
     return Array.isArray(stored.attempts)?stored.attempts:[];
@@ -202,11 +211,11 @@
     const tr=trackFor(trackId);
     if(!tr || !Array.isArray(sourceQuestions) || !sourceQuestions.length)return;
     const draft=read(DRAFT,null);
-    if(draft && !confirm('保存している実技演習を終了し、新しく始めますか？前回の未採点の回答は消えます。'))return;
+    if(draft && !alreadyFinished(draft) && !confirm('保存している実技演習を終了し、新しく始めますか？前回の未採点の回答は消えます。'))return;
     const list=sourceQuestions.map(q=>({...q,choices:Array.isArray(q.choices)?q.choices.slice():[],...(isMulti(q)?{subAnswers:q.subAnswers.map(part=>({...part,...(Array.isArray(part.choices)?{choices:part.choices.slice()}:{} ),...(Array.isArray(part.wordBank)?{wordBank:part.wordBank.slice()}:{} )}))}:{}),...(q.kind==='numeric' && mode.startsWith('set-')?{numericInputFormat:'grouped-decimal-v1'}:{})}));
     const previousToken=expectedDraftToken;
     expectedDraftToken=originalDraftToken;
-    const nextAttempt={version:20,track:trackId,mode,questions:list,answers:list.map(q=>isMulti(q)?q.subAnswers.map(()=>null):null),pos:0,startedAt:Date.now()};
+    const nextAttempt={version:20,track:trackId,mode,questions:list,answers:list.map(q=>isMulti(q)?q.subAnswers.map(()=>null):null),pos:0,startedAt:Date.now(),attemptId:`pr-${Date.now()}-${Math.random().toString(36).slice(2)}`};
     if(!save(DRAFT,nextAttempt)){expectedDraftToken=previousToken;return;}
     attempt=nextAttempt;
     navigate('practicalExam');renderQuestion();
@@ -372,7 +381,7 @@
   function resume(){
     const originalDraftToken=draftToken(DRAFT);
     const d=read(DRAFT,null);
-    if(!validDraft(d)){alert('保存した演習データがありません。');return;}
+    if(!validDraft(d) || alreadyFinished(d)){alert('保存した演習データがありません。');return;}
     attempt=d;
     expectedDraftToken=originalDraftToken;
     if(!Number.isInteger(attempt.pos)||attempt.pos<0||attempt.pos>=attempt.answers.length)attempt.pos=0;
@@ -383,11 +392,12 @@
     const unfilled=attempt.answers.filter((a,i)=>!completeAnswer(attempt.questions[i],a)).length;
     if(!confirm(unfilled?`未回答が${unfilled}問あります。採点しますか？`:'演習を終了して採点しますか？'))return;
     const correct=attempt.questions.filter((q,i)=>grade(q,attempt.answers[i])).length;
-    const result={id:`${Date.now()}-${Math.floor(Math.random()*100000)}`,track:attempt.track,mode:attempt.mode,questions:attempt.questions,answers:attempt.answers.slice(),correct,finishedAt:Date.now()};
+    const result={id:attemptKey(attempt) || `legacy-unknown-${Date.now()}`,track:attempt.track,mode:attempt.mode,questions:attempt.questions,answers:attempt.answers.slice(),correct,finishedAt:Date.now()};
     const prior=read(HISTORY,{attempts:[]});
     const rows=Array.isArray(prior.attempts)?prior.attempts:[];
     if(!save(DRAFT,attempt))return;
-    if(!save(HISTORY,{attempts:[{...result},...rows].slice(0,8)}))return;
+    // If a previously saved result left an orphan draft, never add it to history a second time.
+    if(!rows.some(row=>row && row.id===result.id) && !save(HISTORY,{attempts:[{...result},...rows].slice(0,8)}))return;
     remove(DRAFT);attempt=null;lastResult=result;reviewFilter='issues';
     navigate('practicalResult');renderResult();
   }
