@@ -66,6 +66,29 @@ async function main(){
         assert.equal(await article.locator('#level3').getAttribute('aria-pressed'),'true','unparameterized home default changed');
       }finally{await article.close();}
     });
+    await step('Practical guide enters course selection without starting or overwriting a draft',async()=>{
+      const article=await ctx.newPage();
+      try{
+        await article.goto(new URL('practical-tracks.html',BASE).href,{waitUntil:'load',timeout:45000});
+        const rows=article.locator('.comparison-table-scroll tbody tr');
+        assert.equal(await rows.count(),4,'practical comparison must explain 4 official formats');
+        for(const level of ['2','3']){
+          const entry=article.locator('a.info-cta[href="index.html?view=practical&level='+level+'"]');
+          assert.equal(await entry.count(),1,'missing practical entry for FP'+level);
+          await entry.click();
+          assert.equal(await article.locator('#practicalHome').isVisible(),true,'practical selection should be visible');
+          assert.equal(await article.locator('#prSelectLevel'+level).getAttribute('aria-pressed'),'true','wrong practical grade');
+          assert.equal(await article.locator('#practicalExam').isVisible(),false,'must not auto-start practical exam');
+          await article.goBack({waitUntil:'load'});
+        }
+        await article.goto(new URL('index.html?view=practical&level=2',BASE).href,{waitUntil:'load',timeout:45000});
+        assert.equal(await article.locator('#prSelectLevel2').getAttribute('aria-pressed'),'true','grade must persist in URL after fresh load');
+        await article.reload({waitUntil:'load'});
+        assert.equal(await article.locator('#practicalHome').isVisible(),true,'practical entry must survive reload');
+        await article.goto(BASE,{waitUntil:'load'});
+        assert.equal(await article.locator('#home').isVisible(),true,'no URL flag should retain regular home');
+      }finally{await article.close();}
+    });
     await step('FP3 academic answer and feedback',async()=>{
       await page.locator('#shuffle').uncheck();
       await page.locator('#startPractice').click();
