@@ -129,13 +129,13 @@ console.log('PASS: Safari/apple-touch icons are correctly linked in all pages');
 // Keep internal data revision identifiers separate from public-facing text.
 // The release date is the only public build/change marker.
 const landingHtml=fs.readFileSync(path.join(root,'index.html'),'utf8');
-assert.ok(!/Ver\\.\\s*\\d+|Version\\s*\\d+/i.test(landingHtml),'public version number must not appear in HTML');
+assert.ok(!/Ver\.\s*\d+|Version\s*\d+/i.test(landingHtml),'public version number must not appear in HTML');
 assert.ok(!landingHtml.includes('id="prBuildVersion"'),'old version display must not remain');
 assert.ok(landingHtml.includes('id="prUpdatedDate"'),'practical screen should show updated date');
 assert.equal((landingHtml.match(/更新日：2026年10月23日/g)||[]).length,4,'all former version labels should now display the update date');
 for(const file of pages){
  const html=fs.readFileSync(path.join(root,file),'utf8');
- assert.ok(!/Ver\\.\\s*\\d+|Version\\s*\\d+/i.test(html),file+' must not show version labels');
+ assert.ok(!/Ver\.\s*\d+|Version\s*\d+/i.test(html),file+' must not show version labels');
 }
 console.log('PASS: public UI shows update dates without version numbers');
 
