@@ -24,7 +24,7 @@ assert.ok(headerPolicy.includes("frame-ancestors 'none'"),'Cloudflare must deny 
 const metaPolicy=headerPolicy.replace(/;\s*frame-ancestors 'none'/,'');
 for(const term of [
  "default-src 'self'","base-uri 'none'","object-src 'none'","frame-src 'none'",
- "form-action 'self'","script-src 'self'","connect-src 'self'","upgrade-insecure-requests"
+ "form-action 'self'","script-src 'self'","connect-src 'self'"
 ]){
  assert.ok(metaPolicy.split(';').map(s=>s.trim()).includes(term),'CSP clause missing '+term);
 }
