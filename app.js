@@ -662,7 +662,8 @@ function init() {
   document.addEventListener('visibilitychange', () => { if (!document.hidden && exam) updateTimer(); });
   archiveOldRevisionResults();
   // Search-entry links may request a grade; do not auto-start or change stored progress.
-  const requestedLevel = new URLSearchParams(window.location.search).get('level');
+  const requestedLevel = typeof URLSearchParams === 'function' && typeof window.location?.search === 'string'
+    ? new URLSearchParams(window.location.search).get('level') : null;
   if (requestedLevel === '2') setLevel('2');
   else updateHome();
 }
