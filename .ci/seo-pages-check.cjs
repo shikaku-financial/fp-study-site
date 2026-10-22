@@ -77,5 +77,29 @@ const publisher=home.match(/<meta\s+name="google-adsense-account"\s+content="ca-
 assert.ok(publisher,'AdSense publisher metadata missing');
 const ads=fs.readFileSync(path.join(root,'ads.txt'),'utf8');
 assert.equal(ads,'google.com, '+publisher+', DIRECT, f08c47fec0942fa0\n','ads.txt must match verified AdSense publisher ID');
+
+const icons=[['apple-touch-icon.png',180],['favicon-32x32.png',32]];
+for(const [filename,expected] of icons){
+ const bytes=fs.readFileSync(path.join(root,filename));
+ assert.equal(bytes.subarray(0,8).toString('hex'),'89504e470d0a1a0a',filename+' PNG signature');
+ assert.equal(bytes.readUInt32BE(16),expected,filename+' width mismatch');
+ assert.equal(bytes.readUInt32BE(20),expected,filename+' height mismatch');
+}
+const iconManifest=JSON.parse(fs.readFileSync(path.join(root,'site.webmanifest'),'utf8'));
+assert.equal(iconManifest.short_name,'FPラボ','shortcut title');
+assert.equal(iconManifest.display,'browser','must retain browser navigation mode');
+for(const [filename] of icons){
+ assert.ok(iconManifest.icons.some(icon=>icon.src===filename),'manifest missing '+filename);
+}
+for(const file of [...pages,'404.html']){
+ const html=fs.readFileSync(path.join(root,file),'utf8');
+ const head=html.slice(0,html.toLowerCase().indexOf('</head>'));
+ for(const [rel,filename] of [['apple-touch-icon','apple-touch-icon.png'],['icon','favicon-32x32.png'],['manifest','site.webmanifest']]){
+  assert.ok(head.includes('rel="'+rel+'"')&&head.includes('href="'+filename+'"'),file+' missing '+rel+' head tag');
+ }
+ assert.ok(head.includes('name="apple-mobile-web-app-title" content="FPラボ"'),file+' missing iOS shortcut title');
+}
+console.log('PASS: Safari/apple-touch icons are correctly linked in all pages');
+
 console.log('PASS: ads.txt seller authorization matches homepage publisher metadata');
 console.log('PASS: '+pages.length+' page SEO canonicals, metadata, internal links, sitemap and home entry links');
