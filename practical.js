@@ -544,4 +544,12 @@
   });
   // 学科の従来のキーとは別に、実技の結果は科目ごとに保存。再受験時は上書きせず履歴を蓄積する。
   window.__fpPracticalTest = {parseNumber,parseStrictNumber,grade,trackFor,qsFor,read,openPractical:()=>navigate('practicalHome')};
+  // Read-only entry hint: neither opens a question nor modifies saved attempts.
+  if (typeof URLSearchParams === 'function' && typeof window.location?.search === 'string') {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('view') === 'practical') {
+      selectedPracticalLevel = params.get('level') === '2' ? '2' : '3';
+      navigate('practicalHome');
+    }
+  }
 })();
