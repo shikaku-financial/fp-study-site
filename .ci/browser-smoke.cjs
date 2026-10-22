@@ -25,6 +25,27 @@ async function main(){
       assert.equal(await page.locator('#startFull').isEnabled(),true,'FP3 60-question exam should be available');
       assert.match(await page.locator('#count').innerText(),/180問/);
     });
+    await step('FP level comparison table scrolls within mobile viewport',async()=>{
+      const article=await ctx.newPage();
+      try{
+        await article.setViewportSize({width:320,height:780});
+        await article.goto(new URL('fp-level-comparison.html',BASE).href,{waitUntil:'load',timeout:45000});
+        assert.equal(await article.locator('h1').count(),1,'comparison must have one heading');
+        const metrics=await article.locator('.comparison-table-scroll').evaluate(el=>({
+          scrollWidth:el.scrollWidth,clientWidth:el.clientWidth,
+          focusable:el.tabIndex===0,
+          tableRows:el.querySelectorAll('tbody tr').length,
+          documentOverflow:document.documentElement.scrollWidth>window.innerWidth+2
+        }));
+        assert.ok(metrics.focusable&&metrics.tableRows>=4,'comparison table accessible: '+JSON.stringify(metrics));
+        assert.ok(metrics.scrollWidth>metrics.clientWidth+5,'comparison table should scroll horizontally: '+JSON.stringify(metrics));
+        assert.ok(!metrics.documentOverflow,'mobile page itself must not overflow: '+JSON.stringify(metrics));
+        for(const grade of ['fp2-study.html','fp3-study.html']){
+          await article.goto(new URL(grade,BASE).href,{waitUntil:'load',timeout:45000});
+          assert.ok(await article.locator('a[href="fp-level-comparison.html"]').count()>=1,grade+' comparison link missing');
+        }
+      }finally{await article.close();}
+    });
     await step('FP3 academic answer and feedback',async()=>{
       await page.locator('#shuffle').uncheck();
       await page.locator('#startPractice').click();
