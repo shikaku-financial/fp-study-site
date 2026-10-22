@@ -34,6 +34,7 @@ const publicAssets = [
   'financial-license-lab-logo.png',
   'apple-touch-icon.png',
   'favicon-32x32.png',
+  'favicon.ico',
   'site.webmanifest',
   'sitemap.xml',
   'robots.txt',

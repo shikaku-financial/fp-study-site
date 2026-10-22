@@ -95,10 +95,34 @@ for(const file of [...pages,'404.html']){
  const html=fs.readFileSync(path.join(root,file),'utf8');
  const head=html.slice(0,html.toLowerCase().indexOf('</head>'));
  for(const [rel,filename] of [['apple-touch-icon','apple-touch-icon.png'],['icon','favicon-32x32.png'],['manifest','site.webmanifest']]){
-  assert.ok(head.includes('rel="'+rel+'"')&&head.includes('href="'+filename+'"'),file+' missing '+rel+' head tag');
+  assert.ok(head.includes('rel="'+rel+'"')&&head.includes('href="'+filename+(filename==='favicon-32x32.png'?'?v=2':'')+'"'),file+' missing '+rel+' head tag');
  }
  assert.ok(head.includes('name="apple-mobile-web-app-title" content="FPラボ"'),file+' missing iOS shortcut title');
 }
+
+const ico=fs.readFileSync(path.join(root,'favicon.ico'));
+assert.equal(ico.readUInt16LE(0),0,'ICO reserved bytes');
+assert.equal(ico.readUInt16LE(2),1,'ICO format identifier');
+const icoCount=ico.readUInt16LE(4);
+assert.ok(icoCount>=3,'ICO should include several sizes');
+const icoSizes=new Set();
+for(let i=0;i<icoCount;i++){
+ const offset=6+i*16;
+ const width=ico[offset]||256;
+ const height=ico[offset+1]||256;
+ assert.equal(width,height,'ICO images must be square');
+ icoSizes.add(width);
+ const start=ico.readUInt32LE(offset+12);
+ const length=ico.readUInt32LE(offset+8);
+ assert.ok(length>0 && start+length<=ico.length,'ICO image bytes in bounds');
+}
+for(const size of [16,32,48])assert.ok(icoSizes.has(size),'ICO missing '+size+'px image');
+for(const file of [...pages,'404.html']){
+ const html=fs.readFileSync(path.join(root,file),'utf8');
+ const head=html.slice(0,html.toLowerCase().indexOf('</head>'));
+ assert.ok(head.includes('rel="icon" type="image/x-icon" href="favicon.ico?v=2"'),file+' missing ICO bookmark icon');
+}
+console.log('PASS: classic 16/32/48 favicon.ico linked from all Safari-visible pages');
 console.log('PASS: Safari/apple-touch icons are correctly linked in all pages');
 
 console.log('PASS: ads.txt seller authorization matches homepage publisher metadata');
