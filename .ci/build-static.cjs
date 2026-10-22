@@ -13,6 +13,7 @@ const publicHtml = [
   'guide.html',
   'fp3-study.html',
   'fp2-study.html',
+  'fp-level-comparison.html',
   'practical-tracks.html',
   'about.html',
   'privacy.html',
