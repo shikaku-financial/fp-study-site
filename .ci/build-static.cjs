@@ -21,6 +21,7 @@ const publicHtml = [
   'contact.html',
 ];
 const publicAssets = [
+  '404.html',
   'style.css',
   'info.css',
   'app.js',
