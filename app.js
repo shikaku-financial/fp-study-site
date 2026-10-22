@@ -661,6 +661,9 @@ function init() {
   $('examRetry').addEventListener('click', () => { setLevel(lastExamLevel); show('home'); createExam(lastExamKind); });
   document.addEventListener('visibilitychange', () => { if (!document.hidden && exam) updateTimer(); });
   archiveOldRevisionResults();
-  updateHome();
+  // Search-entry links may request a grade; do not auto-start or change stored progress.
+  const requestedLevel = new URLSearchParams(window.location.search).get('level');
+  if (requestedLevel === '2') setLevel('2');
+  else updateHome();
 }
 init();
