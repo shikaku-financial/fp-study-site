@@ -315,3 +315,5 @@
 
 /* Distinguish the start of the next Kinzai case without altering navigation button order. */
 #prNav button.scenario-start{box-shadow:inset 4px 0 0 #9db7c7}
+
+.landing-title{font-size:clamp(21px,4.5vw,27px);line-height:1.4;margin:0 0 6px}.landing-intro{margin:0 0 12px}

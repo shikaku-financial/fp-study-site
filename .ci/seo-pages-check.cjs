@@ -13,6 +13,9 @@ for(const file of pages){
  const title=html.match(/<title>([^<]+)<\/title>/i)?.[1];
  const description=html.match(/<meta\s+name="description"\s+content="([^"]+)"/i)?.[1];
  const canonical=html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
+ const h1s=[...html.matchAll(/<h1(?:\s[^>]*)?>([^<]*)<\/h1>/gi)];
+ assert.equal(h1s.length,1,file+' must have one clear h1');
+ assert.ok(normal(h1s[0][1]).length>=4,file+' h1 too short');
  assert.ok(title&&normal(title).length>=12,file+' title absent');
  assert.ok(description&&normal(description).length>=35,file+' meta description absent');
  const expected=file==='index.html'?site:site+file;
