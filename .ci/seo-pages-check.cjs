@@ -18,7 +18,7 @@ for(const file of pages){
  assert.ok(normal(h1s[0][1]).length>=4,file+' h1 too short');
  assert.ok(title&&normal(title).length>=12,file+' title absent');
  assert.ok(description&&normal(description).length>=35,file+' meta description absent');
- const expected=file==='index.html'?site:site+file;
+ const expected=file==='index.html'?site:site+file.replace(/\.html$/,'');
  assert.equal(canonical,expected,file+' canonical unexpected');
  assert.ok(!urls.has(canonical),'duplicate canonical '+canonical);
  urls.add(canonical);
@@ -45,6 +45,7 @@ const mapped=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>x[1]);
 assert.equal(mapped.length,pages.length,'sitemap must enumerate each public HTML once');
 assert.equal(new Set(mapped).size,mapped.length,'duplicate sitemap URL');
 assert.deepEqual(new Set(mapped),urls,'sitemap and canonical URLs disagree');
+assert.ok(mapped.every(url=>!url.endsWith('.html')),'Cloudflare canonical sitemap URLs must be extensionless');
 const robots=fs.readFileSync(path.join(root,'robots.txt'),'utf8');
 assert.match(robots,/^User-agent:\s*\*/m,'robots.txt must state user-agent');
 assert.ok(robots.includes('Sitemap: '+site+'sitemap.xml'),'robots.txt points to incorrect sitemap URL');

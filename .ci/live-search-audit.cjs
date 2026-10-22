@@ -22,6 +22,7 @@ async function fetchText(path) {
   console.log('HTTP ' + JSON.stringify(info));
   assert.equal(response.status, 200, 'non-200 response at '+url.href);
   assert.equal(new URL(response.url).origin, new URL(BASE).origin, 'cross-origin redirect at '+url.href);
+  assert.equal(response.url, url.href, 'canonical URL must resolve without redirection: '+url.href);
   return body;
 }
 async function main() {

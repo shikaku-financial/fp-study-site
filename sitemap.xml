@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://fll-fp-lab.pages.dev/</loc></url>
-  <url><loc>https://fll-fp-lab.pages.dev/guide.html</loc></url>
-  <url><loc>https://fll-fp-lab.pages.dev/fp3-study.html</loc></url>
-  <url><loc>https://fll-fp-lab.pages.dev/fp2-study.html</loc></url>
-  <url><loc>https://fll-fp-lab.pages.dev/fp-level-comparison.html</loc></url>
-  <url><loc>https://fll-fp-lab.pages.dev/fp-calculation-guide.html</loc></url>
-  <url><loc>https://fll-fp-lab.pages.dev/practical-tracks.html</loc></url>
-  <url><loc>https://fll-fp-lab.pages.dev/about.html</loc></url>
-  <url><loc>https://fll-fp-lab.pages.dev/privacy.html</loc></url>
-  <url><loc>https://fll-fp-lab.pages.dev/contact.html</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/guide</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/fp3-study</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/fp2-study</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/fp-level-comparison</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/fp-calculation-guide</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/practical-tracks</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/about</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/privacy</loc></url>
+  <url><loc>https://fll-fp-lab.pages.dev/contact</loc></url>
 </urlset>
