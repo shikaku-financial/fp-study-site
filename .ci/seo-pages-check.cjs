@@ -5,7 +5,7 @@ const assert=require('node:assert/strict');
 const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const site='https://fll-fp-lab.pages.dev/';
-const pages=['index.html','guide.html','fp3-study.html','fp2-study.html','fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html','about.html','privacy.html','contact.html'];
+const pages=['index.html','guide.html','fp3-study.html','fp3-mock-exam.html','fp2-study.html','fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html','fp2-nonlife-practical.html','about.html','privacy.html','contact.html'];
 const urls=new Set();
 for(const file of pages){
  const html=fs.readFileSync(path.join(root,file),'utf8');
@@ -65,6 +65,12 @@ for(const grade of ['2','3']){
  assert.ok(guide.includes('class="info-cta" href="index.html?level='+grade+'"'), 'grade-specific practice link missing for FP'+grade);
  const compare=fs.readFileSync(path.join(root,'fp-level-comparison.html'),'utf8');
  assert.ok(compare.includes('class="info-cta" href="index.html?level='+grade+'"'), 'comparison must offer FP'+grade+' direct entry');
+}
+for(const [file,entry] of [['fp3-mock-exam.html','index.html?level=3'],['fp2-nonlife-practical.html','index.html?view=practical&amp;level=2']]) {
+ const html=fs.readFileSync(path.join(root,file),'utf8');
+ assert.ok(html.includes('href="'+entry+'"'),file+' must link to working exam entry');
+ assert.ok(html.includes('独自')&&html.includes('非公式'),file+' must identify its unofficial original exercises');
+ assert.ok(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('href="'+file+'"'),file+' must be reachable from homepage');
 }
 const home=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const publisher=home.match(/<meta\s+name="google-adsense-account"\s+content="ca-(pub-\d{16})"/i)?.[1];
