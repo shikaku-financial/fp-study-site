@@ -41,4 +41,10 @@ assert.ok(!robots.includes('Disallow: /'),'production crawl disallowed');
 for(const file of ['fp3-study.html','fp2-study.html','fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html']){
   assert.ok(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('href="'+file+'"'),file+' not discoverable from home');
 }
+const home=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const publisher=home.match(/<meta\\s+name="google-adsense-account"\\s+content="ca-(pub-\\d{16})"/i)?.[1];
+assert.ok(publisher,'AdSense publisher metadata missing');
+const ads=fs.readFileSync(path.join(root,'ads.txt'),'utf8');
+assert.equal(ads,'google.com, '+publisher+', DIRECT, f08c47fec0942fa0\\n','ads.txt must match verified AdSense publisher ID');
+console.log('PASS: ads.txt seller authorization matches homepage publisher metadata');
 console.log('PASS: '+pages.length+' page SEO canonicals, metadata, internal links, sitemap and home entry links');
