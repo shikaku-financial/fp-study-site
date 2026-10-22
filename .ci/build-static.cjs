@@ -31,6 +31,7 @@ const publicAssets = [
   'financial-license-lab-logo.png',
   'sitemap.xml',
   'robots.txt',
+  'ads.txt',
 ];
 const allowed = [...publicHtml, ...publicAssets];
 
