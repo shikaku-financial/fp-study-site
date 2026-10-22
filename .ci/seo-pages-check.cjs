@@ -40,6 +40,13 @@ assert.ok(styles.includes('.comparison-table-scroll{max-width:100%;overflow-x:au
 const practicalGuide=fs.readFileSync(path.join(root,'practical-tracks.html'),'utf8');
 for(const grade of ['2','3']) assert.ok(practicalGuide.includes('href="index.html?view=practical&amp;level='+grade+'"'),'practical study entry missing for FP'+grade);
 assert.ok(practicalGuide.includes('事例形式5題（15問）')&&practicalGuide.includes('class="comparison-table-scroll" role="region"'),'official practical format comparison missing');
+const notFound=fs.readFileSync(path.join(root,'404.html'),'utf8');
+assert.match(notFound,/<meta\s+name="robots"\s+content="noindex,follow">/i,'404 page must be noindex');
+assert.match(notFound,/<h1>お探しのページが見つかりません<\/h1>/,'404 page missing readable heading');
+assert.ok(!/<link\s+rel="canonical"/i.test(notFound),'404 page must not declare a canonical');
+for(const route of ['','guide','fp2-study','fp3-study','contact']) {
+  assert.ok(notFound.includes('href="'+site+route+'"'),'404 page missing valid recovery link: '+route);
+}
 const xml=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
 const mapped=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>x[1]);
 assert.equal(mapped.length,pages.length,'sitemap must enumerate each public HTML once');
