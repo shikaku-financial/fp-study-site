@@ -3,6 +3,8 @@ name: FP Lab mobile browser smoke
 on:
   pull_request:
     paths:
+      - '_headers'
+      - '.ci/security-check.cjs'
       - 'index.html'
       - 'fp2-study.html'
       - 'fp3-study.html'

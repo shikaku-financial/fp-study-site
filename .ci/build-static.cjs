@@ -39,6 +39,7 @@ const publicAssets = [
   'sitemap.xml',
   'robots.txt',
   'ads.txt',
+  '_headers',
 ];
 const allowed = [...publicHtml, ...publicAssets];
 
@@ -57,7 +58,7 @@ const actual = fs.readdirSync(output).sort();
 const expected = [...allowed, '.nojekyll'].sort();
 assert.deepEqual(actual, expected, 'output contains unexpected or missing files');
 for (const prohibited of ['README.md', 'MONETIZATION_PLAN.md', 'HOSTING_MIGRATION_CHECKLIST.md',
-  'new-questions.json', '.github', '.ci', 'tests']) {
+  'new-questions.json', 'SECURITY_OPERATIONS.md', '.github', '.ci', 'tests']) {
   assert.ok(!fs.existsSync(path.join(output, prohibited)), 'private/dev file published: ' + prohibited);
 }
 console.log('PASS: dist/ generated with ' + allowed.length + ' public files; no repository-only files');
