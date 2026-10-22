@@ -64,6 +64,7 @@ const liveAudit=fs.readFileSync(path.join(root,'.ci/live-security-audit.cjs'),'u
 assert.ok(auditWorkflow.includes("'.ci/live-security-audit.cjs'"),'real-response audit must run when its script changes');
 assert.ok(auditWorkflow.includes("run: node .ci/live-security-audit.cjs"),'real-response audit must execute');
 assert.ok(auditWorkflow.includes('branches: [main]'),'real-response audit must observe production');
+assert.ok(auditWorkflow.includes("cron: '23 1 * * 1'"),'public header audit must run weekly');
 assert.ok(liveAudit.includes('https://fll-fp-lab.pages.dev'),'real-response audit must check canonical site');
 for(const match of auditWorkflow.matchAll(/uses:\s+([^\s]+)/g)){
  assert.match(match[1],/^[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+@[a-f0-9]{40}$/,'audit action must use pinned SHA');
