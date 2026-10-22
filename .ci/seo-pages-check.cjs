@@ -49,6 +49,12 @@ assert.ok(!robots.includes('Disallow: /'),'production crawl disallowed');
 for(const file of ['fp3-study.html','fp2-study.html','fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html']){
   assert.ok(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('href="'+file+'"'),file+' not discoverable from home');
 }
+for(const grade of ['2','3']){
+ const guide=fs.readFileSync(path.join(root,'fp'+grade+'-study.html'),'utf8');
+ assert.ok(guide.includes('class="info-cta" href="index.html?level='+grade+'"'), 'grade-specific practice link missing for FP'+grade);
+ const compare=fs.readFileSync(path.join(root,'fp-level-comparison.html'),'utf8');
+ assert.ok(compare.includes('class="info-cta" href="index.html?level='+grade+'"'), 'comparison must offer FP'+grade+' direct entry');
+}
 const home=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const publisher=home.match(/<meta\s+name="google-adsense-account"\s+content="ca-(pub-\d{16})"/i)?.[1];
 assert.ok(publisher,'AdSense publisher metadata missing');

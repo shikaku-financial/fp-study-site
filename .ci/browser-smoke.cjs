@@ -46,6 +46,26 @@ async function main(){
         }
       }finally{await article.close();}
     });
+    await step('FP guide links open the intended grade without starting a quiz',async()=>{
+      const article=await ctx.newPage();
+      try{
+        for(const grade of ['2','3']){
+          await article.goto(new URL('fp'+grade+'-study.html',BASE).href,{waitUntil:'load',timeout:45000});
+          const entry=article.locator('a.info-cta[href="index.html?level='+grade+'"]').first();
+          assert.equal(await entry.count(),1,'grade-specific entry link missing for FP'+grade);
+          await entry.click();
+          await article.locator('#level'+grade+'[aria-pressed="true"]').waitFor();
+          assert.match(await article.locator('#stats').innerText(),new RegExp('FP'+grade+'級：'));
+          assert.equal(await article.locator('#quiz').isVisible(),false,'entry must not auto-start academic quiz');
+          await article.reload({waitUntil:'load'});
+          assert.equal(await article.locator('#level'+grade).getAttribute('aria-pressed'),'true','grade query must work after reload');
+        }
+        await article.goto(new URL('fp-level-comparison.html',BASE).href,{waitUntil:'load',timeout:45000});
+        for(const grade of ['2','3']) assert.equal(await article.locator('a.info-cta[href="index.html?level='+grade+'"]').count(),1,'missing comparison entry FP'+grade);
+        await article.goto(BASE,{waitUntil:'load'});
+        assert.equal(await article.locator('#level3').getAttribute('aria-pressed'),'true','unparameterized home default changed');
+      }finally{await article.close();}
+    });
     await step('FP3 academic answer and feedback',async()=>{
       await page.locator('#shuffle').uncheck();
       await page.locator('#startPractice').click();
