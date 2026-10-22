@@ -76,7 +76,7 @@ async function main(){
           const entry=article.locator('a.info-cta[href="index.html?view=practical&level='+level+'"]');
           assert.equal(await entry.count(),1,'missing practical entry for FP'+level);
           await entry.click();
-          assert.equal(await article.locator('#practicalHome').isVisible(),true,'practical selection should be visible');
+          await article.locator('#practicalHome').waitFor({state:'visible',timeout:10000}); // WebKit navigation may resolve before practical.js completes its entry view.
           assert.equal(await article.locator('#prSelectLevel'+level).getAttribute('aria-pressed'),'true','wrong practical grade');
           assert.equal(await article.locator('#practicalExam').isVisible(),false,'must not auto-start practical exam');
           await article.goBack({waitUntil:'load'});
