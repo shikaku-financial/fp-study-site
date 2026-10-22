@@ -29,6 +29,8 @@ jobs:
         run: node .ci/run.cjs
       - name: Check static search landing pages and sitemap
         run: node .ci/seo-pages-check.cjs
+      - name: Check deployed audit syntax
+        run: node --check .ci/live-security-audit.cjs
       - name: Validate site security policies and GitHub workflow hardening
         run: node .ci/security-check.cjs
       - name: Validate Cloudflare-ready public output
