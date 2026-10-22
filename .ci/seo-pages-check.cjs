@@ -5,7 +5,7 @@ const assert=require('node:assert/strict');
 const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const site='https://fll-fp-lab.pages.dev/';
-const pages=['index.html','guide.html','fp3-study.html','fp2-study.html','fp-level-comparison.html','practical-tracks.html','about.html','privacy.html','contact.html'];
+const pages=['index.html','guide.html','fp3-study.html','fp2-study.html','fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html','about.html','privacy.html','contact.html'];
 const urls=new Set();
 for(const file of pages){
  const html=fs.readFileSync(path.join(root,file),'utf8');
@@ -35,7 +35,7 @@ const robots=fs.readFileSync(path.join(root,'robots.txt'),'utf8');
 assert.match(robots,/^User-agent:\s*\*/m,'robots.txt must state user-agent');
 assert.ok(robots.includes('Sitemap: '+site+'sitemap.xml'),'robots.txt points to incorrect sitemap URL');
 assert.ok(!robots.includes('Disallow: /'),'production crawl disallowed');
-for(const file of ['fp3-study.html','fp2-study.html','fp-level-comparison.html','practical-tracks.html']){
+for(const file of ['fp3-study.html','fp2-study.html','fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html']){
   assert.ok(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('href="'+file+'"'),file+' not discoverable from home');
 }
 console.log('PASS: '+pages.length+' page SEO canonicals, metadata, internal links, sitemap and home entry links');
