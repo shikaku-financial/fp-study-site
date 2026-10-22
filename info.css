@@ -1,1 +1,12 @@
 .info-page h1{font-size:clamp(25px,5vw,34px);line-height:1.45;margin:8px 0 28px}.info-page h2{margin:30px 0 12px;font-size:22px}.info-page p,.info-page li{line-height:1.9;overflow-wrap:anywhere}.info-page li{margin:9px 0}.info-page ul,.info-page ol{padding-left:1.5em}.info-page a,.info-nav a{color:#126c67;text-underline-offset:3px}.info-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 12px;margin:12px 0}.info-nav a{display:inline-flex;align-items:center;min-height:44px;padding:5px 3px;font-size:14px}.info-page .info-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border-radius:10px;background:#147e78;color:#fff;text-decoration:none;font-weight:700}.info-page a:focus-visible,.info-nav a:focus-visible{outline:3px solid #eeae44;outline-offset:3px}.skip-link{position:absolute;left:10px;top:-100px;background:white;padding:12px;z-index:10}.skip-link:focus{top:10px}@media(max-width:470px){.info-page h2{font-size:20px}.info-page .card{padding:20px 17px}.info-page .info-cta{width:100%}}
+
+/* Keep comparison tables readable on narrow mobile screens without page-wide overflow. */
+.comparison-table-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;border:1px solid #d7e2e9;border-radius:10px}
+.comparison-table-scroll:focus-visible{outline:3px solid #eeae44;outline-offset:3px}
+.comparison-table-scroll table{width:100%;min-width:520px;border-collapse:collapse;font-size:14px;line-height:1.6}
+.comparison-table-scroll th,.comparison-table-scroll td{padding:12px 10px;text-align:left;vertical-align:top;border-bottom:1px solid #d7e2e9}
+.comparison-table-scroll tbody tr:last-child th,.comparison-table-scroll tbody tr:last-child td{border-bottom:0}
+.comparison-table-scroll thead th{background:#edf7f6}
+.comparison-table-scroll tbody th{width:28%;background:#f5f9fb}
+.comparison-scroll-hint{display:none}
+@media(max-width:600px){.comparison-scroll-hint{display:block}}
