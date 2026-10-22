@@ -1,0 +1,29 @@
+name: FP Lab public search audit
+# Deliberately NOT scheduled: one-time on initial addition or manual request.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.ci/live-search-audit.cjs'
+      - '.github/workflows/live-search-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-search-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Check audit code syntax
+        run: node --check .ci/live-search-audit.cjs
+      - name: Probe public Cloudflare Pages responses
+        run: node .ci/live-search-audit.cjs
