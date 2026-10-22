@@ -29,6 +29,14 @@ for(const file of pages){
    assert.ok(fs.existsSync(path.join(root,href)),file+' has broken local link '+href);
  }
 }
+for(const grade of ['fp2-study.html','fp3-study.html']){
+ const html=fs.readFileSync(path.join(root,grade),'utf8');
+ assert.ok(html.includes('href="fp-level-comparison.html"'),grade+' must link to the level comparison guide');
+}
+const comparison=fs.readFileSync(path.join(root,'fp-level-comparison.html'),'utf8');
+assert.ok(comparison.includes('class="comparison-table-scroll" role="region"')&&comparison.includes('tabindex="0"'),'comparison table must have accessible scroll region');
+const styles=fs.readFileSync(path.join(root,'info.css'),'utf8');
+assert.ok(styles.includes('.comparison-table-scroll{max-width:100%;overflow-x:auto'),'comparison table must scroll on narrow viewports');
 const xml=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
 const mapped=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>x[1]);
 assert.equal(mapped.length,pages.length,'sitemap must enumerate each public HTML once');

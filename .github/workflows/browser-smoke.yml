@@ -4,6 +4,10 @@ on:
   pull_request:
     paths:
       - 'index.html'
+      - 'fp2-study.html'
+      - 'fp3-study.html'
+      - 'fp-level-comparison.html'
+      - 'info.css'
       - 'style.css'
       - 'app.js'
       - 'questions.js'
