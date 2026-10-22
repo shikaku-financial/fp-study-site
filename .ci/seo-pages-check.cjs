@@ -125,5 +125,21 @@ for(const file of [...pages,'404.html']){
 console.log('PASS: classic 16/32/48 favicon.ico linked from all Safari-visible pages');
 console.log('PASS: Safari/apple-touch icons are correctly linked in all pages');
 
+
+// Keep internal data revision identifiers separate from public-facing text.
+// The release date is the only public build/change marker.
+const landingHtml=fs.readFileSync(path.join(root,'index.html'),'utf8');
+assert.ok(!/Ver\.\s*\d+|Version\s*\d+/i.test(landingHtml),'public version number must not appear in HTML');
+assert.ok(!landingHtml.includes('id="prBuildVersion"'),'old version display must not remain');
+assert.ok(landingHtml.includes('id="prUpdatedDate"'),'practical screen should show updated date');
+const updateDates=[...landingHtml.matchAll(/更新日：(\d{4}年\d{1,2}月\d{1,2}日)/g)].map(m=>m[1]);
+assert.equal(updateDates.length,4,'all former version labels should now display update dates');
+assert.equal(new Set(updateDates).size,1,'all visible update dates must agree');
+for(const file of pages){
+ const html=fs.readFileSync(path.join(root,file),'utf8');
+ assert.ok(!/Ver\.\s*\d+|Version\s*\d+/i.test(html),file+' must not show version labels');
+}
+console.log('PASS: public UI shows update dates without version numbers');
+
 console.log('PASS: ads.txt seller authorization matches homepage publisher metadata');
 console.log('PASS: '+pages.length+' page SEO canonicals, metadata, internal links, sitemap and home entry links');
