@@ -37,6 +37,9 @@ const comparison=fs.readFileSync(path.join(root,'fp-level-comparison.html'),'utf
 assert.ok(comparison.includes('class="comparison-table-scroll" role="region"')&&comparison.includes('tabindex="0"'),'comparison table must have accessible scroll region');
 const styles=fs.readFileSync(path.join(root,'info.css'),'utf8');
 assert.ok(styles.includes('.comparison-table-scroll{max-width:100%;overflow-x:auto'),'comparison table must scroll on narrow viewports');
+const practicalGuide=fs.readFileSync(path.join(root,'practical-tracks.html'),'utf8');
+for(const grade of ['2','3']) assert.ok(practicalGuide.includes('href="index.html?view=practical&amp;level='+grade+'"'),'practical study entry missing for FP'+grade);
+assert.ok(practicalGuide.includes('事例形式5題（15問）')&&practicalGuide.includes('class="comparison-table-scroll" role="region"'),'official practical format comparison missing');
 const xml=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
 const mapped=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>x[1]);
 assert.equal(mapped.length,pages.length,'sitemap must enumerate each public HTML once');
