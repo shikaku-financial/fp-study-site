@@ -33,6 +33,10 @@ for(const level of ['3','2']){
 }
 for(const input of ['',' ','1e3','12,34','12a','-1','3.5','Infinity','0x10','1 000','1,000,','9'.repeat(30)])assert.equal(C.number(input),null,input);
 assert.equal(C.number('１２３，４５６'),123456);assert.equal(C.number('0'),0);assert.equal(C.number(' 200 '),200);
+// Two individually safe monetary entries must not silently overflow when summed.
+const largeJournal={type:'journal',points:1,debit:[['現金',Number.MAX_SAFE_INTEGER],['現金',1]],credit:[['売上',1]]};
+const roundedCollision={debit:[['現金',String(Number.MAX_SAFE_INTEGER)],['現金','2']],credit:[['売上','1']]};
+assert.equal(C.grade(largeJournal,roundedCollision).correct,false,'unsafe aggregate must never be graded correct');
 assert.equal(C.touched({debit:[['','']],credit:[['','']]}),false);assert.equal(C.touched({debit:[['現金','']]}),true);
 // Independent accounting reconstruction from source trial balances, not answer-key arithmetic.
 for(const level of ['3','2']){
