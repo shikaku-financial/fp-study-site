@@ -4,7 +4,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const root=path.resolve(__dirname,'..'),KEY='fll-boki-progress';
 function env(saved){
  const data=new Map(saved||[]),events={},nodes={};let now=1000000,fail=false;
- function node(id){return nodes[id]??={innerHTML:'',textContent:'',value:'all',dataset:{},classList:{toggle(){}},addEventListener:(type,fn)=>{events[id+':'+type]=fn;},replaceChildren(){},focus(){},scrollIntoView(){}};}
+ function node(id){return nodes[id]??={innerHTML:'',textContent:'',value:'all',dataset:{},classList:{toggle(){}},addEventListener:(type,fn)=>{events[id+':'+type]=fn;},replaceChildren(){},focus(){},scrollIntoView(){},closest(){return null;},querySelector:selector=>node(selector)};}
  class Clock extends Date{constructor(...args){super(...(args.length?args:[now]));}static now(){return now;}}
  const context=vm.createContext({module:undefined,Date:Clock,Math,JSON,Number,String,Array,Object,Map,Set,console,
   document:{hidden:false,getElementById:node,createTextNode:t=>t,addEventListener:(type,fn)=>{events['document:'+type]=fn;}},
