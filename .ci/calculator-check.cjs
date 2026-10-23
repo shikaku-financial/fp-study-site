@@ -13,6 +13,9 @@ let c=sequence(['5','+','2','equals','equals']);assert.equal(c.state().display,'
 c=sequence(['8','+','*','2','equals']);assert.equal(c.state().display,'16','replace pending operator');
 c=sequence(['9','/','0','equals']);assert.equal(c.state().error,true);c.press('7');assert.equal(c.state().display,'7');assert.equal(c.state().error,false);
 c=sequence(['5','sign','*','2','equals']);assert.equal(c.state().display,'-10');
+assert.equal(sequence(['5','+','sign','2','equals']).state().display,'3','sign after operator starts a negative right operand');
+assert.equal(sequence(['5','-','sign','2','equals']).state().display,'7','subtracting a negative operand');
+assert.equal(sequence(['5','+','sign','sign','2','equals']).state().display,'7','repeated sign toggles right operand');
 c=sequence(['1','2','3','back']);assert.equal(c.state().display,'12');c.press('clear');assert.equal(c.state().display,'0');
 c=sequence(['0','.','1','.','2']);assert.equal(c.state().display,'0.12');
 c=sequence(['1','+','2','equals','4']);assert.equal(c.state().display,'4');
