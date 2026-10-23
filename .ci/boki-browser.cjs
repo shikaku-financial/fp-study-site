@@ -16,7 +16,9 @@ async function run(engineName){
  const saved=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEY);
  async function choose(level,form){
   await page.locator('button[data-action="level"][data-level="'+level+'"]').click();
+  assert.equal(await page.locator('button[data-action="level"][data-level="'+level+'"]').evaluate(el=>el===document.activeElement),true,'level selection retains keyboard focus');
   await page.locator('#boki-form').selectOption(form);
+  assert.equal(await page.locator('#boki-form').evaluate(el=>el===document.activeElement),true,'form selection retains keyboard focus');
   assert.equal(await page.locator('#boki-form').inputValue(),form);
  }
  async function assertFits(width){
@@ -48,6 +50,9 @@ async function run(engineName){
    const exam=C.examFor(D,level,form),items=C.allItems(exam);
    assert.equal((await saved()).active.form,form);
    const firstDeadline=(await saved()).active.deadline;
+   assert.ok(await page.locator('.boki-scroll-hint').isVisible(),'mobile table scroll hint');
+   const heading=await page.locator('#boki-heading').boundingBox(),toolbar=await page.locator('.boki-session-top').boundingBox();
+   assert.ok(heading.y>=toolbar.y+toolbar.height,'question heading must not be hidden behind sticky toolbar');
    for(let i=0;i<items.length;i++){
     const item=items[i];
     assert.equal(await page.locator('.boki-solution').count(),0,'exam must not reveal answers early');

@@ -20,7 +20,7 @@
   }
  }catch{say('学習記録を読み込めませんでした。新しい演習は利用できます。保存済みデータは演習を開始するまで書き換えません。');}
  const itemsFor=s=>s.ids.map(id=>C.allItems(C.examFor(D,s.level,s.form??'1')).find(i=>i.id===id));
- function focusHeading(){const h=document.getElementById('boki-heading');if(h){h.focus();h.scrollIntoView({block:'start',behavior:'instant'});}}
+ function focusHeading(){const h=document.getElementById('boki-heading');if(h){h.focus({preventScroll:true});(h.closest('section.card')||h).scrollIntoView({block:'start',behavior:'instant'});}}
  function clearTimer(){if(timer)clearInterval(timer);timer=null;}
  function home(){
   clearTimer();session=null;displayed=null;
@@ -53,7 +53,7 @@
   }).join('')}</tr>`).join('')}</tbody></table></div>`;
  }
  function itemHTML(item,answer,disabled){
-  let html=`<p class="boki-prompt">${esc(item.prompt)}</p>${item.notes?'<ol class="boki-notes">'+item.notes.map(n=>`<li>${esc(n)}</li>`).join('')+'</ol>':''}`;
+  let html=`<p class="muted small boki-scroll-hint">解答表は左右にスクロールできます。</p><p class="boki-prompt">${esc(item.prompt)}</p>${item.notes?'<ol class="boki-notes">'+item.notes.map(n=>`<li>${esc(n)}</li>`).join('')+'</ol>':''}`;
   if(item.type==='journal'){
    const a=answer||emptyJournal(item);html+='<p class="muted small">使わない行は科目・金額とも空欄にしてください。行の順序は採点に影響しません。金額の単位：円。</p>';
    const rowCount=Math.max(item.debit.length,item.credit.length)+1;
@@ -103,12 +103,12 @@
   clearTimer();session=null;displayed=h;level=String(h.level);form=String(h.form??'1');const items=itemsFor(h),result=C.result(items,h.answers),exam=C.examFor(D,level,form);
   app.innerHTML=`<section class="card boki-result"><p class="boki-tag">${esc(exam.label)} ${esc(exam.set)} ${h.mode==='exam'?'模擬試験':'問題演習'}の結果</p><h2 id="boki-heading" tabindex="-1">採点結果</h2><p class="boki-summary">${result.earned} <span class="muted">/ ${result.max}点</span></p><p>${h.mode==='exam'?(result.earned>=70?'到達目安の70点以上です。':'70点の到達目安まで、間違えた箇所を復習しましょう。'):'演習では合否判定を行いません。'}</p><p class="muted small">独自問題・独自配点による学習の目安です。</p>${exam.sections.map(s=>{const subset=s.items.filter(i=>h.ids.includes(i.id));if(!subset.length)return '';const r=C.result(subset,h.answers);return `<div class="stat-row"><span>${esc(s.title)}</span><strong>${r.earned} / ${r.max}点</strong></div>`;}).join('')}<div class="actions"><button class="primary" data-action="home">ホームへ</button><button data-action="result-review">今回間違えた題を復習</button></div><h3>問題別の答え合わせ</h3>${items.map((item,i)=>{const g=C.grade(item,h.answers[item.id]);return `<details><summary class="${g.correct?'correct':'wrong'}">${i+1}. ${esc(item.title||'仕訳')}　${g.earned}/${g.max}点</summary>${itemHTML(item,h.answers[item.id],true)}${solutions(item,h.answers[item.id])}</details>`;}).join('')}</section>`;
  }
- app.addEventListener('input',input);app.addEventListener('change',event=>{if(event.target.id==='boki-form'){form=event.target.value;home();}else if(event.target.matches('select[data-side]'))input(event);});
+ app.addEventListener('input',input);app.addEventListener('change',event=>{if(event.target.id==='boki-form'){form=event.target.value;home();document.getElementById('boki-form')?.focus({preventScroll:true});}else if(event.target.matches('select[data-side]'))input(event);});
  app.addEventListener('click',event=>{
   const button=event.target.closest('button[data-action]');if(!button||button.disabled)return;
   const action=button.dataset.action;
   if(session&&session.mode==='exam'&&Date.now()>=session.deadline){finish(true);return;}
-  if(action==='level'){level=button.dataset.level;form='1';say('');home();}
+  if(action==='level'){level=button.dataset.level;form='1';say('');home();app.querySelector('button[data-action="level"][data-level="'+level+'"]')?.focus({preventScroll:true});}
   else if(['practice','review','exam'].includes(action))start(action);
   else if(action==='home'){home();focusHeading();}
   else if(action==='resume'){session=store.active;level=String(session.level);form=String(session.form??'1');renderSession();focusHeading();}
