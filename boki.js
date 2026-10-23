@@ -3,14 +3,17 @@
  const C=BOKI_CORE,D=BOKI_DATA,KEY='fll-boki-progress',app=document.getElementById('boki-app'),notice=document.getElementById('boki-notice');
  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const num=n=>n.toLocaleString('ja-JP');
- let store={schema:1,active:null,history:[]},level='3',form='1',session=null,displayed=null,timer=null,dirty=false;
+ let store={schema:1,active:null,history:[]},level='3',form='1',session=null,displayed=null,timer=null,dirty=false,lastSaved=null;
  function say(text){notice.textContent=text;notice.classList.toggle('hidden',!text);}
  function persist(){
-  try{localStorage.setItem(KEY,JSON.stringify(store));dirty=false;document.getElementById('boki-save-status')?.replaceChildren(document.createTextNode('このブラウザに保存しました'));if(notice.textContent.startsWith('保存に失敗しました。'))say('');return true;}
+  try{
+   if(localStorage.getItem(KEY)!==lastSaved){dirty=true;say('別のタブで学習記録が更新されました。この画面からは上書きせずに保護しています。最新の記録を確認するにはページを再読み込みしてください。');return false;}
+   const next=JSON.stringify(store);localStorage.setItem(KEY,next);lastSaved=next;dirty=false;document.getElementById('boki-save-status')?.replaceChildren(document.createTextNode('このブラウザに保存しました'));if(notice.textContent.startsWith('保存に失敗しました。'))say('');return true;}
   catch{dirty=true;say('保存に失敗しました。この画面では解答を続けられますが、閉じると今回の変更が失われる場合があります。ブラウザの空き容量・保存設定をご確認ください。');return false;}
  }
  try{
   const raw=localStorage.getItem(KEY);
+  lastSaved=raw;
   if(raw){
    const parsed=JSON.parse(raw);
    if(parsed.schema!==1||!Array.isArray(parsed.history))throw Error('schema');
