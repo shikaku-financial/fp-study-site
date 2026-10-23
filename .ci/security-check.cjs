@@ -6,6 +6,7 @@ const path=require('node:path');
 const assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
 const pages=[
+  'boki.html',
   'index.html','guide.html','fp3-study.html','fp3-mock-exam.html','fp2-study.html',
   'fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html',
   'fp2-nonlife-practical.html','about.html','privacy.html','contact.html','404.html'

@@ -5,7 +5,7 @@ const assert=require('node:assert/strict');
 const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const site='https://fll-fp-lab.pages.dev/';
-const pages=['index.html','guide.html','fp3-study.html','fp3-mock-exam.html','fp2-study.html','fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html','fp2-nonlife-practical.html','about.html','privacy.html','contact.html'];
+const pages=['boki.html','index.html','guide.html','fp3-study.html','fp3-mock-exam.html','fp2-study.html','fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html','fp2-nonlife-practical.html','about.html','privacy.html','contact.html'];
 const urls=new Set();
 for(const file of pages){
  const html=fs.readFileSync(path.join(root,file),'utf8');
@@ -96,7 +96,7 @@ assert.equal(iconManifest.display,'browser','must retain browser navigation mode
 for(const [filename] of icons){
  assert.ok(iconManifest.icons.some(icon=>icon.src===filename),'manifest missing '+filename);
 }
-for(const file of [...pages,'404.html']){
+for(const file of [...pages.filter(p=>p!=='boki.html'),'404.html']){
  const html=fs.readFileSync(path.join(root,file),'utf8');
  const head=html.slice(0,html.toLowerCase().indexOf('</head>'));
  for(const [rel,filename] of [['apple-touch-icon','apple-touch-icon.png'],['icon','favicon-32x32.png'],['manifest','site.webmanifest']]){
@@ -122,7 +122,7 @@ for(let i=0;i<icoCount;i++){
  assert.ok(length>0 && start+length<=ico.length,'ICO image bytes in bounds');
 }
 for(const size of [16,32,48])assert.ok(icoSizes.has(size),'ICO missing '+size+'px image');
-for(const file of [...pages,'404.html']){
+for(const file of [...pages.filter(p=>p!=='boki.html'),'404.html']){
  const html=fs.readFileSync(path.join(root,file),'utf8');
  const head=html.slice(0,html.toLowerCase().indexOf('</head>'));
  assert.ok(head.includes('rel="icon" type="image/x-icon" href="favicon.ico?v=2"'),file+' missing ICO bookmark icon');

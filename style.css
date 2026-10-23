@@ -317,3 +317,6 @@
 #prNav button.scenario-start{box-shadow:inset 4px 0 0 #9db7c7}
 
 .landing-title{font-size:clamp(21px,4.5vw,27px);line-height:1.4;margin:0 0 6px}.landing-intro{margin:0 0 12px}
+
+/* Financial License Lab sibling learning areas */
+.lab-nav{display:flex;gap:10px;margin-top:14px}.lab-nav a{display:inline-block;padding:8px 18px;border:1px solid #bdddd8;border-radius:24px;color:#126c67;text-decoration:none;background:#fff;font-weight:700}.lab-nav a[aria-current=page]{background:#147e78;color:#fff;border-color:#147e78}

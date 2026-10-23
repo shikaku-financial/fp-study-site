@@ -9,6 +9,7 @@ const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '..');
 const output = path.join(root, 'dist');
 const publicHtml = [
+  'boki.html',
   'index.html',
   'guide.html',
   'fp3-study.html',
@@ -23,6 +24,7 @@ const publicHtml = [
   'contact.html',
 ];
 const publicAssets = [
+  'boki.css', 'boki.js', 'boki-core.js', 'boki-data.js', 'boki.webmanifest',
   '404.html',
   'style.css',
   'info.css',
