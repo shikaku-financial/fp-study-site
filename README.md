@@ -10,9 +10,13 @@ FP2級・3級の**無料・登録不要**の学習サイトです。学科360問
 
 ## 簿記ラボ
 
-同じFLLサイト内の独立コーナーとして [簿記ラボ](https://fll-fp-lab.pages.dev/boki) を提供します。日商簿記3級（60分・3大問）と2級（90分・5大問）の独自模試を各1回分収録。科目選択・金額入力、表形式問題、分野別演習、結果・解説、復習、中断再開に対応します。
+同じFLLサイト内の独立コーナーとして [簿記ラボ](https://fll-fp-lab.pages.dev/boki) を提供します。日商簿記3級（60分・3大問）と2級（90分・5大問）の独自模試を各2回分（計60題）収録。科目選択・金額入力、表形式問題、分野別演習、結果・解説、復習、中断再開に対応します。
 
-問題は日本商工会議所のサンプルの出題構成を参考に独自作成し、転載していません。採点は独自基準（仕訳は取引全体の一致、表は入力欄単位）。学習記録キーは `fll-boki-progress` でFPとは分離しています。`boki.html`、`boki-data.js`、`boki-core.js`、`boki.js`、`boki.css` が実装です。確認は `node .ci/boki-check.cjs`。問題増量・全問専門家監修は未完了です。
+問題は日本商工会議所のサンプルの出題構成を参考に独自作成し、転載していません。採点は独自基準（仕訳は取引全体の一致、表は入力欄単位）。学習記録キーは `fll-boki-progress` でFPとは分離しています。`boki.html`、`boki-data.js`、`boki-extra.js`、`boki-core.js`、`boki.js`、`boki.css` が実装です。確認は `node .ci/boki-check.cjs`、`node .ci/boki-second-check.cjs`、`node .ci/boki-flow-check.cjs`。CIの `Boki Lab mobile browsers` は公開用distをChromium/WebKit・幅320/390pxで検証します（iPhone実機とは別）。全問専門家監修は未完了です。
+
+第2回では3級の商品有高帳・伝票集計、2級の連結・個別原価計算・標準原価計算を追加。`form` がない旧保存データは第1回として扱い、問題IDを変えずに再開・採点できます。回ごとに演習・履歴・復習を分離します。
+
+出題区分は [日本商工会議所の2026年度適用区分](https://www.kentei.ne.jp/bookkeeping/exam-list) を参照。2027年度区分への移行は未完了です。連結の内部取引・未実現利益の確認資料は [ASBJ連結財務諸表に関する会計基準 第34～38項](https://www.asb-j.jp/jp/accounting_standards_system/details.html?topics_id=111)。資料照合は全問の専門家監修を意味しません。
 
 ## サイトの公開・保存方式
 

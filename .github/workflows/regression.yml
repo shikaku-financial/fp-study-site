@@ -29,7 +29,9 @@ jobs:
         run: node .ci/run.cjs
       - name: Check bookkeeping grading and original datasets
         run: |
+          node --check boki-extra.js
           node .ci/boki-check.cjs
+          node .ci/boki-second-check.cjs
           node .ci/boki-flow-check.cjs
       - name: Check static search landing pages and sitemap
         run: node .ci/seo-pages-check.cjs

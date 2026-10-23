@@ -1,0 +1,40 @@
+name: Boki Lab mobile browsers
+on:
+  pull_request:
+    paths:
+      - 'boki*'
+      - '.ci/boki-browser.cjs'
+      - '.ci/build-static.cjs'
+      - '.github/workflows/boki-browser.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: boki-browsers-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  boki-mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Install isolated browser test dependency
+        run: npm install --no-save --no-package-lock playwright@1.56.1
+      - name: Install test browser engines
+        run: npx playwright install --with-deps chromium webkit
+      - name: Validate and build public assets
+        run: |
+          node .ci/boki-check.cjs
+          node .ci/boki-second-check.cjs
+          node .ci/boki-flow-check.cjs
+          node .ci/build-static.cjs
+      - name: Exercise published assets in Chromium and WebKit
+        run: |
+          python3 -m http.server 8766 --directory dist --bind 127.0.0.1 >/tmp/boki-test-http.log 2>&1 &
+          node .ci/boki-browser.cjs
