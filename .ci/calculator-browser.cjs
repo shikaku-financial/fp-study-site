@@ -27,6 +27,10 @@ async function run(name){
    assert.equal(await result(),'0.3');
    await toggle.click();assert.equal(await panel.isVisible(),false);await toggle.click();assert.equal(await result(),'0.3','result retained on close/reopen');
    for(const k of ['clear','9','/','0','equals'])await key(k);assert.match(await result(),/0では割れません/);await key('7');assert.equal(await result(),'7');
+   for(const k of ['clear','5','+','sign','2','equals'])await key(k);
+   assert.equal(await result(),'3','sign after operator must negate the right operand');
+   for(const k of ['clear','5','-','sign','2','equals'])await key(k);
+   assert.equal(await result(),'7','subtracting a negative right operand');
    await panel.focus();await panel.press('Escape');assert.equal(await panel.isVisible(),false);assert.equal(await toggle.evaluate(el=>el===document.activeElement),true);
    assert.deepEqual(await storage(),initial,'calculator never changes learning records');
    if(lab==='fp.html'){
