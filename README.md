@@ -43,7 +43,7 @@ Cloudflare Pagesを正規公開先とし、同じリポジトリからGitHub Pag
 
 - [引き継ぎ管理Issue #154](https://github.com/shikaku-financial/fp-study-site/issues/154) — 新しいGitHubアカウントでの開発と検証状況
 - [セキュリティ管理Issue #151](https://github.com/shikaku-financial/fp-study-site/issues/151) — 管理アカウントの二要素認証など
-- [収益化フェーズのIssue #136](https://github.com/shikaku-financial/fp-study-site/issues/136) — Search Console・AdSenseの進捗（参照時点のIssue番号はリンク先を確認）
+- [収益化フェーズのIssue #130](https://github.com/shikaku-financial/fp-study-site/issues/130) — Search Console・AdSenseの進捗（参照時点のIssue番号はリンク先を確認）
 - [開発ガイド](DEVELOPMENT_GUIDE.md) — 詳細な監査経緯を含む過去の記録
 - [集客改善計画](GROWTH_PLAN.md) — Search Consoleデータに基づいた改善方針
 - [セキュリティ運用](SECURITY_OPERATIONS.md) — CSP・広告導入時の注意
