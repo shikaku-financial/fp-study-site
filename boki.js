@@ -6,7 +6,7 @@
  let store={schema:1,active:null,history:[]},level='3',form='1',session=null,displayed=null,timer=null,dirty=false;
  function say(text){notice.textContent=text;notice.classList.toggle('hidden',!text);}
  function persist(){
-  try{localStorage.setItem(KEY,JSON.stringify(store));dirty=false;document.getElementById('boki-save-status')?.replaceChildren(document.createTextNode('このブラウザに保存しました'));return true;}
+  try{localStorage.setItem(KEY,JSON.stringify(store));dirty=false;document.getElementById('boki-save-status')?.replaceChildren(document.createTextNode('このブラウザに保存しました'));if(notice.textContent.startsWith('保存に失敗しました。'))say('');return true;}
   catch{dirty=true;say('保存に失敗しました。この画面では解答を続けられますが、閉じると今回の変更が失われる場合があります。ブラウザの空き容量・保存設定をご確認ください。');return false;}
  }
  try{
