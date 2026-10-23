@@ -1,6 +1,7 @@
 'use strict';
 const BOKI_CORE = (()=>{
  const revision='2026-10-23-a';
+ const examFor=(data,level,form='1')=>form==='1'?data[String(level)]:data[String(level)]?.forms?.[form];
  const allItems=exam=>exam.sections.flatMap(s=>s.items);
  const points=item=>item.type==='journal'?item.points:item.fields.reduce((n,f)=>n+f.points,0);
  function number(value){
@@ -39,7 +40,9 @@ const BOKI_CORE = (()=>{
  function touched(answer){return !!answer&&Object.values(answer).some(v=>Array.isArray(v)?v.some(r=>r.some(x=>x!=='')):v!=='');}
  function validSession(s,data){
   if(!s||s.revision!==revision||!['2','3'].includes(String(s.level))||!['exam','practice','review'].includes(s.mode)||!Array.isArray(s.ids)||!s.ids.length||s.ids.length>50)return false;
-  const ids=new Set(allItems(data[String(s.level)]).map(i=>i.id));
+  const exam=examFor(data,s.level,s.form??'1');
+  if(!exam||!Array.isArray(exam.sections))return false;
+  const ids=new Set(allItems(exam).map(i=>i.id));
   if(new Set(s.ids).size!==s.ids.length||!s.ids.every(id=>ids.has(id)))return false;
   if(!Number.isInteger(s.index)||s.index<0||s.index>=s.ids.length||!s.answers||typeof s.answers!=='object'||!s.checked||typeof s.checked!=='object'||!s.flags||typeof s.flags!=='object')return false;
   if(s.mode==='exam'&&(!Number.isFinite(s.deadline)||s.deadline<=0))return false;
@@ -47,13 +50,13 @@ const BOKI_CORE = (()=>{
   for(const id of s.ids){
    const a=s.answers[id];if(a===undefined)continue;
    if(!a||typeof a!=='object'||Array.isArray(a))return false;
-   const item=allItems(data[String(s.level)]).find(i=>i.id===id);
+   const item=allItems(exam).find(i=>i.id===id);
    if(item.type==='journal'){
     if(!['debit','credit'].every(k=>Array.isArray(a[k])&&a[k].length<=5&&a[k].every(r=>Array.isArray(r)&&r.length===2&&r.every(v=>typeof v==='string'&&v.length<100))))return false;
    }else if(Object.values(a).some(v=>typeof v!=='string'||v.length>100))return false;
   }
   return true;
  }
- return {revision,allItems,points,number,grade,result,touched,validSession};
+ return {revision,examFor,allItems,points,number,grade,result,touched,validSession};
 })();
 if(typeof module!=='undefined')module.exports=BOKI_CORE;

@@ -10,8 +10,8 @@ function env(saved){
   document:{hidden:false,getElementById:node,createTextNode:t=>t,addEventListener:(type,fn)=>{events['document:'+type]=fn;}},
   window:{confirm:()=>true,addEventListener:(type,fn)=>{events['window:'+type]=fn;}},
   localStorage:{getItem:k=>data.get(k)??null,setItem:(k,v)=>{if(fail)throw Error('quota');data.set(k,v);}},setInterval:()=>1,clearInterval(){}});
- for(const file of ['boki-data.js','boki-core.js','boki.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context);
- return {data,nodes,click:(action,extra={})=>events['boki-app:click']({target:{closest:()=>({disabled:false,dataset:{action,...extra}})}}),input:dataset=>events['boki-app:input']({target:{dataset,value:dataset.value}}),state:()=>JSON.parse(data.get(KEY)),fail:v=>{fail=v;},advance:ms=>{now+=ms;events['document:visibilitychange']?.();}};
+ for(const file of ['boki-data.js','boki-extra.js','boki-core.js','boki.js'])vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),context);
+ return {data,nodes,click:(action,extra={})=>events['boki-app:click']({target:{closest:()=>({disabled:false,dataset:{action,...extra}})}}),input:dataset=>events['boki-app:input']({target:{dataset,value:dataset.value}}),changeForm:value=>events['boki-app:change']({target:{id:'boki-form',value}}),state:()=>JSON.parse(data.get(KEY)),fail:v=>{fail=v;},advance:ms=>{now+=ms;events['document:visibilitychange']?.();}};
 }
 let e=env();e.data.set('fp-lab-progress','FP sentinel');e.click('exam');let s=e.state();assert.equal(s.active.ids.length,18);assert.equal(s.active.deadline-s.active.started,3600000);
 for(const [side,account]of[['debit','仕入'],['credit','買掛金']]){e.input({side,row:'0',part:'0',value:account});e.input({side,row:'0',part:'1',value:'４８，０００'});}
@@ -24,4 +24,11 @@ e=env();e.click('practice');e.input({side:'debit',row:'0',part:'0',value:'仕入
 // Stored expired attempts must finish once on resume, not start a new timer.
 e=env();e.click('exam');const stale=e.state();stale.active.deadline=1;e=env([[KEY,JSON.stringify(stale)]]);e.click('resume');assert.equal(e.state().history.length,1);assert.equal(e.state().active,null);
 e=env([[KEY,'{broken']]);assert.ok(e.nodes['boki-notice'].textContent.includes('読み込めません'));assert.equal(e.data.get(KEY),'{broken');
+// Exam form is retained through reload, history and wrong-only review.
+e=env();e.changeForm('2');e.click('exam');assert.equal(e.state().active.form,'2');assert.ok(e.state().active.ids.every(id=>id.includes('-r2-')));
+e.input({side:'debit',row:'0',part:'0',value:'売掛金'});e.input({side:'debit',row:'0',part:'1',value:'95000'});e.input({side:'credit',row:'0',part:'0',value:'売上'});e.input({side:'credit',row:'0',part:'1',value:'95000'});
+e.click('pause');e=env(e.data);e.click('resume');assert.ok(e.nodes['boki-app'].innerHTML.includes('第2回'));e.click('finish');assert.equal(e.state().history[0].form,'2');e.click('result-review');assert.equal(e.state().active.form,'2');assert.equal(e.state().active.ids.length,17);assert.ok(!e.state().active.ids.includes('b3-r2-j01'));
+e.click('pause');e.click('discard');e.changeForm('1');e.click('review');assert.ok(e.nodes['boki-notice'].textContent.includes('復習する問題はありません'));
+// Historical first-exam sessions without a form discriminator remain valid.
+e=env();e.click('exam');const legacy=e.state();delete legacy.active.form;e=env([[KEY,JSON.stringify(legacy)]]);e.click('resume');assert.ok(e.nodes['boki-app'].innerHTML.includes('第1回'));assert.equal(e.state().active.ids[0],'b3-j01');
 console.log('PASS: bookkeeping production UI event flows; navigation, selection/numeric persistence, reload/resume, isolated FP records, wrong-only review, exam timeout, expired resume, corrupt storage and quota failure');
