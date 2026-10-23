@@ -33,7 +33,10 @@ const a=fields('3'),b=fields('2');
 // FIFO: reconstruct inventory lots and both issues without relying on the answer table.
 let lots=[[80,400],[120,450]];function issue(qty){let cost=0;while(qty){const take=Math.min(qty,lots[0][0]);cost+=take*lots[0][1];qty-=take;lots[0][0]-=take;if(!lots[0][0])lots.shift();}return cost;}
 assert.equal(a.v1,issue(150));assert.equal(a.v2,lots.reduce((n,r)=>n+r[0],0));assert.equal(a.v3,lots.reduce((n,r)=>n+r[0]*r[1],0));lots.push([100,480]);assert.equal(a.v4,issue(100));assert.equal(a.v5,lots.reduce((n,r)=>n+r[0]*r[1],0));
-assert.equal(a.b4,492000+80000-67000);assert.equal(a.b5,418000+120000-6000-(74000-47000));assert.equal(a.b4,a.b5);
+const entries=[[['現金',52000],['売掛金',52000]],[['通信費',18000],['現金',18000]],[['仕入',72000],['買掛金',72000]],[['現金',96000],['売上',96000]],[['買掛金',45000],['現金',45000]],[['売掛金',84000],['売上',84000]],[['仕入',48000],['買掛金',48000]]];
+const totals=[new Map(),new Map()];for(const entry of entries)entry.forEach(([account,n],side)=>totals[side].set(account,(totals[side].get(account)||0)+n));
+assert.equal(a.t1,totals[0].get('現金'));assert.equal(a.t2,totals[1].get('現金'));assert.equal(a.t3,totals[0].get('売掛金'));assert.equal(a.t4,totals[0].get('仕入'));assert.equal(a.t5,totals[1].get('売上'));assert.equal([...totals[0].values()].reduce((a,b)=>a+b,0),415000);assert.equal([...totals[1].values()].reduce((a,b)=>a+b,0),415000);
+assert.ok(C.allItems(E['3']).every(item=>!item.title?.includes('銀行勘定調整')),'bank reconciliation is outside level 3');
 for(const level of ['3','2']){
  const trial=C.allItems(E[level]).find(i=>i.id==='b'+level+'-r2-financial').tables[0].rows;
  const sums=[1,2].map(col=>trial.slice(0,-1).reduce((n,r)=>n+Number(r[col].replace(/,/g,'')||0),0));assert.equal(sums[0],sums[1]);assert.equal(sums[0],Number(trial.at(-1)[1].replace(/,/g,'')));
@@ -53,4 +56,4 @@ const assets2=2000000+(1800000+200000)-(1800000+200000)*.02+650000+(3600000-7200
 assert.equal(assets2,1400000+2000000+20000+(160000-100000)+4000000+1170000-netLoss);
 const rate=9000000/6000,appliedA=160*rate,appliedB=80*rate;assert.equal(b.w1,rate);assert.equal(b.w2,appliedA);assert.equal(b.w3,appliedB);assert.equal(b.w4,240000+180000+appliedA);assert.equal(b.w5,160000+120000+appliedB);assert.equal(b.w6,380000-appliedA-appliedB);assert.equal(b.w7,b.w5);assert.equal(b.w8,1000000-b.w4);
 assert.equal(b.z1,(520-500)*2500);assert.equal(b.z2,(2500-600*4)*500);assert.equal(b.z3,2500*520-600*4*500);assert.equal(b.z3,b.z1+b.z2);assert.equal(b.z4,(1240-1200)*1250);assert.equal(b.z5,(1250-600*2)*1200);assert.equal(b.z6,1250*1240-600*2*1200);assert.equal(b.z6,b.z4+b.z5);
-console.log('PASS: four 100-point exams, 60 distinct items, form-scoped IDs, second-exam trial/financial/FIFO/bank/consolidation/job-cost/standard-cost independent calculations');
+console.log('PASS: four 100-point exams, 60 distinct items, form-scoped IDs, second-exam trial/financial/FIFO/voucher/consolidation/job-cost/standard-cost independent calculations');
