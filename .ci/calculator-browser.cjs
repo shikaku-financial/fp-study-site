@@ -30,9 +30,9 @@ async function run(name){
    await panel.focus();await panel.press('Escape');assert.equal(await panel.isVisible(),false);assert.equal(await toggle.evaluate(el=>el===document.activeElement),true);
    assert.deepEqual(await storage(),initial,'calculator never changes learning records');
    if(lab==='fp.html'){
-    await page.locator('#openPracticalTop').click();await page.locator('#prTracks button').first().click();
+    await page.locator('#openPracticalTop').click();await page.locator('#prSelectLevel2').click();
+    await page.locator('.pr-track').filter({hasText:'損保顧客資産相談業務'}).getByRole('button',{name:'第1回（15問）を練習',exact:true}).click();
     await page.locator('#practicalExam').waitFor({state:'visible'});
-    for(let i=0;i<20&&!await page.locator('#practicalExam input[type="text"]:visible').count();i++)await page.locator('#prNext').click();
    }else await page.locator('button[data-action="practice"]').click();
    const input=page.locator(lab==='fp.html'?'#practicalExam input[type="text"]:visible':'#boki-app input[data-side="debit"]:visible').first();
    assert.ok(await input.isVisible(),'numeric answer field available');
