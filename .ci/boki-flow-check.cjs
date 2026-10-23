@@ -31,4 +31,8 @@ e.click('pause');e=env(e.data);e.click('resume');assert.ok(e.nodes['boki-app'].i
 e.click('pause');e.click('discard');e.changeForm('1');e.click('review');assert.ok(e.nodes['boki-notice'].textContent.includes('復習する問題はありません'));
 // Historical first-exam sessions without a form discriminator remain valid.
 e=env();e.click('exam');const legacy=e.state();delete legacy.active.form;e=env([[KEY,JSON.stringify(legacy)]]);e.click('resume');assert.ok(e.nodes['boki-app'].innerHTML.includes('第1回'));assert.equal(e.state().active.ids[0],'b3-j01');
+// A second tab must not be overwritten by a stale session's next input.
+e=env();e.click('practice');const original=e.data.get(KEY);const other=JSON.parse(original);other.active.flags['b3-j01']=true;e.data.set(KEY,JSON.stringify(other));const external=e.data.get(KEY);
+e.input({side:'debit',row:'0',part:'1',value:'48000'});assert.equal(e.data.get(KEY),external,'stale tab must not overwrite newer saved records');assert.match(e.nodes['boki-notice'].textContent,/別のタブ/);
+e=env(e.data);e.click('resume');assert.equal(e.state().active.flags['b3-j01'],true,'reload should recover the other tab\'s record');
 console.log('PASS: bookkeeping production UI event flows; navigation, selection/numeric persistence, reload/resume, isolated FP records, wrong-only review, exam timeout, expired resume, corrupt storage and quota failure');

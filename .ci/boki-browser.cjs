@@ -90,6 +90,16 @@ async function run(engineName){
   await page.evaluate(key=>{const s=JSON.parse(localStorage.getItem(key));s.active.deadline=Date.now()-1;localStorage.setItem(key,JSON.stringify(s));},KEY);
   await page.reload({waitUntil:'load'});await click('resume');assert.match(await page.locator('.boki-summary').innerText(),/4\s*\/\s*100点/);assert.equal((await saved()).active,null);
   await click('home');
+  // A second mobile tab's newer saved session must not be overwritten.
+  await choose('3','1');await click('practice');
+  const otherTab=await context.newPage();await otherTab.goto(BASE,{waitUntil:'load'});
+  await otherTab.evaluate(key=>{const s=JSON.parse(localStorage.getItem(key));s.active.flags['b3-j01']=true;localStorage.setItem(key,JSON.stringify(s));},KEY);
+  await otherTab.close();const newer=await saved();
+  await page.locator('input[data-side="debit"][data-row="0"]').fill('48000');
+  assert.deepEqual(await saved(),newer,'stale tab must not overwrite another tab');
+  assert.match(await page.locator('#boki-notice').innerText(),/別のタブ/);
+  await page.reload({waitUntil:'load'});await click('resume');assert.equal((await saved()).active.flags['b3-j01'],true);
+  await click('pause');await click('discard');
   // Exercise a storage quota error without a false "saved" claim.
   await choose('3','1');await click('practice');
   const before=(await saved()).active.answers;
