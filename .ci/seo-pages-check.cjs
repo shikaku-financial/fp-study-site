@@ -33,6 +33,11 @@ for(const grade of ['fp2-study.html','fp3-study.html']){
  const html=fs.readFileSync(path.join(root,grade),'utf8');
  assert.ok(html.includes('href="fp-level-comparison.html"'),grade+' must link to the level comparison guide');
 }
+const usageGuide=fs.readFileSync(path.join(root,'guide.html'),'utf8');
+for(const landing of ['fp3-mock-exam.html','fp2-nonlife-practical.html']){
+ assert.ok(usageGuide.includes('href="'+landing+'"'),'guide must link to relevant practice landing: '+landing);
+}
+
 const comparison=fs.readFileSync(path.join(root,'fp-level-comparison.html'),'utf8');
 assert.ok(comparison.includes('class="comparison-table-scroll" role="region"')&&comparison.includes('tabindex="0"'),'comparison table must have accessible scroll region');
 const styles=fs.readFileSync(path.join(root,'info.css'),'utf8');
