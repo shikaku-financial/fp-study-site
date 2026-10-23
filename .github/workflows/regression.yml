@@ -33,6 +33,8 @@ jobs:
           node .ci/boki-check.cjs
           node .ci/boki-second-check.cjs
           node .ci/boki-flow-check.cjs
+      - name: Check FLL parent routes and brand contracts
+        run: node .ci/fll-check.cjs
       - name: Check static search landing pages and sitemap
         run: node .ci/seo-pages-check.cjs
       - name: Check deployed audit syntax

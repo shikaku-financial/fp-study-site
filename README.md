@@ -1,12 +1,20 @@
-# FPラボ｜ファイナンシャル・ライセンス・ラボ
+# ファイナンシャル・ライセンス・ラボ（FLL）
 
 FP2級・3級の**無料・登録不要**の学習サイトです。学科360問・実技240問の独自演習、分野別の問題演習、60問模試、採点・解説、復習に対応しています。日本FP協会・金融財政事情研究会（金財）の非公式サイトです。
 
-- **正規公開サイト:** https://fll-fp-lab.pages.dev/
+- **FLL総合トップ:** https://fll-fp-lab.pages.dev/
+- **FPラボ:** https://fll-fp-lab.pages.dev/fp
+- **簿記ラボ:** https://fll-fp-lab.pages.dev/boki
 - **既存のGitHub Pages:** https://shikaku-financial.github.io/fp-study-site/
 - **リポジトリ:** https://github.com/shikaku-financial/fp-study-site
 - **法令基準日（問題データの基準）:** 2026年4月1日。全600問の専門家による包括監修が完了したことを意味しません。
 - **収益方針:** 無料・登録不要を維持し、将来的に広告で運営。広告配信コード・解析タグは現時点で導入していません。
+
+## FLLの共通デザイン・導線
+
+`index.html` は資格を選ぶ親ブランドのトップ。`fp.html` と `boki.html` が各ラボの独立した入口です。全ページは既存FLLロゴと `brand.css` の配色・文字・ヘッダー・フッターを共有し、試験ごとの表・選択肢・解答形式は保持します。ホームの `fll.js` は従来の `index.html?level=...` / `?view=practical` / 既知のFPハッシュを `fp.html` へ引き継ぎます。公開オリジンや学習データの保存キーは変更しません。
+
+`fll.webmanifest` はFLLトップ、既存 `site.webmanifest` はFPラボを起動します。`node .ci/fll-check.cjs` が旧リンク互換・共通ブランド・テキストのコントラストを確認。既存FP93テスト群は現在のFPページを旧fixture名へコピーして実行し、親トップとは別に検証します。CIの `fll-browser.cjs` は320/390/768/1440pxで両ブラウザエンジンを検証し、確認用PNGをworkflow artifactへ保持します。
 
 ## 簿記ラボ
 
@@ -47,7 +55,7 @@ Cloudflare Pagesを正規公開先とし、同じリポジトリからGitHub Pag
 - `node .ci/build-static.cjs`：公開用 `dist/` の生成と許可ファイル検証
 - `.github/workflows/live-security-audit.yml`：本番応答の防御ヘッダーを週次と公開変更時に検査
 
-現行の学習コードはルートの `index.html`、`app.js`、`questions.js`、`practical.js`、`practical-questions.js`、`practical-materials.js` 等です。既存の問題ID・回答記録・採点ロジックを、ドキュメント更新だけを理由に変更しません。
+現行のFP学習コードはルートの `fp.html`、`app.js`、`questions.js`、`practical.js`、`practical-questions.js`、`practical-materials.js` 等です。既存の問題ID・回答記録・採点ロジックを、ドキュメント更新だけを理由に変更しません。
 
 ## 運用と関連資料
 

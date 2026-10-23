@@ -6,6 +6,11 @@ on:
     paths:
       - '_headers'
       - '*.html'
+      - 'brand.css'
+      - 'hub.css'
+      - 'fll.js'
+      - 'fll.webmanifest'
+      - 'fp.html'
       - '.ci/live-security-audit.cjs'
       - '.github/workflows/live-security-audit.yml'
   schedule:

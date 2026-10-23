@@ -5,7 +5,7 @@ const assert=require('node:assert/strict');
 const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const site='https://fll-fp-lab.pages.dev/';
-const pages=['boki.html','index.html','guide.html','fp3-study.html','fp3-mock-exam.html','fp2-study.html','fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html','fp2-nonlife-practical.html','about.html','privacy.html','contact.html'];
+const pages=['fp.html','boki.html','index.html','guide.html','fp3-study.html','fp3-mock-exam.html','fp2-study.html','fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html','fp2-nonlife-practical.html','about.html','privacy.html','contact.html'];
 const urls=new Set();
 for(const file of pages){
  const html=fs.readFileSync(path.join(root,file),'utf8');
@@ -43,7 +43,7 @@ assert.ok(comparison.includes('class="comparison-table-scroll" role="region"')&&
 const styles=fs.readFileSync(path.join(root,'info.css'),'utf8');
 assert.ok(styles.includes('.comparison-table-scroll{max-width:100%;overflow-x:auto'),'comparison table must scroll on narrow viewports');
 const practicalGuide=fs.readFileSync(path.join(root,'practical-tracks.html'),'utf8');
-for(const grade of ['2','3']) assert.ok(practicalGuide.includes('href="index.html?view=practical&amp;level='+grade+'"'),'practical study entry missing for FP'+grade);
+for(const grade of ['2','3']) assert.ok(practicalGuide.includes('href="fp.html?view=practical&amp;level='+grade+'"'),'practical study entry missing for FP'+grade);
 assert.ok(practicalGuide.includes('事例形式5題（15問）')&&practicalGuide.includes('class="comparison-table-scroll" role="region"'),'official practical format comparison missing');
 const notFound=fs.readFileSync(path.join(root,'404.html'),'utf8');
 assert.match(notFound,/<meta\s+name="robots"\s+content="noindex,follow">/i,'404 page must be noindex');
@@ -63,19 +63,19 @@ assert.match(robots,/^User-agent:\s*\*/m,'robots.txt must state user-agent');
 assert.ok(robots.includes('Sitemap: '+site+'sitemap.xml'),'robots.txt points to incorrect sitemap URL');
 assert.ok(!robots.includes('Disallow: /'),'production crawl disallowed');
 for(const file of ['fp3-study.html','fp2-study.html','fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html']){
-  assert.ok(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('href="'+file+'"'),file+' not discoverable from home');
+  assert.ok(fs.readFileSync(path.join(root,'fp.html'),'utf8').includes('href="'+file+'"'),file+' not discoverable from home');
 }
 for(const grade of ['2','3']){
  const guide=fs.readFileSync(path.join(root,'fp'+grade+'-study.html'),'utf8');
- assert.ok(guide.includes('class="info-cta" href="index.html?level='+grade+'"'), 'grade-specific practice link missing for FP'+grade);
+ assert.ok(guide.includes('class="info-cta" href="fp.html?level='+grade+'"'), 'grade-specific practice link missing for FP'+grade);
  const compare=fs.readFileSync(path.join(root,'fp-level-comparison.html'),'utf8');
- assert.ok(compare.includes('class="info-cta" href="index.html?level='+grade+'"'), 'comparison must offer FP'+grade+' direct entry');
+ assert.ok(compare.includes('class="info-cta" href="fp.html?level='+grade+'"'), 'comparison must offer FP'+grade+' direct entry');
 }
-for(const [file,entry] of [['fp3-mock-exam.html','index.html?level=3'],['fp2-nonlife-practical.html','index.html?view=practical&amp;level=2']]) {
+for(const [file,entry] of [['fp3-mock-exam.html','fp.html?level=3'],['fp2-nonlife-practical.html','fp.html?view=practical&amp;level=2']]) {
  const html=fs.readFileSync(path.join(root,file),'utf8');
  assert.ok(html.includes('href="'+entry+'"'),file+' must link to working exam entry');
  assert.ok(html.includes('独自')&&html.includes('非公式'),file+' must identify its unofficial original exercises');
- assert.ok(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('href="'+file+'"'),file+' must be reachable from homepage');
+ assert.ok(fs.readFileSync(path.join(root,'fp.html'),'utf8').includes('href="'+file+'"'),file+' must be reachable from homepage');
 }
 const home=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const publisher=home.match(/<meta\s+name="google-adsense-account"\s+content="ca-(pub-\d{16})"/i)?.[1];
@@ -99,10 +99,11 @@ for(const [filename] of icons){
 for(const file of [...pages.filter(p=>p!=='boki.html'),'404.html']){
  const html=fs.readFileSync(path.join(root,file),'utf8');
  const head=html.slice(0,html.toLowerCase().indexOf('</head>'));
- for(const [rel,filename] of [['apple-touch-icon','apple-touch-icon.png'],['icon','favicon-32x32.png'],['manifest','site.webmanifest']]){
+ const parent=['index.html','about.html','privacy.html','contact.html','404.html'].includes(file);
+ for(const [rel,filename] of [['apple-touch-icon','apple-touch-icon.png'],['icon','favicon-32x32.png'],['manifest',parent?'fll.webmanifest':'site.webmanifest']]){
   assert.ok(head.includes('rel="'+rel+'"')&&head.includes('href="'+filename+(filename==='favicon-32x32.png'?'?v=2':'')+'"'),file+' missing '+rel+' head tag');
  }
- assert.ok(head.includes('name="apple-mobile-web-app-title" content="FPラボ"'),file+' missing iOS shortcut title');
+ assert.ok(head.includes('name="apple-mobile-web-app-title" content="'+(parent?'FLL':'FPラボ')+'"'),file+' missing iOS shortcut title');
 }
 
 const ico=fs.readFileSync(path.join(root,'favicon.ico'));
@@ -133,7 +134,7 @@ console.log('PASS: Safari/apple-touch icons are correctly linked in all pages');
 
 // Keep internal data revision identifiers separate from public-facing text.
 // The release date is the only public build/change marker.
-const landingHtml=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const landingHtml=fs.readFileSync(path.join(root,'fp.html'),'utf8');
 assert.ok(!/Ver\.\s*\d+|Version\s*\d+/i.test(landingHtml),'public version number must not appear in HTML');
 assert.ok(!landingHtml.includes('id="prBuildVersion"'),'old version display must not remain');
 assert.ok(landingHtml.includes('id="prUpdatedDate"'),'practical screen should show updated date');

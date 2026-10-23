@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google-adsense-account" content="ca-pub-9028316286727677">
+  <meta name="google-site-verification" content="IaQ2h_bAxWYmvEXqQLdbZX7AEyEYOqppZuB3h4aoBC0">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="ファイナンシャル・ライセンス・ラボ内のFPラボ。FP2級・3級の学科・実技試験対策。無料・登録不要。学科360問、実技240問の独自演習。間違えた問題だけ再演習できます。">
+  <title>FPラボ｜FP2級・3級 学科・実技対策｜ファイナンシャル・ライセンス・ラボ</title>
+  <link rel="stylesheet" href="style.css?v=b22c5daa8037d371">
+  <link rel="canonical" href="https://fll-fp-lab.pages.dev/fp">
+  <link rel="stylesheet" href="info.css?v=1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=2">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="apple-mobile-web-app-title" content="FPラボ">
+  <meta name="application-name" content="FPラボ">
+<link rel="stylesheet" href="brand.css?v=20261023d">
+</head>
+<body>
+  <header class="fll-header"><div class="fll-header-inner"><a class="fll-logo" href="index.html" aria-label="ファイナンシャル・ライセンス・ラボのトップへ"><img src="financial-license-lab-logo.png" width="900" height="300" alt="ファイナンシャル・ライセンス・ラボ"></a><div class="fll-context"><small>FINANCIAL LICENSE LAB</small><strong>FPラボ</strong></div></div><nav class="fll-nav" aria-label="FLLの学習ラボ"><div class="fll-nav-inner"><a href="index.html">FLLトップ</a><a href="#home" aria-current="page" id="siteHomeLink">FPラボ</a><a href="boki.html">簿記ラボ</a></div></nav></header>
+
+  <main class="container">
+    <section id="home" aria-label="ホーム">
+      <h1 class="landing-title">FP2級・3級の無料問題演習</h1>
+      <p class="muted small landing-intro">学科360問・実技240問の独自問題を、登録不要で練習できます。分野別演習、模試、復習に対応しています。</p>
+      <p class="muted small"><a href="guide.html">初めての方へ：使い方・学習ガイド</a>｜<a href="fp3-study.html">FP3級の勉強方法</a>｜<a href="fp2-study.html">FP2級の勉強方法</a>｜<a href="fp-level-comparison.html">FP2級と3級の違い</a>｜<a href="fp-calculation-guide.html">FPの計算問題の解き方</a>｜<a href="fp3-mock-exam.html">FP3級の無料60問模試</a>｜<a href="practical-tracks.html">実技科目の違い</a>｜<a href="fp2-nonlife-practical.html">FP2級・損保実技対策</a></p>
+      <div class="home-tabs" aria-label="試験種別を選ぶ"><span class="tab-on">学科試験</span><button id="openPracticalTop" type="button">実技試験を学習する →</button></div>
+      <div class="card">
+        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">更新日：2026年10月23日</span></div>
+        <div class="controls level-controls" role="group" aria-label="級を選択">
+          <button type="button" id="level3" class="active" aria-pressed="true">FP3級</button>
+          <button type="button" id="level2" aria-pressed="false">FP2級</button>
+        </div>
+        <p class="muted" id="count" aria-live="polite"></p>
+        <label for="category" class="field-label">出題分野</label>
+        <select id="category"></select>
+        <label for="practiceCount" class="field-label">1回の演習問題数</label>
+        <select id="practiceCount"><option value="20" selected>20問</option></select>
+        <p id="practiceCountNotice" class="muted small" aria-live="polite"></p>
+        <label class="check-label"><input type="checkbox" id="shuffle" checked> 問題の順番をランダムにする</label>
+        <div class="actions">
+          <button type="button" id="startPractice" class="primary">問題演習を開始</button>
+          <button type="button" id="startReview">間違えた問題を復習</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-heading"><h2>模擬試験モード</h2><span class="pill">全60問に対応</span></div>
+        <p>試験形式に近い操作で、<strong>最後にまとめて採点</strong>します。途中で前の問題に戻って解答を変更できます。</p>
+        <div class="exam-option">
+          <div><h3>6問ミニ模試</h3><p class="muted small">制限時間10分／全分野から出題／終了後に解説</p></div>
+          <button type="button" id="startMini" class="primary">開始する</button>
+        </div>
+        <div class="exam-option">
+          <div><h3>本番型60問模試</h3><p class="muted small" id="fullExamStatus">問題データを確認しています。</p><p class="muted small">問題は各分野から均等に抽出し、3級は○×30問と三択30問、2級は四択60問を出題します。本試験の時間・設問形式・採点基準を参考にしたオリジナル例題です。問題の難易度が本試験と同等であることを保証するものではありません。</p></div>
+          <button type="button" id="startFull" class="primary" disabled>準備中</button>
+        </div>
+        <button type="button" id="resumeExam" class="outline-full hidden">中断した模試を再開</button>
+        <p class="muted small">※ミニ模試は操作練習用で合否判定はありません。60問模試の判定は学習の目安です。</p>
+      </div>
+
+      <div class="card practical-promo">
+        <div class="section-heading"><h2>FPラボ｜実技試験の演習</h2><span class="muted small">更新日：2026年10月23日</span></div>
+        <p>日本FP協会3級20問・2級40問、金財3級2科目・2級4科目は各30問、計8科目240問のオリジナル実技例題に対応。事例・計算問題を練習できます。</p>
+        <button type="button" id="openPractical" class="primary full-width">実技試験の科目を選ぶ</button>
+        <p class="muted small">実技の各科目は独自演習です。正式配点による合否判定は行いません。</p>
+      </div>
+
+
+      <section class="card official-card" id="official-resources" aria-labelledby="official-heading">
+        <h2 id="official-heading">試験実施団体の公式情報</h2>
+        <p class="muted small official-lead">日本FP協会・金財の試験情報・法令基準日へのリンクです。<strong>当サイトは非公式です。</strong></p>
+        <details class="usage-details official-toggle" id="officialDetails">
+          <summary>公式情報・参考リンクを表示</summary>
+          <div class="usage-details-body official-toggle-body">
+            <p class="muted small">以下は試験実施団体の公式サイトへの外部リンクです。当サイトが公式に運営・公認・監修されていることを意味しません。</p>
+        <div class="official-organizations">
+          <div class="official-organization">
+            <h3>日本FP協会</h3>
+            <p class="muted small">FP2級・3級の学科試験、資産設計提案業務（実技）</p>
+            <div class="official-links">
+              <a href="https://www.jafp.or.jp/exam/outline/" target="_blank" rel="noopener noreferrer">試験要綱・試験時間 <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div class="official-organization">
+            <h3>金融財政事情研究会（金財）</h3>
+            <p class="muted small">FP2級・3級の学科試験、相談業務別の実技試験</p>
+            <div class="official-links">
+              <a href="https://www.kinzai.or.jp/ginou/fp/list/fp" target="_blank" rel="noopener noreferrer">FP技能検定の案内 <span aria-hidden="true">↗</span></a>
+              <a href="https://www.kinzai.or.jp/ginou/fp/law.html" target="_blank" rel="noopener noreferrer">法令基準日 <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
+        <p class="official-law-alert">法令基準日に注意：金財の2026年5月公表問題は原則2025年4月1日基準です。2026年6月～2027年5月の2・3級CBT試験は2026年4月1日基準となります。</p>
+        <details class="source-details">
+          <summary>参考資料と問題の確認状況について</summary>
+          <div class="source-details-body">
+            <p>当サイトは、両団体が公開した過去問の出題形式・分野・テーマを参考に、学習用の問題を<strong>独自作成</strong>しています。公式の試験問題を掲載するサービスではありません。</p>
+            <p>問題に付した参考リンクは<strong>制度・内容を確認するための資料</strong>です。リンクがあることは、当該問題の正答・解説が公的機関や専門家により承認・監修されたことを意味しません。現在、全問の専門家監修は完了していません。</p>
+            <p>2026年5月公表の金財CBT問題の法令基準日は原則2025年4月1日ですが、金財が案内する2026年6月～2027年5月の2級・3級CBT試験の法令基準日は2026年4月1日です。最新の制度と一致しない設問が含まれる可能性があります。</p>
+            <p>試験問題の利用条件：<a href="https://www.jafp.or.jp/exam/mohan/files/exam_riyou.pdf" target="_blank" rel="noopener noreferrer">日本FP協会（PDF） ↗</a> ／ <a href="https://www.kinzai.or.jp/ginou/license_terms.html" target="_blank" rel="noopener noreferrer">金財（ウェブサイト） ↗</a></p>
+            <p class="muted small">公式ページのリンク先を確認：2026年10月12日／この日付は個別問題の内容検証完了日ではありません。</p>
+          </div>
+        </details>
+          </div>
+        </details>
+      </section>
+
+      <div class="card">
+        <h2>学習記録</h2>
+        <p id="stats" class="stats" aria-live="polite"></p><p id="revisionNotice" class="muted small hidden"></p>
+        <div id="categoryStats" class="category-stats"></div>
+        <div id="examHistory" class="muted small"></div><div id="examHistoryList" class="exam-history-list" aria-label="過去の模試の受験履歴"></div><p class="muted small">模試は採点後に問題別の答え合わせを再表示できます。旧形式の学習記録は引き継がれません。現在の学習履歴と模試の途中経過は引き続き利用できます。</p>
+        <button type="button" id="clearStats" class="subtle">この端末の学習記録を削除</button>
+        <p class="muted small">回答記録と模試の途中経過はこのブラウザ内に保存されます。別の端末には引き継がれません。</p>
+      </div>
+
+      <div class="card usage-card">
+        <h2>ご利用にあたって</h2>
+        <p>本サイトは<strong>「ファイナンシャル・ライセンス・ラボ」のFP学習コーナー「FPラボ」</strong>です。無料・登録不要の非公式サイトです。日本FP協会・金財による運営・公認・監修は受けていません。<a href="https://www.jafp.or.jp/exam/outline/" target="_blank" rel="noopener noreferrer">試験の正式情報は公式サイト ↗</a>をご確認ください。</p>
+        <details class="usage-details" id="usageDetails">
+          <summary>詳しい注意事項を表示</summary>
+          <div class="usage-details-body">
+            <h3>運営方針・免責</h3>
+            <p>本サイトは試験実施団体とは独立した非公式学習サービスです。各団体との提携・協力・公認・監修関係はありません。試験問題の構成や出題テーマを参考にした独自問題を掲載しています。</p>
+            <p>問題の正答・解説について全問の専門家監修が完了したものではなく、誤り・制度変更への未対応が含まれる場合があります。本サイトで得られた結果は、実際の試験の得点や合否を保証するものではありません。</p>
+            <h3>参考資料と法令</h3>
+            <p>金財の2026年5月公表CBT問題は原則2025年4月1日の法令を基準とします。一方、2026年6月～2027年5月の金財2・3級CBT試験では2026年4月1日が基準日です。実際の受験にあたっては試験実施団体の最新の案内をご確認ください。</p>
+            <h3>学習記録・プライバシー</h3>
+            <p>会員登録や氏名・メールアドレスなどの入力は不要です。解答履歴や中断した試験のデータは、この端末のブラウザのlocalStorageに保存します。サーバーに学習記録を送信するための機能は設置していません。ブラウザのデータを削除すると記録が消える場合があります。</p>
+            <p>サイト配信基盤（Cloudflare Pages、移行期間中のGitHub Pages）や外部リンク先では、アクセスログ等が各事業者のポリシーに基づき扱われる場合があります。</p>
+            <h3>広告・アクセス解析</h3>
+            <p>現時点では広告配信タグやアクセス解析タグを設置していません。今後これらを導入する場合は、プライバシーに関する案内や広告の表示を更新します。</p>
+            <h3>お問い合わせ</h3>
+            <p>問題の内容・採点・表示・保存の不具合は、<a href="https://github.com/shikaku-financial/fp-study-site/issues/new?template=question-report.md" target="_blank" rel="noopener noreferrer">問題・不具合の報告フォーム ↗</a>からご連絡ください（GitHubへのログインが必要です）。報告内容は公開されますので、氏名やメールアドレスなどの個人情報を記載しないでください。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="quiz" class="hidden" aria-label="問題演習">
+      <div class="card">
+        <div class="quiz-top"><span id="qmeta" class="pill"></span><span id="qprogress" class="muted"></span></div>
+        <div class="bar"><div id="progressbar"></div></div>
+        <div id="question" class="question-text" role="group" aria-label="問題文と資料"></div>
+        <div id="choices" role="group" aria-label="選択肢"></div>
+        <div id="feedback" class="hidden result" aria-live="polite"></div>
+        <div class="actions">
+          <button type="button" id="goHomePractice">ホームへ</button>
+          <button type="button" id="submit" class="primary" disabled>回答する</button>
+          <button type="button" id="next" class="primary hidden">次の問題</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="exam" class="hidden" aria-label="模擬試験">
+      <div class="card">
+        <div class="quiz-top"><span id="examLabel" class="pill"></span><span class="timer" id="timer" aria-label="残り時間">10:00</span></div>
+        <div class="quiz-top muted small"><span id="examProgress"></span><span id="examAnswered"></span></div>
+        <div class="bar"><div id="examBar"></div></div>
+        <div id="examQuestion" class="question-text" role="group" aria-label="問題文と資料"></div>
+        <div id="examChoices" role="group" aria-label="模擬試験の選択肢"></div>
+        <div class="actions"><button type="button" id="examPrev">前の問題</button><button type="button" id="examNext" class="primary">次の問題</button></div><button type="button" id="examFlag" class="review-flag" aria-pressed="false">☆ この問題を見直す</button>
+        <details id="examNavDetails" class="exam-nav-details">
+          <summary><span>問題一覧を開く</span><span class="nav-status" id="examNavStatus">回答済 0問 / 全60問</span></summary>
+          <p class="muted small">番号をタップすると、その問題へ移動できます。緑色は回答済み、★は見直し指定、枠が太い番号が現在の問題です。</p>
+          <div class="question-nav" id="examNav" aria-label="問題番号を選択"></div>
+        </details>
+        <div class="exam-jumps"><button type="button" id="examJumpUnanswered" class="jump-unanswered">次の未回答へ移動</button><button type="button" id="examJumpFlagged" class="jump-unanswered">★ 見直し問題へ移動</button></div>
+        <div class="exam-bottom"><button type="button" id="examLeave" class="subtle">保存してホームへ</button><button type="button" id="examFinish" class="danger-outline">採点する</button></div>
+      </div>
+    </section>
+
+    <section id="finish" class="hidden" aria-label="演習結果">
+      <div class="card"><h2>演習結果</h2><p id="summary" class="score-summary"></p><button type="button" class="primary" id="finishHome">ホームに戻る</button></div>
+    </section>
+
+    <section id="examResult" class="hidden" aria-label="模擬試験結果">
+      <div class="card"><h2 id="examResultTitle">模擬試験・採点結果</h2><p class="score-summary" id="examSummary"></p><p class="muted" id="examNote"></p><div class="actions"><button type="button" class="primary" id="examResultHome">ホームへ戻る</button><button type="button" id="examRetry">もう一度挑戦</button></div></div>
+      <div class="card"><h2>分野別の採点結果</h2><div id="examBreakdown" class="category-stats"></div></div>
+      <div class="card"><h2>問題別の答え合わせ</h2>
+        <p class="muted small">間違い・未回答の設問を優先表示します。「全問表示」に切り替えることもできます。</p>
+        <div class="review-filters" role="group" aria-label="答え合わせの表示切り替え">
+          <button type="button" id="reviewIssues" class="active" aria-pressed="true">要復習</button>
+          <button type="button" id="reviewAll" aria-pressed="false">全問表示</button>
+        </div>
+        <p id="reviewEmpty" class="muted hidden"></p>
+        <div id="examReview"></div>
+      </div>
+    </section>
+
+    <section id="practicalHome" class="hidden" aria-label="実技科目選択">
+      <div class="card"><button type="button" id="prBackHome" class="linkish">← 学科トップへ戻る</button>
+        <div class="section-heading"><h2>実技試験｜科目選択</h2><span class="muted small">更新日：2026年10月23日</span></div>
+        <p>実際の公表過去問の出題テーマを参考にした<strong>独自の実技演習</strong>です。出題数・配点は実技本試験と異なる場合があります。<strong>得点率のみ表示</strong>し、合格・不合格の判定はしません。</p>
+        <div class="pr-course-switch" aria-label="実技の級を選択">
+          <p class="pr-course-switch-label">まず受験する級を選択してください</p>
+          <div class="pr-level-tabs" role="group" aria-label="実技の級を選択">
+            <button type="button" id="prSelectLevel3" class="active" aria-pressed="true">FP3級 <small>3科目</small></button>
+            <button type="button" id="prSelectLevel2" aria-pressed="false">FP2級 <small>5科目</small></button>
+          </div>
+        </div>
+        <div id="prTracks" class="pr-track-groups"></div>
+        <div id="prResumeBox" class="hidden pr-resume"><p>保存した実技演習があります。</p><button type="button" id="prResume" class="primary full-width">途中から再開する</button></div>
+        <div id="prHistoryBox" class="hidden pr-history-panel">
+          <div class="pr-history-title"><h3>実技演習の受験履歴</h3><button id="prClearHistory" type="button" class="danger-outline pr-clear-history">履歴をすべて削除</button></div>
+          <p class="muted small">このブラウザに保存した採点済みの記録です。1件ずつ削除することもできます。学科の記録や実技の途中保存データは削除されません。</p>
+          <div id="prHistoryList" class="exam-history-list"></div>
+        </div>
+        <p id="prHistoryValidation" class="muted small" role="status"></p>
+        <p id="prHistoryNotice" class="pr-history-notice muted small" role="status" aria-live="polite"></p>
+        <p class="muted small">法令基準日は2026年4月1日です。学科360問・実技240問の全600問に、同基準への限定論点の確認・改修記録が付きました。確認範囲は設問ごとに異なり、基準日時点の全条文・全約款を照合したものではありません。正式配点・小問別解答、実機確認などは正式リリース前の課題です。全600問の包括監修は未完了です。</p>
+      </div>
+    </section>
+
+    <section id="practicalExam" class="hidden" aria-label="実技演習">
+      <div class="card">
+        <div class="quiz-top"><span id="prLabel" class="pill"></span><span id="prProgress" class="muted"></span></div>
+        <p id="prUpdatedDate" class="muted small">更新日：2026年10月23日</p>
+        <div class="bar"><div id="prBar"></div></div>
+        <p class="muted small" id="prMaterialHelp">資料の表は左右にスクロールできます。文字が小さいときは、資料内の「文字を大きく」ボタンを利用してください。</p>
+        <div id="prCase" class="pr-case"><h3 id="prCaseTitle"></h3><div id="prCaseText"></div></div>
+        <p class="muted small" id="prTopic"></p>
+        <p class="muted small pr-source-disclosure"><a href="https://www.kinzai.or.jp/ginou/fp/law.html" target="_blank" rel="noopener noreferrer">法令基準日は試験実施団体の案内をご確認ください ↗</a></p>
+        <h2 id="prQuestion" class="question-text"></h2>
+        <div id="prChoices" role="group" aria-label="実技問題の解答"></div>
+        <label id="prAutoNextLabel" class="check-label"><input id="prAutoNext" type="checkbox"> 選択肢を選んだら自動で次の問題へ（実技・選択式のみ）</label>
+        <div id="prMultiNumeric" class="hidden"></div>
+        <div id="prNumeric" class="hidden"><label for="prNumberInput" class="field-label">数値を入力</label><div class="pr-num-wrap"><input id="prNumberInput" aria-describedby="prNumberUnit prNumberHelp prNumberFeedback" inputmode="decimal" autocomplete="off" type="text" placeholder="例：123.45"><span id="prNumberUnit"></span></div><p id="prNumberHelp" class="muted small">数字で入力してください。全角数字、3桁区切りのカンマ（例：1,234.5）にも対応します。</p><p id="prNumberFeedback" class="small" role="status" aria-live="polite"></p></div>
+        <div class="actions"><button id="prPrev" type="button">前の問題</button><button id="prNext" type="button" class="primary">次の問題</button></div>
+        <button id="prJumpUnanswered" type="button" class="outline-full">次の未回答問題へ移動</button>
+        <details class="exam-nav-details"><summary><span>問題一覧を開く</span><span id="prAnswered" class="nav-status"></span></summary><div id="prNav" class="question-nav"></div></details>
+        <p id="prSubmitReadiness" class="muted small" role="status" aria-live="polite"></p>
+        <button id="prSubmitJumpUnanswered" type="button" class="outline-full hidden">未回答の問題へ移動</button>
+        <button id="prReviewAnswered" type="button" class="outline-full hidden">回答済みの問題を見直す</button><div class="exam-bottom"><button id="prSaveExit" type="button">保存して戻る</button><button id="prSubmit" type="button" class="danger-outline">採点する</button></div>
+      </div>
+    </section>
+
+    <section id="practicalResult" class="hidden" aria-label="実技演習結果">
+      <div class="card"><h2>実技演習の採点結果</h2><p id="prSummary" class="score-summary"></p><p id="prResultNote" class="muted"></p><div class="actions"><button type="button" id="prResultHome" class="primary">実技科目選択へ</button><button id="prRetry" type="button">同じ科目に再挑戦</button><button id="prRetryMistakes" type="button">間違えた問題だけ再演習</button></div></div>
+      <div class="card"><h2>問題別の答え合わせ</h2><div class="review-filters"><button type="button" id="prIssues" class="active">要復習</button><button type="button" id="prAll">全問</button></div><p id="prReviewEmpty" class="muted"></p><div id="prReviews"></div></div>
+    </section>
+
+    <p class="page-notice">掲載問題は学習用の例題です。試験制度・法令等の最新情報は公式資料をご確認ください。</p>
+  </main>
+
+  <footer class="fll-footer"><nav aria-label="FLLサイト案内"><a href="index.html">FLLトップ</a><a href="fp.html">FPラボ</a><a href="boki.html">簿記ラボ</a><a href="about.html">運営方針</a><a href="privacy.html">プライバシー</a><a href="contact.html">お問い合わせ</a></nav><p>ファイナンシャル・ライセンス・ラボ｜Financial License Lab</p><p>無料・登録不要の非公式学習サイト</p></footer>
+  <script src="questions.js?v=999ebda6a24612a3"></script>
+  <script src="app.js?v=c684ade324ed364c"></script>
+  <script src="practical-questions.js?v=b20317f65322"></script>
+  <script src="practical-materials.js?v=1726c5125a1c"></script>
+  <script src="practical.js?v=fd9594ba2ac5684b"></script>
+</body>
+</html>

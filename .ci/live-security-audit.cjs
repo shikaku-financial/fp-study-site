@@ -2,7 +2,7 @@
 // Read-only verification of Cloudflare Pages' actual HTTPS response.
 const assert=require('node:assert/strict');
 const SITE='https://fll-fp-lab.pages.dev';
-const paths=['/','/guide','/app.js','/boki','/boki-extra.js'];
+const paths=['/','/fp','/guide','/app.js','/boki','/boki-extra.js','/brand.css'];
 async function verify(){
  for(const path of paths){
   const url=SITE+path;
@@ -23,10 +23,12 @@ async function verify(){
   const body=await response.text();
   if(path==='/'){
    assert.ok(body.includes('http-equiv="Content-Security-Policy"'),'homepage meta CSP missing');
-   assert.ok(body.includes('id="prUpdatedDate"'),'site HTML not latest');
+   assert.ok(body.includes('id="labs"')&&body.includes('href="fp.html"')&&body.includes('href="boki.html"'),'FLL parent home not published');
   }
   if(path==='/boki') assert.ok(body.includes('boki-extra.js?v=20261023b')&&body.includes('各級2回分'),'bookkeeping page is not the current published content');
   if(path==='/boki-extra.js') assert.ok(body.includes('const BOKI_SECOND =')&&body.includes('b2-r2-consolidated'),'second mock dataset not published');
+  if(path==='/fp') assert.ok(body.includes('id="prUpdatedDate"')&&body.includes('brand.css?v=20261023d'),'FP entry not published');
+  if(path==='/brand.css') assert.ok(body.includes('--fll-ink:')&&body.includes('.fll-header'),'shared brand styles not published');
   if(path==='/guide') assert.ok(body.includes('lang="ja"'),'guide response unexpected');
   if(path==='/app.js') assert.ok(body.includes('EXAM_HISTORY_KEY'),'script response unexpected');
   console.log('PASS '+path+' HTTP 200 and required headers, '+Buffer.byteLength(body)+' bytes');
