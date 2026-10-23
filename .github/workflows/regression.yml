@@ -41,6 +41,8 @@ jobs:
         run: node .ci/fll-check.cjs
       - name: Check static search landing pages and sitemap
         run: node .ci/seo-pages-check.cjs
+      - name: Check all site links, anchor targets and keyboard access
+        run: node .ci/site-integrity-check.cjs
       - name: Check deployed audit syntax
         run: node --check .ci/live-security-audit.cjs
       - name: Validate site security policies and GitHub workflow hardening
