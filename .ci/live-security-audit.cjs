@@ -27,7 +27,7 @@ async function verify(){
   }
   if(path==='/boki') assert.ok(body.includes('boki-extra.js?v=20261023b')&&body.includes('各級2回分'),'bookkeeping page is not the current published content');
   if(path==='/boki-extra.js') assert.ok(body.includes('const BOKI_SECOND =')&&body.includes('b2-r2-consolidated'),'second mock dataset not published');
-  if(path==='/fp') assert.ok(body.includes('id="prUpdatedDate"')&&body.includes('brand.css?v=20261023c'),'FP entry not published');
+  if(path==='/fp') assert.ok(body.includes('id="prUpdatedDate"')&&body.includes('brand.css?v=20261023d'),'FP entry not published');
   if(path==='/brand.css') assert.ok(body.includes('--fll-ink:')&&body.includes('.fll-header'),'shared brand styles not published');
   if(path==='/guide') assert.ok(body.includes('lang="ja"'),'guide response unexpected');
   if(path==='/app.js') assert.ok(body.includes('EXAM_HISTORY_KEY'),'script response unexpected');

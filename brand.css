@@ -5,3 +5,5 @@ a{color:var(--fll-teal-dark);text-underline-offset:4px}a:hover{text-decoration-t
 @media(max-width:600px){.fll-header{padding-top:16px}.fll-header-inner,.fll-nav-inner{padding-left:16px;padding-right:16px;gap:12px}.fll-logo img{width:225px}.fll-context small{display:none}.fll-context strong{font-size:15px}.fll-nav{margin-top:12px}.fll-nav-inner{gap:5px}.fll-nav a{padding:8px 9px;flex:1;font-size:13px}.fll-footer nav{gap:2px 13px}main.container{padding-top:20px}}
 @media(max-width:370px){.fll-logo img{width:190px}.fll-header-inner{gap:8px}.fll-context strong{font-size:13px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+@media(max-width:600px){.section-heading{flex-wrap:wrap;column-gap:10px;row-gap:4px}.section-heading h2{flex:1 1 200px;margin-bottom:4px}.section-heading>.small{white-space:nowrap}}

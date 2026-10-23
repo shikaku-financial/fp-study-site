@@ -7,7 +7,7 @@ assert.ok(!hub.includes('id="quiz"'),'parent home must not be an FP exam');
 assert.ok(hub.includes('href="fp.html?level=2"')&&hub.includes('href="fp.html?level=3"'));
 for(const file of ['fp.html','boki.html','guide.html','fp2-study.html','fp3-study.html','fp-level-comparison.html','fp-calculation-guide.html','practical-tracks.html','fp2-nonlife-practical.html','fp3-mock-exam.html','about.html','privacy.html','contact.html']){
  const html=read(file);assert.ok(html.includes('class="fll-header"')&&html.includes('class="fll-footer"'),file+' common brand shell');
- assert.ok(html.includes('href="index.html"')&&html.includes('href="brand.css?v=20261023c"'),file+' parent entry and theme');
+ assert.ok(html.includes('href="index.html"')&&html.includes('href="brand.css?v=20261023d"'),file+' parent entry and theme');
 }
 for(const id of ['home','quiz','exam','finish','examResult','practicalHome','practicalExam','practicalResult','siteHomeLink'])assert.ok(fp.includes('id="'+id+'"'),'FP control retained '+id);
 for(const script of ['questions.js','app.js','practical.js','practical-questions.js','practical-materials.js'])assert.ok(fp.includes('src="'+script+'?'),'FP exam script retained');
