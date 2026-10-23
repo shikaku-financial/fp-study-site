@@ -1,7 +1,7 @@
 {
   "name": "FPラボ｜ファイナンシャル・ライセンス・ラボ",
   "short_name": "FPラボ",
-  "start_url": "./",
+  "start_url": "./fp.html",
   "scope": "./",
   "display": "browser",
   "background_color": "#ffffff",

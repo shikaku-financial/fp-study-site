@@ -11,6 +11,7 @@ const output = path.join(root, 'dist');
 const publicHtml = [
   'boki.html',
   'index.html',
+  'fp.html',
   'guide.html',
   'fp3-study.html',
   'fp3-mock-exam.html',
@@ -24,6 +25,7 @@ const publicHtml = [
   'contact.html',
 ];
 const publicAssets = [
+  'brand.css', 'hub.css', 'fll.js', 'fll.webmanifest',
   'boki.css', 'boki.js', 'boki-core.js', 'boki-data.js', 'boki-extra.js', 'boki.webmanifest',
   '404.html',
   'style.css',

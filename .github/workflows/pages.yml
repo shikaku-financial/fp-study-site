@@ -5,6 +5,11 @@ on:
     branches: [main]
     paths:
       - '*.html'
+      - 'brand.css'
+      - 'hub.css'
+      - 'fll.js'
+      - 'fll.webmanifest'
+      - 'fp.html'
       - 'info.css'
       - 'sitemap.xml'
       - 'robots.txt'

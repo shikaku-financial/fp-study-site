@@ -2,7 +2,7 @@
 // RC1 browser smoke: real Chromium/WebKit DOM, touch/mobile viewport. Not iPhone Safari hardware.
 const assert = require('node:assert/strict');
 const {chromium, webkit} = require('playwright');
-const BASE = process.env.FP_LAB_TEST_URL || 'http://127.0.0.1:8765/';
+const BASE = process.env.FP_LAB_TEST_URL || 'http://127.0.0.1:8765/fp.html';
 async function main(){
   const engineName = process.env.FP_LAB_BROWSER || 'chromium';
   assert.ok(['chromium','webkit'].includes(engineName),'unknown browser engine');
@@ -51,7 +51,7 @@ async function main(){
       try{
         for(const grade of ['2','3']){
           await article.goto(new URL('fp'+grade+'-study.html',BASE).href,{waitUntil:'load',timeout:45000});
-          const entry=article.locator('a.info-cta[href="index.html?level='+grade+'"]').first();
+          const entry=article.locator('a.info-cta[href="fp.html?level='+grade+'"]').first();
           assert.equal(await entry.count(),1,'grade-specific entry link missing for FP'+grade);
           await entry.click();
           await article.locator('#level'+grade+'[aria-pressed="true"]').waitFor();
@@ -61,7 +61,7 @@ async function main(){
           assert.equal(await article.locator('#level'+grade).getAttribute('aria-pressed'),'true','grade query must work after reload');
         }
         await article.goto(new URL('fp-level-comparison.html',BASE).href,{waitUntil:'load',timeout:45000});
-        for(const grade of ['2','3']) assert.equal(await article.locator('a.info-cta[href="index.html?level='+grade+'"]').count(),1,'missing comparison entry FP'+grade);
+        for(const grade of ['2','3']) assert.equal(await article.locator('a.info-cta[href="fp.html?level='+grade+'"]').count(),1,'missing comparison entry FP'+grade);
         await article.goto(BASE,{waitUntil:'load'});
         assert.equal(await article.locator('#level3').getAttribute('aria-pressed'),'true','unparameterized home default changed');
       }finally{await article.close();}
@@ -73,7 +73,7 @@ async function main(){
         const rows=article.locator('.comparison-table-scroll tbody tr');
         assert.equal(await rows.count(),4,'practical comparison must explain 4 official formats');
         for(const level of ['2','3']){
-          const entry=article.locator('a.info-cta[href="index.html?view=practical&level='+level+'"]');
+          const entry=article.locator('a.info-cta[href="fp.html?view=practical&level='+level+'"]');
           assert.equal(await entry.count(),1,'missing practical entry for FP'+level);
           await entry.click();
           await article.locator('#practicalHome').waitFor({state:'visible',timeout:10000}); // WebKit navigation may resolve before practical.js completes its entry view.
@@ -81,7 +81,7 @@ async function main(){
           assert.equal(await article.locator('#practicalExam').isVisible(),false,'must not auto-start practical exam');
           await article.goBack({waitUntil:'load'});
         }
-        await article.goto(new URL('index.html?view=practical&level=2',BASE).href,{waitUntil:'load',timeout:45000});
+        await article.goto(new URL('fp.html?view=practical&level=2',BASE).href,{waitUntil:'load',timeout:45000});
         assert.equal(await article.locator('#prSelectLevel2').getAttribute('aria-pressed'),'true','grade must persist in URL after fresh load');
         await article.reload({waitUntil:'load'});
         assert.equal(await article.locator('#practicalHome').isVisible(),true,'practical entry must survive reload');

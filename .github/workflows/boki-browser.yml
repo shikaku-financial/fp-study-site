@@ -3,6 +3,12 @@ on:
   pull_request:
     paths:
       - 'boki*'
+      - 'brand.css'
+      - 'hub.css'
+      - 'fll.js'
+      - 'fp.html'
+      - 'index.html'
+      - '.ci/fll-browser.cjs'
       - '.ci/boki-browser.cjs'
       - '.ci/build-static.cjs'
       - '.github/workflows/boki-browser.yml'
@@ -38,3 +44,12 @@ jobs:
         run: |
           python3 -m http.server 8766 --directory dist --bind 127.0.0.1 >/tmp/boki-test-http.log 2>&1 &
           node .ci/boki-browser.cjs
+          node .ci/fll-browser.cjs
+      - name: Retain brand layout screenshots
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: fll-brand-layouts
+          path: brand-qa/
+          if-no-files-found: ignore
+          retention-days: 7
