@@ -14,7 +14,10 @@ async function run(name){
    await page.setViewportSize({width,height:width===1440?1000:844});await fits();
    assert.equal(await page.locator('h1').count(),1);assert.equal(await page.locator('.hub-course').count(),2);
    for(const logo of await page.locator('.fll-logo img').all())assert.ok(await logo.evaluate(img=>img.complete&&img.naturalWidth>0),'logo loaded');
-   for(const a of await page.locator('.fll-nav a,.hub-cta').all()){const box=await a.boundingBox();assert.ok(box.height>=44,'touch target');}
+   for(const a of await page.locator('.fll-nav a,.hub-cta,.hub-quick-links a').all()){const box=await a.boundingBox();assert.ok(box.height>=44,'touch target');}
+   const guides=await page.locator('.hub-guide-grid a').allTextContents();
+   assert.equal(guides.filter(t=>t.includes('簿記')).length,1,'one bookkeeping guide entry');
+   if(width===1440){const rows=await page.locator('.hub-guide-grid a').evaluateAll(links=>links.map(a=>Math.round(a.getBoundingClientRect().top)));assert.equal(rows[0],rows[1]);assert.equal(rows[2],rows[3]);assert.ok(rows[2]>rows[0],'four guides occupy two complete rows');}
    if(width===390||width===1440){fs.mkdirSync('brand-qa',{recursive:true});await page.screenshot({path:'brand-qa/'+name+'-fll-'+width+'.png',fullPage:true});}
   }
   await page.setViewportSize({width:390,height:844});
