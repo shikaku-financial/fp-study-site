@@ -39,7 +39,7 @@
      if(digits<16&&(fraction===undefined||fraction.length<12))display=display==='0'?key:display==='-0'?'-'+key:display+key;
     }
    }else if(key==='sign'){
-    if(!error){display=display.startsWith('-')?display.slice(1):'-'+display;replace=false;repeat=null;if(!pending)expression='';}
+    if(!error){display=replace&&pending?'-0':display.startsWith('-')?display.slice(1):'-'+display;replace=false;repeat=null;if(!pending)expression='';}
    }else if(key==='back'){
     if(error)clear();else{display=replace?'0':display.slice(0,-1);if(!display||display==='-')display='0';replace=false;repeat=null;if(!pending)expression='';}
    }else if(Object.hasOwn(symbols,key)&&!error){
