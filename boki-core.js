@@ -20,14 +20,19 @@ const BOKI_CORE = (()=>{
    if(account===''&&raw==='')continue;
    const n=number(raw);
    if(typeof account!=='string'||!account||n===null||n===0)return null;
-   sums.set(account,(sums.get(account)||0)+n);
+   const total=(sums.get(account)||0)+n;
+   if(!Number.isSafeInteger(total))return null;
+   sums.set(account,total);
   }
   return [...sums].sort((a,b)=>a[0].localeCompare(b[0]));
  }
  function journalCorrect(item,answer){
   if(!answer)return false;
   const expected=rows=>side(rows.map(([account,n])=>[account,String(n)]));
-  return ['debit','credit'].every(key=>JSON.stringify(side(answer[key]))===JSON.stringify(expected(item[key])));
+  return ['debit','credit'].every(key=>{
+   const actual=side(answer[key]),correct=expected(item[key]);
+   return actual!==null&&correct!==null&&JSON.stringify(actual)===JSON.stringify(correct);
+  });
  }
  function grade(item,answer){
   const max=points(item);
