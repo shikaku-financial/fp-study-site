@@ -39,7 +39,7 @@ async function run(name){
    await input.fill('123');
    await toggle.click();await key('clear');await key('8');
    // Scroll the answer above the dock, as a learner does while the calculator is open.
-   await input.evaluate(el=>el.scrollIntoView({block:'start'}));await input.press('4');
+   await input.evaluate(el=>el.scrollIntoView({block:'start'}));await input.press('End');await input.press('4');
    assert.equal(await input.inputValue(),'1234');assert.equal(await result(),'8','answer keystrokes do not operate calculator');
    const before=await storage();await key('+');await key('2');await key('equals');assert.equal(await result(),'10');
    assert.equal(await input.inputValue(),'1234','calculator never overwrites an answer');assert.deepEqual(await storage(),before);
