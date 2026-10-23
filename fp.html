@@ -20,6 +20,8 @@
   <meta name="apple-mobile-web-app-title" content="FPラボ">
   <meta name="application-name" content="FPラボ">
 <link rel="stylesheet" href="brand.css?v=20261023d">
+<link rel="stylesheet" href="calculator.css?v=20261024a">
+<script src="calculator.js?v=20261024a" defer></script>
 </head>
 <body>
   <header class="fll-header"><div class="fll-header-inner"><a class="fll-logo" href="index.html" aria-label="ファイナンシャル・ライセンス・ラボのトップへ"><img src="financial-license-lab-logo.png" width="900" height="300" alt="ファイナンシャル・ライセンス・ラボ"></a><div class="fll-context"><small>FINANCIAL LICENSE LAB</small><strong>FPラボ</strong></div></div><nav class="fll-nav" aria-label="FLLの学習ラボ"><div class="fll-nav-inner"><a href="index.html">FLLトップ</a><a href="#home" aria-current="page" id="siteHomeLink">FPラボ</a><a href="boki.html">簿記ラボ</a></div></nav></header>
@@ -31,7 +33,7 @@
       <p class="muted small"><a href="guide.html">初めての方へ：使い方・学習ガイド</a>｜<a href="fp3-study.html">FP3級の勉強方法</a>｜<a href="fp2-study.html">FP2級の勉強方法</a>｜<a href="fp-level-comparison.html">FP2級と3級の違い</a>｜<a href="fp-calculation-guide.html">FPの計算問題の解き方</a>｜<a href="fp3-mock-exam.html">FP3級の無料60問模試</a>｜<a href="practical-tracks.html">実技科目の違い</a>｜<a href="fp2-nonlife-practical.html">FP2級・損保実技対策</a></p>
       <div class="home-tabs" aria-label="試験種別を選ぶ"><span class="tab-on">学科試験</span><button id="openPracticalTop" type="button">実技試験を学習する →</button></div>
       <div class="card">
-        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">更新日：2026年10月23日</span></div>
+        <div class="section-heading"><h2>学習する級を選択</h2><span class="muted small">更新日：2026年10月24日</span></div>
         <div class="controls level-controls" role="group" aria-label="級を選択">
           <button type="button" id="level3" class="active" aria-pressed="true">FP3級</button>
           <button type="button" id="level2" aria-pressed="false">FP2級</button>
@@ -65,7 +67,7 @@
       </div>
 
       <div class="card practical-promo">
-        <div class="section-heading"><h2>FPラボ｜実技試験の演習</h2><span class="muted small">更新日：2026年10月23日</span></div>
+        <div class="section-heading"><h2>FPラボ｜実技試験の演習</h2><span class="muted small">更新日：2026年10月24日</span></div>
         <p>日本FP協会3級20問・2級40問、金財3級2科目・2級4科目は各30問、計8科目240問のオリジナル実技例題に対応。事例・計算問題を練習できます。</p>
         <button type="button" id="openPractical" class="primary full-width">実技試験の科目を選ぶ</button>
         <p class="muted small">実技の各科目は独自演習です。正式配点による合否判定は行いません。</p>
@@ -196,7 +198,7 @@
 
     <section id="practicalHome" class="hidden" aria-label="実技科目選択">
       <div class="card"><button type="button" id="prBackHome" class="linkish">← 学科トップへ戻る</button>
-        <div class="section-heading"><h2>実技試験｜科目選択</h2><span class="muted small">更新日：2026年10月23日</span></div>
+        <div class="section-heading"><h2>実技試験｜科目選択</h2><span class="muted small">更新日：2026年10月24日</span></div>
         <p>実際の公表過去問の出題テーマを参考にした<strong>独自の実技演習</strong>です。出題数・配点は実技本試験と異なる場合があります。<strong>得点率のみ表示</strong>し、合格・不合格の判定はしません。</p>
         <div class="pr-course-switch" aria-label="実技の級を選択">
           <p class="pr-course-switch-label">まず受験する級を選択してください</p>
@@ -221,7 +223,7 @@
     <section id="practicalExam" class="hidden" aria-label="実技演習">
       <div class="card">
         <div class="quiz-top"><span id="prLabel" class="pill"></span><span id="prProgress" class="muted"></span></div>
-        <p id="prUpdatedDate" class="muted small">更新日：2026年10月23日</p>
+        <p id="prUpdatedDate" class="muted small">更新日：2026年10月24日</p>
         <div class="bar"><div id="prBar"></div></div>
         <p class="muted small" id="prMaterialHelp">資料の表は左右にスクロールできます。文字が小さいときは、資料内の「文字を大きく」ボタンを利用してください。</p>
         <div id="prCase" class="pr-case"><h3 id="prCaseTitle"></h3><div id="prCaseText"></div></div>

@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'boki*'
+      - 'calculator.*'
+      - '.ci/calculator-browser.cjs'
       - 'brand.css'
       - 'hub.css'
       - 'fll.js'
@@ -33,7 +35,14 @@ jobs:
       - name: Install isolated browser test dependency
         run: npm install --no-save --no-package-lock playwright@1.56.1
       - name: Install test browser engines
-        run: npx playwright install --with-deps chromium webkit
+        run: |
+          # Use Ubuntu's standard mirror when the Azure mirror stalls during dependency downloads.
+          for source in /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do
+            if [ -f "$source" ]; then
+              sudo sed -i 's|azure.archive.ubuntu.com|archive.ubuntu.com|g' "$source"
+            fi
+          done
+          npx playwright install --with-deps chromium webkit
       - name: Validate and build public assets
         run: |
           node .ci/boki-check.cjs
@@ -45,6 +54,7 @@ jobs:
           python3 -m http.server 8766 --directory dist --bind 127.0.0.1 >/tmp/boki-test-http.log 2>&1 &
           node .ci/boki-browser.cjs
           node .ci/fll-browser.cjs
+          node .ci/calculator-browser.cjs
       - name: Retain brand layout screenshots
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

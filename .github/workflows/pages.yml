@@ -6,6 +6,7 @@ on:
     paths:
       - '*.html'
       - 'brand.css'
+      - 'calculator.*'
       - 'hub.css'
       - 'fll.js'
       - 'fll.webmanifest'

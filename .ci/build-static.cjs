@@ -25,6 +25,7 @@ const publicHtml = [
   'contact.html',
 ];
 const publicAssets = [
+  'calculator.css', 'calculator.js',
   'brand.css', 'hub.css', 'fll.js', 'fll.webmanifest',
   'boki.css', 'boki.js', 'boki-core.js', 'boki-data.js', 'boki-extra.js', 'boki.webmanifest',
   '404.html',

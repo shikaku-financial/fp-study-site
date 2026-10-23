@@ -33,6 +33,10 @@ jobs:
           node .ci/boki-check.cjs
           node .ci/boki-second-check.cjs
           node .ci/boki-flow-check.cjs
+      - name: Check shared learning calculator
+        run: |
+          node --check calculator.js
+          node .ci/calculator-check.cjs
       - name: Check FLL parent routes and brand contracts
         run: node .ci/fll-check.cjs
       - name: Check static search landing pages and sitemap
