@@ -74,6 +74,7 @@ async function run(engineName){
     if(i<items.length-1)await click('next');
    }
    await click('finish');assert.match(await page.locator('.boki-summary').innerText(),/100\s*\/\s*100点/);
+   assert.equal(await page.locator('button[data-action="result-review"]').count(),0,'perfect score must not offer empty review');
    const state=await saved();assert.equal(state.active,null);assert.equal(state.history[0].form,form);assert.equal(state.history[0].level,level);
    await page.locator('.boki-result details').first().locator('summary').click();assert.ok(await page.locator('.boki-solution').count()>0);
    await assertFits(320);await assertFits(390);
@@ -83,7 +84,7 @@ async function run(engineName){
   await page.evaluate(key=>{const s=JSON.parse(localStorage.getItem(key));const h=s.history.find(h=>h.level==='3'&&h.form==='1');s.history=[h];delete h.form;localStorage.setItem(key,JSON.stringify(s));},KEY);
   await page.reload({waitUntil:'load'});await click('history');assert.match(await page.locator('.boki-summary').innerText(),/100\s*\/\s*100点/);await click('home');
   // Empty attempt and wrong-only retry keep the selected form.
-  await choose('3','2');await click('exam');await click('finish');assert.match(await page.locator('.boki-summary').innerText(),/0\s*\/\s*100点/);await click('result-review');
+  await choose('3','2');await click('exam');await click('finish');assert.match(await page.locator('.boki-summary').innerText(),/0\s*\/\s*100点/);assert.equal(await page.locator('button[data-action="result-review"]').count(),1,'incorrect result must offer review');await click('result-review');
   assert.equal((await saved()).active.form,'2');assert.equal((await saved()).active.ids.length,18);await click('pause');await click('discard');
   // Expired drafts grade once on resume, using the saved answers.
   await choose('2','2');await click('exam');await fillItem(E['2'].sections[0].items[0]);await click('pause');
