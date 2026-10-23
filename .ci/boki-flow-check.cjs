@@ -35,4 +35,12 @@ e=env();e.click('exam');const legacy=e.state();delete legacy.active.form;e=env([
 e=env();e.click('practice');const original=e.data.get(KEY);const other=JSON.parse(original);other.active.flags['b3-j01']=true;e.data.set(KEY,JSON.stringify(other));const external=e.data.get(KEY);
 e.input({side:'debit',row:'0',part:'1',value:'48000'});assert.equal(e.data.get(KEY),external,'stale tab must not overwrite newer saved records');assert.match(e.nodes['boki-notice'].textContent,/別のタブ/);
 e=env(e.data);e.click('resume');assert.equal(e.state().active.flags['b3-j01'],true,'reload should recover the other tab\'s record');
+// A perfect result must not offer an action that has no questions to review.
+e=env();e.click('practice');const single=e.state();single.active.ids=['b3-j01'];single.active.index=0;
+single.active.answers={'b3-j01':{debit:[['仕入','48000'],['','']],credit:[['買掛金','48000'],['','']]}};
+e=env([[KEY,JSON.stringify(single)]]);e.click('resume');e.click('finish');
+assert.ok(e.nodes['boki-app'].innerHTML.includes('3 <span'),'single-item correct result');
+assert.ok(!e.nodes['boki-app'].innerHTML.includes('data-action="result-review"'),'no empty review action after all correct');
+e=env();e.click('practice');e.click('finish');
+assert.ok(e.nodes['boki-app'].innerHTML.includes('data-action="result-review"'),'review remains available for wrong answers');
 console.log('PASS: bookkeeping production UI event flows; navigation, selection/numeric persistence, reload/resume, isolated FP records, wrong-only review, exam timeout, expired resume, corrupt storage and quota failure');
