@@ -1,0 +1,23 @@
+/* Shared calculator stays outside each lab's rendering and answer event handlers. */
+body{padding-bottom:var(--fll-calc-space,76px)}
+html{scroll-padding-bottom:var(--fll-calc-space,76px)}
+html:has(#fll-calc-panel:not([hidden])){scroll-padding-top:120px}
+.fll-calc{position:fixed;z-index:40;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));width:min(300px,calc(100vw - 24px));display:flex;flex-direction:column;align-items:stretch;gap:8px;color:#092b43;font-size:16px;line-height:1.4}
+.fll-calc button{font:inherit;min-height:44px;min-width:44px;margin:0;border:1px solid #b8cdcc;border-radius:8px;padding:8px;background:#fff;color:#092b43;cursor:pointer;touch-action:manipulation}
+.fll-calc button:focus-visible,.fll-calc-panel:focus-visible{outline:3px solid #d99a27;outline-offset:2px}
+.fll-calc button:hover{background:#e3f1ee}
+.fll-calc-panel{padding:12px;border:1px solid #b8cdcc;border-radius:14px;background:#fff;box-shadow:0 6px 28px #092b4330;max-height:calc(100dvh - 100px);overflow:auto;overscroll-behavior:contain}
+.fll-calc-panel[hidden]{display:none}
+.fll-calc-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.fll-calc-heading strong{font-size:16px}
+.fll-calc-heading button{font-size:13px;padding:6px 12px}
+.fll-calc-expression{font-size:12px;min-height:18px;margin:6px 0 2px;text-align:right;color:#526a7a;overflow-wrap:anywhere}
+.fll-calc-display{display:block;min-height:48px;padding:10px 8px;border:1px solid #c4d9d6;border-radius:7px;background:#f3f8f5;text-align:right;font-variant-numeric:tabular-nums;font-size:22px;font-weight:700;overflow-wrap:anywhere}
+.fll-calc-display.fll-calc-error{font-size:16px;color:#a02238}
+.fll-calc-keys{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}
+.fll-calc .fll-calc-operator{background:#e3f1ee;color:#0c5e5a;font-weight:700}
+.fll-calc .fll-calc-equals{grid-column:span 2;background:#147e78;color:#fff;border-color:#147e78;font-weight:700}
+.fll-calc .fll-calc-equals:hover{background:#0c5e5a}
+.fll-calc-help{font-size:11px;line-height:1.5;color:#526a7a;margin:8px 0 0}
+.fll-calc .fll-calc-toggle{align-self:flex-end;min-width:112px;background:#147e78;color:#fff;border-color:#147e78;box-shadow:0 2px 10px #092b4320;font-size:14px;font-weight:700}
+.fll-calc .fll-calc-toggle:hover{background:#0c5e5a}

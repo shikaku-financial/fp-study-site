@@ -2,7 +2,7 @@
 // Read-only verification of Cloudflare Pages' actual HTTPS response.
 const assert=require('node:assert/strict');
 const SITE='https://fll-fp-lab.pages.dev';
-const paths=['/','/fp','/guide','/app.js','/boki','/boki-extra.js','/brand.css','/about','/privacy','/contact'];
+const paths=['/','/fp','/guide','/app.js','/boki','/boki-extra.js','/brand.css','/about','/privacy','/contact','/calculator.js','/calculator.css'];
 async function verify(){
  for(const path of paths){
   const url=SITE+path;
@@ -31,6 +31,9 @@ async function verify(){
   if(path==='/brand.css') assert.ok(body.includes('--fll-ink:')&&body.includes('.fll-header'),'shared brand styles not published');
   const policies={'/about':'fll-about-policy','/privacy':'fll-privacy-policy','/contact':'fll-contact-policy'};
   if(policies[path]) assert.ok(body.includes('id="'+policies[path]+'"')&&body.includes('更新日：2026年10月24日'),'updated FLL-wide policy not published: '+path);
+  if(path==='/fp'||path==='/boki') assert.ok(body.includes('calculator.js?v=20261024a')&&body.includes('calculator.css?v=20261024a'),'calculator entry not published: '+path);
+  if(path==='/calculator.js') assert.ok(body.includes('fll-calc-toggle')&&body.includes('function calculate('),'calculator script not published');
+  if(path==='/calculator.css') assert.ok(body.includes('.fll-calc-panel')&&body.includes('--fll-calc-space'),'calculator styles not published');
   if(path==='/guide') assert.ok(body.includes('lang="ja"'),'guide response unexpected');
   if(path==='/app.js') assert.ok(body.includes('EXAM_HISTORY_KEY'),'script response unexpected');
   console.log('PASS '+path+' HTTP 200 and required headers, '+Buffer.byteLength(body)+' bytes');
