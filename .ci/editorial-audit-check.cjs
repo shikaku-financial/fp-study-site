@@ -6,6 +6,27 @@ assert.equal(all.length,660,'360 academic + 240 practical + 60 bookkeeping');
 assert.equal(all.filter(q=>q.bank==='FP学科').length,360);
 assert.equal(all.filter(q=>q.bank==='FP実技').length,240);
 assert.equal(all.filter(q=>q.bank.startsWith('簿記')).length,60);
+// Answer keys are validated with separate rules for academic, numeric and multi-field exams.
+const {structureIssues,checkChoices,checkNumeric}=require('./editorial-answer-structure.cjs');
+assert.equal(all.flatMap(q=>structureIssues(q)).length,0,'all 600 FP questions have structurally valid answers');
+const academic=all.find(e=>e.bank==='FP学科');
+const practical=all.find(e=>e.bank==='FP実技'&&e.q.kind==='choice');
+const numeric=all.find(e=>e.bank==='FP実技'&&e.q.kind==='numeric');
+const multiple=all.find(e=>e.bank==='FP実技'&&e.q.kind==='multi_choice');
+const wordbank=all.find(e=>e.bank==='FP実技'&&e.q.kind==='wordbank_number');
+assert.ok(academic&&practical&&numeric&&multiple&&wordbank,'all FP formats exist');
+assert.deepEqual(checkChoices(['○','×'],0,'test'),[]);
+assert.ok(checkChoices([' A','Ａ '],0,'test').some(m=>m.includes('重複')),'NFKC equivalent options detected');
+assert.ok(checkChoices(['ア','イ'],2,'test').some(m=>m.includes('範囲外')),'out-of-range answer rejected');
+assert.ok(checkNumeric(Infinity,'test').some(m=>m.includes('不正')),'nonfinite answer rejected');
+assert.ok(structureIssues({...academic,q:{...academic.q,answer:99}}).some(s=>s.includes('範囲外')),'academic answer-range mutation detected');
+assert.ok(structureIssues({...academic,q:{...academic.q,lawReferenceDate:'2025-04-01'}}).some(s=>s.includes('法令基準日')),'academic law date mutation detected');
+assert.ok(structureIssues({...practical,q:{...practical.q,choices:[...practical.q.choices.slice(0,-1),practical.q.choices[0]]}}).some(s=>s.includes('重複')),'choice repetition mutation detected');
+assert.ok(structureIssues({...numeric,q:{...numeric.q,answer:NaN}}).some(s=>s.includes('数値')),'numeric answer mutation detected');
+assert.ok(structureIssues({...multiple,q:{...multiple.q,subAnswers:multiple.q.subAnswers.map((x,i)=>i===0?{...x,answer:x.choices.length}:x)}}).some(s=>s.includes('範囲外')),'multi-choice sub-answer mutation detected');
+assert.ok(structureIssues({...wordbank,q:{...wordbank.q,subAnswers:wordbank.q.subAnswers.map((x,i)=>i===0?{...x,answer:0}:x)}}).some(s=>s.includes('1始まり')),'wordbank one-based answer contract enforced');
+const mutated=all.map(e=>e===academic?{...academic,q:{...academic.q,answer:99}}:e);
+assert.throws(()=>audit(mutated,{schemaVersion:1,records:[]}),/answer contract must be corrected/,'invalid answer blocks review and deployment');
 const r=audit(all,{schemaVersion:1,records:[]});
 assert.equal(r.reviewedCount,0,'no human reviews may be fabricated');
 assert.equal(r.findings.length,660);
@@ -77,4 +98,4 @@ assert.ok(!safePacket.includes('監修完了です'),'preview must never attest 
 assert.equal(renderReviewPacket({...r,flagged:[]},{limit:8}).match(/候補はありません/g)?.length,1,'empty queue is handled');
 assert.throws(()=>renderReviewPacket(r,{limit:0}),/limit/);
 
-console.log('PASS: 660 records, ranked audit, reviewer-ready unverified previews, answer formats, source hashes, safe markup and honest human review boundary.');
+console.log('PASS: 660 records, 600 FP answer contracts, mutational guards, reviewer-ready previews, source hashes and honest human review boundary.');
