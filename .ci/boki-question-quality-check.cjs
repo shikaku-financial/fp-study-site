@@ -17,8 +17,8 @@ const expect=(id,fid,actual)=>assert.equal(field(id,fid),actual,id+'/'+fid+' ind
 const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
-assert.match(html,/boki-data\.js\?v=20261024j/);
-assert.match(html,/boki-extra\.js\?v=20261024h/);
+assert.match(html,/boki-data\.js\?v=20261024k/);
+assert.match(html,/boki-extra\.js\?v=20261024i/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
 assert.match(html,/2027年4月1日以降の3級本試験は第1問45点・第2問25点・第3問30点/);
