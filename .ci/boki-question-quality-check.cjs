@@ -87,9 +87,9 @@ const con=get('b2-r2-consolidated'),source=con.tables.find(t=>t.caption.includes
 const facts=Object.fromEntries(source.rows.map(r=>[r[0],r.slice(1).map(v=>Number(String(v).replace(/,/g,'')))]));
 assert.deepEqual(source.rows.find(r=>r[0]==='支払配当金').slice(1),['0','60,000']);
 const parent=.8,netAtBuy=1000000+500000,goodwill=1400000-netAtBuy*parent;
-const gross=160000*.25,minority=facts['当期純利益'][1]*(1-parent);
+const gross=160000*25/100,minority=facts['当期純利益'][1]*20/100;
 const profit=facts['当期純利益'][0]+facts['当期純利益'][1]-facts['支払配当金'][1]*parent-goodwill/10-gross;
-expect(con.id,'k4',minority);expect(con.id,'k6',netAtBuy*(1-parent)+minority-facts['支払配当金'][1]*(1-parent));
+expect(con.id,'k4',minority);expect(con.id,'k6',netAtBuy*20/100+minority-facts['支払配当金'][1]*20/100);
 expect(con.id,'k7',gross);expect(con.id,'k8',facts['売上高'][0]+facts['売上高'][1]-600000);
 expect(con.id,'k9',profit);expect(con.id,'k10',profit-minority);
 assert.match(con.fields.find(f=>f.id==='k9').explanation,/社外株主への配当12,000円は当期純利益から重ねて控除しない/);
