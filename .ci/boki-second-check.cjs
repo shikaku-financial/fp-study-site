@@ -33,7 +33,7 @@ const a=fields('3'),b=fields('2');
 // FIFO: reconstruct inventory lots and both issues without relying on the answer table.
 let lots=[[80,400],[120,450]];function issue(qty){let cost=0;while(qty){const take=Math.min(qty,lots[0][0]);cost+=take*lots[0][1];qty-=take;lots[0][0]-=take;if(!lots[0][0])lots.shift();}return cost;}
 assert.equal(a.v1,issue(150));assert.equal(a.v2,lots.reduce((n,r)=>n+r[0],0));assert.equal(a.v3,lots.reduce((n,r)=>n+r[0]*r[1],0));lots.push([100,480]);assert.equal(a.v4,issue(100));assert.equal(a.v5,lots.reduce((n,r)=>n+r[0]*r[1],0));
-const entries=[[['現金',52000],['売掛金',52000]],[['通信費',18000],['現金',18000]],[['仕入',72000],['買掛金',72000]],[['現金',96000],['売上',96000]],[['買掛金',45000],['現金',45000]],[['売掛金',84000],['売上',84000]],[['仕入',48000],['買掛金',48000]]];
+const entries=[[['現金',52000],['売掛金',52000]],[['通信費',18000],['現金',18000]],[['仕入',72000],['買掛金',72000]],[['現金',96000],['売上',96000]],[['買掛金',45000],['現金',45000]],[['売掛金',50000],['売上',50000]],[['仕入',48000],['買掛金',48000]],[['売掛金',34000],['売上',34000]]];
 const totals=[new Map(),new Map()];for(const entry of entries)entry.forEach(([account,n],side)=>totals[side].set(account,(totals[side].get(account)||0)+n));
 assert.equal(a.t1,totals[0].get('現金'));assert.equal(a.t2,totals[1].get('現金'));assert.equal(a.t3,totals[0].get('売掛金'));assert.equal(a.t4,totals[0].get('仕入'));assert.equal(a.t5,totals[1].get('売上'));assert.equal([...totals[0].values()].reduce((a,b)=>a+b,0),415000);assert.equal([...totals[1].values()].reduce((a,b)=>a+b,0),415000);
 assert.ok(C.allItems(E['3']).every(item=>!item.title?.includes('銀行勘定調整')),'bank reconciliation is outside level 3');
@@ -50,13 +50,13 @@ assert.equal(a.g7,assets3);assert.equal(a.g9,562000-loss3);assert.equal(a.g10,54
 const acquiredNet=1000000+500000,goodwill=1400000-acquiredNet*.8,nci=acquiredNet*.2,nciProfit=240000*.2,nciDiv=60000*.2,unrealized=160000*.25;
 assert.equal(b.k1,goodwill);assert.equal(b.k2,nci);assert.equal(b.k3,goodwill-goodwill/10);assert.equal(b.k4,nciProfit);assert.equal(b.k5,nciDiv);assert.equal(b.k6,nci+nciProfit-nciDiv);assert.equal(b.k7,unrealized);assert.equal(b.k8,4000000+2000000-600000);assert.equal(b.k12,600000-unrealized);
 const groupProfit=800000+240000-60000*.8-goodwill/10-unrealized;assert.equal(b.k9,groupProfit);assert.equal(b.k10,groupProfit-nciProfit);
-const cost2=600000+4000000-650000,expenses2=900000+360000+90000+360000+10000,operatingLoss=expenses2-(5200000-cost2),netLoss=operatingLoss+80000+160000;
+const cost2=600000+4000000-650000,expenses2=910000+350000+90000+360000+10000,operatingLoss=expenses2-(5200000-cost2),netLoss=operatingLoss+80000+160000;
 assert.equal(b.h2,cost2);assert.equal(b.h3,5200000-cost2);assert.equal(b.h7,operatingLoss);assert.equal(b.h9,operatingLoss+80000);assert.equal(b.h10,netLoss);
 const assets2=2000000+(1800000+200000)-(1800000+200000)*.02+650000+(3600000-720000-120000)+(1200000-480000-240000)+90000;
 assert.equal(assets2,1400000+2000000+20000+(160000-100000)+4000000+1170000-netLoss);
 const rate=9000000/6000,appliedA=160*rate,appliedB=80*rate,appliedC=40*rate;
 assert.equal(b.w1,rate);assert.equal(b.w2,appliedA);assert.equal(b.w3,appliedB);assert.equal(b.w10,appliedC);
-assert.equal(b.w4,240000+180000+appliedA);assert.equal(b.w5,160000+120000+appliedB);assert.equal(b.w11,80000+60000+appliedC);
+assert.equal(b.w4,245000+175000+appliedA);assert.equal(b.w5,165000+115000+appliedB);assert.equal(b.w11,85000+55000+appliedC);
 assert.equal(b.w6,440000-appliedA-appliedB-appliedC);assert.equal(b.w7,b.w5+b.w11);assert.equal(b.w8,1000000-b.w4);
 assert.equal(b.w4+b.w7,1260000,'costs of three orders reconcile to finished goods and WIP');
 // Materials: actual price HIGHER, consumption LOWER. Labor: hourly rate LOWER, hours HIGHER.
