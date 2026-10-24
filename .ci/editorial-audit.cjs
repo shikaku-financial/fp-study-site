@@ -67,11 +67,20 @@ function reasonsFor(e){
   const sourceNumbers=new Set(sourceTables.flatMap(t=>t.rows.flat()).map(numericText).filter(Number.isFinite));
   const leaked=(q.fields||[]).filter(f=>typeof f.answer==='number'&&sourceNumbers.has(f.answer));
   if(leaked.length)findings.push('資料表に正答と同額あり（転記可能性を目視確認）');
-  const amounts=new Map();
+  // A balance sheet intentionally asks for equal asset and liability/equity totals.
+  // Do not suppress any other repeated answer amount.
+  const sameByAmount=new Map();
   for(const f of q.fields||[])if(typeof f.answer==='number'){
-   amounts.set(f.answer,(amounts.get(f.answer)||0)+1);
+   const group=sameByAmount.get(f.answer)||[];
+   group.push(f);
+   sameByAmount.set(f.answer,group);
   }
-  if([...amounts.values()].some(n=>n>1))findings.push('複数の解答欄が同額（出題意図を確認）');
+  const isBalanceIdentity=group=>group.length===2&&
+   group.some(f=>/資産合計/.test(f.label||''))&&
+   group.some(f=>/負債・純資産合計/.test(f.label||''));
+  if([...sameByAmount.values()].some(group=>group.length>1&&!isBalanceIdentity(group))){
+   findings.push('複数の解答欄が同額（出題意図を確認）');
+  }
  }
  return findings;
 }
@@ -114,6 +123,21 @@ function audit(entries,records){
  }};
 }
 const escapeMarkdown=value=>String(value??'').replace(/\|/g,'\\|').replace(/[\r\n<>]/g,' ').slice(0,200);
+const fileFor=e=>e.bank==='FP学科'?'questions.js':e.bank==='FP実技'?'practical-questions.js':e.form==='第1回'?'boki-data.js':'boki-extra.js';
+const codeLines=new Map();
+function questionLink(entry){
+ const filename=fileFor(entry);
+ if(!codeLines.has(filename))codeLines.set(filename,read(filename).split('\n'));
+ const lines=codeLines.get(filename);
+ const quoted='"id": "'+entry.id+'"';
+ const objectKey="id:'"+entry.id+"'";
+ const journalKey="journal('"+entry.id+"'";
+ const idx=lines.findIndex(line=>line.includes(quoted)||line.includes(objectKey)||line.includes(journalKey));
+ const sha=process.env.GITHUB_SHA;
+ const rev=typeof sha==='string'&&/^[0-9a-f]{40}$/.test(sha)?sha:'main';
+ return 'https://github.com/shikaku-financial/fp-study-site/blob/'+rev+'/'+filename+(idx>=0?'#L'+(idx+1):'');
+}
+
 function renderMarkdown(report,{limit=35}={}){
  const {counts,findings,flagged,reviewedCount}=report;
  const lines=[
@@ -128,16 +152,30 @@ function renderMarkdown(report,{limit=35}={}){
  `| 簿記ラボ | ${counts.bookkeeping}題 |`,
  `| 人手監修が記録・現行版照合された問題 | ${reviewedCount}/${findings.length} |`,
  `| 追加の編集確認候補（人手監修未記録分） | ${flagged.length} |`,
+ ...['FP学科','FP実技','簿記2級','簿記3級'].map(bank=>`| ${bank}の要確認候補 | ${flagged.filter(f=>f.bank===bank).length} |`),
  '',
- '### 優先確認候補',
+ '### 優先確認候補（資格別に先頭枠を確保）',
  '| 問題ID | 分野・模試 | 確認事項 |',
  '| --- | --- | --- |'
  ];
- for(const f of flagged.slice(0,limit)){
-  lines.push(`| \`${escapeMarkdown(f.id)}\` | ${escapeMarkdown(f.bank+' '+f.form)} | ${escapeMarkdown(f.reasons.join('／'))} |`);
+ const selected=[],seen=new Set();
+ // Do not let a long FP academic metadata queue hide smaller bookkeeping issues.
+ const quotas=Math.max(1,Math.floor(limit/4));
+ for(const bank of ['FP学科','FP実技','簿記2級','簿記3級']){
+  for(const f of flagged.filter(x=>x.bank===bank).slice(0,quotas)){
+   if(selected.length>=limit)break;
+   selected.push(f);seen.add(f.id);
+  }
+ }
+ for(const f of flagged){
+  if(selected.length>=limit)break;
+  if(!seen.has(f.id)){selected.push(f);seen.add(f.id);}
+ }
+ for(const f of selected){
+  lines.push(`| [\`${escapeMarkdown(f.id)}\`](${questionLink(f)}) | ${escapeMarkdown(f.bank+' '+f.form)} | ${escapeMarkdown(f.reasons.join('／'))} |`);
  }
  if(!flagged.length)lines.push('| — | — | 追加の機械的な注意候補なし（内容の正確性や監修完了を示すものではありません） |');
- if(flagged.length>limit)lines.push('',`残り${flagged.length-limit}件。より多く表示するには \`node .ci/editorial-audit.cjs --limit=100\` を実行してください。`);
+ if(flagged.length>selected.length)lines.push('',`残り${flagged.length-selected.length}件。より多く表示するには \`node .ci/editorial-audit.cjs --limit=100\` を実行してください。`);
  lines.push('','### 運用ルール','- 監修済み表示は、運営者が実際に確認し、参照URL・確認日・問題データのハッシュを記録した場合だけ可能。','- 問題を改訂するとハッシュが変わり、古い監修記録をCIが拒否します。','- このレポートはCIのSummaryのみに出力し、閲覧者向けの監修済み表示は自動生成しません。','');
  return lines.join('\n');
 }
@@ -156,4 +194,4 @@ function main(){
  console.log('PASS: '+report.findings.length+' unique problems; '+report.reviewedCount+' verifiable human review records; '+report.flagged.length+' flagged editorial candidates. Not expert-certified.');
 }
 if(require.main===module)main();
-module.exports={loadQuestions,fingerprint,reasonsFor,audit,renderMarkdown};
+module.exports={loadQuestions,fingerprint,reasonsFor,audit,renderMarkdown,questionLink};

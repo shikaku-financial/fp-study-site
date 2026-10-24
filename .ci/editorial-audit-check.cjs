@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict');
-const {loadQuestions,fingerprint,reasonsFor,audit,renderMarkdown}=require('./editorial-audit.cjs');
+const {loadQuestions,fingerprint,reasonsFor,audit,renderMarkdown,questionLink}=require('./editorial-audit.cjs');
 const all=loadQuestions();
 assert.equal(all.length,660,'360 academic + 240 practical + 60 bookkeeping');
 assert.equal(all.filter(q=>q.bank==='FP学科').length,360);
@@ -15,7 +15,14 @@ assert.ok(r.flagged.some(e=>e.reasons.includes('設問別の根拠URL未登録')
 assert.ok(r.flagged.every(e=>!e.isReviewed));
 const report=renderMarkdown(r,{limit:8});
 assert.ok(report.includes('660')&&report.includes('0/660')&&report.includes('専門家による人手監修ではありません'));
-assert.equal((report.match(/^\| \`(?:fp|pr|b)/gm)||[]).length,8,'summary list respects size cap');
+assert.equal((report.match(/^\| \[\`(?:fp|pr|b)/gm)||[]).length,8,'summary list respects size cap');
+assert.match(report,/github.com\/shikaku-financial\/fp-study-site\/blob\//,'source code anchor shown in report');
+const mixed={...r,flagged:[...r.flagged.slice(0,8),{...all.find(e=>e.id==='b2-financial'),reasons:['要確認'],priority:1,isReviewed:false}]};
+assert.match(renderMarkdown(mixed,{limit:8}),/b2-financial/,'bookkeeping issue must remain visible despite larger FP backlog');
+assert.match(report,/FP学科の要確認候補/);
+assert.match(report,/簿記2級の要確認候補/);
+const target=all.find(e=>e.id==='fp2-001');
+assert.match(questionLink(target),/^https:\/\/github.com\/shikaku-financial\/fp-study-site\/blob\/.+\/questions\.js#L\d+$/);
 assert.ok(!report.includes('<script'),'markdown data must be sanitized');
 const mk=(id,q)=>({bank:'FP学科',form:'学科',id,q});
 const example={id:'sample001',question:'A',choices:['甲','乙'],answer:0,explanation:'Aについて',sourceUrl:'https://example.org/a',sourceCheckedDate:'2026-10-01'};
@@ -29,6 +36,15 @@ const bokiFlags=reasonsFor({bank:'簿記2級',form:'第1回',id:boki.id,q:boki})
 assert.ok(bokiFlags.includes('資料表に正答と同額あり（転記可能性を目視確認）'));
 assert.ok(bokiFlags.includes('複数の解答欄が同額（出題意図を確認）'));
 assert.deepEqual(reasonsFor({bank:'簿記2級',form:'第1回',id:'safe',q:{...boki,fields:[{id:'f1',answer:300},{id:'f2',answer:400}]}}),[]);
+const bsTotals={...boki,fields:[
+ {id:'a',label:'資産合計',answer:5546000},
+ {id:'b',label:'負債・純資産合計',answer:5546000}
+ ],tables:[{caption:'決算整理前残高試算表',rows:[['現金','100']]},{caption:'貸借対照表',rows:[['資産合計',{id:'a'},'負債・純資産合計',{id:'b'}]]}]};
+assert.deepEqual(reasonsFor({bank:'簿記2級',form:'第1回',id:'balanced',q:bsTotals}),[],'B/S identity must not be flagged as duplicate');
+const coincidental={...bsTotals,fields:[...bsTotals.fields,{id:'c',label:'その他費用',answer:5546000}]};
+assert.ok(reasonsFor({bank:'簿記2級',form:'第1回',id:'accidental',q:coincidental}).includes('複数の解答欄が同額（出題意図を確認）'),'unrelated coincident amounts must still flag');
+assert.ok(!r.flagged.some(x=>x.id==='b2-financial'),'corrected tax payable and normal B/S identity must no longer be flagged');
+
 const valid={id:all[0].id,status:'verified',contentHash:fingerprint(all[0].q),checkedOn:'2026-10-24',reviewer:'運営者',references:['https://example.org/cited-primary-source']};
 assert.equal(audit(all,{schemaVersion:1,records:[valid]}).reviewedCount,1);
 assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,contentHash:fingerprint({...all[0].q,explanation:'new explanation'})}]}),/content changed/);
