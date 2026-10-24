@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict');
-const {loadQuestions,fingerprint,reasonsFor,audit,renderMarkdown,questionLink}=require('./editorial-audit.cjs');
+const {loadQuestions,fingerprint,reasonsFor,audit,renderMarkdown,questionLink,displayAnswer,renderReviewPacket,selectReviewEntries}=require('./editorial-audit.cjs');
 const all=loadQuestions();
 assert.equal(all.length,660,'360 academic + 240 practical + 60 bookkeeping');
 assert.equal(all.filter(q=>q.bank==='FP学科').length,360);
@@ -52,4 +52,29 @@ assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,references:[]}]}
 assert.throws(()=>audit(all,{schemaVersion:1,records:[valid,valid]}),/duplicate review/);
 assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,id:'missing'}]}),/unknown question/);
 assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,checkedOn:'2026-02-31'}]}),/invalid review date/);
-console.log('PASS: 660 editorial records and ranked triage; honest zero-review baseline; fingerprints and stale/manual-proof validations.');
+
+// A review preview helps the human see the existing answer, not mark it as reviewed.
+const packet=renderReviewPacket(r,{limit:8});
+assert.match(packet,/設問・解説プレビュー/);
+assert.match(packet,/未監修/);
+assert.match(packet,/登録済み正答（未検証）/);
+assert.match(packet,/現行問題データのSHA-256/);
+assert.match(packet,/github.com\/shikaku-financial\/fp-study-site\/blob\//);
+assert.equal((packet.match(/^### \[/gm)||[]).length,8,'review preview has a strict size limit');
+const packetIds=selectReviewEntries(r.flagged,8).map(x=>x.id);
+assert.equal(new Set(packetIds).size,8,'preview uses distinct ID per entry');
+assert.deepEqual(selectReviewEntries(r.flagged,8).map(x=>x.id),packetIds,'preview selection deterministic');
+assert.ok(!packet.includes('<script'),'untrusted HTML must not render');
+assert.equal(displayAnswer({choices:['ア','イ'],answer:1}),'選択肢2：イ');
+assert.match(displayAnswer({subAnswers:[{label:'①',answer:0,choices:['○','×']},{label:'②',answer:250,unit:'円'}]}),/②：250 円/);
+assert.match(displayAnswer({subAnswers:[{label:'③',answer:1,wordBank:['甲','乙']}]}),/語群：乙/);
+assert.match(displayAnswer({fields:[{id:'f1',label:'売上高',answer:100}]}),/売上高：100/);
+assert.match(displayAnswer({type:'journal',debit:[['現金',100]],credit:[['売上',100]]}),/借方 現金 100/);
+const dangerous={...r,flagged:[{...r.flagged[0],q:{question:'<script>alert(1)</script>',explanation:'<iframe src=bad>',answer:12,sourceUrl:'https://example.org/ref'},hash:fingerprint({question:'<script>alert(1)</script>'})}]};
+const safePacket=renderReviewPacket(dangerous,{limit:1});
+assert.ok(!safePacket.includes('<script')&&!safePacket.includes('<iframe'),'review excerpt cannot inject HTML');
+assert.ok(!safePacket.includes('監修完了です'),'preview must never attest a human review');
+assert.equal(renderReviewPacket({...r,flagged:[]},{limit:8}).match(/候補はありません/g)?.length,1,'empty queue is handled');
+assert.throws(()=>renderReviewPacket(r,{limit:0}),/limit/);
+
+console.log('PASS: 660 records, ranked audit, reviewer-ready unverified previews, answer formats, source hashes, safe markup and honest human review boundary.');
