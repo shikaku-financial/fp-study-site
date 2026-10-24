@@ -85,7 +85,7 @@ assert.equal(v2.s6,proceeds-400*unit);assert.equal(v2.s9,600*unit-600*1100);asse
 const totalMaterial=200000+2300000,totalConversion=60000+1260000,eq=4000+1000*.4,matUnit=totalMaterial/5000,convUnit=totalConversion/eq;
 assert.equal(v2.p6,4000*(matUnit+convUnit));assert.equal(v2.p8,1000*matUnit+1000*.4*convUnit);assert.equal(v2.p6+v2.p8,totalMaterial+totalConversion);assert.equal(v2.p7,300000+v2.p6-400000);
 assert.equal(v2.c4,1200000/(2500-1500));assert.equal(v2.c5,(1200000+900000)/(2500-1500));
-const newPrice=2300,adBudget=120000,promotedQuantity=1800*1.1,promotedFixed=1200000+adBudget;
+const newPrice=2300,adBudget=120000,promotedQuantity=1800*110/100,promotedFixed=1200000+adBudget;
 assert.equal(v2.c6,(newPrice-1500)*promotedQuantity-promotedFixed);
 assert.equal(v2.c8,1800*2500-v2.c4*2500);
 assert.equal(v2.c9,promotedFixed/(newPrice-1500));
