@@ -19,7 +19,7 @@ for(const level of ['3','2']){
   }else{
    const rendered=item.tables.flatMap(t=>t.rows.flat().filter(c=>typeof c==='object').map(c=>c.id));
    assert.deepEqual(new Set(rendered),new Set(item.fields.map(f=>f.id)));assert.equal(rendered.length,item.fields.length,'each answer occurs once');
-   for(const f of item.fields){assert.ok(Number.isSafeInteger(f.answer)&&f.answer>=0);assert.ok(f.explanation.length>10);}
+   for(const f of item.fields){if(f.type==='choice'){assert.equal(typeof f.answer,'string');assert.ok(f.options.includes(f.answer));assert.equal(new Set(f.options).size,f.options.length);}else assert.ok(Number.isSafeInteger(f.answer)&&f.answer>=0);assert.ok(f.explanation.length>10);}
    const a=answer(item),f=item.fields[0];a[f.id]=String(f.answer+1);assert.equal(C.grade(item,a).earned,C.points(item)-f.points);
   }
  }
