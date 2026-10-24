@@ -39,6 +39,9 @@ for(const id of ["b3-r2-j04","b3-r2-j05","b3-r2-j06","b3-r2-j07","b3-r2-j08","b3
 assert.match(html,/id="boki-official-input-guide"/);
 assert.match(html,/本試験に向けて半角数字のみ・同じ側の科目重複なし/);
 assert.match(html,/当サイトは練習しやすいように全角数字と桁区切りカンマ/);
+assert.match(html,/当サイトも、同じ側の勘定科目を複数行に分けると/);
+assert.doesNotMatch(html,/金額を合算しますが/);
+assert.match(html,/boki-core\\.js\\?v=20261024i/);
 assert.match(html,/公式試験のすべての解答形式を再現したものではありません/);
 // Learning-oriented journal explanations must show the calculation or account classification.
 for(const [id,required] of [
