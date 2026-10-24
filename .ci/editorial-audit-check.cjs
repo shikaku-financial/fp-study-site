@@ -38,7 +38,7 @@ assert.ok(r.flagged.every(e=>!e.isReviewed));
 const report=renderMarkdown(r,{limit:8});
 assert.ok(report.includes('660')&&report.includes('0/660')&&report.includes('専門家による人手監修ではありません'));
 assert.equal((report.match(/^\| \[\`(?:fp|pr|b)/gm)||[]).length,Math.min(8,r.flagged.length),'summary list does not invent rows to fill limit');
-assert.match(report,/候補はありません/,'empty queue explicitly reported');
+assert.match(report,/追加の機械的な注意候補なし/,'empty queue explicitly reported without asserting human review');
 const mixed={...r,flagged:[...r.flagged.slice(0,8),{...all.find(e=>e.id==='b2-financial'),reasons:['要確認'],priority:1,isReviewed:false}]};
 assert.match(renderMarkdown(mixed,{limit:8}),/b2-financial/,'synthetic bookkeeping review remains visible despite empty live queue');
 assert.match(report,/FP学科の要確認候補/);
