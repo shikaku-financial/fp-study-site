@@ -1,6 +1,6 @@
 'use strict';
 const BOKI_CORE = (()=>{
- const revision='2026-10-23-a';
+ const revision='2026-10-24-typed-fields';
  const examFor=(data,level,form='1')=>form==='1'?data[String(level)]:data[String(level)]?.forms?.[form];
  const allItems=exam=>exam.sections.flatMap(s=>s.items);
  const points=item=>item.type==='journal'?item.points:item.fields.reduce((n,f)=>n+f.points,0);
@@ -34,10 +34,11 @@ const BOKI_CORE = (()=>{
    return actual!==null&&correct!==null&&JSON.stringify(actual)===JSON.stringify(correct);
   });
  }
+ function fieldCorrect(f,raw){return f.type==='choice'?typeof raw==='string'&&f.options.includes(raw)&&raw===f.answer:number(raw)===f.answer;}
  function grade(item,answer){
   const max=points(item);
   if(item.type==='journal'){const correct=journalCorrect(item,answer);return {earned:correct?max:0,max,correct,fields:[]};}
-  const fields=item.fields.map(f=>({id:f.id,correct:number(answer?.[f.id])===f.answer,points:f.points}));
+  const fields=item.fields.map(f=>({id:f.id,correct:fieldCorrect(f,answer?.[f.id]),points:f.points}));
   const earned=fields.reduce((n,f)=>n+(f.correct?f.points:0),0);
   return {earned,max,correct:earned===max,fields};
  }
@@ -62,6 +63,6 @@ const BOKI_CORE = (()=>{
   }
   return true;
  }
- return {revision,examFor,allItems,points,number,grade,result,touched,validSession};
+ return {revision,examFor,allItems,points,number,fieldCorrect,grade,result,touched,validSession};
 })();
 if(typeof module!=='undefined')module.exports=BOKI_CORE;
