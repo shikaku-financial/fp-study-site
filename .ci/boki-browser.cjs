@@ -97,6 +97,8 @@ async function run(engineName){
   await choose('3','1');await click('practice');
   const otherTab=await context.newPage();await otherTab.goto(BASE,{waitUntil:'load'});
   await otherTab.evaluate(key=>{const s=JSON.parse(localStorage.getItem(key));s.active.flags['b3-j01']=true;localStorage.setItem(key,JSON.stringify(s));},KEY);
+  // WebKit may propagate localStorage asynchronously across processes; synchronize before comparing snapshots.
+  await page.waitForFunction(key=>{try{return JSON.parse(localStorage.getItem(key))?.active?.flags?.['b3-j01']===true;}catch{return false;}},KEY,{timeout:10000});
   await otherTab.close();const newer=await saved();
   await page.locator('input[data-side="debit"][data-row="0"]').fill('48000');
   assert.deepEqual(await saved(),newer,'stale tab must not overwrite another tab');

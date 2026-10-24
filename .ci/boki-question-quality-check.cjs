@@ -17,7 +17,7 @@ const expect=(id,fid,actual)=>assert.equal(field(id,fid),actual,id+'/'+fid+' ind
 const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
-assert.match(html,/boki-data\.js\?v=20261024h/);
+assert.match(html,/boki-data\.js\?v=20261024i/);
 assert.match(html,/boki-extra\.js\?v=20261024g/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
@@ -34,6 +34,45 @@ for(const id of ["b3-r2-j04","b3-r2-j05","b3-r2-j06","b3-r2-j07","b3-r2-j08","b3
   if(amount>=1000) assert.ok(journal.explanation.includes(amount.toLocaleString('en-US')),id+' explains '+amount);
  }
 }
+
+// Keep the practice-friendly input policy explicit without changing existing grading.
+assert.match(html,/id="boki-official-input-guide"/);
+assert.match(html,/本試験に向けて半角数字のみ・同じ側の科目重複なし/);
+assert.match(html,/当サイトは練習しやすいように全角数字と桁区切りカンマ/);
+assert.match(html,/公式試験のすべての解答形式を再現していません/);
+// Learning-oriented journal explanations must show the calculation or account classification.
+for(const [id,required] of [
+ ['b2-j01',['1,800,000円＋据付費120,000円','機械装置','普通預金']],
+ ['b2-j02',['4,000ドル×143円','12,000円','為替差損益']],
+ ['b2-j03',['380,000円−期末時価352,000円','有価証券評価損']],
+ ['b2-j05',['960,000円','非支配株主持分','160,000円']],
+ ['b2-i01',['160,000＋24,000＝184,000円','仕掛品','製造間接費']],
+ ['b3-j06',['240,000−8,000＝232,000円','所得税預り金']],
+ ['b3-j08',['600,000円×2%×6/12＝6,000円','貸付金']],
+ ['b3-j09',['現金過不足','雑損']],
+ ['b3-j10',['82,000−20,000＝62,000円','前受金']],
+ ['b3-j12',['9,000−4,500＝4,500円','差額補充法']],
+ ['b3-j13',['60,000円×2/6＝20,000円','前払保険料']],
+ ['b3-j14',['50,000円×10%＝5,000円','仮払消費税']]
+]){
+ const journal=get(id);
+ for(const phrase of required) assert.ok(journal.explanation.includes(phrase),id+' explanatory step missing: '+phrase);
+}
+// Derive representative journal calculations from their problem source values.
+const lookup=(id,side,name)=>get(id)[side].find(r=>r[0]===name)[1];
+assert.equal(lookup('b2-j01','debit','機械装置'),1800000+120000);
+assert.equal(lookup('b2-j02','debit','売掛金'),4000*(143-140));
+assert.equal(lookup('b2-j03','debit','有価証券評価損'),380000-352000);
+assert.equal(lookup('b2-j05','debit','のれん'),1120000-(800000+400000)*80/100);
+assert.equal(lookup('b2-j05','credit','非支配株主持分'),(800000+400000)*20/100);
+assert.equal(lookup('b2-i01','credit','材料'),160000+24000);
+assert.equal(lookup('b3-j06','credit','普通預金'),240000-8000);
+assert.equal(lookup('b3-j08','debit','普通預金'),600000+600000*2/100*6/12);
+assert.equal(lookup('b3-j10','debit','売掛金'),82000-20000);
+assert.equal(lookup('b3-j12','debit','貸倒引当金繰入'),450000*2/100-4500);
+assert.equal(lookup('b3-j13','debit','前払保険料'),60000*2/6);
+assert.equal(lookup('b3-j14','credit','買掛金'),50000+50000*10/100);
+console.log('PASS: authentic CBT instructions distinguished from study-site conveniences; 12 journal lessons independently checked');
 
 // A trading security is not described using the merchandise accounting "分記法".
 const securities=get('b2-securities');
