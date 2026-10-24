@@ -144,11 +144,8 @@
     if(okay){const mode=modeLabel(d.mode);$p('prResume').textContent=`FP${trackFor(d.track).level}級｜${trackFor(d.track).name}${mode?'｜'+mode:''}の続きから再開`;}
     renderPracticalHistory();
   }
-  // A durable per-attempt key prevents duplicate results if draft removal fails after a successful history write.
-  // Legacy drafts retain their original startedAt/track identity.
-  const attemptKey = d => d && (typeof d.attemptId === 'string' && d.attemptId
-    ? d.attemptId : Number.isFinite(d.startedAt) && typeof d.track === 'string'
-      ? `legacy-${d.track}-${d.startedAt}` : null);
+  // Stable attempt IDs prevent duplicate results after interrupted saves.
+  const attemptKey = d => d && typeof d.attemptId === 'string' && d.attemptId ? d.attemptId : null;
   const alreadyFinished = d => {
     const id=attemptKey(d);
     return !!id && historyRows().some(row=>row && row.id===id);
@@ -389,7 +386,7 @@
     renderQuestion();window.scrollTo(0,0);
   }
   function validDraft(d){
-    if(!d || !trackFor(d.track) || !Array.isArray(d.questions) || !d.questions.length ||
+    if(!d || d.version!==20 || !attemptKey(d) || !trackFor(d.track) || !Array.isArray(d.questions) || !d.questions.length ||
        d.questions.length > qsFor(d.track).length || !Array.isArray(d.answers) || d.questions.length !== d.answers.length)return false;
     const ids=new Set();
     return d.questions.every((q,i)=>{
@@ -425,7 +422,7 @@
     const unfilled=attempt.answers.filter((a,i)=>!completeAnswer(attempt.questions[i],a)).length;
     if(!confirm(unfilled?`未回答が${unfilled}問あります。採点しますか？`:'演習を終了して採点しますか？'))return;
     const correct=attempt.questions.filter((q,i)=>grade(q,attempt.answers[i])).length;
-    const result={id:attemptKey(attempt) || `legacy-unknown-${Date.now()}`,track:attempt.track,mode:attempt.mode,questions:attempt.questions,answers:attempt.answers.slice(),correct,finishedAt:Date.now()};
+    const result={version:20,id:attemptKey(attempt),attemptId:attempt.attemptId,track:attempt.track,mode:attempt.mode,questions:attempt.questions,answers:attempt.answers.slice(),correct,finishedAt:Date.now()};
     const prior=read(HISTORY,{attempts:[]});
     const rows=Array.isArray(prior.attempts)?prior.attempts:[];
     if(!save(DRAFT,attempt))return;
