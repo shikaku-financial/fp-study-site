@@ -294,7 +294,7 @@
     else $p('prCaseText').textContent=String(q.caseText).replaceAll('【2026年4月1日基準の独自演習】','')+`\n（注）法令基準日：${q.lawReferenceDate||'未登録'}。`;
     markDistributionAmountTable($p('prCaseText'),q);
     $p('prTopic').textContent=`学習テーマ：${q.topic}｜この問題の法令基準日：${q.lawReferenceDate || "未登録"}（数値条件は設例指定）`;
-    $p('prQuestion').textContent=q.question;
+    $p('prQuestion').textContent=String(q.question).replace(/。(?!\s|$)/g,'。\n');
     $p('prChoices').replaceChildren();
     const number=q.kind==='numeric',multi=isMulti(q);
     $p('prAutoNextLabel').classList.toggle('hidden',number||multi);

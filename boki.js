@@ -62,7 +62,7 @@
   }).join('')}</tr>`).join('')}</tbody></table></div>`;
  }
  function itemHTML(item,answer,disabled){
-  let html=`<p class="muted small boki-scroll-hint">解答表は左右にスクロールできます。</p><p class="boki-prompt">${esc(item.prompt)}</p>${item.notes?'<ol class="boki-notes">'+item.notes.map(n=>`<li>${esc(n)}</li>`).join('')+'</ol>':''}`;
+  let html=`<p class="muted small boki-scroll-hint">解答表は左右にスクロールできます。</p><p class="boki-prompt">${esc(item.prompt).replace(/。(?!\s|$)/g,'。\n')}</p>${item.notes?'<ol class="boki-notes">'+item.notes.map(n=>`<li>${esc(n)}</li>`).join('')+'</ol>':''}`;
   if(item.type==='journal'){
    const a=answer||emptyJournal(item);html+='<p class="muted small">使わない行は科目・金額とも空欄にしてください。行の順序は採点に影響しません。同じ側の科目は重複できません。金額の単位：円。</p>';
    const rowCount=Math.max(item.debit.length,item.credit.length)+1;

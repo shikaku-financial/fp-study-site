@@ -4,7 +4,7 @@
   const scripts = [
     'practical-questions.js?v=b20317f65322',
     'practical-materials.js?v=1726c5125a1c',
-    'practical.js?v=8db8c1c91e8117'
+    'practical.js?v=be71a03c5d9e42'
   ];
   const buttons = ['openPractical','openPracticalTop'].map(id => document.getElementById(id));
   const status = document.getElementById('practicalLoadStatus');

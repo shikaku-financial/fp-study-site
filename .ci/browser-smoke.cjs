@@ -360,7 +360,7 @@ async function main(){
           for(let i=0;i<perSet;i++){
             const q=records[set*perSet+i];
             const questionText=await page.locator('#prQuestion').textContent();
-            assert.equal(questionText,q.question,'mismatched render '+q.id);
+            assert.equal(questionText,String(q.question).replace(/。(?!\s|$)/g,'。\n'),'mismatched render '+q.id);
             const progress=await page.locator('#prProgress').innerText();
             assert.match(progress,new RegExp('^'+(i+1)+'/'+perSet+'問'),'bad progress '+q.id);
             assert.ok((await page.locator('#prCaseText').innerText()).trim().length>0,'blank case material '+q.id);

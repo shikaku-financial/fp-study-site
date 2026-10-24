@@ -30,7 +30,7 @@ assert.throws(()=>audit(mutated,{schemaVersion:1,records:[]}),/answer contract m
 const r=audit(all,{schemaVersion:1,records:[]});
 assert.equal(r.reviewedCount,0,'no human reviews may be fabricated');
 assert.equal(r.findings.length,660);
-assert.ok(r.flagged.length>0,'real pending review candidates should be visible');
+assert.equal(r.flagged.length,0,'validated ledger bookkeeping identities have no outstanding mechanical findings');
 assert.ok(!r.flagged.some(e=>e.bank==='FP学科'),'all academic source/choice metadata gaps resolved for current dataset');
 assert.ok(reasonsFor({...academic,q:{...academic.q,sourceCheckedDate:undefined}}).includes('根拠資料の確認日未登録'),'undated source remains detectable on synthetic mutation');
 assert.ok(reasonsFor({...academic,q:{...academic.q,sourceUrl:undefined}}).includes('設問別の根拠URL未登録'),'missing source remains detectable on synthetic mutation');
@@ -38,9 +38,9 @@ assert.ok(r.flagged.every(e=>!e.isReviewed));
 const report=renderMarkdown(r,{limit:8});
 assert.ok(report.includes('660')&&report.includes('0/660')&&report.includes('専門家による人手監修ではありません'));
 assert.equal((report.match(/^\| \[\`(?:fp|pr|b)/gm)||[]).length,Math.min(8,r.flagged.length),'summary list does not invent rows to fill limit');
-assert.match(report,/github.com\/shikaku-financial\/fp-study-site\/blob\//,'source code anchor shown in report');
+assert.match(report,/追加の機械的な注意候補なし/,'empty queue explicitly reported without asserting human review');
 const mixed={...r,flagged:[...r.flagged.slice(0,8),{...all.find(e=>e.id==='b2-financial'),reasons:['要確認'],priority:1,isReviewed:false}]};
-assert.match(renderMarkdown(mixed,{limit:8}),/b2-financial/,'bookkeeping issue must remain visible despite larger FP backlog');
+assert.match(renderMarkdown(mixed,{limit:8}),/b2-financial/,'synthetic bookkeeping review remains visible despite empty live queue');
 assert.match(report,/FP学科の要確認候補/);
 assert.match(report,/簿記2級の要確認候補/);
 const target=all.find(e=>e.id==='fp2-001');
@@ -104,6 +104,18 @@ assert.deepEqual(reasonsFor({bank:'簿記2級',form:'第1回',id:'balanced',q:bs
 const coincidental={...bsTotals,fields:[...bsTotals.fields,{id:'c',label:'その他費用',answer:5546000}]};
 assert.ok(reasonsFor({bank:'簿記2級',form:'第1回',id:'accidental',q:coincidental}).includes('複数の解答欄が同額（出題意図を確認）'),'unrelated coincident amounts must still flag');
 assert.ok(!r.flagged.some(x=>x.id==='b2-financial'),'corrected tax payable and normal B/S identity must no longer be flagged');
+const interestLedger=all.find(e=>e.id==='b3-ledger');
+assert.ok(interestLedger&&interestLedger.bank==='簿記3級');
+const noDuplicate='複数の解答欄が同額（出題意図を確認）';
+assert.ok(!reasonsFor(interestLedger,{today:'2026-10-24'}).includes(noDuplicate),'matching double entries and carry-forwards must be recognized as intentional');
+const shifted={...interestLedger,q:{...interestLedger.q,fields:interestLedger.q.fields.map(f=>f.id==='l7'?{...f,answer:f.answer+100}:f)}};
+assert.ok(reasonsFor(shifted,{today:'2026-10-24'}).includes(noDuplicate),'changing either side must expose the mismatched ledger');
+const mislabeled={...interestLedger,q:{...interestLedger.q,fields:interestLedger.q.fields.map(f=>f.id==='l9'?{...f,label:'無関係な費用'}:f)}};
+assert.ok(reasonsFor(mislabeled,{today:'2026-10-24'}).includes(noDuplicate),'unrelated equal amounts must remain flagged');
+const extraDuplicate={...interestLedger,q:{...interestLedger.q,fields:[...interestLedger.q.fields,{id:'x99',label:'無関係な費用',answer:12000}]}};
+assert.ok(reasonsFor(extraDuplicate,{today:'2026-10-24'}).includes(noDuplicate),'new copied number is never auto-waived');
+assert.equal((600000*0.03*8/12),12000,'previous-year outstanding interest');
+assert.equal((800000*0.03*8/12),16000,'new-year unpaid interest');
 
 const valid={id:all[0].id,status:'verified',contentHash:fingerprint(all[0].q),checkedOn:'2026-10-24',reviewer:'運営者',references:['https://example.org/cited-primary-source']};
 assert.equal(audit(all,{schemaVersion:1,records:[valid]}).reviewedCount,1);
@@ -115,16 +127,17 @@ assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,checkedOn:'2026-
 assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,checkedOn:'2999-01-01'}]}),/cannot be in the future/,'review dates may not falsely be set in the future');
 
 // A review preview helps the human see the existing answer, not mark it as reviewed.
-const packet=renderReviewPacket(r,{limit:8});
+const packetSource=audit(all.map(e=>e.id==='fp2-025'?{...e,q:{...e.q,verificationStatus:'selected_points_checked_historical_full_text_pending'}}:e),{schemaVersion:1,records:[]},{today:'2026-10-24'});
+const packet=renderReviewPacket(packetSource,{limit:8});
 assert.match(packet,/設問・解説プレビュー/);
 assert.match(packet,/未監修/);
 assert.match(packet,/登録済み正答（未検証）/);
 assert.match(packet,/現行問題データのSHA-256/);
 assert.match(packet,/github.com\/shikaku-financial\/fp-study-site\/blob\//);
-assert.equal((packet.match(/^### \[/gm)||[]).length,Math.min(8,r.flagged.length),'review preview respects the limit without inventing items');
-const packetIds=selectReviewEntries(r.flagged,8).map(x=>x.id);
-assert.equal(new Set(packetIds).size,Math.min(8,r.flagged.length),'preview uses distinct ID per entry');
-assert.deepEqual(selectReviewEntries(r.flagged,8).map(x=>x.id),packetIds,'preview selection deterministic');
+assert.equal((packet.match(/^### \[/gm)||[]).length,Math.min(8,packetSource.flagged.length),'review preview respects the limit without inventing items');
+const packetIds=selectReviewEntries(packetSource.flagged,8).map(x=>x.id);
+assert.equal(new Set(packetIds).size,Math.min(8,packetSource.flagged.length),'preview uses distinct ID per entry');
+assert.deepEqual(selectReviewEntries(packetSource.flagged,8).map(x=>x.id),packetIds,'preview selection deterministic');
 assert.ok(!packet.includes('<script'),'untrusted HTML must not render');
 assert.equal(displayAnswer({choices:['ア','イ'],answer:1}),'選択肢2：イ');
 assert.match(displayAnswer({subAnswers:[{label:'①',answer:0,choices:['○','×']},{label:'②',answer:250,unit:'円'}]}),/②：250 円/);
@@ -135,7 +148,7 @@ assert.ok(liveWordbankSub&&liveWordbankSub.answer>=1,'a real 1-based FP word-ban
 assert.ok(displayAnswer({subAnswers:[liveWordbankSub]}).includes('語群：'+liveWordbankSub.wordBank[liveWordbankSub.answer-1]),'real word-bank preview displays the keyed correct option');
 assert.match(displayAnswer({fields:[{id:'f1',label:'売上高',answer:100}]}),/売上高：100/);
 assert.match(displayAnswer({type:'journal',debit:[['現金',100]],credit:[['売上',100]]}),/借方 現金 100/);
-const dangerous={...r,flagged:[{...r.flagged[0],q:{question:'<script>alert(1)</script>',explanation:'<iframe src=bad>',answer:12,sourceUrl:'https://example.org/ref'},hash:fingerprint({question:'<script>alert(1)</script>'})}]};
+const dangerous={...r,flagged:[{...packetSource.flagged[0],q:{question:'<script>alert(1)</script>',explanation:'<iframe src=bad>',answer:12,sourceUrl:'https://example.org/ref'},hash:fingerprint({question:'<script>alert(1)</script>'})}]};
 const safePacket=renderReviewPacket(dangerous,{limit:1});
 assert.ok(!safePacket.includes('<script')&&!safePacket.includes('<iframe'),'review excerpt cannot inject HTML');
 assert.ok(!safePacket.includes('監修完了です'),'preview must never attest a human review');
@@ -179,7 +192,7 @@ assert.throws(()=>renderReviewPacket(r,{limit:0}),/limit/);
   'synthetic legal non-review still receives a triage flag');
  const after=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
  assert.equal(after.reviewedCount,0,'no human review records added by source investigation');
- assert.equal(after.flagged.length,1,'12 early-source and explanation issues resolved; 1 candidates remain');
+ assert.equal(after.flagged.length,0,'scoped reviewed FP items and verified accounting symmetry leave zero automated candidates');
 }
 console.log('PASS: six property-law question pairs have current primary citations, tested rule contrasts and no fabricated human review.');
 
@@ -222,9 +235,9 @@ console.log('PASS: six property-law question pairs have current primary citation
  }
  const afterFive=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
  assert.equal(afterFive.reviewedCount,0,'automated legal citations must not certify human review');
- assert.equal(afterFive.flagged.length,1,'12 early-lesson source and explanation issues resolved; 1 remaining candidates');
+ assert.equal(afterFive.flagged.length,0,'no mechanical audit candidates remain');
  assert.ok(!afterFive.flagged.some(e=>e.id==='fp2-114'),'self-contained balance-sheet arithmetic is now scoped and sourced');
- assert.ok(afterFive.flagged.some(e=>e.id==='b3-ledger'),'bookkeeping follow-up remains pending');
+ assert.ok(!afterFive.flagged.some(e=>e.id==='b3-ledger'),'validated ledger symmetry is not an answer leak');
 }
 console.log('PASS: five FP legal cases use official guidance, original answer keys, scoped AI audit status and zero human certification.');
 
@@ -246,7 +259,7 @@ console.log('PASS: five FP legal cases use official guidance, original answer ke
   'fp2-054':'200万円'
  };
  const currentQueue=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
- assert.equal(currentQueue.flagged.length,1,'12 early lesson flags also resolved; not certification');
+ assert.equal(currentQueue.flagged.length,0,'the mechanical review queue is clear, not human certified');
  assert.equal(currentQueue.reviewedCount,0,'a source check never changes the human review register');
  for(const [id,answer,url,explanation] of cases){
   const entry=all.find(x=>x.id===id);
@@ -266,7 +279,7 @@ console.log('PASS: five FP legal cases use official guidance, original answer ke
     id+' old missing source problem resolved');
  }
  assert.ok(!currentQueue.flagged.some(x=>x.id==='fp2-114'),'arithmetic-only net worth is sourced and clarified');
- assert.ok(currentQueue.flagged.some(x=>x.id==='b3-ledger'),'independent boki issue is not suppressed');
+ assert.ok(!currentQueue.flagged.some(x=>x.id==='b3-ledger'),'balanced ledger postings are intentional');
 }
 console.log('PASS: five previously pending historical references checked in bounded scope; correct options remain and human reviews stay at 0.');
 
@@ -326,7 +339,7 @@ console.log('PASS: five previously pending historical references checked in boun
  assert.equal(get('fp2-006').choices[get('fp2-006').answer],'1,600万円');
  assert.equal(get('fp3-006').answer,1,'child does not inherit spouse share');
  const report=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
- assert.equal(report.flagged.length,1,'12 source or choice explanation flags resolved');
+ assert.equal(report.flagged.length,0,'scoped checks and validated ledger posting symmetry have no outstanding mechanical warnings');
  assert.equal(report.reviewedCount,0,'machine checks never create human oversight records');
  for(const id of ids)assert.ok(!report.flagged.some(x=>x.id===id),id+' has adequate source and per-choice explanation metadata');
  assert.ok(!report.flagged.some(x=>x.id==='fp2-114'),'simple net-worth calculation requires no implied tax ruling');

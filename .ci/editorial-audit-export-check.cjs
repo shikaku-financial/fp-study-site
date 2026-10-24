@@ -36,10 +36,10 @@ for(const [reason,rule] of [['法令適用の人手確認が未了（算術の�
  assert.ok(reasons.includes(reason),'mutation must produce '+rule);
  assert.equal(issueDetail(injected,reason,date).ruleId,rule,'exporter retains '+rule+' mapping');
 }
-assert.ok(exported.rows.some(x=>x.actionStatus.startsWith('要確認')));
+assert.equal(exported.flaggedCount,0,'all currently published automated findings have documented resolutions');
 assert.ok(exported.disclaimer.includes('人手'));
 const first = exported.rows[0];
-assert.ok(first.actionStatus.startsWith('要確認'),'review queue must precede non-flagged entries');
+assert.ok(!first.actionStatus.startsWith('要確認'),'zero issue queue begins with unflagged record');
 assert.deepEqual(buildExport(auditResult,{today:date}).rows.map(x=>x.id), exported.rows.map(x=>x.id),'queue order deterministic');
 const synthetic = {bank:'FP学科',q:{verificationStatus:'arithmetic_reviewed_law_not_audited',sourceCheckedDate:'2026-03-31',lawReferenceDate:'2026-04-01'}};
 assert.deepEqual(issueDetail(synthetic,'法令適用の人手確認が未了（算術のみ点検）',date),
@@ -51,7 +51,15 @@ assert.equal(csvCell(' foo \"bar\"'),'" foo ""bar"""');
 assert.equal(csvCell('@SUM(1)'),"\"'@SUM(1)\"");
 const csv = renderCsv(exported);
 assert.equal(csv.charCodeAt(0), 0xfeff,'Excel-compatible UTF-8 BOM');
-assert.ok(csv.includes('BOOKKEEPING_ANSWER_IN_SOURCE')||csv.includes('BOOKKEEPING_REPEATED_AMOUNTS')||csv.includes('SOURCE_URL_MISSING'),'CSV contains actual findings');
+assert.ok(!csv.includes('BOOKKEEPING_REPEATED_AMOUNTS'),'validated bookkeeping identity does not create a false-positive warning');
+const changedEntries=entries.map(e=>e.id===injected.id?injected:e);
+const seededAudit=audit(changedEntries,{schemaVersion:1,records:[]},{today:date});
+const seededExport=buildExport(seededAudit,{today:date});
+assert.equal(seededExport.flaggedCount,1,'a deliberately unsourced question reappears in triage');
+assert.ok(seededExport.rows.some(x=>x.id===injected.id&&x.findings.some(f=>f.ruleId==='LAW_REVIEW_PENDING')));
+assert.ok(seededExport.rows.some(x=>x.id===injected.id&&x.findings.some(f=>f.ruleId==='SOURCE_URL_MISSING')));
+assert.ok(seededExport.rows.some(x=>x.id===injected.id&&x.findings.some(f=>f.ruleId==='SOURCE_CHECK_DATE_MISSING')));
+assert.match(renderCsv(seededExport),/LAW_REVIEW_PENDING/,'CSV issue serialization retained');
 assert.ok(csv.split('\r\n').length >= 662,'CSV contains header and at least one row per problem');
 assert.ok(!csv.includes('<script'),'CSV cannot include HTML markup from problem text');
 
