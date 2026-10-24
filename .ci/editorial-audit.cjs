@@ -55,7 +55,7 @@ function validDate(date){
 }
 function reasonsFor(e,{today=new Date().toISOString().slice(0,10)}={}){
  assert.ok(validDate(today),'reference date must be valid');
- const {q,bank}=e;
+ const {q,bank,id}=e;
  const findings=[];
  findings.push(...structureIssues(e).map(issue=>'解答形式の要修正：'+issue));
  if(bank==='FP学科'){
