@@ -17,7 +17,7 @@ const expect=(id,fid,actual)=>assert.equal(field(id,fid),actual,id+'/'+fid+' ind
 const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/2026年度に適用される出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
-assert.match(html,/boki-data\.js\?v=20261024g/);
+assert.match(html,/boki-data\.js\?v=20261024h/);
 assert.match(html,/boki-extra\.js\?v=20261024f/);
 // A trading security is not described using the merchandise accounting "分記法".
 const securities=get('b2-securities');
@@ -184,6 +184,107 @@ assert.equal(val('b3-financial','f36'),loss3);
 assert.equal(298000-loss3,50000,'3rd-grade retained earnings balance');
 assert.match(fiscal3.fields.find(f=>f.id==='f36').explanation,/貸借対照表とも一致/);
 console.log('PASS: form-one FX, tax effect, investment elimination, distinct industrial cases, process quantity flow, FS tax/equity and grade-three net income reconciliation');
+}
+
+
+// Additional source-derived audits: first-form ledger/assets/CVP, second-form FIFO/vouchers.
+// Each expected value is reconstructed from the displayed source terms, not a copied answer key.
+{
+ const num=s=>Number(String(s).replace(/,/g,''));
+ const loan=get('b3-ledger');
+ const previous=num(loan.prompt.match(/前期X4年8月1日に([\d,]+)円/)[1]);
+ const next=num(loan.prompt.match(/同年8月1日に([\d,]+)円/)[1]);
+ const rate=Number(loan.prompt.match(/年([\d.]+)%/)[1])/100;
+ const paid=previous*rate,priorAccrual=previous*rate*8/12,newAccrual=next*rate*8/12;
+ expect(loan.id,'l1',priorAccrual);
+ expect(loan.id,'l2',paid);
+ expect(loan.id,'l3',newAccrual);
+ expect(loan.id,'l4',paid-priorAccrual+newAccrual);
+ expect(loan.id,'l5',newAccrual);
+ assert.match(loan.fields.find(f=>f.id==='l4').explanation,/前期計上済み/);
+
+ const asset=get('b3-asset');
+ const a=asset.prompt.match(/備品AはX3年4月1日に([\d,]+)円で取得し、耐用年数(\d+)年/);
+ const b=asset.prompt.match(/備品BはX5年10月1日に([\d,]+)円で取得し、耐用年数(\d+)年/);
+ assert.ok(a&&b,'asset acquisition terms exist');
+ const aAnnual=num(a[1])/num(a[2]),bAnnual=num(b[1])/num(b[2]);
+ const salePrice=num(asset.fields.find(f=>f.id==='a5').label.match(/([\d,]+)円で売却/)[1]);
+ expect(asset.id,'a1',aAnnual);
+ expect(asset.id,'a2',aAnnual*3);
+ expect(asset.id,'a3',bAnnual*6/12);
+ expect(asset.id,'a4',num(b[1])-bAnnual*6/12);
+ expect(asset.id,'a5',salePrice-(num(a[1])-aAnnual*3));
+
+ const cvp=get('b2-cvp');
+ const conditions=cvp.prompt.match(/販売単価([\d,]+)円、単位当たり変動費([\d,]+)円、月間固定費([\d,]+)円/);
+ const quantity=num(cvp.prompt.match(/当月販売数量は([\d,]+)個/)[1]);
+ assert.ok(conditions,'CVP factors must be presented');
+ const [,unitPrice,unitVariable,fixed]=conditions.map(num);
+ const contribution=unitPrice-unitVariable;
+ const targetProfit=num(cvp.fields.find(f=>f.id==='c5').label.match(/目標営業利益([\d,]+)円/)[1]);
+ const newPrice=num(cvp.fields.find(f=>f.id==='c6').label.match(/([\d,]+)円へ変更/)[1]);
+ expect(cvp.id,'c1',contribution);
+ expect(cvp.id,'c2',contribution*quantity);
+ expect(cvp.id,'c3',contribution*quantity-fixed);
+ expect(cvp.id,'c4',fixed/contribution);
+ expect(cvp.id,'c5',(fixed+targetProfit)/contribution);
+ expect(cvp.id,'c6',(newPrice-unitVariable)*quantity-fixed);
+}
+
+{
+ const inv=get('b3-r2-inventory'),rows=inv.tables.find(t=>t.caption.includes('商品有高帳')).rows;
+ const row=date=>{const r=rows.find(r=>r[0]===date);assert.ok(r,date);return r;};
+ const num=s=>Number(String(s).replace(/,/g,''));
+ const layers=[];
+ const accept=date=>{const r=row(date),qty=num(r[1]),total=num(r[2]);assert.ok(qty>0&&total%qty===0);layers.push({qty,unit:total/qty});};
+ const issue=date=>{let remaining=num(row(date)[3]),cost=0;
+   while(remaining>0){const l=layers[0];assert.ok(l&&l.qty>0,'FIFO has inventory');const used=Math.min(l.qty,remaining);
+     cost+=used*l.unit;l.qty-=used;remaining-=used;if(l.qty===0)layers.shift();}
+   return cost;
+ };
+ const balance=()=>layers.reduce((sum,l)=>sum+l.qty*l.unit,0);
+ accept('4/1');accept('4/5');
+ expect(inv.id,'v1',issue('4/10'));
+ expect(inv.id,'v2',layers.reduce((s,l)=>s+l.qty,0));
+ expect(inv.id,'v3',balance());
+ accept('4/20');
+ expect(inv.id,'v4',issue('4/25'));
+ expect(inv.id,'v5',balance());
+ assert.equal(balance(),num(row('4/25')[6].id?field(inv.id,'v5'):row('4/25')[6]));
+
+ const voucher=get('b3-r2-vouchers');
+ const source=voucher.tables.find(t=>t.caption.includes('伝票一覧')).rows;
+ const debit={},credit={};
+ const add=(side,account,amount)=>side[account]=(side[account]||0)+amount;
+ for(const [,type,action,raw] of source){
+  const amount=num(raw);
+  if(type==='入金伝票'){
+   add(debit,'現金',amount);
+   if(action.includes('売掛金')) add(credit,'売掛金',amount);
+   else if(action.includes('売上げ')) add(credit,'売上',amount);
+   else throw Error('Unknown incoming voucher: '+action);
+  }else if(type==='出金伝票'){
+   add(credit,'現金',amount);
+   if(action.includes('通信費')) add(debit,'通信費',amount);
+   else if(action.includes('買掛金')) add(debit,'買掛金',amount);
+   else throw Error('Unknown outgoing voucher: '+action);
+  }else if(type==='振替伝票'){
+   if(action.includes('仕入れ')){add(debit,'仕入',amount);add(credit,'買掛金',amount);}
+   else if(action.includes('売上げ')){add(debit,'売掛金',amount);add(credit,'売上',amount);}
+   else throw Error('Unknown transfer voucher: '+action);
+  }else throw Error('Unknown voucher type: '+type);
+ }
+ expect(voucher.id,'t1',debit['現金']);
+ expect(voucher.id,'t2',credit['現金']);
+ expect(voucher.id,'t3',debit['売掛金']);
+ expect(voucher.id,'t4',debit['仕入']);
+ expect(voucher.id,'t5',credit['売上']);
+ assert.equal(Object.values(debit).reduce((a,b)=>a+b,0),Object.values(credit).reduce((a,b)=>a+b,0),'voucher debit-credit conservation');
+ assert.equal(Object.values(debit).reduce((a,b)=>a+b,0),415000,'source voucher total');
+ const standard=get('b2-r2-standard');
+ expect(standard.id,'z3',field(standard.id,'z1')+field(standard.id,'z2'));
+ expect(standard.id,'z6',field(standard.id,'z4')+field(standard.id,'z5'));
+ console.log('PASS: source-derived ledger, fixed assets, CVP, FIFO layers, vouchers and variance totals');
 }
 
 console.log('PASS: all 60 items/100-point forms retained; 2026-vs-2027 scope; editorial clarity, reserve limit, securities, inventory, tax-loss and independent trial/statement calculations');
