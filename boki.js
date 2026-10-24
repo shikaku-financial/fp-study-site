@@ -115,7 +115,7 @@
   else if(['practice','review','exam'].includes(action))start(action);
   else if(action==='home'){home();focusHeading();}
   else if(action==='resume'){session=store.active;level=String(session.level);form=String(session.form??'1');renderSession();focusHeading();}
-  else if(action==='pause'){persist();home();focusHeading();}
+  else if(action==='pause'){if(!persist())return;home();focusHeading();}
   else if(action==='discard'){if(window.confirm('簿記ラボの途中経過を削除しますか？')){store.active=null;persist();home();}}
   else if(action==='clear'){if(window.confirm('簿記ラボの履歴と途中経過を削除しますか？FPラボの記録は変更しません。')){store={schema:1,active:null,history:[]};persist();home();}}
   else if(action==='history'){const h=store.history.find(h=>h.id===button.dataset.id);if(h){showResult(h);focusHeading();}}
