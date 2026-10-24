@@ -179,7 +179,7 @@ console.log('PASS: six property-law question pairs have current primary citation
 // Content review is AI-assisted. The 660-question human review register must remain untouched.
 {
  const registration=[
-  ['fp2-104',0,/甲区.*所有権.*乙区.*抵当権.*地役権.*表題部.*地目・地積/s],
+  ['fp2-104',0,/甲区.*所有権.*乙区.*抵当権.*地役権.*地目・地積.*表題部/s],
   ['fp3-083',0,/抵当権.*乙区.*甲区.*表題部/s]
  ];
  const farmland=[
