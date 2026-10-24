@@ -18,7 +18,7 @@ const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
 assert.match(html,/boki-data\.js\?v=20261024o/);
-assert.match(html,/boki-extra\.js\?v=20261024m/);
+assert.match(html,/boki-extra\.js\?v=20261024n/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
 assert.match(html,/2027年4月1日以降の3級本試験は第1問45点・第2問25点・第3問30点/);
@@ -41,7 +41,7 @@ assert.match(html,/本試験に向けて半角数字のみ・同じ側の科目�
 assert.match(html,/当サイトは練習しやすいように全角数字と桁区切りカンマ/);
 assert.match(html,/当サイトも、同じ側の勘定科目を複数行に分けると/);
 assert.doesNotMatch(html,/金額を合算しますが/);
-assert.ok(html.includes('boki-core.js?v=20261024m'),'updated core cache key');
+assert.ok(html.includes('boki-core.js?v=20261024n'),'updated core cache key');
 assert.match(html,/公式試験のすべての解答形式を再現したものではありません/);
 // Learning-oriented journal explanations must show the calculation or account classification.
 for(const [id,required] of [
@@ -147,51 +147,56 @@ for(const [id,fid,account,linked,fact] of [
 assert.match(html,/決算・財務諸表の表示科目や連結上の持分区分も練習できます/);
 console.log('PASS: five financial statement and consolidation account-choice fields with independent numeric pairings');
 
-// Do not give away the direction of standard-costing variances in the question stem or answer labels.
-const variance=get('b2-r2-standard');
-assert.doesNotMatch(variance.prompt,/いずれも不利差異/);
-for(const f of variance.fields.filter(f=>f.type!=='choice'))assert.doesNotMatch(f.label,/（不利）/);
-for(const [fid,account,amountId,sourceAmount] of [
- ['z7','有利差異','z1',25000],
- ['z8','不利差異','z5',60000]
-]){
- const f=variance.fields.find(x=>x.id===fid),numField=variance.fields.find(x=>x.id===amountId);
- assert.ok(f&&f.type==='choice'&&f.points===2&&f.options.includes(account));
- assert.equal(numField.answer,sourceAmount);
- assert.equal(variance.tables.flatMap(t=>t.rows.flat()).filter(c=>c?.id===fid).length,1);
- const C=require('../boki-core.js'),answers=Object.fromEntries(variance.fields.map(x=>[x.id,String(x.answer)]));
- assert.equal(C.grade(variance,answers).earned,12);
- answers[fid]=f.options.find(opt=>opt!==account);
- assert.equal(C.grade(variance,answers).earned,10,'incorrect adverse/favorable judgment loses 2 points');
+// Audit source-derived variance signs independently, with no answer-direction hint in labels.
+const variance=get('b2-r2-standard'),vFields=Object.fromEntries(variance.fields.map(f=>[f.id,f]));
+assert.doesNotMatch(variance.prompt,/いずれも不利差異|いずれも有利差異/);
+for(const f of variance.fields.filter(f=>f.type!=='choice'))assert.doesNotMatch(f.label,/（有利）|（不利）/);
+const source=variance.tables.find(t=>t.caption==='標準・実際データ');
+assert.ok(source,'standard and actual rates are visible in case facts');
+const toNumber=s=>Number(s.replace(/,/g,''));
+const produced=toNumber(variance.prompt.match(/当月完成品([\d,]+)個/)[1]);
+const materialStd=source.rows[0][1].match(/([\d,]+)kg × ([\d,]+)円/);
+const materialAct=source.rows[0][2].match(/消費([\d,]+)kg・単価([\d,]+)円/);
+const laborStd=source.rows[1][1].match(/([\d,]+)時間 × ([\d,]+)円/);
+const laborAct=source.rows[1][2].match(/([\d,]+)時間・賃率([\d,]+)円/);
+assert.ok(materialStd&&materialAct&&laborStd&&laborAct,'case facts must support all variance formulas');
+const [stdKg,stdUnitPrice,usedKg,usedUnitPrice]=[materialStd[1],materialStd[2],materialAct[1],materialAct[2]].map(toNumber);
+const [stdHours,stdHourlyRate,workedHours,paidHourlyRate]=[laborStd[1],laborStd[2],laborAct[1],laborAct[2]].map(toNumber);
+const standardKg=produced*stdKg,standardHours=produced*stdHours;
+assert.ok(usedUnitPrice>stdUnitPrice&&usedKg<standardKg,'materials must mix unfavorable price with favorable quantity');
+assert.ok(paidHourlyRate<stdHourlyRate&&workedHours>standardHours,'labor must mix favorable wage with unfavorable hours');
+const mPriceLoss=(usedUnitPrice-stdUnitPrice)*usedKg;
+const mQuantitySaving=(standardKg-usedKg)*stdUnitPrice;
+const lRateSaving=(stdHourlyRate-paidHourlyRate)*workedHours;
+const lHoursLoss=(workedHours-standardHours)*stdHourlyRate;
+assert.equal(vFields.z1.answer,mPriceLoss,'adverse material price calculated on actual consumed kg');
+assert.equal(vFields.z2.answer,mQuantitySaving,'favorable material usage calculated on standard rate');
+assert.equal(vFields.z3.answer,mPriceLoss-mQuantitySaving,'net material variance offsets opposing signs');
+assert.equal(vFields.z3.answer,usedKg*usedUnitPrice-standardKg*stdUnitPrice,'net material also reconciles actual minus standard');
+assert.equal(vFields.z4.answer,lRateSaving,'favorable hourly labor rate uses actual hours');
+assert.equal(vFields.z5.answer,lHoursLoss,'adverse labor efficiency uses standard rate');
+assert.equal(vFields.z6.answer,lHoursLoss-lRateSaving,'net labor variance offsets opposing signs');
+assert.equal(vFields.z6.answer,workedHours*paidHourlyRate-standardHours*stdHourlyRate,'net labor reconciles actual minus standard');
+assert.equal(vFields.z7.answer,'不利差異','material price is adverse');
+assert.equal(vFields.z8.answer,'有利差異','labor rate is favorable');
+assert.match(vFields.z3.explanation,/相殺/);
+assert.match(vFields.z6.explanation,/相殺/);
+assert.match(vFields.z8.label,/賃率差異/);
+const numericValues=variance.fields.filter(f=>f.type!=='choice').map(f=>f.answer);
+assert.equal(new Set(numericValues).size,numericValues.length,'no duplicated numeric answer keys across six variance fields');
+const C=require('../boki-core.js'),allCorrect=Object.fromEntries(variance.fields.map(f=>[f.id,String(f.answer)]));
+assert.equal(variance.fields.reduce((sum,f)=>sum+f.points,0),12);
+assert.equal(C.grade(variance,allCorrect).earned,12,'entire mixed-direction problem earns 12 points');
+const fieldIds=variance.tables.flatMap(t=>t.rows.flat()).filter(c=>c&&typeof c==='object').map(c=>c.id);
+for(const f of variance.fields){
+ assert.equal(fieldIds.filter(id=>id===f.id).length,1,'one displayed answer blank per field: '+f.id);
+ const bad=f.type==='choice'?f.options.find(opt=>opt!==f.answer):String(f.answer+1);
+ assert.equal(C.grade(variance,{...allCorrect,[f.id]:bad}).earned,12-f.points,'incorrect variance '+f.id+' loses exactly its points');
+ assert.equal(C.grade(variance,{...allCorrect,[f.id]:''}).earned,12-f.points,'blank variance '+f.id+' loses exactly its points');
 }
-// The three net costs must use signed differences: favorable price/rate offsets adverse quantity/time.
-const costFields=Object.fromEntries(variance.fields.map(f=>[f.id,f]));
-const standardMaterial=600*4*500,actualMaterial=2500*490;
-const standardLabor=600*2*1200,actualLabor=1250*1180;
-assert.equal(costFields.z1.answer,(500-490)*2500,'material price FAVORABLE');
-assert.equal(costFields.z2.answer,(2500-600*4)*500,'material quantity ADVERSE');
-assert.equal(costFields.z3.answer,actualMaterial-standardMaterial,'material net ADVERSE');
-assert.equal(costFields.z3.answer,costFields.z2.answer-costFields.z1.answer,'net materials must offset, not add absolute values');
-assert.equal(costFields.z4.answer,(1200-1180)*1250,'labor rate FAVORABLE');
-assert.equal(costFields.z5.answer,(1250-600*2)*1200,'labor efficiency ADVERSE');
-assert.equal(costFields.z6.answer,actualLabor-standardLabor,'labor net ADVERSE');
-assert.equal(costFields.z6.answer,costFields.z5.answer-costFields.z4.answer,'net labor must offset, not add absolute values');
-assert.equal(costFields.z7.answer,'有利差異');
-assert.equal(costFields.z8.answer,'不利差異');
-assert.match(variance.tables[0].rows[0][2],/490円/);
-assert.match(variance.tables[0].rows[1][2],/1,180円/);
-assert.match(costFields.z3.explanation,/相殺/);
-assert.match(costFields.z6.explanation,/相殺/);
-const allCorrect=Object.fromEntries(variance.fields.map(f=>[f.id,String(f.answer)]));
-const C=require('../boki-core.js');
-assert.equal(C.grade(variance,allCorrect).earned,12,'full marks for mixed direction variance calculation');
-for(const [id,incorrect] of [['z3','75000'],['z6','85000'],['z7','不利差異'],['z8','有利差異']]){
-  const altered={...allCorrect,[id]:incorrect};
-  assert.equal(C.grade(variance,altered).earned,12-costFields[id].points,'misconceptions must lose exactly corresponding field points');
-}
-console.log('PASS: favorable price/rate and adverse quantity/time, independent signed net reconciliation');
-
-console.log('PASS: standard costing direction not leaked, two independently graded variance classifications');
+assert.notEqual(C.grade(variance,{...allCorrect,z3:String(mPriceLoss+mQuantitySaving)}).earned,12,'do not add opposing material variance absolute amounts');
+assert.notEqual(C.grade(variance,{...allCorrect,z6:String(lRateSaving+lHoursLoss)}).earned,12,'do not add opposing labor variance absolute amounts');
+console.log('PASS: mixed material/labor variance signs independently computed from displayed facts; 6 unique values and 12-point grading');
 
 // Source-independent reconciliation prevents the closing balance sheet from revealing answers.
 {
@@ -339,9 +344,9 @@ assert.match(job.prompt,/配賦差異は各指図書に再配分しない/);
  assert.match(job.fields.find(f=>f.id==='w7').explanation,/B.*C/);
 }
 const std=get('b2-r2-standard');
-expect(std.id,'z1',(500-490)*2500);
-expect(std.id,'z2',(2500-600*4)*500);
-expect(std.id,'z4',(1200-1180)*1250);
+expect(std.id,'z1',(525-500)*2350);
+expect(std.id,'z2',(600*4-2350)*500);
+expect(std.id,'z4',(1200-1170)*1250);
 expect(std.id,'z5',(1250-600*2)*1200);
 assert.match(std.prompt,/実際消費数量にもとづいて計算/);
 assert.match(std.fields.find(f=>f.id==='z4').explanation,/実際作業時間/);
