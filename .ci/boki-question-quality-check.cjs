@@ -498,8 +498,8 @@ console.log('PASS: first-form grade-three T-account and asset ledger answer leak
  const targetProfit=num(cvp.fields.find(f=>f.id==='c5').label.match(/目標営業利益([\d,]+)円/)[1]);
  const promotedPrice=num(cvp.prompt.match(/販売単価を([\d,]+)円に引き下げ/)[1]);
   const adBudget=num(cvp.prompt.match(/広告宣伝費([\d,]+)円を/)[1]);
-  const growth=Number(cvp.prompt.match(/から(\d+)%増える/)[1])/100;
-  const promotedQuantity=quantity*(1+growth),promotedFixed=fixed+adBudget;
+  const growthPercent=Number(cvp.prompt.match(/から(\d+)%増える/)[1]);
+  const promotedQuantity=quantity*(100+growthPercent)/100,promotedFixed=fixed+adBudget;
   assert.ok(Number.isInteger(promotedQuantity),'promotional forecast uses whole units');
  expect(cvp.id,'c1',contribution);
  expect(cvp.id,'c2',contribution*quantity);
