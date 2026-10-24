@@ -107,7 +107,31 @@ function reasonsFor(e,{today=new Date().toISOString().slice(0,10)}={}){
   const isBalanceIdentity=group=>group.length===2&&
    group.some(f=>/資産合計/.test(f.label||''))&&
    group.some(f=>/負債・純資産合計/.test(f.label||''));
-  if([...sameByAmount.values()].some(group=>group.length>1&&!isBalanceIdentity(group))){
+  // The same interest must appear on both sides of the ledger, and its
+  // opening/closing carry-forward must equal the corresponding posting.
+  // Exempt ONLY the verified b3-ledger posting groups, if their values,
+  // labels and underlying loan terms still reconcile. No human sign-off.
+  const legitimateInterestLedger=(()=>{
+   if(id!=='b3-ledger'||q.type!=='table'||(q.tables||[]).length!==2)return false;
+   const prior=q.prompt.match(/前期X4年8月1日に([\d,]+)円を年([\d.]+)%/);
+   const current=q.prompt.match(/同年8月1日に([\d,]+)円を年([\d.]+)%/);
+   if(!prior||!current||!q.prompt.includes('期首に再振替'))return false;
+   const amt=(m)=>Number(m[1].replace(/,/g,''))*Number(m[2])/100*8/12;
+   const values=new Map((q.fields||[]).map(f=>[f.id,f]));
+   const priorIds=['l1','l7','l9'],currentIds=['l3','l5','l8'];
+   const expectedLabels={
+    l1:'支払利息：4月1日再振替・貸方',l7:'未払利息：4月1日再振替・借方',l9:'未払利息：4月1日前期繰越・貸方',
+    l3:'支払利息：3月31日未払計上・借方',l5:'未払利息：次期繰越・借方',l8:'未払利息：3月31日新規計上・貸方'
+   };
+   for(const [ids,amount] of [[priorIds,amt(prior)],[currentIds,amt(current)]]){
+    if(!ids.every(key=>values.get(key)?.label===expectedLabels[key]&&values.get(key)?.answer===amount))return false;
+    if((sameByAmount.get(amount)||[]).map(f=>f.id).sort().join(',')!==ids.slice().sort().join(','))return false;
+   }
+   const tableCellIds=new Set((q.tables||[]).flatMap(t=>t.rows.flat()).filter(c=>c&&typeof c==='object').map(c=>c.id));
+   return [...priorIds,...currentIds].every(key=>tableCellIds.has(key));
+  })();
+  if([...sameByAmount.values()].some(group=>group.length>1&&!isBalanceIdentity(group)&&
+      !(legitimateInterestLedger&&group.every(f=>['l1','l7','l9','l3','l5','l8'].includes(f.id))))){
    findings.push('複数の解答欄が同額（出題意図を確認）');
   }
  }
