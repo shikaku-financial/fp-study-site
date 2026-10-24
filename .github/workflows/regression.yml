@@ -40,6 +40,18 @@ jobs:
           node --check .ci/editorial-audit.cjs
           node .ci/editorial-audit-check.cjs
           node .ci/editorial-audit.cjs --limit=35 --detail=8
+      - name: Export 660-question editorial triage in full (CI only)
+        run: |
+          node --check .ci/editorial-audit-export.cjs
+          node .ci/editorial-audit-export-check.cjs
+          node .ci/editorial-audit-export.cjs --out-dir="$RUNNER_TEMP/fll-editorial-audit"
+      - name: Archive editorial triage CSV and JSON (not deployed)
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: fll-editorial-audit
+          path: ${{ runner.temp }}/fll-editorial-audit/
+          if-no-files-found: error
+          retention-days: 7
       - name: Check shared learning calculator
         run: |
           node --check calculator.js
