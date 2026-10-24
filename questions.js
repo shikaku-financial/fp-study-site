@@ -4167,11 +4167,11 @@ const QUESTIONS = [
       "× 誤り"
     ],
     "answer": 0,
-    "explanation": "抵当権設定の登記事項は、通常は権利部の乙区に記録します。甲区は所有権に関する事項、表題部は土地の地目・地積等を扱います。抵当権を設定したという契約の場面と、設定登記を記録する区分という本問の対象を区別します。",
+    "explanation": "抵当権は所有権そのものではなく、所有権以外の権利です。その設定登記の登記事項は、土地の権利部（乙区）に記録されます。甲区には所有権移転など所有権に関する事項を、表題部には地目・地積など土地の表示に関する事項を記録します。不動産登記規則第4条第4項と法務省の登記案内の区分に対応します。抵当権の成立時点や登記申請手続の要否は、本問で問う登記記録の区分とは別です。",
     "topic": "金融機関の抵当権設定登記",
-    "sourceUrl": "https://houmukyoku.moj.go.jp/matsuyama/page000001_00390.html",
+    "sourceUrl": "https://www.moj.go.jp/MINJI/minji02",
     "id": "fp3-083",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
     "choiceExplanations": [
@@ -4179,13 +4179,14 @@ const QUESTIONS = [
       "不適切。所有権を扱う甲区ではなく、所有権以外の権利を扱う乙区です。"
     ],
     "additionalSourceUrls": [
-      "https://www.moj.go.jp/MINJI/minji02"
+      "https://houmukyoku.moj.go.jp/matsuyama/page000001_00390.html",
+      "https://laws.e-gov.go.jp/law/417M60000010018?occasion_date=20260401"
     ],
-    "sourceLabel": "国土交通省本文・法務省/法務局の公式索引抜粋による登記基本事項の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "contentReview": "v136_registration_scoped_migration",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
-    "reviewNote": "公式本文と公式検索索引抜粋の照合範囲を区別。法務省/法務局ページ本文403、2026-04-01時点の規則全文・全改正未確認。新改訂主要点3/共通適用1/旧論点再確認2。包括監修未完了。"
+    "sourceLabel": "法務省「不動産登記のABC」・法務局の登記記録区分案内／不動産登記規則第4条第4項（区分のみの限定確認）",
+    "sourceCheckedDate": "2026-10-24",
+    "contentReview": "20261024_selected_official_sources_ai_scoped_human_review_pending",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
+    "reviewNote": "法務省の不動産登記案内に示された甲区・乙区・表題部の区分と、不動産登記規則第4条第4項の限定論点をAI支援で照合。法務局個別ページは取得環境によって本文閲覧が制限されるため法務省の案内も併記。2026年4月1日までの全改正・申請期限・全規則条文の包括的点検、人手監修は未了。"
   },
   {
     "level": "3",
@@ -6760,29 +6761,30 @@ const QUESTIONS = [
       "土地の地目と地積"
     ],
     "answer": 0,
-    "explanation": "売買による所有権移転は甲区、抵当権設定と資料の承役地の地役権設定は乙区、土地の地目・地積は表題部の事項です。各選択肢が所有権、所有権以外の権利、物理的状況のどれを扱うかを確認します。",
+    "explanation": "土地の登記記録は表題部と権利部に分かれ、権利部は甲区と乙区に分かれます。甲区は売買による所有権移転など所有権に関する登記事項、乙区は抵当権設定や（本問の承役地の）地役権設定など所有権以外の権利に関する登記事項です。地目・地積は土地の物理的状況を示す表題部の事項です。不動産登記規則第4条第4項の区分に照らして判別します。これは登記の記録場所を問う問題であり、申請の義務・期限や権利の効力発生時点まで判断するものではありません。",
     "topic": "甲区に記録する事項の判別",
-    "sourceUrl": "https://houmukyoku.moj.go.jp/matsuyama/page000001_00390.html",
+    "sourceUrl": "https://www.moj.go.jp/MINJI/minji02",
     "id": "fp2-104",
-    "revision": 3,
+    "revision": 4,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
     "reviewedAt": "2026-10-12",
-    "sourceLabel": "国土交通省本文・法務省/法務局の公式索引抜粋による登記基本事項の限定照合",
+    "sourceLabel": "法務省「不動産登記のABC」・法務局の登記記録区分案内／不動産登記規則第4条第4項（区分のみの限定確認）",
     "choiceExplanations": [
       "正解。売買による所有権移転は、所有権に関する登記事項なので甲区に記録します。",
       "不適切。金融機関の抵当権設定は所有権以外の権利に関する登記で、通常は乙区に記録します。",
       "不適切。資料の承役地についての通行地役権設定は、所有権以外の権利に関する登記で、通常は乙区に記録します。",
       "不適切。土地の地目・地積は物理的状況を示す表題部の事項で、甲区の事項ではありません。"
     ],
-    "contentReview": "v136_registration_scoped_migration",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
+    "contentReview": "20261024_selected_official_sources_ai_scoped_human_review_pending",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
     "priorSourceReview": "v51_official_source_based_limited_rule_review",
     "additionalSourceUrls": [
-      "https://www.moj.go.jp/MINJI/minji02"
+      "https://houmukyoku.moj.go.jp/matsuyama/page000001_00390.html",
+      "https://laws.e-gov.go.jp/law/417M60000010018?occasion_date=20260401"
     ],
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "公式本文と公式検索索引抜粋の照合範囲を区別。法務省/法務局ページ本文403、2026-04-01時点の規則全文・全改正未確認。新改訂主要点3/共通適用1/旧論点再確認2。包括監修未完了。"
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "法務省の不動産登記案内に示された甲区・乙区・表題部の区分と、不動産登記規則第4条第4項の限定論点をAI支援で照合。法務局個別ページは取得環境によって本文閲覧が制限されるため法務省の案内も併記。2026年4月1日までの全改正・申請期限・全規則条文の包括的点検、人手監修は未了。"
   },
   {
     "level": "2",
@@ -8670,27 +8672,29 @@ const QUESTIONS = [
       "× 誤り"
     ],
     "answer": 0,
-    "explanation": "資料のような市街化区域内の自己転用では、あらかじめ農業委員会へ所定の届出をすることにより、農地法の転用許可が不要となる取扱いがあります。市街化区域というだけで無手続に転用できるわけではありません。売買等を伴う転用や、建築など他法令の要件まで不要になるものでもありません。",
+    "explanation": "本問は農地所有者自身が自分の住宅敷地へ転用するため、農地法第4条に関する問題です。市街化区域内の自己転用で所定の要件を満たす場合は、農業委員会にあらかじめ届出をすることにより転用許可が不要となるため、「〇 正しい」です。市街化区域だから無手続で転用してよいわけではありません。転用に伴い売買・賃借などの権利移動を行う場合は第5条の手続になり、今回の第4条のケースとは区別します。",
     "topic": "市街化区域内の自己転用",
     "createdVersion": 9,
-    "revision": 2,
+    "revision": 3,
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
     "id": "fp3-163",
-    "contentReview": "v138_property_contract_and_management_scoped_migration",
+    "contentReview": "20261024_selected_official_sources_ai_scoped_human_review_pending",
     "choiceExplanations": [
       "正解。市街化区域内の自己転用で所定の条件を満たす場合、事前の農業委員会への届出で許可不要となる扱いがあります。",
       "不適切。資料の条件では届出による許可不要の扱いがあります。ただし無手続でよいという意味ではありません。"
     ],
     "sourceUrl": "https://www.maff.go.jp/j/nousin/noukei/totiriyo/ihan_tenyo.html",
     "additionalSourceUrls": [
-      "https://www.pref.nagano.lg.jp/nosei/sangyo/nogyo/nochiho/tenyo.html"
+      "https://www.maff.go.jp/j/nousin/noukei/totiriyo/nouchi_tenyo.html",
+      "https://www.city.nagoya.jp/kurashi/nougyou/1011712/1011713.html",
+      "https://laws.e-gov.go.jp/law/327AC0000000229?occasion_date=20260401"
     ],
-    "sourceLabel": "国会制定法・国土交通省・農林水産省等による設問主要点の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "新改訂主要点5/共通ルール設例適用5。手付3問の内部算術を別記。全法令/全改正/基準日統合全文の確認ではない。"
+    "sourceLabel": "農林水産省：農地転用・違反転用の案内、名古屋市：市街化区域の第4条届出（2026年4月1日基準の限定論点）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "農林水産省の農地転用・違反転用案内と自治体の第4条自己転用／第5条権利移動の区分に限定してAI支援で照合。2026年4月1日基準の全条文・改正経過・地域固有の届出運用・生産緑地の別規制の包括監査および人手監修は未了。"
   },
   {
     "level": "3",
@@ -8702,27 +8706,28 @@ const QUESTIONS = [
       "× 誤り"
     ],
     "answer": 1,
-    "explanation": "資料の重要事項説明は、宅地建物取引士が行います。買主が了承したという理由だけで、その資格要件を外すことはできません。一定の要件を満たすIT重説や電子書面の利用が可能であることと、説明担当者の資格要件は別の問題です。",
+    "explanation": "宅地建物取引業法第35条第1項は、宅地建物取引業者が契約成立までの間に、宅地建物取引士に重要事項を説明させることを求めています。契約当事者の買主が同意しても、宅地建物取引士でない営業担当者のみの説明では、この法定の説明義務を満たしません。重要事項説明書の交付や、所定の要件によるIT重説・電子書面の利用は、説明を行う者の資格要件をなくす制度ではありません。契約成立時の第37条書面と、契約成立前の第35条の重要事項説明も区別します。",
     "topic": "重要事項説明を行う者",
     "createdVersion": 9,
-    "revision": 2,
+    "revision": 3,
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
     "id": "fp3-164",
-    "contentReview": "v138_property_contract_and_management_scoped_migration",
+    "contentReview": "20261024_selected_official_sources_ai_scoped_human_review_pending",
     "choiceExplanations": [
       "不適切。買主の同意だけで、宅地建物取引士による重要事項説明を省略することはできません。",
       "正解。資料の重要事項説明は宅地建物取引士が行う必要があり、無資格の営業担当者だけで代えることはできません。"
     ],
-    "sourceUrl": "https://www.mlit.go.jp/totikensangyo/const/content/001853619.pdf",
+    "sourceUrl": "https://www.mlit.go.jp/totikensangyo/const/1_6_bt_000268.html",
     "additionalSourceUrls": [
-      "https://www.mlit.go.jp/common/001201742.pdf"
+      "https://laws.e-gov.go.jp/law/327AC1000000176?occasion_date=20260401",
+      "https://www.thr.mlit.go.jp/bumon/b06111/kenseibup/fudousan_ihanjirei.html"
     ],
-    "sourceLabel": "国会制定法・国土交通省・農林水産省等による設問主要点の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "新改訂主要点5/共通ルール設例適用5。手付3問の内部算術を別記。全法令/全改正/基準日統合全文の確認ではない。"
+    "sourceLabel": "国土交通省：宅建業法解釈・運用（令和8年4月1日施行版の案内）、宅建業法第35条・違反事例（資格要件の限定照合）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "国土交通省の2026年4月1日以降の解釈・運用案内、同省の第35条違反事例、法第35条第1項の資格要件をAI支援で限定照合。2026年4月1日の重要事項記載項目追加等の個別改正内容は本問の出題範囲外であり、法令全文・関連省令の包括検証および人手監修は未了。"
   },
   {
     "level": "3",
@@ -10879,16 +10884,16 @@ const QUESTIONS = [
       "市街化区域内の農地は、住宅敷地への転用が農地法上すべて禁止されている"
     ],
     "answer": 1,
-    "explanation": "資料のような市街化区域内の自己転用では、あらかじめ農業委員会へ所定の届出をすることにより、農地法の転用許可が不要となる取扱いがあります。市街化区域というだけで無手続に転用できるわけではありません。売買等を伴う転用や、建築など他法令の要件まで不要になるものでもありません。",
+    "explanation": "既に所有する農地を自分の住宅敷地に転用し、売買や賃借などの権利移動がない本問は農地法第4条の「自己転用」に当たります。市街化区域内で届出の適用条件を満たす場合、あらかじめ農業委員会に所定の届出を行うことにより転用許可が不要となります。これに対し、転用と同時に所有権移転や賃借権設定をする場合は農地法第5条の手続を検討します。「市街化区域だから届出も許可も不要」と考えるのは誤りです。生産緑地や建築確認など別法令の手続は、本問で免除されるわけではありません。",
     "topic": "市街化区域内の自己転用",
     "createdVersion": 9,
-    "revision": 3,
+    "revision": 4,
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-167",
-    "contentReview": "v138_property_contract_and_management_scoped_migration",
+    "contentReview": "20261024_selected_official_sources_ai_scoped_human_review_pending",
     "choiceExplanations": [
       "不適切。資料の条件では、所定の届出で許可不要となる扱いがあります。",
       "正解。事前の農業委員会への届出と、転用許可が不要になる扱いを区別します。",
@@ -10897,11 +10902,13 @@ const QUESTIONS = [
     ],
     "sourceUrl": "https://www.maff.go.jp/j/nousin/noukei/totiriyo/ihan_tenyo.html",
     "additionalSourceUrls": [
-      "https://www.pref.nagano.lg.jp/nosei/sangyo/nogyo/nochiho/tenyo.html"
+      "https://www.maff.go.jp/j/nousin/noukei/totiriyo/nouchi_tenyo.html",
+      "https://www.city.nagoya.jp/kurashi/nougyou/1011712/1011713.html",
+      "https://laws.e-gov.go.jp/law/327AC0000000229?occasion_date=20260401"
     ],
-    "sourceLabel": "国会制定法・国土交通省・農林水産省等による設問主要点の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "新改訂主要点5/共通ルール設例適用5。手付3問の内部算術を別記。全法令/全改正/基準日統合全文の確認ではない。"
+    "sourceLabel": "農林水産省：農地転用・違反転用の案内、名古屋市：市街化区域の第4条届出（2026年4月1日基準の限定論点）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "農林水産省の農地転用・違反転用案内と自治体の第4条自己転用／第5条権利移動の区分に限定してAI支援で照合。2026年4月1日基準の全条文・改正経過・地域固有の届出運用・生産緑地の別規制の包括監査および人手監修は未了。"
   },
   {
     "level": "2",
