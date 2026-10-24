@@ -32,6 +32,7 @@ jobs:
           node --check boki-extra.js
           node .ci/boki-check.cjs
           node .ci/boki-second-check.cjs
+          node .ci/boki-question-quality-check.cjs
           node .ci/boki-flow-check.cjs
       - name: Check shared learning calculator
         run: |

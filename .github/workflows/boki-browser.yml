@@ -49,6 +49,7 @@ jobs:
         run: |
           node .ci/boki-check.cjs
           node .ci/boki-second-check.cjs
+          node .ci/boki-question-quality-check.cjs
           node .ci/boki-flow-check.cjs
           node .ci/build-static.cjs
       - name: Exercise published assets in Chromium and WebKit
