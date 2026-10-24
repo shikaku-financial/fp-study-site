@@ -171,7 +171,7 @@ assert.throws(()=>renderReviewPacket(r,{limit:0}),/limit/);
   'unrelated arithmetic-only questions must not be falsely certified by this limited review');
  const after=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
  assert.equal(after.reviewedCount,0,'no human review records added by source investigation');
- assert.equal(after.flagged.length,44,'five more historical source issues resolved; other 44 editorial candidates remain');
+ assert.equal(after.flagged.length,39,'the five old legal sources are now reviewed within scoped AI limits; 39 candidates remain');
 }
 console.log('PASS: six property-law question pairs have current primary citations, tested rule contrasts and no fabricated human review.');
 
@@ -214,10 +214,52 @@ console.log('PASS: six property-law question pairs have current primary citation
  }
  const afterFive=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
  assert.equal(afterFive.reviewedCount,0,'automated legal citations must not certify human review');
- assert.equal(afterFive.flagged.length,44,'five scoped legal items removed from prior 49-candidate queue');
+ assert.equal(afterFive.flagged.length,39,'five more historical source flags resolved; 39 remaining candidates');
  assert.ok(afterFive.flagged.some(e=>e.id==='fp2-114'),'unrelated arithmetic/legal item still pending');
  assert.ok(afterFive.flagged.some(e=>e.id==='b3-ledger'),'bookkeeping follow-up remains pending');
 }
 console.log('PASS: five FP legal cases use official guidance, original answer keys, scoped AI audit status and zero human certification.');
+
+// Follow-up to previous registration and deposit checks: 5 historical primary sources.
+// These are AI-assisted checks of a bounded issue, not a registered human review.
+{
+ const cases=[
+  ['fp2-025',1,'https://www.moj.go.jp/MINJI/minji02.html',/登記規則第4条第4項.*甲区.*乙区.*表題部/s],
+  ['fp2-053',3,'https://www.moj.go.jp/MINJI/minji02.html',/1筆の土地.*1個の建物.*別個の不動産/s],
+  ['fp3-025',1,'https://www.moj.go.jp/MINJI/minji02.html',/1筆の土地.*1個の建物.*Aさん.*Bさん/s],
+  ['fp3-055',0,'https://www.moj.go.jp/MINJI/minji02.html',/第4条第4項.*甲区.*所有権.*乙区.*表題部/s],
+  ['fp2-054',3,'https://laws.e-gov.go.jp/law/129AC0000000089?occasion_date=20260401',/民法第557条第1項.*100万円.*200万円.*相手方の履行着手/s]
+ ];
+ const originalChoices={
+  'fp2-025':'権利部の甲区には、原則として所有権に関する登記事項が記録される',
+  'fp2-053':'土地と建物は原則として別個の不動産で、それぞれ登記の対象となる',
+  'fp3-025':'× 誤り',
+  'fp3-055':'権利部（甲区）',
+  'fp2-054':'200万円'
+ };
+ const currentQueue=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
+ assert.equal(currentQueue.flagged.length,39,'five historical source flags now resolved; not a claim of certification');
+ assert.equal(currentQueue.reviewedCount,0,'a source check never changes the human review register');
+ for(const [id,answer,url,explanation] of cases){
+  const entry=all.find(x=>x.id===id);
+  assert.ok(entry && entry.bank==='FP学科',id+' still in academic set');
+  const q=entry.q;
+  assert.equal(q.answer,answer,id+' original grading answer retained');
+  assert.equal(q.choices[q.answer],originalChoices[id],id+' original correct choice retained');
+  assert.equal(q.lawReferenceDate,'2026-04-01',id+' fixed law baseline');
+  assert.equal(q.sourceUrl,url,id+' accessible official source');
+  assert.equal(q.sourceCheckedDate,'2026-10-24',id+' source check date');
+  assert.equal(q.verificationStatus,'ai_scoped_primary_rule_checked_human_review_pending',id+' AI only');
+  assert.match(q.reviewNote,/人手監修は未了/,id+' human review boundary');
+  assert.match(q.explanation,explanation,id+' legal distinction explained');
+  assert.ok(q.additionalSourceUrls.every(s=>s.startsWith('https://')),id+' supplementary HTTPS sources');
+  assert.equal(structureIssues(entry).length,0,id+' scoring contract');
+  assert.ok(!reasonsFor(entry,{today:'2026-10-24'}).includes('参照した旧資料の本文確認待ち'),
+    id+' old missing source problem resolved');
+ }
+ assert.ok(currentQueue.flagged.some(x=>x.id==='fp2-114'),'unrelated arithmetic legal scope remains pending');
+ assert.ok(currentQueue.flagged.some(x=>x.id==='b3-ledger'),'independent boki issue is not suppressed');
+}
+console.log('PASS: five previously pending historical references checked in bounded scope; correct options remain and human reviews stay at 0.');
 
 console.log('PASS: 660 records, time-aware evidence freshness and source review priority, 600 FP answer contracts, mutational guards, reviewer-ready previews, source hashes and honest human review boundary.');
