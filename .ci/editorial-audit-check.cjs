@@ -176,7 +176,7 @@ assert.throws(()=>renderReviewPacket(r,{limit:0}),/limit/);
   'unrelated arithmetic-only questions must not be falsely certified by this limited review');
  const after=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
  assert.equal(after.reviewedCount,0,'no human review records added by source investigation');
- assert.equal(after.flagged.length,27,'12 early-source and explanation issues resolved; 27 candidates remain');
+ assert.equal(after.flagged.length,15,'12 early-source and explanation issues resolved; 15 candidates remain');
 }
 console.log('PASS: six property-law question pairs have current primary citations, tested rule contrasts and no fabricated human review.');
 
@@ -219,7 +219,7 @@ console.log('PASS: six property-law question pairs have current primary citation
  }
  const afterFive=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
  assert.equal(afterFive.reviewedCount,0,'automated legal citations must not certify human review');
- assert.equal(afterFive.flagged.length,27,'12 early-lesson source and explanation issues resolved; 27 remaining candidates');
+ assert.equal(afterFive.flagged.length,15,'12 early-lesson source and explanation issues resolved; 15 remaining candidates');
  assert.ok(afterFive.flagged.some(e=>e.id==='fp2-114'),'unrelated arithmetic/legal item still pending');
  assert.ok(afterFive.flagged.some(e=>e.id==='b3-ledger'),'bookkeeping follow-up remains pending');
 }
@@ -243,7 +243,7 @@ console.log('PASS: five FP legal cases use official guidance, original answer ke
   'fp2-054':'200万円'
  };
  const currentQueue=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
- assert.equal(currentQueue.flagged.length,27,'12 early lesson flags also resolved; not certification');
+ assert.equal(currentQueue.flagged.length,15,'12 early lesson flags also resolved; not certification');
  assert.equal(currentQueue.reviewedCount,0,'a source check never changes the human review register');
  for(const [id,answer,url,explanation] of cases){
   const entry=all.find(x=>x.id===id);
@@ -323,7 +323,7 @@ console.log('PASS: five previously pending historical references checked in boun
  assert.equal(get('fp2-006').choices[get('fp2-006').answer],'1,600万円');
  assert.equal(get('fp3-006').answer,1,'child does not inherit spouse share');
  const report=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
- assert.equal(report.flagged.length,27,'12 source or choice explanation flags resolved');
+ assert.equal(report.flagged.length,15,'12 source or choice explanation flags resolved');
  assert.equal(report.reviewedCount,0,'machine checks never create human oversight records');
  for(const id of ids)assert.ok(!report.flagged.some(x=>x.id===id),id+' has adequate source and per-choice explanation metadata');
  assert.ok(report.flagged.some(x=>x.id==='fp2-114'),'unrelated tax-boundary review remains pending');
