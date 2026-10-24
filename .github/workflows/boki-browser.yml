@@ -9,6 +9,7 @@ on:
       - 'hub.css'
       - 'fll.js'
       - 'fp.html'
+      - 'practical-loader.js'
       - 'index.html'
       - '.ci/fll-browser.cjs'
       - '.ci/boki-browser.cjs'

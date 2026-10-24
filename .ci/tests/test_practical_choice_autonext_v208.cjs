@@ -7,5 +7,7 @@ assert.match(html,/選択肢を選んだら自動で次の問題へ/);
 assert.match(js,/\$p\('prAutoNext'\)\.checked && attempt\.pos<attempt\.questions\.length-1/);
 assert.match(js,/jump\(attempt\.pos\+1\);else renderQuestion\(\)/);
 assert.match(js,/attempt\.answers\[pos\]=i;if\(!save\(DRAFT,attempt\)\)\{attempt\.answers\[pos\]=previous;return;\}/);
-assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+assert.match(html,/practical-loader\.js\?v=/,'FP html must bootstrap deferred practical mode');
+const loader=fs.readFileSync(path.join(root,'practical-loader.js'),'utf8');
+assert.match(loader,/practical\.js\?v=[a-f0-9]{14}/,'loader must cache-bust the practical controller');
 console.log('PASS: opt-in auto-advance wired only to practical choice handlers and not last question; draft saves first.');

@@ -21,6 +21,7 @@ on:
       - 'boki.webmanifest'
       - 'questions.js'
       - 'practical.js'
+      - 'practical-loader.js'
       - 'practical-questions.js'
       - 'practical-materials.js'
       - 'financial-license-lab-logo.png'

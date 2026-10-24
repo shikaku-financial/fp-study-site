@@ -10,7 +10,12 @@ for(const file of ['fp.html','boki.html','guide.html','fp2-study.html','fp3-stud
  assert.ok(html.includes('href="index.html"')&&html.includes('href="brand.css?v=20261023d"'),file+' parent entry and theme');
 }
 for(const id of ['home','quiz','exam','finish','examResult','practicalHome','practicalExam','practicalResult','siteHomeLink'])assert.ok(fp.includes('id="'+id+'"'),'FP control retained '+id);
-for(const script of ['questions.js','app.js','practical.js','practical-questions.js','practical-materials.js'])assert.ok(fp.includes('src="'+script+'?'),'FP exam script retained');
+for(const script of ['questions.js','app.js','practical-loader.js'])assert.ok(fp.includes('src="'+script+'?'),'FP entry script retained');
+for(const file of ['practical-questions.js','practical-materials.js','practical.js'])assert.ok(!fp.includes('src="'+file+'?'),'practical bundle must be lazy-loaded');
+const loader=read('practical-loader.js');
+for(const file of ['practical-questions.js','practical-materials.js','practical.js'])assert.ok(loader.includes(file+'?'),'missing lazy module '+file);
+assert.ok(loader.indexOf('practical-questions.js?')<loader.indexOf('practical-materials.js?')&&loader.indexOf('practical-materials.js?')<loader.indexOf('practical.js?'),'practical module ordering');
+assert.ok(fp.includes('id="practicalLoadStatus"')&&fp.includes('aria-live="polite"'),'lazy module status required');
 assert.ok(bk.includes('boki-data.js?')&&bk.includes('boki-extra.js?')&&bk.includes('boki-core.js?')&&bk.includes('boki.js?'));
 const contact=read('contact.html'),privacy=read('privacy.html');
 assert.ok(contact.includes('href="https://tally.so/r/e5qgKJ"'),'no-login Tally form is primary contact entry');

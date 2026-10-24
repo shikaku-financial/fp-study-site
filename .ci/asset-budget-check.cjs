@@ -3,9 +3,12 @@
 // This is NOT a substitute for Lighthouse or measured user Core Web Vitals.
 const fs=require('node:fs'),path=require('node:path'),zlib=require('node:zlib'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
+const fpEntry=fs.readFileSync(path.join(root,'fp.html'),'utf8');
+for(const f of ['practical-questions.js','practical-materials.js','practical.js'])
+ assert.ok(!fpEntry.includes('src="'+f+'?'),'academic page eagerly loads practical data: '+f);
 const limits={
  'index.html':100*1024,
- 'fp.html':680*1024,
+ 'fp.html':360*1024,
  'boki.html':180*1024
 };
 for(const [page,limit] of Object.entries(limits)){

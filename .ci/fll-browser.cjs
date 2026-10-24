@@ -28,7 +28,7 @@ async function run(name){
   await page.locator('.hub-course a[href="boki.html"]').click();await page.locator('#boki-form').waitFor();await fits();
   await page.screenshot({path:'brand-qa/'+name+'-boki-390.png',fullPage:true});
   await page.locator('.fll-logo').click();await page.locator('#labs').waitFor();
-  await page.goto(new URL('index.html?view=practical&level=2',BASE).href,{waitUntil:'load'});await page.locator('#prSelectLevel2[aria-pressed="true"]').waitFor();assert.ok(page.url().includes('fp.html?view=practical'));
+  await page.goto(new URL('index.html?view=practical&level=2',BASE).href,{waitUntil:'load'});await page.locator('#practicalHome').waitFor({state:'visible',timeout:15000});await page.locator('#prSelectLevel2[aria-pressed="true"]').waitFor();assert.ok(page.url().includes('fp.html?view=practical'));
   await page.screenshot({path:'brand-qa/'+name+'-fp-390.png',fullPage:true});
   await page.goto(new URL('index.html?level=3',BASE).href,{waitUntil:'load'});await page.locator('#level3[aria-pressed="true"]').waitFor();assert.ok(page.url().includes('fp.html?level=3'));
   await page.goto(new URL('index.html#home',BASE).href,{waitUntil:'load'});await page.locator('#home').waitFor({state:'visible'});assert.ok(page.url().includes('fp.html#home'));

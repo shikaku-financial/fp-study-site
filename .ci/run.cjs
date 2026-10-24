@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),vm=require('node:vm'),assert=require('node:assert/strict'),{spawnSync}=require('node:child_process');
 const root=path.resolve(__dirname,'..');
-const publicFiles=['fp.html','style.css','app.js','questions.js','practical-questions.js','practical-materials.js','practical.js','financial-license-lab-logo.png'];
+const publicFiles=['fp.html','style.css','app.js','questions.js','practical-questions.js','practical-materials.js','practical.js','practical-loader.js','financial-license-lab-logo.png'];
 const suites=JSON.parse(fs.readFileSync(path.join(__dirname,'suites.json'),'utf8'));
 const temp=fs.mkdtempSync(path.join(os.tmpdir(),'fp-lab-regression-'));
 try {
@@ -16,7 +16,7 @@ try {
   assert.deepEqual(ids('PRACTICAL_QUESTIONS'),contract.practical_ids);
   assert.equal(contract.academic_ids.length,360);assert.equal(contract.practical_ids.length,240);
   assert.equal(new Set([...contract.academic_ids,...contract.practical_ids]).size,600);
-  for(const file of ['app.js','questions.js','practical.js','practical-questions.js','practical-materials.js']) {
+  for(const file of ['app.js','questions.js','practical.js','practical-loader.js','practical-questions.js','practical-materials.js']) {
     const result=spawnSync(process.execPath,['--check',path.join(temp,file)],{encoding:'utf8',timeout:30000});
     assert.equal(result.status,0,result.stderr||String(result.error));
   }

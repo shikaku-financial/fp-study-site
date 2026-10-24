@@ -8,5 +8,7 @@ assert.match(js,/\$p\('prAutoNext'\)\.addEventListener\('change'/);
 assert.match(js,/localStorage\.setItem\(AUTO_NEXT_PREF,\$p\('prAutoNext'\)\.checked\?'1':'0'\)/);
 assert.match(js,/catch\s*\{\s*\/\* auto-next remains usable/);
 assert.match(js,/\$p\('prAutoNext'\)\.checked && attempt\.pos<attempt\.questions\.length-1/);
-assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+assert.match(html,/practical-loader\.js\?v=/,'FP html must bootstrap deferred practical mode');
+const loader=fs.readFileSync(path.join(root,'practical-loader.js'),'utf8');
+assert.match(loader,/practical\.js\?v=[a-f0-9]{14}/,'loader must cache-bust the practical controller');
 console.log('PASS: optional auto-next preference persists separately from exam history and tolerates disabled storage.');

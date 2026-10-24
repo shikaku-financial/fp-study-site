@@ -9,5 +9,7 @@ assert.match(js,/\$p\('prJumpUnanswered'\)\.addEventListener\('click'/);
 assert.match(js,/\(attempt\.pos\+offset\)%n/);
 assert.match(js,/!completeAnswer\(attempt\.questions\[i\],attempt\.answers\[i\]\)/);
 assert.match(js,/if\(!completeAnswer\(attempt\.questions\[i\],attempt\.answers\[i\]\)\)\{jump\(i\);return;\}/);
-assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+assert.match(html,/practical-loader\.js\?v=/,'FP html must bootstrap deferred practical mode');
+const loader=fs.readFileSync(path.join(root,'practical-loader.js'),'utf8');
+assert.match(loader,/practical\.js\?v=[a-f0-9]{14}/,'loader must cache-bust the practical controller');
 console.log('PASS: practical next-unanswered button and cyclic search wiring; behavior remains subject to existing VM/DOM regression.');

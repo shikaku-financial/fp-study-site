@@ -7,5 +7,7 @@ assert.match(html,/<label id="prAutoNextLabel" class="check-label"><input id="pr
 assert.match(js,/\$p\('prAutoNextLabel'\)\.classList\.toggle\('hidden',number\|\|multi\)/);
 assert.match(js,/const number=q\.kind==='numeric',multi=isMulti\(q\)/);
 assert.match(js,/\$p\('prAutoNext'\)\.checked && attempt\.pos<attempt\.questions\.length-1/);
-assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+assert.match(html,/practical-loader\.js\?v=/,'FP html must bootstrap deferred practical mode');
+const loader=fs.readFileSync(path.join(root,'practical-loader.js'),'utf8');
+assert.match(loader,/practical\.js\?v=[a-f0-9]{14}/,'loader must cache-bust the practical controller');
 console.log('PASS: auto-next setting shows for choice questions only, remains available with existing opt-in behavior.');
