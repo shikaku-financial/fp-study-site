@@ -17,7 +17,7 @@ const expect=(id,fid,actual)=>assert.equal(field(id,fid),actual,id+'/'+fid+' ind
 const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
-assert.match(html,/boki-data\.js\?v=20261024k/);
+assert.match(html,/boki-data\.js\?v=20261024l/);
 assert.match(html,/boki-extra\.js\?v=20261024l/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
@@ -94,6 +94,27 @@ for(const [id,fid,correctAnswer] of [
 }
 assert.match(html,/4回分の模試に勘定科目・語句選択の空欄/);
 console.log('PASS: six original categorical select fields embedded across four full-length mocks; mixed grading validated');
+
+// First-form accounts and closing totals must not reveal the numerical answers in advance.
+for(const [id,cells,expectedPts] of [
+ ['b3-financial',['f39','f310'],35],
+ ['b2-financial',['f212','f213'],20]
+]){
+ const q=get(id),balance=q.tables.find(t=>t.caption.startsWith('貸借対照表'));
+ const amounts=balance.rows.flat();
+ const literals= id==='b3-financial'?['50,000','1,946,000']:['42,000','5,546,000'];
+ for(const literal of literals)assert.ok(!amounts.includes(literal),id+' literal answer leaked: '+literal);
+ for(const fieldId of cells)assert.equal(amounts.filter(v=>v&&typeof v==='object'&&v.id===fieldId).length,1,id+'/'+fieldId+' appears once');
+ assert.equal(q.fields.reduce((sum,f)=>sum+f.points,0),expectedPts,id+' score weights unchanged');
+ const C=require('../boki-core.js'),answers=Object.fromEntries(q.fields.map(f=>[f.id,String(f.answer)]));
+ assert.equal(C.grade(q,answers).earned,expectedPts);
+ for(const fieldId of cells){
+  const field=q.fields.find(x=>x.id===fieldId);
+  assert.equal(C.grade(q,{...answers,[fieldId]:''}).earned,expectedPts-field.points,id+'/'+fieldId+' blank must lose own points');
+  assert.equal(C.grade(q,{...answers,[fieldId]:String(field.answer+1)}).earned,expectedPts-field.points,id+'/'+fieldId+' wrong amount must lose own points');
+ }
+}
+console.log('PASS: first-form financial statements hide computed equity/totals; 100-point distribution and isolated scoring maintained');
 
 // Financial statement entries now test accounting classification, not just arithmetic.
 for(const [id,fid,account,linked,fact] of [
@@ -367,13 +388,16 @@ assert.equal(val('b2-financial','f24'),860000);
 assert.equal(val('b2-financial','f27'),deferred);
 assert.equal(val('b2-financial','f28'),retained);
 assert.equal(val('b2-financial','f210'),assets);
+assert.equal(val('b2-financial','f212'),equity);
+assert.equal(val('b2-financial','f213'),liabilities+records['資本金'][1]+equity+retained);
 assert.match(finance2.notes.join(''),/当期純損益に算入しない/);
 const fiscal3=item('b3-financial'),t3=fiscal3.tables.find(t=>t.caption.includes('決算整理前残高試算表'));
 const map3=Object.fromEntries(t3.rows.map(r=>[r[0],r.slice(1).map(v=>Number(String(v).replace(/,/g,''))||0)]));
 const expense3=map3['繰越商品'][0]+map3['仕入'][0]-190000+(map3['給料'][0]+30000)+72000*4/6+map3['支払家賃'][0]+(map3['支払利息'][0]+6000)+(map3['売掛金'][0]*2/100-map3['貸倒引当金'][1])+map3['備品'][0]/5;
 const loss3=expense3-map3['売上'][1];
 assert.equal(val('b3-financial','f36'),loss3);
-assert.equal(298000-loss3,50000,'3rd-grade retained earnings balance');
+assert.equal(val('b3-financial','f39'),298000-loss3,'3rd-grade retained earnings balance');
+assert.equal(val('b3-financial','f310'),260000+600000+30000+6000+1000000+(298000-loss3));
 assert.match(fiscal3.fields.find(f=>f.id==='f36').explanation,/貸借対照表とも一致/);
 console.log('PASS: form-one FX, tax effect, investment elimination, distinct industrial cases, process quantity flow, FS tax/equity and grade-three net income reconciliation');
 }
