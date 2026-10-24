@@ -68,8 +68,8 @@ assert.ok(!flagsFor({...example,lawReferenceDate:'2026-04-01'}).some(x=>/確認�
 assert.throws(()=>reasonsFor(mk(example.id,example),{today:'2026-02-31'}),/reference date must be valid/);
 const risks=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
 const datedRisk=risks.flagged.find(f=>f.reasons.includes('参照した旧資料の本文確認待ち'));
-const missingOnly=risks.flagged.find(f=>f.reasons.length===1&&f.reasons[0]==='設問別の根拠URL未登録');
-assert.ok(datedRisk&&missingOnly&&datedRisk.priority>missingOnly.priority,'outstanding original source-text review ranks ahead of metadata-only source gaps');
+assert.ok(datedRisk&&datedRisk.priority>=7,'outstanding original source-text review receives a high-priority weight');
+assert.deepEqual(flagsFor({...example,sourceUrl:undefined,choiceExplanations:['甲','乙']}),['設問別の根拠URL未登録'],'plain metadata gap remains distinct from law verification');
 assert.match(renderMarkdown(risks,{limit:8}),/法令適用・旧資料本文の未確認/);
 const boki={id:'b2-test',type:'table',fields:[{id:'f1',answer:100},{id:'f2',answer:100}],tables:[{caption:'資料',rows:[['売上','100']]},{caption:'解答',rows:[['売上',{id:'f1'}],['原価',{id:'f2'}]]}]};
 const bokiFlags=reasonsFor({bank:'簿記2級',form:'第1回',id:boki.id,q:boki});
