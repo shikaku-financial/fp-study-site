@@ -17,7 +17,7 @@ const expect=(id,fid,actual)=>assert.equal(field(id,fid),actual,id+'/'+fid+' ind
 const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
-assert.match(html,/boki-data\.js\?v=20261024l/);
+assert.match(html,/boki-data\.js\?v=20261024m/);
 assert.match(html,/boki-extra\.js\?v=20261024l/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
@@ -41,7 +41,7 @@ assert.match(html,/本試験に向けて半角数字のみ・同じ側の科目�
 assert.match(html,/当サイトは練習しやすいように全角数字と桁区切りカンマ/);
 assert.match(html,/当サイトも、同じ側の勘定科目を複数行に分けると/);
 assert.doesNotMatch(html,/金額を合算しますが/);
-assert.ok(html.includes('boki-core.js?v=20261024i'),'updated core cache key');
+assert.ok(html.includes('boki-core.js?v=20261024j'),'updated core cache key');
 assert.match(html,/公式試験のすべての解答形式を再現したものではありません/);
 // Learning-oriented journal explanations must show the calculation or account classification.
 for(const [id,required] of [
@@ -406,6 +406,31 @@ console.log('PASS: form-one FX, tax effect, investment elimination, distinct ind
 }
 
 
+
+// Audit that first-form 3rd-grade accounting tables do not print the key monetary answers.
+for(const [id,captions,leaks,points] of [
+ ['b3-ledger',['支払利息勘定','未払利息勘定'],['12,000','16,000'],10],
+ ['b3-asset',['固定資産台帳（単位：円）'],['30,000','300,000'],10]
+]){
+ const exercise=get(id),shown=exercise.tables.filter(t=>captions.includes(t.caption));
+ assert.equal(shown.length,captions.length,id+' expected table sections');
+ const flat=shown.flatMap(t=>t.rows.flat());
+ for(const leak of leaks)assert.ok(!flat.includes(leak),id+' answer leaked as literal '+leak);
+ const used=flat.filter(v=>v&&typeof v==='object').map(v=>v.id);
+ for(const field of exercise.fields)assert.equal(used.filter(v=>v===field.id).length,1,id+'/'+field.id+' appears once');
+ assert.equal(exercise.fields.reduce((sum,f)=>sum+f.points,0),points,'section remains 10 points');
+ const C=require('../boki-core.js'),good=Object.fromEntries(exercise.fields.map(f=>[f.id,String(f.answer)]));
+ assert.equal(C.grade(exercise,good).earned,points,'all new table blanks grade correctly');
+ const added=id==='b3-ledger'?['l7','l8','l9']:['a7','a8'];
+ for(const fieldId of added){
+  const f=exercise.fields.find(x=>x.id===fieldId);
+  assert.ok(f&&f.points===1,'new independent blank has a point');
+  assert.equal(C.grade(exercise,{...good,[fieldId]:''}).earned,points-1,'unanswered blank loses only its point');
+  assert.equal(C.grade(exercise,{...good,[fieldId]:String(f.answer+1)}).earned,points-1,'incorrect computation loses only its point');
+ }
+}
+console.log('PASS: first-form grade-three T-account and asset ledger answer leakage eliminated; all 20 points reconciled');
+
 // Additional source-derived audits: first-form ledger/assets/CVP, second-form FIFO/vouchers.
 // Each expected value is reconstructed from the displayed source terms, not a copied answer key.
 {
@@ -420,6 +445,13 @@ console.log('PASS: form-one FX, tax effect, investment elimination, distinct ind
  expect(loan.id,'l3',newAccrual);
  expect(loan.id,'l4',paid-priorAccrual+newAccrual);
  expect(loan.id,'l5',newAccrual);
+ expect(loan.id,'l7',priorAccrual);
+ expect(loan.id,'l8',newAccrual);
+ expect(loan.id,'l9',priorAccrual);
+ assert.equal(field(loan.id,'l1'),field(loan.id,'l7'));
+ assert.equal(field(loan.id,'l7'),field(loan.id,'l9'));
+ assert.equal(field(loan.id,'l3'),field(loan.id,'l5'));
+ assert.equal(field(loan.id,'l5'),field(loan.id,'l8'));
  assert.match(loan.fields.find(f=>f.id==='l4').explanation,/前期計上済み/);
 
  const asset=get('b3-asset');
@@ -433,6 +465,10 @@ console.log('PASS: form-one FX, tax effect, investment elimination, distinct ind
  expect(asset.id,'a3',bAnnual*6/12);
  expect(asset.id,'a4',num(b[1])-bAnnual*6/12);
  expect(asset.id,'a5',salePrice-(num(a[1])-aAnnual*3));
+ expect(asset.id,'a7',num(a[1])-aAnnual*3);
+ expect(asset.id,'a8',bAnnual*6/12);
+ assert.equal(field(asset.id,'a7')+field(asset.id,'a2'),num(a[1]));
+ assert.equal(field(asset.id,'a4')+field(asset.id,'a8'),num(b[1]));
 
  const cvp=get('b2-cvp');
  const conditions=cvp.prompt.match(/販売単価([\d,]+)円、単位当たり変動費([\d,]+)円、月間固定費([\d,]+)円/);
