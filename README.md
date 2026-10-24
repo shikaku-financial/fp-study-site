@@ -22,7 +22,7 @@ FP2級・3級の**無料・登録不要**の学習サイトです。学科360問
 
 問題は日本商工会議所のサンプルの出題構成を参考に独自作成し、転載していません。採点は独自基準（仕訳は取引全体の一致、表は入力欄単位）。学習記録キーは `fll-boki-progress` でFPとは分離しています。`boki.html`、`boki-data.js`、`boki-extra.js`、`boki-core.js`、`boki.js`、`boki.css` が実装です。確認は `node .ci/boki-check.cjs`、`node .ci/boki-second-check.cjs`、`node .ci/boki-flow-check.cjs`。CIの `Boki Lab mobile browsers` は公開用distをChromium/WebKit・幅320/390pxで検証します（iPhone実機とは別）。全問専門家監修は未完了です。2026年度の出題区分表（2022年度版の継続適用）を基準とし、2027年度の改定とは分離して管理します。2026年10月の内容監査では有価証券の記帳用語、3級家賃決算整理の対象期間、2級法定準備金・棚卸減耗と評価損・会計上の損失と法人税等の解説を明確化しました。答え・配点・問題IDは変更していません。追加の独立計算監査は `.ci/boki-question-quality-check.cjs` で行います。
 
-第2回では3級の商品有高帳・伝票集計、2級の連結・個別原価計算・標準原価計算を追加。`form` がない旧保存データは第1回として扱い、問題IDを変えずに再開・採点できます。回ごとに演習・履歴・復習を分離します。
+第2回では3級の商品有高帳・伝票集計、2級の連結・個別原価計算・標準原価計算を追加。現在の保存データでは模試回を表す `form` が必須です。`form` を持たない旧版データは互換復元せず、回ごとに演習・履歴・復習を分離します。
 
 出題区分は [日本商工会議所の2026年度適用区分](https://www.kentei.ne.jp/bookkeeping/exam-list) を参照。2027年度区分への移行は未完了です。連結の内部取引・未実現利益の確認資料は [ASBJ連結財務諸表に関する会計基準 第34～38項](https://www.asb-j.jp/jp/accounting_standards_system/details.html?topics_id=111)。資料照合は全問の専門家監修を意味しません。
 
@@ -80,3 +80,9 @@ Cloudflare Pages Web AnalyticsはPagesプロジェクトの「Metrics → Enable
 **最終更新：2026年10月23日**
 
 旧READMEにあった過去のキャッシュ不具合・検証記録は、Gitの履歴で参照できます。現在の公開状態と当時の記録は区別してください。
+
+## 資格保有者監修とAI編集監査の運用
+
+運営者のFP・日商簿記資格保有と、掲載問題の監修完了は別の事実です。公開中の説明は [運営方針](https://fll-fp-lab.pages.dev/about#review-policy)、内部の確認基準は `EDITORIAL_REVIEW_CHECKLIST.md` を参照。AIによる問題作成支援・テスト実行を人間の専門家監修と称しません。
+
+CIでは `node .ci/editorial-audit.cjs` により、FP学科360問・実技240問、簿記計60題の**編集上の要確認候補**をGitHub Actions Summaryへ出力します。合格／不合格や正答の正しさを判定する検査ではありません。実際に人手で確認できた設問のみ `EDITORIAL_REVIEW_RECORDS.json` に監修記録を残し、SHA-256ハッシュで版が変わった監修記録の再利用を禁止します。**初期の人手監修記録は0件**です。詳しくは `EDITORIAL_REVIEW_CHECKLIST.md` をご覧ください。
