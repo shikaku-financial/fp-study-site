@@ -24,15 +24,31 @@ for(const level of ['3','2']){
   }
  }
  assert.equal(C.result(items,Object.fromEntries(items.map(i=>[i.id,answer(i)]))).earned,100);
- const s={revision:C.revision,id:'test',level,mode:'exam',ids:items.map(i=>i.id),index:0,answers:{},checked:{},flags:{},started:Date.now(),deadline:Date.now()+exam.minutes*60000};
+ const s={revision:C.revision,id:'test',level,form:'1',mode:'exam',ids:items.map(i=>i.id),index:0,answers:{},checked:{},flags:{},started:Date.now(),deadline:Date.now()+exam.minutes*60000};
  assert.equal(C.validSession(JSON.parse(JSON.stringify(s)),D),true);
  assert.equal(C.validSession({...s,ids:['unknown']},D),false);
  assert.equal(C.validSession({...s,index:items.length},D),false);
  assert.equal(C.validSession({...s,revision:'old'},D),false);
+ assert.equal(C.validSession({...s,form:undefined},D),false,'old histories without form are unsupported');
  assert.equal(C.validSession({...s,answers:{[items[0].id]:{debit:'broken',credit:[]}}},D),false);
 }
 for(const input of ['',' ','1e3','12,34','12a','-1','3.5','Infinity','0x10','1 000','1,000,','9'.repeat(30)])assert.equal(C.number(input),null,input);
 assert.equal(C.number('１２３，４５６'),123456);assert.equal(C.number('0'),0);assert.equal(C.number(' 200 '),200);
+// Official CBT: accounts may appear only once on each side of one journal.
+const q3=D['3'].sections[0].items[0],acc=q3.debit[0][0],total=q3.debit[0][1],other=q3.credit[0][0];
+const duplicateDebit={debit:[[acc,String(total/2)],[acc,String(total/2)]],credit:[[other,String(total)]]};
+const duplicateCredit={debit:[[acc,String(total)]],credit:[[other,String(total/2)],[other,String(total/2)]]};
+assert.deepEqual(C.journalDuplicateSides(duplicateDebit),['debit']);
+assert.deepEqual(C.journalDuplicateSides(duplicateCredit),['credit']);
+assert.equal(C.grade(q3,duplicateDebit).earned,0,'split duplicate debit must lose points');
+assert.equal(C.grade(q3,duplicateCredit).earned,0,'split duplicate credit must lose points');
+const unique={debit:[[acc,String(total)],['','']],credit:[[other,String(total)],['','']]};
+assert.equal(C.grade(q3,unique).earned,q3.points,'normal journal and unused rows remain valid');
+assert.deepEqual(C.journalDuplicateSides(unique),[]);
+const bothSides={type:'journal',points:1,debit:[['現金',100]],credit:[['現金',100]]};
+assert.equal(C.grade(bothSides,{debit:[['現金','100']],credit:[['現金','100']]}).earned,1,'one account per side, even if same across sides, is permitted');
+console.log('PASS: CBT journal duplicate accounting and current form-only records');
+
 // Two individually safe monetary entries must not silently overflow when summed.
 const largeJournal={type:'journal',points:1,debit:[['現金',Number.MAX_SAFE_INTEGER],['現金',1]],credit:[['売上',1]]};
 const roundedCollision={debit:[['現金',String(Number.MAX_SAFE_INTEGER)],['現金','2']],credit:[['売上','1']]};
