@@ -39,8 +39,9 @@ async function verify(){
    // Follow the repository's actual versioned HTML references, not a stale audit constant.
    const expected=require('node:fs').readFileSync(require('node:path').resolve(__dirname,'../boki.html'),'utf8');
    for(const file of ['boki-data.js','boki-extra.js']){
-    const match=expected.match(new RegExp(file.replace('.',String.raw\`\\.\`)+String.raw\`\\?v=[a-zA-Z0-9_-]+\`));
-    assert.ok(match&&body.includes(match[0]),'live bookkeeping bundle differs from repository '+file);
+    const entry=expected.split('\n').find(line=>line.includes('src="'+file+'?v='));
+    const src=entry?.match(/src="([^"]+)"/)?.[1];
+    assert.ok(src&&body.includes('src="'+src+'"'),'live bookkeeping bundle differs from repository '+file);
    }
    assert.ok(body.includes('各級2回分'),'bookkeeping landing page has changed unexpectedly');
   }
