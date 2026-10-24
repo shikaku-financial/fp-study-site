@@ -2,8 +2,9 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(process.argv[2]||path.resolve(__dirname,'../..'));
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8'),css=fs.readFileSync(path.join(root,'style.css'),'utf8');
-const hub=fs.readFileSync(path.join(root,'hub.css'),'utf8'),boki=fs.readFileSync(path.join(root,'boki.css'),'utf8');
-const app=fs.readFileSync(path.join(root,'app.js'),'utf8'),bokiJs=fs.readFileSync(path.join(root,'boki.js'),'utf8'),practical=fs.readFileSync(path.join(root,'practical.js'),'utf8');
+const repository=path.resolve(__dirname,'../..');
+const hub=fs.readFileSync(path.join(repository,'hub.css'),'utf8'),boki=fs.readFileSync(path.join(repository,'boki.css'),'utf8');
+const app=fs.readFileSync(path.join(root,'app.js'),'utf8'),bokiJs=fs.readFileSync(path.join(repository,'boki.js'),'utf8'),practical=fs.readFileSync(path.join(root,'practical.js'),'utf8');
 assert.match(css,/#quiz \.question-text,#exam \.question-text,#practicalExam \.question-text,\.review-question\{font-size:16px;line-height:2;white-space:pre-line;overflow-wrap:anywhere\}/);
 assert.match(css,/#quiz \.wide,#practicalExam \.wide\{line-height:1\.65;text-align:left;overflow-wrap:anywhere\}/);
 assert.match(css,/\.material-table-wrap\[tabindex="0"\]:focus-visible\{outline:3px solid #f0ad4e/);
