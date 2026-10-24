@@ -44,6 +44,7 @@ async function run(engineName){
   await page.goto(BASE,{waitUntil:'load'});
   assert.equal(await page.locator('h1').count(),1);
   assert.equal(await page.locator('#boki-form option').count(),2);
+  assert.equal(await page.locator('button[data-action="review"]').count(),0,'review hidden before any mistakes');
   await assertFits(320);await assertFits(390);
   for(const level of ['3','2'])for(const form of ['1','2']){
    await choose(level,form);await click('exam');
@@ -78,7 +79,7 @@ async function run(engineName){
    const state=await saved();assert.equal(state.active,null);assert.equal(state.history[0].form,form);assert.equal(state.history[0].level,level);
    await page.locator('.boki-result details').first().locator('summary').click();assert.ok(await page.locator('.boki-solution').count()>0);
    await assertFits(320);await assertFits(390);
-   await click('home');console.log('PASS '+engineName+': level '+level+' form '+form+' all inputs, table resume, deadline, grading and responsive layout');
+   await click('home');assert.equal(await page.locator('button[data-action="review"]').count(),0,'perfect form has no review target');console.log('PASS '+engineName+': level '+level+' form '+form+' all inputs, table resume, deadline, grading and responsive layout');
   }
   // Legacy records lack the form discriminator; their answer review must still work.
   await page.evaluate(key=>{const s=JSON.parse(localStorage.getItem(key));const h=s.history.find(h=>h.level==='3'&&h.form==='1');s.history=[h];delete h.form;localStorage.setItem(key,JSON.stringify(s));},KEY);
@@ -86,6 +87,7 @@ async function run(engineName){
   // Empty attempt and wrong-only retry keep the selected form.
   await choose('3','2');await click('exam');await click('finish');assert.match(await page.locator('.boki-summary').innerText(),/0\s*\/\s*100点/);assert.equal(await page.locator('button[data-action="result-review"]').count(),1,'incorrect result must offer review');await click('result-review');
   assert.equal((await saved()).active.form,'2');assert.equal((await saved()).active.ids.length,18);await click('pause');await click('discard');
+  assert.equal(await page.locator('button[data-action="review"]').count(),1,'wrong answers enable review on the selected form');
   // Expired drafts grade once on resume, using the saved answers.
   await choose('2','2');await click('exam');await fillItem(E['2'].sections[0].items[0]);await click('pause');
   await page.evaluate(key=>{const s=JSON.parse(localStorage.getItem(key));s.active.deadline=Date.now()-1;localStorage.setItem(key,JSON.stringify(s));},KEY);
