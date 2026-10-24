@@ -35,7 +35,15 @@ async function verify(){
    assert.ok(body.includes('http-equiv="Content-Security-Policy"'),'homepage meta CSP missing');
    assert.ok(body.includes('id="labs"')&&body.includes('href="fp.html"')&&body.includes('href="boki.html"'),'FLL parent home not published');
   }
-  if(path==='/boki') assert.ok(body.includes('boki-extra.js?v=20261023b')&&body.includes('各級2回分'),'bookkeeping page is not the current published content');
+  if(path==='/boki'){
+   // Follow the repository's actual versioned HTML references, not a stale audit constant.
+   const expected=require('node:fs').readFileSync(require('node:path').resolve(__dirname,'../boki.html'),'utf8');
+   for(const file of ['boki-data.js','boki-extra.js']){
+    const match=expected.match(new RegExp(file.replace('.',String.raw\`\\.\`)+String.raw\`\\?v=[a-zA-Z0-9_-]+\`));
+    assert.ok(match&&body.includes(match[0]),'live bookkeeping bundle differs from repository '+file);
+   }
+   assert.ok(body.includes('各級2回分'),'bookkeeping landing page has changed unexpectedly');
+  }
   if(path==='/boki-extra.js') assert.ok(body.includes('const BOKI_SECOND =')&&body.includes('b2-r2-consolidated'),'second mock dataset not published');
   if(path==='/fp') assert.ok(body.includes('id="prUpdatedDate"')&&body.includes('brand.css?v=20261023d'),'FP entry not published');
   if(path==='/brand.css') assert.ok(body.includes('--fll-ink:')&&body.includes('.fll-header'),'shared brand styles not published');
