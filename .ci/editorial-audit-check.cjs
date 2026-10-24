@@ -52,6 +52,25 @@ const edited={...example,question:'B'};
 assert.notEqual(fingerprint(example),fingerprint(edited),'changing question invalidates supervision hash');
 const sourceOnly={...example,sourceUrl:undefined};
 assert.ok(reasonsFor(mk(example.id,sourceOnly)).includes('設問別の根拠URL未登録'));
+
+// New triage ranks explicitly pending law/source reviews above missing metadata.
+const flagsFor=(q,today='2026-10-24')=>reasonsFor(mk(q.id||'sample001',q),{today});
+assert.ok(flagsFor({...example,verificationStatus:'arithmetic_reviewed_law_not_audited'}).includes('法令適用の人手確認が未了（算術のみ点検）'));
+assert.ok(flagsFor({...example,verificationStatus:'selected_points_checked_historical_full_text_pending'}).includes('参照した旧資料の本文確認待ち'));
+assert.ok(flagsFor({...example,sourceUrl:'http://insecure.example/a'}).includes('根拠URLの形式不備（HTTPSを確認）'));
+assert.ok(flagsFor({...example,sourceCheckedDate:'2026-11-01'}).includes('根拠資料の確認日が不正または未来'));
+assert.ok(flagsFor({...example,sourceCheckedDate:'2026-02-31'}).includes('根拠資料の確認日が不正または未来'));
+assert.ok(flagsFor({...example,sourceCheckedDate:'2026-03-01',lawReferenceDate:'2026-04-01'}).includes('資料確認日が法令基準日より前（適用条件を再確認）'));
+assert.ok(flagsFor({...example,sourceCheckedDate:'2024-09-01'}).includes('根拠資料の確認から1年超（更新の要否を確認）'));
+assert.ok(!flagsFor({...example,sourceCheckedDate:'2025-10-24'}).includes('根拠資料の確認から1年超（更新の要否を確認）'),'exactly 365 days is not older than a year');
+assert.ok(flagsFor({...example,lawReferenceDate:'2026-02-31'}).includes('法令基準日の形式不備'));
+assert.ok(!flagsFor({...example,lawReferenceDate:'2026-04-01'}).some(x=>/確認日が不正|1年超|基準日より前/.test(x)),'valid recent references not treated as stale');
+assert.throws(()=>reasonsFor(mk(example.id,example),{today:'2026-02-31'}),/reference date must be valid/);
+const risks=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
+const datedRisk=risks.flagged.find(f=>f.reasons.includes('参照した旧資料の本文確認待ち'));
+const missingOnly=risks.flagged.find(f=>f.reasons.length===1&&f.reasons[0]==='設問別の根拠URL未登録');
+assert.ok(datedRisk&&missingOnly&&datedRisk.priority>missingOnly.priority,'outstanding original source-text review ranks ahead of metadata-only source gaps');
+assert.match(renderMarkdown(risks,{limit:8}),/法令適用・旧資料本文の未確認/);
 const boki={id:'b2-test',type:'table',fields:[{id:'f1',answer:100},{id:'f2',answer:100}],tables:[{caption:'資料',rows:[['売上','100']]},{caption:'解答',rows:[['売上',{id:'f1'}],['原価',{id:'f2'}]]}]};
 const bokiFlags=reasonsFor({bank:'簿記2級',form:'第1回',id:boki.id,q:boki});
 assert.ok(bokiFlags.includes('資料表に正答と同額あり（転記可能性を目視確認）'));
@@ -73,6 +92,7 @@ assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,references:[]}]}
 assert.throws(()=>audit(all,{schemaVersion:1,records:[valid,valid]}),/duplicate review/);
 assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,id:'missing'}]}),/unknown question/);
 assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,checkedOn:'2026-02-31'}]}),/invalid review date/);
+assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,checkedOn:'2999-01-01'}]}),/cannot be in the future/,'review dates may not falsely be set in the future');
 
 // A review preview helps the human see the existing answer, not mark it as reviewed.
 const packet=renderReviewPacket(r,{limit:8});
@@ -98,4 +118,4 @@ assert.ok(!safePacket.includes('監修完了です'),'preview must never attest 
 assert.equal(renderReviewPacket({...r,flagged:[]},{limit:8}).match(/候補はありません/g)?.length,1,'empty queue is handled');
 assert.throws(()=>renderReviewPacket(r,{limit:0}),/limit/);
 
-console.log('PASS: 660 records, 600 FP answer contracts, mutational guards, reviewer-ready previews, source hashes and honest human review boundary.');
+console.log('PASS: 660 records, time-aware evidence freshness and source review priority, 600 FP answer contracts, mutational guards, reviewer-ready previews, source hashes and honest human review boundary.');
