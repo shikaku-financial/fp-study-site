@@ -10,7 +10,7 @@ const byId=new Map(entries.map(q=>[q.id,q]));
 const rentalIds=['fp2-052','fp2-102','fp2-103','fp2-107','fp2-110','fp2-165','fp3-085','fp3-113'];
 const portfolioIds=['fp2-043','fp2-084','fp2-145','fp3-148'];
 const num=(q,label)=>{
- const regex=new RegExp('^'+label+'\\s*\\/\\s*([0-9,]+)万円','m');
+ const regex=new RegExp('^'+label+'\\s*\\/[^\\n]*?([0-9,]+)万円','m');
  const m=q.question.match(regex);
  assert.ok(m,q.id+' missing '+label);
  return Number(m[1].replace(/,/g,''));
