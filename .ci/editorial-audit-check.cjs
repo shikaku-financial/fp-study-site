@@ -46,7 +46,7 @@ const target=all.find(e=>e.id==='fp2-001');
 assert.match(questionLink(target),/^https:\/\/github.com\/shikaku-financial\/fp-study-site\/blob\/.+\/questions\.js#L\d+$/);
 assert.ok(!report.includes('<script'),'markdown data must be sanitized');
 const mk=(id,q)=>({bank:'FP学科',form:'学科',id,q});
-const example={id:'sample001',question:'A',choices:['甲','乙'],answer:0,explanation:'Aについて',sourceUrl:'https://example.org/a',sourceCheckedDate:'2026-10-01'};
+const example={id:'sample001',question:'A',format:'true_false',lawReferenceDate:'2026-04-01',choices:['甲','乙'],answer:0,explanation:'Aについて',sourceUrl:'https://example.org/a',sourceCheckedDate:'2026-10-01'};
 assert.deepEqual(reasonsFor(mk(example.id,example)),['選択肢別解説の登録状況を確認']);
 const edited={...example,question:'B'};
 assert.notEqual(fingerprint(example),fingerprint(edited),'changing question invalidates supervision hash');
