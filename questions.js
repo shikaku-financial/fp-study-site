@@ -8637,28 +8637,28 @@ const QUESTIONS = [
       "× 誤り"
     ],
     "answer": 0,
-    "explanation": "所定の要件を満たす定期建物賃貸借では、6か月のような1年未満の期間も有効に定められます。期間満了による終了と、当事者が改めて合意する再契約は区別します。普通建物賃貸借で1年未満の期間を定めた場合は、期間の定めがないものとみなされる扱いがあります。資料では紙の手続を選んでいますが、法律上、一定の要件を満たす電子化も認められています。",
+    "explanation": "借地借家法第38条第1項により、要件を満たす定期建物賃貸借には、普通建物賃貸借の「1年未満なら期間の定めがないとみなす」同法第29条第1項を適用しません。そのため6か月の契約期間も設定できます。資料のように更新がない旨の書面契約と、契約前に契約書とは別の説明文書を交付して行う説明などが必要です。期間が1年未満なら満了の終了通知は不要ですが、契約前の説明義務まで免除されるわけではありません。満了後の継続は自動更新ではなく当事者の合意による再契約です。",
     "topic": "6か月の定期建物賃貸借",
     "createdVersion": 9,
-    "revision": 2,
+    "revision": 3,
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
     "id": "fp3-162",
-    "contentReview": "v138_property_contract_and_management_scoped_migration",
+    "contentReview": "20261024_scoped_official_rule_check_ai_assisted",
     "choiceExplanations": [
       "正解。定期建物賃貸借では1年未満の期間も有効に定められます。",
       "不適切。所定の要件を満たす定期建物賃貸借まで、6か月の期間設定が無効になるわけではありません。"
     ],
-    "sourceUrl": "https://www.mlit.go.jp/common/001334935.pdf",
+    "sourceUrl": "https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000060.html",
     "additionalSourceUrls": [
-      "https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000030.html",
-      "https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000060.html"
+      "https://laws.e-gov.go.jp/law/403AC0000000090?occasion_date=20260401",
+      "https://www.mlit.go.jp/common/001334935.pdf"
     ],
-    "sourceLabel": "国会制定法・国土交通省・農林水産省等による設問主要点の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "新改訂主要点5/共通ルール設例適用5。手付3問の内部算術を別記。全法令/全改正/基準日統合全文の確認ではない。"
+    "sourceLabel": "国土交通省：定期建物賃貸借Q&A（借地借家法第29条・第38条と限定照合）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "借地借家法29条1項・38条と国交省Q&Aの契約前説明・1年未満の満了通知を限定照合。対象条項・公開Q&Aに限定したAI支援点検であり、全改正・経過措置・法令全文の包括監査および資格保有運営者による人手監修は未了。"
   },
   {
     "level": "3",
@@ -8827,28 +8827,28 @@ const QUESTIONS = [
       "300万円"
     ],
     "answer": 0,
-    "explanation": "売主は、相手方である買主が履行に着手する前であるなど資料の条件の下、受領した手付100万円の倍額200万円を現実に提供して手付解除します。この200万円に受領手付100万円をさらに足す必要はありません。提供総額と、受領手付に対する上乗せ相当分を区別します。",
+    "explanation": "民法第557条第1項の解約手付では、相手方が契約の履行に着手する前など資料の条件を満たす場合、売主は受領手付100万円の倍額200万円を現実に提供して解除します。提供総額200万円の内訳は、受領分の返還相当100万円と同額の上乗せ分100万円です。倍額200万円にさらに手付100万円を加えた300万円ではありません。買主が履行に着手した後は、この手付解除は原則できない点も区別します。",
     "topic": "売主からの手付解除",
     "createdVersion": 9,
-    "revision": 3,
+    "revision": 4,
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
     "id": "fp3-168",
-    "contentReview": "v138_property_contract_and_management_scoped_migration",
+    "contentReview": "20261024_scoped_official_rule_check_ai_assisted",
     "choiceExplanations": [
       "正解。100万円×2＝200万円を現実に提供します。受領済み手付の返還相当分を含む総額です。",
       "不適切。100万円は受領済み手付をそのまま返す額で、売主の倍額提供の総額に足りません。",
       "不適切。倍額の総額に、受領済みの手付をさらに加えた三重の計上です。"
     ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/housei/19320170602044.htm",
+    "sourceUrl": "https://laws.e-gov.go.jp/law/129AC0000000089?occasion_date=20260401",
     "additionalSourceUrls": [
-      "https://laws.e-gov.go.jp/law/129AC0000000089?occasion_date=20220220"
+      "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/housei/19320170602044.htm"
     ],
-    "sourceLabel": "国会制定法・国土交通省・農林水産省等による設問主要点の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "新改訂主要点5/共通ルール設例適用5。手付3問の内部算術を別記。全法令/全改正/基準日統合全文の確認ではない。"
+    "sourceLabel": "e-Gov法令検索：民法第557条（2026年4月1日法令基準日の論点を限定照合）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "民法557条1項の倍額提供・履行着手前の要件を公式条文と突合。対象条項・公開Q&Aに限定したAI支援点検であり、全改正・経過措置・法令全文の包括監査および資格保有運営者による人手監修は未了。"
   },
   {
     "level": "3",
@@ -8861,29 +8861,28 @@ const QUESTIONS = [
       "毎月"
     ],
     "answer": 1,
-    "explanation": "区分所有法第34条第2項では、管理者は少なくとも毎年1回、集会を招集しなければならないとされています。年1回だけしか招集できないという上限ではありません。規約上の追加義務、臨時集会、理事会の開催頻度とは区別します。",
+    "explanation": "建物の区分所有等に関する法律（区分所有法）第34条第2項は、管理者に少なくとも毎年1回の集会招集を義務付けています。これは開催回数の下限であり、年に2回以上開催しても差し支えありません。区分所有者の集会と理事会は別の会議体です。規約等による追加の招集や臨時集会は、本問の最低頻度とは区別します。",
     "topic": "管理者による集会招集の頻度",
     "createdVersion": 9,
-    "revision": 2,
+    "revision": 3,
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
     "id": "fp3-169",
-    "contentReview": "v138_property_contract_and_management_scoped_migration",
+    "contentReview": "20261024_scoped_official_rule_check_ai_assisted",
     "choiceExplanations": [
       "不適切。その頻度で追加招集すること自体を禁止するものではありませんが、法律上の最低頻度を答えたものではありません。",
       "正解。法律が管理者に求める最低頻度は、少なくとも毎年1回です。",
       "不適切。その頻度で追加招集すること自体を禁止するものではありませんが、法律上の最低頻度を答えたものではありません。"
     ],
-    "sourceUrl": "https://www.mlit.go.jp/jutakukentiku/house/content/001760662.pdf",
+    "sourceUrl": "https://laws.e-gov.go.jp/law/337AC0000000069?occasion_date=20260401",
     "additionalSourceUrls": [
-      "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/housei/21720250530047.htm",
-      "https://laws.e-gov.go.jp/law/337AC0000000069?occasion_date=20250604"
+      "https://www.mlit.go.jp/jutakukentiku/house/content/001760662.pdf"
     ],
-    "sourceLabel": "国会制定法・国土交通省・農林水産省等による設問主要点の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "新改訂主要点5/共通ルール設例適用5。手付3問の内部算術を別記。全法令/全改正/基準日統合全文の確認ではない。"
+    "sourceLabel": "e-Gov法令検索：区分所有法第34条第2項（2026年4月1日の対象条項を限定照合）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "区分所有法34条2項（最低年1回）を公式条文と限定照合。対象条項・公開Q&Aに限定したAI支援点検であり、全改正・経過措置・法令全文の包括監査および資格保有運営者による人手監修は未了。"
   },
   {
     "level": "3",
@@ -10701,29 +10700,29 @@ const QUESTIONS = [
       "0万円"
     ],
     "answer": 1,
-    "explanation": "売主は、相手方である買主が履行に着手する前であるなど資料の条件の下、受領した手付150万円の倍額300万円を現実に提供して手付解除します。この300万円に受領手付150万円をさらに足す必要はありません。提供総額と、受領手付に対する上乗せ相当分を区別します。",
+    "explanation": "民法第557条第1項の解約手付では、相手方が契約の履行に着手する前など資料の条件を満たす場合、売主は受領手付150万円の倍額300万円を現実に提供して解除します。提供総額300万円の内訳は、受領分の返還相当150万円と同額の上乗せ分150万円です。倍額300万円にさらに手付150万円を加えた450万円ではありません。買主が履行に着手した後は、この手付解除は原則できない点も区別します。",
     "topic": "売主からの手付解除",
     "createdVersion": 9,
-    "revision": 4,
+    "revision": 5,
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-162",
-    "contentReview": "v138_property_contract_and_management_scoped_migration",
+    "contentReview": "20261024_scoped_official_rule_check_ai_assisted",
     "choiceExplanations": [
       "不適切。倍額の総額に、受領済みの手付をさらに加えた三重の計上です。",
       "正解。150万円×2＝300万円を現実に提供します。受領済み手付の返還相当分を含む総額です。",
       "不適切。150万円は受領済み手付をそのまま返す額で、売主の倍額提供の総額に足りません。",
       "不適切。売主からの手付解除では、買主への金銭提供を不要とはできません。"
     ],
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/housei/19320170602044.htm",
+    "sourceUrl": "https://laws.e-gov.go.jp/law/129AC0000000089?occasion_date=20260401",
     "additionalSourceUrls": [
-      "https://laws.e-gov.go.jp/law/129AC0000000089?occasion_date=20220220"
+      "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/housei/19320170602044.htm"
     ],
-    "sourceLabel": "国会制定法・国土交通省・農林水産省等による設問主要点の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "新改訂主要点5/共通ルール設例適用5。手付3問の内部算術を別記。全法令/全改正/基準日統合全文の確認ではない。"
+    "sourceLabel": "e-Gov法令検索：民法第557条（2026年4月1日法令基準日の論点を限定照合）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "民法557条1項の倍額提供・履行着手前の要件を公式条文と突合。対象条項・公開Q&Aに限定したAI支援点検であり、全改正・経過措置・法令全文の包括監査および資格保有運営者による人手監修は未了。"
   },
   {
     "level": "2",
@@ -10737,30 +10736,30 @@ const QUESTIONS = [
       "資料のように所定の要件を満たせば、契約期間を6か月とすることもできる"
     ],
     "answer": 3,
-    "explanation": "所定の要件を満たす定期建物賃貸借では、6か月のような1年未満の期間も有効に定められます。期間満了による終了と、当事者が改めて合意する再契約は区別します。普通建物賃貸借で1年未満の期間を定めた場合は、期間の定めがないものとみなされる扱いがあります。資料では紙の手続を選んでいますが、法律上、一定の要件を満たす電子化も認められています。",
+    "explanation": "借地借家法第38条第1項により、要件を満たす定期建物賃貸借には、普通建物賃貸借の「1年未満なら期間の定めがないとみなす」同法第29条第1項を適用しません。そのため6か月の契約期間も設定できます。資料のように更新がない旨の書面契約と、契約前に契約書とは別の説明文書を交付して行う説明などが必要です。期間が1年未満なら満了の終了通知は不要ですが、契約前の説明義務まで免除されるわけではありません。満了後の継続は自動更新ではなく当事者の合意による再契約です。",
     "topic": "6か月の定期建物賃貸借",
     "createdVersion": 9,
-    "revision": 3,
+    "revision": 4,
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-163",
-    "contentReview": "v138_property_contract_and_management_scoped_migration",
+    "contentReview": "20261024_scoped_official_rule_check_ai_assisted",
     "choiceExplanations": [
       "不適切。1年未満を期間の定めなしとみなす普通借家の扱いと、所定要件を満たす定期借家は区別します。",
       "不適切。資料の定期借家は更新がない契約です。改めて合意する再契約とは別です。",
       "不適切。定期建物賃貸借は期間を定める契約です。",
       "正解。所定の方式・事前説明等の条件を満たせば、6か月の期間設定もできます。"
     ],
-    "sourceUrl": "https://www.mlit.go.jp/common/001334935.pdf",
+    "sourceUrl": "https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000060.html",
     "additionalSourceUrls": [
-      "https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000030.html",
-      "https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000060.html"
+      "https://laws.e-gov.go.jp/law/403AC0000000090?occasion_date=20260401",
+      "https://www.mlit.go.jp/common/001334935.pdf"
     ],
-    "sourceLabel": "国会制定法・国土交通省・農林水産省等による設問主要点の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "新改訂主要点5/共通ルール設例適用5。手付3問の内部算術を別記。全法令/全改正/基準日統合全文の確認ではない。"
+    "sourceLabel": "国土交通省：定期建物賃貸借Q&A（借地借家法第29条・第38条と限定照合）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "借地借家法29条1項・38条と国交省Q&Aの契約前説明・1年未満の満了通知を限定照合。対象条項・公開Q&Aに限定したAI支援点検であり、全改正・経過措置・法令全文の包括監査および資格保有運営者による人手監修は未了。"
   },
   {
     "level": "2",
@@ -10844,30 +10843,29 @@ const QUESTIONS = [
       "毎年1回"
     ],
     "answer": 3,
-    "explanation": "区分所有法第34条第2項では、管理者は少なくとも毎年1回、集会を招集しなければならないとされています。年1回だけしか招集できないという上限ではありません。規約上の追加義務、臨時集会、理事会の開催頻度とは区別します。",
+    "explanation": "建物の区分所有等に関する法律（区分所有法）第34条第2項は、管理者に少なくとも毎年1回の集会招集を義務付けています。これは開催回数の下限であり、年に2回以上開催しても差し支えありません。区分所有者の集会と理事会は別の会議体です。規約等による追加の招集や臨時集会は、本問の最低頻度とは区別します。",
     "topic": "管理者による集会招集の頻度",
     "createdVersion": 9,
-    "revision": 2,
+    "revision": 3,
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-166",
-    "contentReview": "v138_property_contract_and_management_scoped_migration",
+    "contentReview": "20261024_scoped_official_rule_check_ai_assisted",
     "choiceExplanations": [
       "不適切。3年に1回では、少なくとも毎年1回という最低頻度に足りません。",
       "不適切。その頻度で追加招集すること自体を禁止するものではありませんが、法律上の最低頻度を答えたものではありません。",
       "不適切。その頻度で追加招集すること自体を禁止するものではありませんが、法律上の最低頻度を答えたものではありません。",
       "正解。法律が管理者に求める最低頻度は、少なくとも毎年1回です。"
     ],
-    "sourceUrl": "https://www.mlit.go.jp/jutakukentiku/house/content/001760662.pdf",
+    "sourceUrl": "https://laws.e-gov.go.jp/law/337AC0000000069?occasion_date=20260401",
     "additionalSourceUrls": [
-      "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/housei/21720250530047.htm",
-      "https://laws.e-gov.go.jp/law/337AC0000000069?occasion_date=20250604"
+      "https://www.mlit.go.jp/jutakukentiku/house/content/001760662.pdf"
     ],
-    "sourceLabel": "国会制定法・国土交通省・農林水産省等による設問主要点の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "新改訂主要点5/共通ルール設例適用5。手付3問の内部算術を別記。全法令/全改正/基準日統合全文の確認ではない。"
+    "sourceLabel": "e-Gov法令検索：区分所有法第34条第2項（2026年4月1日の対象条項を限定照合）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "区分所有法34条2項（最低年1回）を公式条文と限定照合。対象条項・公開Q&Aに限定したAI支援点検であり、全改正・経過措置・法令全文の包括監査および資格保有運営者による人手監修は未了。"
   },
   {
     "level": "2",
