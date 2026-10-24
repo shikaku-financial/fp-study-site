@@ -11,13 +11,24 @@ const QUESTIONS = [
       "×（誤り）"
     ],
     "answer": 1,
-    "explanation": "将来の積立合計額には年金終価係数を使います。年金現価係数は、将来の一定額の受取りに対応する現在の元本を求める係数です。",
+    "explanation": "毎年末に同額を積み立て、複利運用した5年後などの元利合計額を求めるときは、毎年の積立額に年金終価係数を掛けます。年金現価係数は、将来の定額受取をまかなうために現在必要な元本を求める係数です。両者の『終価（将来額）』と『現価（現在額）』を区別します。",
     "lawReferenceDate": "2026-04-01",
-    "revision": 2,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "revision": 3,
+    "contentReview": "20261024_fll_early_academic_official_formula_and_answer_review",
+    "verificationStatus": "ai_scoped_official_concept_and_calculation_checked_human_review_pending",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g3_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "不適切。積立の将来額は年金終価係数で計算するため、記述は正しくありません。",
+      "正解。年金現価係数と年金終価係数を混同しています。"
+    ],
+    "sourceUrl": "https://www.resona-tb.co.jp/401k/pop/channel/pdf/oshiete_251015.pdf",
+    "additionalSourceUrls": [
+      "https://www.jafp.or.jp/exam/mohan/files/j2_202409_q.pdf"
+    ],
+    "sourceLabel": "りそな信託銀行：積立に用いる係数・日本FP協会：係数表の出題例",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公開された教育資料・機関の原理説明および設問内の数値をAI支援で限定照合。公式問題本文を転載しない。法令全文・全改正・人手による運営者監修は未了。"
   },
   {
     "id": "fp3-002",
@@ -30,15 +41,24 @@ const QUESTIONS = [
       "×（誤り）"
     ],
     "answer": 1,
-    "explanation": "一般的な定期保険には満期保険金がありません。死亡保障の保険期間と、満期保険金の有無を区別します。",
+    "explanation": "生命保険文化センターの定期保険の説明でも、定期保険は保険期間内に被保険者が死亡する等の支払事由に備える契約であり、一般的に満期保険金はありません。保険期間が満了しても生存しているだけでは満期保険金を受け取れず、記述は×です。満期保険金のある養老保険とは区別します。",
     "lawReferenceDate": "2026-04-01",
-    "revision": 2,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "revision": 3,
+    "contentReview": "20261024_fll_early_academic_official_formula_and_answer_review",
+    "verificationStatus": "ai_scoped_official_concept_and_calculation_checked_human_review_pending",
     "sourceUrl": "https://www.jili.or.jp/knows_learns/kind/main/41.html",
-    "sourceLabel": "制度の確認資料（一次資料）",
+    "sourceLabel": "生命保険文化センター：定期保険・養老保険",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g3_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "不適切。定期保険に満期保険金があるという説明は誤りです。",
+      "正解。一般的な定期保険には満期保険金がありません。"
+    ],
+    "additionalSourceUrls": [
+      "https://www.jili.or.jp/knows_learns/kind/main/38.html"
+    ],
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公開された教育資料・機関の原理説明および設問内の数値をAI支援で限定照合。公式問題本文を転載しない。法令全文・全改正・人手による運営者監修は未了。"
   },
   {
     "id": "fp3-003",
@@ -52,13 +72,25 @@ const QUESTIONS = [
       "10.0"
     ],
     "answer": 1,
-    "explanation": "直接利回りは年間利息÷購入価格×100です。額面100円当たり1.8円÷90円×100＝2.0％。償還差益は含めません。",
+    "explanation": "直接利回りは償還差益を含まず、額面100円当たりの年間利息1.8円を購入価格90円で割ります。1.8÷90×100＝2.0％です。表面利率1.8％は額面100円を基準にした率で、10.0％のように償還時の値上がり分を直接利回りに混ぜません。",
     "lawReferenceDate": "2026-04-01",
-    "revision": 2,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "revision": 3,
+    "contentReview": "20261024_fll_early_academic_official_formula_and_answer_review",
+    "verificationStatus": "ai_scoped_official_concept_and_calculation_checked_human_review_pending",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g3_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "不適切。1.8％は額面100円を分母にした表面利率です。",
+      "正解。年間利息1.8円÷購入価格90円×100＝2.0％です。",
+      "不適切。償還価格との差は直接利回りに入れず、最終利回りとの違いを確認します。"
+    ],
+    "sourceUrl": "https://www.jpx.co.jp/glossary/ta/296.html",
+    "additionalSourceUrls": [
+      "https://www.jpx.co.jp/glossary/sa/519.html"
+    ],
+    "sourceLabel": "日本取引所グループ：債券の直接利回り",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公開された教育資料・機関の原理説明および設問内の数値をAI支援で限定照合。公式問題本文を転載しない。法令全文・全改正・人手による運営者監修は未了。"
   },
   {
     "id": "fp3-004",
@@ -71,15 +103,22 @@ const QUESTIONS = [
       "×（誤り）"
     ],
     "answer": 1,
-    "explanation": "280万円×10％－97,500円＝182,500円です。税率だけでなく速算表の控除額を差し引きます。",
+    "explanation": "国税庁の令和8年4月1日現在の所得税速算表では、課税所得280万円に適用する税率は10％、控除額は97,500円です。税額は2,800,000円×10％－97,500円＝182,500円。28万円は速算表の控除額を差し引いていない金額で誤りです。資料のとおり復興特別所得税・税額控除等は含めません。",
     "lawReferenceDate": "2026-04-01",
-    "revision": 2,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "revision": 3,
+    "contentReview": "20261024_fll_early_academic_official_formula_and_answer_review",
+    "verificationStatus": "ai_scoped_official_concept_and_calculation_checked_human_review_pending",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm",
-    "sourceLabel": "制度の確認資料（一次資料）",
+    "sourceLabel": "国税庁：令和8年4月1日現在の所得税速算表",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g3_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "不適切。280万円×10％＝28万円だけでは速算表の控除額97,500円を差し引いていません。",
+      "正解。所得税額は280,000円－97,500円＝182,500円です。"
+    ],
+    "additionalSourceUrls": [],
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公開された教育資料・機関の原理説明および設問内の数値をAI支援で限定照合。公式問題本文を転載しない。法令全文・全改正・人手による運営者監修は未了。"
   },
   {
     "id": "fp3-005",
@@ -114,22 +153,29 @@ const QUESTIONS = [
       "×（誤り）"
     ],
     "answer": 1,
-    "explanation": "配偶者Bが2分の1、子全体で2分の1です。子C・Dで均等に分けるため、Cは4分の1です。",
+    "explanation": "民法第900条の法定相続分は、配偶者Bが2分の1、子全体で2分の1です。子はC・Dの2人で均等に分けるため、Cの相続分は（1/2）÷2＝4分の1であり、問題文の『2分の1』は誤りです。合意による遺産分割は必ずしも法定相続分の割合に限定されません。",
     "lawReferenceDate": "2026-04-01",
-    "revision": 2,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "revision": 3,
+    "contentReview": "20261024_fll_early_academic_official_formula_and_answer_review",
+    "verificationStatus": "ai_scoped_official_concept_and_calculation_checked_human_review_pending",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4132.htm",
-    "sourceLabel": "制度の確認資料（一次資料）",
+    "sourceLabel": "国税庁：令和8年4月1日現在の法定相続分",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g3_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "不適切。2分の1は配偶者Bの取り分または子全体の取り分です。C一人の割合ではありません。",
+      "正解。CとDは子全体の2分の1を均等に分け、Cは4分の1です。"
+    ],
+    "additionalSourceUrls": [],
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公開された教育資料・機関の原理説明および設問内の数値をAI支援で限定照合。公式問題本文を転載しない。法令全文・全改正・人手による運営者監修は未了。"
   },
   {
     "id": "fp2-001",
     "level": "2",
     "category": "ライフプランニングと資金計画",
     "format": "four_choice",
-    "question": "資金計画に用いる係数について、資料の条件に基づく次の記述のうち、最も適切なものはどれか。\n〈計算資料〉\n項目 / 内容\n運用期間・利率 / 5年、年5％（複利）\n終価係数 / 現価係数 / 1.2763 / 0.7835\n年金終価係数 / 年金現価係数 / 5.5241 / 4.3295\n減債基金係数 / 資本回収係数 / 0.1884 / 0.2310\n積立て・受取りは毎年末。税金・手数料は考慮しない。",
+    "question": "資金計画に用いる係数について、資料の条件に基づく次の記述のうち、最も適切なものはどれか。\n〈計算資料〉\n項目 / 内容\n運用期間・利率 / 5年、年5％（複利）\n終価係数 / 現価係数 / 1.2763 / 0.7835\n年金終価係数 / 年金現価係数 / 5.5256 / 4.3295\n減債基金係数 / 資本回収係数 / 0.1810 / 0.2310\n積立て・受取りは毎年末。税金・手数料は考慮しない。",
     "choices": [
       "600万円を5年間運用した元利合計額は、600万円に現価係数を乗じて求める。",
       "5年後の600万円を準備する毎年の積立額は、600万円に減債基金係数を乗じて求める。",
@@ -137,13 +183,26 @@ const QUESTIONS = [
       "毎年100万円を5年間積み立てた将来額は、100万円に年金現価係数を乗じて求める。"
     ],
     "answer": 1,
-    "explanation": "目標額から毎年の積立額を求めるのは減債基金係数です。1は終価係数、3は年金現価係数、4は年金終価係数を用います。",
-    "revision": 5,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "explanation": "5年後の目標額600万円から、年末ごとの同額積立額を逆算する際は減債基金係数を用います。5年・年5％の減債基金係数は0.1810なので、600万円×0.1810＝108.60万円です。①今ある600万円の5年後の元利合計額には終価係数、③毎年100万円を5年間受け取るための元本には年金現価係数、④毎年100万円の積立による将来額には年金終価係数を用います。係数0.1810は年金終価係数5.5256の逆数を小数第4位に丸めた値です。",
+    "revision": 6,
+    "contentReview": "20261024_fll_early_academic_official_formula_and_answer_review",
+    "verificationStatus": "ai_scoped_official_concept_and_calculation_checked_human_review_pending",
     "lawReferenceDate": "2026-04-01",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g2_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "不適切。現在の600万円を5年間運用した将来額は終価係数1.2763を掛けます。現価係数は将来額から現在必要な元本を求めます。",
+      "正解。5年後の目標額600万円×減債基金係数0.1810＝108.60万円が毎年末の積立額です。",
+      "不適切。毎年100万円を受け取るために現時点で必要な元本には年金現価係数4.3295を掛けます。資本回収係数は元本から毎年受け取る金額を求めます。",
+      "不適切。毎年100万円を積み立てた5年後の元利合計額には年金終価係数5.5256を掛けます。年金現価係数は現在必要な元本の算定用です。"
+    ],
+    "sourceUrl": "https://www.resona-tb.co.jp/401k/pop/channel/pdf/oshiete_251015.pdf",
+    "additionalSourceUrls": [
+      "https://www.jafp.or.jp/exam/mohan/files/j2_202409_q.pdf"
+    ],
+    "sourceLabel": "りそな信託銀行：積立に用いる係数・日本FP協会：係数表の出題例",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "係数表に実際の数値不整合があり、5年・年5％の年金終価5.5256と減債基金0.1810、指定係数による毎年積立額108.60万円へ訂正。公開された教育資料・機関の原理説明および設問内の数値をAI支援で限定照合。公式問題本文を転載しない。法令全文・全改正・人手による運営者監修は未了。"
   },
   {
     "id": "fp2-002",
@@ -158,15 +217,26 @@ const QUESTIONS = [
       "Aが生存して契約が満了しても、定期保険から満期保険金は支払われない。"
     ],
     "answer": 2,
-    "explanation": "死亡時には定期保険1,000万円と養老保険500万円の死亡保険金が支払われます。養老保険は死亡時に死亡保険金、生存満了時に満期保険金であり、死亡した契約で両方は受け取れません。",
-    "revision": 4,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
+    "explanation": "資料の死亡保険金は定期保険1,000万円＋養老保険500万円＝1,500万円です。一方、生存して満了した場合、養老保険の満期保険金500万円だけが対象で、定期保険には満期保険金がありません。同じ養老保険契約で被保険者が期間中に死亡したとき、死亡保険金500万円と生存満了時の満期保険金500万円を重ねて受け取ることはできません。保険期間中の死亡と生存満了は別の支払事由です。",
+    "revision": 5,
+    "contentReview": "20261024_fll_early_academic_official_formula_and_answer_review",
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
-    "sourceUrl": "https://www.jili.or.jp/knows_learns/kind/main/38.html",
-    "sourceLabel": "制度の確認資料（一次資料）",
+    "verificationStatus": "ai_scoped_official_concept_and_calculation_checked_human_review_pending",
+    "sourceUrl": "https://www.jili.or.jp/knows_learns/kind/main/41.html",
+    "sourceLabel": "生命保険文化センター：定期保険・養老保険",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g2_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "適切。両契約の期間内死亡の場合、死亡保険金1,000万円と500万円の合計1,500万円です。",
+      "適切。生存満了では養老保険の500万円が支払対象で、定期保険は満期保険金なしです。",
+      "最も不適切。同じ被保険者の死亡と生存満了は同時に成立せず、養老保険から死亡・満期両方の保険金は受け取れません。",
+      "適切。定期保険には原則として満期保険金がありません。"
+    ],
+    "additionalSourceUrls": [
+      "https://www.jili.or.jp/knows_learns/kind/main/38.html"
+    ],
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公開された教育資料・機関の原理説明および設問内の数値をAI支援で限定照合。公式問題本文を転載しない。法令全文・全改正・人手による運営者監修は未了。"
   },
   {
     "id": "fp2-003",
@@ -181,13 +251,27 @@ const QUESTIONS = [
       "3.33％"
     ],
     "answer": 2,
-    "explanation": "年間利息1.6円＋年間償還差益（100円－96円）÷4年＝2.6円。2.6円÷96円×100＝2.7083…％なので2.71％です。直接利回りや複利利回りとは区別します。",
-    "revision": 4,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
+    "explanation": "最終利回り（税引前・年率・単利）＝｛年間利息＋（償還価格－購入価格）÷残存年数｝÷購入価格×100です。額面100円当たり年利息1.6円、償還差益（100－96）÷4＝年1円なので、（1.6＋1.0）÷96×100＝2.70833…％。小数点以下第3位を四捨五入し2.71％です。償還差益を含まない直接利回り（1.6÷96×100＝約1.67％）とは区別します。",
+    "revision": 5,
+    "contentReview": "20261024_fll_early_academic_official_formula_and_answer_review",
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "verificationStatus": "ai_scoped_official_concept_and_calculation_checked_human_review_pending",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g2_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "不適切。年間利息と償還差益年換算の合計2.6円を購入価格96円で割ると約2.71％です。",
+      "不適切。2.50％ではありません。分子は年2.6円、分母は額面100円ではなく購入価格96円です。",
+      "正解。（1.6＋（100－96）÷4）÷96×100＝約2.71％です。",
+      "不適切。年利息1.6円と年換算償還差益1円を区別して、購入価格96円を分母にします。"
+    ],
+    "sourceUrl": "https://www.jpx.co.jp/glossary/sa/519.html",
+    "additionalSourceUrls": [
+      "https://www.mof.go.jp/faq/jgbs/04ec.htm",
+      "https://www.jpx.co.jp/glossary/ta/296.html"
+    ],
+    "sourceLabel": "日本取引所グループ：債券の最終利回り（単利）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公開された教育資料・機関の原理説明および設問内の数値をAI支援で限定照合。公式問題本文を転載しない。法令全文・全改正・人手による運営者監修は未了。"
   },
   {
     "id": "fp2-004",
@@ -250,15 +334,24 @@ const QUESTIONS = [
       "3,200万円"
     ],
     "answer": 1,
-    "explanation": "配偶者Bは2分の1、子C・Dはそれぞれ4分の1。Cは6,400万円×4分の1＝1,600万円を取得します。相続税額の計算問題ではありません。",
-    "revision": 4,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
+    "explanation": "民法第900条の法定相続分では、相続人が配偶者と子である場合、配偶者の相続分は2分の1、子全体で2分の1です。子がCとDの2人なので、Cの法定相続分は（1/2）÷2＝1/4。分割対象6,400万円×1/4＝1,600万円です。法定相続分は相続人全員が必ずその割合で分割しなければならないという意味ではなく、本問ではその割合で取得すると指定しています。",
+    "revision": 5,
+    "contentReview": "20261024_fll_early_academic_official_formula_and_answer_review",
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "verificationStatus": "ai_scoped_official_concept_and_calculation_checked_human_review_pending",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4132.htm",
-    "sourceLabel": "制度の確認資料（一次資料）",
+    "sourceLabel": "国税庁：令和8年4月1日現在の法定相続分",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g2_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "不適切。子が3人である場合等の割合と混同しています。本問の子はC・Dの2人です。",
+      "正解。配偶者1/2、子C・D各1/4なので6,400万円×1/4＝1,600万円です。",
+      "不適切。子3人全体や別の持分を想定した値ではありません。配偶者と子2人の割合から算定します。",
+      "不適切。3,200万円は配偶者Bの法定相続分1/2相当額で、子Cの額ではありません。"
+    ],
+    "additionalSourceUrls": [],
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公開された教育資料・機関の原理説明および設問内の数値をAI支援で限定照合。公式問題本文を転載しない。法令全文・全改正・人手による運営者監修は未了。"
   },
   {
     "id": "fp3-007",
@@ -292,20 +385,32 @@ const QUESTIONS = [
     "level": "3",
     "category": "ライフプランニングと資金計画",
     "format": "three_choice",
-    "question": "5年後に600万円を準備するため、年末に毎年同額を積み立てる。資料の係数を使うと、必要な毎年の積立額は（　）万円である。\n〈計算資料〉\n項目 / 内容\n運用期間・利率 / 5年、年5％（複利）\n減債基金係数 / 0.1884\n年金終価係数 / 5.5241\n目標額 / 600万円\n係数は資料の数値をそのまま使う。税金・手数料は考慮しない。",
+    "question": "5年後に600万円を準備するため、年末に毎年同額を積み立てる。資料の係数を使うと、必要な毎年の積立額は（　）万円である。\n〈計算資料〉\n項目 / 内容\n運用期間・利率 / 5年、年5％（複利）\n減債基金係数 / 0.1810\n年金終価係数 / 5.5256\n目標額 / 600万円\n係数は資料の数値をそのまま使う。税金・手数料は考慮しない。",
     "choices": [
-      "108.66",
+      "108.60",
       "113.04",
-      "3314.46"
+      "3315.36"
     ],
-    "answer": 1,
-    "explanation": "目標額×減債基金係数です。600万円×0.1884＝113.04万円。年金終価係数は毎年の積立額から将来額を求めるときに使います。",
-    "revision": 4,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "answer": 0,
+    "explanation": "将来の目標額から毎年末の積立額を求めるには、減債基金係数を掛けます。5年・年5％の係数0.1810を用いるので、600万円×0.1810＝108.60万円です。正確な式では減債基金係数＝1÷年金終価係数であり、5年・年5％の年金終価係数は約5.5256です。113.04万円は5年・年3％用の係数0.1884を誤用した場合の金額です。",
+    "revision": 5,
+    "contentReview": "20261024_fll_early_academic_official_formula_and_answer_review",
+    "verificationStatus": "ai_scoped_official_concept_and_calculation_checked_human_review_pending",
     "lawReferenceDate": "2026-04-01",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g3_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "正解。目標600万円×減債基金係数0.1810＝108.60万円。",
+      "不適切。113.04万円は600×0.1884で、0.1884は5年・年3％用の係数です。",
+      "不適切。3315.36万円は目標600万円に年金終価係数5.5256を掛けた結果で、毎年の必要積立額ではありません。"
+    ],
+    "sourceUrl": "https://www.resona-tb.co.jp/401k/pop/channel/pdf/oshiete_251015.pdf",
+    "additionalSourceUrls": [
+      "https://www.jafp.or.jp/exam/mohan/files/j2_202409_q.pdf"
+    ],
+    "sourceLabel": "りそな信託銀行：積立に用いる係数・日本FP協会：係数表の出題例",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "係数表に実際の数値不整合があり、5年・年5％の年金終価5.5256と減債基金0.1810、指定係数による毎年積立額108.60万円へ訂正。公開された教育資料・機関の原理説明および設問内の数値をAI支援で限定照合。公式問題本文を転載しない。法令全文・全改正・人手による運営者監修は未了。"
   },
   {
     "id": "fp3-009",
@@ -490,13 +595,24 @@ const QUESTIONS = [
       "×（誤り）"
     ],
     "answer": 0,
-    "explanation": "固定された利息・償還額に対して購入価格が高くなるため、利回りは低下します。価格と利回りは逆方向に動きます。",
+    "explanation": "固定利付債の年利息（クーポン）と償還額・残存期間が一定なら、購入価格が上がるほど、年利息や償還差益の年換算額を購入価格で割った利回りは低くなります。財務省が示す単利の最終利回りの式からも、他条件一定で債券価格と利回りが逆方向に動くことがわかります。",
     "lawReferenceDate": "2026-04-01",
-    "revision": 2,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "revision": 3,
+    "contentReview": "20261024_fll_early_academic_official_formula_and_answer_review",
+    "verificationStatus": "ai_scoped_official_concept_and_calculation_checked_human_review_pending",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g3_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "正解。他条件が同じなら、債券価格の上昇は利回りの低下につながります。",
+      "不適切。市場価格と利回りが一般に同方向に上昇するわけではありません。"
+    ],
+    "sourceUrl": "https://www.mof.go.jp/faq/jgbs/04ec.htm",
+    "additionalSourceUrls": [
+      "https://www.jpx.co.jp/glossary/sa/519.html"
+    ],
+    "sourceLabel": "財務省：国債利回りと購入価格の関係",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公開された教育資料・機関の原理説明および設問内の数値をAI支援で限定照合。公式問題本文を転載しない。法令全文・全改正・人手による運営者監修は未了。"
   },
   {
     "id": "fp3-016",
@@ -647,15 +763,23 @@ const QUESTIONS = [
       "462,500"
     ],
     "answer": 0,
-    "explanation": "2,800,000円×10％－97,500円＝182,500円です。ここでいう課税所得は所得控除後の金額です。",
+    "explanation": "国税庁の令和8年4月1日現在の速算表では、課税所得2,800,000円に税率10％・控除額97,500円を適用します。2,800,000×0.10－97,500＝182,500円が正答です。速算表の控除は所得控除とは異なり、税額算式で引く金額です。本問は復興特別所得税などを含まない前提です。",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm",
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
-    "revision": 2,
+    "contentReview": "20261024_fll_early_academic_official_formula_and_answer_review",
+    "verificationStatus": "ai_scoped_official_concept_and_calculation_checked_human_review_pending",
+    "revision": 3,
     "lawReferenceDate": "2026-04-01",
-    "sourceLabel": "制度の確認資料（一次資料）",
+    "sourceLabel": "国税庁：令和8年4月1日現在の所得税速算表",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g3_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "正解。2,800,000×10％－97,500＝182,500円です。",
+      "不適切。280,000円は速算表の控除額97,500円を引く前の金額です。",
+      "不適切。462,500円ではありません。税率10％を適用して控除額97,500円を差し引きます。"
+    ],
+    "additionalSourceUrls": [],
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公開された教育資料・機関の原理説明および設問内の数値をAI支援で限定照合。公式問題本文を転載しない。法令全文・全改正・人手による運営者監修は未了。"
   },
   {
     "id": "fp3-022",
