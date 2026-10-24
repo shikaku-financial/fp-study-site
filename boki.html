@@ -15,11 +15,11 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="manifest" href="boki.webmanifest">
   <link rel="stylesheet" href="style.css?v=b22c5daa8037d371">
-  <link rel="stylesheet" href="boki.css?v=20261024a">
-  <script src="boki-data.js?v=20261024i" defer></script>
-  <script src="boki-extra.js?v=20261024g" defer></script>
-  <script src="boki-core.js?v=20261023b" defer></script>
-  <script src="boki.js?v=20261024e" defer></script>
+  <link rel="stylesheet" href="boki.css?v=20261024b">
+  <script src="boki-data.js?v=20261024j" defer></script>
+  <script src="boki-extra.js?v=20261024h" defer></script>
+  <script src="boki-core.js?v=20261024c" defer></script>
+  <script src="boki.js?v=20261024f" defer></script>
 <link rel="stylesheet" href="brand.css?v=20261023d">
 <link rel="stylesheet" href="calculator.css?v=20261024a">
 <script src="calculator.js?v=20261024a" defer></script>
@@ -35,14 +35,14 @@
     <noscript><p class="card">問題演習にはJavaScriptを有効にしてください。試験概要と参考情報は下記から確認できます。</p></noscript>
     <section class="card" aria-labelledby="boki-guide">
       <h2 id="boki-guide">簿記ラボの使い方</h2>
-      <p><strong>分野別演習</strong>は1題ずつ答え合わせ、<strong>模擬試験</strong>は時間内に解答し最後にまとめて採点します。表の入力欄には金額や数量を入力してください。全角数字・桁区切りのカンマも使えます。空欄は未解答、ゼロが答えの場合は「0」を入力します。</p>
+      <p><strong>分野別演習</strong>は1題ずつ答え合わせ、<strong>模擬試験</strong>は時間内に解答し最後にまとめて採点します。表の空欄には、金額・数量の数字入力と、勘定科目・語句を選ぶプルダウンがあります。全角数字・桁区切りのカンマも使えます。空欄は未解答、ゼロが答えの場合は「0」を入力します。</p>
       <p id="boki-exam-guide">模試は3級60分・3大問、2級90分・5大問、各100点満点。70点を到達目安とします。模試中は大問・設問を自由に移動できます。中断中も制限時間は進みます。時間が過ぎた模試は再開時に採点します。</p>
       <p class="muted small">収録内容：各級2回分の独自模試。1回につき3級は仕訳15題と帳簿・決算3題、2級は仕訳8題（工業簿記3題を含む）と総合問題4題です。回を選んで異なる問題を練習できます。</p>
       <details class="usage-details"><summary>試験概要・問題と採点について</summary><div class="usage-details-body">
         <p>公式のネット試験は3級が商業簿記・60分・3題以内、2級が商業簿記と工業簿記（原価計算を含む）・90分・5題以内で、合格基準はいずれも70%以上です。仕訳の勘定科目はプルダウン選択、金額・科目名などには入力式があります。</p>
         <p>当サイトは日本商工会議所のサンプルの出題構成を参考に、問題・数値・解説を独自作成しています。公式問題の転載ではありません。本試験の画面・難易度・非公開の採点方法を再現したものではなく、採点は当サイト独自です。仕訳は取引単位で全項目一致、表問題は入力欄ごとに採点します。</p>
         <p id="boki-official-input-guide">本試験の解答では、金額は数字のみで入力します（「円」などの文字や記号は入力しないでください。桁区切りのカンマも不要です）。また、仕訳の同じ側（借方・貸方のそれぞれ）で同一勘定科目を2回使用すると、本試験では不正解になります。当サイトは練習しやすいように全角数字と桁区切りカンマの入力にも対応していますが、<strong>本試験に向けて半角数字のみ・同じ側の科目重複なし</strong>で解答する習慣を付けましょう。当サイトの現行採点では、同じ側の科目を複数行に分けた場合に金額を合算しますが、本試験では科目の重複そのものが不正解になるため、必ず1行にまとめてください。正式な入力ルールは<a href="https://www.kentei.ne.jp/33013" target="_blank" rel="noopener noreferrer">日本商工会議所のネット試験案内 ↗</a>をご確認ください。</p>
-        <p>公式サンプルには、勘定科目などの語句を選択・入力する空欄もあります。簿記ラボの表形式問題は現時点では金額・数量の入力が中心で、公式試験のすべての解答形式を再現していません。<a href="https://www.kentei.ne.jp/bookkeeping/sample/sample_3" target="_blank" rel="noopener noreferrer">3級</a>・<a href="https://www.kentei.ne.jp/bookkeeping/sample/sample-two" target="_blank" rel="noopener noreferrer">2級</a>の公式サンプルも併用してください。</p>
+        <p>公式サンプルには、勘定科目などの語句を選択・入力する空欄もあります。簿記ラボの4回分の模試に勘定科目・語句選択の空欄を設けましたが、独自作成の問題であり、公式試験のすべての解答形式を再現したものではありません。<a href="https://www.kentei.ne.jp/bookkeeping/sample/sample_3" target="_blank" rel="noopener noreferrer">3級</a>・<a href="https://www.kentei.ne.jp/bookkeeping/sample/sample-two" target="_blank" rel="noopener noreferrer">2級</a>の公式サンプルも併用してください。</p>
         <p>収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分を参考にしています。3級模試の配点は2026年度の第1問45点・第2問20点・第3問35点です。2027年4月1日以降の3級本試験は第1問45点・第2問25点・第3問30点に変更されますが、当サイトの模試配点は自動で切り替わりません。2027年度の出題区分改定への対応は未完了です。受験年度に応じて<a href="https://www.kentei.ne.jp/bookkeeping/35697-2" target="_blank" rel="noopener noreferrer">公式の出題区分表 ↗</a>と<a href="https://www.kentei.ne.jp/51504" target="_blank" rel="noopener noreferrer">3級の配点変更案内 ↗</a>をご確認ください。</p>
         <p>全問の専門家監修は未完了です。結果は学習の目安で、実際の合否を保証しません。スマートフォンでも練習できますが、本試験は会場のパソコンで受験します。</p>
         <p><a href="https://www.kentei.ne.jp/33013" target="_blank" rel="noopener noreferrer">日本商工会議所：ネット試験の案内 ↗</a><br><a href="https://www.kentei.ne.jp/bookkeeping/sample/sample_3" target="_blank" rel="noopener noreferrer">3級公式サンプル ↗</a> ／ <a href="https://www.kentei.ne.jp/bookkeeping/sample/sample-two" target="_blank" rel="noopener noreferrer">2級公式サンプル ↗</a></p>

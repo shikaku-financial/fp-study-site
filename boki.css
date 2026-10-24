@@ -3,3 +3,5 @@
 /* A visible hint complements the accessible table-region label on phones. */
 .boki-scroll-hint{display:none}
 @media(max-width:600px){.boki-scroll-hint{display:block;margin:12px 0 0}}
+
+.boki-scroll select[data-field]{min-width:10rem;max-width:100%;font-size:.9rem}.boki-scroll select[data-field]:disabled{opacity:1}

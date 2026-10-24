@@ -38,7 +38,7 @@ async function run(engineName){
     await page.locator('select[data-side="'+side+'"][data-row="'+row+'"]').selectOption(account);
     await page.locator('input[data-side="'+side+'"][data-row="'+row+'"]').fill(String(amount));
    }
-  }else for(const f of item.fields)await page.locator('input[data-field="'+f.id+'"]').fill(String(f.answer));
+  }else for(const f of item.fields){if(f.type==='choice')await page.locator('select[data-field="'+f.id+'"]').selectOption(f.answer);else await page.locator('input[data-field="'+f.id+'"]').fill(String(f.answer));}
  }
  try{
   await page.goto(BASE,{waitUntil:'load'});
@@ -60,7 +60,7 @@ async function run(engineName){
     await fillItem(item);
     if(item.type==='table'){
      await assertFits(320);await assertFits(390);
-     for(const f of item.fields)assert.equal(await page.locator('input[data-field="'+f.id+'"]').inputValue(),String(f.answer));
+     for(const f of item.fields){const field=page.locator((f.type==='choice'?'select':'input')+'[data-field="'+f.id+'"]');assert.equal(await field.inputValue(),String(f.answer));}
     }
     if(i===0){
      await click('flag');assert.equal(await page.locator('#boki-flag').getAttribute('aria-pressed'),'true');
@@ -70,7 +70,7 @@ async function run(engineName){
     if(item===items.find(q=>q.type==='table')){
      await click('pause');await page.reload({waitUntil:'load'});await click('resume');
      const state=await saved();assert.equal(state.active.level,level);assert.equal(state.active.form,form);assert.equal(state.active.index,i);assert.equal(state.active.deadline,firstDeadline);
-     for(const f of item.fields)assert.equal(await page.locator('input[data-field="'+f.id+'"]').inputValue(),String(f.answer));
+     for(const f of item.fields){const field=page.locator((f.type==='choice'?'select':'input')+'[data-field="'+f.id+'"]');assert.equal(await field.inputValue(),String(f.answer));}
     }
     if(i<items.length-1)await click('next');
    }
