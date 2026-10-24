@@ -3085,25 +3085,27 @@ const QUESTIONS = [
       "5.0％"
     ],
     "answer": 1,
-    "explanation": "Xの収益2.4万円、Yの収益4万円、合計6.4万円。6.4÷200×100＝3.2％。期首比率60％と40％を用います。",
+    "explanation": "資産Xの1年間の収益額は120万円×2％＝2.4万円、資産Yは80万円×5％＝4.0万円です。両方を合算した6.4万円を期首投資総額200万円で割ると6.4÷200×100＝3.2％です。投資比率で計算しても60％×2％＋40％×5％＝3.2％。単純平均の3.5％ではありません。",
     "topic": "期首投資額による加重平均",
-    "sourceUrl": "",
-    "sourceLabel": "提示加重平均式の内部検算（法令一次資料照合ではない）",
+    "sourceUrl": "https://www.jpx.co.jp/glossary/ka/65.html",
+    "sourceLabel": "日本取引所グループ：加重平均の考え方（総収益率・期待収益率は本問独自の指定条件で計算）",
     "lawReferenceDate": "2026-04-01",
-    "revision": 8,
+    "revision": 9,
     "reviewStatus": "formula_checked",
     "reviewedAt": "2026-10-12",
-    "contentReview": "v122_fx_weighted_scoped_migration",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
+    "contentReview": "20261024_property_portfolio_arithmetic_independent_formula_check",
+    "verificationStatus": "ai_scoped_arithmetic_and_public_concept_checked_human_review_pending",
     "choiceExplanations": [
       "不適切。2％はXだけの収益率です。",
       "正解。（120×0.02＋80×0.05）÷200×100＝3.2％です。",
       "不適切。3.5％は（2＋5）÷2という単純平均で、投資額が違います。",
       "不適切。5％はYだけの収益率です。"
     ],
-    "additionalSourceUrls": [],
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "公式定義2問と内部検算11問を区別。法令改正照合は加算なし。ID初回時期未確定。"
+    "additionalSourceUrls": [
+      "https://www.jpx.co.jp/glossary/ha/417.html"
+    ],
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "一次的な数値根拠は設問内の独自条件。外部公開資料は利回り・加重平均という概念の補助資料で、数値や本問の特殊な比率の公式見解ではない。問題値は別の独立計算テストで検証。法令・税制の包括監査および運営者の人手監修は未了。"
   },
   {
     "id": "fp2-044",
@@ -3369,25 +3371,27 @@ const QUESTIONS = [
       "8.0％"
     ],
     "answer": 0,
-    "explanation": "運営費控除後の収支は600－30－150＝420万円。投下資金は7,000＋500＝7,500万円です。この2つの金額の比に100を掛けて百分率にします。借入元利金や個人の所得税を引いた後の利回りではありません。",
+    "explanation": "本問で定義した実質利回りは、（満室賃料600万円－空室損失30万円－運営費150万円）÷（購入価格7,000万円＋取得時諸費用500万円）×100で計算します。分子420万円・分母7,500万円なので5.6％です。取得諸費用を落とした6.0％、運営費を差し引かない7.6％、空室損失と運営費を両方控除しない8.0％とは区別します。借入返済は本問の定義に含まれず、税務上の所得とも異なります。",
     "topic": "運営費控除後の利回り",
-    "sourceUrl": "",
-    "sourceLabel": "指定条件の計算検証",
+    "sourceUrl": "https://www.livable.co.jp/fudosan-toushi/knowledge/basic/pro001/",
+    "sourceLabel": "東急リバブル：表面利回り・実質利回りの計算方法（独自設例の数値を独立検算）",
     "lawReferenceDate": "2026-04-01",
-    "revision": 6,
+    "revision": 7,
     "reviewStatus": "formula_checked",
     "reviewedAt": "2026-10-12",
-    "contentReview": "v134_rent_yield_land_transfer_scoped_migration",
+    "contentReview": "20261024_property_portfolio_arithmetic_independent_formula_check",
     "choiceExplanations": [
       "正解。420÷7,500×100＝5.6％です。",
       "不適切。420÷7,000×100＝6.0％は取得時諸費用を分母から落としています。",
       "不適切。570÷7,500×100＝7.6％は運営費用150万円を控除していません。",
       "不適切。600÷7,500×100＝8.0％は空室損失と運営費用の両方を控除していません。"
     ],
-    "additionalSourceUrls": [],
-    "sourceCheckedDate": null,
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "内部検算9/過去公式主要論点再確認1。利回りモデルは定義した分子分母を検算し、法令改正照合としない。条文全文/包括監修未完了。"
+    "additionalSourceUrls": [
+      "https://www.nomu.com/pro/modal/modal_P.html"
+    ],
+    "sourceCheckedDate": "2026-10-24",
+    "verificationStatus": "ai_scoped_arithmetic_and_public_concept_checked_human_review_pending",
+    "reviewNote": "一次的な数値根拠は設問内の独自条件。外部公開資料は利回り・加重平均という概念の補助資料で、数値や本問の特殊な比率の公式見解ではない。問題値は別の独立計算テストで検証。法令・税制の包括監査および運営者の人手監修は未了。"
   },
   {
     "id": "fp2-053",
@@ -4348,23 +4352,25 @@ const QUESTIONS = [
       "× 誤り"
     ],
     "answer": 0,
-    "explanation": "240÷3,000×100＝8％です。空室や経費を控除した収支の比率とは条件が異なります。",
+    "explanation": "本問の表面利回りは、年間満室賃料240万円を購入価格3,000万円で割った240÷3,000×100＝8％です。設例には空室損失・運営費用・取得時諸費用がいずれも0万円とありますが、表面利回りの計算ではそもそもこれらを反映しない点を確認します。よって記述は正しいです。",
     "topic": "満室賃料による表面利回り",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.livable.co.jp/fudosan-toushi/knowledge/basic/pro001/",
     "id": "fp3-085",
-    "revision": 2,
+    "revision": 3,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
     "choiceExplanations": [
       "正解。240÷3,000×100＝8％で、記述は正しいです。",
       "不適切。資料は表面利回りの計算なので、×とはなりません。"
     ],
-    "additionalSourceUrls": [],
-    "sourceLabel": "指定条件の計算検証",
-    "sourceCheckedDate": null,
-    "contentReview": "v134_rent_yield_land_transfer_scoped_migration",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "内部検算9/過去公式主要論点再確認1。利回りモデルは定義した分子分母を検算し、法令改正照合としない。条文全文/包括監修未完了。"
+    "additionalSourceUrls": [
+      "https://www.nomu.com/pro/modal/modal_P.html"
+    ],
+    "sourceLabel": "東急リバブル：表面利回り・実質利回りの計算方法（独自設例の数値を独立検算）",
+    "sourceCheckedDate": "2026-10-24",
+    "contentReview": "20261024_property_portfolio_arithmetic_independent_formula_check",
+    "verificationStatus": "ai_scoped_arithmetic_and_public_concept_checked_human_review_pending",
+    "reviewNote": "一次的な数値根拠は設問内の独自条件。外部公開資料は利回り・加重平均という概念の補助資料で、数値や本問の特殊な比率の公式見解ではない。問題値は別の独立計算テストで検証。法令・税制の包括監査および運営者の人手監修は未了。"
   },
   {
     "level": "3",
@@ -5208,24 +5214,26 @@ const QUESTIONS = [
       "5％"
     ],
     "answer": 2,
-    "explanation": "空室損失反映後の賃料は240－40＝200万円。200÷4,000×100＝5％。管理費20万円まで引いた180万円や、空室損失を引く前の240万円を使う計算とは区別します。本問の独自の指定比率を、運営費控除後の実質利回りと呼び替えないこと。",
+    "explanation": "この問題は『空室損失反映後・管理費控除前』の独自に定義された比率です。賃料収入240－空室損失40＝200万円。これを購入価格4,000万円で割り、200÷4,000×100＝5％となります。管理費20万円まで引く4.5％や、空室損失を控除しない6％は、本問の指定条件に合いません。一般的な表面利回り・実質利回りと安易に呼び替えない点に注意します。",
     "topic": "空室損失反映後・管理費控除前の比率",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.livable.co.jp/fudosan-toushi/knowledge/basic/pro001/",
     "id": "fp3-113",
-    "revision": 4,
+    "revision": 5,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
-    "contentReview": "v134_rent_yield_land_transfer_scoped_migration",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
+    "contentReview": "20261024_property_portfolio_arithmetic_independent_formula_check",
+    "verificationStatus": "ai_scoped_arithmetic_and_public_concept_checked_human_review_pending",
     "choiceExplanations": [
       "不適切。180÷4,000×100＝4.5％は管理費も差し引いています。",
       "不適切。240÷4,000×100＝6％は空室損失を控除していません。",
       "正解。200÷4,000×100＝5％です。"
     ],
-    "additionalSourceUrls": [],
-    "sourceLabel": "指定条件の計算検証",
-    "sourceCheckedDate": null,
-    "reviewNote": "内部検算9/過去公式主要論点再確認1。利回りモデルは定義した分子分母を検算し、法令改正照合としない。条文全文/包括監修未完了。"
+    "additionalSourceUrls": [
+      "https://www.nomu.com/pro/modal/modal_P.html"
+    ],
+    "sourceLabel": "東急リバブル：表面利回り・実質利回りの計算方法（独自設例の数値を独立検算）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "一次的な数値根拠は設問内の独自条件。外部公開資料は利回り・加重平均という概念の補助資料で、数値や本問の特殊な比率の公式見解ではない。問題値は別の独立計算テストで検証。法令・税制の包括監査および運営者の人手監修は未了。"
   },
   {
     "level": "3",
@@ -6221,25 +6229,27 @@ const QUESTIONS = [
       "5.0％"
     ],
     "answer": 0,
-    "explanation": "期首比率を小数で掛け、0.4％＋3.0％＝3.4％。期末比率に置き換えません。",
+    "explanation": "投資比率A40％、B60％を重みとして掛けると、Aの収益寄与は0.4×1％＝0.4ポイント、Bは0.6×5％＝3.0ポイントです。両者を合計して3.4％。収益率の単純平均3.0％や期末の比率を使う計算は、本問で指定した期首配分と異なります。",
     "topic": "期首比率による加重平均",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.jpx.co.jp/glossary/ka/65.html",
     "id": "fp2-084",
-    "revision": 4,
+    "revision": 5,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
-    "contentReview": "v122_fx_weighted_scoped_migration",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
+    "contentReview": "20261024_property_portfolio_arithmetic_independent_formula_check",
+    "verificationStatus": "ai_scoped_arithmetic_and_public_concept_checked_human_review_pending",
     "choiceExplanations": [
       "正解。0.4×1＋0.6×5＝3.4％です。",
       "不適切。3％は（1＋5）÷2という単純平均です。",
       "不適切。1％はAだけの収益率です。",
       "不適切。5％はBだけの収益率です。"
     ],
-    "additionalSourceUrls": [],
-    "sourceLabel": "提示加重平均式の内部検算（法令一次資料照合ではない）",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "公式定義2問と内部検算11問を区別。法令改正照合は加算なし。ID初回時期未確定。"
+    "additionalSourceUrls": [
+      "https://www.jpx.co.jp/glossary/ha/417.html"
+    ],
+    "sourceLabel": "日本取引所グループ：加重平均の考え方（総収益率・期待収益率は本問独自の指定条件で計算）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "一次的な数値根拠は設問内の独自条件。外部公開資料は利回り・加重平均という概念の補助資料で、数値や本問の特殊な比率の公式見解ではない。問題値は別の独立計算テストで検証。法令・税制の包括監査および運営者の人手監修は未了。"
   },
   {
     "level": "2",
@@ -6820,25 +6830,27 @@ const QUESTIONS = [
       "約6.3％"
     ],
     "answer": 0,
-    "explanation": "運営費控除後の収支は360－24－66＝270万円。投下資金は5,400＋300＝5,700万円です。この2つの金額の比に100を掛けて百分率にします。借入元利金や個人の所得税を引いた後の利回りではありません。",
+    "explanation": "年間収入は360－24＝336万円、そこから運営費66万円を引いた年間運営収支は270万円です。取得に投じた総額は5,400＋300＝5,700万円。270÷5,700×100＝4.7368…％なので、小数第2位を四捨五入して約4.7％となります。取得諸費用や空室損失を落とすと別の比率になり、本問の定義とは一致しません。",
     "topic": "運営費控除後の利回り",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.livable.co.jp/fudosan-toushi/knowledge/basic/pro001/",
     "id": "fp2-102",
-    "revision": 4,
+    "revision": 5,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
-    "contentReview": "v134_rent_yield_land_transfer_scoped_migration",
+    "contentReview": "20261024_property_portfolio_arithmetic_independent_formula_check",
     "choiceExplanations": [
       "正解。270÷5,700×100＝約4.7％です。",
       "不適切。270÷5,400×100＝約5.0％は取得時諸費用を分母から落としています。",
       "不適切。294÷5,700×100＝約5.2％は空室損失24万円を控除していません。",
       "不適切。360÷5,700×100＝約6.3％は空室損失と運営費用を控除していません。"
     ],
-    "additionalSourceUrls": [],
-    "sourceLabel": "指定条件の計算検証",
-    "sourceCheckedDate": null,
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "内部検算9/過去公式主要論点再確認1。利回りモデルは定義した分子分母を検算し、法令改正照合としない。条文全文/包括監修未完了。"
+    "additionalSourceUrls": [
+      "https://www.nomu.com/pro/modal/modal_P.html"
+    ],
+    "sourceLabel": "東急リバブル：表面利回り・実質利回りの計算方法（独自設例の数値を独立検算）",
+    "sourceCheckedDate": "2026-10-24",
+    "verificationStatus": "ai_scoped_arithmetic_and_public_concept_checked_human_review_pending",
+    "reviewNote": "一次的な数値根拠は設問内の独自条件。外部公開資料は利回り・加重平均という概念の補助資料で、数値や本問の特殊な比率の公式見解ではない。問題値は別の独立計算テストで検証。法令・税制の包括監査および運営者の人手監修は未了。"
   },
   {
     "level": "2",
@@ -6852,25 +6864,27 @@ const QUESTIONS = [
       "4.0％"
     ],
     "answer": 0,
-    "explanation": "240÷4,800×100＝5％です。空室や経費を控除した収支の比率とは条件が異なります。",
+    "explanation": "表面利回りは、本問の定義では年間満室賃料240万円÷購入価格4,800万円×100＝5.0％です。空室損失40万円を控除した収入200万円を分子に使う約4.2％は、空室反映後の別の収益率です。取得諸費用200万円を分母に足す4.8％も本問の表面利回りではありません。",
     "topic": "満室賃料による表面利回り",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.livable.co.jp/fudosan-toushi/knowledge/basic/pro001/",
     "id": "fp2-103",
-    "revision": 4,
+    "revision": 5,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
-    "contentReview": "v134_rent_yield_land_transfer_scoped_migration",
+    "contentReview": "20261024_property_portfolio_arithmetic_independent_formula_check",
     "choiceExplanations": [
       "正解。240÷4,800×100＝5.0％です。",
       "不適切。200÷4,800×100＝約4.2％は空室損失を控除しています。",
       "不適切。240÷5,000×100＝4.8％は取得時諸費用も分母へ含めています。",
       "不適切。200÷5,000×100＝4.0％は空室損失を引き、取得時諸費用を分母へ含めています。"
     ],
-    "additionalSourceUrls": [],
-    "sourceLabel": "指定条件の計算検証",
-    "sourceCheckedDate": null,
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "内部検算9/過去公式主要論点再確認1。利回りモデルは定義した分子分母を検算し、法令改正照合としない。条文全文/包括監修未完了。"
+    "additionalSourceUrls": [
+      "https://www.nomu.com/pro/modal/modal_P.html"
+    ],
+    "sourceLabel": "東急リバブル：表面利回り・実質利回りの計算方法（独自設例の数値を独立検算）",
+    "sourceCheckedDate": "2026-10-24",
+    "verificationStatus": "ai_scoped_arithmetic_and_public_concept_checked_human_review_pending",
+    "reviewNote": "一次的な数値根拠は設問内の独自条件。外部公開資料は利回り・加重平均という概念の補助資料で、数値や本問の特殊な比率の公式見解ではない。問題値は別の独立計算テストで検証。法令・税制の包括監査および運営者の人手監修は未了。"
   },
   {
     "level": "2",
@@ -6988,11 +7002,11 @@ const QUESTIONS = [
       "空室率が20％になると、実際の年間家賃収入は満室時の年間家賃600万円を上回る"
     ],
     "answer": 2,
-    "explanation": "家賃収入は540万円から480万円、経費控除後の収入は420万円から360万円となります。利回りは7％から6％へ1ポイント低下します。空室分は家賃収入を減らす段階で反映済みなので、経費として重ねて差し引きません。資料の定義による内部計算であり、将来の市場予測ではありません。",
+    "explanation": "空室率10％の場合、年間賃料は600×（1－0.10）＝540万円で、運営費120万円控除後の利回りは（540－120）÷6,000×100＝7％。空室率20％では家賃600×（1－0.20）＝480万円、利回り（480－120）÷6,000×100＝6％です。収入は60万円減り、利回りは1ポイント低下します。空室損失を経費として二重に引かず、資料で定義した運営費控除後の比率を計算します。",
     "topic": "空室率と収入・利回り",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.livable.co.jp/fudosan-toushi/knowledge/basic/pro001/",
     "id": "fp2-107",
-    "revision": 3,
+    "revision": 4,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
     "choiceExplanations": [
@@ -7001,12 +7015,14 @@ const QUESTIONS = [
       "正解。600×0.9＝540、600×0.8＝480。経費控除後は420万円と360万円で、6,000万円に対して7％と6％です。",
       "不適切。資料の条件では空室率20％の家賃収入は480万円で、満室時600万円を上回りません。"
     ],
-    "additionalSourceUrls": [],
-    "sourceLabel": "指定モデルの内部計算（法令改正照合ではない）",
-    "sourceCheckedDate": null,
-    "contentReview": "v137_valuation_and_property_models_scoped_migration",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "公式基本事項3と指定条件内部検算3を区別。ID初回時期不明、法令全文/全改正/実機は未確認。"
+    "additionalSourceUrls": [
+      "https://www.nomu.com/pro/modal/modal_P.html"
+    ],
+    "sourceLabel": "東急リバブル：表面利回り・実質利回りの計算方法（独自設例の数値を独立検算）",
+    "sourceCheckedDate": "2026-10-24",
+    "contentReview": "20261024_property_portfolio_arithmetic_independent_formula_check",
+    "verificationStatus": "ai_scoped_arithmetic_and_public_concept_checked_human_review_pending",
+    "reviewNote": "一次的な数値根拠は設問内の独自条件。外部公開資料は利回り・加重平均という概念の補助資料で、数値や本問の特殊な比率の公式見解ではない。問題値は別の独立計算テストで検証。法令・税制の包括監査および運営者の人手監修は未了。"
   },
   {
     "level": "2",
@@ -7087,11 +7103,11 @@ const QUESTIONS = [
       "300万円のプラス"
     ],
     "answer": 0,
-    "explanation": "満室時600万円から空室分60万円を引いた実収入は540万円です。そこから運営支出120万円と元利返済240万円を引き、資金収支は180万円のプラスとなります。課税所得や会計利益を求める問題ではなく、提示された現金の入出金を計算します。空室分、借入返済、修繕費を重複計上しないこと。",
+    "explanation": "年間の実収入は満室家賃600万円－空室損失60万円＝540万円。そこから運営支出120万円と、元利合計の借入返済240万円を一度ずつ差し引くので、年間資金収支は540－120－240＝180万円のプラスです。借入返済を引かない420万円は運営費控除後・返済前の収支で、資金収支とは異なります。減価償却は本問の期間の現金支出に含めません。",
     "topic": "賃貸経営の年間資金収支",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.j-rec.or.jp/docs/2022.07.29.01.pdf",
     "id": "fp2-110",
-    "revision": 4,
+    "revision": 5,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
     "choiceExplanations": [
@@ -7100,12 +7116,14 @@ const QUESTIONS = [
       "不適切。540万円－120万円＝420万円は借入返済前の金額です。本問の資金収支では元利返済240万円も差し引きます。",
       "不適切。540万円－240万円＝300万円では、運営支出120万円を差し引いていません。"
     ],
-    "contentReview": "v137_valuation_and_property_models_scoped_migration",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "additionalSourceUrls": [],
-    "sourceLabel": "指定モデルの内部計算（法令改正照合ではない）",
-    "sourceCheckedDate": null,
-    "reviewNote": "公式基本事項3と指定条件内部検算3を区別。ID初回時期不明、法令全文/全改正/実機は未確認。"
+    "contentReview": "20261024_property_portfolio_arithmetic_independent_formula_check",
+    "verificationStatus": "ai_scoped_arithmetic_and_public_concept_checked_human_review_pending",
+    "additionalSourceUrls": [
+      "https://www.livable.co.jp/fudosan-toushi/knowledge/basic/pro001/"
+    ],
+    "sourceLabel": "日本不動産コミュニティー／東急リバブル：運営収支と返済後資金収支の区別（指定条件の独立検算）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "一次的な数値根拠は設問内の独自条件。外部公開資料は利回り・加重平均という概念の補助資料で、数値や本問の特殊な比率の公式見解ではない。問題値は別の独立計算テストで検証。法令・税制の包括監査および運営者の人手監修は未了。"
   },
   {
     "level": "2",
@@ -8316,26 +8334,28 @@ const QUESTIONS = [
       "8％"
     ],
     "answer": 1,
-    "explanation": "期待収益率は4％。期待値は実際の収益を保証せず、資産の相関や独立性にかかわらず期待値の加重平均です。",
+    "explanation": "A・Bに50％ずつ配分するので、資産全体の期待収益率は0.5×2％＋0.5×6％＝4％です。3％は異なる配分を仮定した値、8％は比率を掛けず2％と6％を足した値です。期待収益率は予測上の平均であり、実際の運用成果を保証しません。",
     "topic": "期待収益率の加重平均",
     "createdVersion": 9,
-    "revision": 4,
+    "revision": 5,
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
+    "verificationStatus": "ai_scoped_arithmetic_and_public_concept_checked_human_review_pending",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp03_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP3級学科試験（出題分野・形式を参考）",
     "id": "fp3-148",
-    "contentReview": "v122_fx_weighted_scoped_migration",
+    "contentReview": "20261024_property_portfolio_arithmetic_independent_formula_check",
     "choiceExplanations": [
       "不適切。3％はA75％、B25％なら得られる値で、提示比率と異なります。",
       "正解。0.5×2＋0.5×6＝4％です。",
       "不適切。8％は2＋6をそのまま足した値で、投資比率を掛けていません。"
     ],
-    "sourceUrl": "",
-    "additionalSourceUrls": [],
-    "sourceLabel": "提示加重平均式の内部検算（法令一次資料照合ではない）",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "公式定義2問と内部検算11問を区別。法令改正照合は加算なし。ID初回時期未確定。"
+    "sourceUrl": "https://www.jpx.co.jp/glossary/ka/65.html",
+    "additionalSourceUrls": [
+      "https://www.jpx.co.jp/glossary/ha/417.html"
+    ],
+    "sourceLabel": "日本取引所グループ：加重平均の考え方（総収益率・期待収益率は本問独自の指定条件で計算）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "一次的な数値根拠は設問内の独自条件。外部公開資料は利回り・加重平均という概念の補助資料で、数値や本問の特殊な比率の公式見解ではない。問題値は別の独立計算テストで検証。法令・税制の包括監査および運営者の人手監修は未了。"
   },
   {
     "level": "3",
@@ -10241,27 +10261,29 @@ const QUESTIONS = [
       "5％"
     ],
     "answer": 3,
-    "explanation": "加重平均は3％＋2％＝5％。期待収益率は将来収益を保証しません。分散投資によって元本が保証されるという意味でもありません。",
+    "explanation": "Aへの投資比率75％・期待収益率4％の寄与は0.75×4％＝3.0ポイント、Bの投資比率25％・期待収益率8％の寄与は0.25×8％＝2.0ポイントです。合計5％が期待収益率の加重平均です。単純平均の6％とは区別し、この5％は元本や実際の収益を保証するものではありません。",
     "topic": "不均等配分の期待収益率",
     "createdVersion": 9,
-    "revision": 4,
+    "revision": 5,
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
+    "verificationStatus": "ai_scoped_arithmetic_and_public_concept_checked_human_review_pending",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-145",
-    "contentReview": "v122_fx_weighted_scoped_migration",
+    "contentReview": "20261024_property_portfolio_arithmetic_independent_formula_check",
     "choiceExplanations": [
       "不適切。4％はAだけの期待収益率です。",
       "不適切。8％はBだけの期待収益率です。",
       "不適切。6％は（4＋8）÷2という単純平均です。",
       "正解。0.75×4＋0.25×8＝5％です。"
     ],
-    "sourceUrl": "",
-    "additionalSourceUrls": [],
-    "sourceLabel": "提示加重平均式の内部検算（法令一次資料照合ではない）",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "公式定義2問と内部検算11問を区別。法令改正照合は加算なし。ID初回時期未確定。"
+    "sourceUrl": "https://www.jpx.co.jp/glossary/ka/65.html",
+    "additionalSourceUrls": [
+      "https://www.jpx.co.jp/glossary/ha/417.html"
+    ],
+    "sourceLabel": "日本取引所グループ：加重平均の考え方（総収益率・期待収益率は本問独自の指定条件で計算）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "一次的な数値根拠は設問内の独自条件。外部公開資料は利回り・加重平均という概念の補助資料で、数値や本問の特殊な比率の公式見解ではない。問題値は別の独立計算テストで検証。法令・税制の包括監査および運営者の人手監修は未了。"
   },
   {
     "level": "2",
@@ -10937,27 +10959,29 @@ const QUESTIONS = [
       "約6.7％"
     ],
     "answer": 0,
-    "explanation": "運営費控除後の収支は200－0－50＝150万円。投下資金は2,500＋500＝3,000万円です。この2つの金額の比に100を掛けて百分率にします。借入元利金や個人の所得税を引いた後の利回りではありません。",
+    "explanation": "運営費控除後の年間収支は満室賃料200万円－空室損失0万円－運営費用50万円＝150万円です。総投下資金は購入価格2,500万円＋取得時諸費用500万円＝3,000万円なので、150÷3,000×100＝5％。満室賃料だけを購入価格で割る8％（表面利回り）や、取得諸費用を分母から除いた6％とは区別します。",
     "topic": "運営費控除後の利回り",
     "createdVersion": 9,
-    "revision": 4,
+    "revision": 5,
     "lawReferenceDate": "2026-04-01",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
+    "verificationStatus": "ai_scoped_arithmetic_and_public_concept_checked_human_review_pending",
     "themeReferenceUrl": "https://www.kinzai.or.jp/uploads/lib/question/202605/cbt_fp02_g.pdf",
     "themeReferenceLabel": "金財2026年5月公表・FP2級学科試験（出題分野・形式を参考）",
     "id": "fp2-165",
-    "contentReview": "v134_rent_yield_land_transfer_scoped_migration",
+    "contentReview": "20261024_property_portfolio_arithmetic_independent_formula_check",
     "choiceExplanations": [
       "正解。150÷3,000×100＝5％です。",
       "不適切。200÷2,500×100＝8％は満室賃料と購入価格だけを使っています。",
       "不適切。150÷2,500×100＝6％は取得時諸費用を分母から落としています。",
       "不適切。200÷3,000×100＝約6.7％は運営費用50万円を控除していません。"
     ],
-    "sourceUrl": "",
-    "additionalSourceUrls": [],
-    "sourceLabel": "指定条件の計算検証",
-    "sourceCheckedDate": null,
-    "reviewNote": "内部検算9/過去公式主要論点再確認1。利回りモデルは定義した分子分母を検算し、法令改正照合としない。条文全文/包括監修未完了。"
+    "sourceUrl": "https://www.livable.co.jp/fudosan-toushi/knowledge/basic/pro001/",
+    "additionalSourceUrls": [
+      "https://www.nomu.com/pro/modal/modal_P.html"
+    ],
+    "sourceLabel": "東急リバブル：表面利回り・実質利回りの計算方法（独自設例の数値を独立検算）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "一次的な数値根拠は設問内の独自条件。外部公開資料は利回り・加重平均という概念の補助資料で、数値や本問の特殊な比率の公式見解ではない。問題値は別の独立計算テストで検証。法令・税制の包括監査および運営者の人手監修は未了。"
   },
   {
     "level": "2",
