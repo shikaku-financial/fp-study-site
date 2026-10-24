@@ -27,6 +27,30 @@ async function main(){
       assert.equal(await page.locator('#startFull').isEnabled(),true,'FP3 60-question exam should be available');
       assert.match(await page.locator('#count').innerText(),/180問/);
     });
+    await step('practical bundle retries after an interrupted intermediate script',async()=>{
+      const retryPage=await ctx.newPage();
+      try {
+        let materialRequests=0;
+        await retryPage.route('**/practical-materials.js*',route=>{
+          materialRequests++;
+          return materialRequests===1?route.abort('failed'):route.continue();
+        });
+        await retryPage.goto(BASE,{waitUntil:'load',timeout:45000});
+        await retryPage.locator('#openPractical').click();
+        await retryPage.waitForFunction(()=>document.getElementById('practicalLoadStatus').textContent.includes('読み込めませんでした'));
+        assert.equal(await retryPage.locator('script[src*="practical-questions.js"]').count(),1,'successful question script retained after failure');
+        assert.equal(await retryPage.locator('#openPractical').isEnabled(),true,'retry stays available');
+        await retryPage.locator('#openPractical').click();
+        await retryPage.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
+        assert.equal(materialRequests,2,'interrupted material script requested only once more');
+        assert.equal(await retryPage.locator('script[src*="practical-questions.js"]').count(),1,'do not re-run global question declarations');
+        assert.equal(await retryPage.locator('script[src*="practical-materials.js"]').count(),1,'failed script is replaced by successful retry');
+        assert.equal(await retryPage.locator('script[src*="practical.js"]').count(),1,'controller initialized exactly once');
+        assert.equal(await retryPage.locator('#practicalLoadStatus').textContent(),'','error message cleared on success');
+        assert.equal(await retryPage.locator('#openPractical').isEnabled(),true);
+        assert.ok(await retryPage.locator('#prTracks .pr-track').count()>0,'practical tracks work after retry');
+      } finally { await retryPage.close(); }
+    });
     await step('FP level comparison table scrolls within mobile viewport',async()=>{
       const article=await ctx.newPage();
       try{

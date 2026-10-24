@@ -9,6 +9,9 @@
   const buttons = ['openPractical','openPracticalTop'].map(id => document.getElementById(id));
   const status = document.getElementById('practicalLoadStatus');
   let pending = null, ready = false;
+  // Keep successfully evaluated classic scripts when a later network request fails.
+  // Reloading them would redeclare const globals and break retries.
+  let nextScript = 0;
   const load = src => new Promise((resolve,reject) => {
     const s = document.createElement('script');
     s.src = src;
@@ -24,14 +27,19 @@
     for (const b of buttons) { b.disabled = true; b.setAttribute('aria-busy','true'); }
     pending = (async () => {
       try {
-        for (const src of scripts) await load(src);
+        while (nextScript < scripts.length) {
+          await load(scripts[nextScript]);
+          nextScript++;
+        }
         if (typeof window.__fpPracticalTest?.openPractical !== 'function') throw new Error('missing controls');
         ready = true;
         for (const b of buttons) b.removeEventListener('click', onOpen);
         status.textContent = '';
         return true;
       } catch {
-        status.textContent = '実技演習を読み込めませんでした。通信環境を確認して、もう一度実技試験を選んでください。';
+        status.textContent = nextScript === scripts.length
+          ? '実技演習を開始できませんでした。ページを再読み込みしてください。'
+          : '実技演習を読み込めませんでした。通信環境を確認して、もう一度実技試験を選んでください。';
         return false;
       } finally {
         pending = null;
@@ -42,6 +50,8 @@
   }
   async function onOpen(e) {
     e.preventDefault();
+    // Only the first tap should navigate after the shared in-flight load finishes.
+    if (ready || pending) return;
     if (await ensure()) window.__fpPracticalTest.openPractical();
   }
   for (const b of buttons) b.addEventListener('click', onOpen);
