@@ -25,11 +25,14 @@ assert.ok(headerPolicy.includes("frame-ancestors 'none'"),'Cloudflare must deny 
 const metaPolicy=headerPolicy.replace(/;\s*frame-ancestors 'none'/,'');
 for(const term of [
  "default-src 'self'","base-uri 'none'","object-src 'none'","frame-src 'none'",
- "form-action 'self'","script-src 'self'","connect-src 'self'"
+ "form-action 'self'","script-src 'self' https://static.cloudflareinsights.com/beacon.min.js","connect-src 'self'"
 ]){
  assert.ok(metaPolicy.split(';').map(s=>s.trim()).includes(term),'CSP clause missing '+term);
 }
 assert.ok(!/script-src[^;]*(?:'unsafe-inline'|'unsafe-eval'|\*)/.test(metaPolicy),'script CSP must not allow unsafe execution');
+// Only Cloudflare's specific automatically injected Web Analytics beacon is permitted externally.
+assert.equal(metaPolicy.match(/https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js/g)?.length,1,'one exact analytics beacon CSP exception');
+assert.ok(!metaPolicy.includes('cloudflareinsights.com/cdn-cgi'),'no external analytics collector; use same-origin /cdn-cgi/rum');
 const expectedHead='<meta http-equiv="Content-Security-Policy" content="'+metaPolicy+'">';
 for(const page of pages){
  const html=fs.readFileSync(path.join(root,page),'utf8');
