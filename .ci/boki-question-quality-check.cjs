@@ -17,7 +17,7 @@ const expect=(id,fid,actual)=>assert.equal(field(id,fid),actual,id+'/'+fid+' ind
 const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
-assert.match(html,/boki-data\.js\?v=20261024n/);
+assert.match(html,/boki-data\.js\?v=20261024o/);
 assert.match(html,/boki-extra\.js\?v=20261024m/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
@@ -41,7 +41,7 @@ assert.match(html,/本試験に向けて半角数字のみ・同じ側の科目�
 assert.match(html,/当サイトは練習しやすいように全角数字と桁区切りカンマ/);
 assert.match(html,/当サイトも、同じ側の勘定科目を複数行に分けると/);
 assert.doesNotMatch(html,/金額を合算しますが/);
-assert.ok(html.includes('boki-core.js?v=20261024l'),'updated core cache key');
+assert.ok(html.includes('boki-core.js?v=20261024m'),'updated core cache key');
 assert.match(html,/公式試験のすべての解答形式を再現したものではありません/);
 // Learning-oriented journal explanations must show the calculation or account classification.
 for(const [id,required] of [
@@ -387,7 +387,10 @@ const finished=Number(sourceRows['完成品'].replace(/,/g,'').match(/\d+/)[0]);
 const monthEnd=Number(sourceRows['月末仕掛品'].replace(/,/g,'').match(/\d+/)[0]);
 const progress=Number(sourceRows['月末仕掛品'].match(/進捗(\d+)%/)[1]);
 assert.equal(monthStart+monthInput,finished+monthEnd,'process quantity continuity');
-const totalMaterials=200000+2300000,totalConversion=60000+1260000;
+const parsePair=s=>[...s.matchAll(/(?:原料|加工)([\d,]+)円/g)].map(m=>Number(m[1].replace(/,/g,'')));
+const opening=parsePair(sourceRows['月初仕掛品原価']),input=parsePair(sourceRows['当月投入原価']);
+assert.equal(opening.length,2);assert.equal(input.length,2);
+const totalMaterials=opening[0]+input[0],totalConversion=opening[1]+input[1];
 const materialsPerUnit=totalMaterials/(finished+monthEnd),equiv=finished+monthEnd*progress/100;
 const conversionPerUnit=totalConversion/equiv,closing=monthEnd*materialsPerUnit+monthEnd*progress/100*conversionPerUnit;
 assert.equal(val('b2-process','p1'),materialsPerUnit);
@@ -395,7 +398,25 @@ assert.equal(val('b2-process','p2'),equiv);
 assert.equal(val('b2-process','p3'),conversionPerUnit);
 assert.equal(val('b2-process','p8'),closing);
 assert.equal(val('b2-process','p6'),totalMaterials+totalConversion-closing);
+const beginProgress=Number(sourceRows['月初仕掛品'].match(/進捗(\d+)%/)[1])/100;
+const fifoMaterialUnit=input[0]/monthInput;
+const fifoEup=monthStart*(1-beginProgress)+(finished-monthStart)+monthEnd*progress/100;
+const fifoConversionUnit=input[1]/fifoEup;
+const fifoEnding=monthEnd*fifoMaterialUnit+monthEnd*progress/100*fifoConversionUnit;
+assert.equal(fifoMaterialUnit,520);
+assert.equal(fifoConversionUnit,290);
+assert.equal(val('b2-process','p7'),fifoEnding);
+assert.notEqual(fifoEnding,closing,'comparison methods must produce different monetary results');
+assert.equal(totalMaterials+totalConversion-fifoEnding,3184000,'FIFO completed products');
+const comparison=process.tables.find(t=>t.caption.includes('先入先出法'));
+assert.ok(comparison,'FIFO comparison visibly distinguished from average-costing table');
+assert.deepEqual(comparison.rows,[['先入先出法で求めた月末仕掛品原価',{id:'p7'}]]);
+const grade=require('../boki-core.js').grade,all=Object.fromEntries(process.fields.map(f=>[f.id,String(f.answer)]));
+assert.equal(grade(process,all).earned,16,'costing section preserves 16 points');
+assert.equal(grade(process,{...all,p7:''}).earned,14,'FIFO missing answer loses its own two points');
+assert.equal(grade(process,{...all,p7:String(closing)}).earned,14,'weighted-average value is wrong for FIFO comparison');
 assert.match(process.fields.find(x=>x.id==='p2').explanation,/先入先出法と異なり/);
+assert.match(process.fields.find(x=>x.id==='p7').explanation,/月初.*未完成60%/);
 const finance2=item('b2-financial'),trial=finance2.tables.find(t=>t.caption==='決算整理前残高試算表');
 const records=Object.fromEntries(trial.rows.map(r=>[r[0],r.slice(1).map(v=>Number(String(v).replace(/,/g,''))||0)]));
 const inventory=450000-(450000-440000)-(440000-420000);
