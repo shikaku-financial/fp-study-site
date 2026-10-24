@@ -36,8 +36,9 @@ jobs:
         run: npm install --no-save --no-package-lock playwright@1.56.1
       - name: Install test browser engines
         run: |
-          # Use Ubuntu's standard mirror when the Azure mirror stalls during dependency downloads.
-          for source in /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do
+          # Ubuntu runners may select Azure mirrors from apt-mirrors.txt rather than ubuntu.sources.
+          # Prefer the standard Ubuntu mirror when Playwright fetches WebKit dependencies.
+          for source in /etc/apt/apt-mirrors.txt /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do
             if [ -f "$source" ]; then
               sudo sed -i 's|azure.archive.ubuntu.com|archive.ubuntu.com|g' "$source"
             fi

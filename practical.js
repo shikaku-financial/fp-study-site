@@ -438,8 +438,10 @@
     if(!lastResult)return;
     const r=lastResult, total=r.questions.length,ratio=Math.round(100*r.correct/total),tr=trackFor(r.track);
     $p('prSummary').textContent=`${label(tr)}${modeLabel(r.mode)?'｜'+modeLabel(r.mode):''}｜${total}問中${r.correct}問正解（${ratio}％）`;
-    $p('prRetryMistakes').disabled=r.correct===total;
-    $p('prRetryMistakes').textContent=r.correct===total?'全問正解（復習不要）':`間違えた${total-r.correct}問だけ再演習`;
+    const hasMistakes=r.correct<total;
+    $p('prRetryMistakes').classList.toggle('hidden',!hasMistakes);
+    $p('prRetryMistakes').disabled=!hasMistakes;
+    if(hasMistakes)$p('prRetryMistakes').textContent=`間違えた${total-r.correct}問だけ再演習`;
     $p('prResultNote').textContent=`これは${total}問のオリジナル体験演習です。本試験は${tr.officialCount}問で配点も異なります。したがって、この正答率から本試験の合否は判定できません。`;
     if(r.questions.some(isMulti)){
       let fields=0,correctFields=0;
