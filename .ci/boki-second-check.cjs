@@ -59,5 +59,15 @@ assert.equal(b.w1,rate);assert.equal(b.w2,appliedA);assert.equal(b.w3,appliedB);
 assert.equal(b.w4,240000+180000+appliedA);assert.equal(b.w5,160000+120000+appliedB);assert.equal(b.w11,80000+60000+appliedC);
 assert.equal(b.w6,440000-appliedA-appliedB-appliedC);assert.equal(b.w7,b.w5+b.w11);assert.equal(b.w8,1000000-b.w4);
 assert.equal(b.w4+b.w7,1260000,'costs of three orders reconcile to finished goods and WIP');
-assert.equal(b.z1,(500-490)*2500);assert.equal(b.z2,(2500-600*4)*500);assert.equal(b.z3,2500*490-600*4*500);assert.equal(b.z3,b.z2-b.z1);assert.equal(b.z4,(1200-1180)*1250);assert.equal(b.z5,(1250-600*2)*1200);assert.equal(b.z6,1250*1180-600*2*1200);assert.equal(b.z6,b.z5-b.z4);assert.equal(b.z7,'有利差異');assert.equal(b.z8,'不利差異');
+// Materials: actual price HIGHER, consumption LOWER. Labor: hourly rate LOWER, hours HIGHER.
+const stdMaterial=600*4*500,actualMaterial=2350*525,stdLabor=600*2*1200,actualLabor=1250*1170;
+const materialPriceAdverse=(525-500)*2350,materialQuantityFavorable=(600*4-2350)*500;
+const laborRateFavorable=(1200-1170)*1250,laborHoursAdverse=(1250-600*2)*1200;
+assert.equal(b.z1,materialPriceAdverse);assert.equal(b.z2,materialQuantityFavorable);
+assert.equal(b.z3,materialPriceAdverse-materialQuantityFavorable);
+assert.equal(b.z3,actualMaterial-stdMaterial);
+assert.equal(b.z4,laborRateFavorable);assert.equal(b.z5,laborHoursAdverse);
+assert.equal(b.z6,laborHoursAdverse-laborRateFavorable);
+assert.equal(b.z6,actualLabor-stdLabor);
+assert.equal(b.z7,'不利差異');assert.equal(b.z8,'有利差異');
 console.log('PASS: four 100-point exams, 60 distinct items, form-scoped IDs, second-exam trial/financial/FIFO/voucher/consolidation/job-cost/standard-cost independent calculations');
