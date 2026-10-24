@@ -41,7 +41,7 @@ assert.match(html,/本試験に向けて半角数字のみ・同じ側の科目�
 assert.match(html,/当サイトは練習しやすいように全角数字と桁区切りカンマ/);
 assert.match(html,/当サイトも、同じ側の勘定科目を複数行に分けると/);
 assert.doesNotMatch(html,/金額を合算しますが/);
-assert.match(html,/boki-core\\.js\\?v=20261024i/);
+assert.ok(html.includes('boki-core.js?v=20261024i'),'updated core cache key');
 assert.match(html,/公式試験のすべての解答形式を再現したものではありません/);
 // Learning-oriented journal explanations must show the calculation or account classification.
 for(const [id,required] of [
