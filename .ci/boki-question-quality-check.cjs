@@ -17,7 +17,7 @@ const expect=(id,fid,actual)=>assert.equal(field(id,fid),actual,id+'/'+fid+' ind
 const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/2026年度に適用される出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
-assert.match(html,/boki-data\.js\?v=20261024f/);
+assert.match(html,/boki-data\.js\?v=20261024g/);
 assert.match(html,/boki-extra\.js\?v=20261024f/);
 // A trading security is not described using the merchandise accounting "分記法".
 const securities=get('b2-securities');
@@ -119,6 +119,71 @@ expect(f3.id,'g6',fullExpenses-fullRevenue);
 const assets3=150000+900000+680000-allowance+280000+(1800000-360000-1800000/30)+(600000-120000-600000/5)+(96000*8/12);
 expect(f3.id,'g7',assets3);
 console.log('PASS: source-derived consolidation, job-cost allocations, standard variance and grade-3 closing explanations');
+}
+
+
+{
+// Separate fixture-based tests for form 1 use the printed case facts and accounting identities.
+const original2=D['2'],original3=D['3'];
+const item=id=>[...original2.sections,...original3.sections].flatMap(s=>s.items).find(i=>i.id===id);
+const val=(id,key)=>item(id).fields.find(x=>x.id===key).answer;
+const journal2=id=>item(id),debitTotal=q=>q.debit.reduce((n,[,v])=>n+v,0),creditTotal=q=>q.credit.reduce((n,[,v])=>n+v,0);
+const fx=journal2('b2-j02');
+assert.equal(debitTotal(fx),4000*(143-140));
+assert.equal(creditTotal(fx),debitTotal(fx));
+const tax=journal2('b2-j04');
+assert.match(tax.prompt,/将来の貸倒処理時に損金算入/);
+assert.match(tax.prompt,/回収可能性/);
+assert.equal(tax.debit.find(([name])=>name==='繰延税金資産')[1],80000*30/100);
+const share=journal2('b2-j05');
+assert.equal(share.debit.find(([name])=>name==='のれん')[1],1120000-(800000+400000)*80/100);
+assert.equal(share.credit.find(([name])=>name==='非支配株主持分')[1],(800000+400000)*20/100);
+const labor=journal2('b2-i02'),overhead=journal2('b2-i03');
+assert.match(overhead.prompt,/独立した別の事例/);
+assert.equal(labor.debit.find(([name])=>name==='仕掛品')[1],240*1600);
+assert.equal(labor.debit.find(([name])=>name==='製造間接費')[1],30*1600);
+assert.equal(overhead.debit[0][1],12000000/6000*450);
+const process=item('b2-process');
+const table=process.tables.find(t=>t.caption==='生産・原価データ');
+const sourceRows=Object.fromEntries(table.rows);
+const monthStart=Number(sourceRows['月初仕掛品'].match(/\d+/)[0]);
+const monthInput=Number(sourceRows['当月投入'].replace(/,/g,'').match(/\d+/)[0]);
+const finished=Number(sourceRows['完成品'].replace(/,/g,'').match(/\d+/)[0]);
+const monthEnd=Number(sourceRows['月末仕掛品'].replace(/,/g,'').match(/\d+/)[0]);
+const progress=Number(sourceRows['月末仕掛品'].match(/進捗(\d+)%/)[1]);
+assert.equal(monthStart+monthInput,finished+monthEnd,'process quantity continuity');
+const totalMaterials=200000+2300000,totalConversion=60000+1260000;
+const materialsPerUnit=totalMaterials/(finished+monthEnd),equiv=finished+monthEnd*progress/100;
+const conversionPerUnit=totalConversion/equiv,closing=monthEnd*materialsPerUnit+monthEnd*progress/100*conversionPerUnit;
+assert.equal(val('b2-process','p1'),materialsPerUnit);
+assert.equal(val('b2-process','p2'),equiv);
+assert.equal(val('b2-process','p3'),conversionPerUnit);
+assert.equal(val('b2-process','p8'),closing);
+assert.equal(val('b2-process','p6'),totalMaterials+totalConversion-closing);
+assert.match(process.fields.find(x=>x.id==='p2').explanation,/先入先出法と異なり/);
+const finance2=item('b2-financial'),trial=finance2.tables.find(t=>t.caption==='決算整理前残高試算表');
+const records=Object.fromEntries(trial.rows.map(r=>[r[0],r.slice(1).map(v=>Number(String(v).replace(/,/g,''))||0)]));
+const inventory=450000-(450000-440000)-(440000-420000);
+const receivables=records['売掛金'][0]*(1-2/100);
+const equipment=records['備品'][0]-records['備品減価償却累計額'][1]-records['備品'][0]/10;
+const valuation=860000-records['その他有価証券'][0],deferred=valuation*30/100,equity=valuation-deferred;
+const assets=records['現金預金'][0]+receivables+inventory+equipment+860000+30000;
+const liabilities=records['買掛金'][1]+records['借入金'][1]+10000+(120000-records['仮払法人税等'][0])+deferred;
+const retained=assets-liabilities-records['資本金'][1]-equity;
+assert.equal(val('b2-financial','f22'),inventory);
+assert.equal(val('b2-financial','f24'),860000);
+assert.equal(val('b2-financial','f27'),deferred);
+assert.equal(val('b2-financial','f28'),retained);
+assert.equal(val('b2-financial','f210'),assets);
+assert.match(finance2.notes.join(''),/当期純損益に算入しない/);
+const fiscal3=item('b3-financial'),t3=fiscal3.tables.find(t=>t.caption.includes('決算整理前残高試算表'));
+const map3=Object.fromEntries(t3.rows.map(r=>[r[0],r.slice(1).map(v=>Number(String(v).replace(/,/g,''))||0)]));
+const expense3=map3['繰越商品'][0]+map3['仕入'][0]-190000+(map3['給料'][0]+30000)+72000*4/6+map3['支払家賃'][0]+(map3['支払利息'][0]+6000)+(map3['売掛金'][0]*2/100-map3['貸倒引当金'][1])+map3['備品'][0]/5;
+const loss3=expense3-map3['売上'][1];
+assert.equal(val('b3-financial','f36'),loss3);
+assert.equal(298000-loss3,50000,'3rd-grade retained earnings balance');
+assert.match(fiscal3.fields.find(f=>f.id==='f36').explanation,/貸借対照表とも一致/);
+console.log('PASS: form-one FX, tax effect, investment elimination, distinct industrial cases, process quantity flow, FS tax/equity and grade-three net income reconciliation');
 }
 
 console.log('PASS: all 60 items/100-point forms retained; 2026-vs-2027 scope; editorial clarity, reserve limit, securities, inventory, tax-loss and independent trial/statement calculations');
