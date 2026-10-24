@@ -176,7 +176,7 @@ assert.throws(()=>renderReviewPacket(r,{limit:0}),/limit/);
   'unrelated arithmetic-only questions must not be falsely certified by this limited review');
  const after=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
  assert.equal(after.reviewedCount,0,'no human review records added by source investigation');
- assert.equal(after.flagged.length,39,'the five old legal sources are now reviewed within scoped AI limits; 39 candidates remain');
+ assert.equal(after.flagged.length,27,'12 early-source and explanation issues resolved; 27 candidates remain');
 }
 console.log('PASS: six property-law question pairs have current primary citations, tested rule contrasts and no fabricated human review.');
 
@@ -219,7 +219,7 @@ console.log('PASS: six property-law question pairs have current primary citation
  }
  const afterFive=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
  assert.equal(afterFive.reviewedCount,0,'automated legal citations must not certify human review');
- assert.equal(afterFive.flagged.length,39,'five more historical source flags resolved; 39 remaining candidates');
+ assert.equal(afterFive.flagged.length,27,'12 early-lesson source and explanation issues resolved; 27 remaining candidates');
  assert.ok(afterFive.flagged.some(e=>e.id==='fp2-114'),'unrelated arithmetic/legal item still pending');
  assert.ok(afterFive.flagged.some(e=>e.id==='b3-ledger'),'bookkeeping follow-up remains pending');
 }
@@ -243,7 +243,7 @@ console.log('PASS: five FP legal cases use official guidance, original answer ke
   'fp2-054':'200万円'
  };
  const currentQueue=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
- assert.equal(currentQueue.flagged.length,39,'five historical source flags now resolved; not a claim of certification');
+ assert.equal(currentQueue.flagged.length,27,'12 early lesson flags also resolved; not certification');
  assert.equal(currentQueue.reviewedCount,0,'a source check never changes the human review register');
  for(const [id,answer,url,explanation] of cases){
   const entry=all.find(x=>x.id===id);
@@ -266,5 +266,68 @@ console.log('PASS: five FP legal cases use official guidance, original answer ke
  assert.ok(currentQueue.flagged.some(x=>x.id==='b3-ledger'),'independent boki issue is not suppressed');
 }
 console.log('PASS: five previously pending historical references checked in bounded scope; correct options remain and human reviews stay at 0.');
+
+// Legacy seed-bank triage: a true answer-key mistake existed in FP3's 5y/5% sinking-fund factor.
+{
+ const get=id=>{
+  const entry=all.find(e=>e.id===id);
+  assert.ok(entry && entry.bank==='FP学科',id+' is published FP academic content');
+  return entry.q;
+ };
+ const ids=[
+  'fp2-001','fp3-001','fp3-008',
+  'fp2-003','fp3-003','fp3-015',
+  'fp2-002','fp3-002',
+  'fp3-004','fp3-021','fp2-006','fp3-006'
+ ];
+ for(const id of ids){
+  const q=get(id);
+  assert.equal(q.lawReferenceDate,'2026-04-01',id+' retains statutory baseline');
+  assert.equal(q.sourceCheckedDate,'2026-10-24',id+' has a real source-review date');
+  assert.match(q.sourceUrl,/^https:\/\/[^ ]+$/,id+' source is HTTPS');
+  assert.equal(q.verificationStatus,'ai_scoped_official_concept_and_calculation_checked_human_review_pending',id+' not human expert reviewed');
+  assert.match(q.reviewNote,/人手による運営者監修は未了/,id+' review boundary explicit');
+  assert.ok(Array.isArray(q.choiceExplanations)&&q.choiceExplanations.length===q.choices.length,id+' must explain every choice');
+  assert.deepEqual(structureIssues({...all.find(e=>e.id===id),q}),[],id+' answer contract valid');
+ }
+ const factor=get('fp2-001'),annual=get('fp3-008');
+ const years=5,rate=0.05,goal=600;
+ const future=(Math.pow(1+rate,years)-1)/rate;
+ const sinking=1/future;
+ const rounded=x=>Number(x.toFixed(4));
+ assert.equal(rounded(future),5.5256,'independent compound annuity future factor');
+ assert.equal(rounded(sinking),0.1810,'independent sinking fund factor');
+ assert.ok(factor.question.includes('5.5256')&&factor.question.includes('0.1810'),'FP2 source table agrees with independent calculation');
+ assert.ok(!factor.question.includes('5.5241')&&!factor.question.includes('0.1884'),'incorrect factor values removed');
+ assert.ok(annual.question.includes('5.5256')&&annual.question.includes('0.1810'),'FP3 matching example fixed');
+ assert.ok(!annual.question.includes('5.5241')&&!annual.question.includes('0.1884'),'old coefficients do not remain');
+ assert.equal(annual.answer,0,'correct answer moves to choice A instead of old B');
+ assert.equal(annual.choices[annual.answer],'108.60','annual investment calculated using supplied precision');
+ assert.equal((goal*rounded(sinking)).toFixed(2),annual.choices[annual.answer]);
+ assert.equal(annual.choices[1],'113.04','old 3%-factor result is clearly an incorrect distractor');
+ assert.equal(annual.choices[2],'3315.36','misusing future factor leads to own distinct distractor');
+ assert.equal(get('fp2-001').answer,1,'FP2 coefficient selection remains choice 2');
+ const bond2=get('fp2-003'),bond3=get('fp3-003');
+ const finalYield=(1.6+(100-96)/4)/96*100;
+ const directYield=1.8/90*100;
+ assert.equal(finalYield.toFixed(2),bond2.choices[bond2.answer].replace('％',''),'FP2 coupon and redemption annualization');
+ assert.equal(directYield.toFixed(1),Number(bond3.choices[bond3.answer]).toFixed(1),'FP3 direct yield');
+ assert.equal(get('fp2-002').choices[get('fp2-002').answer].includes('両方'),true,'death and endowment cannot both pay');
+ assert.equal(get('fp3-002').answer,1,'term insurance has no maturity benefit');
+ const grossIncome=2800000*0.10-97500;
+ assert.equal(grossIncome,182500,'2026 progressive tax quick chart');
+ assert.equal(get('fp3-004').answer,1,'280k claim false');
+ assert.equal(get('fp3-021').choices[get('fp3-021').answer],'182,500','tax exact answer retained');
+ const inheritance=6400*(0.5/2);
+ assert.equal(inheritance,1600,'spouse plus 2 children each quarter');
+ assert.equal(get('fp2-006').choices[get('fp2-006').answer],'1,600万円');
+ assert.equal(get('fp3-006').answer,1,'child does not inherit spouse share');
+ const report=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
+ assert.equal(report.flagged.length,27,'12 source or choice explanation flags resolved');
+ assert.equal(report.reviewedCount,0,'machine checks never create human oversight records');
+ for(const id of ids)assert.ok(!report.flagged.some(x=>x.id===id),id+' has adequate source and per-choice explanation metadata');
+ assert.ok(report.flagged.some(x=>x.id==='fp2-114'),'unrelated tax-boundary review remains pending');
+}
+console.log('PASS: 12 original FP academic lessons cross-checked; 5y 5% factor fixed and FP3 answer rekeyed from B to A, human review 0.');
 
 console.log('PASS: 660 records, time-aware evidence freshness and source review priority, 600 FP answer contracts, mutational guards, reviewer-ready previews, source hashes and honest human review boundary.');
