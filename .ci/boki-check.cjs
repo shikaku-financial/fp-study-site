@@ -49,13 +49,13 @@ const cost3=160000+1400000-190000,dep3=900000/5,bad3=400000*.02-6000,prepaid3=72
 const expense3=cost3+420000+30000+(72000-prepaid3)+180000+12000+6000+bad3+dep3;
 assert.equal(v3.f31,cost3);assert.equal(v3.f36,expense3-2000000);
 const assets3=180000+620000+400000-8000+190000+900000-180000-dep3+prepaid3;
-assert.equal(v3.f37,assets3);assert.equal(assets3,260000+600000+30000+6000+1000000+298000-v3.f36);
+assert.equal(v3.f37,assets3);assert.equal(v3.f39,298000-v3.f36);assert.equal(v3.f310,260000+600000+30000+6000+1000000+v3.f39);assert.equal(assets3,v3.f310);
 assert.equal(v3.l4,600000*.03*4/12+800000*.03*8/12);
 assert.equal(v3.a3,300000/5*6/12);assert.equal(v3.a5,320000-(480000-480000/8*3));
 const cost2=400000+3200000-420000,expense2=cost2+600000+240000+(120000-30000)+40000+10000+(1200000*.02-20000)+2400000/10;
 assert.equal(v2.f29,expense2-4000000+120000);assert.equal(v2.f28,1040000-v2.f29);
 const assets2=1500000+1200000*.98+420000+2400000-600000-240000+860000+30000;
-assert.equal(v2.f210,assets2);assert.equal(assets2,900000+1000000+10000+(120000-60000)+(860000-800000)*.3+3000000+(860000-800000)*.7+v2.f28);
+assert.equal(v2.f210,assets2);assert.equal(v2.f212,(860000-800000)*(1-.3));assert.equal(v2.f213,900000+1000000+10000+(120000-60000)+(860000-800000)*.3+3000000+v2.f212+v2.f28);assert.equal(assets2,v2.f213);
 const acq=1000*1200+20000,unit=acq/1000,proceeds=400*1350-10000;
 assert.equal(v2.s6,proceeds-400*unit);assert.equal(v2.s9,600*unit-600*1100);assert.equal(v2.s10,600*1100);
 const totalMaterial=200000+2300000,totalConversion=60000+1260000,eq=4000+1000*.4,matUnit=totalMaterial/5000,convUnit=totalConversion/eq;
