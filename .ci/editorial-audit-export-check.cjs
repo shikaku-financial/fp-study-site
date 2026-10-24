@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const {loadQuestions, audit, fingerprint} = require('./editorial-audit.cjs');
+const {loadQuestions, audit, fingerprint, reasonsFor} = require('./editorial-audit.cjs');
 const {issueDetail, buildExport, renderCsv, csvCell, writeExport} = require('./editorial-audit-export.cjs');
 
 const entries = loadQuestions();
@@ -26,9 +26,16 @@ assert.ok(exported.rows.every(x=>x.reviewStatus==='人手確認記録なし'));
 assert.ok(exported.rows.every(x=>/github.com\/shikaku-financial\/fp-study-site\/blob\//.test(x.sourceUrl)));
 assert.ok(exported.rows.every(x=>['高','中','低','指摘なし'].includes(x.severity)));
 assert.ok(exported.rows.every(x=>x.findings.every(f=>f.ruleId&&f.severity&&f.message&&f.evidence)),'every finding must carry specific evidence');
-assert.ok(exported.rows.some(x=>x.findings.some(f=>f.ruleId==='LAW_REVIEW_PENDING')));
-assert.ok(exported.rows.some(x=>x.findings.some(f=>f.ruleId==='SOURCE_URL_MISSING')));
-assert.ok(exported.rows.some(x=>x.findings.some(f=>f.ruleId==='SOURCE_CHECK_DATE_MISSING')));
+// Current FP data is clean for these gap categories; verify the detector against
+// injected problems instead of requiring real educational errors to exist.
+assert.equal(exported.rows.filter(x=>x.qualification==='FP学科'&&x.findings.length>0).length,0,'real academic findings have been addressed');
+const syntheticGap=entries.find(e=>e.bank==='FP学科');
+const injected={...syntheticGap,q:{...syntheticGap.q,sourceUrl:'',sourceCheckedDate:null,verificationStatus:'arithmetic_reviewed_law_not_audited'}};
+const reasons=reasonsFor(injected,{today:date});
+for(const [reason,rule] of [['法令適用の人手確認が未了（算術のみ点検）','LAW_REVIEW_PENDING'],['設問別の根拠URL未登録','SOURCE_URL_MISSING'],['根拠資料の確認日未登録','SOURCE_CHECK_DATE_MISSING']]){
+ assert.ok(reasons.includes(reason),'mutation must produce '+rule);
+ assert.equal(issueDetail(injected,reason,date).ruleId,rule,'exporter retains '+rule+' mapping');
+}
 assert.ok(exported.rows.some(x=>x.actionStatus.startsWith('要確認')));
 assert.ok(exported.disclaimer.includes('人手'));
 const first = exported.rows[0];

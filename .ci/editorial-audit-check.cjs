@@ -31,12 +31,13 @@ const r=audit(all,{schemaVersion:1,records:[]});
 assert.equal(r.reviewedCount,0,'no human reviews may be fabricated');
 assert.equal(r.findings.length,660);
 assert.ok(r.flagged.length>0,'real pending review candidates should be visible');
-assert.ok(r.flagged.some(e=>e.reasons.includes('根拠資料の確認日未登録')));
-assert.ok(r.flagged.some(e=>e.reasons.includes('設問別の根拠URL未登録')));
+assert.ok(!r.flagged.some(e=>e.bank==='FP学科'),'all academic source/choice metadata gaps resolved for current dataset');
+assert.ok(reasonsFor({...academic,q:{...academic.q,sourceCheckedDate:undefined}}).includes('根拠資料の確認日未登録'),'undated source remains detectable on synthetic mutation');
+assert.ok(reasonsFor({...academic,q:{...academic.q,sourceUrl:undefined}}).includes('設問別の根拠URL未登録'),'missing source remains detectable on synthetic mutation');
 assert.ok(r.flagged.every(e=>!e.isReviewed));
 const report=renderMarkdown(r,{limit:8});
 assert.ok(report.includes('660')&&report.includes('0/660')&&report.includes('専門家による人手監修ではありません'));
-assert.equal((report.match(/^\| \[\`(?:fp|pr|b)/gm)||[]).length,8,'summary list respects size cap');
+assert.equal((report.match(/^\| \[\`(?:fp|pr|b)/gm)||[]).length,Math.min(8,r.flagged.length),'summary list does not invent rows to fill limit');
 assert.match(report,/github.com\/shikaku-financial\/fp-study-site\/blob\//,'source code anchor shown in report');
 const mixed={...r,flagged:[...r.flagged.slice(0,8),{...all.find(e=>e.id==='b2-financial'),reasons:['要確認'],priority:1,isReviewed:false}]};
 assert.match(renderMarkdown(mixed,{limit:8}),/b2-financial/,'bookkeeping issue must remain visible despite larger FP backlog');
@@ -120,9 +121,9 @@ assert.match(packet,/未監修/);
 assert.match(packet,/登録済み正答（未検証）/);
 assert.match(packet,/現行問題データのSHA-256/);
 assert.match(packet,/github.com\/shikaku-financial\/fp-study-site\/blob\//);
-assert.equal((packet.match(/^### \[/gm)||[]).length,8,'review preview has a strict size limit');
+assert.equal((packet.match(/^### \[/gm)||[]).length,Math.min(8,r.flagged.length),'review preview respects the limit without inventing items');
 const packetIds=selectReviewEntries(r.flagged,8).map(x=>x.id);
-assert.equal(new Set(packetIds).size,8,'preview uses distinct ID per entry');
+assert.equal(new Set(packetIds).size,Math.min(8,r.flagged.length),'preview uses distinct ID per entry');
 assert.deepEqual(selectReviewEntries(r.flagged,8).map(x=>x.id),packetIds,'preview selection deterministic');
 assert.ok(!packet.includes('<script'),'untrusted HTML must not render');
 assert.equal(displayAnswer({choices:['ア','イ'],answer:1}),'選択肢2：イ');
@@ -172,11 +173,13 @@ assert.throws(()=>renderReviewPacket(r,{limit:0}),/limit/);
   assert.match(q.explanation,/契約前の説明義務まで免除されるわけではありません/,id+' safeguards statutory pre-contract explanation');
  }
  const mortgage=all.find(x=>x.id==='fp2-114');
- assert.ok(mortgage&&reasonsFor(mortgage,{today:'2026-10-24'}).includes('法令適用の人手確認が未了（算術のみ点検）'),
-  'unrelated arithmetic-only questions must not be falsely certified by this limited review');
+ assert.ok(mortgage&&!reasonsFor(mortgage,{today:'2026-10-24'}).includes('法令適用の人手確認が未了（算術のみ点検）'),
+  'family balance-sheet arithmetic must not remain mislabeled as unresolved tax-law review');
+ assert.ok(reasonsFor({...mortgage,q:{...mortgage.q,verificationStatus:'arithmetic_reviewed_law_not_audited'}},{today:'2026-10-24'}).includes('法令適用の人手確認が未了（算術のみ点検）'),
+  'synthetic legal non-review still receives a triage flag');
  const after=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
  assert.equal(after.reviewedCount,0,'no human review records added by source investigation');
- assert.equal(after.flagged.length,15,'12 early-source and explanation issues resolved; 15 candidates remain');
+ assert.equal(after.flagged.length,1,'12 early-source and explanation issues resolved; 1 candidates remain');
 }
 console.log('PASS: six property-law question pairs have current primary citations, tested rule contrasts and no fabricated human review.');
 
@@ -219,8 +222,8 @@ console.log('PASS: six property-law question pairs have current primary citation
  }
  const afterFive=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
  assert.equal(afterFive.reviewedCount,0,'automated legal citations must not certify human review');
- assert.equal(afterFive.flagged.length,15,'12 early-lesson source and explanation issues resolved; 15 remaining candidates');
- assert.ok(afterFive.flagged.some(e=>e.id==='fp2-114'),'unrelated arithmetic/legal item still pending');
+ assert.equal(afterFive.flagged.length,1,'12 early-lesson source and explanation issues resolved; 1 remaining candidates');
+ assert.ok(!afterFive.flagged.some(e=>e.id==='fp2-114'),'self-contained balance-sheet arithmetic is now scoped and sourced');
  assert.ok(afterFive.flagged.some(e=>e.id==='b3-ledger'),'bookkeeping follow-up remains pending');
 }
 console.log('PASS: five FP legal cases use official guidance, original answer keys, scoped AI audit status and zero human certification.');
@@ -243,7 +246,7 @@ console.log('PASS: five FP legal cases use official guidance, original answer ke
   'fp2-054':'200万円'
  };
  const currentQueue=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
- assert.equal(currentQueue.flagged.length,15,'12 early lesson flags also resolved; not certification');
+ assert.equal(currentQueue.flagged.length,1,'12 early lesson flags also resolved; not certification');
  assert.equal(currentQueue.reviewedCount,0,'a source check never changes the human review register');
  for(const [id,answer,url,explanation] of cases){
   const entry=all.find(x=>x.id===id);
@@ -262,7 +265,7 @@ console.log('PASS: five FP legal cases use official guidance, original answer ke
   assert.ok(!reasonsFor(entry,{today:'2026-10-24'}).includes('参照した旧資料の本文確認待ち'),
     id+' old missing source problem resolved');
  }
- assert.ok(currentQueue.flagged.some(x=>x.id==='fp2-114'),'unrelated arithmetic legal scope remains pending');
+ assert.ok(!currentQueue.flagged.some(x=>x.id==='fp2-114'),'arithmetic-only net worth is sourced and clarified');
  assert.ok(currentQueue.flagged.some(x=>x.id==='b3-ledger'),'independent boki issue is not suppressed');
 }
 console.log('PASS: five previously pending historical references checked in bounded scope; correct options remain and human reviews stay at 0.');
@@ -323,10 +326,10 @@ console.log('PASS: five previously pending historical references checked in boun
  assert.equal(get('fp2-006').choices[get('fp2-006').answer],'1,600万円');
  assert.equal(get('fp3-006').answer,1,'child does not inherit spouse share');
  const report=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
- assert.equal(report.flagged.length,15,'12 source or choice explanation flags resolved');
+ assert.equal(report.flagged.length,1,'12 source or choice explanation flags resolved');
  assert.equal(report.reviewedCount,0,'machine checks never create human oversight records');
  for(const id of ids)assert.ok(!report.flagged.some(x=>x.id===id),id+' has adequate source and per-choice explanation metadata');
- assert.ok(report.flagged.some(x=>x.id==='fp2-114'),'unrelated tax-boundary review remains pending');
+ assert.ok(!report.flagged.some(x=>x.id==='fp2-114'),'simple net-worth calculation requires no implied tax ruling');
 }
 console.log('PASS: 12 original FP academic lessons cross-checked; 5y 5% factor fixed and FP3 answer rekeyed from B to A, human review 0.');
 

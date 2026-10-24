@@ -92,5 +92,6 @@
   "test_academic_finish_retry_transaction",
   "test_rc1_tax_year_transition_scoped",
   "test_practical_finish_idempotence_scoped",
-  "test_fp_rental_portfolio_math"
+  "test_fp_rental_portfolio_math",
+  "test_fp_last14_editorial_math"
 ]

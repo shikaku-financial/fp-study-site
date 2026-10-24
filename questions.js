@@ -132,15 +132,22 @@ const QUESTIONS = [
       "200"
     ],
     "answer": 1,
-    "explanation": "敷地面積20m×10m＝200㎡。200㎡×60％＝120㎡です。建築面積は建物の水平投影面積を指し、延べ面積とは異なります。",
-    "revision": 6,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "explanation": "長方形敷地の面積は20m×10m＝200㎡です。建ぺい率上限60％から建築面積は200㎡×0.6＝120㎡。80㎡は40％、200㎡は敷地全体の面積です。容積率で求める延べ面積とは区別します。",
+    "revision": 7,
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
     "lawReferenceDate": "2026-04-01",
     "sourceUrl": "https://www.mlit.go.jp/common/001205298.pdf",
-    "sourceLabel": "制度の確認資料（一次資料）",
+    "sourceLabel": "国土交通省：建ぺい率と道路幅員による容積率制限",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g3_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "不適切。80㎡は敷地200㎡の40％で、上限60％を掛けた値ではありません。",
+      "正解。200㎡×60％＝120㎡です。",
+      "不適切。200㎡は建ぺい率を掛ける前の敷地面積です。"
+    ],
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。"
   },
   {
     "id": "fp3-006",
@@ -287,16 +294,22 @@ const QUESTIONS = [
     ],
     "answer": 0,
     "explanation": "600万円は489万円超655万円以下なので67万円です。63万円は2025年分の同区分、62万円は2026年分の655万円超2,350万円以下等、104万円は2026年分の合計所得金額489万円以下の居住者の区分です。 法令基準日は2026年4月1日です。この改正の原則施行日は2026年12月1日で、2026年分に適用されます。施行前の月々の源泉徴収や準確定申告の取扱いを問うものではありません。",
-    "revision": 6,
-    "contentReview": "v80_limited_primary_source_and_effective_date_review",
+    "revision": 7,
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm",
     "sourceName": "国税庁：基礎控除（令和8年4月1日現在法令等）",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "sourceLabel": "国税庁：2026年分の基礎控除",
-    "sourceCheckedDate": "2026-10-19",
-    "reviewNote": "2026-10-19：国税庁「令和8年分 給与所得者（従業員）の方へ」の基礎控除額表と再照合し、104万円の適用区分を合計所得金額489万円以下へ訂正。600万円の正答67万円は変更なし。包括監修は未完了。"
+    "sourceLabel": "国税庁：令和8年分の基礎控除",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。",
+    "choiceExplanations": [
+      "正解。2026年分の合計所得600万円は489万円超655万円以下に該当し、67万円です。",
+      "不適切。63万円は2025年分の同区分の基礎控除額です。",
+      "不適切。62万円は2026年分の655万円超2,350万円以下等の区分です。",
+      "不適切。104万円は2026年分の489万円以下の区分です。"
+    ]
   },
   {
     "id": "fp2-005",
@@ -311,15 +324,23 @@ const QUESTIONS = [
       "400㎡"
     ],
     "answer": 2,
-    "explanation": "前面道路幅員による容積率は4m×0.4＝1.6（160％）。指定容積率200％と比較して小さい160％を適用し、200㎡×160％＝320㎡です。",
-    "revision": 4,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "explanation": "指定容積率200％に対し、道路幅員4m×指定係数0.4＝160％です。より小さい160％が適用されるため、延べ面積の上限は敷地200㎡×1.6＝320㎡。400㎡は道路幅員による制限を無視しています。",
+    "revision": 5,
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
     "lawReferenceDate": "2026-04-01",
     "sourceUrl": "https://www.mlit.go.jp/common/001205298.pdf",
-    "sourceLabel": "制度の確認資料（一次資料）",
+    "sourceLabel": "国土交通省：建ぺい率と道路幅員による容積率制限",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g2_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "不適切。道路による制限160％を延べ面積160㎡と取り違えています。",
+      "不適切。240㎡は本問で求める200㎡×160％とは異なります。",
+      "正解。min(指定200％,4m×0.4＝160％)×200㎡＝320㎡です。",
+      "不適切。400㎡は指定容積率200％だけを使用し、道路幅員による制限を考慮していません。"
+    ],
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。"
   },
   {
     "id": "fp2-006",
@@ -513,13 +534,22 @@ const QUESTIONS = [
       "1200"
     ],
     "answer": 0,
-    "explanation": "損害額420万円－免責金額20万円＝400万円。保険金額は支払限度であり、常にその全額を受け取るわけではありません。",
-    "revision": 5,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "explanation": "損害額420万円から契約上の免責金額20万円を控除するので、支払額は400万円です。420万円は免責控除前の損害額、1,200万円は保険金額（支払限度）で今回の支払額ではありません。実際の保険約款には全損時の例外等がありますが、本問の指定条件では考慮しません。",
+    "revision": 6,
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
     "lawReferenceDate": "2026-04-01",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g3_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "正解。420－20＝400万円が指定された支払額です。",
+      "不適切。420万円は免責金額20万円の控除前の損害額です。",
+      "不適切。1,200万円は保険金額であり、今回の損害額から算出する支払額ではありません。"
+    ],
+    "sourceUrl": "https://soudanguide.sonpo.or.jp/basic/5_1_q4.html",
+    "sourceLabel": "日本損害保険協会：免責金額",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。"
   },
   {
     "id": "fp3-013",
@@ -825,15 +855,21 @@ const QUESTIONS = [
       "×（誤り）"
     ],
     "answer": 0,
-    "explanation": "敷地面積は20m×10m＝200㎡。建ぺい率は建築面積80㎡÷敷地面積200㎡×100＝40％です。延べ面積とは区別します。",
+    "explanation": "敷地面積20m×10m＝200㎡、建築面積80㎡なので、建ぺい率は80÷200×100＝40％です。延べ面積を分子に取る容積率ではなく、建築面積と敷地面積の比率で求めます。",
     "lawReferenceDate": "2026-04-01",
-    "revision": 2,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "revision": 3,
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
     "sourceUrl": "https://www.mlit.go.jp/common/001205298.pdf",
-    "sourceLabel": "制度の確認資料（一次資料）",
+    "sourceLabel": "国土交通省：建ぺい率と道路幅員による容積率制限",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g3_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "正解。80㎡÷200㎡＝40％で、記述は正しいです。",
+      "不適切。敷地面積200㎡を分母とすると40％なので、×ではありません。"
+    ],
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。"
   },
   {
     "id": "fp3-024",
@@ -962,15 +998,22 @@ const QUESTIONS = [
       "6分の1"
     ],
     "answer": 2,
-    "explanation": "配偶者Bは2分の1、子全体で2分の1。子3人で均等に分けるため、Cは2分の1÷3＝6分の1です。",
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
-    "revision": 2,
+    "explanation": "配偶者Bと子C・D・Eが相続人なら、配偶者の法定相続分は1/2、子3人全体で1/2です。子1人分は(1/2)÷3＝1/6。1/3は配偶者の相続分を考慮しない値、1/4は子2人の場合の値です。",
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
+    "revision": 3,
     "lawReferenceDate": "2026-04-01",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4132.htm",
-    "sourceLabel": "制度の確認資料（一次資料）",
+    "sourceLabel": "国税庁：法定相続分",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g3_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "不適切。子だけで全体を3等分する1/3は配偶者Bの持分を無視しています。",
+      "不適切。1/4は配偶者と子2人なら成り立つ割合ですが本問は子3人です。",
+      "正解。子全体の1/2を3人で等分するので1/6です。"
+    ],
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。"
   },
   {
     "id": "fp3-029",
@@ -1436,15 +1479,21 @@ const QUESTIONS = [
     "answer": 3,
     "explanation": "700万円は655万円超2,350万円以下なので62万円です。48万円は2,350万円超2,400万円以下、58万円は2025年分の700万円の区分、67万円は2026年分の489万円超655万円以下です。 法令基準日は2026年4月1日です。この改正の原則施行日は2026年12月1日で、2026年分に適用されます。施行前の月々の源泉徴収や準確定申告の取扱いを問うものではありません。",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm",
-    "revision": 4,
-    "contentReview": "v80_limited_primary_source_and_effective_date_review",
+    "revision": 5,
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
     "sourceName": "国税庁：基礎控除（令和8年4月1日現在法令等）",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "sourceLabel": "国税庁：2026年分の基礎控除",
-    "sourceCheckedDate": "2026-10-13",
-    "reviewNote": "Ver.80：基礎控除額・全選択肢・適用年・施行日を再確認。過去に公式照合履歴がある4問の再確認で、新規初回照合0。包括監修は未完了。"
+    "sourceLabel": "国税庁：令和8年分の基礎控除",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。",
+    "choiceExplanations": [
+      "不適切。48万円は2,350万円超2,400万円以下等の別区分です。",
+      "不適切。58万円は2025年分の700万円の区分です。",
+      "不適切。67万円は2026年分の489万円超655万円以下の区分です。",
+      "正解。700万円は655万円超2,350万円以下なので2026年分は62万円です。"
+    ]
   },
   {
     "id": "fp2-020",
@@ -1460,18 +1509,24 @@ const QUESTIONS = [
     ],
     "answer": 1,
     "explanation": "4,200,000円×20％－427,500円＝412,500円です。課税所得全額に20％を掛けただけの840,000円ではありません。",
-    "revision": 6,
-    "contentReview": "v80_academic_original_format_and_scoped_basis_check",
+    "revision": 7,
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm",
     "sourceName": "国税庁 No.2260：所得税の税率（令和8年4月1日現在法令等）",
-    "verificationStatus": "scoped_basis_check_2026_04_01_not_comprehensive_audit",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "sourceLabel": "制度の確認資料（一次資料）",
-    "sourceCheckedDate": "2026-10-13",
-    "reviewNote": "2026-10-20：国税庁No.2260の所得税速算表と照合。課税所得420万円の税率20％・控除額427,500円・税額412,500円、選択肢と正答を限定確認。旧注記の基礎控除への言及は本問と無関係のため訂正。包括監修は未完了。",
+    "sourceLabel": "国税庁：所得税の速算表",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "国税庁『所得税の税率』の速算表にある課税所得330万円超695万円以下の税率20％、速算控除427,500円を、設例の420万円に当てはめた結果412,500円をAI支援で独立照合。復興特別所得税・住民税を含まない設問条件であり、関連法令全文の包括監査や運営者の人手監修は未了。",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g2_202605_qa.pdf",
-    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）"
+    "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
+    "choiceExplanations": [
+      "不適切。210,000円は420万円に5％を掛けた値で、適用税率が違います。",
+      "正解。4,200,000×20％－427,500＝412,500円です。",
+      "不適切。420,000円は10％を掛けて控除額を差し引かない値です。",
+      "不適切。840,000円は20％を掛けて速算控除427,500円を差し引いていません。"
+    ]
   },
   {
     "id": "fp2-021",
@@ -1522,15 +1577,21 @@ const QUESTIONS = [
     "answer": 3,
     "explanation": "400万円は336万円超489万円以下の区分で、2026年分は104万円です。62万円は2026年分の655万円超2,350万円以下等、67万円は489万円超655万円以下、68万円は2025年分の400万円の区分です。 法令基準日は2026年4月1日です。この改正の原則施行日は2026年12月1日で、2026年分に適用されます。施行前の月々の源泉徴収や準確定申告の取扱いを問うものではありません。",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm",
-    "revision": 4,
-    "contentReview": "v80_limited_primary_source_and_effective_date_review",
+    "revision": 5,
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
     "sourceName": "国税庁：基礎控除（令和8年4月1日現在法令等）",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "sourceLabel": "国税庁：2026年分の基礎控除",
-    "sourceCheckedDate": "2026-10-13",
-    "reviewNote": "Ver.80：基礎控除額・全選択肢・適用年・施行日を再確認。過去に公式照合履歴がある4問の再確認で、新規初回照合0。包括監修は未完了。"
+    "sourceLabel": "国税庁：令和8年分の基礎控除",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。",
+    "choiceExplanations": [
+      "不適切。62万円は655万円超2,350万円以下等の別区分です。",
+      "不適切。67万円は489万円超655万円以下の別区分です。",
+      "不適切。68万円は2025年分に400万円の所得がある場合の区分です。",
+      "正解。2026年分で合計所得400万円は489万円以下なので104万円です。"
+    ]
   },
   {
     "id": "fp2-023",
@@ -3184,16 +3245,22 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "300万円は132万円超336万円以下の区分で、2026年分は104万円です。62万円は2026年分の655万円超2,350万円以下等、88万円は2025年分の300万円の区分、67万円は2026年分の489万円超655万円以下です。 法令基準日は2026年4月1日です。この改正の原則施行日は2026年12月1日で、2026年分に適用されます。施行前の月々の源泉徴収や準確定申告の取扱いを問うものではありません。",
     "topic": "所得税の基礎控除",
-    "revision": 58,
-    "contentReview": "v80_limited_primary_source_and_effective_date_review",
+    "revision": 59,
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
     "sourceUrl": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm",
     "sourceName": "国税庁：基礎控除（令和8年4月1日現在法令等）",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
     "lawReferenceDate": "2026-04-01",
     "taxYear": 2026,
-    "sourceLabel": "国税庁：2026年分の基礎控除",
-    "reviewNote": "Ver.80：基礎控除額・全選択肢・適用年・施行日を再確認。過去に公式照合履歴がある4問の再確認で、新規初回照合0。包括監修は未完了。",
-    "sourceCheckedDate": "2026-10-13"
+    "sourceLabel": "国税庁：令和8年分の基礎控除",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。",
+    "sourceCheckedDate": "2026-10-24",
+    "choiceExplanations": [
+      "不適切。62万円は655万円超2,350万円以下等の別区分です。",
+      "正解。2026年分で合計所得300万円は489万円以下なので104万円です。",
+      "不適切。88万円は2025年分の所得300万円の区分です。",
+      "不適切。67万円は489万円超655万円以下の別区分です。"
+    ]
   },
   {
     "id": "fp2-047",
@@ -4909,24 +4976,24 @@ const QUESTIONS = [
       "2万円"
     ],
     "answer": 1,
-    "explanation": "利息2万円に元本100万円を加え、元利合計102万円。商品保証の判断ではなく提示利率による算術です。",
+    "explanation": "利息は元本100万円×年2％×1年＝2万円。1年後に受け取る元利合計は元本を含め102万円です。98万円は利息を減算した値、2万円は利息のみで元本を含みません。",
     "topic": "元利合計と利息",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.j-flec.go.jp/public/learn/glossary/t_tanri/",
     "id": "fp3-103",
-    "revision": 4,
+    "revision": 5,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
-    "contentReview": "v123_bond_cashflow_scoped_migration",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
     "choiceExplanations": [
       "不適切。98万円は利息2万円を差し引いた値です。",
       "正解。100＋100×0.02＝102万円です。",
       "不適切。2万円は利息だけで、元本100万円を含めていません。"
     ],
     "additionalSourceUrls": [],
-    "sourceLabel": "指定条件の内部検算（法令照合ではない）",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "価格関係の公式限定照合3と指定条件内部検算8を区別。内部検算の公式枠組み参照は公式件数へ重複加算しない。法令改正照合なし。ID初回時期未確定。"
+    "sourceLabel": "J-FLEC：単利・元利合計",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。"
   },
   {
     "level": "3",
@@ -5344,11 +5411,11 @@ const QUESTIONS = [
       "300万円"
     ],
     "answer": 1,
-    "explanation": "財産800万円から借入金300万円を差し引き、800－300＝500万円です。これは資料の2項目の差引計算であり、税務上の債務控除の適用や相続税額を判定したものではありません。",
+    "explanation": "資産800万円－借入金300万円＝正味財産500万円です。800万円は控除前、300万円は借入金そのものです。設例は遺産分割や相続税の課税価格・債務控除の可否を問うものではありません。",
     "topic": "財産と借入金の単純な差引計算",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.jafp.or.jp/know/fp/sheet/",
     "id": "fp3-117",
-    "revision": 3,
+    "revision": 4,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
     "choiceExplanations": [
@@ -5357,11 +5424,11 @@ const QUESTIONS = [
       "不適切。差引後の額ではなく、借入金の額だけを答えています。"
     ],
     "additionalSourceUrls": [],
-    "sourceLabel": "指定条件の内部算術検算（法令改正照合ではない）",
-    "sourceCheckedDate": "2026-10-15",
-    "contentReview": "v141_acceptance_partition_gift_and_net_assets_scoped_migration",
-    "verificationStatus": "arithmetic_reviewed_law_not_audited",
-    "reviewNote": "主要点公式限定照合4/共通適用5/内部計算のみ2。ID初回時期不明は計上しない。国税庁講本は2026年1月1日基準で、4月1日統合全文を確認したものではない。"
+    "sourceLabel": "日本FP協会：家計のバランスシート",
+    "sourceCheckedDate": "2026-10-24",
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。"
   },
   {
     "level": "3",
@@ -6367,14 +6434,14 @@ const QUESTIONS = [
       "125,000円"
     ],
     "answer": 1,
-    "explanation": "取得代金125,000円、売却代金140,000円、差15,000円。1株差150円に数量100株を掛け、元本部分を利益に含めません。",
+    "explanation": "取得代金1,250円×100株＝125,000円、売却代金1,400円×100株＝140,000円。費用・税額なしの売却益は差額15,000円です。1株当たり150円の値上がりに100株を掛けても同じです。",
     "topic": "取得代金と売却益",
-    "sourceUrl": "",
+    "sourceUrl": "https://port.jpx.co.jp/jpxhp/portdocs/beginner_b_04.html",
     "id": "fp2-088",
-    "revision": 3,
+    "revision": 4,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
-    "contentReview": "v123_bond_cashflow_scoped_migration",
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
     "choiceExplanations": [
       "不適切。140,000円は売却代金全体です。",
       "正解。（1,400－1,250）×100＝15,000円です。",
@@ -6382,10 +6449,10 @@ const QUESTIONS = [
       "不適切。125,000円は取得代金全体です。"
     ],
     "additionalSourceUrls": [],
-    "sourceLabel": "指定条件の内部検算（法令照合ではない）",
-    "sourceCheckedDate": "2026-10-15",
-    "verificationStatus": "selected_points_checked_comprehensive_audit_incomplete",
-    "reviewNote": "価格関係の公式限定照合3と指定条件内部検算8を区別。内部検算の公式枠組み参照は公式件数へ重複加算しない。法令改正照合なし。ID初回時期未確定。"
+    "sourceLabel": "日本取引所グループ：株式の購入代金と損益",
+    "sourceCheckedDate": "2026-10-24",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。"
   },
   {
     "level": "2",
@@ -7238,14 +7305,14 @@ const QUESTIONS = [
       "5,000万円"
     ],
     "answer": 2,
-    "explanation": "財産5,000万円から借入金1,200万円を差し引き、5,000－1,200＝3,800万円です。これは資料の2項目の差引計算であり、税務上の債務控除の適用や相続税額を判定したものではありません。",
+    "explanation": "純資産は資産から負債を控除した残額です。金融資産5,000万円－借入金1,200万円＝3,800万円となります。5,000万円は差引前の資産、1,200万円は負債だけ、6,200万円は負債を加算した誤りです。相続税の債務控除や課税価格ではなく、設例の単純な正味財産を計算しています。",
     "topic": "財産と借入金の単純な差引計算",
-    "sourceUrl": "",
+    "sourceUrl": "https://www.jafp.or.jp/know/fp/sheet/",
     "id": "fp2-114",
-    "revision": 4,
+    "revision": 5,
     "createdVersion": 8,
     "lawReferenceDate": "2026-04-01",
-    "contentReview": "v141_acceptance_partition_gift_and_net_assets_scoped_migration",
+    "contentReview": "20261024_remaining_fp_editorial_gap_review",
     "choiceExplanations": [
       "不適切。財産額と借入金を差し引かず、加算しています。",
       "不適切。差引後の額ではなく、借入金の額だけを答えています。",
@@ -7253,10 +7320,10 @@ const QUESTIONS = [
       "不適切。借入金を差し引く前の財産額です。"
     ],
     "additionalSourceUrls": [],
-    "sourceLabel": "指定条件の内部算術検算（法令改正照合ではない）",
-    "sourceCheckedDate": "2026-10-15",
-    "verificationStatus": "arithmetic_reviewed_law_not_audited",
-    "reviewNote": "主要点公式限定照合4/共通適用5/内部計算のみ2。ID初回時期不明は計上しない。国税庁講本は2026年1月1日基準で、4月1日統合全文を確認したものではない。"
+    "sourceLabel": "日本FP協会：家計のバランスシート",
+    "sourceCheckedDate": "2026-10-24",
+    "verificationStatus": "ai_scoped_official_and_arithmetic_checked_human_review_pending",
+    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。"
   },
   {
     "level": "2",
