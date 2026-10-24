@@ -7,5 +7,7 @@ assert.match(html,/id="prSubmitReadiness"[^>]*role="status" aria-live="polite"/)
 assert.match(js,/const remaining=attempt\.answers\.filter\(\(a,i\)=>!completeAnswer\(attempt\.questions\[i\],a\)\)\.length/);
 assert.match(js,/\$p\('prSubmitReadiness'\)\.textContent=remaining\?/);
 assert.match(js,/全問回答済みです。採点できます。/);
-assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+assert.match(html,/practical-loader\.js\?v=/,'FP html must bootstrap deferred practical mode');
+const loader=fs.readFileSync(path.join(root,'practical-loader.js'),'utf8');
+assert.match(loader,/practical\.js\?v=[a-f0-9]{14}/,'loader must cache-bust the practical controller');
 console.log('PASS: practical grading readiness has accessible dynamic status and counts incomplete answers.');

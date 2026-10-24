@@ -7,5 +7,7 @@ assert.match(html,/id="prReviewAnswered" type="button" class="outline-full hidde
 assert.match(js,/\$p\('prReviewAnswered'\)\.classList\.toggle\('hidden',remaining===attempt\.questions\.length\)/);
 assert.match(js,/\$p\('prReviewAnswered'\)\.addEventListener\('click'/);
 assert.match(js,/if\(completeAnswer\(attempt\.questions\[i\],attempt\.answers\[i\]\)\)\{jump\(i\);return;\}/);
-assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+assert.match(html,/practical-loader\.js\?v=/,'FP html must bootstrap deferred practical mode');
+const loader=fs.readFileSync(path.join(root,'practical-loader.js'),'utf8');
+assert.match(loader,/practical\.js\?v=[a-f0-9]{14}/,'loader must cache-bust the practical controller');
 console.log('PASS: answered-question review shortcut cycles through complete answers and hides when none are answered.');

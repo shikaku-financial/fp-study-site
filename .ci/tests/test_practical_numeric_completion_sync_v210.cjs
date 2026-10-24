@@ -8,5 +8,7 @@ assert.ok(js.includes(hit),'numeric input must use same completion predicate as 
 assert.ok(!js.includes("classList.toggle('done',e.target.value!=='')"),'raw text comparison must not replace completion policy');
 assert.match(js,/function updateSubmitReadiness\(\)/);
 assert.match(js,/\$p\('prSubmitReadiness'\)\.textContent/);
-assert.match(html,/practical\.js\?v=[a-f0-9]{14}/);
+assert.match(html,/practical-loader\.js\?v=/,'FP html must bootstrap deferred practical mode');
+const loader=fs.readFileSync(path.join(root,'practical-loader.js'),'utf8');
+assert.match(loader,/practical\.js\?v=[a-f0-9]{14}/,'loader must cache-bust the practical controller');
 console.log('PASS: numeric completion indicators are based on the shared answer-completion predicate.');
