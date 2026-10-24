@@ -18,7 +18,23 @@ const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/2026年度に適用される出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
 assert.match(html,/boki-data\.js\?v=20261024h/);
-assert.match(html,/boki-extra\.js\?v=20261024f/);
+assert.match(html,/boki-extra\.js\?v=20261024g/);
+// Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
+assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
+assert.match(html,/2027年4月1日以降の3級本試験は第1問45点・第2問25点・第3問30点/);
+assert.match(html,/当サイトの模試配点は自動で切り替わりません/);
+assert.match(html,/https:\/\/www\.kentei\.ne\.jp\/51504/);
+// For the grade-3 second paper, learners should see both debit/credit logic.
+for(const id of ["b3-r2-j04","b3-r2-j05","b3-r2-j06","b3-r2-j07","b3-r2-j08","b3-r2-j09","b3-r2-j12","b3-r2-j14"]){
+ const journal=get(id);
+ assert.equal(journal.type,'journal',id+' remains a journal');
+ assert.match(journal.explanation,/借方/,id+' must explain debit');
+ assert.match(journal.explanation,/貸方/,id+' must explain credit');
+ for(const amount of [...journal.debit,...journal.credit].map(row=>row[1])){
+  if(amount>=1000) assert.ok(journal.explanation.includes(amount.toLocaleString('en-US')),id+' explains '+amount);
+ }
+}
+
 // A trading security is not described using the merchandise accounting "分記法".
 const securities=get('b2-securities');
 assert.ok(!securities.prompt.includes('分記法'),'product-sales journal method must not describe securities');
