@@ -33,6 +33,10 @@ async function run(name){
   await page.goto(new URL('index.html?level=3',BASE).href,{waitUntil:'load'});await page.locator('#level3[aria-pressed="true"]').waitFor();assert.ok(page.url().includes('fp.html?level=3'));
   await page.goto(new URL('index.html#home',BASE).href,{waitUntil:'load'});await page.locator('#home').waitFor({state:'visible'});assert.ok(page.url().includes('fp.html#home'));
   for(const file of ['guide.html','about.html','privacy.html','contact.html','fp3-study.html','fp2-study.html']){await page.goto(new URL(file,BASE).href,{waitUntil:'load'});await fits();assert.equal(await page.locator('.fll-header').count(),1);assert.equal(await page.locator('.fll-footer').count(),1);}
+  await page.goto(new URL('contact.html',BASE).href,{waitUntil:'load'});
+  assert.equal(await page.locator('a.info-cta').getAttribute('href'),'https://tally.so/r/e5qgKJ','contact CTA must open live no-login form');
+  assert.equal(await page.locator('a[href*="issues/new?template=question-report.md"]').count(),1,'developer fallback retained');
+  for(const width of [320,390]){await page.setViewportSize({width,height:844});await fits();}
   assert.deepEqual(errors,[]);console.log('PASS '+name+': FLL 320–1440px, hub/lab navigation, legacy FP links, shared headers and brand screenshots');
  }finally{await ctx.close();await browser.close();}
 }

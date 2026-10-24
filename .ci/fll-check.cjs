@@ -12,6 +12,13 @@ for(const file of ['fp.html','boki.html','guide.html','fp2-study.html','fp3-stud
 for(const id of ['home','quiz','exam','finish','examResult','practicalHome','practicalExam','practicalResult','siteHomeLink'])assert.ok(fp.includes('id="'+id+'"'),'FP control retained '+id);
 for(const script of ['questions.js','app.js','practical.js','practical-questions.js','practical-materials.js'])assert.ok(fp.includes('src="'+script+'?'),'FP exam script retained');
 assert.ok(bk.includes('boki-data.js?')&&bk.includes('boki-extra.js?')&&bk.includes('boki-core.js?')&&bk.includes('boki.js?'));
+const contact=read('contact.html'),privacy=read('privacy.html');
+assert.ok(contact.includes('href="https://tally.so/r/e5qgKJ"'),'no-login Tally form is primary contact entry');
+assert.ok(contact.includes('class="info-cta" href="https://tally.so/r/e5qgKJ"'),'primary contact button must link to live Tally form');
+assert.ok(contact.includes('issues/new?template=question-report.md'),'GitHub issue reporting remains an optional developer fallback');
+assert.ok(!contact.includes('GitHubへのログインが必要です。投稿内容は公開されます。'),'old GitHub-only contact warning must be replaced');
+assert.ok(privacy.includes('https://tally.so/help/privacy-policy'),'Tally data processor privacy information disclosed');
+assert.ok(privacy.includes('ChatGPTのTally連携'),'AI-assisted triage disclosed to respondents');
 const script=read('fll.js');
 for(const [search,hash,expected]of[['','',''],['?utm_source=demo','#labs',''],['?level=2','','fp.html?level=2'],['?view=practical&level=3','','fp.html?view=practical&level=3'],['','#home','fp.html#home'],['','#examResult','fp.html#examResult'],['?level=3&utm_source=old','#practicalHome','fp.html?level=3&utm_source=old#practicalHome']]){
  const replaced=[];vm.runInNewContext(script,{URLSearchParams,window:{location:{search,hash,replace:s=>replaced.push(s)}}});assert.deepEqual(replaced,expected?[expected]:[],'legacy route '+search+hash);
