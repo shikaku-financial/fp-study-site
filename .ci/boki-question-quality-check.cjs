@@ -81,6 +81,7 @@ for(const [name,exam] of Object.entries(exams)){
  }
 }
 
+{
 // Source-table-based independent audit: check totals from the displayed case facts.
 const con=get('b2-r2-consolidated'),source=con.tables.find(t=>t.caption.includes('個別財務情報'));
 const facts=Object.fromEntries(source.rows.map(r=>[r[0],r.slice(1).map(v=>Number(String(v).replace(/,/g,'')))]));
@@ -118,5 +119,6 @@ expect(f3.id,'g6',fullExpenses-fullRevenue);
 const assets3=150000+900000+680000-allowance+280000+(1800000-360000-1800000/30)+(600000-120000-600000/5)+(96000*8/12);
 expect(f3.id,'g7',assets3);
 console.log('PASS: source-derived consolidation, job-cost allocations, standard variance and grade-3 closing explanations');
+}
 
 console.log('PASS: all 60 items/100-point forms retained; 2026-vs-2027 scope; editorial clarity, reserve limit, securities, inventory, tax-loss and independent trial/statement calculations');
