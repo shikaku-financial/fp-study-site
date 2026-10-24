@@ -17,6 +17,19 @@ for(const file of ['practical-questions.js','practical-materials.js','practical.
 assert.ok(loader.indexOf('practical-questions.js?')<loader.indexOf('practical-materials.js?')&&loader.indexOf('practical-materials.js?')<loader.indexOf('practical.js?'),'practical module ordering');
 assert.ok(fp.includes('id="practicalLoadStatus"')&&fp.includes('aria-live="polite"'),'lazy module status required');
 assert.ok(bk.includes('boki-data.js?')&&bk.includes('boki-extra.js?')&&bk.includes('boki-core.js?')&&bk.includes('boki.js?'));
+// Public trust disclosures must not claim unperformed human expert review or hide enabled analytics.
+const about=read('about.html');
+assert.ok(about.includes('id="review-policy"'),'review process must have a public anchor');
+assert.ok(about.includes('FP技能検定および日商簿記検定の合格者'),'operator may state verified self-reported qualification category');
+assert.ok(about.includes('ChatGPTなどの生成AI'),'explain AI-assisted creation and checking');
+assert.ok(about.includes('自動テストだけを、独立した人間の専門家による監修と扱うことはありません'),'AI alone cannot claim professional review');
+assert.ok(about.includes('全問について、運営者による人手の内容確認・監修が完了したとは表示していません'),'no false review-complete claim');
+for(const page of [fp,bk])assert.ok(page.includes('href="about.html#review-policy"'),'both labs link to audit transparency');
+assert.ok(about.includes('Cloudflare Web Analyticsによるアクセス解析を有効にしています'),'about reflects active analytics');
+assert.ok(fp.includes('Cloudflare Web Analyticsを有効にしています'),'FP reflects active analytics');
+assert.ok(!fp.includes('広告配信タグやアクセス解析タグを設置していません'),'remove outdated FP analytics claim');
+assert.ok(fp.includes('href="https://tally.so/r/e5qgKJ"'),'FP guidance uses the shared no-login form');
+assert.ok(!fp.includes('GitHubへのログインが必要です'),'remove obsolete GitHub-only support guidance');
 const contact=read('contact.html'),privacy=read('privacy.html');
 assert.ok(contact.includes('href="https://tally.so/r/e5qgKJ"'),'no-login Tally form is primary contact entry');
 assert.ok(contact.includes('class="info-cta" href="https://tally.so/r/e5qgKJ"'),'primary contact button must link to live Tally form');
@@ -26,6 +39,7 @@ assert.ok(contact.includes('issues/new?template=question-report.md'),'GitHub iss
 assert.ok(!contact.includes('GitHubへのログインが必要です。投稿内容は公開されます。'),'old GitHub-only contact warning must be replaced');
 assert.ok(privacy.includes('https://tally.so/help/privacy-policy'),'Tally data processor privacy information disclosed');
 assert.ok(privacy.includes('ChatGPTのTally連携'),'AI-assisted triage disclosed to respondents');
+assert.ok(privacy.includes('Cloudflare PagesでCloudflare Web Analyticsを有効にしています'),'analytics enabled status is accurately documented');
 const script=read('fll.js');
 for(const [search,hash,expected]of[['','',''],['?utm_source=demo','#labs',''],['?level=2','','fp.html?level=2'],['?view=practical&level=3','','fp.html?view=practical&level=3'],['','#home','fp.html#home'],['','#examResult','fp.html#examResult'],['?level=3&utm_source=old','#practicalHome','fp.html?level=3&utm_source=old#practicalHome']]){
  const replaced=[];vm.runInNewContext(script,{URLSearchParams,window:{location:{search,hash,replace:s=>replaced.push(s)}}});assert.deepEqual(replaced,expected?[expected]:[],'legacy route '+search+hash);
