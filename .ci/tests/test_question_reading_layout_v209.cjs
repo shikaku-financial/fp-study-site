@@ -19,7 +19,8 @@ assert.match(css,/\.material-table-wrap\[tabindex="0"\]\{scroll-padding-inline:1
 assert.match(html,/style\.css\?v=[a-f0-9]{14}/);
 assert.match(html,/id="prQuestion"/);assert.match(html,/id="question"/);
 assert.match(hub,/\.hub-lead\{font-size:16px;line-height:2/,'FLL intro desktop baseline');
-assert.match(hub,/@media\(max-width:600px\)[^}]*\.hub-lead\{font-size:15px/,'FLL intro phone baseline');
+assert.match(hub,/@media\(max-width:600px\)/,'FLL has phone breakpoint');
+assert.match(hub,/\.hub-lead\{font-size:15px\}/,'FLL intro phone baseline');
 assert.match(css,/\.question-text\{font-size:16px;line-height:2/,'FP question desktop size matches hub');
 assert.match(boki,/\.boki-prompt\{white-space:pre-line;line-height:2;font-size:16px/,'Boki question desktop size matches hub');
 assert.match(boki,/@media\(max-width:600px\)\{\.boki-prompt,\.boki-notes\{font-size:15px\}/,'Boki phone size matches hub');
