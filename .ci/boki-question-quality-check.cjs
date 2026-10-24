@@ -18,7 +18,7 @@ const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
 assert.match(html,/boki-data\.js\?v=20261024k/);
-assert.match(html,/boki-extra\.js\?v=20261024k/);
+assert.match(html,/boki-extra\.js\?v=20261024l/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
 assert.match(html,/2027年4月1日以降の3級本試験は第1問45点・第2問25点・第3問30点/);
@@ -169,6 +169,45 @@ console.log('PASS: favorable price/rate and adverse quantity/time, independent s
 
 console.log('PASS: standard costing direction not leaked, two independently graded variance classifications');
 
+// Source-independent reconciliation prevents the closing balance sheet from revealing answers.
+{
+ const closing=get('b3-r2-financial'),bs=closing.tables.find(t=>t.caption==='貸借対照表');
+ const tableCell=(rowLabel,col)=>bs.rows.find(r=>r[0]===rowLabel)?.[col];
+ assert.deepEqual(tableCell('建物（純額）',3),{id:'g9'});
+ assert.deepEqual(tableCell('資産合計',3),{id:'g10'});
+ assert.ok(!bs.rows.some(r=>r.includes('236,200')||r.includes('3,807,200')),'computed equity and totals must not be leaked');
+ const loss=closing.fields.find(f=>f.id==='g6').answer,openingEquity=562000;
+ const retained=openingEquity-loss;
+ expect(closing.id,'g9',retained);
+ const liabilities=540000+1000000+25000+6000,capital=2000000;
+ expect(closing.id,'g10',liabilities+capital+retained);
+ expect(closing.id,'g7',liabilities+capital+retained);
+ assert.equal(closing.fields.reduce((n,f)=>n+f.points,0),35);
+ const C=require('../boki-core.js');
+ const complete=Object.fromEntries(closing.fields.map(f=>[f.id,String(f.answer)]));
+ assert.equal(C.grade(closing,complete).earned,35);
+ for(const id of ['g9','g10']){
+  const partial={...complete,[id]:''},f=closing.fields.find(x=>x.id===id);
+  assert.equal(C.grade(closing,partial).earned,35-f.points,id+' blank loses assigned points');
+ }
+ const consolidated=get('b2-r2-consolidated');
+ assert.ok(!consolidated.notes.join('').includes('ダウンストリーム取引である'),'do not provide direction in givens');
+ const internalSales=600000,inventoryAtSalePrice=160000,grossMarginOnSales=.25;
+ const unrealized=inventoryAtSalePrice*grossMarginOnSales;
+ expect(consolidated.id,'k7',unrealized);
+ expect(consolidated.id,'k12',internalSales-unrealized);
+ const groupProfit=800000+240000-60000*.8-200000/10-unrealized;
+ expect(consolidated.id,'k9',groupProfit);
+ const rows=consolidated.tables.flatMap(t=>t.rows);
+ assert.equal(rows.flat().filter(cell=>cell&&typeof cell==='object'&&cell.id==='k12').length,1);
+ assert.equal(consolidated.fields.reduce((n,f)=>n+f.points,0),20);
+ const good=Object.fromEntries(consolidated.fields.map(f=>[f.id,String(f.answer)]));
+ assert.equal(C.grade(consolidated,good).earned,20);
+ assert.equal(C.grade(consolidated,{...good,k12:'640000'}).earned,18,'adding unrealized profit instead of subtracting is wrong');
+ assert.equal(C.grade(consolidated,{...good,k12:''}).earned,18,'missing reconciliation is wrong');
+}
+console.log('PASS: blank grade-three B/S totals, independently reconciled equity and consolidated COGS eliminations');
+
 // A trading security is not described using the merchandise accounting "分記法".
 const securities=get('b2-securities');
 assert.ok(!securities.prompt.includes('分記法'),'product-sales journal method must not describe securities');
@@ -219,6 +258,8 @@ const netLoss3=exp3-(sales3+(8000-badDebt3));
 expect(g3.id,'g6',netLoss3);
 const assets3=150000+900000+680000-badDebt3+280000+(1800000-360000-1800000/30)+(600000-120000-600000/5)+(96000-insurance3);
 expect(g3.id,'g7',assets3);
+expect(g3.id,'g9',562000-netLoss3);
+expect(g3.id,'g10',540000+1000000+25000+6000+2000000+562000-netLoss3);
 // Prevent content edits from silently changing question identity, score or lesson integrity.
 for(const [name,exam] of Object.entries(exams)){
  assert.equal(exam.sections.reduce((total,s)=>total+s.items.reduce((v,q)=>v+(q.type==='journal'?q.points:q.fields.reduce((a,f)=>a+f.points,0)),0),0),100,name+' must remain 100 points');
@@ -242,6 +283,7 @@ const profit=facts['当期純利益'][0]+facts['当期純利益'][1]-facts['支�
 expect(con.id,'k4',minority);expect(con.id,'k6',netAtBuy*20/100+minority-facts['支払配当金'][1]*20/100);
 expect(con.id,'k7',gross);expect(con.id,'k8',facts['売上高'][0]+facts['売上高'][1]-600000);
 expect(con.id,'k9',profit);expect(con.id,'k10',profit-minority);
+expect(con.id,'k12',600000-gross);
 assert.match(con.fields.find(f=>f.id==='k9').explanation,/社外株主への配当12,000円は当期純利益から重ねて控除しない/);
 const job=get('b2-r2-job'),table=job.tables.find(t=>t.caption.includes('指図書別データ'));
 const rows=Object.fromEntries(table.rows.map(r=>[r[0],r.slice(1).map(v=>Number(v.replace(/[^0-9]/g,'')))]));

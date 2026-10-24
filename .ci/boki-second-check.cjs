@@ -45,10 +45,10 @@ const cost3=240000+2600000-280000,dep3=1800000/30+600000/5,insurance3=96000*4/12
 const loss3=cost3+720000+25000+360000+insurance3+24000+6000+dep3-(3500000+80000)-returns3;
 assert.equal(a.g1,cost3);assert.equal(a.g2,allowance3);assert.equal(a.g3,1800000-360000-1800000/30);assert.equal(a.g4,96000-insurance3);assert.equal(a.g6,loss3);
 const assets3=150000+900000+680000-allowance3+280000+(1800000-360000-60000)+(600000-120000-120000)+a.g4;
-assert.equal(a.g7,assets3);assert.equal(assets3,540000+1000000+25000+6000+2000000+562000-loss3);
+assert.equal(a.g7,assets3);assert.equal(a.g9,562000-loss3);assert.equal(a.g10,540000+1000000+25000+6000+2000000+a.g9);assert.equal(assets3,a.g10);
 // Consolidation: acquisition, equity movement, downstream inventory and income attribution.
 const acquiredNet=1000000+500000,goodwill=1400000-acquiredNet*.8,nci=acquiredNet*.2,nciProfit=240000*.2,nciDiv=60000*.2,unrealized=160000*.25;
-assert.equal(b.k1,goodwill);assert.equal(b.k2,nci);assert.equal(b.k3,goodwill-goodwill/10);assert.equal(b.k4,nciProfit);assert.equal(b.k5,nciDiv);assert.equal(b.k6,nci+nciProfit-nciDiv);assert.equal(b.k7,unrealized);assert.equal(b.k8,4000000+2000000-600000);
+assert.equal(b.k1,goodwill);assert.equal(b.k2,nci);assert.equal(b.k3,goodwill-goodwill/10);assert.equal(b.k4,nciProfit);assert.equal(b.k5,nciDiv);assert.equal(b.k6,nci+nciProfit-nciDiv);assert.equal(b.k7,unrealized);assert.equal(b.k8,4000000+2000000-600000);assert.equal(b.k12,600000-unrealized);
 const groupProfit=800000+240000-60000*.8-goodwill/10-unrealized;assert.equal(b.k9,groupProfit);assert.equal(b.k10,groupProfit-nciProfit);
 const cost2=600000+4000000-650000,expenses2=900000+360000+90000+360000+10000,operatingLoss=expenses2-(5200000-cost2),netLoss=operatingLoss+80000+160000;
 assert.equal(b.h2,cost2);assert.equal(b.h3,5200000-cost2);assert.equal(b.h7,operatingLoss);assert.equal(b.h9,operatingLoss+80000);assert.equal(b.h10,netLoss);
