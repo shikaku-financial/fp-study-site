@@ -17,7 +17,7 @@ const expect=(id,fid,actual)=>assert.equal(field(id,fid),actual,id+'/'+fid+' ind
 const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/2026年度に適用される出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
-assert.match(html,/boki-data\.js\?v=20261024f/);
+assert.match(html,/boki-data\.js\?v=20261024g/);
 assert.match(html,/boki-extra\.js\?v=20261024f/);
 // A trading security is not described using the merchandise accounting "分記法".
 const securities=get('b2-securities');
