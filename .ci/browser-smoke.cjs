@@ -87,6 +87,7 @@ async function main(){
         await article.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
         assert.equal(await article.locator('#prSelectLevel2').getAttribute('aria-pressed'),'true','grade must persist in URL after fresh load');
         await article.reload({waitUntil:'load'});
+        await article.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
         assert.equal(await article.locator('#practicalHome').isVisible(),true,'practical entry must survive reload');
         await article.goto(BASE,{waitUntil:'load'});
         assert.equal(await article.locator('#home').isVisible(),true,'no URL flag should retain regular home');
@@ -172,7 +173,7 @@ async function main(){
     await step('practical draft reopens after reload; result and review work',async()=>{
       await page.reload({waitUntil:'load'});
       await page.locator('#openPractical').click();
-      await visible('#practicalHome');
+      await page.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
       await visible('#prResume');
       await page.locator('#prResume').click();
       await visible('#practicalExam');
@@ -200,6 +201,7 @@ async function main(){
       await visible('#practicalHome');
       await page.reload({waitUntil:'load'});
       await page.locator('#openPractical').click();
+      await page.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
       await page.locator('#prResume').click();
       await visible('#practicalExam');
       assert.match(await page.locator('#prProgress').innerText(),/^1\/40問/);
@@ -223,6 +225,7 @@ async function main(){
       await page.locator('#prSaveExit').click();
       await page.reload({waitUntil:'load'});
       await page.locator('#openPractical').click();
+      await page.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
       await page.locator('#prResume').click();
       await visible('#practicalExam');
       assert.match(await page.locator('#prProgress').innerText(),/^5\/40問/);
@@ -257,6 +260,7 @@ async function main(){
       await page.locator('#prSaveExit').click();
       await page.reload({waitUntil:'load'});
       await page.locator('#openPractical').click();
+      await page.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
       await page.locator('#prResume').click();
       await visible('#practicalExam');
       for(const [i,val] of ['あ','え','き'].entries())assert.equal(await page.locator('#prSubInput'+i).inputValue(),val);
@@ -291,7 +295,7 @@ async function main(){
       assert.equal(await page.locator('#prResume').isVisible(),false,'completed attempt must not appear as resumable');
       await page.reload({waitUntil:'load'});
       await page.locator('#openPractical').click();
-      await visible('#practicalHome');
+      await page.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
       assert.equal(await page.locator('#prResume').isVisible(),false,'completed attempt stays hidden after reload');
       await page.locator('#prSelectLevel3').click();
       await page.locator('#prTracks .pr-track').first().locator('button.primary').click();
@@ -475,7 +479,7 @@ async function main(){
       // Reported iPhone screenshot: FP2 JAFP practical question 3, "分配時の資料".
       await visible('#home');
       await page.locator('#openPractical').click();
-      await visible('#practicalHome');
+      await page.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
       await page.locator('#prSelectLevel2').click();
       await page.locator('#prTracks .pr-track').first().locator('button.primary').click();
       await visible('#practicalExam');
@@ -549,7 +553,7 @@ async function main(){
       });
       await page.reload({waitUntil:'load'});
       await page.locator('#openPractical').click();
-      await visible('#practicalHome');
+      await page.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
       await page.locator('#prHistoryList .pr-history-entry').first().getByRole('button',{name:'答え合わせ'}).click();
       await visible('#practicalResult');
       assert.match(await page.locator('#prSummary').innerText(),/1問中1問正解/);

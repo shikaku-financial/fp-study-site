@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),vm=require('node:vm'),assert=require('node:assert/strict'),{spawnSync}=require('node:child_process');
 const root=path.resolve(__dirname,'..');
-const publicFiles=['fp.html','style.css','app.js','questions.js','practical-questions.js','practical-materials.js','practical.js','financial-license-lab-logo.png'];
+const publicFiles=['fp.html','style.css','app.js','questions.js','practical-questions.js','practical-materials.js','practical.js','practical-loader.js','financial-license-lab-logo.png'];
 const suites=JSON.parse(fs.readFileSync(path.join(__dirname,'suites.json'),'utf8'));
 const temp=fs.mkdtempSync(path.join(os.tmpdir(),'fp-lab-regression-'));
 try {
