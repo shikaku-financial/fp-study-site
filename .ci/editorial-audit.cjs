@@ -9,6 +9,7 @@ const path=require('node:path');
 const vm=require('node:vm');
 const crypto=require('node:crypto');
 const assert=require('node:assert/strict');
+const {structureIssues}=require('./editorial-answer-structure.cjs');
 const root=path.resolve(__dirname,'..');
 const read=name=>fs.readFileSync(path.join(root,name),'utf8');
 
@@ -48,6 +49,7 @@ function numericText(value){
 function reasonsFor(e){
  const {q,bank}=e;
  const findings=[];
+ findings.push(...structureIssues(e).map(issue=>'解答形式の要修正：'+issue));
  if(bank==='FP学科'){
   if(!q.sourceUrl)findings.push('設問別の根拠URL未登録');
   if(!q.sourceCheckedDate)findings.push('根拠資料の確認日未登録');
@@ -86,6 +88,8 @@ function reasonsFor(e){
 }
 function audit(entries,records){
  assert.equal(entries.length,660,'unexpected FP/Boki question count');
+ const broken=entries.flatMap(e=>structureIssues(e).map(issue=>e.id+'：'+issue));
+ assert.equal(broken.length,0,'FP answer contract must be corrected before publication: '+broken.slice(0,8).join(' / '));
  const ids=new Set();
  for(const e of entries){
   assert.match(e.id,/^[a-z0-9_-]+$/i);
@@ -111,7 +115,7 @@ function audit(entries,records){
  }
  const findings=entries.map(e=>{
   const reasons=reasonsFor(e),isReviewed=reviewed.has(e.id);
-  const weight=reasons.reduce((s,r)=>s+(r.includes('根拠')?3:1),0);
+  const weight=reasons.reduce((s,r)=>s+(r.includes('解答形式の要修正')?10:r.includes('根拠')?3:1),0);
   return {...e,hash:fingerprint(e.q),reasons,priority:weight,isReviewed};
  });
  const flagged=findings.filter(x=>x.reasons.length>0&&!x.isReviewed)
