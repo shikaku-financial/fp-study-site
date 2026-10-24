@@ -3,6 +3,7 @@
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
 const root=path.resolve(process.argv[2]||path.join(__dirname,'../..'));
 const src=fs.readFileSync(path.join(root,'app.js'),'utf8');
+assert.doesNotMatch(src,/archiveOldRevisionResults|REVISION_ARCHIVE_KEY/,'legacy archive must not be reintroduced');
 function section(start,end){
   const a=src.indexOf(start),b=src.indexOf(end,a+start.length);
   assert.ok(a>=0 && b>a,'Missing production section: '+start);
@@ -26,7 +27,6 @@ for(const saved of [false,true]){
     $:el,load:()=>({}),STORAGE:'storage',writeJSON:(key,data)=>{
       assert.equal(key,'storage');assert.equal(data.q1.selected,1);return saved;
     },
-    archiveOldRevisionResults:()=>{ctx.archived++;},archived:0,
     questionRevision:()=>1,
     document:{createElement:()=>({className:'',textContent:''})},
     appendChoiceExplanations:()=>{},appendQuestionSource:()=>{},
@@ -35,7 +35,6 @@ for(const saved of [false,true]){
   vm.runInNewContext(submit+';submitAnswer();',ctx);
   assert.equal(ctx.answered,saved,'academic answer finalized only if saved');
   assert.equal(ctx.correct,saved?1:0,'correct count must not change if save fails');
-  assert.equal(ctx.archived,saved?1:0,'archive changes only after durable answer');
 }
 for(const saved of [false,true]){
   const exam={pos:0,ids:['a','b'],answers:[null,null],flags:[false,false]};

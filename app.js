@@ -1,30 +1,14 @@
 'use strict';
 
-// 公開前の選択肢全面見直しに伴い、Ver.12は新しい学習記録キーを使用します。
+// 現行形式で学習・模試の記録を保存します。
 const CATEGORIES = ['すべての分野', 'ライフプランニングと資金計画', 'リスク管理', '金融資産運用', 'タックスプランニング', '不動産', '相続・事業承継'];
 const STORAGE = 'fp-training-v12';
 const EXAM_HISTORY_KEY = 'fp-training-exam-history-v12';
 const EXAM_DRAFT_KEY = 'fp-training-exam-draft-v12';
 const EXAM_DETAILS_KEY = 'fp-training-exam-details-v12';
 const MINI_EXAM_MINUTES = 10;
-const REVISION_ARCHIVE_KEY = 'fp-training-revisions-v12';
 const questionRevision = (q) => Number.isInteger(q.revision) ? q.revision : 1;
-const resultCurrent = (q, r) => r && typeof r.correct === 'boolean' && (Number.isInteger(r.revision) ? r.revision : 1) === questionRevision(q);
-
-// 旧回答は削除せず、改訂設問の旧成績だけ現在の集計から除きます。
-function archiveOldRevisionResults() {
-  const existing = load();
-  const archive = readJSON(REVISION_ARCHIVE_KEY, { items: {} });
-  const items = archive.items && typeof archive.items === 'object' ? archive.items : {};
-  let modified = false;
-  for (const q of QUESTIONS.filter(x => questionRevision(x) > 1)) {
-    const record = existing[q.id];
-    if (record && !resultCurrent(q, record) && !(q.id in items)) {
-      items[q.id] = record; modified = true;
-    }
-  }
-  if (modified) writeJSON(REVISION_ARCHIVE_KEY, { items });
-}
+const resultCurrent = (q, r) => r && typeof r.correct === 'boolean' && r.revision === questionRevision(q);
 
 function appendQuestionSource(parent, q) {
   // A reference link is not a claim of official supervision or completed legal verification.
@@ -201,7 +185,7 @@ function updateHome() {
   const previous = pool.filter(q => resultCurrent(q, data[q.id]));
   const staleCount = pool.filter(q => data[q.id] && typeof data[q.id].correct === 'boolean' && !resultCurrent(q, data[q.id])).length;
   $('revisionNotice').classList.toggle('hidden', staleCount === 0);
-  $('revisionNotice').textContent = staleCount ? `改訂された${staleCount}問の過去回答は現在の正答率から除外しています。旧記録は端末内に保管しています。再回答すると新しい結果が集計されます。` : '';
+  $('revisionNotice').textContent = staleCount ? `改訂された${staleCount}問は現在の正答率から除外しています。新しい設問に回答すると最新の結果が集計されます。` : '';
   const c = previous.filter(q => data[q.id].correct).length;
   $('stats').textContent = `FP${level}級：解答済み ${previous.length}問 ／ 正解 ${c}問 ／ 正答率 ${previous.length ? Math.round(c / previous.length * 100) : 0}％`;
   const categoryStats = $('categoryStats'); categoryStats.replaceChildren();
@@ -323,7 +307,6 @@ function submitAnswer() {
   if (!writeJSON(STORAGE, data)) return;
   answered = true;
   if (isCorrect) correct++;
-  archiveOldRevisionResults();
   const fb = $('feedback'); fb.replaceChildren(); fb.classList.remove('hidden');
   const head = document.createElement('strong'); head.className = isCorrect ? 'correct' : 'wrong'; head.textContent = isCorrect ? '正解です！' : '不正解です';
   const answer = document.createElement('p'); answer.textContent = `正解：${q.choices[q.answer]}`;
@@ -370,9 +353,7 @@ function createExam(kind) {
   show('exam'); renderExam(); startTimer();
 }
 function getExamQuestions() {
-  const map = new Map(QUESTIONS.map(q => [q.id, q]));
-  if (Array.isArray(exam.snapshots) && exam.snapshots.length === exam.ids.length && exam.snapshots.every((q,i) => q && q.id === exam.ids[i])) return exam.snapshots;
-  return exam.ids.map(id => map.get(id));
+  return exam.snapshots;
 }
 function draftToken(key) {
   try { return localStorage.getItem(key); } catch { return undefined; }
@@ -389,10 +370,12 @@ function saveExamDraft() {
   return true;
 }
 function validExamDraft(d) {
-  if (!d || !['2','3'].includes(d.level) || !['mini','full'].includes(d.kind) ||
+  if (!d || d.version !== 3 || !['2','3'].includes(d.level) || !['mini','full'].includes(d.kind) ||
       !Array.isArray(d.ids) || d.ids.length !== (d.kind === 'mini' ? 6 : 60) ||
       new Set(d.ids).size !== d.ids.length || !Array.isArray(d.answers) ||
-      d.answers.length !== d.ids.length || !Number.isFinite(d.deadline)) return false;
+      d.answers.length !== d.ids.length || !Number.isFinite(d.deadline) ||
+       !Number.isInteger(d.pos) || d.pos < 0 || d.pos >= d.ids.length ||
+       !Array.isArray(d.flags) || d.flags.length !== d.ids.length || !d.flags.every(f => typeof f === 'boolean')) return false;
   const map = new Map(QUESTIONS.map(q => [q.id,q]));
   if (!d.ids.every(id => map.has(id) && map.get(id).level === d.level)) return false;
   // A draft without frozen content cannot be reconstructed faithfully.
@@ -412,9 +395,7 @@ function resumeExam() {
   }
   exam = draft;
   examDraftToken = originalDraftToken;
-  if (!Array.isArray(exam.flags) || exam.flags.length !== exam.ids.length || !exam.flags.every(f => typeof f === 'boolean')) exam.flags = exam.ids.map(() => false);
   $('examNavDetails').open = false;
-  if (!Number.isInteger(exam.pos) || exam.pos < 0 || exam.pos >= exam.ids.length) exam.pos = 0;
   show('exam');
   if (exam.deadline <= Date.now()) { finishExam(true); return; }
   renderExam(); startTimer();
@@ -477,7 +458,6 @@ function jumpToUnanswered() {
 
 function toggleExamFlag() {
   if (!exam) return;
-  if (!Array.isArray(exam.flags) || exam.flags.length !== exam.ids.length || !exam.flags.every(f => typeof f === 'boolean')) exam.flags = exam.ids.map(() => false);
   const pos = exam.pos, previous = exam.flags[pos];
   exam.flags[pos] = !previous;
   if (!saveExamDraft()) { exam.flags[pos] = previous; return; }
@@ -521,14 +501,9 @@ function finishExam(timeOver = false) {
   const currentExam = exam;
   lastExamLevel = currentExam.level;
   lastExamKind = currentExam.kind;
-  archiveOldRevisionResults();
   const history = load();
   qs.forEach((q, i) => {
     if (a[i] === null) return;
-    const prior = history[q.id];
-    const priorRevision = prior && Number.isInteger(prior.revision) ? prior.revision : 1;
-    // 旧版の途中保存模試を後から採点しても、最新版の問題で回答した結果を上書きしません。
-    if (prior && priorRevision > questionRevision(q)) return;
     history[q.id] = { correct: a[i] === q.answer, selected: a[i], at: Date.now(), revision: questionRevision(q) };
   });
   if (!writeJSON(STORAGE, history)) { recoverTimer(); return; }
@@ -625,7 +600,7 @@ function renderExamReview() {
 }
 function clearStats() {
   if (!confirm('この端末のすべての解答履歴、模試履歴、模試の途中経過を削除しますか？')) return;
-  try { [STORAGE, EXAM_HISTORY_KEY, EXAM_DRAFT_KEY, EXAM_DETAILS_KEY, REVISION_ARCHIVE_KEY].forEach(k => localStorage.removeItem(k)); } catch { alert('履歴の削除に失敗しました。'); }
+  try { [STORAGE, EXAM_HISTORY_KEY, EXAM_DRAFT_KEY, EXAM_DETAILS_KEY].forEach(k => localStorage.removeItem(k)); } catch { alert('履歴の削除に失敗しました。'); }
   stopTimer(); exam = null; updateHome();
 }
 function goHome() {
@@ -660,7 +635,6 @@ function init() {
   $('reviewAll').addEventListener('click', () => setReviewFilter('all'));
   $('examRetry').addEventListener('click', () => { setLevel(lastExamLevel); show('home'); createExam(lastExamKind); });
   document.addEventListener('visibilitychange', () => { if (!document.hidden && exam) updateTimer(); });
-  archiveOldRevisionResults();
   // Search-entry links may request a grade; do not auto-start or change stored progress.
   const requestedLevel = typeof URLSearchParams === 'function' && typeof window.location?.search === 'string'
     ? new URLSearchParams(window.location.search).get('level') : null;

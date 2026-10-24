@@ -30,14 +30,14 @@ for(const [key,base,cases] of [[ad,academic,academicBad],[pd,practical,practical
  }
  for(const raw of ['{broken','null','[]']){const b=boot(new Map([[key,raw]]));if(key===ad)b.run('resumeExam()');else b.el('prResume').click();assert.ok(b.alerts.length);assert.equal(b.storage.get(key),raw);checks++;}
 }
-// Missing legacy snapshots supported; damaged present snapshots rejected above.
+// Unsupported old drafts with missing flags or invalid positions are rejected.
 let d=clone(academic);delete d.flags;d.pos=-1;
-let b=boot(new Map([[ad,JSON.stringify(d)]]));b.run('resumeExam()');assert.equal(b.run('exam.pos'),0);assert.equal(b.run('getExamQuestions().length'),6);checks++;
+let b=boot(new Map([[ad,JSON.stringify(d)]]));b.run('resumeExam()');assert.equal(b.run('exam'),null);assert.ok(b.alerts.length);checks++;
 // Frozen old content remains frozen; correct current data is never substituted.
 d=clone(academic);d.snapshots[0].question='保存時の旧本文';b=boot(new Map([[ad,JSON.stringify(d)]]));b.run('resumeExam()');assert.equal(b.el('examQuestion').textContent,'保存時の旧本文');checks++;
 d=clone(practical);d.questions=d.questions.slice(0,1);d.answers=[null];d.mode='mistakes';d.pos=99;b=boot(new Map([[pd,JSON.stringify(d)]]));b.el('prResume').click();assert.equal(b.el('prProgress').textContent,'1/1問');checks++;
 // Numeric input in progress is allowed even before becoming a valid number.
 const nq=initial.run("PRACTICAL_QUESTIONS.find(q=>q.kind==='numeric')");
-for(const answer of ['－','１２３．４',null,12]){d={track:nq.track,questions:[nq],answers:[answer],pos:0};b=boot(new Map([[pd,JSON.stringify(d)]]));b.el('prResume').click();assert.equal(b.alerts.length,0);assert.equal(b.el('prProgress').textContent,'1/1問');checks++;}
-for(const mutation of [q=>q.answer='12',q=>q.tolerance=-1]){const q=clone(nq);mutation(q);d={track:q.track,questions:[q],answers:[null],pos:0};b=boot(new Map([[pd,JSON.stringify(d)]]));b.el('prResume').click();assert.ok(b.alerts.length);checks++;}
-console.log(JSON.stringify({result:'PASS',scenarios:checks,scope:'破損・空・型不正・選択範囲外・ID重複と不一致を拒否しデータ保持。保存本文あり旧版・旧本文・1問復習・数値入力途中を再開。',limit:'VM/DOM模擬。端末ブラウザ未検証。'},null,2));
+for(const answer of ['－','１２３．４',null,12]){d={version:20,attemptId:'pr-numeric-'+checks,track:nq.track,questions:[nq],answers:[answer],pos:0};b=boot(new Map([[pd,JSON.stringify(d)]]));b.el('prResume').click();assert.equal(b.alerts.length,0);assert.equal(b.el('prProgress').textContent,'1/1問');checks++;}
+for(const mutation of [q=>q.answer='12',q=>q.tolerance=-1]){const q=clone(nq);mutation(q);d={version:20,attemptId:'pr-invalid-'+checks,track:q.track,questions:[q],answers:[null],pos:0};b=boot(new Map([[pd,JSON.stringify(d)]]));b.el('prResume').click();assert.ok(b.alerts.length);checks++;}
+console.log(JSON.stringify({result:'PASS',scenarios:checks,scope:'破損・空・型不正・選択範囲外・ID重複と不一致を拒否しデータ保持。現行スナップショット・1問復習・数値入力途中を再開。',limit:'VM/DOM模擬。端末ブラウザ未検証。'},null,2));
