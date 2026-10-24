@@ -15,7 +15,7 @@ const field=(id,fid)=>{const q=get(id),f=q.fields.find(x=>x.id===fid);assert.ok(
 const expect=(id,fid,actual)=>assert.equal(field(id,fid),actual,id+'/'+fid+' independent account calculation');
 // 2026 scope: do not prematurely remove the promissory-note topics included in the 2026 syllabus.
 const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
-assert.match(html,/2026年度に適用される出題区分/);
+assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
 assert.match(html,/boki-data\.js\?v=20261024h/);
 assert.match(html,/boki-extra\.js\?v=20261024g/);
