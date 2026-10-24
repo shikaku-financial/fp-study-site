@@ -1,6 +1,6 @@
 'use strict';
 const BOKI_CORE = (()=>{
- const revision='2026-10-24-first-fs-balances';
+ const revision='2026-10-24-strict-journal-accounts';
  const examFor=(data,level,form='1')=>form==='1'?data[String(level)]:data[String(level)]?.forms?.[form];
  const allItems=exam=>exam.sections.flatMap(s=>s.items);
  const points=item=>item.type==='journal'?item.points:item.fields.reduce((n,f)=>n+f.points,0);
@@ -20,11 +20,23 @@ const BOKI_CORE = (()=>{
    if(account===''&&raw==='')continue;
    const n=number(raw);
    if(typeof account!=='string'||!account||n===null||n===0)return null;
-   const total=(sums.get(account)||0)+n;
-   if(!Number.isSafeInteger(total))return null;
-   sums.set(account,total);
+   // Official CBT does not permit duplicate account names on the same side.
+   if(sums.has(account))return null;
+   sums.set(account,n);
   }
   return [...sums].sort((a,b)=>a[0].localeCompare(b[0]));
+ }
+ function journalDuplicateSides(answer){
+  if(!answer||typeof answer!=='object')return [];
+  return ['debit','credit'].filter(side=>{
+   const seen=new Set();
+   for(const row of (Array.isArray(answer[side])?answer[side]:[])){
+    if(!Array.isArray(row)||typeof row[0]!=='string'||row[0]==='')continue;
+    if(seen.has(row[0]))return true;
+    seen.add(row[0]);
+   }
+   return false;
+  });
  }
  function journalCorrect(item,answer){
   if(!answer)return false;
@@ -46,7 +58,8 @@ const BOKI_CORE = (()=>{
  function touched(answer){return !!answer&&Object.values(answer).some(v=>Array.isArray(v)?v.some(r=>r.some(x=>x!=='')):v!=='');}
  function validSession(s,data){
   if(!s||s.revision!==revision||!['2','3'].includes(String(s.level))||!['exam','practice','review'].includes(s.mode)||!Array.isArray(s.ids)||!s.ids.length||s.ids.length>50)return false;
-  const exam=examFor(data,s.level,s.form??'1');
+  if(!['1','2'].includes(s.form))return false;
+   const exam=examFor(data,s.level,s.form);
   if(!exam||!Array.isArray(exam.sections))return false;
   const ids=new Set(allItems(exam).map(i=>i.id));
   if(new Set(s.ids).size!==s.ids.length||!s.ids.every(id=>ids.has(id)))return false;
@@ -63,6 +76,6 @@ const BOKI_CORE = (()=>{
   }
   return true;
  }
- return {revision,examFor,allItems,points,number,fieldCorrect,grade,result,touched,validSession};
+ return {revision,examFor,allItems,points,number,journalDuplicateSides,fieldCorrect,grade,result,touched,validSession};
 })();
 if(typeof module!=='undefined')module.exports=BOKI_CORE;
