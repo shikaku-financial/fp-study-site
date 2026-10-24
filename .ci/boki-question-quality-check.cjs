@@ -416,7 +416,7 @@ for(const [id,captions,leaks,points] of [
  assert.equal(shown.length,captions.length,id+' expected table sections');
  const flat=shown.flatMap(t=>t.rows.flat());
  for(const leak of leaks)assert.ok(!flat.includes(leak),id+' answer leaked as literal '+leak);
- const used=flat.filter(v=>v&&typeof v==='object').map(v=>v.id);
+ const used=exercise.tables.flatMap(t=>t.rows.flat()).filter(v=>v&&typeof v==='object').map(v=>v.id);
  for(const field of exercise.fields)assert.equal(used.filter(v=>v===field.id).length,1,id+'/'+field.id+' appears once');
  assert.equal(exercise.fields.reduce((sum,f)=>sum+f.points,0),points,'section remains 10 points');
  const C=require('../boki-core.js'),good=Object.fromEntries(exercise.fields.map(f=>[f.id,String(f.answer)]));
