@@ -42,8 +42,10 @@ function fingerprint(q){
 function numericText(value){
  if(typeof value!=='string')return null;
  const s=value.trim();
- if(!/^[0-9][0-9,]*$/.test(s))return null;
- return Number(s.replace(/,/g,''));
+ // Only a complete standalone number or monetary amount is comparable to an answer.
+ // Keep "100円/個", "4/1", and "100×2" out of the literal-answer match.
+ if(!/^(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?:\s*円)?$/.test(s))return null;
+ return Number(s.replace(/[,\s円]/g,''));
 }
 
 function validDate(date){
@@ -226,7 +228,8 @@ function displayAnswer(q){
  if(Array.isArray(q.subAnswers)){
   return q.subAnswers.map((a,i)=>{
    const choice=Array.isArray(a.choices)?a.choices[a.answer]:null;
-   const bank=Array.isArray(a.wordBank)?a.wordBank[a.answer]:null;
+   // Word-bank symbols are 1-based; regular multiple-choice indexes are 0-based.
+   const bank=Array.isArray(a.wordBank)?a.wordBank[a.answer-1]:null;
    return (a.label||'欄'+(i+1))+'：'+String(a.answer)+(choice?'（'+choice+'）':bank?'（語群：'+bank+'）':'')+(a.unit?' '+a.unit:'');
   }).join(' ／ ');
  }

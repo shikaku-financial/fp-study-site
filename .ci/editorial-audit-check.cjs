@@ -76,6 +76,20 @@ const bokiFlags=reasonsFor({bank:'簿記2級',form:'第1回',id:boki.id,q:boki})
 assert.ok(bokiFlags.includes('資料表に正答と同額あり（転記可能性を目視確認）'));
 assert.ok(bokiFlags.includes('複数の解答欄が同額（出題意図を確認）'));
 assert.deepEqual(reasonsFor({bank:'簿記2級',form:'第1回',id:'safe',q:{...boki,fields:[{id:'f1',answer:300},{id:'f2',answer:400}]}}),[]);
+// The real bookkeeping source tables frequently print currency with a suffix.
+// Match a full monetary cell but not composite rates, multiplication, or dates.
+const currencyCase={id:'currency-sample',type:'table',
+ fields:[{id:'amount',label:'売上高',answer:100000}],
+ tables:[{caption:'問題資料',rows:[['期首','100,000円']]},
+  {caption:'解答欄',rows:[['売上高',{id:'amount'}]]}]};
+const currencyEntry=q=>({bank:'簿記2級',form:'第1回',id:'currency-sample',q});
+assert.ok(reasonsFor(currencyEntry(currencyCase)).includes('資料表に正答と同額あり（転記可能性を目視確認）'),'100,000円 must be compared as 100000');
+for(const literal of ['100,000 円','100000円','100000','100,000']){
+ assert.ok(reasonsFor(currencyEntry({...currencyCase,tables:[{caption:'資料',rows:[['残高',literal]]},currencyCase.tables[1]]})).includes('資料表に正答と同額あり（転記可能性を目視確認）'),'full monetary source cell '+literal);
+}
+for(const literal of ['100,000円/個','100,000×2','1,00,000円','2026/10/24']){
+ assert.ok(!reasonsFor(currencyEntry({...currencyCase,tables:[{caption:'資料',rows:[['参考',literal]]},currencyCase.tables[1]]})).includes('資料表に正答と同額あり（転記可能性を目視確認）'),'compound/malformed source must not become a comparable amount '+literal);
+}
 const bsTotals={...boki,fields:[
  {id:'a',label:'資産合計',answer:5546000},
  {id:'b',label:'負債・純資産合計',answer:5546000}
@@ -108,7 +122,11 @@ assert.deepEqual(selectReviewEntries(r.flagged,8).map(x=>x.id),packetIds,'previe
 assert.ok(!packet.includes('<script'),'untrusted HTML must not render');
 assert.equal(displayAnswer({choices:['ア','イ'],answer:1}),'選択肢2：イ');
 assert.match(displayAnswer({subAnswers:[{label:'①',answer:0,choices:['○','×']},{label:'②',answer:250,unit:'円'}]}),/②：250 円/);
-assert.match(displayAnswer({subAnswers:[{label:'③',answer:1,wordBank:['甲','乙']}]}),/語群：乙/);
+assert.match(displayAnswer({subAnswers:[{label:'③',answer:1,wordBank:['甲','乙']}]}),/語群：甲/,'word-bank keys start at 1, first symbol is 甲');
+assert.match(displayAnswer({subAnswers:[{label:'③',answer:2,wordBank:['甲','乙']}]}),/語群：乙/,'last word-bank symbol selects 乙');
+const liveWordbankSub=wordbank.q.subAnswers.find(sub=>Array.isArray(sub.wordBank));
+assert.ok(liveWordbankSub&&liveWordbankSub.answer>=1,'a real 1-based FP word-bank answer exists');
+assert.ok(displayAnswer({subAnswers:[liveWordbankSub]}).includes('語群：'+liveWordbankSub.wordBank[liveWordbankSub.answer-1]),'real word-bank preview displays the keyed correct option');
 assert.match(displayAnswer({fields:[{id:'f1',label:'売上高',answer:100}]}),/売上高：100/);
 assert.match(displayAnswer({type:'journal',debit:[['現金',100]],credit:[['売上',100]]}),/借方 現金 100/);
 const dangerous={...r,flagged:[{...r.flagged[0],q:{question:'<script>alert(1)</script>',explanation:'<iframe src=bad>',answer:12,sourceUrl:'https://example.org/ref'},hash:fingerprint({question:'<script>alert(1)</script>'})}]};
