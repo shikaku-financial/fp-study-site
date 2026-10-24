@@ -3,6 +3,7 @@
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
 const root=path.resolve(process.argv[2]||path.join(__dirname,'../..'));
 const src=fs.readFileSync(path.join(root,'app.js'),'utf8');
+assert.doesNotMatch(src,/revisionNotice|resultCurrent/,'legacy revision-filtered history UI must stay removed');
 assert.doesNotMatch(src,/archiveOldRevisionResults|REVISION_ARCHIVE_KEY/,'legacy archive must not be reintroduced');
 function section(start,end){
   const a=src.indexOf(start),b=src.indexOf(end,a+start.length);
@@ -25,7 +26,7 @@ for(const saved of [false,true]){
   const ctx={
     answered:false,selected:1,index:0,correct:0,session:[q],
     $:el,load:()=>({}),STORAGE:'storage',writeJSON:(key,data)=>{
-      assert.equal(key,'storage');assert.equal(data.q1.selected,1);return saved;
+      assert.equal(key,'storage');assert.equal(data.q1.selected,1);assert.equal('revision' in data.q1,false,'recording does not preserve legacy revision version');return saved;
     },
     questionRevision:()=>1,
     document:{createElement:()=>({className:'',textContent:''})},
