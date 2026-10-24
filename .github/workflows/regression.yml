@@ -34,6 +34,11 @@ jobs:
           node .ci/boki-second-check.cjs
           node .ci/boki-question-quality-check.cjs
           node .ci/boki-flow-check.cjs
+      - name: Summarize 660 question audit and validate real human review records
+        run: |
+          node --check .ci/editorial-audit.cjs
+          node .ci/editorial-audit-check.cjs
+          node .ci/editorial-audit.cjs --limit=35
       - name: Check shared learning calculator
         run: |
           node --check calculator.js
