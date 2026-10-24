@@ -50,7 +50,7 @@
   return `<div class="boki-scroll" role="region" tabindex="0" aria-label="${esc(t.caption)}。横にスクロールできます"><table><caption>${esc(t.caption)}</caption><thead><tr>${t.headers.map(h=>`<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${t.rows.map(row=>`<tr>${row.map((cell,index)=>{
    if(typeof cell==='object'){
     const f=item.fields.find(f=>f.id===cell.id),correct=disabled?C.fieldCorrect(f,answer?.[f.id]):null;
-    if(f.type==='choice')return `<td><select data-field="${f.id}" aria-label="${esc(f.label)}" ${disabled?'disabled class="'+(correct?'answer-good':'answer-bad')+'"':''}><option value="">選択してください</option>${f.options.map(opt=>`<option value="${esc(opt)}" ${answer?.[f.id]===opt?'selected':''}>${esc(opt)}</option>`).join('')}</select></td>`;
+    if(f.type==='choice'){const tag=index===0?'th':'td',scope=index===0?' scope="row"':'';return `<${tag}${scope}><select data-field="${f.id}" aria-label="${esc(f.label)}" ${disabled?'disabled class="'+(correct?'answer-good':'answer-bad')+'"':''}><option value="">選択してください</option>${f.options.map(opt=>`<option value="${esc(opt)}" ${answer?.[f.id]===opt?'selected':''}>${esc(opt)}</option>`).join('')}</select></${tag}>`;}
     return `<td><input type="text" inputmode="numeric" maxlength="30" autocomplete="off" data-field="${f.id}" aria-label="${esc(f.label)}" value="${esc(answer?.[f.id]??'')}" ${disabled?'disabled class="'+(correct?'answer-good':'answer-bad')+'"':''}></td>`;
    }
    return `<${index===0?'th scope="row"':'td'}>${esc(cell)}</${index===0?'th':'td'}>`;
