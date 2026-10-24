@@ -71,7 +71,7 @@ assert.equal(lookup('b3-j08','debit','普通預金'),600000+600000*2/100*6/12);
 assert.equal(lookup('b3-j10','debit','売掛金'),82000-20000);
 assert.equal(lookup('b3-j12','debit','貸倒引当金繰入'),450000*2/100-4500);
 assert.equal(lookup('b3-j13','debit','前払保険料'),60000*2/6);
-assert.equal(lookup('b3-j14','credit','買掛金'),50000*(1+10/100));
+assert.equal(lookup('b3-j14','credit','買掛金'),50000+50000*10/100);
 console.log('PASS: authentic CBT instructions distinguished from study-site conveniences; 12 journal lessons independently checked');
 
 // A trading security is not described using the merchandise accounting "分記法".
