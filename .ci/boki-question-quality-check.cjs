@@ -95,6 +95,34 @@ for(const [id,fid,correctAnswer] of [
 assert.match(html,/4回分の模試に勘定科目・語句選択の空欄/);
 console.log('PASS: six original categorical select fields embedded across four full-length mocks; mixed grading validated');
 
+// Financial statement entries now test accounting classification, not just arithmetic.
+for(const [id,fid,account,linked,fact] of [
+ ['b3-financial','f38','前払保険料','f34',24000],
+ ['b3-r2-financial','g8','未払給料','g5',745000],
+ ['b2-financial','f211','その他有価証券評価差額金','f27',18000],
+ ['b2-r2-financial','h11','営業損失','h7',470000],
+ ['b2-r2-consolidated','k11','親会社株主持分','k7',40000]
+]){
+ const q=get(id),select=q.fields.find(f=>f.id===fid),value=q.fields.find(f=>f.id===linked);
+ assert.equal(select?.type,'choice',id+'/'+fid+' must use dropdown answer');
+ assert.equal(select.answer,account);
+ assert.equal(value.answer,fact,id+'/'+linked+' independent numeric counterpart');
+ assert.equal(select.points,2,id+'/'+fid+' maintains explicit choice points');
+ assert.ok(select.options.length>=3&&new Set(select.options).size===select.options.length);
+ const cells=q.tables.flatMap(t=>t.rows.flat());
+ assert.equal(cells.filter(c=>c&&typeof c==='object'&&c.id===fid).length,1,id+' choice appears once');
+ const C=require('../boki-core.js'),perfect=Object.fromEntries(q.fields.map(f=>[f.id,String(f.answer)]));
+ assert.equal(C.grade(q,perfect).earned,C.points(q),id+' all correct');
+ perfect[fid]=select.options.find(opt=>opt!==select.answer);
+ const result=C.grade(q,perfect);
+ assert.equal(result.earned,C.points(q)-2,id+' wrong account loses exactly 2 points');
+ assert.equal(result.correct,false);
+ perfect[fid]='';
+ assert.equal(C.grade(q,perfect).earned,C.points(q)-2,'unanswered account must be wrong');
+}
+assert.match(html,/決算・財務諸表の表示科目や連結上の持分区分も練習できます/);
+console.log('PASS: five financial statement and consolidation account-choice fields with independent numeric pairings');
+
 // A trading security is not described using the merchandise accounting "分記法".
 const securities=get('b2-securities');
 assert.ok(!securities.prompt.includes('分記法'),'product-sales journal method must not describe securities');
