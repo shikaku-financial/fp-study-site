@@ -17,7 +17,7 @@ const expect=(id,fid,actual)=>assert.equal(field(id,fid),actual,id+'/'+fid+' ind
 const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
-assert.match(html,/boki-data\.js\?v=20261024o/);
+assert.match(html,/boki-data\.js\?v=20261024q/);
 assert.match(html,/boki-extra\.js\?v=20261024p/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
@@ -502,19 +502,20 @@ console.log('PASS: first-form grade-three T-account and asset ledger answer leak
 
  const asset=get('b3-asset');
  const a=asset.prompt.match(/備品AはX3年4月1日に([\d,]+)円で取得し、耐用年数(\d+)年/);
- const b=asset.prompt.match(/備品BはX5年10月1日に([\d,]+)円で取得し、耐用年数(\d+)年/);
+ const b=asset.prompt.match(/備品Bは前期X4年10月1日に([\d,]+)円で取得し、耐用年数(\d+)年/);
  assert.ok(a&&b,'asset acquisition terms exist');
  const aAnnual=num(a[1])/num(a[2]),bAnnual=num(b[1])/num(b[2]);
  const salePrice=num(asset.fields.find(f=>f.id==='a5').label.match(/([\d,]+)円で売却/)[1]);
  expect(asset.id,'a1',aAnnual);
  expect(asset.id,'a2',aAnnual*3);
- expect(asset.id,'a3',bAnnual*6/12);
- expect(asset.id,'a4',num(b[1])-bAnnual*6/12);
+ expect(asset.id,'a3',bAnnual*12/12);
+ expect(asset.id,'a4',num(b[1])-bAnnual*18/12);
  expect(asset.id,'a5',salePrice-(num(a[1])-aAnnual*3));
  expect(asset.id,'a7',num(a[1])-aAnnual*3);
- expect(asset.id,'a8',bAnnual*6/12);
+ expect(asset.id,'a8',bAnnual*18/12);
  assert.equal(field(asset.id,'a7')+field(asset.id,'a2'),num(a[1]));
  assert.equal(field(asset.id,'a4')+field(asset.id,'a8'),num(b[1]));
+ assert.equal(field(asset.id,'a8'),field(asset.id,'a3')+bAnnual*6/12,'first six months belong to the preceding year');
 
  const cvp=get('b2-cvp');
  const conditions=cvp.prompt.match(/販売単価([\d,]+)円、単位当たり変動費([\d,]+)円、月間固定費([\d,]+)円/);
@@ -633,7 +634,7 @@ console.log('PASS: first-form grade-three T-account and asset ledger answer leak
  assert.equal(sales.reduce((n,r)=>n+Number(r[3].replace(/,/g,'')),0),field('b3-r2-vouchers','t3'));
  // Genuine double-entry and depreciation identities in b3-ledger/b3-asset are not automatically errors.
  assert.equal(field('b3-ledger','l7'),field('b3-ledger','l9'));
- assert.equal(field('b3-asset','a3'),field('b3-asset','a8'));
+ assert.notEqual(field('b3-asset','a3'),field('b3-asset','a8'),'current-year amount and lifetime cumulative amount must differ');
 }
 console.log('PASS: three direct-copy candidates eliminated from source tables; source-driven accounting and point totals unchanged.');
 

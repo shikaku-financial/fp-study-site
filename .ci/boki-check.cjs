@@ -72,7 +72,7 @@ assert.equal(v3.l8,800000*.03*8/12);
 assert.equal(v3.l9,v3.l7);
 assert.equal(v3.l3,v3.l5);
 assert.equal(v3.l5,v3.l8);
-assert.equal(v3.a3,360000/5*6/12);assert.equal(v3.a8,v3.a3);
+assert.equal(v3.a3,360000/5*12/12);assert.equal(v3.a8,360000/5*18/12);assert.notEqual(v3.a8,v3.a3,'cumulative depreciation must exceed current-year depreciation');
 assert.equal(v3.a7,480000-v3.a2);
 assert.equal(v3.a4,360000-v3.a8);
 assert.equal(v3.a5,320000-v3.a7);
