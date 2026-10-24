@@ -5,3 +5,6 @@
 @media(max-width:600px){.boki-scroll-hint{display:block;margin:12px 0 0}}
 
 .boki-scroll select[data-field]{min-width:10rem;max-width:100%;font-size:.9rem}.boki-scroll select[data-field]:disabled{opacity:1}
+
+/* Clear, non-modal feedback for repeated journal accounts. */
+.boki-inline-warning{padding:10px 12px;border-left:3px solid #ac7100;background:#fff7e6;color:#674800;border-radius:6px;font-size:14px;line-height:1.6}

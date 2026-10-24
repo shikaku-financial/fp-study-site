@@ -50,8 +50,10 @@ e=env();e.changeForm('2');e.click('exam');assert.equal(e.state().active.form,'2'
 e.input({side:'debit',row:'0',part:'0',value:'売掛金'});e.input({side:'debit',row:'0',part:'1',value:'95000'});e.input({side:'credit',row:'0',part:'0',value:'売上'});e.input({side:'credit',row:'0',part:'1',value:'95000'});
 e.click('pause');e=env(e.data);e.click('resume');assert.ok(e.nodes['boki-app'].innerHTML.includes('第2回'));e.click('finish');assert.equal(e.state().history[0].form,'2');e.click('result-review');assert.equal(e.state().active.form,'2');assert.equal(e.state().active.ids.length,17);assert.ok(!e.state().active.ids.includes('b3-r2-j01'));
 e.click('pause');e.click('discard');e.changeForm('1');assert.ok(!e.nodes['boki-app'].innerHTML.includes('data-action="review"'),'review unavailable for untouched first form');
-// Historical first-exam sessions without a form discriminator remain valid.
-e=env();e.click('exam');const legacy=e.state();delete legacy.active.form;e=env([[KEY,JSON.stringify(legacy)]]);e.click('resume');assert.ok(e.nodes['boki-app'].innerHTML.includes('第1回'));assert.equal(e.state().active.ids[0],'b3-j01');
+// Pre-release records without an explicit exam form are no longer resumed.
+e=env();e.click('exam');const incompatible=e.state();delete incompatible.active.form;e=env([[KEY,JSON.stringify(incompatible)]]);
+assert.ok(!e.nodes['boki-app'].innerHTML.includes('data-action="resume"'),'legacy form-less session has no resume option');
+assert.match(e.nodes['boki-notice'].textContent,/形式が現在の問題と一致しない/,'unsupported format is explained');
 // A second tab must not be overwritten by a stale session's next input.
 e=env();e.click('practice');const original=e.data.get(KEY);const other=JSON.parse(original);other.active.flags['b3-j01']=true;e.data.set(KEY,JSON.stringify(other));const external=e.data.get(KEY);
 e.input({side:'debit',row:'0',part:'1',value:'48000'});assert.equal(e.data.get(KEY),external,'stale tab must not overwrite newer saved records');assert.match(e.nodes['boki-notice'].textContent,/別のタブ/);

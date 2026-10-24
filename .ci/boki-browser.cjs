@@ -81,10 +81,23 @@ async function run(engineName){
    await assertFits(320);await assertFits(390);
    await click('home');assert.equal(await page.locator('button[data-action="review"]').count(),0,'perfect form has no review target');console.log('PASS '+engineName+': level '+level+' form '+form+' all inputs, table resume, deadline, grading and responsive layout');
   }
-  // Legacy records lack the form discriminator; their answer review must still work.
-  await page.evaluate(key=>{const s=JSON.parse(localStorage.getItem(key));const h=s.history.find(h=>h.level==='3'&&h.form==='1');s.history=[h];delete h.form;localStorage.setItem(key,JSON.stringify(s));},KEY);
-  await page.reload({waitUntil:'load'});await click('history');assert.match(await page.locator('.boki-summary').innerText(),/100\s*\/\s*100点/);await click('home');
-  // Empty attempt and wrong-only retry keep the selected form.
+  // Test same-side account duplication in a real mobile browser, including reload.
+   await choose('3','1');await click('practice');
+   await page.locator('select[data-side="debit"][data-row="0"]').selectOption('仕入');
+   await page.locator('input[data-side="debit"][data-row="0"]').fill('24000');
+   await page.locator('select[data-side="debit"][data-row="1"]').selectOption('仕入');
+   await page.locator('input[data-side="debit"][data-row="1"]').fill('24000');
+   await page.locator('select[data-side="credit"][data-row="0"]').selectOption('買掛金');
+   await page.locator('input[data-side="credit"][data-row="0"]').fill('48000');
+   await page.locator('#boki-journal-duplicate-warning').waitFor({state:'visible'});
+   assert.match(await page.locator('#boki-journal-duplicate-warning').innerText(),/同じ勘定科目が重複/);
+   await click('pause');await page.reload({waitUntil:'load'});await click('resume');
+   assert.match(await page.locator('#boki-journal-duplicate-warning').innerText(),/重複/,'saved duplicate must warn on resume');
+   await click('check');
+   assert.match(await page.locator('.result .boki-inline-warning').innerText(),/同じ勘定科目が重複/);
+   assert.ok((await page.locator('.result strong').first().innerText()).includes('0 / 3点'),'summed duplicate amounts must score zero');
+   await click('pause');await click('discard');
+   // Empty attempt and wrong-only retry keep the selected form.
   await choose('3','2');await click('exam');await click('finish');assert.match(await page.locator('.boki-summary').innerText(),/0\s*\/\s*100点/);assert.equal(await page.locator('button[data-action="result-review"]').count(),1,'incorrect result must offer review');await click('result-review');
   assert.equal((await saved()).active.form,'2');assert.equal((await saved()).active.ids.length,18);await click('pause');await click('discard');
   assert.equal(await page.locator('button[data-action="review"]').count(),1,'wrong answers enable review on the selected form');
@@ -139,7 +152,7 @@ async function run(engineName){
   await page.reload({waitUntil:'load'});
   assert.equal((await saved()).history.length,preFinish.history.length+1,'reload preserves one result');
   assert.deepEqual(errors,[],'uncaught browser errors');
-  console.log('PASS '+engineName+': legacy history, form-isolated wrong-only review, expired resume and quota failure');
+  console.log('PASS '+engineName+': strict duplicate warnings, form-isolated review, expired resume and quota failure');
  }finally{await context.close();await browser.close();}
 }
 (async()=>{for(const name of ['chromium','webkit'])await run(name);})().catch(e=>{console.error(e.stack||e);process.exitCode=1;});
