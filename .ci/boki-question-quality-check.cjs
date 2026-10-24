@@ -18,7 +18,7 @@ const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
 assert.match(html,/boki-data\.js\?v=20261024k/);
-assert.match(html,/boki-extra\.js\?v=20261024i/);
+assert.match(html,/boki-extra\.js\?v=20261024j/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
 assert.match(html,/2027年4月1日以降の3級本試験は第1問45点・第2問25点・第3問30点/);
@@ -122,6 +122,25 @@ for(const [id,fid,account,linked,fact] of [
 }
 assert.match(html,/決算・財務諸表の表示科目や連結上の持分区分も練習できます/);
 console.log('PASS: five financial statement and consolidation account-choice fields with independent numeric pairings');
+
+// Do not give away the direction of standard-costing variances in the question stem or answer labels.
+const variance=get('b2-r2-standard');
+assert.doesNotMatch(variance.prompt,/いずれも不利差異/);
+for(const f of variance.fields.filter(f=>f.type!=='choice'))assert.doesNotMatch(f.label,/（不利）/);
+for(const [fid,account,amountId,sourceAmount] of [
+ ['z7','不利差異','z1',50000],
+ ['z8','不利差異','z5',60000]
+]){
+ const f=variance.fields.find(x=>x.id===fid),numField=variance.fields.find(x=>x.id===amountId);
+ assert.ok(f&&f.type==='choice'&&f.points===2&&f.options.includes(account));
+ assert.equal(numField.answer,sourceAmount);
+ assert.equal(variance.tables.flatMap(t=>t.rows.flat()).filter(c=>c?.id===fid).length,1);
+ const C=require('../boki-core.js'),answers=Object.fromEntries(variance.fields.map(x=>[x.id,String(x.answer)]));
+ assert.equal(C.grade(variance,answers).earned,12);
+ answers[fid]='有利差異';
+ assert.equal(C.grade(variance,answers).earned,10,'incorrect adverse/favorable judgment loses 2 points');
+}
+console.log('PASS: standard costing direction not leaked, two independently graded variance classifications');
 
 // A trading security is not described using the merchandise accounting "分記法".
 const securities=get('b2-securities');
