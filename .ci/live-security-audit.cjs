@@ -6,7 +6,9 @@ const paths=['/','/fp','/guide','/app.js','/boki','/boki-extra.js','/brand.css',
 async function verify(){
  for(const path of paths){
   const url=SITE+path;
-  const response=await fetch(url,{redirect:'follow',signal:AbortSignal.timeout(12000)});
+  const isHtml=['/','/fp','/boki'].includes(path);
+  const response=await fetch(url,{redirect:'follow',signal:AbortSignal.timeout(12000),
+   headers:isHtml?{'Accept':'text/html','User-Agent':'Mozilla/5.0 (compatible; FLL-Analytics-Verification/1.0)'}:undefined});
   assert.equal(response.status,200,'status: '+url+' '+response.status);
   assert.equal(new URL(response.url).origin,SITE,'redirect to different origin');
   const get=key=>(response.headers.get(key)||'').trim();
@@ -21,6 +23,14 @@ async function verify(){
    assert.ok(csp.includes(directive),'missing '+directive+' '+path);
   assert.ok(!/script-src[^;]*(?:'unsafe-inline'|'unsafe-eval'|\*)/i.test(csp),'unsafe script policy '+path);
   const body=await response.text();
+  if(isHtml){
+   // Cloudflare Pages injects Web Analytics into deployed HTML after dashboard enablement.
+   // Verify the actual public response, not only the repository's static source.
+   const matches=[...body.matchAll(/<script\b[^>]*\bsrc=["']https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js(?:[/?#][^"']*)?["'][^>]*>/gi)];
+   assert.equal(matches.length,1,'expected exactly one Cloudflare Web Analytics beacon on '+path);
+   assert.ok(csp.includes('https://static.cloudflareinsights.com/beacon.min.js'),'Cloudflare beacon blocked by CSP '+path);
+   console.log('PASS '+path+' Cloudflare Web Analytics beacon automatically injected once');
+  }
   if(path==='/'){
    assert.ok(body.includes('http-equiv="Content-Security-Policy"'),'homepage meta CSP missing');
    assert.ok(body.includes('id="labs"')&&body.includes('href="fp.html"')&&body.includes('href="boki.html"'),'FLL parent home not published');
