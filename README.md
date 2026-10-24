@@ -47,6 +47,12 @@ Cloudflare Pagesを正規公開先とし、同じリポジトリからGitHub Pag
 4. 公開ファイルを変更した場合はGitHub PagesとCloudflare Pagesのデプロイ結果を確認する。文書のみの変更時は再公開を不要とする。
 5. 実際のiPhone Safariでの表示確認は、CIのブラウザ検査とは区別して報告する。
 
+## 速度とアクセス解析の運用
+
+`node .ci/asset-budget-check.cjs` はFLLトップ・FPラボ・簿記ラボの初期HTML・CSS・JSをgzipサイズで点検し、増量時のスマホ向け性能低下を早期に発見するためのCIガードです。実機の表示時間・Core Web Vitalsを保証するものではありません。
+
+Cloudflare Pages Web AnalyticsはPagesプロジェクトの「Metrics → Enable」を運営者が手動で有効化した場合にのみ自動挿入されます。セキュリティポリシーは `https://static.cloudflareinsights.com/beacon.min.js` へのスクリプトアクセスだけを追加許可し、送信先は同一サイトの `/cdn-cgi/rum` に限定します。手動で計測スクリプトを埋め込まないでください。公開先はCloudflare Pagesを正規とし、GitHub Pagesに同じ計測を重複させません。
+
 ## 自動テストとセキュリティ
 
 - `node .ci/run.cjs`：学科360問・実技240問の契約、採点・保存/再開などの回帰
