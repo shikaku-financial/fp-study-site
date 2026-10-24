@@ -21,7 +21,7 @@ function inputs(b){return flat(b.el('prMultiNumeric')).filter(e=>e.id&&e.id.star
 function fill(b,i,text){const input=inputs(b)[i];input.value=text;input.events.input({target:input});}
 function start(b){b.ctx.__fpPracticalTest.openPractical();b.el('prSelectLevel2').click();const card=flat(b.el('prTracks')).find(e=>e.className==='pr-track'&&e.children.some(c=>c.textContent==='資産設計提案業務'));card.children.find(e=>e.textContent==='この科目を練習する').click();b.el('prNav').children[4].click();}
 let b=boot();start(b);let d=JSON.parse(b.storage.get(pd));assert.equal(d.questions[4].kind,'multi_numeric');assert.deepEqual(d.answers[4],[null,null]);assert.equal(inputs(b).length,2);
-fill(b,0,'38.1');assert.equal(b.el('prAnswered').textContent,'0/40問 回答済');fill(b,1,'1.64');assert.ok(flat(b.el('prMultiNumeric')).some(e=>e.textContent.includes('3桁')));
+fill(b,0,'38.1');assert.equal(b.el('prAnswered').textContent,'0/40問 回答済');fill(b,1,'1,6');assert.ok(flat(b.el('prMultiNumeric')).some(e=>e.textContent.includes('3桁')));fill(b,1,'1.64');
 b.el('prSaveExit').click();b=boot(b.storage);b.el('prResume').click();assert.deepEqual(inputs(b).map(e=>e.value),['38.1','1.64']);fill(b,1,'１．６４');assert.equal(b.el('prAnswered').textContent,'1/40問 回答済');b.el('prSubmit').click();
 let result=JSON.parse(b.storage.get(ph)).attempts[0];assert.equal(result.correct,1);assert.deepEqual(result.answers[4],['38.1','１．６４']);
 b.el('prAll').click();assert.ok(flat(b.el('prReviews')).some(e=>e.textContent==='（ア）配当性向：正解（あなたの回答：38.1 ％／正解：38.1 ％）'));
