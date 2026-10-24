@@ -21,6 +21,16 @@ e=env(e.data);e.click('resume');assert.ok(e.nodes['boki-app'].innerHTML.includes
 e.click('result-review');assert.equal(e.state().active.ids.length,17);assert.equal(e.state().active.mode,'review');e.click('pause');e.click('clear');assert.equal(e.state().history.length,0);assert.equal(e.data.get('fp-lab-progress'),'FP sentinel');
 e=env();e.click('level',{level:'2'});e.click('exam');assert.equal(e.state().active.deadline-e.state().active.started,5400000);e.advance(5400001);assert.equal(e.state().history.length,1);assert.equal(e.state().history[0].expired,true);assert.equal(e.state().active,null);assert.ok(e.nodes['boki-notice'].textContent.includes('制限時間'));
 e=env();e.click('practice');e.input({side:'debit',row:'0',part:'0',value:'仕入'});const saved=e.data.get(KEY);e.fail(true);e.input({side:'debit',row:'0',part:'1',value:'48000'});assert.equal(e.data.get(KEY),saved);assert.ok(e.nodes['boki-notice'].textContent.includes('保存に失敗'));e=env(e.data);e.click('resume');assert.equal(e.state().active.answers['b3-j01'].debit[0][1],'');e.fail(false);e.click('check');assert.equal(e.state().active.checked['b3-j01'],true);assert.ok(e.nodes['boki-app'].innerHTML.includes('正しい仕訳'));e.fail(true);e.click('flag');assert.ok(e.nodes['boki-notice'].textContent.includes('保存に失敗'));e.fail(false);e.click('flag');assert.equal(e.nodes['boki-notice'].textContent,'','successful save clears stale storage-failure warning');
+// Save-and-exit must keep the visible answers on screen when durable save fails.
+e=env();e.click('practice');e.input({side:'debit',row:'0',part:'0',value:'仕入'});
+const pauseBefore=e.data.get(KEY);
+e.fail(true);e.input({side:'debit',row:'0',part:'1',value:'48000'});e.click('pause');
+assert.equal(e.data.get(KEY),pauseBefore,'failed save and exit cannot change durable draft');
+assert.ok(e.nodes['boki-app'].innerHTML.includes('data-action="pause"'),'failed save and exit must stay on question screen');
+assert.match(e.nodes['boki-notice'].textContent,/保存に失敗/);
+e.fail(false);e.click('pause');
+assert.ok(e.nodes['boki-app'].innerHTML.includes('中断した学習を再開'),'recovered save returns to home');
+assert.equal(e.state().active.answers['b3-j01'].debit[0][1],'48000','answers persisted after successful retry');
 // Stored expired attempts must finish once on resume, not start a new timer.
 e=env();e.click('exam');const stale=e.state();stale.active.deadline=1;e=env([[KEY,JSON.stringify(stale)]]);e.click('resume');assert.equal(e.state().history.length,1);assert.equal(e.state().active,null);
 e=env([[KEY,'{broken']]);assert.ok(e.nodes['boki-notice'].textContent.includes('読み込めません'));assert.equal(e.data.get(KEY),'{broken');
