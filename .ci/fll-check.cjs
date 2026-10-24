@@ -15,6 +15,8 @@ assert.ok(bk.includes('boki-data.js?')&&bk.includes('boki-extra.js?')&&bk.includ
 const contact=read('contact.html'),privacy=read('privacy.html');
 assert.ok(contact.includes('href="https://tally.so/r/e5qgKJ"'),'no-login Tally form is primary contact entry');
 assert.ok(contact.includes('class="info-cta" href="https://tally.so/r/e5qgKJ"'),'primary contact button must link to live Tally form');
+assert.ok(contact.includes('お問い合わせ・不具合を報告する ↗'),'primary CTA must use concise reporting language');
+assert.ok(!contact.includes('登録不要で')&&!contact.includes('報告にGitHubアカウントやサイトへの会員登録は不要です。'),'contact page must omit redundant registration explanation');
 assert.ok(contact.includes('issues/new?template=question-report.md'),'GitHub issue reporting remains an optional developer fallback');
 assert.ok(!contact.includes('GitHubへのログインが必要です。投稿内容は公開されます。'),'old GitHub-only contact warning must be replaced');
 assert.ok(privacy.includes('https://tally.so/help/privacy-policy'),'Tally data processor privacy information disclosed');
