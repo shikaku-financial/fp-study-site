@@ -229,6 +229,8 @@ async function main(){
       await page.locator('#prSubmit').click();
       await visible('#practicalResult');
       assert.match(await page.locator('#prSummary').innerText(),/40問中3問正解/);
+      assert.equal(await page.locator('#prRetryMistakes').isVisible(),true,'review action visible with incorrect practical answers');
+      assert.equal(await page.locator('#prRetryMistakes').isEnabled(),true,'review action enabled for incorrect answers');
       await page.locator('#prAll').click();
       await page.locator('#prReviews details').first().locator('summary').first().click();
       assert.match(await page.locator('#prReviews details').first().innerText(),/正解/);
@@ -527,6 +529,37 @@ async function main(){
       await page.locator('#prBackHome').click();
       await visible('#home');
       await page.setViewportSize({width:390,height:844});
+    });
+    await step('perfect practical result hides review action but keeps full explanations',async()=>{
+      // This synthetic history exists only in the isolated browser smoke profile.
+      const previous=await page.evaluate(()=>{
+        const key='fp-training-practical-v12-results',prior=localStorage.getItem(key);
+        const q=PRACTICAL_QUESTIONS.find(item=>item.kind==='choice');
+        if(!q)throw Error('No choice-format practical question for result UI smoke');
+        const data=prior?JSON.parse(prior):{attempts:[]};
+        data.attempts.unshift({id:'test-perfect-practical',track:q.track,mode:'retry',
+          questions:[q],answers:[q.answer],correct:1,finishedAt:Date.now()});
+        localStorage.setItem(key,JSON.stringify(data));
+        return prior;
+      });
+      await page.reload({waitUntil:'load'});
+      await page.locator('#openPractical').click();
+      await visible('#practicalHome');
+      await page.locator('#prHistoryList .pr-history-entry').first().getByRole('button',{name:'答え合わせ'}).click();
+      await visible('#practicalResult');
+      assert.match(await page.locator('#prSummary').innerText(),/1問中1問正解/);
+      assert.equal(await page.locator('#prRetryMistakes').isVisible(),false,
+        'perfect practical result must not show a retry action with no mistakes');
+      await page.locator('#prAll').click();
+      assert.ok(await page.locator('#prReviews details').count()>0,
+        'full explanations remain available for a perfect result');
+      await page.evaluate(raw=>{
+        const key='fp-training-practical-v12-results';
+        if(raw===null)localStorage.removeItem(key);
+        else localStorage.setItem(key,raw);
+      },previous);
+      await page.reload({waitUntil:'load'});
+      await visible('#home');
     });
     assert.deepEqual(jsErrors,[],'uncaught JS errors');
     console.log('PASS: mobile '+engineName+' RC1 smoke (not Safari hardware)');
