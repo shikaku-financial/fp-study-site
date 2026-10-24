@@ -1518,7 +1518,7 @@ const QUESTIONS = [
     "taxYear": 2026,
     "sourceLabel": "国税庁：所得税の速算表",
     "sourceCheckedDate": "2026-10-24",
-    "reviewNote": "公式公開資料の対象論点と独自設例の計算・解説をAI支援で限定照合。個別の適用例外・法令全文・保険約款の包括監査と運営者による人手監修は未了。",
+    "reviewNote": "国税庁『所得税の税率』の速算表にある課税所得330万円超695万円以下の税率20％、速算控除427,500円を、設例の420万円に当てはめた結果412,500円をAI支援で独立照合。復興特別所得税・住民税を含まない設問条件であり、関連法令全文の包括監査や運営者の人手監修は未了。",
     "themeReferenceUrl": "https://www.jafp.or.jp/exam/mohan/files/g2_202605_qa.pdf",
     "themeReferenceLabel": "2026年5月公表の学科問題（構成・テーマの参照）",
     "choiceExplanations": [
