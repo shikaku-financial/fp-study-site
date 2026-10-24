@@ -258,8 +258,14 @@ function startQuiz(onlyWrong) {
   show('quiz'); renderQuiz();
 }
 function renderAcademicQuestion(container,q) {
-  if(window.__fpAcademicMaterialView)window.__fpAcademicMaterialView.render(container,q);
-  else container.textContent=q.question;
+  // Purely presentational punctuation breaks: leave question data and grading unchanged.
+  const readingLines=text=>String(text).replace(/。(?!\s|$)/g,'。\n');
+  if(window.__fpAcademicMaterialView){
+    window.__fpAcademicMaterialView.render(container,q);
+    container.querySelectorAll('.academic-stem').forEach(stem=>{
+      if(!stem.children.length)stem.textContent=readingLines(stem.textContent);
+    });
+  }else container.textContent=readingLines(q.question);
 }
 function renderQuiz() {
   selected = null; answered = false;
