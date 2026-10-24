@@ -16,7 +16,7 @@ try {
   assert.deepEqual(ids('PRACTICAL_QUESTIONS'),contract.practical_ids);
   assert.equal(contract.academic_ids.length,360);assert.equal(contract.practical_ids.length,240);
   assert.equal(new Set([...contract.academic_ids,...contract.practical_ids]).size,600);
-  for(const file of ['app.js','questions.js','practical.js','practical-questions.js','practical-materials.js']) {
+  for(const file of ['app.js','questions.js','practical.js','practical-loader.js','practical-questions.js','practical-materials.js']) {
     const result=spawnSync(process.execPath,['--check',path.join(temp,file)],{encoding:'utf8',timeout:30000});
     assert.equal(result.status,0,result.stderr||String(result.error));
   }

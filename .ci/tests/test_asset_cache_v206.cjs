@@ -12,7 +12,9 @@ const staleSource=fs.readFileSync(path.join(root,'development-notes/CACHE_REPROD
 function render(source){const ctx=vm.createContext({console,document:{createElement:t=>new Element(t)}});ctx.window=ctx;vm.runInContext(source,ctx);const el=new Element();ctx.__fpMaterialView.render(el,legacy);return el;}
 // Reproduce the supplied image's defining old view using an actual old renderer and old saved question.
 const old=render(staleSource);assert.ok(old.textContent.includes(label));assert.equal(flat(old).filter(e=>e.tagName==='OL').length,1);
-const html=fs.readFileSync(path.join(root,'index.html'),'utf8');const urls=Array.from(html.matchAll(/<script src="([^"]+)"/g),m=>m[1]);const url=urls.find(u=>u.startsWith('practical-materials.js?'));
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');const loader=fs.readFileSync(path.join(root,'practical-loader.js'),'utf8');
+assert.ok(html.includes('src="practical-loader.js?'),'FP HTML must load the practical loader');
+const url=loader.split("'").find(u=>u.startsWith('practical-materials.js?'));
 assert.ok(url&&!url.endsWith('v=94'));const cache=new Map([['practical-materials.js?v=94',staleSource]]);let misses=0;
 function load(u){if(cache.has(u))return cache.get(u);misses++;const data=fs.readFileSync(path.join(root,u.split('?')[0]),'utf8');cache.set(u,data);return data;}
 const current=render(load(url));assert.equal(misses,1);assert.equal(current.textContent.includes(label),false);assert.equal(flat(current).filter(e=>e.tagName==='OL').length,0);assert.equal(flat(current).filter(e=>e.className==='material-basis-note').length,1);assert.ok(current.textContent.includes('①報酬を得て'));assert.ok(current.textContent.includes('②NISA'));assert.ok(current.textContent.includes('③仮定事例'));assert.match(html,/id="prUpdatedDate" class="muted small">更新日：\d{4}年\d{1,2}月\d{1,2}日/);
