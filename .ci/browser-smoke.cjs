@@ -451,7 +451,7 @@ async function main(){
         await visible('#home');
         await check('academic home',width,['#startPractice','#startFull','#openPractical']);
         await page.locator('#openPractical').click();
-        await visible('#practicalHome');
+        await page.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
         await check('practical course select',width,['#prSelectLevel2','#prSelectLevel3']);
         await page.locator('#prSelectLevel2').click();
         // After JAFP2 and Kinzai2-personal, Kinzai2-business opens on numeric input.
