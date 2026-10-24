@@ -8,7 +8,7 @@ const EXAM_DRAFT_KEY = 'fp-training-exam-draft-v12';
 const EXAM_DETAILS_KEY = 'fp-training-exam-details-v12';
 const MINI_EXAM_MINUTES = 10;
 const questionRevision = (q) => Number.isInteger(q.revision) ? q.revision : 1;
-const resultCurrent = (q, r) => r && typeof r.correct === 'boolean' && r.revision === questionRevision(q);
+const hasRecordedAnswer = r => r && typeof r.correct === 'boolean';
 
 function appendQuestionSource(parent, q) {
   // A reference link is not a claim of official supervision or completed legal verification.
@@ -182,16 +182,13 @@ function updateHome() {
   $('category').value = CATEGORIES.includes(old) ? old : CATEGORIES[0];
   updatePracticeCountOptions(pool);
   const data = load();
-  const previous = pool.filter(q => resultCurrent(q, data[q.id]));
-  const staleCount = pool.filter(q => data[q.id] && typeof data[q.id].correct === 'boolean' && !resultCurrent(q, data[q.id])).length;
-  $('revisionNotice').classList.toggle('hidden', staleCount === 0);
-  $('revisionNotice').textContent = staleCount ? `改訂された${staleCount}問は現在の正答率から除外しています。新しい設問に回答すると最新の結果が集計されます。` : '';
+  const previous = pool.filter(q => hasRecordedAnswer(data[q.id]));
   const c = previous.filter(q => data[q.id].correct).length;
   $('stats').textContent = `FP${level}級：解答済み ${previous.length}問 ／ 正解 ${c}問 ／ 正答率 ${previous.length ? Math.round(c / previous.length * 100) : 0}％`;
   const categoryStats = $('categoryStats'); categoryStats.replaceChildren();
   for (const cat of CATEGORIES.slice(1)) {
     const group = pool.filter(q => q.category === cat);
-    const done = group.filter(q => resultCurrent(q, data[q.id]));
+    const done = group.filter(q => hasRecordedAnswer(data[q.id]));
     const hits = done.filter(q => data[q.id].correct).length;
     const row = document.createElement('div'); row.className = 'stat-row';
     const name = document.createElement('span'); name.textContent = cat;
@@ -246,13 +243,13 @@ function makeOptionButtons(target, q, selectedValue, onSelect, lock = false) {
   }
 }
 
-// 分野別演習と誤答復習（解答ごとにVer.12の保存先へ記録）。
+// 分野別演習と誤答復習。現行の学習結果のみを記録する。
 function startQuiz(onlyWrong) {
   if (exam) { alert('進行中の模試があります。先にホームで再開してください。'); return; }
   const cat = $('category').value;
   const data = load();
   session = validQuestions(level).filter(q => (cat === CATEGORIES[0] || q.category === cat) &&
-    (!onlyWrong || (resultCurrent(q, data[q.id]) && data[q.id].correct === false)));
+    (!onlyWrong || (hasRecordedAnswer(data[q.id]) && data[q.id].correct === false)));
   if (!session.length) { alert(onlyWrong ? '復習する問題はありません。' : 'この条件の問題はまだありません。'); return; }
   if ($('shuffle').checked) session = shuffle(session);
   const maxCount = $('practiceCount').value;
@@ -302,7 +299,7 @@ function submitAnswer() {
   if (answered || selected === null) return;
   const q = session[index], isCorrect = selected === q.answer;
   const data = load();
-  data[q.id] = { correct: isCorrect, selected, at: Date.now(), revision: questionRevision(q) };
+  data[q.id] = { correct: isCorrect, selected, at: Date.now() };
   // 保存できなかった回答を採点済み・回答済みとして扱わず、再試行できるようにする。
   if (!writeJSON(STORAGE, data)) return;
   answered = true;
@@ -504,7 +501,7 @@ function finishExam(timeOver = false) {
   const history = load();
   qs.forEach((q, i) => {
     if (a[i] === null) return;
-    history[q.id] = { correct: a[i] === q.answer, selected: a[i], at: Date.now(), revision: questionRevision(q) };
+    history[q.id] = { correct: a[i] === q.answer, selected: a[i], at: Date.now() };
   });
   if (!writeJSON(STORAGE, history)) { recoverTimer(); return; }
   const log = readJSON(EXAM_HISTORY_KEY, { attempts: [] });
