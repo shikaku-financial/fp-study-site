@@ -17,7 +17,7 @@ const expect=(id,fid,actual)=>assert.equal(field(id,fid),actual,id+'/'+fid+' ind
 const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
-assert.match(html,/boki-data\.js\?v=20261024m/);
+assert.match(html,/boki-data\.js\?v=20261024n/);
 assert.match(html,/boki-extra\.js\?v=20261024m/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
@@ -41,7 +41,7 @@ assert.match(html,/本試験に向けて半角数字のみ・同じ側の科目�
 assert.match(html,/当サイトは練習しやすいように全角数字と桁区切りカンマ/);
 assert.match(html,/当サイトも、同じ側の勘定科目を複数行に分けると/);
 assert.doesNotMatch(html,/金額を合算しますが/);
-assert.ok(html.includes('boki-core.js?v=20261024k'),'updated core cache key');
+assert.ok(html.includes('boki-core.js?v=20261024l'),'updated core cache key');
 assert.match(html,/公式試験のすべての解答形式を再現したものではありません/);
 // Learning-oriented journal explanations must show the calculation or account classification.
 for(const [id,required] of [
@@ -496,13 +496,33 @@ console.log('PASS: first-form grade-three T-account and asset ledger answer leak
  const [,unitPrice,unitVariable,fixed]=conditions.map(num);
  const contribution=unitPrice-unitVariable;
  const targetProfit=num(cvp.fields.find(f=>f.id==='c5').label.match(/目標営業利益([\d,]+)円/)[1]);
- const newPrice=num(cvp.fields.find(f=>f.id==='c6').label.match(/([\d,]+)円へ変更/)[1]);
+ const promotedPrice=num(cvp.prompt.match(/販売単価を([\d,]+)円に引き下げ/)[1]);
+  const adBudget=num(cvp.prompt.match(/広告宣伝費([\d,]+)円を/)[1]);
+  const growthPercent=Number(cvp.prompt.match(/から(\d+)%増える/)[1]);
+  const promotedQuantity=quantity*(100+growthPercent)/100,promotedFixed=fixed+adBudget;
+  assert.ok(Number.isInteger(promotedQuantity),'promotional forecast uses whole units');
  expect(cvp.id,'c1',contribution);
  expect(cvp.id,'c2',contribution*quantity);
  expect(cvp.id,'c3',contribution*quantity-fixed);
  expect(cvp.id,'c4',fixed/contribution);
  expect(cvp.id,'c5',(fixed+targetProfit)/contribution);
- expect(cvp.id,'c6',(newPrice-unitVariable)*quantity-fixed);
+ expect(cvp.id,'c6',(promotedPrice-unitVariable)*promotedQuantity-promotedFixed);
+  expect(cvp.id,'c8',(quantity-fixed/contribution)*unitPrice);
+  expect(cvp.id,'c9',promotedFixed/(promotedPrice-unitVariable));
+  assert.ok(promotedQuantity>field(cvp.id,'c9'),'scenario planned sales above updated break-even');
+  assert.notEqual(field(cvp.id,'c6'),field(cvp.id,'c3'),'base and changed-scenario earnings must be distinct');
+  const cvpAnswers=Object.fromEntries(cvp.fields.map(f=>[f.id,String(f.answer)]));
+  const C=require('../boki-core.js');
+  assert.equal(cvp.fields.reduce((s,f)=>s+f.points,0),12,'CVP case score remains 12 points');
+  assert.equal(C.grade(cvp,cvpAnswers).earned,12);
+  for(const id of ['c6','c8','c9']){
+   const fld=cvp.fields.find(f=>f.id===id),shown=cvp.tables.flatMap(t=>t.rows.flat()).filter(x=>x&&typeof x==='object'&&x.id===id);
+   assert.equal(shown.length,1,id+' renders exactly once');
+   assert.equal(C.grade(cvp,{...cvpAnswers,[id]:''}).earned,12-fld.points,'missing '+id+' reduces its points');
+   assert.equal(C.grade(cvp,{...cvpAnswers,[id]:String(fld.answer+1)}).earned,12-fld.points,'incorrect '+id+' reduces its points');
+  }
+  assert.match(cvp.fields.find(f=>f.id==='c8').explanation,/実際売上高/);
+  assert.match(cvp.fields.find(f=>f.id==='c9').explanation,/広告宣伝費/);
 }
 
 {
