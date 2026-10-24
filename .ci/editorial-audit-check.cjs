@@ -171,8 +171,53 @@ assert.throws(()=>renderReviewPacket(r,{limit:0}),/limit/);
   'unrelated arithmetic-only questions must not be falsely certified by this limited review');
  const after=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
  assert.equal(after.reviewedCount,0,'no human review records added by source investigation');
- assert.equal(after.flagged.length,49,'only six law evidence review flags resolved; other 49 editorial candidates remain');
+ assert.equal(after.flagged.length,44,'five more historical source issues resolved; other 44 editorial candidates remain');
 }
 console.log('PASS: six property-law question pairs have current primary citations, tested rule contrasts and no fabricated human review.');
+
+// Registration, agricultural conversion and licensed property disclosure: scoped 2026-04-01 baseline.
+// Content review is AI-assisted. The 660-question human review register must remain untouched.
+{
+ const registration=[
+  ['fp2-104',0,/甲区.*所有権.*乙区.*抵当権.*地役権.*地目・地積.*表題部/s],
+  ['fp3-083',0,/抵当権.*乙区.*甲区.*表題部/s]
+ ];
+ const farmland=[
+  ['fp2-167',1,/農地法第4条.*自己転用.*あらかじめ.*農業委員会.*第5条/s],
+  ['fp3-163',0,/農地法第4条.*あらかじめ.*届出.*第5条/s]
+ ];
+ const disclosure=[
+  ['fp3-164',1,/第35条第1項.*契約成立.*宅地建物取引士.*買主.*第37条/s]
+ ];
+ const expectedRoot={
+  'fp2-104':'https://www.moj.go.jp/MINJI/minji02',
+  'fp3-083':'https://www.moj.go.jp/MINJI/minji02',
+  'fp2-167':'https://www.maff.go.jp/j/nousin/noukei/totiriyo/ihan_tenyo.html',
+  'fp3-163':'https://www.maff.go.jp/j/nousin/noukei/totiriyo/ihan_tenyo.html',
+  'fp3-164':'https://www.mlit.go.jp/totikensangyo/const/1_6_bt_000268.html'
+ };
+ for(const [id,answer,pattern] of [...registration,...farmland,...disclosure]){
+  const record=all.find(e=>e.id===id);
+  assert.ok(record && record.bank==='FP学科',id+' is a published academic item');
+  const q=record.q;
+  assert.equal(q.answer,answer,id+' original keyed answer remains unchanged');
+  assert.equal(q.lawReferenceDate,'2026-04-01',id+' baseline remains fixed');
+  assert.equal(q.sourceCheckedDate,'2026-10-24',id+' accurate date of AI-assisted research');
+  assert.equal(q.sourceUrl,expectedRoot[id],id+' official source link');
+  assert.ok(Array.isArray(q.additionalSourceUrls)&&q.additionalSourceUrls.every(u=>/^https:\/\//.test(u)),id+' supplemental official links');
+  assert.equal(q.verificationStatus,'ai_scoped_primary_rule_checked_human_review_pending',id+' not human reviewed');
+  assert.match(q.reviewNote,/人手監修は未了/,id+' retains disclosure of verification limit');
+  assert.match(q.explanation,pattern,id+' teaches applicable legal distinction');
+  assert.ok(!reasonsFor(record,{today:'2026-10-24'}).includes('参照した旧資料の本文確認待ち'),
+   id+' replaces missing old source text with scoped primary guidance');
+  assert.equal(structureIssues(record).length,0,id+' answer contract unchanged');
+ }
+ const afterFive=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
+ assert.equal(afterFive.reviewedCount,0,'automated legal citations must not certify human review');
+ assert.equal(afterFive.flagged.length,44,'five scoped legal items removed from prior 49-candidate queue');
+ assert.ok(afterFive.flagged.some(e=>e.id==='fp2-114'),'unrelated arithmetic/legal item still pending');
+ assert.ok(afterFive.flagged.some(e=>e.id==='b3-ledger'),'bookkeeping follow-up remains pending');
+}
+console.log('PASS: five FP legal cases use official guidance, original answer keys, scoped AI audit status and zero human certification.');
 
 console.log('PASS: 660 records, time-aware evidence freshness and source review priority, 600 FP answer contracts, mutational guards, reviewer-ready previews, source hashes and honest human review boundary.');
