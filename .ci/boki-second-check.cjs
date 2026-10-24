@@ -54,6 +54,10 @@ const cost2=600000+4000000-650000,expenses2=900000+360000+90000+360000+10000,ope
 assert.equal(b.h2,cost2);assert.equal(b.h3,5200000-cost2);assert.equal(b.h7,operatingLoss);assert.equal(b.h9,operatingLoss+80000);assert.equal(b.h10,netLoss);
 const assets2=2000000+(1800000+200000)-(1800000+200000)*.02+650000+(3600000-720000-120000)+(1200000-480000-240000)+90000;
 assert.equal(assets2,1400000+2000000+20000+(160000-100000)+4000000+1170000-netLoss);
-const rate=9000000/6000,appliedA=160*rate,appliedB=80*rate;assert.equal(b.w1,rate);assert.equal(b.w2,appliedA);assert.equal(b.w3,appliedB);assert.equal(b.w4,240000+180000+appliedA);assert.equal(b.w5,160000+120000+appliedB);assert.equal(b.w6,380000-appliedA-appliedB);assert.equal(b.w7,b.w5);assert.equal(b.w8,1000000-b.w4);
+const rate=9000000/6000,appliedA=160*rate,appliedB=80*rate,appliedC=40*rate;
+assert.equal(b.w1,rate);assert.equal(b.w2,appliedA);assert.equal(b.w3,appliedB);assert.equal(b.w10,appliedC);
+assert.equal(b.w4,240000+180000+appliedA);assert.equal(b.w5,160000+120000+appliedB);assert.equal(b.w11,80000+60000+appliedC);
+assert.equal(b.w6,440000-appliedA-appliedB-appliedC);assert.equal(b.w7,b.w5+b.w11);assert.equal(b.w8,1000000-b.w4);
+assert.equal(b.w4+b.w7,1260000,'costs of three orders reconcile to finished goods and WIP');
 assert.equal(b.z1,(500-490)*2500);assert.equal(b.z2,(2500-600*4)*500);assert.equal(b.z3,2500*490-600*4*500);assert.equal(b.z3,b.z2-b.z1);assert.equal(b.z4,(1200-1180)*1250);assert.equal(b.z5,(1250-600*2)*1200);assert.equal(b.z6,1250*1180-600*2*1200);assert.equal(b.z6,b.z5-b.z4);assert.equal(b.z7,'有利差異');assert.equal(b.z8,'不利差異');
 console.log('PASS: four 100-point exams, 60 distinct items, form-scoped IDs, second-exam trial/financial/FIFO/voucher/consolidation/job-cost/standard-cost independent calculations');
