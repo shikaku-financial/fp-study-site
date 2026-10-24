@@ -122,6 +122,20 @@ async function run(engineName){
   await click('resume');
   assert.equal(await page.locator('input[data-side="debit"][data-row="0"]').inputValue(),'48000','saved answer resumes after reload');
 
+  // A storage outage while finalizing must not discard the draft or show an unsaved result.
+  const preFinish=await saved();
+  await page.evaluate(()=>{window.__bokiOriginalSetItem=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k==='fll-boki-progress')throw new DOMException('quota','QuotaExceededError');return window.__bokiOriginalSetItem.call(this,k,v);};});
+  await click('finish');
+  assert.deepEqual(await saved(),preFinish,'failed final save leaves durable draft unchanged');
+  assert.equal(await page.locator('button[data-action="finish"]').count(),1,'failed final save keeps answer screen');
+  assert.match(await page.locator('#boki-notice').innerText(),/保存に失敗/);
+  await page.evaluate(()=>{Storage.prototype.setItem=window.__bokiOriginalSetItem;});
+  await click('finish');
+  assert.equal((await saved()).history.length,preFinish.history.length+1,'retry creates one saved result');
+  assert.equal((await saved()).active,null);
+  assert.equal(await page.locator('.boki-result').count(),1);
+  await page.reload({waitUntil:'load'});
+  assert.equal((await saved()).history.length,preFinish.history.length+1,'reload preserves one result');
   assert.deepEqual(errors,[],'uncaught browser errors');
   console.log('PASS '+engineName+': legacy history, form-isolated wrong-only review, expired resume and quota failure');
  }finally{await context.close();await browser.close();}

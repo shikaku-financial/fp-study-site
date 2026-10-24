@@ -31,6 +31,17 @@ assert.match(e.nodes['boki-notice'].textContent,/保存に失敗/);
 e.fail(false);e.click('pause');
 assert.ok(e.nodes['boki-app'].innerHTML.includes('中断した学習を再開'),'recovered save returns to home');
 assert.equal(e.state().active.answers['b3-j01'].debit[0][1],'48000','answers persisted after successful retry');
+// Finishing is atomic: a failed result write cannot clear the live attempt or fabricate stored history.
+e=env();e.click('practice');e.input({side:'debit',row:'0',part:'0',value:'仕入'});
+const finishSaved=e.data.get(KEY);
+e.fail(true);e.click('finish');
+assert.equal(e.data.get(KEY),finishSaved,'failed grading must not modify saved session');
+assert.ok(e.nodes['boki-app'].innerHTML.includes('data-action="finish"'),'failed final save must stay on exercise');
+assert.match(e.nodes['boki-notice'].textContent,/保存に失敗/);
+e.fail(false);e.click('finish');
+assert.equal(e.state().active,null,'successful final save closes the session');
+assert.equal(e.state().history.length,1,'successful result appears once');
+assert.ok(e.nodes['boki-app'].innerHTML.includes('採点結果'));
 // Stored expired attempts must finish once on resume, not start a new timer.
 e=env();e.click('exam');const stale=e.state();stale.active.deadline=1;e=env([[KEY,JSON.stringify(stale)]]);e.click('resume');assert.equal(e.state().history.length,1);assert.equal(e.state().active,null);
 e=env([[KEY,'{broken']]);assert.ok(e.nodes['boki-notice'].textContent.includes('読み込めません'));assert.equal(e.data.get(KEY),'{broken');
