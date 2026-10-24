@@ -17,8 +17,8 @@ const expect=(id,fid,actual)=>assert.equal(field(id,fid),actual,id+'/'+fid+' ind
 const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
-assert.match(html,/boki-data\.js\?v=20261024i/);
-assert.match(html,/boki-extra\.js\?v=20261024g/);
+assert.match(html,/boki-data\.js\?v=20261024j/);
+assert.match(html,/boki-extra\.js\?v=20261024h/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
 assert.match(html,/2027年4月1日以降の3級本試験は第1問45点・第2問25点・第3問30点/);
@@ -73,6 +73,27 @@ assert.equal(lookup('b3-j12','debit','貸倒引当金繰入'),450000*2/100-4500)
 assert.equal(lookup('b3-j13','debit','前払保険料'),60000*2/6);
 assert.equal(lookup('b3-j14','credit','買掛金'),50000+50000*10/100);
 console.log('PASS: authentic CBT instructions distinguished from study-site conveniences; 12 journal lessons independently checked');
+
+// Verify that categorical answer slots are inside all four original 100-point mocks.
+for(const [id,fid,correctAnswer] of [
+ ['b3-ledger','l6','3/31 損益'],['b3-asset','a6','固定資産売却益'],
+ ['b3-r2-inventory','v6','4/5仕入分と4/20仕入分'],['b3-r2-vouchers','t6','売掛金'],
+ ['b2-cvp','c7','貢献利益率'],['b2-r2-job','w9','不利差異']
+]){
+ const item=get(id),f=item.fields.find(x=>x.id===fid);
+ assert.ok(f&&f.type==='choice',id+' choice field exists');
+ assert.equal(f.answer,correctAnswer);
+ assert.ok(f.options.includes(correctAnswer)&&f.options.length>=3,'valid choice options');
+ assert.equal(new Set(f.options).size,f.options.length,'unique choice options');
+ assert.equal(item.tables.flatMap(t=>t.rows.flat()).filter(c=>c&&typeof c==='object'&&c.id===fid).length,1,'choice rendered once');
+ const C=require('../boki-core.js');const good=Object.fromEntries(item.fields.map(x=>[x.id,String(x.answer)]));
+ assert.equal(C.grade(item,good).earned,C.points(item));
+ good[fid]=f.options.find(x=>x!==f.answer);
+ assert.equal(C.grade(item,good).earned,C.points(item)-f.points,'wrong choice loses only its points');
+ good[fid]='';assert.equal(C.grade(item,good).earned,C.points(item)-f.points);
+}
+assert.match(html,/4回分の模試に勘定科目・語句選択の空欄/);
+console.log('PASS: six original categorical select fields embedded across four full-length mocks; mixed grading validated');
 
 // A trading security is not described using the merchandise accounting "分記法".
 const securities=get('b2-securities');
