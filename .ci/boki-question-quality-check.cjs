@@ -18,7 +18,7 @@ const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
 assert.match(html,/boki-data\.js\?v=20261024m/);
-assert.match(html,/boki-extra\.js\?v=20261024l/);
+assert.match(html,/boki-extra\.js\?v=20261024m/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
 assert.match(html,/2027年4月1日以降の3級本試験は第1問45点・第2問25点・第3問30点/);
@@ -41,7 +41,7 @@ assert.match(html,/本試験に向けて半角数字のみ・同じ側の科目�
 assert.match(html,/当サイトは練習しやすいように全角数字と桁区切りカンマ/);
 assert.match(html,/当サイトも、同じ側の勘定科目を複数行に分けると/);
 assert.doesNotMatch(html,/金額を合算しますが/);
-assert.ok(html.includes('boki-core.js?v=20261024j'),'updated core cache key');
+assert.ok(html.includes('boki-core.js?v=20261024k'),'updated core cache key');
 assert.match(html,/公式試験のすべての解答形式を再現したものではありません/);
 // Learning-oriented journal explanations must show the calculation or account classification.
 for(const [id,required] of [
@@ -314,11 +314,30 @@ const rows=Object.fromEntries(table.rows.map(r=>[r[0],r.slice(1).map(v=>Number(v
 const rate=9000000/6000;
 const allocation=rows['直接作業時間'].map(t=>t*rate);
 const manufacturing=allocation.map((x,i)=>x+rows['直接材料費'][i]+rows['直接労務費'][i]);
-expect(job.id,'w1',rate);expect(job.id,'w2',allocation[0]);expect(job.id,'w3',allocation[1]);
-expect(job.id,'w4',manufacturing[0]);expect(job.id,'w5',manufacturing[1]);
-expect(job.id,'w6',380000-allocation[0]-allocation[1]);
-expect(job.id,'w7',manufacturing[1]);expect(job.id,'w8',1000000-manufacturing[0]);
+expect(job.id,'w1',rate);expect(job.id,'w2',allocation[0]);expect(job.id,'w3',allocation[1]);expect(job.id,'w10',allocation[2]);
+expect(job.id,'w4',manufacturing[0]);expect(job.id,'w5',manufacturing[1]);expect(job.id,'w11',manufacturing[2]);
+expect(job.id,'w6',440000-allocation.reduce((sum,n)=>sum+n,0));
+expect(job.id,'w7',manufacturing[1]+manufacturing[2]);expect(job.id,'w8',1000000-manufacturing[0]);
+assert.equal(rows['直接作業時間'].length,3,'A, B and C orders must all be in source data');
+assert.notEqual(field(job.id,'w5'),field(job.id,'w7'),'end work-in-process may not be copied from B manufacturing cost');
+assert.equal(manufacturing.reduce((sum,n)=>sum+n,0),1260000,'manufacturing total must reconcile');
+assert.equal(manufacturing[0]+field(job.id,'w7'),1260000,'completed A plus unfinished B/C');
 assert.match(job.prompt,/配賦差異は各指図書に再配分しない/);
+// New fields are independently scored rather than copying the B cost.
+{
+ const C=require('../boki-core.js'),perfect=Object.fromEntries(job.fields.map(f=>[f.id,String(f.answer)]));
+ assert.equal(job.fields.reduce((sum,f)=>sum+f.points,0),16,'job-cost exercise preserves 16 points');
+ assert.equal(C.grade(job,perfect).earned,16);
+ const used=job.tables.flatMap(t=>t.rows.flat()).filter(x=>x&&typeof x==='object').map(x=>x.id);
+ for(const id of ['w7','w10','w11']){
+  const f=job.fields.find(x=>x.id===id);
+  assert.equal(used.filter(x=>x===id).length,1,'one visible answer blank for '+id);
+  assert.equal(C.grade(job,{...perfect,[id]:''}).earned,16-f.points,'unanswered '+id);
+  assert.equal(C.grade(job,{...perfect,[id]:String(f.answer+10000)}).earned,16-f.points,'wrong '+id);
+ }
+ assert.match(job.fields.find(f=>f.id==='w6').explanation,/C60,000円/);
+ assert.match(job.fields.find(f=>f.id==='w7').explanation,/B.*C/);
+}
 const std=get('b2-r2-standard');
 expect(std.id,'z1',(500-490)*2500);
 expect(std.id,'z2',(2500-600*4)*500);
