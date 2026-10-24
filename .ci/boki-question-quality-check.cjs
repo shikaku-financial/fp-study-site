@@ -432,8 +432,8 @@ console.log('PASS: form-one FX, tax effect, investment elimination, distinct ind
  assert.equal(Object.values(debit).reduce((a,b)=>a+b,0),Object.values(credit).reduce((a,b)=>a+b,0),'voucher debit-credit conservation');
  assert.equal(Object.values(debit).reduce((a,b)=>a+b,0),415000,'source voucher total');
  const standard=get('b2-r2-standard');
- expect(standard.id,'z3',field(standard.id,'z1')+field(standard.id,'z2'));
- expect(standard.id,'z6',field(standard.id,'z4')+field(standard.id,'z5'));
+ expect(standard.id,'z3',field(standard.id,'z2')-field(standard.id,'z1'));
+ expect(standard.id,'z6',field(standard.id,'z5')-field(standard.id,'z4'));
  console.log('PASS: source-derived ledger, fixed assets, CVP, FIFO layers, vouchers and variance totals');
 }
 
