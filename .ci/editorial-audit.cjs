@@ -46,7 +46,13 @@ function numericText(value){
  return Number(s.replace(/,/g,''));
 }
 
-function reasonsFor(e){
+function validDate(date){
+ if(typeof date!=='string'||! /^\d{4}-\d{2}-\d{2}$/.test(date))return false;
+ const parsed=new Date(date+'T00:00:00Z');
+ return Number.isFinite(parsed.getTime())&&parsed.toISOString().slice(0,10)===date;
+}
+function reasonsFor(e,{today=new Date().toISOString().slice(0,10)}={}){
+ assert.ok(validDate(today),'reference date must be valid');
  const {q,bank}=e;
  const findings=[];
  findings.push(...structureIssues(e).map(issue=>'解答形式の要修正：'+issue));
@@ -63,6 +69,25 @@ function reasonsFor(e){
   if(q.kind==='choice'&&Array.isArray(q.choices)&&(!Array.isArray(q.choiceExplanations)||q.choiceExplanations.length!==q.choices.length)){
    findings.push('選択肢別解説の登録状況を確認');
   }
+ }
+ if(bank==='FP学科'||bank==='FP実技'){
+  // Mechanical inspection leads only; do not treat these as proven content errors.
+  const status=String(q.verificationStatus||'');
+  if(status.includes('law_not_audited'))findings.push('法令適用の人手確認が未了（算術のみ点検）');
+  if(status.includes('historical_full_text_pending'))findings.push('参照した旧資料の本文確認待ち');
+  if(q.sourceUrl&&!/^https:\/\/[^\s/]+(?:[/?#]|$)/.test(q.sourceUrl))findings.push('根拠URLの形式不備（HTTPSを確認）');
+  if(q.sourceCheckedDate){
+   if(!validDate(q.sourceCheckedDate)||q.sourceCheckedDate>today){
+    findings.push('根拠資料の確認日が不正または未来');
+   }else{
+    if(validDate(q.lawReferenceDate)&&q.sourceCheckedDate<q.lawReferenceDate){
+     findings.push('資料確認日が法令基準日より前（適用条件を再確認）');
+    }
+    const ageDays=(Date.parse(today+'T00:00:00Z')-Date.parse(q.sourceCheckedDate+'T00:00:00Z'))/86400000;
+    if(ageDays>365)findings.push('根拠資料の確認から1年超（更新の要否を確認）');
+   }
+  }
+  if(q.lawReferenceDate&&!validDate(q.lawReferenceDate))findings.push('法令基準日の形式不備');
  }
  if(bank.startsWith('簿記')&&q.type==='table'){
   const sourceTables=(q.tables||[]).filter(t=>!(t.rows||[]).some(row=>row.some(cell=>cell&&typeof cell==='object'&&'id'in cell)));
@@ -86,7 +111,8 @@ function reasonsFor(e){
  }
  return findings;
 }
-function audit(entries,records){
+function audit(entries,records,{today=new Date().toISOString().slice(0,10)}={}){
+ assert.ok(validDate(today),'audit date must be valid');
  assert.equal(entries.length,660,'unexpected FP/Boki question count');
  const broken=entries.flatMap(e=>structureIssues(e).map(issue=>e.id+'：'+issue));
  assert.equal(broken.length,0,'FP answer contract must be corrected before publication: '+broken.slice(0,8).join(' / '));
@@ -106,7 +132,8 @@ function audit(entries,records){
   assert.ok(!reviewed.has(record.id),'duplicate review '+record.id);
   assert.equal(record.status,'verified','only a confirmed human review may be recorded');
   assert.match(record.checkedOn||'',/^\d{4}-\d{2}-\d{2}$/,'review date required');
-  assert.equal(new Date(record.checkedOn).toISOString().slice(0,10),record.checkedOn,'invalid review date');
+  assert.ok(validDate(record.checkedOn),'invalid review date');
+  assert.ok(record.checkedOn<=today,'human review date cannot be in the future');
   assert.ok(typeof record.reviewer==='string'&&record.reviewer.trim().length>0,'reviewer required');
   assert.ok(Array.isArray(record.references)&&record.references.length>0&&record.references.every(url=>typeof url==='string'&&/^https:\/\//.test(url)),'human review must list consulted HTTPS references');
   assert.match(record.contentHash||'',/^[a-f0-9]{64}$/,'content fingerprint required');
@@ -114,8 +141,8 @@ function audit(entries,records){
   reviewed.add(record.id);
  }
  const findings=entries.map(e=>{
-  const reasons=reasonsFor(e),isReviewed=reviewed.has(e.id);
-  const weight=reasons.reduce((s,r)=>s+(r.includes('解答形式の要修正')?10:r.includes('根拠')?3:1),0);
+  const reasons=reasonsFor(e,{today}),isReviewed=reviewed.has(e.id);
+  const weight=reasons.reduce((sum,reason)=>sum+(reason.includes('解答形式の要修正')?10:reason.includes('法令適用の人手確認')?8:reason.includes('旧資料の本文確認待ち')?7:reason.includes('確認日が不正')?7:reason.includes('形式不備')?6:reason.includes('法令基準日より前')?6:reason.includes('1年超')?4:reason.includes('根拠')?3:1),0);
   return {...e,hash:fingerprint(e.q),reasons,priority:weight,isReviewed};
  });
  const flagged=findings.filter(x=>x.reasons.length>0&&!x.isReviewed)
@@ -159,6 +186,8 @@ function renderMarkdown(report,{limit=35}={}){
  ...['FP学科','FP実技','簿記2級','簿記3級'].map(bank=>`| ${bank}の要確認候補 | ${flagged.filter(f=>f.bank===bank).length} |`),
  '',
  '### 優先確認候補（資格別に先頭枠を確保）',
+ '法令適用・旧資料本文の未確認、資料の日付・形式の不整合を、単なる資料欄の未登録より高く表示します。いずれも確認候補であり、法令違反や誤答の断定ではありません。',
+ '',
  '| 問題ID | 分野・模試 | 確認事項 |',
  '| --- | --- | --- |'
  ];
