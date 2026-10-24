@@ -18,7 +18,7 @@ const html=fs.readFileSync(path.join(root,'boki.html'),'utf8');
 assert.match(html,/収録問題は2026年度（2026年4月1日～2027年3月31日）の出題区分/);
 assert.match(html,/2027年度の出題区分改定への対応は未完了/);
 assert.match(html,/boki-data\.js\?v=20261024o/);
-assert.match(html,/boki-extra\.js\?v=20261024n/);
+assert.match(html,/boki-extra\.js\?v=20261024p/);
 // Safeguard exact fiscal-year communication: the current papers retain 2026 section weights.
 assert.match(html,/2026年度の第1問45点・第2問20点・第3問35点/);
 assert.match(html,/2027年4月1日以降の3級本試験は第1問45点・第2問25点・第3問30点/);
@@ -269,7 +269,7 @@ assert.match(get('b2-r2-financial').fields.find(f=>f.id==='h2').explanation,/棚
 const sales=5000000+200000,gross=sales-cogs;
 expect('b2-r2-financial','h1',sales);
 expect('b2-r2-financial','h3',gross);
-const expenses=900000+360000+(180000-90000)+(3600000/30+1200000/5)+((1800000+200000)*.02-30000);
+const expenses=910000+350000+(180000-90000)+(3600000/30+1200000/5)+((1800000+200000)*.02-30000);
 const operatingLoss=expenses-gross,interest=60000+20000,taxGiven=160000,netLoss=operatingLoss+interest+taxGiven;
 expect('b2-r2-financial','h7',operatingLoss);
 expect('b2-r2-financial','h9',operatingLoss+interest);
@@ -607,5 +607,34 @@ console.log('PASS: first-form grade-three T-account and asset ledger answer leak
  expect(standard.id,'z6',field(standard.id,'z5')-field(standard.id,'z4'));
  console.log('PASS: source-derived ledger, fixed assets, CVP, FIFO layers, vouchers and variance totals');
 }
+
+// A source table must never offer the exact computed amount as an unrelated number.
+{
+ const {reasonsFor}=require('./editorial-audit.cjs');
+ for(const [id,bank] of [
+  ['b2-r2-financial','簿記2級'],['b2-r2-job','簿記2級'],['b3-r2-vouchers','簿記3級']
+ ]){
+  const q=get(id);
+  const reasons=reasonsFor({id,bank,form:'第2回',q});
+  assert.ok(!reasons.includes('資料表に正答と同額あり（転記可能性を目視確認）'),
+   id+' must require genuine calculation instead of copying a displayed number');
+ }
+ const fin=get('b2-r2-financial'),trial=fin.tables.find(t=>t.caption==='決算整理前残高試算表');
+ const trialAmt=account=>Number(trial.rows.find(r=>r[0]===account)?.[1]?.replace(/,/g,''));
+ assert.equal(trialAmt('給料'),910000);assert.equal(trialAmt('支払家賃'),350000);
+ assert.equal(trial.rows.at(-1)[1],'14,800,000','trial balance remains stable after offsetting inputs');
+ const order=get('b2-r2-job'),src=order.tables.find(t=>t.caption==='製造指図書別データ');
+ assert.deepEqual(src.rows[0].slice(1),['245,000円','165,000円','85,000円']);
+ assert.deepEqual(src.rows[1].slice(1),['175,000円','115,000円','55,000円']);
+ const vouchers=get('b3-r2-vouchers').tables.find(t=>t.caption.includes('伝票一覧')).rows;
+ assert.equal(vouchers.length,8,'single receivable number replaced by two sales vouchers');
+ const sales=vouchers.filter(r=>r[2].includes('商品を掛けで売上げ'));
+ assert.deepEqual(sales.map(r=>Number(r[3].replace(/,/g,''))),[50000,34000]);
+ assert.equal(sales.reduce((n,r)=>n+Number(r[3].replace(/,/g,'')),0),field('b3-r2-vouchers','t3'));
+ // Genuine double-entry and depreciation identities in b3-ledger/b3-asset are not automatically errors.
+ assert.equal(field('b3-ledger','l7'),field('b3-ledger','l9'));
+ assert.equal(field('b3-asset','a3'),field('b3-asset','a8'));
+}
+console.log('PASS: three direct-copy candidates eliminated from source tables; source-driven accounting and point totals unchanged.');
 
 console.log('PASS: all 60 items/100-point forms retained; 2026-vs-2027 scope; editorial clarity, reserve limit, securities, inventory, tax-loss and independent trial/statement calculations');
