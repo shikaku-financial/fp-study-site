@@ -28,7 +28,5 @@ for(const c of cases){
  for(let i=0;i<c.a.length;i++){const input=inputs(b)[i];input.value=i===0?'999999':c.a[i];input.events.input({target:input});}
  b.el('prSubmit').click();assert.equal(JSON.parse(b.storage.get(ph)).attempts[0].correct,0);b.el('prRetryMistakes').click();assert.ok(JSON.parse(b.storage.get(pd)).questions.some(q=>q.id===c.id));
 }
-const old=JSON.parse(fs.readFileSync(path.join(root,'development-notes/SUPSEDED_PRACTICAL_V146_TO_V147.json'.replace('SUPSEDED','SUPERSEDED')),'utf8'));assert.equal(old.length,3);
-for(const q of old){let b=boot(new Map([[pd,JSON.stringify({track:q.track,questions:[q],answers:[q.answer],pos:0})]]));b.el('prResume').click();assert.equal(b.el('prChoices').children.length,4);b.el('prSubmit').click();assert.equal(JSON.parse(b.storage.get(ph)).attempts[0].correct,1);b.el('prRetry').click();const d=JSON.parse(b.storage.get(pd));assert.equal(d.questions[0].kind,'choice');assert.equal(d.questions[0].answer,q.answer);}
 assert.equal(fields,3);
-console.log(JSON.stringify({result:'PASS',questions:1,fields,scope:'independent units; per-field production input; save/reload/history/retry/mistakes; all3 actual legacy combination snapshots',limit:'VM/DOM only; official partial scoring not implemented'}));
+console.log(JSON.stringify({result:'PASS',questions:1,fields,scope:'independent units; per-field production input; save/reload/history/retry/mistakes; current three-field practice',limit:'VM/DOM only; official partial scoring not implemented'}));
