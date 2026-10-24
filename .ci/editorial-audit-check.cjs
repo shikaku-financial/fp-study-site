@@ -136,4 +136,43 @@ assert.ok(!safePacket.includes('監修完了です'),'preview must never attest 
 assert.equal(renderReviewPacket({...r,flagged:[]},{limit:8}).match(/候補はありません/g)?.length,1,'empty queue is handled');
 assert.throws(()=>renderReviewPacket(r,{limit:0}),/limit/);
 
+// Scope-limited official cross-checks, never human expert certification.
+// Academic and practical formats use 0-based answer indexes, including true/false.
+{
+ const cases=[
+  ['fp2-162','https://laws.e-gov.go.jp/law/129AC0000000089?occasion_date=20260401','300万円',/民法第557条第1項.*150万円.*300万円.*450万円/s],
+  ['fp3-168','https://laws.e-gov.go.jp/law/129AC0000000089?occasion_date=20260401','200万円',/民法第557条第1項.*100万円.*200万円.*300万円/s],
+  ['fp2-163','https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000060.html',null,/借地借家法第38条第1項.*第29条第1項.*事前|借地借家法第38条第1項.*第29条第1項.*契約前/s],
+  ['fp3-162','https://www.mlit.go.jp/jutakukentiku/house/jutakukentiku_house_tk3_000060.html','〇 正しい',/借地借家法第38条第1項.*第29条第1項.*契約前/s],
+  ['fp2-166','https://laws.e-gov.go.jp/law/337AC0000000069?occasion_date=20260401','毎年1回',/第34条第2項.*毎年1回.*下限/s],
+  ['fp3-169','https://laws.e-gov.go.jp/law/337AC0000000069?occasion_date=20260401','年に1回',/第34条第2項.*毎年1回.*下限/s]
+ ];
+ for(const [id,primary,correct,pattern] of cases){
+  const record=all.find(x=>x.id===id);
+  assert.ok(record,id+' still in academic question bank');
+  const q=record.q;
+  assert.equal(q.lawReferenceDate,'2026-04-01',id+' law baseline retained');
+  assert.equal(q.sourceUrl,primary,id+' official reference');
+  assert.ok(/^https:\/\//.test(primary));
+  assert.ok(q.additionalSourceUrls?.length>0&&q.additionalSourceUrls.every(url=>url.startsWith('https://')),id+' retains supplementary sources');
+  assert.equal(q.verificationStatus,'ai_scoped_primary_rule_checked_human_review_pending',id+' is AI-supported only');
+  assert.match(q.reviewNote,/人手監修は未了/,id+' human review must remain pending');
+  assert.match(q.explanation,pattern,id+' teaches the source-specific distinction');
+  assert.ok(!reasonsFor(record,{today:'2026-10-24'}).includes('参照した旧資料の本文確認待ち'),id+' scoped check resolves only its historical source flag');
+  if(correct!==null)assert.equal(q.choices[q.answer],correct,id+' correct answer preserved');
+ }
+ for(const id of ['fp2-163','fp3-162']){
+  const q=all.find(x=>x.id===id).q;
+  assert.match(q.explanation,/1年未満なら満了の終了通知は不要/,id+' short-term tenancy notice distinction');
+  assert.match(q.explanation,/契約前の説明義務まで免除されるわけではありません/,id+' safeguards statutory pre-contract explanation');
+ }
+ const mortgage=all.find(x=>x.id==='fp2-114');
+ assert.ok(mortgage&&reasonsFor(mortgage,{today:'2026-10-24'}).includes('法令適用の人手確認が未了（算術のみ点検）'),
+  'unrelated arithmetic-only questions must not be falsely certified by this limited review');
+ const after=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
+ assert.equal(after.reviewedCount,0,'no human review records added by source investigation');
+ assert.equal(after.flagged.length,49,'only six law evidence review flags resolved; other 49 editorial candidates remain');
+}
+console.log('PASS: six property-law question pairs have current primary citations, tested rule contrasts and no fabricated human review.');
+
 console.log('PASS: 660 records, time-aware evidence freshness and source review priority, 600 FP answer contracts, mutational guards, reviewer-ready previews, source hashes and honest human review boundary.');
