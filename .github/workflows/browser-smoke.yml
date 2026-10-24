@@ -20,6 +20,7 @@ on:
       - 'app.js'
       - 'questions.js'
       - 'practical.js'
+      - 'practical-loader.js'
       - 'practical-questions.js'
       - 'practical-materials.js'
       - '.ci/browser-smoke.cjs'

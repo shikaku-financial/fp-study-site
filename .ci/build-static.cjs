@@ -34,6 +34,7 @@ const publicAssets = [
   'app.js',
   'questions.js',
   'practical.js',
+  'practical-loader.js',
   'practical-questions.js',
   'practical-materials.js',
   'financial-license-lab-logo.png',

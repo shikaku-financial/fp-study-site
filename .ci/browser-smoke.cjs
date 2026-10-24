@@ -21,6 +21,8 @@ async function main(){
     await page.goto(BASE,{waitUntil:'load',timeout:45000});
     await step('mobile home and 60-question exam available',async()=>{
       await visible('#home');
+      assert.equal(await page.locator('script[src*="practical-questions.js"]').count(),0,'academic entry should not load practical questions');
+      assert.equal(await page.locator('script[src*="practical.js"]').count(),0,'academic entry should not load practical controller');
       await page.locator('#startFull').waitFor({state:'visible'});
       assert.equal(await page.locator('#startFull').isEnabled(),true,'FP3 60-question exam should be available');
       assert.match(await page.locator('#count').innerText(),/180問/);
@@ -82,6 +84,7 @@ async function main(){
           await article.goBack({waitUntil:'load'});
         }
         await article.goto(new URL('fp.html?view=practical&level=2',BASE).href,{waitUntil:'load',timeout:45000});
+        await article.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
         assert.equal(await article.locator('#prSelectLevel2').getAttribute('aria-pressed'),'true','grade must persist in URL after fresh load');
         await article.reload({waitUntil:'load'});
         assert.equal(await article.locator('#practicalHome').isVisible(),true,'practical entry must survive reload');
@@ -148,7 +151,9 @@ async function main(){
     });
     await step('all eight practical courses render on mobile',async()=>{
       await page.locator('#openPractical').click();
-      await visible('#practicalHome');
+      await page.locator('#practicalHome').waitFor({state:'visible',timeout:15000});
+      assert.equal(await page.locator('script[src*="practical-questions.js"]').count(),1,'exactly one deferred question bundle');
+      assert.equal(await page.locator('script[src*="practical.js"]').count(),1,'exactly one deferred controller');
       for(const [level,count] of [['3',3],['2',5]]){
         await page.locator('#prSelectLevel'+level).click();
         assert.equal(await page.locator('#prTracks .pr-track').count(),count,'FP'+level+' course count');

@@ -26,6 +26,10 @@ FP2級・3級の**無料・登録不要**の学習サイトです。学科360問
 
 出題区分は [日本商工会議所の2026年度適用区分](https://www.kentei.ne.jp/bookkeeping/exam-list) を参照。2027年度区分への移行は未完了です。連結の内部取引・未実現利益の確認資料は [ASBJ連結財務諸表に関する会計基準 第34～38項](https://www.asb-j.jp/jp/accounting_standards_system/details.html?topics_id=111)。資料照合は全問の専門家監修を意味しません。
 
+## FPラボの初期読込軽量化
+
+学科ページでは実技用240問の `practical-questions.js` と設例描画・実技UIを初期読込せず、実技選択時または `?view=practical` 直接リンク時だけ `practical-loader.js` から順番に読み込みます。既存の学習履歴キー、採点ロジック、問題データは不変です。通信失敗時は再試行の案内を表示します。実際の体感速度は、後日実測データから確認します。
+
 ## サイトの公開・保存方式
 
 Cloudflare Pagesを正規公開先とし、同じリポジトリからGitHub Pagesにも配信します。公開ビルドは `.ci/build-static.cjs` が `dist/` に許可済みの静的ファイルだけを出力します。正規URL・サイトマップ・robots.txtはCloudflareを基準にしています。
