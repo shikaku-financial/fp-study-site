@@ -98,9 +98,17 @@
  function finish(expired=false){
   if(!session)return;
   if(!expired&&!window.confirm('解答を確定して採点します。未解答の欄は0点です。終了しますか？'))return;
-  clearTimer();const completed={...session,finished:Date.now(),expired};
-  store.history=[completed,...store.history.filter(h=>h.id!==completed.id)].slice(0,20);store.active=null;session=null;
-  persist();if(expired)say('制限時間になったため、入力済みの解答で採点しました。');showResult(completed);focusHeading();
+  const completed={...session,finished:Date.now(),expired};
+  const previousHistory=store.history,previousActive=store.active;
+  store.history=[completed,...store.history.filter(h=>h.id!==completed.id)].slice(0,20);store.active=null;
+  if(!persist()){
+   store.history=previousHistory;store.active=previousActive;
+   if(expired)clearTimer();
+   return;
+  }
+  clearTimer();session=null;
+  if(expired)say('制限時間になったため、入力済みの解答で採点しました。');
+  showResult(completed);focusHeading();
  }
  function showResult(h){
   clearTimer();session=null;displayed=h;level=String(h.level);form=String(h.form??'1');const items=itemsFor(h),result=C.result(items,h.answers),exam=C.examFor(D,level,form);
