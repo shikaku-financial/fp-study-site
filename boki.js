@@ -49,7 +49,8 @@
  function tableHTML(t,item,answer,disabled){
   return `<div class="boki-scroll" role="region" tabindex="0" aria-label="${esc(t.caption)}。横にスクロールできます"><table><caption>${esc(t.caption)}</caption><thead><tr>${t.headers.map(h=>`<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${t.rows.map(row=>`<tr>${row.map((cell,index)=>{
    if(typeof cell==='object'){
-    const f=item.fields.find(f=>f.id===cell.id),correct=disabled?C.number(answer?.[f.id])===f.answer:null;
+    const f=item.fields.find(f=>f.id===cell.id),correct=disabled?C.fieldCorrect(f,answer?.[f.id]):null;
+    if(f.type==='choice')return `<td><select data-field="${f.id}" aria-label="${esc(f.label)}" ${disabled?'disabled class="'+(correct?'answer-good':'answer-bad')+'"':''}><option value="">選択してください</option>${f.options.map(opt=>`<option value="${esc(opt)}" ${answer?.[f.id]===opt?'selected':''}>${esc(opt)}</option>`).join('')}</select></td>`;
     return `<td><input type="text" inputmode="numeric" maxlength="30" autocomplete="off" data-field="${f.id}" aria-label="${esc(f.label)}" value="${esc(answer?.[f.id]??'')}" ${disabled?'disabled class="'+(correct?'answer-good':'answer-bad')+'"':''}></td>`;
    }
    return `<${index===0?'th scope="row"':'td'}>${esc(cell)}</${index===0?'th':'td'}>`;
@@ -69,7 +70,7 @@
   let html=`<p class="${g.correct?'correct':'wrong'}"><strong>${g.correct?'正解':'要復習'}：${g.earned} / ${g.max}点</strong></p>`;
   if(item.type==='journal'){
    html+=`<div class="boki-solution"><h3>正しい仕訳</h3><p>借方：${item.debit.map(r=>esc(r[0])+' '+num(r[1])+'円').join(' ／ ')}<br>貸方：${item.credit.map(r=>esc(r[0])+' '+num(r[1])+'円').join(' ／ ')}</p><p>${esc(item.explanation)}</p></div>`;
-  }else html+=item.fields.map(f=>{const correct=C.number(answer?.[f.id])===f.answer;return `<div class="boki-solution"><p class="${correct?'correct':'wrong'}"><strong>${correct?'○':'×'} ${esc(f.label)}</strong>（${correct?f.points:0}/${f.points}点）</p><p>あなたの解答：${esc(answer?.[f.id]||'未解答')} ／ 正答：<strong>${num(f.answer)}</strong></p><p>${esc(f.explanation)}</p></div>`;}).join('');
+  }else html+=item.fields.map(f=>{const correct=C.fieldCorrect(f,answer?.[f.id]);return `<div class="boki-solution"><p class="${correct?'correct':'wrong'}"><strong>${correct?'○':'×'} ${esc(f.label)}</strong>（${correct?f.points:0}/${f.points}点）</p><p>あなたの解答：${esc(answer?.[f.id]||'未解答')} ／ 正答：<strong>${f.type==='choice'?esc(f.answer):num(f.answer)}</strong></p><p>${esc(f.explanation)}</p></div>`;}).join('');
   return html;
  }
  function navigation(){
@@ -114,7 +115,7 @@
   clearTimer();session=null;displayed=h;level=String(h.level);form=String(h.form??'1');const items=itemsFor(h),result=C.result(items,h.answers),exam=C.examFor(D,level,form);
   app.innerHTML=`<section class="card boki-result"><p class="boki-tag">${esc(exam.label)} ${esc(exam.set)} ${h.mode==='exam'?'模擬試験':'問題演習'}の結果</p><h2 id="boki-heading" tabindex="-1">採点結果</h2><p class="boki-summary">${result.earned} <span class="muted">/ ${result.max}点</span></p><p>${h.mode==='exam'?(result.earned>=70?'到達目安の70点以上です。':'70点の到達目安まで、間違えた箇所を復習しましょう。'):'演習では合否判定を行いません。'}</p><p class="muted small">独自問題・独自配点による学習の目安です。</p>${exam.sections.map(s=>{const subset=s.items.filter(i=>h.ids.includes(i.id));if(!subset.length)return '';const r=C.result(subset,h.answers);return `<div class="stat-row"><span>${esc(s.title)}</span><strong>${r.earned} / ${r.max}点</strong></div>`;}).join('')}<div class="actions"><button class="primary" data-action="home">ホームへ</button>${result.grades.some(g=>!g.correct)?'<button data-action="result-review">今回間違えた題を復習</button>':''}</div><h3>問題別の答え合わせ</h3>${items.map((item,i)=>{const g=C.grade(item,h.answers[item.id]);return `<details><summary class="${g.correct?'correct':'wrong'}">${i+1}. ${esc(item.title||'仕訳')}　${g.earned}/${g.max}点</summary>${itemHTML(item,h.answers[item.id],true)}${solutions(item,h.answers[item.id])}</details>`;}).join('')}</section>`;
  }
- app.addEventListener('input',input);app.addEventListener('change',event=>{if(event.target.id==='boki-form'){form=event.target.value;home();document.getElementById('boki-form')?.focus({preventScroll:true});}else if(event.target.matches('select[data-side]'))input(event);});
+ app.addEventListener('input',input);app.addEventListener('change',event=>{if(event.target.id==='boki-form'){form=event.target.value;home();document.getElementById('boki-form')?.focus({preventScroll:true});}else if(event.target.matches('select[data-side], select[data-field]'))input(event);});
  app.addEventListener('click',event=>{
   const button=event.target.closest('button[data-action]');if(!button||button.disabled)return;
   const action=button.dataset.action;
