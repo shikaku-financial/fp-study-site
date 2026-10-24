@@ -19,7 +19,7 @@ for(const level of ['3','2'])for(const form of ['1','2']){
    answers[item.id]=Object.fromEntries(item.fields.map(f=>[f.id,String(f.answer)]));
    const fields=item.tables.flatMap(t=>t.rows.flat().filter(c=>typeof c==='object').map(c=>c.id));
    assert.equal(fields.length,item.fields.length);assert.deepEqual(new Set(fields),new Set(item.fields.map(f=>f.id)));
-   for(const f of item.fields){assert.ok(Number.isSafeInteger(f.answer)&&f.answer>=0);assert.ok(f.explanation.length>0);}
+   for(const f of item.fields){if(f.type==='choice'){assert.equal(typeof f.answer,'string');assert.ok(f.options.includes(f.answer));assert.equal(new Set(f.options).size,f.options.length);}else assert.ok(Number.isSafeInteger(f.answer)&&f.answer>=0);assert.ok(f.explanation.length>0);}
   }
  }
  assert.equal(C.result(items,answers).earned,100);
