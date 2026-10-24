@@ -106,10 +106,22 @@ async function run(engineName){
   // Exercise a storage quota error without a false "saved" claim.
   await choose('3','1');await click('practice');
   const before=(await saved()).active.answers;
-  await page.evaluate(()=>{const original=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k==='fll-boki-progress')throw new DOMException('quota','QuotaExceededError');return original.call(this,k,v);};});
+  await page.evaluate(()=>{window.__bokiOriginalSetItem=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(k==='fll-boki-progress')throw new DOMException('quota','QuotaExceededError');return window.__bokiOriginalSetItem.call(this,k,v);};});
   await page.locator('input[data-side="debit"][data-row="0"]').fill('48000');
   assert.match(await page.locator('#boki-notice').innerText(),/保存に失敗/);
   assert.deepEqual((await saved()).active.answers,before,'failed writes must not modify durable answers');
+  await click('pause');
+  assert.equal(await page.locator('button[data-action="pause"]').count(),1,'failed save must keep question screen open');
+  assert.equal(await page.locator('input[data-side="debit"][data-row="0"]').inputValue(),'48000','unsaved field remains editable after failed save');
+  assert.match(await page.locator('#boki-notice').innerText(),/保存に失敗/);
+  await page.evaluate(()=>{Storage.prototype.setItem=window.__bokiOriginalSetItem;});
+  await click('pause');
+  assert.equal(await page.locator('button[data-action="resume"]').count(),1,'successful retry returns to home');
+  assert.equal((await saved()).active.answers['b3-j01'].debit[0][1],'48000','retry durably saves answer before leaving');
+  await page.reload({waitUntil:'load'});
+  await click('resume');
+  assert.equal(await page.locator('input[data-side="debit"][data-row="0"]').inputValue(),'48000','saved answer resumes after reload');
+
   assert.deepEqual(errors,[],'uncaught browser errors');
   console.log('PASS '+engineName+': legacy history, form-isolated wrong-only review, expired resume and quota failure');
  }finally{await context.close();await browser.close();}
