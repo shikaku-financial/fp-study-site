@@ -748,23 +748,23 @@ const QUESTIONS = [
       "× 誤り"
     ],
     "answer": 1,
-    "explanation": "日本では、土地と建物は原則として別個の不動産として扱われ、登記も別々に行います。資料のように所有者が異なる場合もあります。本問は有効な所有関係を前提とし、借地権の成立や区分建物の敷地権の個別制度までは判定しません。",
+    "explanation": "法務省『不動産登記のABC』のとおり、登記記録は1筆の土地または1個の建物ごとに作成されます。通常の土地と独立した戸建建物は別個の不動産として扱うため、土地の所有者Aさんと建物の所有者Bさんが異なることもあり、別々に登記できます。『常に同一人の所有とみなす』という記述は誤りです。資料では有効な所有関係を前提としており、借地権の成立や区分建物の敷地権は問うていません。",
     "choiceExplanations": [
       "不適切。土地と建物を常に同一人の所有とみなす説明は誤りです。",
       "正解。通常、土地と建物は別個の不動産として扱われ、別々に登記されます。"
     ],
     "topic": "土地と戸建建物の所有者",
-    "revision": 1,
+    "revision": 2,
     "lawReferenceDate": "2026-04-01",
-    "sourceUrl": "https://www.mlit.go.jp/common/001121686.pdf",
+    "sourceUrl": "https://www.moj.go.jp/MINJI/minji02.html",
     "additionalSourceUrls": [
-      "https://houmukyoku.moj.go.jp/matsuyama/page000001_00390.html"
+      "https://laws.e-gov.go.jp/law/417M60000010018?occasion_date=20260401"
     ],
-    "sourceLabel": "国土交通省本文・法務省/法務局の公式索引抜粋による登記基本事項の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "contentReview": "v136_registration_scoped_migration",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
-    "reviewNote": "公式本文と公式検索索引抜粋の照合範囲を区別。法務省/法務局ページ本文403、2026-04-01時点の規則全文・全改正未確認。新改訂主要点3/共通適用1/旧論点再確認2。包括監修未完了。"
+    "sourceLabel": "法務省『不動産登記のABC』／e-Gov不動産登記規則第4条（土地・建物の登記対象の限定照合）",
+    "sourceCheckedDate": "2026-10-24",
+    "contentReview": "20261024_registration_and_deposit_primary_scoped_check",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
+    "reviewNote": "法務省公式案内の土地と建物それぞれに登記記録を作る原則をAI支援で限定照合。所有者の具体的な権原・借地権、区分建物、全法令・改正経過および運営者の人手監修は未了。"
   },
   {
     "id": "fp3-026",
@@ -1481,11 +1481,11 @@ const QUESTIONS = [
       "抵当権の設定登記は、原則として権利部の甲区に記録される"
     ],
     "answer": 1,
-    "explanation": "甲区は所有権に関する登記事項、乙区は抵当権など所有権以外の権利に関する登記事項を記録します。土地の地目・地積などの物理的状況は表題部の事項です。本問は所有権の登記がある土地を前提とします。",
-    "sourceUrl": "https://houmukyoku.moj.go.jp/matsuyama/page000001_00390.html",
-    "sourceLabel": "国土交通省本文・法務省/法務局の公式索引抜粋による登記基本事項の限定照合",
+    "explanation": "法務省『不動産登記のABC』と不動産登記規則第4条第4項によれば、土地の登記記録の権利部は甲区と乙区に区分され、甲区には所有権に関する登記事項、乙区には抵当権など所有権以外の権利に関する登記事項を記録します。地目・地積など土地の物理的状況は表題部の事項です。したがって正解は『甲区には、原則として所有権に関する登記事項が記録される』です。申請義務・期限・税額は別の論点です。",
+    "sourceUrl": "https://www.moj.go.jp/MINJI/minji02.html",
+    "sourceLabel": "法務省『不動産登記のABC』／e-Gov不動産登記規則第4条第4項（登記記録区分の限定照合）",
     "lawReferenceDate": "2026-04-01",
-    "revision": 4,
+    "revision": 5,
     "reviewStatus": "primary_source_checked",
     "reviewedAt": "2026-10-12",
     "choiceExplanations": [
@@ -1494,14 +1494,14 @@ const QUESTIONS = [
       "不適切。土地の地目や地積は表題部の事項です。乙区は所有権以外の権利を扱います。",
       "不適切。抵当権設定の登記事項は、通常は権利部の乙区に記録されます。"
     ],
-    "contentReview": "v136_registration_scoped_migration",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
+    "contentReview": "20261024_registration_and_deposit_primary_scoped_check",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
     "topic": "登記記録の区分",
     "additionalSourceUrls": [
-      "https://www.moj.go.jp/MINJI/minji02"
+      "https://laws.e-gov.go.jp/law/417M60000010018?occasion_date=20260401"
     ],
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "公式本文と公式検索索引抜粋の照合範囲を区別。法務省/法務局ページ本文403、2026-04-01時点の規則全文・全改正未確認。新改訂主要点3/共通適用1/旧論点再確認2。包括監修未完了。"
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "法務省の公開案内本文と、不動産登記規則第4条第4項により甲区・乙区・表題部の役割をAI支援で限定照合。旧法務局個別案内の本文403問題を主要根拠から解消。2026年4月1日までの全改正、申請義務・期限・登記法全文の包括監査および運営者の人手監修は未了。"
   },
   {
     "id": "fp2-026",
@@ -2381,24 +2381,24 @@ const QUESTIONS = [
       "表題部"
     ],
     "answer": 0,
-    "explanation": "資料の対象は所有権移転の登記なので、権利部の甲区に記録します。所有権以外の権利を記録する乙区、物理的状況を示す表題部と区別します。表題部所有者の表示と所有権移転の登記を混同しないため、所有権の登記がある土地を前提にしています。",
+    "explanation": "不動産登記規則第4条第4項では、権利部の甲区に所有権に関する登記事項、乙区に所有権以外の権利に関する登記事項を記録します。売買による所有権移転登記は甲区です。土地の地目・地積などは表題部、抵当権設定などは乙区に記録されます。法務省の不動産登記案内でも、甲区には所有者や売買・相続などによる所有権取得の原因が記録されると説明されています。",
     "topic": "売買による所有権移転",
-    "contentReview": "v136_registration_scoped_migration",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
-    "revision": 2,
+    "contentReview": "20261024_registration_and_deposit_primary_scoped_check",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
+    "revision": 3,
     "choiceExplanations": [
       "正解。売買による所有権移転の登記事項は、権利部の甲区に記録します。",
       "不適切。乙区は抵当権・地上権等の所有権以外の権利に関する事項を扱います。",
       "不適切。土地の表題部には地目・地積等を記録します。所有権移転の登記は甲区です。"
     ],
     "lawReferenceDate": "2026-04-01",
-    "sourceUrl": "https://houmukyoku.moj.go.jp/matsuyama/page000001_00390.html",
+    "sourceUrl": "https://www.moj.go.jp/MINJI/minji02.html",
     "additionalSourceUrls": [
-      "https://www.moj.go.jp/MINJI/minji02"
+      "https://laws.e-gov.go.jp/law/417M60000010018?occasion_date=20260401"
     ],
-    "sourceLabel": "国土交通省本文・法務省/法務局の公式索引抜粋による登記基本事項の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "公式本文と公式検索索引抜粋の照合範囲を区別。法務省/法務局ページ本文403、2026-04-01時点の規則全文・全改正未確認。新改訂主要点3/共通適用1/旧論点再確認2。包括監修未完了。"
+    "sourceLabel": "法務省『不動産登記のABC』／e-Gov不動産登記規則第4条第4項（甲区の所有権移転登記に限定）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "法務省公式案内と不動産登記規則第4条第4項の記録区分をAI支援で限定照合。申請義務・期限・全改正および運営者の人手監修は未了。"
   },
   {
     "id": "fp3-056",
@@ -3278,9 +3278,9 @@ const QUESTIONS = [
       "土地と建物は原則として別個の不動産で、それぞれ登記の対象となる"
     ],
     "answer": 3,
-    "explanation": "土地と戸建建物の登記は、原則としてそれぞれを対象に行います。土地の所有権の記録と建物の所有権の記録、建物の物理的状況を示す表題部を区別します。登記自体を所有権移転のすべての成立要件と理解するものでもありません。",
+    "explanation": "法務省『不動産登記のABC』によれば、登記記録は1筆の土地または1個の建物ごとに別々に作成されます。土地と戸建建物は原則として別個の不動産なので、建物の所有権移転登記をしただけで敷地の所有権まで当然に移転・公示されるわけではなく、逆も同様です。建物の登記記録にも表題部があり、所在・種類・構造・床面積などを記録します。所有権移転の効力や登記申請義務は、本問の『登記記録の対象が別』という論点とは区別します。",
     "topic": "土地と建物の登記の範囲",
-    "revision": 3,
+    "revision": 4,
     "choiceExplanations": [
       "不適切。建物の移転登記だけで、その敷地の所有権まで当然に移転するものではありません。",
       "不適切。土地と建物の登記記録は別で、土地の登記だけで建物の所有権まで当然に公示されるわけではありません。",
@@ -3288,16 +3288,15 @@ const QUESTIONS = [
       "正解。資料の土地と戸建建物は原則として別個の不動産で、それぞれ登記の対象となります。"
     ],
     "lawReferenceDate": "2026-04-01",
-    "sourceUrl": "https://www.mlit.go.jp/common/001121686.pdf",
+    "sourceUrl": "https://www.moj.go.jp/MINJI/minji02.html",
     "additionalSourceUrls": [
-      "https://houmukyoku.moj.go.jp/matsuyama/page000001_00390.html",
-      "https://www.moj.go.jp/MINJI/minji02"
+      "https://laws.e-gov.go.jp/law/417M60000010018?occasion_date=20260401"
     ],
-    "sourceLabel": "国土交通省本文・法務省/法務局の公式索引抜粋による登記基本事項の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "contentReview": "v136_registration_scoped_migration",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
-    "reviewNote": "公式本文と公式検索索引抜粋の照合範囲を区別。法務省/法務局ページ本文403、2026-04-01時点の規則全文・全改正未確認。新改訂主要点3/共通適用1/旧論点再確認2。包括監修未完了。"
+    "sourceLabel": "法務省『不動産登記のABC』／e-Gov不動産登記規則第4条（土地・建物ごとの登記記録に限定）",
+    "sourceCheckedDate": "2026-10-24",
+    "contentReview": "20261024_registration_and_deposit_primary_scoped_check",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
+    "reviewNote": "法務省の公式案内本文の『1筆の土地又は1個の建物ごとに登記記録を作成』と表題部の記録事項をAI支援で限定照合。区分建物・敷地権・所有権移転の効力・全改正および運営者の人手監修は未了。"
   },
   {
     "id": "fp2-054",
@@ -3312,25 +3311,25 @@ const QUESTIONS = [
       "200万円"
     ],
     "answer": 3,
-    "explanation": "売主は、相手方である買主が履行に着手する前であるなど資料の条件の下、受領した手付100万円の倍額200万円を現実に提供して手付解除します。この200万円に受領手付100万円をさらに足す必要はありません。提供総額と、受領手付に対する上乗せ相当分を区別します。",
+    "explanation": "民法第557条第1項の解約手付では、相手方が契約の履行に着手する前など資料の条件を満たす場合、売主は受領した手付100万円の倍額である200万円を現実に提供して契約を解除できます。買主への提供総額200万円は、元の手付100万円の返還相当分と、同額の追加負担100万円を合わせたものです。200万円に元の100万円をさらに加えて300万円とするのは二重計上です。売主自身の履行着手だけで当然に解除不能となるわけではなく、条文は相手方の履行着手を基準とします。",
     "topic": "売主からの手付解除",
-    "revision": 4,
+    "revision": 5,
     "choiceExplanations": [
       "不適切。100万円は受領済み手付をそのまま返す額で、売主の倍額提供の総額に足りません。",
       "不適切。倍額の総額に、受領済みの手付をさらに加えた三重の計上です。",
       "不適切。必要な倍額をさらに2倍した額であり、資料の規律による総額ではありません。",
       "正解。100万円×2＝200万円を現実に提供します。受領済み手付の返還相当分を含む総額です。"
     ],
-    "contentReview": "v138_property_contract_and_management_scoped_migration",
-    "verificationStatus": "selected_points_checked_historical_full_text_pending",
+    "contentReview": "20261024_registration_and_deposit_primary_scoped_check",
+    "verificationStatus": "ai_scoped_primary_rule_checked_human_review_pending",
     "lawReferenceDate": "2026-04-01",
-    "sourceUrl": "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/housei/19320170602044.htm",
+    "sourceUrl": "https://laws.e-gov.go.jp/law/129AC0000000089?occasion_date=20260401",
     "additionalSourceUrls": [
-      "https://laws.e-gov.go.jp/law/129AC0000000089?occasion_date=20220220"
+      "https://www.moj.go.jp/content/000108216.pdf"
     ],
-    "sourceLabel": "国会制定法・国土交通省・農林水産省等による設問主要点の限定照合",
-    "sourceCheckedDate": "2026-10-15",
-    "reviewNote": "新改訂主要点5/共通ルール設例適用5。手付3問の内部算術を別記。全法令/全改正/基準日統合全文の確認ではない。"
+    "sourceLabel": "e-Gov民法第557条第1項／法務省法制審議会資料（売主の手付倍額提供と相手方の履行着手を限定照合）",
+    "sourceCheckedDate": "2026-10-24",
+    "reviewNote": "e-Gov民法第557条第1項の倍額提供・相手方の履行着手の条件と、法務省の条文改正趣旨に限定してAI支援で照合。民法全改正・契約個別特約・経過措置の包括監査および運営者の人手監修は未了。"
   },
   {
     "id": "fp2-055",
