@@ -67,8 +67,13 @@ assert.ok(flagsFor({...example,lawReferenceDate:'2026-02-31'}).includes('法令�
 assert.ok(!flagsFor({...example,lawReferenceDate:'2026-04-01'}).some(x=>/確認日が不正|1年超|基準日より前/.test(x)),'valid recent references not treated as stale');
 assert.throws(()=>reasonsFor(mk(example.id,example),{today:'2026-02-31'}),/reference date must be valid/);
 const risks=audit(all,{schemaVersion:1,records:[]},{today:'2026-10-24'});
-const datedRisk=risks.flagged.find(f=>f.reasons.includes('参照した旧資料の本文確認待ち'));
-assert.ok(datedRisk&&datedRisk.priority>=7,'outstanding original source-text review receives a high-priority weight');
+// All real old-source cases have a scoped AI check. Inject a synthetic pending case to
+// keep the high-priority scoring rule tested without faking a new live warning.
+const historicalMutation=all.map(e=>e.id==='fp2-025'?{...e,q:{...e.q,verificationStatus:'selected_points_checked_historical_full_text_pending'}}:e);
+const syntheticRisks=audit(historicalMutation,{schemaVersion:1,records:[]},{today:'2026-10-24'});
+const datedRisk=syntheticRisks.flagged.find(e=>e.id==='fp2-025'&&e.reasons.includes('参照した旧資料の本文確認待ち'));
+assert.ok(datedRisk&&datedRisk.priority>=7,'an unresolved historical source still has high priority');
+assert.equal(syntheticRisks.flagged.length,risks.flagged.length+1,'synthetic warning cannot disappear from triage');
 assert.deepEqual(flagsFor({...example,sourceUrl:undefined,choiceExplanations:['甲','乙']}),['設問別の根拠URL未登録'],'plain metadata gap remains distinct from law verification');
 assert.match(renderMarkdown(risks,{limit:8}),/法令適用・旧資料本文の未確認/);
 const boki={id:'b2-test',type:'table',fields:[{id:'f1',answer:100},{id:'f2',answer:100}],tables:[{caption:'資料',rows:[['売上','100']]},{caption:'解答',rows:[['売上',{id:'f1'}],['原価',{id:'f2'}]]}]};
