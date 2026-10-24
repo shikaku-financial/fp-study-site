@@ -44,8 +44,8 @@ function numericText(value){
  const s=value.trim();
  // Only a complete standalone number or monetary amount is comparable to an answer.
  // Keep "100円/個", "4/1", and "100×2" out of the literal-answer match.
- if(!/^(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?:\\s*円)?$/.test(s))return null;
- return Number(s.replace(/[,\\s円]/g,''));
+ if(!/^(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?:\s*円)?$/.test(s))return null;
+ return Number(s.replace(/[,\s円]/g,''));
 }
 
 function validDate(date){
