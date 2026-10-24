@@ -5,5 +5,7 @@ const h=fs.readFileSync(path.join(root,'index.html'),'utf8'),j=fs.readFileSync(p
 assert.match(h,/id="prSubmitJumpUnanswered" type="button" class="outline-full hidden"/);
 assert.match(j,/\$p\('prSubmitJumpUnanswered'\)\.classList\.toggle\('hidden',remaining===0\)/);
 assert.match(j,/\$p\('prSubmitJumpUnanswered'\)\.addEventListener\('click',\(\)=>\{\$p\('prJumpUnanswered'\)\.click\(\);\}\)/);
-assert.match(h,/practical\.js\?v=[a-f0-9]{14}/);
+assert.match(h,/practical-loader\.js\?v=/,'FP HTML loads the practical entry handler');
+const loader=fs.readFileSync(path.join(root,'practical-loader.js'),'utf8');
+assert.match(loader,/practical\.js\?v=[a-f0-9]{14}/,'practical controller remains cache-busted');
 console.log('PASS: submit shortcut follows readiness state and reuses the existing unanswered navigation handler.');
