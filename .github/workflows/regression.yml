@@ -36,6 +36,7 @@ jobs:
           node .ci/boki-flow-check.cjs
       - name: Summarize 660 question audit and validate real human review records
         run: |
+          node --check .ci/editorial-answer-structure.cjs
           node --check .ci/editorial-audit.cjs
           node .ci/editorial-audit-check.cjs
           node .ci/editorial-audit.cjs --limit=35 --detail=8
