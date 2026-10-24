@@ -1,6 +1,6 @@
 'use strict';
 const BOKI_CORE = (()=>{
- const revision='2026-10-24-ledger-asset-source-blanks';
+ const revision='2026-10-24-job-three-orders';
  const examFor=(data,level,form='1')=>form==='1'?data[String(level)]:data[String(level)]?.forms?.[form];
  const allItems=exam=>exam.sections.flatMap(s=>s.items);
  const points=item=>item.type==='journal'?item.points:item.fields.reduce((n,f)=>n+f.points,0);
