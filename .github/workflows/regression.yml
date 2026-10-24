@@ -38,7 +38,7 @@ jobs:
         run: |
           node --check .ci/editorial-audit.cjs
           node .ci/editorial-audit-check.cjs
-          node .ci/editorial-audit.cjs --limit=35
+          node .ci/editorial-audit.cjs --limit=35 --detail=8
       - name: Check shared learning calculator
         run: |
           node --check calculator.js
