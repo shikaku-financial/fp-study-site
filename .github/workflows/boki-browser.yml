@@ -35,14 +35,7 @@ jobs:
       - name: Install isolated browser test dependency
         run: npm install --no-save --no-package-lock playwright@1.56.1
       - name: Install test browser engines
-        run: |
-          # Use Ubuntu's standard mirror when the Azure mirror stalls during dependency downloads.
-          for source in /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do
-            if [ -f "$source" ]; then
-              sudo sed -i 's|azure.archive.ubuntu.com|archive.ubuntu.com|g' "$source"
-            fi
-          done
-          npx playwright install --with-deps chromium webkit
+        run: npx playwright install --with-deps chromium webkit
       - name: Validate and build public assets
         run: |
           node .ci/boki-check.cjs
