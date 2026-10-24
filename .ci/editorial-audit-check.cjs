@@ -31,7 +31,7 @@ assert.ok(bokiFlags.includes('複数の解答欄が同額（出題意図を確�
 assert.deepEqual(reasonsFor({bank:'簿記2級',form:'第1回',id:'safe',q:{...boki,fields:[{id:'f1',answer:300},{id:'f2',answer:400}]}}),[]);
 const valid={id:all[0].id,status:'verified',contentHash:fingerprint(all[0].q),checkedOn:'2026-10-24',reviewer:'運営者',references:['https://example.org/cited-primary-source']};
 assert.equal(audit(all,{schemaVersion:1,records:[valid]}).reviewedCount,1);
-assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,contentHash:fingerprint({...all[0].q,explanation:'new explanation'})]}),/content changed/);
+assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,contentHash:fingerprint({...all[0].q,explanation:'new explanation'})}]}),/content changed/);
 assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,references:[]}]}),/HTTPS references/);
 assert.throws(()=>audit(all,{schemaVersion:1,records:[valid,valid]}),/duplicate review/);
 assert.throws(()=>audit(all,{schemaVersion:1,records:[{...valid,id:'missing'}]}),/unknown question/);
